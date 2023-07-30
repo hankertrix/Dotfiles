@@ -2,13 +2,19 @@
 
 The configuration files are located in `~/.config/`.
 
+<br>
+
 ## i3
 
 The i3 configuration is for the most part, the default configuration from EndeavourOS. There are only a few changes in the `~/.config/i3/config` to change the background, the terminal and the default utility to adjust the screen brightness.
 
+<br>
+
 ## Neovim
 
 There is a README.md file inside the `~/nvim/` folder that lists all of the plugins I use.
+
+<br>
 
 ## Wezterm
 
