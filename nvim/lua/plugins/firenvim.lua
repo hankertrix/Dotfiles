@@ -4,8 +4,8 @@ local local_settings = {
     [".*"] = {
         cmdline = "neovim",
 
-        -- Automatically use firenvim
-        takeover = "always"
+        -- Never automatically use firenvim
+        takeover = "never"
     }
 }
 
