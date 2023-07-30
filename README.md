@@ -18,4 +18,4 @@ There is a README.md file inside the `~/nvim/` folder that lists all of the plug
 
 ## Wezterm
 
-For the most part, the wezterm configuration is just adding the Bluloco Light and Bluloco Dark colour scheme and setting the default colour scheme to Bluloco Dark. The default font is also changed to use the Cascadia Code Nerd Font Mono.
+For the most part, the wezterm configuration is just adding the Bluloco Light and Bluloco Dark colour scheme and setting the default colour scheme to Bluloco Dark. The default font is also changed to use the [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode).

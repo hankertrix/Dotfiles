@@ -121,7 +121,7 @@ VimBeGood game - [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
 
 ### Font
 
-[Cascadia Code Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
+[Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
 
 
 <br>
