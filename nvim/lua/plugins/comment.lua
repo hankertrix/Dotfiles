@@ -13,7 +13,7 @@ local function comment_setup()
     local api = require("Comment.api")
 
     -- Toggle current line (linewise) using C-/ in normal mode
-    vim.keymap.set("n", "<C-_>", api.toggle.linewise.current, { desc = "Toggle commenting on current line" })
+    vim.keymap.set("n", "<C-/>", api.toggle.linewise.current, { desc = "Toggle commenting on current line" })
 
     -- Gets the escape key
     local esc = vim.api.nvim_replace_termcodes(
@@ -21,7 +21,7 @@ local function comment_setup()
     )
 
     -- Toggle selection (linewise) in visual mode
-    vim.keymap.set("x", "<C-_>", function()
+    vim.keymap.set("x", "<C-/>", function()
         vim.api.nvim_feedkeys(esc, "nx", false)
         api.toggle.linewise(vim.fn.visualmode())
     end, { desc = "Toggle commenting on current selection" })
@@ -37,8 +37,8 @@ return {
     cond = utils.firenvim_not_active,
     config = comment_setup,
     keys = {
-        { "<C-_>", mode = "n" },
-        { "<C-_>", mode = "v" },
+        { "<C-/>", mode = "n" },
+        { "<C-/>", mode = "v" },
         { "gb", mode = "n" },
         { "gb", mode = "v" },
         { "gc", mode = "n" },
