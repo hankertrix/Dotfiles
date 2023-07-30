@@ -1,3 +1,3 @@
 [submodule "nvim"]
 	path = nvim
-	url = ./nvim
+	url = http://github.com/hankertrix/Neovim-Config
