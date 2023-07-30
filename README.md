@@ -1,0 +1,15 @@
+# Linux Config Files
+
+The configuration files are located in `~/.config/`.
+
+## i3
+
+The i3 configuration is for the most part, the default configuration from EndeavourOS. There are only a few changes in the `~/.config/i3/config` to change the background, the terminal and the default utility to adjust the screen brightness.
+
+## Neovim
+
+There is a README.md file inside the `~/nvim/` folder that lists all of the plugins I use.
+
+## Wezterm
+
+For the most part, the wezterm configuration is just adding the Bluloco Light and Bluloco Dark colour scheme and setting the default colour scheme to Bluloco Dark. The default font is also changed to use the Cascadia Code Nerd Font Mono.
