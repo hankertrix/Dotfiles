@@ -129,7 +129,6 @@ VimBeGood game - [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
 
 ### External programs
 
-- [wezterm](https://github.com/wez/wezterm)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [gcc](https://gcc.gnu.org/)
