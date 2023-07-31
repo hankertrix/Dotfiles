@@ -1,6 +1,6 @@
 # Linux Config Files
 
-The configuration files are located in `~/.config/`. The laptop that I currently use is an ASUS TUF A16 AMD Advantage Edition, with a Ryzen 9-7940HS processor, a AMD Radeon RX7600S GPU and a screen resolution of 2560x1600.
+The configuration files are located in `~/.config/`. The laptop that I currently use is an [ASUS TUF Gaming A16 AMD Advantage Edition](https://www.asus.com/laptops/for-gaming/tuf-gaming/asus-tuf-gaming-a16-advantage-edition-2023/), with a Ryzen 9-7940HS processor, a AMD Radeon RX7600S GPU and a screen resolution of 2560x1600. I am currently using [EndeavourOS](https://endeavouros.com/), which is an [Arch-based](https://archlinux.org/) Linux distribution. I'm using the [i3-wm setup with EndeavourOS](https://discovery.endeavouros.com/window-tiling-managers/i3-wm/2021/03/).
 
 <br>
 
