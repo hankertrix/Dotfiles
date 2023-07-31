@@ -6,7 +6,7 @@ The configuration files are located in `~/.config/`. The laptop that I currently
 
 ## [i3](https://i3wm.org/)
 
-The i3 configuration is for the most part, the default configuration from EndeavourOS. There are only a few changes in the `~/.config/i3/config` to change the background, the terminal and the default utility to adjust the screen brightness. I also changed some of the scripts and the workspace icons so that they look better on my laptop, which is mostly just adding spaces and thin spaces so that the icons have sufficient space away from the text and don't overlap with the text.
+The i3 configuration is for the most part, the default configuration from EndeavourOS. There are only a few changes in the `i3/config` file to change the background, the terminal and the default utility to adjust the screen brightness. I also changed some of the scripts and the workspace icons so that they look better on my laptop, which is mostly just adding spaces and thin spaces so that the icons have sufficient space away from the text and don't overlap with the text.
 
 <br>
 
