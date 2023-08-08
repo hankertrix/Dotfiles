@@ -17,6 +17,7 @@ vim.g.firenvim_config = {
 return {
     "glacambre/firenvim",
     lazy = require("utils").firenvim_not_active(),
+    module = false,
     build = function()
         vim.fn["firenvim#install"](0)
     end
