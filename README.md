@@ -15,6 +15,7 @@ The .Xresources configuration is just to make sure the display works properly wi
 
 The .xinitrc file is just so merge the configuration inside .Xresources into xrdb so that the changes will apply.
 
+<br>
 
 ## .profile
 
