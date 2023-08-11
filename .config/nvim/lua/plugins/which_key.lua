@@ -3,7 +3,7 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up whick-key
+-- Function to set up which-key
 local function which_key_setup()
 
     -- Stops executing if the package isn't installed
