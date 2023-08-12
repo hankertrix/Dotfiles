@@ -9,6 +9,9 @@ from subprocess import check_output
 import os
 import re
 
+# the threshold for the battery percentage to show the red background
+RED_BACKGROUND_THRESHOLD = 10
+
 config = dict(os.environ)
 status = check_output(['acpi'], universal_newlines=True)
 
@@ -22,12 +25,12 @@ else:
     # available for each battery separately, although state and remaining
     # time for overall block is shown in the status of the first battery
     batteries = status.split("\n")
-    state_batteries=[]
-    commasplitstatus_batteries=[]
-    percentleft_batteries=[]
+    state_batteries = []
+    commasplitstatus_batteries = []
+    percentleft_batteries = []
     time = ""
     for battery in batteries:
-        if battery!='':
+        if battery != '':
             state_batteries.append(battery.split(": ")[1].split(", ")[0])
             commasplitstatus = battery.split(", ")
             if not time:
@@ -41,7 +44,7 @@ else:
                     timeleft = ""
 
             p = int(commasplitstatus[1].rstrip("%\n"))
-            if p>0:
+            if p > 0:
                 percentleft_batteries.append(p)
             commasplitstatus_batteries.append(commasplitstatus)
     state = state_batteries[0]
@@ -98,10 +101,13 @@ else:
 
     form = '<span color="{}">{}%</span>'
     fulltext += form.format(color(percentleft), percentleft)
-    fulltext = "  " + fulltext + "  "
-    # fulltext += timeleft
+    # fulltext += " " + timeleft
+
+    # add additional spacing for the red background
+    if percentleft < RED_BACKGROUND_THRESHOLD:
+        fulltext = "   " + fulltext + "   "
 
 print(fulltext)
 print(fulltext)
-if percentleft < 10:
+if percentleft < RED_BACKGROUND_THRESHOLD:
     exit(33)
