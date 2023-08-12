@@ -1,6 +1,6 @@
 -- Configuration for the remaps
 
--- Sets the leader key
+-- Sets the leader key to space
 vim.g.mapleader = " "
 
 
