@@ -50,7 +50,7 @@ end
 -- Returns the bufferline module for lazy.nvim
 return {
     "akinsho/bufferline.nvim",
-    version = "v3.*",
+    version = "*",
     cond = utils.firenvim_not_active,
     config = bufferline_setup,
     dependencies = { "nvim-tree/nvim-web-devicons" }
