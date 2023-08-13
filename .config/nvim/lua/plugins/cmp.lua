@@ -12,43 +12,11 @@ local function cmp_setup()
     -- Gets the nvim-cmp module
     local cmp = require("cmp")
 
+    -- Gets the shared configs file
+    local shared_configs = require("shared_configs")
+
     -- Gets the default sources
-    local default_sources = require("shared_configs").default_cmp_sources
-
-    -- The options for selection
-    local select_opts = { behavior = "select" }
-
-
-    -- The default mappings for nvim-cmp
-    local cmp_mappings = {
-
-        -- Confirm selection
-        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-y>"] = cmp.mapping.confirm({ select = false }),
-
-        -- Navigate items on the list
-        ["<Up>"] = cmp.mapping.select_prev_item(select_opts),
-        ["<Down>"] = cmp.mapping.select_next_item(select_opts),
-        ["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
-        ["<C-n>"] = cmp.mapping.select_next_item(select_opts),
-
-        -- Scroll up and down in the completion documentation
-        ["<C-f>"] = cmp.mapping.scroll_docs(5),
-        ["<C-u>"] = cmp.mapping.scroll_docs(-5),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-5),
-
-        -- Toggle completion
-        ["<C-e>"] = cmp.mapping(function()
-            if cmp.visible() then
-                cmp.abort()
-            else
-                cmp.complete()
-            end
-        end),
-
-        -- Vim"s default to open the completion window
-        ["<C-Space>"] = cmp.mapping.complete(),
-    }
+    local default_sources = shared_configs.default_cmp_sources
 
 
     -- The formatting for nvim-cmp
@@ -71,7 +39,7 @@ local function cmp_setup()
 
     -- Sets up nvim-cmp with my own mappings
     cmp.setup({
-        mapping = cmp_mappings,
+        mapping = shared_configs.default_cmp_mappings(),
         sources = default_sources,
         formatting = cmp_format
     })

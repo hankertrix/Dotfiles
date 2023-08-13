@@ -6,8 +6,8 @@ local utils = require("utils")
 -- Function to set up lsp-zero
 local function lsp_setup()
 
-    -- Stops executing if the package isn't installed
-    if not utils.status_ok("lsp-zero") then return end
+    -- Stops executing if the packages aren't installed
+    if not utils.status_ok({"lsp-zero", "cmp"}) then return end
 
     -- Gets the lsp module
     local lsp = require("lsp-zero")
@@ -26,22 +26,8 @@ local function lsp_setup()
     -- Set up the Lua LSP to be used for Neovim configuration
     lsp.nvim_workspace()
 
-    -- Auto completion mappings
-    local cmp = require("cmp")
-    local cmp_mappings = lsp.defaults.cmp_mappings({
-
-        -- Use tab to complete
-        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-
-        -- Vim's default mapping for completions
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-f>"] = cmp.mapping.scroll_docs(5),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-5),
-    })
-
-    -- Disable completion with enter
-    cmp_mappings["<CR>"] = nil
-
+    -- Gets the shared configs file
+    local shared_configs = require("shared_configs")
 
     -- Set up the completion sources
     local cmp_sources = {
@@ -61,9 +47,6 @@ local function lsp_setup()
     local cmp_format = {
         fields = { "abbr", "kind", "menu" },
         format = function(entry, item)
-
-            -- Gets the shared configuration file
-            local shared_configs = require("shared_configs")
 
             -- The list of kind icons
             local kind_icons = shared_configs.lsp_kind_icons
@@ -85,15 +68,13 @@ local function lsp_setup()
 
     -- Set up the completion with my own settings
     lsp.setup_nvim_cmp({
-        mapping = cmp_mappings,
+        mapping = shared_configs.default_cmp_mappings(),
         sources = cmp_sources,
         formatting = cmp_format
     })
 
     -- Set my sign icons for the LSP
-    lsp.set_preferences({
-        sign_icons = require("shared_configs").lsp_diagnostic_icons()
-    })
+    lsp.set_sign_icons(require("shared_configs").lsp_diagnostic_icons())
 
     -- Setup the LSP
     lsp.setup()
@@ -121,12 +102,12 @@ return {
         { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
         -- Autocompletion
-        { "hrsh7th/nvim-cmp" },             -- Required
-        { "hrsh7th/cmp-nvim-lsp" },         -- Required
+        { "hrsh7th/nvim-cmp" },                  -- Required
+        { "hrsh7th/cmp-nvim-lsp" },              -- Required
 
         -- Snippets
-        { "L3MON4D3/LuaSnip" },             -- Required
-        { "rafamadriz/friendly-snippets" }, -- Optional
+        { "L3MON4D3/LuaSnip" },                  -- Required
+        { "rafamadriz/friendly-snippets" },      -- Optional
     }
 }
 
