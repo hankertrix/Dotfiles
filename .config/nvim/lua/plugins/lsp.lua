@@ -109,7 +109,7 @@ end
 -- Returns the lsp-zero module for lazy.nvim
 return {
     "VonHeikemen/lsp-zero.nvim",
-    branch = "v1.x",
+    branch = "v2.x",
     cond = utils.firenvim_not_active,
     event = { "BufReadPre", "BufNewFile" },
     config = lsp_setup,
