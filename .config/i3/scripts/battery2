@@ -61,8 +61,21 @@ else:
     # stands for plugged in
     FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
 
+    # function to get the battery icon based on the battery percentage
+    def get_battery_icon(percent):
+        if (percent < 20):
+            return "\uf244"
+        elif (percent < 45):
+            return "\uf243"
+        elif (percent < 70):
+            return "\uf242"
+        elif (percent < 95):
+            return "\uf241"
+        else:
+            return "\uf240"
+
     # stands for using battery
-    FA_BATTERY = "<span font='FontAwesome'>\uf240</span>"
+    FA_BATTERY = "<span font='FontAwesome'>{}</span>".format(get_battery_icon(percentleft))
 
     # stands for unknown status of battery
     FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
