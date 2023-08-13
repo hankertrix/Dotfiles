@@ -28,7 +28,11 @@ local function lsp_setup()
 
     -- Configure the ltex LSP
     lsp.configure("ltex", {
-        language = "en-GB"
+        settings = {
+            ltex = {
+                language = "en-GB"
+            }
+        }
     })
 
     -- Gets the shared configs file
