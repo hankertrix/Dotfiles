@@ -26,6 +26,11 @@ local function lsp_setup()
     -- Set up the Lua LSP to be used for Neovim configuration
     lsp.nvim_workspace()
 
+    -- Configure the ltex LSP
+    lsp.configure("ltex", {
+        language = "en-GB"
+    })
+
     -- Gets the shared configs file
     local shared_configs = require("shared_configs")
 
