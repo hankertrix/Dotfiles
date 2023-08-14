@@ -1,4 +1,3 @@
-
 ;; Loads the configuration from an org file
 (org-babel-load-file
   (expand-file-name
