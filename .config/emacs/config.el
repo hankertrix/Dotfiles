@@ -326,7 +326,7 @@
 
 ;; Install the all the icons package for dired and enable it in dired mode
 (use-package all-the-icons-dired
-  :hook (dired-mode . (lambda () all-the-icons-mode t)))
+  :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package nerd-icons
 
