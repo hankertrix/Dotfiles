@@ -54,9 +54,12 @@ vim.keymap.set("n", "<Leader>Y", [["+Y]], { desc = "Yank till the end of the lin
 -- Deleting something instead of cutting
 vim.keymap.set({"n", "v"}, "<Leader>d", [["_d]], { desc = "Delete" })
 
--- Use the Leader key to paste from system clipboard
+-- Use the leader key to paste from system clipboard
 vim.keymap.set({"n", "v"}, "<Leader>pp", [["+p]], { desc = "Paste from system clipboard after the cursor" })
 vim.keymap.set({"n", "v"}, "<Leader>P", [["+P]], { desc = "Paste from system clipboard before the cursor" })
+
+-- Open Netrw
+vim.keymap.set("n", "<Leader>pw", vim.cmd.Ex, { desc = "Opens Netrw on the current directory" })
 
 -- Formats the entire file using the LSP
 vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format, { desc = "Formats the file using the LSP" })
