@@ -375,19 +375,17 @@
         which-key-allow-imprecise-window-fit t
         which-key-separator " → " ))
 
-(defun lsp-mode-setup ()
-  "The function to set up LSP mode"
-  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-  (lsp-headerline-breadcrumb-mode))
-
 ;; Install LSP mode
 (use-package lsp-mode
 
   ;; Load LSP mode only when the commands below are called
   :commands (lsp lsp-deferred)
 
-  ;; Run the LSP mode setup function every time LSP mode is started
-  :hook (lsp-mode . lsp-mode-setup)
+  ;; Customise LSP mode
+  :custom
+
+  ;; Set the LSP completion provider to none
+  (lsp-completion-provider :none)
 
   ;; Custom keybindings for LSP mode
   :bind (:map lsp-mode-map
@@ -398,6 +396,37 @@
 
   ;; Set the prefix for LSP mode key binds
   (setq lsp-keymap-prefix "C-l")
+
+  ;; Disable snippet support for LSP mode
+  (setq lsp-enable-snippet nil)
+
+  ;; Functions to set up LSP mode
+
+  (defun lsp-mode-setup ()
+    "The function to set up LSP mode"
+
+    ;; Set up the headerline in LSP mode
+    (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+
+    ;; Enable the headerline
+    (lsp-headerline-breadcrumb-mode))
+
+  (defun lsp-completion-mode-setup ()
+    "The function to set up LSP completion with Corfu"
+
+    ;; Set up completion with Corfu with the flex configuration
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(flex)))
+
+  ;; The hooks for LSP mode
+  :hook
+
+  ;; Run the LSP mode setup function every time LSP mode is started
+  (lsp-mode . lsp-mode-setup)
+
+  ;; Run the LSP mode completion setup function every time the
+  ;; LSP completion mode is started
+  (lsp-completion-mode . lsp-completion-mode-setup)
 
   ;; Configure LSP mode
   :config
@@ -419,7 +448,7 @@
 (use-package lsp-treemacs
 
   ;; Ensure that LSP treemacs is loaded after the LSP
-  :after lsp-mode)
+  :after lsp)
 
 (use-package lsp-ltex
 
@@ -646,9 +675,9 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-tex)
   (add-to-list 'completion-at-point-functions #'cape-history)
   (add-to-list 'completion-at-point-functions #'cape-dict)
-  ;; (add-to-list 'completion-at-point-functions #'cape-tex)
   ;; (add-to-list 'completion-at-point-functions #'cape-sgml)
   ;; (add-to-list 'completion-at-point-functions #'cape-rfc1345)
   ;; (add-to-list 'completion-at-point-functions #'cape-abbrev)

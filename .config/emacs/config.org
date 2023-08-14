@@ -672,7 +672,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
     (defun lsp-completion-mode-setup ()
       "The function to set up LSP completion with Corfu"
 
-      ;; Set up completion with Corfu
+      ;; Set up completion with Corfu with the flex configuration
       (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
             '(flex)))
 
