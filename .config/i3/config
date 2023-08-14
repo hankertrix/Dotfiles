@@ -243,7 +243,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+g layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+u layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -291,6 +291,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 ## App shortcuts
 bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
+bindsym $mod+e exec /usr/bin/emacs
 bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
@@ -304,10 +305,10 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:  "
 set $ws2 "2:  "
-set $ws3 "3:  "
-set $ws4 "4: "
-set $ws5 "5:  "
-set $ws6 "6"
+set $ws3 "3:𝓔"
+set $ws4 "4:  "
+set $ws5 "5: "
+set $ws6 "6:  "
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -325,13 +326,15 @@ set $ws10 "10"
 # bind program to workspace and focus to them on startup:
 assign [class="kitty"] $ws1
 assign [class="(?i)firefox"] $ws2
-assign [class="Thunar"] $ws3
-assign [class="thunderbird"] $ws4
-assign [class="TelegramDesktop"] $ws5
+assign [class="Emacs"] $ws3
+assign [class="Thunar"] $ws4
+assign [class="thunderbird"] $ws5
+assign [class="TelegramDesktop"] $ws6
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=kitty] focus
 for_window [class=(?i)firefox] focus
+for_window [class=Emacs] focus
 for_window [class=Thunar] focus
 for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
