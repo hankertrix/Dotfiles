@@ -166,7 +166,7 @@
   ;; Function to use a register with an evil function
   (defun use-register-with-evil-function (register evil-function)
     "A wrapper function to easily use a specified register REGISTER
-           with an evil function EVIL-FUNCTION."
+                 with an evil function EVIL-FUNCTION."
     (interactive)
     (let ((evil-this-register register))
       (call-interactively evil-function)))
@@ -175,9 +175,9 @@
 
 
   ;; Key bindings involving the leader key
-  (hankertrix/leader-keys
 
-    ;; Key binds to copy and paste from the clipboard
+  ;; Key binds to copy and paste from the clipboard
+  (hankertrix/leader-keys
     "P" '(
           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before))
           :wk "Paste from the system clipboard before the cursor")
@@ -193,17 +193,21 @@
     "d" '(
           (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete))
           :wk "Delete to the black hole register")
+    )
 
-    ;; Key binds for buffer management
+  ;; Key binds for buffer management
+  (hankertrix/leader-keys
     "l" '(next-buffer :wk "Go to the next buffer")
     "h" '(previous-buffer :wk "Go to the previous buffer")
     "x" '(kill-this-buffer :wk "Go to the previous buffer")
+    )
 
-    ;; Key binds for searching
+  ;; Key binds for searching
+  (hankertrix/leader-keys
+    "pw" '(dired :wk "Open Dired")
     "pf" '(counsel-find-file :wk "Search for a file")
     "ps" '(counsel-rg :wk "Search for the term using ripgrep")
     )
-
   )
 
 (use-package uwu-theme
