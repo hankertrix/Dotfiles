@@ -21,14 +21,14 @@ The rofi configuration, like the i3 configuration, is for the mostly just the de
 
 ## [Neovim](https://neovim.io/)
 
-There is a README.md file inside the `nvim` folder that lists all the plugins I use.
+There is a `README.md` file inside the `nvim` folder that lists all the plugins I use.
 
 <br>
 
 
 ## [Emacs](https://www.gnu.org/software/emacs/)
 
-There is a config.org file inside the `emacs` folder that contains my configuration for Emacs.
+There is a `config.org` file inside the `emacs` folder that contains my configuration for Emacs.
 
 <br>
 
