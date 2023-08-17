@@ -98,9 +98,10 @@
 
 (use-package evil-collection
 
-  ;; Load the evil collection after evil
-  ;; And install it if it isn't already installed
-  :after evil
+  ;; Load the evil collection after evil and magit
+  :after (evil magit)
+
+  ;; Ensure that the package is always installed
   :ensure t
 
   ;; Force evil collection to load first

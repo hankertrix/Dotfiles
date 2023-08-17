@@ -172,9 +172,10 @@ Evil collection is a collection of evil key bindings for various Emacs plugins.
 #+begin_src emacs-lisp
   (use-package evil-collection
 
-    ;; Load the evil collection after evil
-    ;; And install it if it isn't already installed
-    :after evil
+    ;; Load the evil collection after evil and magit
+    :after (evil magit)
+
+    ;; Ensure that the package is always installed
     :ensure t
 
     ;; Force evil collection to load first
@@ -297,7 +298,6 @@ Evil nerd commenter allows for easy commenting of code.
       "ps" '(counsel-rg :wk "Search for the term using ripgrep")
       )
     )
-
 #+end_src
 
 
