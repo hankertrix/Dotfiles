@@ -753,3 +753,6 @@
   ;; Set the key bindings for org agenda
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
+(setq org-latex-packages-alist '())
+(add-to-list 'org-latex-packages-alist '("" "siunitx" t))

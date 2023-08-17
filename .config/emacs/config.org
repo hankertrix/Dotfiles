@@ -49,6 +49,7 @@
   - [[#enabling-org-tempo][Enabling Org Tempo]]
   - [[#stop-auto-completing--in-org-mode][Stop auto completing "<" in org mode]]
   - [[#installing-evil-org][Installing Evil Org]]
+  - [[#adding-additional-latex-packages][Adding additional LaTeX packages]]
 
 * Important Programs
 
@@ -1120,4 +1121,11 @@ Evil org provides a set of evil key bindings that work with org mode
     ;; Set the key bindings for org agenda
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
+#+end_src
+
+
+** Adding additional LaTeX packages
+#+begin_src emacs-lisp
+  (setq org-latex-packages-alist '())
+  (add-to-list 'org-latex-packages-alist '("" "siunitx" t))
 #+end_src
