@@ -757,7 +757,7 @@ Ltex is a language server for various TeX (e.g. LaTeX, BibTeX, etc.), markdown a
 
 
 ** Flycheck
-Flycheck is better alternative to the built-in Emacs Flymake with support for a lot of programming languages out of the box.
+Flycheck is better alternative to the built-in Emacs Flymake with support for a lot of programming languages out of the box. =luacheck= and =python-pylint= needs to be installed for Flycheck to support Lua and Python respectively.
 #+begin_src emacs-lisp
   (use-package flycheck
     :ensure t
