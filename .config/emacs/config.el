@@ -389,7 +389,7 @@
 
   ;; Custom keybindings for LSP mode
   :bind (:map lsp-mode-map
-              ("C-l d" . flymake-show-buffer-diagnostics))
+              ("C-l d" . flycheck-list-errors))
 
   ;; Initialise LSP mode
   :init
@@ -399,6 +399,7 @@
 
   ;; Disable snippet support for LSP mode
   (setq lsp-enable-snippet nil)
+
 
   ;; Functions to set up LSP mode
 
@@ -428,6 +429,10 @@
   ;; LSP completion mode is started
   (lsp-completion-mode . lsp-completion-mode-setup)
 
+  ;; Disable LSP mode integration with completion at point functions in text mode
+  ;; This is to get autocompletions with corfu and cape working again in text mode
+  (text-mode . (lambda () (setq-local lsp-completion-enable nil)))
+
   ;; Configure LSP mode
   :config
 
@@ -450,6 +455,9 @@
   ;; Ensure that LSP treemacs is loaded after the LSP
   :after lsp)
 
+(use-package lua-mode)
+(use-package haskell-mode)
+
 (use-package lsp-ltex
 
   ;; Enable ltex in text mode
@@ -465,6 +473,11 @@
 
   ;; Set the wanted ltex version to 16.0.0
   (setq lsp-ltex-version "16.0.0"))
+
+(use-package flycheck
+  :ensure t
+  :defer t
+  :init (global-flycheck-mode))
 
 (use-package ivy
 

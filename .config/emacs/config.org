@@ -38,6 +38,7 @@
 - [[#which-key][Which Key]]
 - [[#development][Development]]
   - [[#lsp-mode][LSP mode]]
+  - [[#flycheck][Flycheck]]
   - [[#completion-plugins][Completion Plugins]]
 - [[#helpful][Helpful]]
 - [[#git-integration][Git Integration]]
@@ -647,7 +648,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
 
     ;; Custom keybindings for LSP mode
     :bind (:map lsp-mode-map
-                ("C-l d" . flymake-show-buffer-diagnostics))
+                ("C-l d" . flycheck-list-errors))
 
     ;; Initialise LSP mode
     :init
@@ -657,6 +658,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
 
     ;; Disable snippet support for LSP mode
     (setq lsp-enable-snippet nil)
+
 
     ;; Functions to set up LSP mode
 
@@ -685,6 +687,10 @@ LSP mode allows Emacs to use various language servers to provide auto completion
     ;; Run the LSP mode completion setup function every time the
     ;; LSP completion mode is started
     (lsp-completion-mode . lsp-completion-mode-setup)
+
+    ;; Disable LSP mode integration with completion at point functions in text mode
+    ;; This is to get autocompletions with corfu and cape working again in text mode
+    (text-mode . (lambda () (setq-local lsp-completion-enable nil)))
 
     ;; Configure LSP mode
     :config
@@ -719,6 +725,14 @@ LSP treemacs allows the displaying of various LSP related things such as symbols
 #+end_src
 
 
+*** Language Support
+Emacs doesn't have built-in support for Lua and Haskell, so let's add support for those.
+#+begin_src emacs-lisp
+  (use-package lua-mode)
+  (use-package haskell-mode)
+#+end_src
+
+
 *** Language Servers
 
 **** Ltex
@@ -742,12 +756,20 @@ Ltex is a language server for various TeX (e.g. LaTeX, BibTeX, etc.), markdown a
 #+end_src
 
 
+** Flycheck
+Flycheck is better alternative to the built-in Emacs Flymake with support for a lot of programming languages out of the box.
+#+begin_src emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :defer t
+    :init (global-flycheck-mode))
+#+end_src
 
 
 ** Completion Plugins
 
 *** Ivy
-Ivy is a generic completion mechanism for the Emacs minibuffer.
+Ivy is a generic completion mechanism for the Emacs mini buffer.
 #+begin_src emacs-lisp
   (use-package ivy
 
