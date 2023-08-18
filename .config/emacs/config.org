@@ -1131,22 +1131,6 @@ Evil org provides a set of evil key bindings that work with org mode
 #+end_src
 
 
-** Installing Evil TeX
-Evil TeX is a toolbox for LaTeX editing which provides many LaTeX text objects and key maps for quickly entering environments.
-#+begin_src emacs-lisp
-  (use-package evil-tex
-
-    ;; Hooks to start evil tex
-    :hook
-
-    ;; Enable evil tex in latex mode
-    ('LaTeX-mode . #'evil-tex-mode)
-
-    ;; Enable evil tex in org mode as well
-    (org-mode . #'evil-tex-mode))
-#+end_src
-
-
 ** Turn on LaTeX syntax highlighting in org mode
 This sets the variable org-highlight-latex-and-related to "native", which will highlight LaTeX syntax like it is a TeX file. The "latex" setting will just highlight all LaTeX fragments in a different colour. So a LaTeX block will just be one colour and all the entities are not highlighted. For the other options, the Emacs help (C-h v org-highlight-latex-and-related) should be sufficient to understand what they do.
 #+begin_src emacs-lisp

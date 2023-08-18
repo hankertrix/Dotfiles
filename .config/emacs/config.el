@@ -761,15 +761,4 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
-(use-package evil-tex
-
-  ;; Hooks to start evil tex
-  :hook
-
-  ;; Enable evil tex in latex mode
-  ('LaTeX-mode . #'evil-tex-mode)
-
-  ;; Enable evil tex in org mode as well
-  (org-mode . #'evil-tex-mode))
-
 (setq org-highlight-latex-and-related '(native))
