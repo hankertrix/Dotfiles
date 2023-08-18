@@ -167,7 +167,7 @@
   ;; Function to use a register with an evil function
   (defun use-register-with-evil-function (register evil-function)
     "A wrapper function to easily use a specified register REGISTER
-                 with an evil function EVIL-FUNCTION."
+     with an evil function EVIL-FUNCTION."
     (interactive)
     (let ((evil-this-register register))
       (call-interactively evil-function)))
@@ -208,6 +208,12 @@
     "pw" '(dired :wk "Open Dired")
     "pf" '(counsel-find-file :wk "Search for a file")
     "ps" '(counsel-rg :wk "Search for the term using ripgrep")
+    )
+
+  ;; Key binds for opening specific files
+  (hankertrix/leader-keys
+    "ec" '((lambda () (interactive) (find-file "~/.config/emacs/config.org"))
+           :wk "Edit Emacs config")
     )
   )
 
@@ -754,5 +760,16 @@
   ;; Set the key bindings for org agenda
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
+(use-package evil-tex
+
+  ;; Hooks to start evil tex
+  :hook
+
+  ;; Enable evil tex in latex mode
+  ('LaTeX-mode . #'evil-tex-mode)
+
+  ;; Enable evil tex in org mode as well
+  (org-mode . #'evil-tex-mode))
 
 (setq org-highlight-latex-and-related '(native))
