@@ -1139,7 +1139,7 @@ This sets the variable org-highlight-latex-and-related to "native", which will h
 
 
 ** Literate programming
-Literate programming is a way of programming that has code snippets embedded in text that explain the code.
+Literate programming is a way of programming that has code snippets embedded in text that explain the code, and looks something like this configuration file.
 
 *** Stop org mode from asking me to confirm evaluation
 #+begin_src emacs-lisp
