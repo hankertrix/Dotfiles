@@ -49,6 +49,7 @@
   - [[#enabling-org-tempo][Enabling Org Tempo]]
   - [[#stop-auto-completing--in-org-mode][Stop auto completing "<" in org mode]]
   - [[#installing-evil-org][Installing Evil Org]]
+  - [[#installing-evil-tex][Installing Evil TeX]]
   - [[#turn-on-latex-syntax-highlighting-in-org-mode][Turn on LaTeX syntax highlighting in org mode]]
 
 * Important Programs
@@ -256,7 +257,7 @@ Evil nerd commenter allows for easy commenting of code.
     ;; Function to use a register with an evil function
     (defun use-register-with-evil-function (register evil-function)
       "A wrapper function to easily use a specified register REGISTER
-                     with an evil function EVIL-FUNCTION."
+       with an evil function EVIL-FUNCTION."
       (interactive)
       (let ((evil-this-register register))
         (call-interactively evil-function)))
@@ -1127,6 +1128,22 @@ Evil org provides a set of evil key bindings that work with org mode
     ;; Set the key bindings for org agenda
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
+#+end_src
+
+
+** Installing Evil TeX
+Evil TeX is a toolbox for LaTeX editing which provides many LaTeX text objects and key maps for quickly entering environments.
+#+begin_src emacs-lisp
+  (use-package evil-tex
+
+    ;; Hooks to start evil tex
+    :hook
+
+    ;; Enable evil tex in latex mode
+    ('LaTeX-mode . #'evil-tex-mode)
+
+    ;; Enable evil tex in org mode as well
+    (org-mode . #'evil-tex-mode))
 #+end_src
 
 
