@@ -49,8 +49,8 @@
   - [[#enabling-org-tempo][Enabling Org Tempo]]
   - [[#stop-auto-completing--in-org-mode][Stop auto completing "<" in org mode]]
   - [[#installing-evil-org][Installing Evil Org]]
-  - [[#installing-evil-tex][Installing Evil TeX]]
   - [[#turn-on-latex-syntax-highlighting-in-org-mode][Turn on LaTeX syntax highlighting in org mode]]
+  - [[#literate-programming][Literate programming]]
 
 * Important Programs
 
@@ -1135,4 +1135,22 @@ Evil org provides a set of evil key bindings that work with org mode
 This sets the variable org-highlight-latex-and-related to "native", which will highlight LaTeX syntax like it is a TeX file. The "latex" setting will just highlight all LaTeX fragments in a different colour. So a LaTeX block will just be one colour and all the entities are not highlighted. For the other options, the Emacs help (C-h v org-highlight-latex-and-related) should be sufficient to understand what they do.
 #+begin_src emacs-lisp
   (setq org-highlight-latex-and-related '(native))
+#+end_src
+
+
+** Literate programming
+Literate programming is a way of programming that has code snippets embedded in text that explain the code.
+
+*** Stop org mode from asking me to confirm evaluation
+#+begin_src emacs-lisp
+  (setq org-confirm-babel-evaluate nil)
+#+end_src
+
+*** Allowing org babel to load other programming languages
+This just allows org babel to execute the code in code blocks that is written in the programming languages specified below.
+#+begin_src emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)))
 #+end_src

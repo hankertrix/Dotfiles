@@ -762,3 +762,10 @@
   (evil-org-agenda-set-keys))
 
 (setq org-highlight-latex-and-related '(native))
+
+(setq org-confirm-babel-evaluate nil)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (python . t)))
