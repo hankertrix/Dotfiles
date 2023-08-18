@@ -754,3 +754,5 @@
   ;; Set the key bindings for org agenda
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
+(setq org-highlight-latex-and-related '(native))
