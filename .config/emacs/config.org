@@ -12,7 +12,7 @@
   - [[#elpaca-package-manager][Elpaca Package Manager]]
   - [[#evil-mode][Evil Mode]]
   - [[#key-bindings-with-generalel][Key bindings (with general.el)]]
-- [[#theme][Theme]]
+  - [[#which-key][Which Key]]
 - [[#fonts][Fonts]]
 - [[#gui-settings][GUI Settings]]
   - [[#splash-screen][Splash Screen]]
@@ -29,13 +29,15 @@
   - [[#auto-close-brackets][Auto close brackets]]
 - [[#whitespace-mode][Whitespace Mode]]
 - [[#beautifying-emacs][Beautifying Emacs]]
+  - [[#theme][Theme]]
   - [[#mode-line][Mode line]]
   - [[#rainbow-delimiters][Rainbow Delimiters]]
   - [[#all-the-icons][All The Icons]]
   - [[#nerd-icons][Nerd Icons]]
-- [[#zoom][Zoom]]
-- [[#backups][Backups]]
-- [[#which-key][Which Key]]
+- [[#miscellaneous][Miscellaneous]]
+  - [[#zoom][Zoom]]
+  - [[#backups][Backups]]
+  - [[#revert-without-querying][Revert without querying]]
 - [[#development][Development]]
   - [[#lsp-mode][LSP mode]]
   - [[#flycheck][Flycheck]]
@@ -366,29 +368,35 @@ Evil nerd commenter allows for easy commenting of code.
 
 
 
-* Theme
-Install the Uwu theme. The Uwu theme is a high contrast theme that is similar to bluloco. I am only using this theme because the bluloco doom theme isn't being merged into the doom themes repository.
+** Which Key
+Install and configure the which key plugin, which is a plugin that displays the possible key binds and what each key bind does when you press a key.
 #+begin_src emacs-lisp
-  (use-package uwu-theme
+  (use-package which-key
 
-    ;; Ensure that the uww theme is installed
+    ;; Ensure that which key is installed
     :ensure t
 
-    ;; Configure the uwu theme
+    ;; Force which key to load immediately on start up
+    :demand t
+
+    ;; Initialise which key
+    :init
+    (which-key-mode 1)
+
+    ;; Configure which key
     :config
-
-    ;; Make the line numbers less distracting
-    (setq uwu-distinct-line-numbers 'nil)
-
-    ;; Scale org-mode headlines
-    (setq uwu-scale-org-headlines 1)
-
-    ;; Scale outline-mode headlines
-    (setq uwu-scale-outline-headlines 1)
-
-    ;; Load and enable the uwu theme
-    (load-theme 'uwu t t)
-    (enable-theme 'uwu))
+    (setq which-key-side-window-location 'bottom
+          which-key-sort-order #'which-key-key-order-alpha
+          which-key-sort-uppercase-first nil
+          which-key-add-column-padding 1
+          which-key-max-display-columns nil
+          which-key-min-display-lines 6
+          which-key-side-window-slot -10
+          which-key-side-window-max-height 0.25
+          which-key-idle-delay 0.5
+          which-key-max-description-length 25
+          which-key-allow-imprecise-window-fit t
+          which-key-separator " → " ))
 #+end_src
 
 
@@ -581,6 +589,35 @@ Enable whitespace mode.
 
 * Beautifying Emacs
 
+** Theme
+Install the Uwu theme. The Uwu theme is a high contrast theme that is similar to bluloco. I am only using this theme because the bluloco doom theme isn't being merged into the doom themes repository.
+#+begin_src emacs-lisp
+  (use-package uwu-theme
+
+    ;; Ensure that the uww theme is installed
+    :ensure t
+
+    ;; Force the theme to load immediately on start up
+    :demand t
+
+    ;; Configure the uwu theme
+    :config
+
+    ;; Make the line numbers less distracting
+    (setq uwu-distinct-line-numbers 'nil)
+
+    ;; Scale org-mode headlines
+    (setq uwu-scale-org-headlines 1)
+
+    ;; Scale outline-mode headlines
+    (setq uwu-scale-outline-headlines 1)
+
+    ;; Load and enable the uwu theme
+    (load-theme 'uwu t t)
+    (enable-theme 'uwu))
+#+end_src
+
+
 ** Mode line
 Use doom mode line for the Emacs mode line.
 #+begin_src emacs-lisp
@@ -635,7 +672,9 @@ Nerd Icons is another icon set that can be used with anything in Emacs. I am cur
 
 
 
-* Zoom
+* Miscellaneous
+
+** Zoom
 Set Ctrl plus =/- for zooming in/out.
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-=") 'text-scale-increase)
@@ -649,43 +688,17 @@ Set Ctrl + the mouse wheel to zoom in and out.
 #+end_src
 
 
-
-
-* Backups
+** Backups
 Don't create backups.
 #+begin_src emacs-lisp
   (setq make-backup-files nil)
 #+end_src
 
 
-
-
-* Which Key
-Install and configure the which key plugin.
+** Revert without querying
+This is just to stop Emacs from asking if I want to reread the PDF file from disk every time I reopen a PDF file that has changed. Instead, Emacs will now just automatically reread the PDF file without asking.
 #+begin_src emacs-lisp
-  (use-package which-key
-
-    ;; Ensure that which key is installed
-    :demand t
-
-    ;; Initialise which key
-    :init
-    (which-key-mode 1)
-
-    ;; Configure which key
-    :config
-    (setq which-key-side-window-location 'bottom
-          which-key-sort-order #'which-key-key-order-alpha
-          which-key-sort-uppercase-first nil
-          which-key-add-column-padding 1
-          which-key-max-display-columns nil
-          which-key-min-display-lines 6
-          which-key-side-window-slot -10
-          which-key-side-window-max-height 0.25
-          which-key-idle-delay 0.5
-          which-key-max-description-length 25
-          which-key-allow-imprecise-window-fit t
-          which-key-separator " → " ))
+  (setq revert-without-query '(".pdf"))
 #+end_src
 
 

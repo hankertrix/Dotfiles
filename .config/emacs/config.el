@@ -271,27 +271,6 @@
 
   )
 
-(use-package uwu-theme
-
-  ;; Ensure that the uww theme is installed
-  :ensure t
-
-  ;; Configure the uwu theme
-  :config
-
-  ;; Make the line numbers less distracting
-  (setq uwu-distinct-line-numbers 'nil)
-
-  ;; Scale org-mode headlines
-  (setq uwu-scale-org-headlines 1)
-
-  ;; Scale outline-mode headlines
-  (setq uwu-scale-outline-headlines 1)
-
-  ;; Load and enable the uwu theme
-  (load-theme 'uwu t t)
-  (enable-theme 'uwu))
-
 (set-face-attribute 'default nil
                     :font "CaskaydiaCove NFM 10"
                     :weight 'medium)
@@ -374,6 +353,27 @@
 
 (global-whitespace-mode 1)
 
+(use-package uwu-theme
+
+  ;; Ensure that the uww theme is installed
+  :ensure t
+
+  ;; Configure the uwu theme
+  :config
+
+  ;; Make the line numbers less distracting
+  (setq uwu-distinct-line-numbers 'nil)
+
+  ;; Scale org-mode headlines
+  (setq uwu-scale-org-headlines 1)
+
+  ;; Scale outline-mode headlines
+  (setq uwu-scale-outline-headlines 1)
+
+  ;; Load and enable the uwu theme
+  (load-theme 'uwu t t)
+  (enable-theme 'uwu))
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
@@ -413,9 +413,14 @@
 
 (setq make-backup-files nil)
 
+(setq revert-without-query '(".pdf"))
+
 (use-package which-key
 
   ;; Ensure that which key is installed
+  :ensure t
+
+  ;; Force which key to load immediately on start up
   :demand t
 
   ;; Initialise which key
