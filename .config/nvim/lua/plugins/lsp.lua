@@ -80,7 +80,10 @@ local function lsp_setup()
         preselect = "item",
         mapping = shared_configs.default_cmp_mappings(),
         sources = cmp_sources,
-        formatting = cmp_format
+        formatting = cmp_format,
+        completion = {
+            completeopt = "menu,menuone,noinsert"
+        }
     })
 
     -- Set my sign icons for the LSP

@@ -37,13 +37,16 @@ local function cmp_setup()
     }
 
 
-    -- Sets up nvim-cmp with my own mappings, sources and formatting
+    -- Sets up nvim-cmp with my settings
     -- Also get nvim-cmp to always preselect the first item
     cmp.setup({
         preselect = "item",
         mapping = shared_configs.default_cmp_mappings(),
         sources = default_sources,
-        formatting = cmp_format
+        formatting = cmp_format,
+        completion = {
+            completeopt = "menu,menuone,noinsert"
+        }
     })
 
 
