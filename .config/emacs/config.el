@@ -320,7 +320,8 @@
 (global-display-line-numbers-mode)
 
 (dolist (mode '(term-mode-hook
-                eshell-mode-hook))
+                eshell-mode-hook
+                pdf-view-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (column-number-mode)
@@ -827,3 +828,8 @@
 (use-package ox-ipynb
   :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
+
+(use-package pdf-tools
+
+  ;; Install pdf-tools
+  :config (pdf-tools-install))

@@ -51,6 +51,7 @@
   - [[#installing-evil-org][Installing Evil Org]]
   - [[#turn-on-latex-syntax-highlighting-in-org-mode][Turn on LaTeX syntax highlighting in org mode]]
   - [[#literate-programming][Literate programming]]
+- [[#working-with-pdfs][Working with PDFs]]
 
 * Important Programs
 
@@ -472,10 +473,11 @@ Display relative line numbers.
   (global-display-line-numbers-mode)
 #+end_src
 
-Disable line numbers for some modes, specifically terminal mode and e-shell mode.
+Disable line numbers for some modes, specifically terminal, E-shell and PDF view mode.
 #+begin_src emacs-lisp
   (dolist (mode '(term-mode-hook
-                  eshell-mode-hook))
+                  eshell-mode-hook
+                  pdf-view-mode-hook))
     (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
@@ -1214,4 +1216,16 @@ This just allows org babel to execute the code in code blocks that is written in
   (use-package ox-ipynb
     :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
     :init (require 'ox-ipynb))
+#+end_src
+
+
+
+
+* Working with PDFs
+PDF-tools is a great plugin that makes working with PDFs very easy. A lot of times, I am exporting org files or TeX files to PDF, so this makes my life much easier.
+#+begin_src emacs-lisp
+  (use-package pdf-tools
+
+    ;; Install pdf-tools
+    :config (pdf-tools-install))
 #+end_src
