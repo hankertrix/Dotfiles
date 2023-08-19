@@ -5,6 +5,11 @@ The configuration files are located in `~/` or `/home/username/`. The laptop tha
 <br>
 
 
+## .config folder
+The `.config` folder is where the configuration for the applications I use on Linux are located. There is a README inside that briefly explains the configuration for the various applications inside.
+
+<br>
+
 ## .Xresources
 
 The .Xresources configuration is just to make sure the display works properly with my high DPI screen. I also turned on antialiasing.
