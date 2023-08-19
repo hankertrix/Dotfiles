@@ -451,13 +451,13 @@
 
   ;; Custom keybindings for LSP mode
   :bind (:map lsp-mode-map
-              ("C-l d" . flycheck-list-errors))
+              ("C-; d" . flycheck-list-errors))
 
   ;; Initialise LSP mode
   :init
 
   ;; Set the prefix for LSP mode key binds
-  (setq lsp-keymap-prefix "C-l")
+  (setq lsp-keymap-prefix "C-;")
 
   ;; Disable snippet support for LSP mode
   (setq lsp-enable-snippet nil)
