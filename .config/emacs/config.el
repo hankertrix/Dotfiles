@@ -769,3 +769,7 @@
  'org-babel-load-languages
  '((emacs-lisp . t)
    (python . t)))
+
+(use-package ox-ipynb
+  :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
+  :init (require 'ox-ipynb))

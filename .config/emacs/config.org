@@ -1154,3 +1154,10 @@ This just allows org babel to execute the code in code blocks that is written in
    '((emacs-lisp . t)
      (python . t)))
 #+end_src
+
+*** Installing ox-ipynb to support exporting org files to Jupyter notebooks
+#+begin_src emacs-lisp
+  (use-package ox-ipynb
+    :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
+    :init (require 'ox-ipynb))
+#+end_src
