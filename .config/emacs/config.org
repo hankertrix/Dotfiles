@@ -234,7 +234,16 @@ Evil nerd commenter allows for easy commenting of code.
     (general-define-key
      :states '(normal visual)
      :keymaps 'override
-     "C-/" '(evilnc-comment-or-uncomment-lines :wk "Comment out the selected lines"))
+
+     ;; Comment out lines with Ctrl + /
+     "C-/" '(evilnc-comment-or-uncomment-lines :wk "Comment out the selected lines")
+
+     ;; Use Ctrl + hjkl to move between splits
+     "C-h" '(evil-window-left :wk "Go to the window on the left")
+     "C-j" '(evil-window-down :wk "Go to the window below")
+     "C-k" '(evil-window-up :wk "Go to the window above")
+     "C-l" '(evil-window-right :wk "Go to the window on the right")
+     )
 
     ;; Set the leader key to the space key
     (general-create-definer hankertrix/leader-keys
@@ -269,20 +278,15 @@ Evil nerd commenter allows for easy commenting of code.
 
     ;; Key binds to copy and paste from the clipboard
     (hankertrix/leader-keys
-      "P" '(
-            (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before))
+      "P" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before))
             :wk "Paste from the system clipboard before the cursor")
-      "pp" '(
-             (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after))
+      "pp" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after))
              :wk "Paste from the system clipboard after the cursor")
-      "y" '(
-            (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank))
+      "y" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank))
             :wk "Copy to the system clipboard")
-      "Y" '(
-            (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line))
+      "Y" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line))
             :wk "Copy till the end of the line to the system clipboard")
-      "d" '(
-            (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete))
+      "d" '((lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete))
             :wk "Delete to the black hole register")
       )
 
@@ -290,14 +294,14 @@ Evil nerd commenter allows for easy commenting of code.
     (hankertrix/leader-keys
       "l" '(next-buffer :wk "Go to the next buffer")
       "h" '(previous-buffer :wk "Go to the previous buffer")
-      "x" '(kill-this-buffer :wk "Go to the previous buffer")
+      "x" '(kill-this-buffer :wk "Close the current buffer")
       )
 
     ;; Key binds for searching
     (hankertrix/leader-keys
       "pw" '(dired :wk "Open Dired")
       "pf" '(counsel-find-file :wk "Search for a file")
-      "ps" '(counsel-rg :wk "Search for the term using ripgrep")
+      "ps" '(counsel-rg :wk "Search for a term using ripgrep")
       )
 
     ;; Key binds for opening specific files
@@ -305,6 +309,56 @@ Evil nerd commenter allows for easy commenting of code.
       "ec" '((lambda () (interactive) (find-file "~/.config/emacs/config.org"))
              :wk "Edit Emacs config")
       )
+
+    ;; Key binds in org mode
+    (hankertrix/leader-keys
+      "o" '(:ignore t :wk "Org mode keybinds")
+      "oe" '(org-export-dispatch :wk "Org export dispatch")
+      "ob" '(org-babel-tangle :wk "Org babel tangle")
+      "oi" '(org-toggle-item :wk "Org toggle item")
+      "oa" '(org-agenda :wk "Org agenda")
+      "ot" '(org-todo-list :wk "Org todo")
+      )
+
+    ;; Key binds for help files
+    ;; I'm using "/" because it is where the question mark is
+    ;; But I don't want to press shift to access the help files
+    (hankertrix/leader-keys
+      "/" '(:ignore t :wk "Help")
+      "/a" '(counsel-apropos :wk "Apropos")
+      "/b" '(describe-bindings :wk "Describe bindings")
+      "/c" '(describe-char :wk "Describe character under cursor")
+      "/d" '(:ignore t :wk "Emacs documentation")
+      "/da" '(about-emacs :wk "About Emacs")
+      "/dd" '(view-emacs-debugging :wk "View Emacs debugging")
+      "/df" '(view-emacs-FAQ :wk "View Emacs FAQ")
+      "/dm" '(info-emacs-manual :wk "The Emacs manual")
+      "/dn" '(view-emacs-news :wk "View Emacs news")
+      "/do" '(describe-distribution :wk "How to obtain Emacs")
+      "/dp" '(view-emacs-problems :wk "View Emacs problems")
+      "/dt" '(view-emacs-todo :wk "View Emacs todo")
+      "/dw" '(describe-no-warranty :wk "Describe no warranty")
+      "/e" '(view-echo-area-messages :wk "View echo area messages")
+      "/f" '(describe-function :wk "Describe function")
+      "/F" '(describe-face :wk "Describe face")
+      "/g" '(describe-gnu-project :wk "Describe the GNU Project")
+      "/i" '(info :wk "Info")
+      "/I" '(describe-input-method :wk "Describe input method")
+      "/k" '(describe-key :wk "Describe key")
+      "/l" '(view-lossage :wk "Display recent keystrokes and commands")
+      "/L" '(describe-language-environment :wk "Describe language environment")
+      "/m" '(describe-mode :wk "Describe mode")
+      "/r" '(:ignore t :wk "Reload")
+      "/rr" '((lambda () (interactive)
+                (load-file "~/.config/emacs/init.el")
+                (ignore (elpaca-process-queues)))
+              :wk "Reload Emacs config")
+      "/t" '(load-theme :wk "Load theme")
+      "/v" '(describe-variable :wk "Describe variable")
+      "/w" '(where-is :wk "Prints keybinding for command if set")
+      "/x" '(describe-command :wk "Display full documentation for command")
+      )
+
     )
 #+end_src
 
