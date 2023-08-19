@@ -16,10 +16,10 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines down"
 vim.keymap.set("n", "<F5>", "<Plug>NetrwRefresh", { desc = "Refresh Netrw" })
 
 -- Use Ctrl + hjkl to move between splits
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the up window" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the right window" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the window on the left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the window below" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the window above" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the window on the right" })
 
 -- Centers the screen every time I move
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half a screen" })
