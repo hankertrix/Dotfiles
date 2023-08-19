@@ -77,6 +77,7 @@ local function lsp_setup()
 
     -- Set up the completion with my own settings
     lsp.setup_nvim_cmp({
+        preselect = "item",
         mapping = shared_configs.default_cmp_mappings(),
         sources = cmp_sources,
         formatting = cmp_format
