@@ -43,7 +43,7 @@ function M.default_cmp_mappings()
         ["<C-b>"] = cmp.mapping.scroll_docs(-5),
 
 
-        -- Use up and down arrow keys to select the  previous and next item respectively
+        -- Use up and down arrow keys to select the previous and next item respectively
         ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
         ['<Down>'] = cmp.mapping.select_next_item(select_opts),
 
