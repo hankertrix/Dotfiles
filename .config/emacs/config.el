@@ -271,6 +271,33 @@
 
   )
 
+(use-package which-key
+
+  ;; Ensure that which key is installed
+  :ensure t
+
+  ;; Force which key to load immediately on start up
+  :demand t
+
+  ;; Initialise which key
+  :init
+  (which-key-mode 1)
+
+  ;; Configure which key
+  :config
+  (setq which-key-side-window-location 'bottom
+        which-key-sort-order #'which-key-key-order-alpha
+        which-key-sort-uppercase-first nil
+        which-key-add-column-padding 1
+        which-key-max-display-columns nil
+        which-key-min-display-lines 6
+        which-key-side-window-slot -10
+        which-key-side-window-max-height 0.25
+        which-key-idle-delay 0.5
+        which-key-max-description-length 25
+        which-key-allow-imprecise-window-fit t
+        which-key-separator " → " ))
+
 (set-face-attribute 'default nil
                     :font "CaskaydiaCove NFM 10"
                     :weight 'medium)
@@ -358,6 +385,9 @@
   ;; Ensure that the uww theme is installed
   :ensure t
 
+  ;; Force the theme to load immediately on start up
+  :demand t
+
   ;; Configure the uwu theme
   :config
 
@@ -414,33 +444,6 @@
 (setq make-backup-files nil)
 
 (setq revert-without-query '(".pdf"))
-
-(use-package which-key
-
-  ;; Ensure that which key is installed
-  :ensure t
-
-  ;; Force which key to load immediately on start up
-  :demand t
-
-  ;; Initialise which key
-  :init
-  (which-key-mode 1)
-
-  ;; Configure which key
-  :config
-  (setq which-key-side-window-location 'bottom
-        which-key-sort-order #'which-key-key-order-alpha
-        which-key-sort-uppercase-first nil
-        which-key-add-column-padding 1
-        which-key-max-display-columns nil
-        which-key-min-display-lines 6
-        which-key-side-window-slot -10
-        which-key-side-window-max-height 0.25
-        which-key-idle-delay 0.5
-        which-key-max-description-length 25
-        which-key-allow-imprecise-window-fit t
-        which-key-separator " → " ))
 
 ;; Install LSP mode
 (use-package lsp-mode
