@@ -1231,6 +1231,12 @@ This just allows org babel to execute the code in code blocks that is written in
     :init (require 'ox-ipynb))
 #+end_src
 
+*** Setting the default header arguments for Python
+#+begin_src emacs-lisp
+  (setq org-babel-default-header-args:julia '((:session . "py")
+                                              (:kernel . "python3")))
+#+end_src
+
 
 
 
