@@ -799,6 +799,8 @@
 
 (electric-indent-mode -1)
 
+(setq org-edit-src-content-indentation 0)
+
 (require 'org-tempo)
 
 (add-hook 'org-mode-hook (lambda ()
