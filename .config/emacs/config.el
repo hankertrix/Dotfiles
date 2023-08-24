@@ -837,9 +837,6 @@
   :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
 
-(setq org-babel-default-header-args:julia '((:session . "py")
-                                            (:kernel . "python3")))
-
 (use-package pdf-tools
 
   ;; Install pdf-tools
