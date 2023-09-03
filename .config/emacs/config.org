@@ -155,6 +155,12 @@ Install and set up evil mode.
   ;; Set the undo system to Emacs' undo redo
   (evil-set-undo-system 'undo-redo)
 
+  ;; Set the forward-evil-word function to be an alias for forward-evil-symbol instead
+  (defalias #'forward-evil-word #'forward-evil-symbol)
+
+  ;; Make evil-search-word look for symbols rather than word boundaries
+  (setq-default evil-symbol-word-search t)
+
   ;; The function to centre the screen on the current cursor position
   (defun centre-screen (&rest _)
     (evil-scroll-line-to-center nil))
