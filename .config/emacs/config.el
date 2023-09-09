@@ -386,13 +386,28 @@
 
 (global-whitespace-mode 1)
 
+(use-package doom-themes
+
+  ;; Ensure that doom themes is always installed
+  :ensure t
+
+  ;; Configure doom themes
+  :config
+
+  ;; Enable bold and italic fonts for doom themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italics t)
+
+  ;; Load and enable the bluloco dark theme
+  (load-theme 'doom-bluloco-dark t)
+
+  ;; Corrects and improves org-mode's native fontification
+  (doom-themes-org-config))
+
 (use-package uwu-theme
 
   ;; Ensure that the uww theme is installed
   :ensure t
-
-  ;; Force the theme to load immediately on start up
-  :demand t
 
   ;; Configure the uwu theme
   :config
@@ -407,8 +422,8 @@
   (setq uwu-scale-outline-headlines 1)
 
   ;; Load and enable the uwu theme
-  (load-theme 'uwu t t)
-  (enable-theme 'uwu))
+  ;; (load-theme 'uwu t)
+)
 
 (use-package doom-modeline
   :ensure t
@@ -525,11 +540,6 @@
 
   ;; Set the position of the documentation to be at the bottom of the screen
   (lsp-ui-doc-position 'bottom))
-
-(use-package lsp-treemacs
-
-  ;; Ensure that LSP treemacs is loaded after the LSP
-  :after lsp)
 
 (use-package lua-mode)
 (use-package haskell-mode)

@@ -597,15 +597,33 @@ Enable whitespace mode.
 * Beautifying Emacs
 
 ** Theme
-Install the Uwu theme. The Uwu theme is a high contrast theme that is similar to bluloco. I am only using this theme because the bluloco doom theme isn't being merged into the doom themes repository.
+Install doom themes for the bluloco dark theme inside doom themes. The bluloco dark theme is an excellent high contrast theme that I use pretty much everywhere because it has a heck ton of colours which makes everything stand out. It works great with a red-shifter too.
+#+begin_src emacs-lisp
+(use-package doom-themes
+
+  ;; Ensure that doom themes is always installed
+  :ensure t
+
+  ;; Configure doom themes
+  :config
+
+  ;; Enable bold and italic fonts for doom themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italics t)
+
+  ;; Load and enable the bluloco dark theme
+  (load-theme 'doom-bluloco-dark t)
+
+  ;; Corrects and improves org-mode's native fontification
+  (doom-themes-org-config))
+#+end_src
+
+Install the Uwu theme. The Uwu theme is another excellent high contrast theme that will serve as a good alternative for those who want something different from bluloco dark. This is the theme I used before the bluloco themes were merged into the doom themes repository. It is now here for legacy purposes.
 #+begin_src emacs-lisp
 (use-package uwu-theme
 
   ;; Ensure that the uww theme is installed
   :ensure t
-
-  ;; Force the theme to load immediately on start up
-  :demand t
 
   ;; Configure the uwu theme
   :config
@@ -620,8 +638,8 @@ Install the Uwu theme. The Uwu theme is a high contrast theme that is similar to
   (setq uwu-scale-outline-headlines 1)
 
   ;; Load and enable the uwu theme
-  (load-theme 'uwu t t)
-  (enable-theme 'uwu))
+  ;; (load-theme 'uwu t)
+)
 #+end_src
 
 
@@ -799,16 +817,6 @@ LSP mode allows Emacs to use various language servers to provide auto completion
 #+end_src
 
 
-*** LSP Treemacs
-LSP treemacs allows the displaying of various LSP related things such as symbols or errors in a tree-like fashion.
-#+begin_src emacs-lisp
-(use-package lsp-treemacs
-
-  ;; Ensure that LSP treemacs is loaded after the LSP
-  :after lsp)
-#+end_src
-
-
 *** Language Support
 Emacs doesn't have built-in support for Lua and Haskell, so let's add support for those.
 #+begin_src emacs-lisp
@@ -820,7 +828,7 @@ Emacs doesn't have built-in support for Lua and Haskell, so let's add support fo
 *** Language Servers
 
 **** Ltex
-Ltex is a language server for various TeX (e.g. LaTeX, BibTeX, etc.), markdown and org files.
+Ltex is a language server that checks the file for writing errors in various languages using LanguageTool. It works with Markdown, org, and various TeX files (e.g. LaTeX, BibTeX, etc.).
 #+begin_src emacs-lisp
 (use-package lsp-ltex
 
