@@ -1,0 +1,39 @@
+{
+    "als": {
+        "adaptation_ms": 5000,
+        "poll_ms": 5000,
+        "scale": 1.0
+    },
+    "screenlight": {
+        "adaptation_ms": 5000,
+        "poll_ms": 200,
+        "scale": 1.0
+    },
+    "screens": [
+        {
+            "backlight": {
+                "max": 1000,
+                "min": 350,
+                "mode": 0,
+                "val": 50
+            },
+            "brightness": {
+                "max": 1000,
+                "min": 350,
+                "mode": 0,
+                "val": 1000
+            },
+            "temperature": {
+                "max": 6500,
+                "min": 2000,
+                "mode": 3,
+                "val": 2000
+            }
+        }
+    ],
+    "time": {
+        "adaptation_minutes": 60,
+        "end": "18:00",
+        "start": "06:00"
+    }
+}

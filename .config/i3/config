@@ -203,9 +203,9 @@ bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 # Backlight setting using dunst osc
 #bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
 #bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
-# Backlight setting using brightnessctl
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=0 -q set 5%-
+# Backlight setting using gummy
+bindsym XF86MonBrightnessUp exec --no-startup-id gummy -b +5
+bindsym XF86MonBrightnessDown exec --no-startup-id gummy -b -5
 
 # change focus
 bindsym $mod+h focus left
@@ -415,6 +415,9 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 # use xautolock to use autosuspend rules for mobile devices
 # https://wiki.archlinux.org/title/Session_lock#xautolock
 #exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
+
+# use gummy to manage the brightness of the screen
+exec --no-startup-id gummy start
 
 
 # xscreensaver
