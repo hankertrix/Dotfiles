@@ -25,7 +25,7 @@
             },
             "temperature": {
                 "max": 6500,
-                "min": 2000,
+                "min": 2500,
                 "mode": 3,
                 "val": 6500
             }
