@@ -46,7 +46,7 @@ workspace_layout default
 # extra options for windows: #
 ##############################
 
-#border indicator on windows:
+# border indicator on windows:
 new_window pixel 1
 
 # thin borders
