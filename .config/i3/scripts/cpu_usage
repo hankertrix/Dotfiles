@@ -50,7 +50,7 @@ if ($cpu_usage >= $t_crit) {
 
     # Print short_text, full_text with some additional spacing
     print " ${label}";
-    printf "%02.${decimals}f%%  \n", $cpu_usage;
+    printf "%02.${decimals}f%%   \n", $cpu_usage;
     print "${label}";
     printf "%02.${decimals}f%%\n", $cpu_usage;
 
