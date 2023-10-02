@@ -31,7 +31,7 @@ function M.default_cmp_mappings()
     if not status_ok then return {} end
 
     -- The selection options for nvim-cmp
-    local select_opts = { behavior = "select" }
+    local select_opts = { behavior = cmp.SelectBehavior.Select }
 
     -- The default mappings for nvim-cmp
     local default_cmp_mappings = {

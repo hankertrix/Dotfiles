@@ -7,33 +7,55 @@ local utils = require("utils")
 local function lsp_setup()
 
     -- Stops executing if the packages aren't installed
-    if not utils.status_ok({"lsp-zero", "cmp"}) then return end
+    if not utils.status_ok({"lsp-zero", "cmp", "mason", "mason-lspconfig", "lspconfig"}) then return end
 
-    -- Gets the lsp module
+    -- Gets the lsp-zero module
     local lsp = require("lsp-zero")
 
-    -- Sets the lsp preset to the recommended one
-    lsp.preset("recommended")
+    -- Initialise lsp-zero with the default key bindings
+    lsp.on_attach(function(_, bufnr)
+        lsp.default_keymaps({ buffer = bufnr })
+    end)
 
-    -- Ensure these LSP servers are installed
-    lsp.ensure_installed({
-        "lua_ls",
-        "pylsp",
-        "marksman",
-        "ltex"
-    })
+    -- Set up mason
+    require("mason").setup()
 
-    -- Set up the Lua LSP to be used for Neovim configuration
-    lsp.nvim_workspace()
+    -- Set up mason lsp config
+    require("mason-lspconfig").setup {
 
-    -- Configure the ltex LSP
-    lsp.configure("ltex", {
-        settings = {
-            ltex = {
-                language = "en-GB"
-            }
+        -- Make sure the listed servers are always installed
+        ensure_installed = {
+            "lua_ls",
+            "pylsp",
+            "marksman",
+            "ltex"
+        },
+
+        -- Use lsp-zero's default setup for all servers
+        handlers = {
+            lsp.default_setup,
+
+            -- Set up lua ls for Neovim configuration
+            lua_ls = function()
+
+                -- Get the lua ls options from lsp-zero
+                local lua_opts = lsp.nvim_lua_ls()
+                require("lspconfig").lua_ls.setup(lua_opts)
+            end,
+
+            -- Configure ltex LSP
+            ltex = function()
+                require("lspconfig").ltex.setup {
+                    settings = {
+                        ltex = {
+                            language = "en-GB"
+                        }
+                    }
+                }
+            end,
+
         }
-    })
+    }
 
     -- Gets the shared configs file
     local shared_configs = require("shared_configs")
@@ -76,7 +98,7 @@ local function lsp_setup()
     }
 
     -- Set up the completion with my own settings
-    lsp.setup_nvim_cmp({
+    require("cmp").setup({
         preselect = "item",
         mapping = shared_configs.default_cmp_mappings(),
         sources = cmp_sources,
@@ -89,9 +111,6 @@ local function lsp_setup()
     -- Set my sign icons for the LSP
     lsp.set_sign_icons(require("shared_configs").lsp_diagnostic_icons())
 
-    -- Setup the LSP
-    lsp.setup()
-
     -- Enable virtual_text
     vim.diagnostic.config({
         virtual_text = true,
@@ -103,7 +122,7 @@ end
 -- Returns the lsp-zero module for lazy.nvim
 return {
     "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     cond = utils.firenvim_not_active,
     event = { "BufReadPre", "BufNewFile" },
     config = lsp_setup,
