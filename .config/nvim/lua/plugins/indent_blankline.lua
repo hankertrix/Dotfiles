@@ -7,13 +7,15 @@ local utils = require("utils")
 local function indent_blankline_setup()
 
     -- Stops executing if the package isn't installed
-    if not utils.status_ok("indent_blankline") then return end
+    if not utils.status_ok("ibl") then return end
 
     -- Indent blankline setup
-    require("indent_blankline").setup {
-        show_current_context = true,
-        show_end_of_line = true,
-        space_char_blankline = " "
+    require("ibl").setup {
+        scope = {
+            show_start = false,
+            show_end = false,
+            highlight = "Label"
+        }
     }
 
 end
@@ -22,6 +24,7 @@ end
 -- Returns the indent blankline module for lazy.nvim
 return {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     cond = utils.firenvim_not_active,
     event = "VeryLazy",
     config = indent_blankline_setup
