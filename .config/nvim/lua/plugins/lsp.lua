@@ -12,9 +12,36 @@ local function lsp_setup()
     -- Gets the lsp-zero module
     local lsp = require("lsp-zero")
 
-    -- Initialise lsp-zero with the default key bindings
+    -- Initialise lsp-zero with my key bindings
     lsp.on_attach(function(_, bufnr)
-        lsp.default_keymaps({ buffer = bufnr })
+
+        -- The options for the key mappings
+        local opts = { buffer = bufnr, remap = false }
+
+        -- LSP key bindings
+        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts, { desc = "Show hover information"} )
+        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts, { desc = "Go to definition" })
+        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts, { desc = "Go to declaration" })
+        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts, { desc = "List all implementations in a quickfix window" })
+        vim.keymap.set('n', 'go', function() vim.lsp.buf.type_definition() end, opts, { desc = "Go to the definition of the type" })
+        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts, { desc = "List all references in a quickfix window" })
+        vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end, opts, { desc = "Show signature information" })
+        vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end, opts, { desc = "Renames all references to the symbol under the cursor" })
+        vim.keymap.set('n', '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts, { desc = "Formats the buffer using the LSP" })
+        vim.keymap.set('x', '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts, { desc = "Formats the buffer using the LSP" })
+        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.code_action() end, opts, { desc = "Select a code action" })
+
+        -- If a range is selected and a range code action is available, use the range code action
+        if vim.lsp.buf.range_code_action then
+            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.range_code_action() end, opts, { desc = "Select a code action" })
+        else
+            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.code_action() end, opts, { desc = "Select a code action" })
+        end
+
+        -- Diagnostic key bindings
+        vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, opts, { desc = "Show diagnostics in a floating window" })
+        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts, { desc = "Go to the previous diagnostic" })
+        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts, { desc = "Go to the next diagnostic" })
     end)
 
     -- Set up mason
