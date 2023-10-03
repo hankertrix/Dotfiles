@@ -844,6 +844,8 @@
 
 (setq org-highlight-latex-and-related '(native))
 
+(use-package citeproc)
+
 (setq org-confirm-babel-evaluate nil)
 
 (org-babel-do-load-languages
