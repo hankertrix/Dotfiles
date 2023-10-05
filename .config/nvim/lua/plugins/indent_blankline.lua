@@ -3,7 +3,7 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up indent_blankline
+-- Function to set up indent blankline
 local function indent_blankline_setup()
 
     -- Stops executing if the package isn't installed
