@@ -12,16 +12,19 @@ local function treesitter_setup()
     -- Setup the treesitter
     require("nvim-treesitter.configs").setup {
 
-        -- A list of parser names, or "all" (the last four parsers should always be installed)
+        -- A list of parser names
         ensure_installed = {
             "python",
             "markdown",
             "json",
             "org",
+
+            -- These parsers should always be installed
             "c",
             "lua",
             "vim",
-            "help"
+            "vimdoc",
+            "query"
         },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
