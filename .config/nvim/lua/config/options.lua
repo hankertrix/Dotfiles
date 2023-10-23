@@ -34,6 +34,10 @@ vim.opt.showbreak = "↪"
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+-- Enable smart case
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- Error bells
 vim.opt.errorbells = false
 vim.opt.visualbell = false
