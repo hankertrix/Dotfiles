@@ -204,11 +204,11 @@ bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 #bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
 #bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
 # Backlight setting using gummy
-#bindsym XF86MonBrightnessUp exec --no-startup-id gummy -b +5
-#bindsym XF86MonBrightnessDown exec --no-startup-id gummy -b -5
+bindsym XF86MonBrightnessUp exec --no-startup-id gummy -b +5
+bindsym XF86MonBrightnessDown exec --no-startup-id gummy -b -5
 # Backlight setting using brightnessctl
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=0 -q set 5%-
+#bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
+#bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=0 -q set 5%-
 
 # change focus
 bindsym $mod+h focus left
