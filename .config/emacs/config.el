@@ -847,6 +847,8 @@
 
 (setq org-highlight-latex-and-related '(native))
 
+(setq org-latex-toc-command "\\tableofcontents \\clearpage")
+
 (use-package citeproc)
 
 (setq org-confirm-babel-evaluate nil)
