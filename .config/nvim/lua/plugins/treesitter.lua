@@ -55,5 +55,8 @@ return {
     build = ":TSUpdate",
     cond = utils.firenvim_not_active,
     event = "BufEnter",
-    config = treesitter_setup
+    config = treesitter_setup,
+    dependencies = {
+        { "nvim-treesitter/nvim-treesitter-textobjects" }
+    }
 }
