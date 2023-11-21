@@ -56,6 +56,9 @@
   - [[#add-a-page-break-immediately-after-the-table-of-contents-in-latex][Add a page break immediately after the table of contents in LaTeX]]
   - [[#installing-citeproc][Installing citeproc]]
   - [[#literate-programming][Literate programming]]
+- [[#latex-mode][LaTeX mode]]
+  - [[#installing-auctex][Installing AUCTeX]]
+  - [[#installing-evil-tex][Installing Evil TeX]]
 - [[#working-with-pdfs][Working with PDFs]]
 
 * Important Programs
@@ -229,6 +232,16 @@ Evil nerd commenter allows for easy commenting of code.
 #+begin_src emacs-lisp
 (use-package evil-nerd-commenter
   :ensure t)
+#+end_src
+
+
+*** Evil Surround
+Evil surround allows for easily changing the surroundings of a text objects, such as changing from single quotes to double quotes. It is similar to [[https://github.com/tpope/vim-surround][vim-surround]], [[https://github.com/kylechui/nvim-surround][nvim-surround]] and [[https://github.com/machakann/vim-sandwich][vim-sandwich]].
+#+begin_src emacs-lisp
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
 #+end_src
 
 
@@ -1268,6 +1281,33 @@ This just allows org babel to execute the code in code blocks that is written in
 (use-package ox-ipynb
   :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
+#+end_src
+
+
+
+
+* LaTeX mode
+
+** Installing AUCTeX
+AUCTeX is an Emacs package for writing LaTeX documents.
+#+begin_src emacs-lisp
+(use-package auctex :defer t
+  :elpaca ( :pre-build (("./autogen.sh")
+                        ("./configure"
+                         "--without-texmf-dir"
+                         "--with-packagelispdir=./"
+                         "--with-packagedatadir=./")
+                        ("make"))
+            :build (:not elpaca--compile-info)
+            :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style"))
+  :mode (("\\.tex\\'" . LaTeX-mode)))
+#+end_src
+
+** Installing Evil TeX
+Evil TeX provides useful text objects for LaTeX editing.
+#+begin_src emacs-lisp
+(use-package evil-tex
+  :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
 #+end_src
 
 

@@ -138,6 +138,11 @@
 (use-package evil-nerd-commenter
   :ensure t)
 
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
 (use-package general
 
   ;; Configure general.el
@@ -861,6 +866,20 @@
 (use-package ox-ipynb
   :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
+
+(use-package auctex :defer t
+  :elpaca ( :pre-build (("./autogen.sh")
+                        ("./configure"
+                         "--without-texmf-dir"
+                         "--with-packagelispdir=./"
+                         "--with-packagedatadir=./")
+                        ("make"))
+            :build (:not elpaca--compile-info)
+            :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style"))
+  :mode (("\\.tex\\'" . LaTeX-mode)))
+
+(use-package evil-tex
+  :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
 
 (use-package pdf-tools
 
