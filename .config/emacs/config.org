@@ -426,17 +426,17 @@ Install and configure the which key plugin, which is a plugin that displays the 
 
 * Fonts
 
-Set the default font to Cascadia Code with a font size of 10.
+Set the default font to Cascadia Code with a font size of 11.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
-                    :font "CaskaydiaCove NFM 10"
+                    :font "CaskaydiaCove NFM 11"
                     :weight 'medium)
 #+end_src
 
-Set the default mono space font to Cascadia Code with a font size of 10.
+Set the default mono space font to Cascadia Code with a font size of 11.
 #+begin_src emacs-lisp
 (set-face-attribute 'fixed-pitch nil
-                    :font "CaskaydiaCove NFM 10"
+                    :font "CaskaydiaCove NFM 11"
                     :weight 'medium)
 #+end_src
 
@@ -447,7 +447,7 @@ Make comments italic.
 
 Set up the font such that it will work on emacsclient.
 #+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(font . "CaskaydiaCove NFM 10"))
+(add-to-list 'default-frame-alist '(font . "CaskaydiaCove NFM 11"))
 #+end_src
 
 
