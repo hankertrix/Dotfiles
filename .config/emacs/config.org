@@ -56,10 +56,11 @@
   - [[#add-a-page-break-immediately-after-the-table-of-contents-in-latex][Add a page break immediately after the table of contents in LaTeX]]
   - [[#installing-citeproc][Installing citeproc]]
   - [[#literate-programming][Literate programming]]
+- [[#working-with-pdfs][Working with PDFs]]
 - [[#latex-mode][LaTeX mode]]
   - [[#installing-auctex][Installing AUCTeX]]
   - [[#installing-evil-tex][Installing Evil TeX]]
-- [[#working-with-pdfs][Working with PDFs]]
+  - [[#using-pdf-tools-to-open-compiled-latex-pdf-files][Using PDF-tools to open compiled LaTeX PDF files]]
 
 * Important Programs
 
@@ -1286,6 +1287,18 @@ This just allows org babel to execute the code in code blocks that is written in
 
 
 
+* Working with PDFs
+PDF-tools is a great plugin that makes working with PDFs very easy. A lot of times, I am exporting org files or TeX files to PDF, so this makes my life much easier.
+#+begin_src emacs-lisp
+(use-package pdf-tools
+
+  ;; Install pdf-tools
+  :config (pdf-tools-install))
+#+end_src
+
+
+
+
 * LaTeX mode
 
 ** Installing AUCTeX
@@ -1303,6 +1316,7 @@ AUCTeX is an Emacs package for writing LaTeX documents.
   :mode (("\\.tex\\'" . LaTeX-mode)))
 #+end_src
 
+
 ** Installing Evil TeX
 Evil TeX provides useful text objects for LaTeX editing.
 #+begin_src emacs-lisp
@@ -1311,13 +1325,12 @@ Evil TeX provides useful text objects for LaTeX editing.
 #+end_src
 
 
-
-
-* Working with PDFs
-PDF-tools is a great plugin that makes working with PDFs very easy. A lot of times, I am exporting org files or TeX files to PDF, so this makes my life much easier.
+** Using PDF-tools to open compiled LaTeX PDF files
 #+begin_src emacs-lisp
-(use-package pdf-tools
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-source-correlate-start-server t)
 
-  ;; Install pdf-tools
-  :config (pdf-tools-install))
+;; Update PDF buffers after successful LaTeX runs
+(add-hook 'TeX-after-compilation-finished-functions
+           #'TeX-revert-document-buffer)
 #+end_src

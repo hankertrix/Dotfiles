@@ -867,6 +867,11 @@
   :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
 
+(use-package pdf-tools
+
+  ;; Install pdf-tools
+  :config (pdf-tools-install))
+
 (use-package auctex :defer t
   :elpaca ( :pre-build (("./autogen.sh")
                         ("./configure"
@@ -881,7 +886,9 @@
 (use-package evil-tex
   :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
 
-(use-package pdf-tools
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-source-correlate-start-server t)
 
-  ;; Install pdf-tools
-  :config (pdf-tools-install))
+;; Update PDF buffers after successful LaTeX runs
+(add-hook 'TeX-after-compilation-finished-functions
+           #'TeX-revert-document-buffer)
