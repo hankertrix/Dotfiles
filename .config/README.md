@@ -19,6 +19,13 @@ The rofi configuration, like the i3 configuration, is for the mostly just the de
 <br>
 
 
+## [Gummy](https://github.com/Fushko/gummy)
+
+The gummy configuration file (gummyconf.json) is to set the time for the red-shifter and the default backlight brightness.
+
+<br>
+
+
 ## [Neovim](https://neovim.io/)
 
 There is a `README.md` file inside the `nvim` folder that lists all the plugins I use.
