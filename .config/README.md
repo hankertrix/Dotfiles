@@ -42,11 +42,11 @@ There is a `config.org` file inside the `emacs` folder that contains my configur
 
 ## [Wezterm](https://wezfurlong.org/wezterm/index.html)
 
-For the most part, the wezterm configuration is just adding the Bluloco Light and Bluloco Dark colour scheme and setting the default colour scheme to Bluloco Dark. The default font has also been changed to use the [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode).
+For the most part, the wezterm configuration is just adding the [Bluloco Light](https://github.com/uloco/bluloco.nvim) and [Bluloco Dark](https://github.com/uloco/bluloco.nvim) colour scheme and setting the default colour scheme to [Bluloco Dark](https://github.com/uloco/bluloco.nvim). The default font has also been changed to use the [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode).
 
 <br>
 
 
 ## [Kitty](https://sw.kovidgoyal.net/kitty/)
 
-Similarly, the kitty configuration is mostly just adding the Bluloco Dark colour scheme to kitty and changing the default font to [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode). The auto update function for kitty has also been disabled.
+Similarly, the kitty configuration is mostly just adding the [Bluloco Dark](https://github.com/uloco/bluloco.nvim) colour scheme to kitty and changing the default font to [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode). The auto update function for kitty has also been disabled.
