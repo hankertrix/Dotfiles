@@ -16,7 +16,7 @@ end
 config.color_scheme = "Bluloco Dark"
 
 -- Set the font to Cascadia Code Nerd Font
-config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
+config.font = wezterm.font("CaskaydiaCove NFM")
 
 -- Finally, return the configuration to wezterm
 return config
