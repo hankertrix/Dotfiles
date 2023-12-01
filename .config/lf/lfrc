@@ -1,0 +1,17 @@
+# Use ctpv to preview files
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+# Show previews
+set preview true
+
+# Show icons
+set icons true
+
+# Show hidden items
+set hidden true
+
+# Ignore case in sorting and search patterns
+set ignorecase true
