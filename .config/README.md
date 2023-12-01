@@ -50,3 +50,10 @@ For the most part, the wezterm configuration is just adding the [Bluloco Light](
 ## [Kitty](https://sw.kovidgoyal.net/kitty/)
 
 Similarly, the kitty configuration is mostly just adding the [Bluloco Dark](https://github.com/uloco/bluloco.nvim) colour scheme to kitty and changing the default font to [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode). The auto update function for kitty has also been disabled.
+
+<br>
+
+
+## [lf](https://github.com/gokcehan/lf)
+
+The `lf` configuration is just to add file previews and set the icons and colours for the file manager, as well as to show hidden files. The file previewer used is [ctpv](https://github.com/NikitaIvanovV/ctpv).
