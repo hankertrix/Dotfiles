@@ -5,6 +5,7 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- Indentation
+-- Tabstop sets the width of a tab character
 vim.opt.tabstop = 4
 vim.softtabstop = 4
 vim.opt.shiftwidth = 4
