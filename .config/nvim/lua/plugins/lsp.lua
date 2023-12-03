@@ -3,14 +3,37 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
+-- The list of root files
+local root_files = {
+
+    -- Default root files from lspconfig
+    ".luarc.json",
+    ".luarc.jsonc",
+    ".luacheckrc",
+    ".stylua.toml",
+    "stylua.toml",
+    "selene.toml",
+    "selene.yml",
+
+    -- Wezterm configuration file
+    "wezterm.lua",
+
+    -- Awesomewm configuration file
+    "rc.lua",
+}
+
+
 -- Function to set up lsp-zero
 local function lsp_setup()
 
     -- Stops executing if the packages aren't installed
-    if not utils.status_ok({"lsp-zero", "cmp", "mason", "mason-lspconfig", "lspconfig"}) then return end
+    if not utils.status_ok({ "lsp-zero", "cmp", "mason", "mason-lspconfig", "lspconfig" }) then return end
 
     -- Gets the lsp-zero module
     local lsp = require("lsp-zero")
+
+    -- Gets the lspconfig module
+    local lspconfig = require("lspconfig")
 
     -- Initialise lsp-zero with my key bindings
     lsp.on_attach(function(_, bufnr)
@@ -62,17 +85,86 @@ local function lsp_setup()
         handlers = {
             lsp.default_setup,
 
-            -- Set up lua ls for Neovim configuration
+            -- Configure lua ls
             lua_ls = function()
 
-                -- Get the lua ls options from lsp-zero
-                local lua_opts = lsp.nvim_lua_ls()
-                require("lspconfig").lua_ls.setup(lua_opts)
+                -- Gets the runtime path for Neovim
+                -- Comment out when configuring other applications, like awesomewm or wezterm
+                local runtime_path = vim.split(package.path, ';')
+                table.insert(runtime_path, 'lua/?.lua')
+                table.insert(runtime_path, 'lua/?/init.lua')
+
+                -- Set up lua ls using lspconfig
+                lspconfig.lua_ls.setup {
+
+                    -- Set the root directory
+                    root_dir = function(fname)
+
+                        -- Tries to get the root directory
+                        local root = lspconfig.util.root_pattern(unpack(root_files))(fname)
+
+                        -- If the root directory exists
+                        -- and is not the Neovim configuration directory
+                        if root and root ~= vim.env.HOME then
+
+                            -- Then immediately return the root directory
+                            return root
+                        end
+
+                        -- Otherwise, tries to find the lua folder in the
+                        -- Neovim configuration directory
+                        root = lspconfig.util.root_pattern('lua/')(fname)
+
+                        -- If the root directory is found
+                        if root then
+
+                            -- Then return the lua folder in the
+                            -- Neovim configuration directory
+                            return root .. '/lua/'
+                        end
+
+                        -- Otherwise, tries to find the nearest git repository
+                        return lspconfig.util.find_git_ancestor(fname)
+                    end,
+
+                    settings = {
+                        Lua = {
+
+                            -- Disable telemetry
+                            telemetry = { enable = false },
+
+                            -- Tell the language server which version of Lua is being used
+                            -- LuaJIT in the case of Neovim
+                            runtime = {
+                                version = "LuaJIT",
+
+                                -- Comment out when configuring other applications, like awesomewm or wezterm
+                                path = runtime_path
+                            },
+
+                            diagnostics = {
+
+                                -- Get the language server to recognise the vim global
+                                globals = { "vim" }
+                            },
+
+                            workspace = {
+                                checkThirdParty = false,
+                                library = {
+
+                                    -- Make the server aware of Neovim runtime files
+                                    vim.fn.expand('$VIMRUNTIME/lua'),
+                                    vim.fn.stdpath('config') .. '/lua'
+                                }
+                            }
+                        }
+                    }
+                }
             end,
 
             -- Configure ltex LSP
             ltex = function()
-                require("lspconfig").ltex.setup {
+                lspconfig.ltex.setup {
                     settings = {
                         ltex = {
                             language = "en-GB"
