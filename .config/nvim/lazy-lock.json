@@ -20,7 +20,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "firenvim": { "branch": "master", "commit": "138424db463e6c0e862a05166a4ccc781cd7c19d" },
   "friendly-snippets": { "branch": "main", "commit": "53d3df271d031c405255e99410628c26a8f0d2b0" },
-  "harpoon": { "branch": "harpoon2", "commit": "80a428855f0852661c55cef7ad53f369d38721f9" },
+  "harpoon": { "branch": "harpoon2", "commit": "6041c605b09dcc31af92524a8f2d4178ec0b8464" },
   "hlargs.nvim": { "branch": "main", "commit": "6218a401824c5733ac50b264991b62d064e85ab2" },
   "indent-blankline.nvim": { "branch": "master", "commit": "dbd90bb689ff10d21fee6792eb8928f0584b5860" },
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
