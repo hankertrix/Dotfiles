@@ -18,6 +18,7 @@ local function treesitter_setup()
             "markdown",
             "json",
             "org",
+            "gitcommit",
 
             -- These parsers should always be installed
             "c",
