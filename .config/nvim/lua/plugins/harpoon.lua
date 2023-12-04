@@ -7,22 +7,25 @@ local utils = require("utils")
 local function harpoon_setup()
 
     -- Stops executing if the package isn't installed
-    if not utils.status_ok("harpoon.mark") then return end
+    if not utils.status_ok("harpoon") then return end
 
-    local mark = require("harpoon.mark")
-    local ui = require("harpoon.ui")
+    -- Gets the harpoon plugin
+    local harpoon = require("harpoon")
+
+    -- Call harpoon's setup function
+    harpoon:setup()
 
     -- Adds a file to the harpoon
-    vim.keymap.set("n", "<Leader>ad", mark.add_file, { desc = "Adds a file to harpoon" })
+    vim.keymap.set("n", "<Leader>ad", function() harpoon:list():append() end, { desc = "Adds a file to harpoon" })
 
     -- Ctrl + e opens a quick menu
-    vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu, { desc = "Toggles the harpoon menu" })
+    vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Toggles the harpoon menu" })
 
     -- Keymaps to quickly jump to the first few marked files
-    vim.keymap.set("n", "<Leader>1", function() ui.nav_file(1) end, { desc = "Jump to the first marked file" })
-    vim.keymap.set("n", "<Leader>2", function() ui.nav_file(2) end, { desc = "Jump to the second marked file" })
-    vim.keymap.set("n", "<Leader>3", function() ui.nav_file(3) end, { desc = "Jump to the third marked file" })
-    vim.keymap.set("n", "<Leader>4", function() ui.nav_file(4) end, { desc = "Jump to the fourth marked file" })
+    vim.keymap.set("n", "<Leader>1", function() harpoon:list():select(1) end, { desc = "Jump to the 1st marked file" })
+    vim.keymap.set("n", "<Leader>2", function() harpoon:list():select(2) end, { desc = "Jump to the 2nd marked file" })
+    vim.keymap.set("n", "<Leader>3", function() harpoon:list():select(3) end, { desc = "Jump to the 3rd marked file" })
+    vim.keymap.set("n", "<Leader>4", function() harpoon:list():select(4) end, { desc = "Jump to the 4th marked file" })
 
 end
 
@@ -31,6 +34,7 @@ return {
     "theprimeagen/harpoon",
     cond = utils.firenvim_not_active,
     config = harpoon_setup,
+    dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
         "<C-e>",
         "<Leader>ad",
