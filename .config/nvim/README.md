@@ -1,14 +1,8 @@
 # My Neovim Configuration
 
-<br>
-
-
 ## Plugins
 
 Plugin manager - [lazy.nvim](https://github.com/folke/lazy.nvim)
-
-
-<br>
 
 
 ### Appearance
@@ -20,17 +14,11 @@ Statusline - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 Bufferline / tabline - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 
 
-<br>
-
-
 ### Integrations
 
 Git integration - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 
 Using neovim in the browser - [firenvim](https://github.com/glacambre/firenvim)
-
-
-<br>
 
 
 ### Coding
@@ -66,6 +54,10 @@ AI autocompletion - [codeium.nvim](https://github.com/jcdickinson/codeium.nvim)
 
 Treesitter - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
+Treesitter text objects - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
+
+Surroundings editor - [nvim-surround](https://github.com/kylechui/nvim-surround)
+
 Document symbol viewer - [aerial.nvim](https://github.com/stevearc/aerial.nvim)
 
 Function arguments highlighting - [hlargs.nvim](https://github.com/m-demare/hlargs.nvim)
@@ -77,9 +69,6 @@ Auto pairing - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 Mass commenting - [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 
 Same word highlighting - [vim-illuminate](https://github.com/RRethy/vim-illuminate)
-
-
-<br>
 
 
 ### Managing files
@@ -94,9 +83,6 @@ Telescope extensions:
 - [aerial.nvim](https://github.com/stevearc/aerial.nvim)
 
 
-<br>
-
-
 ### Helpers
 
 Properly close buffers - [vim-bbye](https://github.com/moll/vim-bbye)
@@ -108,23 +94,14 @@ Undo history viewer - [undotree](https://github.com/mbbill/undotree)
 Markdown previewer - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
 
 
-<br>
-
-
 ### Miscellaneous
 
 VimBeGood game - [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
 
 
-<br>
-
-
 ### Font
 
 [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
-
-
-<br>
 
 
 ### External programs
