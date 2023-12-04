@@ -75,10 +75,10 @@ local function lsp_setup()
 
         -- Make sure the listed servers are always installed
         ensure_installed = {
-            "lua_ls",
-            "pylsp",
-            "marksman",
-            "ltex"
+            "lua_ls",    -- Lua
+            "pylsp",     -- Python
+            "taplo",     -- TOML
+            "ltex",      -- English checker
         },
 
         -- Use lsp-zero's default setup for all servers
