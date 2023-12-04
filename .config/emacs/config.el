@@ -166,6 +166,13 @@
    "C-l" '(evil-window-right :wk "Go to the window on the right")
    )
 
+  ;; Key binds for dired
+  (general-define-key
+   :states '(normal)
+   :keymaps 'dired-mode-map
+   "_" '(counsel-find-file :wk "Create a file")
+   )
+
   ;; Set the leader key to the space key
   (general-create-definer hankertrix/leader-keys
 
@@ -221,7 +228,7 @@
   ;; Key binds for searching
   (hankertrix/leader-keys
     "pw" '(dired :wk "Open Dired")
-    "pf" '(counsel-find-file :wk "Search for a file")
+    "pf" '(counsel-fzf :wk "Search for a file")
     "ps" '(counsel-rg :wk "Search for a term using ripgrep")
     )
 
