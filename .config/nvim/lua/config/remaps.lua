@@ -46,6 +46,8 @@ vim.keymap.set("n", "<Leader><CR>", "printf('m`%sO<Esc>``', v:count1)", {
 -- And opens all the folds for the line the match is on
 vim.keymap.set("n", "n", "nzzzv", { desc = "Continues searching in the same direction of the previous search" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Continues searching in the opposite direction of the previous search" })
+vim.keymap.set("n", "*", "*zzzv", { desc = "Search the word under the cursor in the forward direction" })
+vim.keymap.set("n", "#", "#zzzv", { desc = "Search the word under the cursor in the backward direction" })
 
 -- Use the Leader key to yank to system clipboard
 vim.keymap.set({"n", "v"}, "<Leader>y", [["+y]], { desc = "Yank to system clipboard" })
