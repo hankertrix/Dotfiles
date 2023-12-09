@@ -1,3 +1,27 @@
+# Lf configuration
+
+
+# Settings
+
+# Set the interpreter to sh
+set shell sh
+
+# Set '-eu' option for shell commands
+# These options are used to have safer shell commands. Option '-e' is used to
+# exit on error and option '-u' is used to give error for unset variables.
+# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
+# $fx variables contain names with '*' or '?' characters. However, this option
+# is used selectively within individual commands as it can be limiting at
+# times.
+set shellopts '-eu'
+
+# Set internal field separator (IFS) to "\n" for shell commands
+# This is useful to automatically split file names in $fs and $fx properly
+# since default file separator used in these variables (i.e. 'filesep' option)
+# is newline. You need to consider the values of these options and create your
+# commands accordingly.
+set ifs "\n"
+
 # Use ctpv to preview files
 set previewer ctpv
 set cleaner ctpvclear
@@ -10,5 +34,236 @@ set preview true
 # Show icons
 set icons true
 
+# Show hidden files
+set hidden true
+
 # Ignore case in sorting and search patterns
 set ignorecase true
+
+# Enable smart case
+# This ignores ignorecase if a capital letter is used
+set smartcase true
+
+# Enable incremental search
+set incsearch true
+
+# Set tabs to be 4 spaces
+set tabstop 4
+
+# Set the scroll offset to 8 from the bottom and top
+set scrolloff 8
+
+
+
+
+# Scripts to run on startup
+
+# Warn about nested instances
+&[ $LF_LEVEL -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
+
+
+
+
+# Commands
+
+# Add all the vim commands for quitting to lf
+cmd q quit
+cmd q! quit
+cmd qa quit
+cmd qa! quit
+cmd wq quit
+cmd wq! quit
+cmd wqa quit
+cmd wqa! quit
+
+
+# A custom open-file command to open text files with my editor
+# It also takes an optional argument to open a specific file
+
+# It is a separate function so the command to create a file can
+# call this function instead of the regular open command.
+
+# The regular open command is only called when the cursor is not
+# on a directory, which means sending the open command remotely to
+# open a newly created file with the touch command when the cursor
+# is over a directory will end up with lf opening the directory
+# instead, which is not desired.
+cmd open-file ${{
+
+    # This command takes a file name as an optional argument
+
+    # Initialise the file variable to the first argument given
+    # If no file is given, then set it to the the current
+    # file by default
+    file="${1:-$f}"
+
+    # Gets the file mime type
+    case $(file --mime-type "$file" -bL) in
+
+        # For text files and JSON files
+        # As well as empty files with no extensions
+        # Open them in the editor
+        text/*|application/json|inode/x-empty|application/javascript) $EDITOR "$file";;
+
+        # Open the other files with xdg-open
+        *) xdg-open "$file";;
+    esac
+}}
+
+
+# Make open command to call the open-file command
+cmd open :open-file
+
+
+# A command to create a file
+cmd touch %{{
+
+    # Show a prompt
+    printf " Create file: "
+
+    # Read the user's input
+    read -r file
+
+    # Removes all the spaces from the file name
+    filename_no_spaces=$(echo "$file" | sed -e 's/\s*//g')
+
+    # Check if the file name given is not empty
+    # Or only consists of spaces
+    if [ -n "$filename_no_spaces" ]; then
+
+        # Create the file
+        touch "$file"
+
+        # Sends an open command to lf
+        lf -remote "send $id :open-file \"$file\""
+
+    # Otherwise
+    else
+
+        # Tells the user that no file name was given
+        printf "No file name given."
+    fi
+}}
+
+
+# A command to create a directory
+cmd mkdir %{{
+
+    # Set the internal field separator to a space
+    # This is so that multiple directories
+    # can be created at once
+    IFS=" "
+
+    # Show a prompt
+    printf " Create directory / directories: "
+
+    # Read the user's input
+    read -r dir
+
+    # Remove all spaces in the directory name
+    dir_no_spaces=$(echo "$dir" | sed -e 's/\s*//g')
+
+    # Check if the directory given is not empty
+    # Or only consists of spaces
+    if [ -n "$dir_no_spaces" ]; then
+
+        # Calls the mkdir command
+        # To create the directory
+        mkdir -p -- $dir
+
+    # Otherwise
+    else
+
+        # Tells the user that no directory name was given
+        printf "No directory name given."
+    fi
+}}
+
+
+# A command to do bulk renaming using my editor
+cmd bulk-rename ${{
+
+    # Call vimv for the bulk rename
+    vimv -- $(basename -a -- $fx)
+
+    # Reload lf and unselect the selected files
+    lf -remote "send $id :load; unselect"
+}}
+
+
+# A command to smartly rename files
+# based on whether files are selected or not
+cmd smart-rename &{{
+
+    # This command takes a string containing all the commands
+    # separated by a semicolon and a space as the first and only argument
+    # This argument is optional
+
+    # If there is no file selected
+    if [ ! "$fs" ]; then
+
+        # Calls the given rename command
+        lf -remote "send $id :rename; ${1:-}"
+
+    # Otherwise
+    else
+
+        # Sends the bulk-rename command to lf
+        lf -remote "send $id bulk-rename"
+    fi
+}}
+
+
+
+
+# Keymaps
+
+# Make Ctrl-p and Ctrl-n move up and down respectively
+map <c-p> up
+map <c-n> down
+
+# Make escape quit lf
+map <esc> quit
+
+# Make <enter> open files and directories
+# Just like in dired and netrw
+map <enter> open
+
+# Make + create a new directory, like dired in Emacs
+map + mkdir
+
+# Make _ create a new file, just like the Emacs dired mapping
+map _ touch
+
+# Make x delete files and directories
+map x delete
+
+# Make D delete files and directories
+map D delete
+
+# Use . to repeat the previous command
+map . :read; cmd-history-prev; cmd-enter
+
+# Show the result of execution of previous commands
+map ` !true
+
+# Make m select files, like in dired
+map m :toggle; down
+
+# Make u also unmark cut files
+# This is in addition to unselecting selected files
+map u :unselect; clear
+
+# Mappings for easier renames
+map r smart-rename
+map i smart-rename
+map I smart-rename "cmd-home"
+map A smart-rename "cmd-end"
+map c smart-rename "cmd-delete-home"
+map C smart-rename "cmd-end; cmd-delete-home"
+map R smart-rename "cmd-end; cmd-delete-home"
+
+# Mapping for the bulk rename command
+map br bulk-rename
+map bR bulk-rename
+
