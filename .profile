@@ -6,7 +6,7 @@ export TERMINAL=xterm-kitty
 export EDITOR=/usr/bin/nvim
 
 # Add cargo to path
-export PATH="$PATH:/home/hankertrix/.cargo/bin"
+# export PATH="$PATH:/home/hankertrix/.cargo/bin"
 
 # Options to make things bigger on my high DPI screen
 # export QT_AUTO_SCREEN_SCALE_FACTOR=0
