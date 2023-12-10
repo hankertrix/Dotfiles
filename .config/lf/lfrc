@@ -100,9 +100,9 @@ cmd open-file ${{
     # Gets the file mime type
     case $(file --mime-type "$file" -bL) in
 
-        # For text files and JSON files
-        # As well as empty files with no extensions
-        # Open them in the editor
+        # For text files, JSON files and JavaScript files,
+        # as well as empty files with no extensions,
+        # open them in the editor
         text/*|application/json|inode/x-empty|application/javascript) $EDITOR "$file";;
 
         # Open the other files with xdg-open
@@ -214,6 +214,37 @@ cmd smart-rename &{{
 }}
 
 
+# A command to move in the parent directory
+# This command takes the lf up or down command
+# as a required argument
+cmd move-in-parent-dir &{{
+
+    # The variable to set the dironly option in the
+    # parent directory of the parent directory.
+    # Essentially, the grandparent directory of the current
+    # directory is set to display only directories.
+    # This is so that only directories, and not files,
+    # can be selected when moving in the parent directory
+    # so files in the parent directory are not opened when
+    # moving in the parent directory, which is usually what
+    # you want.
+    # The dirname command is a shell command
+    # to get the name of the directory above
+    # the given directory.
+    dironly="setlocal '$(dirname "$PWD")' dironly"
+
+    # Sends a remote command to lf to go up a directory,
+    # set the dironly option to true, so the parent directory
+    # only displays directories, go up or down depending on the
+    # command passed as an argument, then set the dironly option
+    # to false, so that when moving up into the parent directory
+    # normally (without using the move-in-parent-dir command),
+    # files are still shown.
+    # Then calls the open command to open the directory.
+    lf -remote "send $id :updir; $dironly true; $1; $dironly false; open"
+}}
+
+
 
 
 # Keymaps
@@ -221,6 +252,10 @@ cmd smart-rename &{{
 # Make Ctrl-p and Ctrl-n move up and down respectively
 map <c-p> up
 map <c-n> down
+
+# Make J and K move up and down in the parent directory respectively
+map K move-in-parent-dir up
+map J move-in-parent-dir down
 
 # Make escape quit lf
 map <esc> quit
