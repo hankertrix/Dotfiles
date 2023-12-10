@@ -12,7 +12,7 @@ The .Xresources configuration is just to make sure the display works properly wi
 The .xinitrc file is just so merge the configuration inside .Xresources into xrdb so that the changes will apply.
 
 ## .profile
-The default terminal is set to kitty and the default editor is set to Neovim. I am using kitty as wezterm is just way too slow to start and it's also a little bit buggy. I'm keeping wezterm around though, since it's cross-platform and has a ton of features that kitty doesn't provide.
+The default terminal is set to kitty and the default editor is set to Neovim.
 
 ## .bashrc
 The `.bashrc` file is mostly just the default EndeavourOS configuration, with an if statement added in so that I can change the shell's directory when using `lf`.
