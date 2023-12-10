@@ -16,3 +16,6 @@ The default terminal is set to kitty and the default editor is set to Neovim. I 
 
 ## .bashrc
 The `.bashrc` file is mostly just the default EndeavourOS configuration, with an if statement added in so that I can change the shell's directory when using `lf`.
+
+## .mozilla folder
+The `.mozilla` folder is just to store my overrides for [arkenfox user.js](https://github.com/arkenfox/user.js).
