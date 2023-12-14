@@ -19,6 +19,9 @@ local function treesitter_setup()
             "json",
             "org",
             "gitcommit",
+            "html",
+            "javascript",
+            "typescript",
 
             -- These parsers should always be installed
             "c",
