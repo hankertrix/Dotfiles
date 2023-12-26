@@ -1170,6 +1170,23 @@ Helpful is a better help buffer for Emacs that provides more context and details
 Magit is an awesome plugin that provides excellent Git integration in Emacs.
 #+begin_src emacs-lisp
 (use-package magit)
+
+;; Force elpaca to update transient
+(use-package transient)
+
+(defun +elpaca-unload-seq (e)
+  "The funcion to unload the seq package."
+  (and (featurep 'seq) (unload-feature 'seq t))
+  (elpaca--continue-build e))
+
+(defun +elpaca-seq-build-steps ()
+  "The function to unload seq before building the seq package."
+  (append (butlast (if (file-exists-p (expand-file-name "seq" elpaca-builds-directory))
+                       elpaca--pre-built-steps elpaca-build-steps))
+          (list '+elpaca-unload-seq 'elpaca--activate-package)))
+
+;; Force elpaca to update seq
+(elpaca `(seq :build ,(+elpaca-seq-build-steps)))
 #+end_src
 
 
@@ -1341,8 +1358,8 @@ AUCTeX is an Emacs package for writing LaTeX documents.
 ** Installing Evil TeX
 Evil TeX provides useful text objects for LaTeX editing.
 #+begin_src emacs-lisp
-(use-package evil-tex
-  :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
+;; (use-package evil-tex
+  ;; :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
 #+end_src
 
 

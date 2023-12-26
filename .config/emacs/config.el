@@ -820,6 +820,23 @@
 
 (use-package magit)
 
+;; Force elpaca to update transient
+(use-package transient)
+
+(defun +elpaca-unload-seq (e)
+  "The funcion to unload the seq package."
+  (and (featurep 'seq) (unload-feature 'seq t))
+  (elpaca--continue-build e))
+
+(defun +elpaca-seq-build-steps ()
+  "The function to unload seq before building the seq package."
+  (append (butlast (if (file-exists-p (expand-file-name "seq" elpaca-builds-directory))
+                       elpaca--pre-built-steps elpaca-build-steps))
+          (list '+elpaca-unload-seq 'elpaca--activate-package)))
+
+;; Force elpaca to update seq
+(elpaca `(seq :build ,(+elpaca-seq-build-steps)))
+
 (use-package toc-org
   :commands toc-org-enable
   :init (add-hook 'org-mode-hook 'toc-org-enable))
@@ -890,8 +907,8 @@
             :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style"))
   :mode (("\\.tex\\'" . LaTeX-mode)))
 
-(use-package evil-tex
-  :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
+;; (use-package evil-tex
+  ;; :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
 
 (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
       TeX-source-correlate-start-server t)
