@@ -1350,7 +1350,8 @@ AUCTeX is an Emacs package for writing LaTeX documents.
                          "--with-packagedatadir=./")
                         ("make"))
             :build (:not elpaca--compile-info)
-            :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style"))
+            :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style")
+            :version (lambda (_) (require 'tex-site) AUCTeX-version))
   :mode (("\\.tex\\'" . LaTeX-mode)))
 #+end_src
 
@@ -1358,8 +1359,8 @@ AUCTeX is an Emacs package for writing LaTeX documents.
 ** Installing Evil TeX
 Evil TeX provides useful text objects for LaTeX editing.
 #+begin_src emacs-lisp
-;; (use-package evil-tex
-  ;; :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
+(use-package evil-tex
+  :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
 #+end_src
 
 

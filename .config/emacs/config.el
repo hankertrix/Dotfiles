@@ -904,11 +904,12 @@
                          "--with-packagedatadir=./")
                         ("make"))
             :build (:not elpaca--compile-info)
-            :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style"))
+            :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style")
+            :version (lambda (_) (require 'tex-site) AUCTeX-version))
   :mode (("\\.tex\\'" . LaTeX-mode)))
 
-;; (use-package evil-tex
-  ;; :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
+(use-package evil-tex
+  :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
 
 (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
       TeX-source-correlate-start-server t)
