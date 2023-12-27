@@ -835,7 +835,7 @@
           (list '+elpaca-unload-seq 'elpaca--activate-package)))
 
 ;; Force elpaca to update seq
-(elpaca `(seq :build ,(+elpaca-seq-build-steps)))
+(use-package seq :elpaca `(seq :build ,(+elpaca-seq-build-steps)))
 
 (use-package toc-org
   :commands toc-org-enable
