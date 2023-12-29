@@ -97,13 +97,23 @@ cmd open-file ${{
     # file by default
     file="${1:-$f}"
 
+    # Gets the file extension
+    # ${string##*str} removes every character from the beginning
+    # until the last instance of the group specified behind the
+    # * character. The removal includes the group as well.
+    case "${file##*.}" in
+
+        # Open org and tex files in Emacs
+        org|tex) emacs "$file" && exit;;
+    esac
+
     # Gets the file mime type
     case $(file --mime-type "$file" -bL) in
 
         # For text files, JSON files and JavaScript files,
         # as well as empty files with no extensions,
         # open them in the editor
-        text/*|application/json|inode/x-empty|application/javascript) $EDITOR "$file";;
+        text/*|application/json|application/javascript|inode/x-empty) $EDITOR "$file";;
 
         # Open the other files with xdg-open
         *) xdg-open "$file";;
