@@ -232,6 +232,10 @@
     "ps" '(counsel-rg :wk "Search for a term using ripgrep")
     )
 
+  ;; Key binds for git
+  (hankertrix/leader-keys
+    "gs" '(magit :wk "Open Git"))
+
   ;; Key binds for opening specific files
   (hankertrix/leader-keys
     "ec" '((lambda () (interactive) (find-file "~/.config/emacs/config.org"))
@@ -435,7 +439,7 @@
 
   ;; Load and enable the uwu theme
   ;; (load-theme 'uwu t)
-)
+  )
 
 (use-package doom-modeline
   :ensure t
@@ -916,4 +920,4 @@
 
 ;; Update PDF buffers after successful LaTeX runs
 (add-hook 'TeX-after-compilation-finished-functions
-           #'TeX-revert-document-buffer)
+          #'TeX-revert-document-buffer)
