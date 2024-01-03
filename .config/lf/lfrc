@@ -104,7 +104,7 @@ cmd open-file ${{
     case "${file##*.}" in
 
         # Open org and tex files in Emacs
-        org|tex) emacs "$file" && exit;;
+        org|tex) emacs -- "$file" && exit;;
     esac
 
     # Gets the file mime type
@@ -113,7 +113,7 @@ cmd open-file ${{
         # For text files, JSON files and JavaScript files,
         # as well as empty files with no extensions,
         # open them in the editor
-        text/*|application/json|application/javascript|inode/x-empty) $EDITOR "$file";;
+        text/*|application/json|application/javascript|inode/x-empty) $EDITOR -- "$file";;
 
         # Open the other files with xdg-open
         *) xdg-open "$file";;
