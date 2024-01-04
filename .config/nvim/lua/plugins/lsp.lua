@@ -271,6 +271,7 @@ return {
         { "gs", mode = "n", desc = descriptions["signature_help"] },
         { "<F2>", mode = "n", desc = descriptions["rename"] },
         { "<F3>", mode = { "n", "x" }, desc = descriptions["format"] },
+        { "<Leader>f", mode =  { "n", "x" }, desc = descriptions["format"] },
         { "<F4>", mode = { "n", "x" }, desc = descriptions["code_action"] },
         { "gl", mode = "n", desc = descriptions["diagnostic_window"] },
         { "[d", mode = "n", desc = descriptions["diagnostic_prev"] },
