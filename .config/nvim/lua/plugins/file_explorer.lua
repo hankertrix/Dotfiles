@@ -33,6 +33,7 @@ end
 -- Returns the file explorer module for lazy.nvim
 return {
     "echasnovski/mini.files",
+    version = false,
     config = setup,
     lazy = true,
     keys = {
