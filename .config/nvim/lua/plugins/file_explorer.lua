@@ -12,6 +12,8 @@ local function setup()
 
     -- Set up mini files
     require("mini.files").setup {
+
+        -- File explorer window options
         windows = {
 
             -- Turn on directory and file previewing
@@ -37,6 +39,6 @@ return {
     config = setup,
     lazy = true,
     keys = {
-        { "<Leader>pw", function() require("mini.files").open() end, mode = "n", desc = "Opens the directory of the current file" }
+        { "<Leader>pw", function() require("mini.files").open(vim.api.nvim_buf_get_name(0), true) end, mode = "n", desc = "Opens the directory of the current file" }
     }
 }
