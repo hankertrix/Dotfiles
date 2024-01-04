@@ -8,7 +8,7 @@ vim.g.mapleader = " "
 
 
 -- Allows me to move lines up and down in visual mode
--- Using the J and K keys
+-- using the J and K keys
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines down" })
 
@@ -62,5 +62,3 @@ vim.keymap.set({"n", "v"}, "<Leader>P", [["+P]], { desc = "Paste from system cli
 
 -- Replaces the word that the cursor is currently on throughout the entire file
 vim.keymap.set("n", "<Leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace the word hovered by the cursor throughout the entire file" })
-
-
