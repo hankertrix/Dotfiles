@@ -3,8 +3,16 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
+-- The table of descriptions
+local descriptions = {
+    ["find_file"] = "Find files with Telescope",
+    ["search_string"] = "Search within files for a given string using Telescope",
+    ["search_marked_file"] = "Search marked files",
+    ["search_code_symbols"] = "Search code symbols",
+}
+
 -- Function to set up telescope
-local function telescope_setup()
+local function setup()
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok("telescope") then return end
@@ -29,16 +37,16 @@ local function telescope_setup()
     local builtin = require("telescope.builtin")
 
     -- Key maps that use the telescope fuzzy finder
-    vim.keymap.set("n", "<Leader>pf", builtin.find_files, { desc = "Find files with Telescope" })
+    vim.keymap.set("n", "<Leader>pf", builtin.find_files, { desc = descriptions["find_file"] })
     vim.keymap.set("n", "<Leader>ps", function()
         builtin.grep_string({ search = vim.fn.input("Grep > ") });
-    end, { desc = "Search within files for a given string using Telescope" })
+    end, { desc = descriptions["search_string"] })
 
     -- Key map to search files that have been marked by harpoon
-    vim.keymap.set("n", "<Leader>ph", telescope.extensions.harpoon.marks, { desc = "Search marked files" })
+    vim.keymap.set("n", "<Leader>ph", telescope.extensions.harpoon.marks, { desc = descriptions["search_marked_file"] })
 
     -- Key map to search for code symbols
-    vim.keymap.set("n", "<Leader>pa", telescope.extensions.aerial.aerial, { desc = "Search code symbols" })
+    vim.keymap.set("n", "<Leader>pa", telescope.extensions.aerial.aerial, { desc = descriptions["search_code_symbols"] })
 
 end
 
@@ -46,15 +54,21 @@ end
 return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
+    config = setup,
     cond = utils.firenvim_not_active,
     lazy = true,
-    keys = { "<Leader>pf", "<Leader>ps", "<Leader>ph", "<Leader>pa" },
-    config = telescope_setup,
+    cmd = "Telescope",
+    keys = {
+        { "<Leader>pf", mode = "n", desc = descriptions["find_file"] },
+        { "<Leader>ps", mode = "n", desc = descriptions["search_string"] },
+        { "<Leader>ph", mode = "n", desc = descriptions["search_marked_file"] },
+        { "<Leader>pa", mode = "n", desc = descriptions["search_code_symbols"] }
+    },
     dependencies = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        { "theprimeagen/harpoon" },
         { "stevearc/aerial.nvim" },
+        "harpoon"
     }
 }
 

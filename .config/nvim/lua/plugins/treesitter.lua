@@ -4,7 +4,7 @@
 local utils = require("utils")
 
 -- Function to set up treesitter
-local function treesitter_setup()
+local function setup()
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok("nvim-treesitter.configs") then return end
@@ -56,10 +56,19 @@ end
 -- Returns the treesitter module for lazy.nvim
 return {
     "nvim-treesitter/nvim-treesitter",
+    config = setup,
     build = ":TSUpdate",
     cond = utils.firenvim_not_active,
-    event = "BufEnter",
-    config = treesitter_setup,
+    event = { "VeryLazy", "BufReadPost", "BufNewFile", "BufWritePre" },
+    cmd = {
+      "TSInstall",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSInstallFromGrammar",
+    },
     dependencies = {
         { "nvim-treesitter/nvim-treesitter-textobjects" }
     }

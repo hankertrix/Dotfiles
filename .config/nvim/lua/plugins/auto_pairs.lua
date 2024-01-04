@@ -1,10 +1,11 @@
 -- Auto pair configuration
+-- Currently, it's nvim-autopairs
 
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up nvim-autopairs
-local function auto_pairs_setup()
+-- Function to set up the auto pair plugin
+local function setup()
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok("nvim-autopairs") then return end
@@ -14,9 +15,9 @@ local function auto_pairs_setup()
 
 end
 
--- Returns the autopairs module for lazy.nvim
+-- Returns the plugin module for lazy.nvim
 return {
     "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = auto_pairs_setup
+    config = setup,
+    event = "InsertEnter"
 }

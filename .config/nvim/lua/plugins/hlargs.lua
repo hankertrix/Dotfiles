@@ -4,7 +4,7 @@
 local utils = require("utils")
 
 -- Function to set up hlargs
-local function hlargs_setup()
+local function setup()
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok("hlargs") then return end
@@ -17,8 +17,8 @@ end
 -- Returns the hlargs module for lazy.nvim
 return {
     "m-demare/hlargs.nvim",
+    config = setup,
     cond = utils.firenvim_not_active,
-    event = "VeryLazy",
-    config = hlargs_setup,
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     dependencies = { "nvim-treesitter/nvim-treesitter" }
 }

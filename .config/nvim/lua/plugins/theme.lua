@@ -4,7 +4,7 @@
 local utils = require("utils")
 
 -- Function to set up the themes
-local function theme_setup()
+local function setup()
 
     -- The theme that I want to use
     local theme = "bluloco"
@@ -25,9 +25,9 @@ return {
 
     -- Bluloco theme
     "uloco/bluloco.nvim",
+    config = setup,
     lazy = false,
     priority = 1000,
-    config = theme_setup,
     dependencies = { "rktjmp/lush.nvim" }
 }
 

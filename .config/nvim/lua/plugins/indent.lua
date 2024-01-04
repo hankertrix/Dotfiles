@@ -1,15 +1,16 @@
--- Indent blankline configuration
+-- Configuration for the plugin to display indentation
+-- Currently, it is indent-blankline
 
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up indent blankline
-local function indent_blankline_setup()
+-- Function to set up the plugin to display indentation
+local function setup()
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok("ibl") then return end
 
-    -- Indent blankline setup
+    -- Setup for the plugin to display indentation
     require("ibl").setup {
         scope = {
             show_start = false,
@@ -21,11 +22,11 @@ local function indent_blankline_setup()
 end
 
 
--- Returns the indent blankline module for lazy.nvim
+-- Returns the plugin module for lazy.nvim
 return {
     "lukas-reineke/indent-blankline.nvim",
+    config = setup,
     main = "ibl",
     cond = utils.firenvim_not_active,
-    event = "VeryLazy",
-    config = indent_blankline_setup
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" }
 }

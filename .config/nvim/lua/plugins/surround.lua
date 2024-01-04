@@ -5,7 +5,7 @@
 local utils = require("utils")
 
 -- Function to set up the surround plugin
-local function surround_setup()
+local function setup()
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok("nvim-surround") then return end
@@ -16,10 +16,10 @@ local function surround_setup()
 end
 
 
--- Returns the surround module for lazy.nvim
+-- Returns the plugin module for lazy.nvim
 return {
     "kylechui/nvim-surround",
+    config = setup,
     version = "*",
-    event = "VeryLazy",
-    config = surround_setup
+    event = "VeryLazy"
 }

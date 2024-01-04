@@ -4,7 +4,7 @@
 local utils = require("utils")
 
 -- Function to set up nvim-cmp
-local function cmp_setup()
+local function setup()
 
     -- Stops executing if the package isn"t installed
     if not utils.status_ok("cmp") then return end
@@ -129,8 +129,8 @@ end
 -- Returns the nvim-cmp module for lazy.nvim
 return {
     "hrsh7th/nvim-cmp",
-    config = cmp_setup,
-    event = "InsertEnter",
+    config = setup,
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
 
         -- Regular completion within a buffer

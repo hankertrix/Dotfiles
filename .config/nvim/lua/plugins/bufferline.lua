@@ -3,8 +3,8 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Funcion to set up bufferline
-local function bufferline_setup()
+-- Function to set up bufferline
+local function setup()
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok("bufferline") then return end
@@ -51,7 +51,8 @@ end
 return {
     "akinsho/bufferline.nvim",
     version = "*",
+    config = setup,
     cond = utils.firenvim_not_active,
-    config = bufferline_setup,
+    event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" }
 }

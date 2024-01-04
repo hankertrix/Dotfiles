@@ -3,6 +3,23 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
+-- The table of descriptions
+local descriptions = {
+    ["hover"] = "Show hover information",
+    ["definition"] = "Go to definition",
+    ["declaration"] = "Go to declaration",
+    ["implementation"] = "List all implementations in a quickfix window",
+    ["type_definition"] = "Go to the definition of the type",
+    ["references"] = "List all references in a quickfix window",
+    ["signature_help"] = "Show signature information",
+    ["rename"] = "Renames all references to the symbol under the cursor",
+    ["format"] = "Formats the buffer using the LSP",
+    ["code_action"] = "Select a code action",
+    ["diagnostic_window"] = "Show diagnostics in a floating window",
+    ["diagnostic_prev"] = "Go to the previous diagnostic",
+    ["diagnostic_next"] = "Go to the next diagnostic",
+}
+
 -- The list of root files
 local root_files = {
 
@@ -24,7 +41,7 @@ local root_files = {
 
 
 -- Function to set up lsp-zero
-local function lsp_setup()
+local function setup()
 
     -- Stops executing if the packages aren't installed
     if not utils.status_ok({ "lsp-zero", "cmp", "mason", "mason-lspconfig", "lspconfig" }) then return end
@@ -42,33 +59,30 @@ local function lsp_setup()
         local opts = { buffer = bufnr, remap = false }
 
         -- LSP key bindings
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts, { desc = "Show hover information"} )
-        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts, { desc = "Go to definition" })
-        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts, { desc = "Go to declaration" })
-        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts, { desc = "List all implementations in a quickfix window" })
-        vim.keymap.set('n', 'go', function() vim.lsp.buf.type_definition() end, opts, { desc = "Go to the definition of the type" })
-        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts, { desc = "List all references in a quickfix window" })
-        vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end, opts, { desc = "Show signature information" })
-        vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end, opts, { desc = "Renames all references to the symbol under the cursor" })
-        vim.keymap.set('n', '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts, { desc = "Formats the buffer using the LSP" })
-        vim.keymap.set('x', '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts, { desc = "Formats the buffer using the LSP" })
-        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.code_action() end, opts, { desc = "Select a code action" })
+        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts, { desc = descriptions["hover"] })
+        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts, { desc = descriptions["definition"] })
+        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts, { desc = descriptions["declaration"] })
+        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts, { desc = descriptions["implementation"] })
+        vim.keymap.set('n', 'go', function() vim.lsp.buf.type_definition() end, opts, { desc = descriptions["type_definition"] })
+        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts, { desc = descriptions["references"] })
+        vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end, opts, { desc = descriptions["signature_help"] })
+        vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end, opts, { desc = descriptions["rename"] })
+        vim.keymap.set({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts, { desc = descriptions["format"] })
+        vim.keymap.set({ 'n', 'x' }, '<Leader>f', function() vim.lsp.buf.format({ async = true }) end, opts, { desc = descriptions["format"] })
+        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.code_action() end, opts, { desc = descriptions["code_action"] })
 
         -- If a range is selected and a range code action is available, use the range code action
         if vim.lsp.buf.range_code_action then
-            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.range_code_action() end, opts, { desc = "Select a code action" })
+            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.range_code_action() end, opts, { desc = descriptions["code_action"] })
         else
-            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.code_action() end, opts, { desc = "Select a code action" })
+            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.code_action() end, opts, { desc = descriptions["code_action"] })
         end
 
         -- Diagnostic key bindings
-        vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, opts, { desc = "Show diagnostics in a floating window" })
-        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts, { desc = "Go to the previous diagnostic" })
-        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts, { desc = "Go to the next diagnostic" })
+        vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, opts, { desc = descriptions["diagnostic_window"] })
+        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts, { desc = descriptions["diagnostic_prev"] })
+        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts, { desc = descriptions["diagnostic_next"] })
     end)
-
-    -- Set up mason
-    require("mason").setup()
 
     -- Set up mason lsp config
     require("mason-lspconfig").setup {
@@ -243,23 +257,41 @@ end
 return {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
+    config = setup,
     cond = utils.firenvim_not_active,
     event = { "BufReadPre", "BufNewFile" },
-    config = lsp_setup,
+
+    keys = {
+        { "K", mode = "n", desc = descriptions["hover"] },
+        { "gd", mode = "n", desc = descriptions["definition"] },
+        { "gD", mode = "n", desc = descriptions["declaration"] },
+        { "gi", mode = "n", desc = descriptions["implementation"] },
+        { "go", mode = "n", desc = descriptions["type_definition"] },
+        { "gr", mode = "n", desc = descriptions["references"] },
+        { "gs", mode = "n", desc = descriptions["signature_help"] },
+        { "<F2>", mode = "n", desc = descriptions["rename"] },
+        { "<F3>", mode = { "n", "x" }, desc = descriptions["format"] },
+        { "<F4>", mode = { "n", "x" }, desc = descriptions["code_action"] },
+        { "gl", mode = "n", desc = descriptions["diagnostic_window"] },
+        { "[d", mode = "n", desc = descriptions["diagnostic_prev"] },
+        { "]d", mode = "n", desc = descriptions["diagnostic_next"] },
+    },
+
     dependencies = {
 
         -- LSP Support
-        { "neovim/nvim-lspconfig" },             -- Required
-        { "williamboman/mason.nvim" },           -- Optional
-        { "williamboman/mason-lspconfig.nvim" }, -- Optional
+        { "neovim/nvim-lspconfig" },
+        "mason.nvim",
+        { "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
+
 
         -- Autocompletion
-        { "hrsh7th/nvim-cmp" },                  -- Required
-        { "hrsh7th/cmp-nvim-lsp" },              -- Required
+        "nvim-cmp",
+        "cmp-nvim-lsp",
 
         -- Snippets
-        { "L3MON4D3/LuaSnip" },                  -- Required
-        { "rafamadriz/friendly-snippets" },      -- Optional
+        { "L3MON4D3/LuaSnip", event = "InsertEnter" },
+        { "rafamadriz/friendly-snippets" },
     }
 }
 

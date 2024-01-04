@@ -1,13 +1,11 @@
--- Git Fugitive configuration
+-- Git plugin configuration
+-- Currently it's vim-fugitive
 
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Set a key map to open Git
-vim.keymap.set("n", "<Leader>gs", vim.cmd.Git, { desc = "Opens Git" })
-
--- The function to configure vim-fugitive
-local function fugitive_config()
+-- Function to configure the git plugin
+local function setup()
 
     -- Set the highlight groups to the correct colours
     vim.api.nvim_set_hl(0, "diffAdded", { link = "DiffviewStatusAdded" })
@@ -15,14 +13,18 @@ local function fugitive_config()
 
 end
 
-
--- Returns the fugitive module for lazy.nvim
+-- Returns the plugin module for lazy.nvim
 return {
     "tpope/vim-fugitive",
-    cmd = "Git",
+    config = setup,
     lazy = true,
     cond = utils.firenvim_not_active,
-    config = fugitive_config
+    cmd = "Git",
+    keys = {
+
+        -- The keybind to open Git
+        { "<Leader>gs", vim.cmd.Git, mode = "n", desc = "Open Git" }
+    },
     -- event = "User InGitRepo"
 }
 

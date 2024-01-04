@@ -1,5 +1,6 @@
 -- Configuration for firenvim
 
+-- The settings for firenvim
 local local_settings = {
     [".*"] = {
         cmdline = "neovim",

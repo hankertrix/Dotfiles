@@ -60,13 +60,7 @@ vim.keymap.set({"n", "v"}, "<Leader>d", [["_d]], { desc = "Delete" })
 vim.keymap.set({"n", "v"}, "<Leader>pp", [["+p]], { desc = "Paste from system clipboard after the cursor" })
 vim.keymap.set({"n", "v"}, "<Leader>P", [["+P]], { desc = "Paste from system clipboard before the cursor" })
 
--- Open Netrw
-vim.keymap.set("n", "<Leader>pw", vim.cmd.Ex, { desc = "Opens Netrw on the current directory" })
-
--- Formats the entire file using the LSP
-vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format, { desc = "Formats the file using the LSP" })
-
 -- Replaces the word that the cursor is currently on throughout the entire file
-vim.keymap.set("n", "<Leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace the word hovered by the cursor throughout the entre file" })
+vim.keymap.set("n", "<Leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace the word hovered by the cursor throughout the entire file" })
 
 

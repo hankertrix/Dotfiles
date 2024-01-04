@@ -9,6 +9,7 @@ return {
     -- Plugin to automatically detect shift width and tabstop
     {
         "tpope/vim-sleuth",
+        lazy = true,
         event = "InsertEnter",
         cond = utils.firenvim_not_active
     },

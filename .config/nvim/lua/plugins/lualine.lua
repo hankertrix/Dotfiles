@@ -4,7 +4,7 @@
 local utils = require("utils")
 
 -- Function to set up lualine
-local function lualine_setup()
+local function setup()
 
     -- Stops executing if the theme isn't installed
     if not utils.status_ok("lualine") then return end
@@ -240,7 +240,6 @@ local function lualine_setup()
             extensions = {
                 quickfix_ext,
                 fugitive_ext,
-                nvim_tree_ext,
                 undotree_ext,
                 aerial_ext,
                 general_ext,
@@ -275,7 +274,7 @@ end
 -- Returns the lualine module for lazy.nvim
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = lualine_setup
+    config = setup,
+    dependencies = { "nvim-tree/nvim-web-devicons" }
 }
 

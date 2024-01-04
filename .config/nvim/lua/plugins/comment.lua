@@ -1,10 +1,19 @@
--- Comment.nvim configuration
+-- Comment plugin configuration
+-- Right now it's Comment.nvim
 
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up Comment.nvim
-local function comment_setup()
+-- The table of descriptions
+local descriptions = {
+    ["current_line"] = "Toggle commenting on current line",
+    ["current_selection"] = "Toggle comments on current selection",
+    ["blockwise"] = "Comment toggle blockwise",
+    ["linewise"] = "Comment toggle linewise",
+}
+
+-- Function to set up the comment plugin
+local function setup()
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok("Comment.api") then return end
@@ -13,7 +22,7 @@ local function comment_setup()
     local api = require("Comment.api")
 
     -- Toggle current line (linewise) using C-/ in normal mode
-    vim.keymap.set("n", "<C-/>", api.toggle.linewise.current, { desc = "Toggle commenting on current line" })
+    vim.keymap.set("n", "<C-/>", api.toggle.linewise.current, { desc = descriptions["current_line"] })
 
     -- Gets the escape key
     local esc = vim.api.nvim_replace_termcodes(
@@ -24,25 +33,23 @@ local function comment_setup()
     vim.keymap.set("x", "<C-/>", function()
         vim.api.nvim_feedkeys(esc, "nx", false)
         api.toggle.linewise(vim.fn.visualmode())
-    end, { desc = "Toggle commenting on current selection" })
+    end, { desc = descriptions["current_selection"] })
 
-    -- Initialise Comment.nvim
+    -- Set up the commenting plugin
     require("Comment").setup()
 
 end
 
--- Returns the comment.nvim module for lazy.nvim
+-- Returns the plugin module for lazy.nvim
 return {
     "numToStr/Comment.nvim",
+    config = setup,
     cond = utils.firenvim_not_active,
-    config = comment_setup,
     keys = {
-        { "<C-/>", mode = "n" },
-        { "<C-/>", mode = "v" },
-        { "gb", mode = "n" },
-        { "gb", mode = "v" },
-        { "gc", mode = "n" },
-        { "gc", mode = "v" },
+        { "<C-/>", mode = "n", desc = descriptions["current_line"] },
+        { "<C-/>", mode = "v", desc = descriptions["current_selection"] },
+        { "gb", mode = { "n", "v" }, desc = descriptions["blockwise"] },
+        { "gc", mode = { "n", "v" }, desc = descriptions["linewise"] },
     }
 }
 
