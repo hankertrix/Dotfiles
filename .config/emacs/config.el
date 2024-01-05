@@ -518,6 +518,14 @@
 
 (setq revert-without-query '(".pdf"))
 
+(use-package dired-preview
+
+  ;; Configure dired preview
+  :config
+
+  ;; Enable dired preview globally
+  (dired-preview-global-mode 1))
+
 ;; Install LSP mode
 (use-package lsp-mode
 

@@ -38,6 +38,7 @@
   - [[#zoom][Zoom]]
   - [[#backups][Backups]]
   - [[#revert-without-querying][Revert without querying]]
+  - [[#file-previews-in-dired][File previews in dired]]
 - [[#development][Development]]
   - [[#lsp-mode][LSP mode]]
   - [[#flycheck][Flycheck]]
@@ -51,15 +52,15 @@
   - [[#stopping-org-mode-from-indenting-2-spaces-in-code-blocks][Stopping org mode from indenting 2 spaces in code blocks]]
   - [[#enabling-org-tempo][Enabling Org Tempo]]
   - [[#stop-auto-completing--in-org-mode][Stop auto completing "<" in org mode]]
-  - [[#installing-evil-org][Installing Evil Org]]
+  - [[#evil-org][Evil Org]]
   - [[#turn-on-latex-syntax-highlighting-in-org-mode][Turn on LaTeX syntax highlighting in org mode]]
   - [[#add-a-page-break-immediately-after-the-table-of-contents-in-latex][Add a page break immediately after the table of contents in LaTeX]]
-  - [[#installing-citeproc][Installing citeproc]]
+  - [[#citeproc][Citeproc]]
   - [[#literate-programming][Literate programming]]
 - [[#working-with-pdfs][Working with PDFs]]
 - [[#latex-mode][LaTeX mode]]
-  - [[#installing-auctex][Installing AUCTeX]]
-  - [[#installing-evil-tex][Installing Evil TeX]]
+  - [[#auctex][AUCTeX]]
+  - [[#evil-tex][Evil TeX]]
   - [[#using-pdf-tools-to-open-compiled-latex-pdf-files][Using PDF-tools to open compiled LaTeX PDF files]]
 
 * Important Programs
@@ -796,6 +797,19 @@ This is just to stop Emacs from asking if I want to reread the PDF file from dis
 #+end_src
 
 
+** File previews in dired
+Use dired-preview to preview files in dired.
+#+begin_src emacs-lisp
+(use-package dired-preview
+
+  ;; Configure dired preview
+  :config
+
+  ;; Enable dired preview globally
+  (dired-preview-global-mode 1))
+#+end_src
+
+
 
 
 * Development
@@ -1301,7 +1315,7 @@ Electric pair mode auto completes the "<" in org mode, which causes issues with 
 #+end_src
 
 
-** Installing Evil Org
+** Evil Org
 Evil org provides a set of evil key bindings that work with org mode
 #+begin_src emacs-lisp
 (use-package evil-org
@@ -1337,7 +1351,7 @@ This sets the variable org-highlight-latex-and-related to "native", which will h
 #+end_src
 
 
-** Installing citeproc
+** Citeproc
 Citeproc is a program that produces formatted bibliographies and citations using the Citation Style Language (CSL) styles.
 #+begin_src emacs-lisp
 (use-package citeproc)
@@ -1385,7 +1399,7 @@ PDF-tools is a great plugin that makes working with PDFs very easy. A lot of tim
 
 * LaTeX mode
 
-** Installing AUCTeX
+** AUCTeX
 AUCTeX is an Emacs package for writing LaTeX documents.
 #+begin_src emacs-lisp
 (use-package auctex :defer t
@@ -1402,7 +1416,7 @@ AUCTeX is an Emacs package for writing LaTeX documents.
 #+end_src
 
 
-** Installing Evil TeX
+** Evil TeX
 Evil TeX provides useful text objects for LaTeX editing.
 #+begin_src emacs-lisp
 (use-package evil-tex
