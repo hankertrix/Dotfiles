@@ -53,7 +53,7 @@ local function setup()
 
 end
 
--- Returns the treesitter module for lazy.nvim
+-- Returns the treesitter plugin for lazy.nvim
 return {
     "nvim-treesitter/nvim-treesitter",
     config = setup,

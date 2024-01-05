@@ -32,7 +32,7 @@ local function setup()
 
 end
 
--- Returns the file explorer module for lazy.nvim
+-- Returns the file explorer plugin for lazy.nvim
 return {
     "echasnovski/mini.files",
     version = false,

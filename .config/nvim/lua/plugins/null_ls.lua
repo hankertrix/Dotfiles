@@ -61,7 +61,7 @@ local function setup()
 
 end
 
--- Returns the mason-null-ls module to lazy.nvim
+-- Returns the mason-null-ls plugin to lazy.nvim
 return {
     "jay-babu/mason-null-ls.nvim",
     config = setup,

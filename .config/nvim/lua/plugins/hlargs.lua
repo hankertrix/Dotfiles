@@ -14,7 +14,7 @@ local function setup()
 
 end
 
--- Returns the hlargs module for lazy.nvim
+-- Returns the hlargs plugin for lazy.nvim
 return {
     "m-demare/hlargs.nvim",
     config = setup,

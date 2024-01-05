@@ -14,7 +14,7 @@ local function setup()
 
 end
 
--- Returns the Mason module for lazy.nvim
+-- Returns the Mason plugin for lazy.nvim
 return {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",

@@ -126,7 +126,7 @@ local function setup()
 
 end
 
--- Returns the nvim-cmp module for lazy.nvim
+-- Returns the nvim-cmp plugin for lazy.nvim
 return {
     "hrsh7th/nvim-cmp",
     config = setup,

@@ -50,7 +50,7 @@ local function setup()
 
 end
 
--- Returns the telescope module for lazy.nvim
+-- Returns the telescope plugin for lazy.nvim
 return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",

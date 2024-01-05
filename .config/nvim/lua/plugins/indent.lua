@@ -22,7 +22,7 @@ local function setup()
 end
 
 
--- Returns the plugin module for lazy.nvim
+-- Returns the indentation display plugin for lazy.nvim
 return {
     "lukas-reineke/indent-blankline.nvim",
     config = setup,

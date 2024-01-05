@@ -3,7 +3,7 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Returns the undotree module for lazy.nvim
+-- Returns the undotree plugin for lazy.nvim
 return {
     "mbbill/undotree",
     cmd = "UndotreeToggle",

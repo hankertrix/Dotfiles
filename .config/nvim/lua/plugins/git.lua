@@ -13,7 +13,7 @@ local function setup()
 
 end
 
--- Returns the plugin module for lazy.nvim
+-- Returns the git plugin for lazy.nvim
 return {
     "tpope/vim-fugitive",
     config = setup,

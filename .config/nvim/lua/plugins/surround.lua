@@ -16,7 +16,7 @@ local function setup()
 end
 
 
--- Returns the plugin module for lazy.nvim
+-- Returns the surround plugin for lazy.nvim
 return {
     "kylechui/nvim-surround",
     config = setup,

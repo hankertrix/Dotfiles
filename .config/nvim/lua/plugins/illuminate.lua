@@ -33,7 +33,7 @@ local function setup()
 
 end
 
--- Returns the plugin module for lazy.nvim
+-- Returns the plugin to highlight the same word for lazy.nvim
 return {
     "RRethy/vim-illuminate",
     config = setup,

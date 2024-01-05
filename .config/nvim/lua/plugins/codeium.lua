@@ -11,7 +11,7 @@ local descriptions = {
     previous = "Gets the previous suggestion",
 }
 
--- Returns the codeium module for lazy.nvim
+-- Returns the codeium plugin for lazy.nvim
 return {
     "Exafunction/codeium.vim",
     cond = utils.firenvim_not_active,

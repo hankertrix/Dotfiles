@@ -39,7 +39,7 @@ local function setup()
 
 end
 
--- Returns the harpoon module for lazy.nvim
+-- Returns the harpoon plugin for lazy.nvim
 return {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",

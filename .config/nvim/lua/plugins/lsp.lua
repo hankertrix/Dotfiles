@@ -253,7 +253,7 @@ local function setup()
 end
 
 
--- Returns the lsp-zero module for lazy.nvim
+-- Returns the lsp-zero plugin for lazy.nvim
 return {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",

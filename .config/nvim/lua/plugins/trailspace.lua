@@ -15,7 +15,7 @@ local function setup()
 
 end
 
--- Returns the trailspace module for lazy.nvim
+-- Returns the trailspace plugin for lazy.nvim
 return {
     "echasnovski/mini.trailspace",
     version = false,

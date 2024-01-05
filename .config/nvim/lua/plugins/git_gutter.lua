@@ -15,7 +15,7 @@ local function setup()
 
 end
 
--- Returns the git gutter module for lazy.nvim
+-- Returns the git gutter plugin for lazy.nvim
 return {
     "lewis6991/gitsigns.nvim",
     config = setup,

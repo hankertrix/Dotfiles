@@ -21,7 +21,7 @@ local function setup()
 
 end
 
--- Returns the which-key module for lazy.nvim
+-- Returns the which-key plugin for lazy.nvim
 return {
     "folke/which-key.nvim",
     config = setup,

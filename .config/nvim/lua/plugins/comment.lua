@@ -40,7 +40,7 @@ local function setup()
 
 end
 
--- Returns the plugin module for lazy.nvim
+-- Returns the comment plugin for lazy.nvim
 return {
     "numToStr/Comment.nvim",
     config = setup,

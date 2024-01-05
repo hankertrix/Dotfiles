@@ -15,7 +15,7 @@ local function setup()
 
 end
 
--- Returns the plugin module for lazy.nvim
+-- Returns the auto pairs plugin for lazy.nvim
 return {
     "windwp/nvim-autopairs",
     config = setup,

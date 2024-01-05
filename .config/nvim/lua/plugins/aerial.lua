@@ -17,7 +17,7 @@ local function setup()
 
 end
 
--- Returns the aerial module for lazy.nvim
+-- Returns the aerial plugin for lazy.nvim
 return {
     "stevearc/aerial.nvim",
     config = setup,

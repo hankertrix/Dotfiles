@@ -20,7 +20,7 @@ local function setup()
 
 end
 
--- Returns the theme module for lazy.nvim
+-- Returns the theme plugin for lazy.nvim
 return {
 
     -- Bluloco theme

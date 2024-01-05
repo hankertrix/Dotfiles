@@ -14,7 +14,7 @@ vim.g.firenvim_config = {
     localSettings = local_settings
 }
 
--- Returns the firenvim module for lazy.nvim
+-- Returns the firenvim plugin for lazy.nvim
 return {
     "glacambre/firenvim",
     lazy = require("utils").firenvim_not_active(),

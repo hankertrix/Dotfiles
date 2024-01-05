@@ -271,7 +271,7 @@ local function setup()
 
 end
 
--- Returns the lualine module for lazy.nvim
+-- Returns the lualine plugin for lazy.nvim
 return {
     "nvim-lualine/lualine.nvim",
     config = setup,
