@@ -5,12 +5,12 @@ local utils = require("utils")
 
 -- The table of descriptions
 local descriptions = {
-    ["add_file"] = "Add a file to harpoon",
-    ["toggle"] = "Toggle the harpoon menu",
-    ["first_file"] = "Jump to the 1st marked file",
-    ["second_file"] = "Jump to the 2nd marked file",
-    ["third_file"] = "Jump to the 3rd marked file",
-    ["fourth_file"] = "Jump to the 4th marked file",
+    add_file = "Add a file to harpoon",
+    toggle = "Toggle the harpoon menu",
+    first_file = "Jump to the 1st marked file",
+    second_file = "Jump to the 2nd marked file",
+    third_file = "Jump to the 3rd marked file",
+    fourth_file = "Jump to the 4th marked file",
 }
 
 -- Function to setup up harpoon

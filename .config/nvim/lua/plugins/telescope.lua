@@ -5,10 +5,10 @@ local utils = require("utils")
 
 -- The table of descriptions
 local descriptions = {
-    ["find_file"] = "Find files with Telescope",
-    ["search_string"] = "Search within files for a given string using Telescope",
-    ["search_marked_file"] = "Search marked files",
-    ["search_code_symbols"] = "Search code symbols",
+    find_file = "Find files with Telescope",
+    search_string = "Search within files for a given string using Telescope",
+    search_marked_file = "Search marked files",
+    search_code_symbols = "Search code symbols",
 }
 
 -- Function to set up telescope

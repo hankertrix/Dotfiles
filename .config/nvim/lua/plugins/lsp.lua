@@ -5,19 +5,19 @@ local utils = require("utils")
 
 -- The table of descriptions
 local descriptions = {
-    ["hover"] = "Show hover information",
-    ["definition"] = "Go to definition",
-    ["declaration"] = "Go to declaration",
-    ["implementation"] = "List all implementations in a quickfix window",
-    ["type_definition"] = "Go to the definition of the type",
-    ["references"] = "List all references in a quickfix window",
-    ["signature_help"] = "Show signature information",
-    ["rename"] = "Renames all references to the symbol under the cursor",
-    ["format"] = "Formats the buffer using the LSP",
-    ["code_action"] = "Select a code action",
-    ["diagnostic_window"] = "Show diagnostics in a floating window",
-    ["diagnostic_prev"] = "Go to the previous diagnostic",
-    ["diagnostic_next"] = "Go to the next diagnostic",
+    hover = "Show hover information",
+    definition = "Go to definition",
+    declaration = "Go to declaration",
+    implementation = "List all implementations in a quickfix window",
+    type_definition = "Go to the definition of the type",
+    references = "List all references in a quickfix window",
+    signature_help = "Show signature information",
+    rename = "Renames all references to the symbol under the cursor",
+    format = "Formats the buffer using the LSP",
+    code_action = "Select a code action",
+    diagnostic_window = "Show diagnostics in a floating window",
+    diagnostic_prev = "Go to the previous diagnostic",
+    diagnostic_next = "Go to the next diagnostic",
 }
 
 -- The list of root files

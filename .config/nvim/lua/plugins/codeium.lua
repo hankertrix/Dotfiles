@@ -5,10 +5,10 @@ local utils = require("utils")
 
 -- The table of descriptions
 local descriptions = {
-    ["accept"] = "Accepts the AI's autocompletion",
-    ["reject"] = "Reject the AI's autocompletion",
-    ["next"] = "Gets the next suggestion",
-    ["previous"] = "Gets the previous suggestion",
+    accept = "Accepts the AI's autocompletion",
+    reject = "Reject the AI's autocompletion",
+    next = "Gets the next suggestion",
+    previous = "Gets the previous suggestion",
 }
 
 -- Returns the codeium module for lazy.nvim

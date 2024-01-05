@@ -6,10 +6,10 @@ local utils = require("utils")
 
 -- The table of descriptions
 local descriptions = {
-    ["current_line"] = "Toggle commenting on current line",
-    ["current_selection"] = "Toggle comments on current selection",
-    ["blockwise"] = "Comment toggle blockwise",
-    ["linewise"] = "Comment toggle linewise",
+    current_line = "Toggle commenting on current line",
+    current_selection = "Toggle comments on current selection",
+    blockwise = "Comment toggle blockwise",
+    linewise = "Comment toggle linewise",
 }
 
 -- Function to set up the comment plugin
