@@ -25,7 +25,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         { "<Leader>tt", function() require("trouble").toggle() end, mode = "n", desc = "Toggles the Trouble window" },
-        { "<Leader>tw", function() require("trouble").toggle("workspace_diagnostics") end, mode = "n", desc = "Display workspace (Git repository) diagnostics in a Trouble window" },
+        { "<Leader>tw", function() require("trouble").toggle("workspace_diagnostics") end, mode = "n", desc = "Display diagnostics for all open buffers in a Trouble window" },
         { "<Leader>tb", function() require("trouble").toggle("document_diagnostics") end, mode = "n", desc = "Display buffer diagnostics in a Trouble window" },
         { "<Leader>tq", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Display quick fix items in a Trouble window" },
         { "<Leader>tl", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Display the window's location list items in a Trouble window" },
