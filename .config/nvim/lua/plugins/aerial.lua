@@ -10,10 +10,10 @@ local function setup()
     if not utils.status_ok("aerial") then return end
 
     -- Set up aerial
-    require("aerial").setup({
+    require("aerial").setup {
         attach_mode = "global",
         icons = require("shared_configs").lsp_kind_icons
-    })
+    }
 
 end
 
