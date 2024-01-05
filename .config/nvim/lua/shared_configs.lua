@@ -93,13 +93,13 @@ function M.lsp_diagnostic_icons(warning_text)
 
     -- The LSP icons that I want
     local lsp_icons = {
-        error = "󰅚",
-        hint = "󰌶",
-        info = "󰋽",
+        error = "",
+        hint = "",
+        info = "",
     }
 
     -- Sets the warning text to the warning symbol
-    lsp_icons[warning_text] = "󰀪"
+    lsp_icons[warning_text] = ""
 
     -- Returns the LSP icons
     return lsp_icons
