@@ -25,10 +25,10 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         { "<Leader>tt", function() require("trouble").toggle() end, mode = "n", desc = "Toggles the Trouble window" },
-        { "<Leader>tw", function() require("trouble").toggle("workspace_diagnostics") end, mode = "n", desc = "Toggles the Trouble window for diagnostics in the current workspace (git repository)" },
-        { "<Leader>tb", function() require("trouble").toggle("document_diagnostics") end, mode = "n", desc = "Toggles the Trouble window for diagnostics in the current buffer" },
-        { "<Leader>tq", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Toggles the Trouble window for quickfix items" },
-        { "<Leader>tl", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Toggles the Trouble window for the items in the window's location list" },
-        { "gR", function() require("trouble").toggle("lsp_references") end, mode = "n", desc = "Toggles the Trouble window to display all references" },
+        { "<Leader>tw", function() require("trouble").toggle("workspace_diagnostics") end, mode = "n", desc = "Display workspace (Git repository) diagnostics in a Trouble window" },
+        { "<Leader>tb", function() require("trouble").toggle("document_diagnostics") end, mode = "n", desc = "Display buffer diagnostics in a Trouble window" },
+        { "<Leader>tq", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Display quick fix items in a Trouble window" },
+        { "<Leader>tl", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Display the window's location list items in a Trouble window" },
+        { "gR", function() require("trouble").toggle("lsp_references") end, mode = "n", desc = "Display all references in a Trouble window" },
     }
 }
