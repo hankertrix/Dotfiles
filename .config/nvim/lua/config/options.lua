@@ -71,13 +71,17 @@ vim.opt.list = true
 vim.opt.listchars = {
     lead = "·",
     trail = "•",
-    tab = "•»",
+    multispace = "∅",
+    nbsp = "‡",
+    tab = "⇥»",
+    precedes = "❮",
+    extends = "❯",
     eol = "↵",
     -- eol = "⤶",
 }
 
 -- Add more types of matching pairs
-vim.opt.matchpairs:append { "<:>", "「:」", "『:』","【:】", "“:”", "‘:’", "《:》"}
+vim.opt.matchpairs:append { "<:>", "「:」", "『:』", "【:】", "“:”", "‘:’", "《:》" }
 
 
 -- Sets the grep command in vim to use ripgrep if it's available
@@ -85,4 +89,3 @@ if vim.fn.executable("rg") == 1 then
     vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
     vim.opt.grepformat = "%f:%l:%c:%m"
 end
-
