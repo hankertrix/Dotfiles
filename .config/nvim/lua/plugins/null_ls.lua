@@ -42,6 +42,10 @@ local function setup()
             null_ls.builtins.code_actions.eslint_d.with {
                 extra_filetypes = { "svelte" }
             },
+
+
+            -- Miscellaneous
+            null_ls.builtins.code_actions.gitsigns
         }
     }
 
@@ -65,6 +69,6 @@ return {
     lazy = true,
     dependencies = {
         "mason.nvim",
-        { "nvimtools/none-ls.nvim" }
+        { "nvimtools/none-ls.nvim", dependencies = "gitsigns.nvim" }
     }
 }
