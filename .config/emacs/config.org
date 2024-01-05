@@ -62,6 +62,9 @@
   - [[#auctex][AUCTeX]]
   - [[#evil-tex][Evil TeX]]
   - [[#using-pdf-tools-to-open-compiled-latex-pdf-files][Using PDF-tools to open compiled LaTeX PDF files]]
+- [[#external-programs][External programs]]
+  - [[#miscellaneous-1][Miscellaneous]]
+  - [[#tex-and-latex][TeX and LaTeX]]
 
 * Important Programs
 
@@ -1433,3 +1436,27 @@ Evil TeX provides useful text objects for LaTeX editing.
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
 #+end_src
+
+
+
+
+* External programs
+Below is a list of external programs that are being used with my Emacs configuration.
+
+** Miscellaneous
+- [[https://github.com/junegunn/fzf][fzf]]
+- [[https://github.com/BurntSushi/ripgrep][rg]]
+- [[https://isync.sourceforge.io/][isync (mbsync)]]
+
+** TeX and LaTeX
+- [[https://tug.org/texlive][texlive-basic]]
+- [[https://tug.org/texlive][texlive-bin]]
+- [[https://tug.org/texlive][texlive-binextra]]
+- [[https://tug.org/texlive][texlive-fontsextra]]
+- [[https://tug.org/texlive][texlive-fontsrecommended]]
+- [[https://tug.org/texlive][texlive-latex]]
+- [[https://tug.org/texlive][texlive-latexextra]]
+- [[https://tug.org/texlive][texlive-latexrecommended]]
+- [[https://tug.org/texlive][texlive-mathscience]]
+- [[https://tug.org/texlive][texlive-pictures]]
+- [[https://tug.org/texlive][texlive-plaingeneric]]
