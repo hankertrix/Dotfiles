@@ -13,8 +13,8 @@ local function setup()
     require("bufferline").setup({
         options = {
             numbers = "buffer_id",
-            close_command = "Bdelete! %d",
-            right_mouse_command = "Bdelete! %d",
+            close_command = function(bufnr) require("mini.bufremove").delete(bufnr) end,
+            right_mouse_command = function (bufnr) require("mini.bufremove").delete(bufnr) end,
             separator_style = "slant",
             offsets = {
                 { filetype = "NvimTree", text = "File Explorer" },
@@ -47,7 +47,7 @@ local function setup()
 
 end
 
--- Returns the bufferline module for lazy.nvim
+-- Returns the bufferline plugin for lazy.nvim
 return {
     "akinsho/bufferline.nvim",
     version = "*",
