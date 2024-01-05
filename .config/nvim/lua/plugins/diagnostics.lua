@@ -28,7 +28,7 @@ return {
         { "<Leader>tw", function() require("trouble").toggle("workspace_diagnostics") end, mode = "n", desc = "Display diagnostics for all open buffers in a Trouble window" },
         { "<Leader>tb", function() require("trouble").toggle("document_diagnostics") end, mode = "n", desc = "Display buffer diagnostics in a Trouble window" },
         { "<Leader>tq", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Display quick fix items in a Trouble window" },
-        { "<Leader>tl", function() require("trouble").toggle("quickfix") end, mode = "n", desc = "Display the window's location list items in a Trouble window" },
+        { "<Leader>tl", function() require("trouble").toggle("loclist") end, mode = "n", desc = "Display the window's location list items in a Trouble window" },
         { "gR", function() require("trouble").toggle("lsp_references") end, mode = "n", desc = "Display all references in a Trouble window" },
     }
 }
