@@ -14,15 +14,25 @@ local descriptions = {
 -- Function to set up telescope
 local function setup()
 
-    -- Stops executing if the package isn't installed
-    if not utils.status_ok("telescope") then return end
+    -- Stops executing if the packages aren't installed
+    if not utils.status_ok("telescope", "trouble.providers.telescope") then return end
 
     -- Gets the telescope module
     local telescope = require("telescope")
 
+    -- Gets the trouble module
+    local trouble = require("trouble.providers.telescope")
 
-    -- Set up telescope
-    telescope.setup()
+
+    -- Set up telescope with trouble
+    telescope.setup {
+        defaults = {
+            mappings = {
+                i = { ["<C-t>"] = trouble.open_with_trouble },
+                n = { ["<C-t>"] = trouble.open_with_trouble }
+            }
+        }
+    }
 
     -- Loads the fzf native extension
     telescope.load_extension("fzf")
@@ -67,8 +77,9 @@ return {
     dependencies = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        { "stevearc/aerial.nvim" },
-        "harpoon"
+        "aerial.nvim",
+        "harpoon",
+        "trouble.nvim"
     }
 }
 
