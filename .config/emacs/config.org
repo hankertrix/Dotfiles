@@ -112,8 +112,10 @@ Enable use-package support for elpaca.
 
 ;; Install use-package support
 (elpaca elpaca-use-package
+
   ;; Enable :elpaca use-package keyword.
   (elpaca-use-package-mode)
+
   ;; Assume :elpaca t unless otherwise specified.
   (setq elpaca-use-package-by-default t))
 
@@ -335,6 +337,7 @@ Evil surround allows for easily changing the surroundings of a text objects, suc
     "pw" '(dired :wk "Open Dired")
     "pf" '(counsel-fzf :wk "Search for a file")
     "ps" '(counsel-rg :wk "Search for a term using ripgrep")
+    "pc" '(find-file :wk "Create a file")
     )
 
   ;; Key binds for git
@@ -570,15 +573,24 @@ Electric pair mode is a mode to auto close brackets.
 
 
 * Whitespace Mode
-Set up whitespace mode to show trailing spaces, hard spaces, new lines, indentation, and mixed indentation.
+Set up whitespace mode to show trailing spaces, non-breaking spaces, new lines, indentation, and mixed indentation.
 #+begin_src emacs-lisp
 (setq whitespace-style '(
 
                          ;; Enable highlighting of whitespace
                          face
 
+                         ;; Show tabs
+                         tabs
+
+                         ;; Show empty lines at the beginning or the end of a buffer
+                         empty
+
                          ;; Show trailing spaces
                          trailing
+
+                         ;; Show missing newline at the end of a buffer
+                         missing-newline-at-eof
 
                          ;; Show indentation
                          indentation
@@ -587,30 +599,60 @@ Set up whitespace mode to show trailing spaces, hard spaces, new lines, indentat
                          space-before-tab
                          space-after-tab
 
-                         ;; Show hard spaces using a special character
+                         ;; Show spaces using a special character
                          space-mark
+
+                         ;; Show tabs using a special character
+                         tab-mark
 
                          ;; Show new lines using a special character
                          newline-mark))
 #+end_src
 
-Set up whitespace mode to show new lines and hard spaces.
+Set up whitespace mode to show new lines and non-breaking spaces.
 #+begin_src emacs-lisp
 (setq whitespace-display-mappings
 
-      ;; Hard spaces are displayed as ¤
-      ;; Fall back to underscores if ¤ cannot be displayed
-      '((space-mark   ?\xA0 [?¤]     [?_])
+      ;; Non-breaking spaces are displayed as ‡
+      ;; Fall back to underscores if ‡ cannot be displayed
+      '((space-mark ?\xA0 [?‡] [?_])
 
         ;; New lines are displayed as ↵
         ;; Fall back to the dollar sign symbol if ↵ cannot be displayed
-        (newline-mark ?\n   [?↵ ?\n] [?$ ?\n])
-        ))
+        (newline-mark ?\n [?↵ ?\n] [?$ ?\n])
+
+        ;; Carriage return (Windows) are displayed as ¶
+        ;; Fall back to the hash symbol if ¶ cannot be displayed
+        (newline-mark ?\r [?¶] [?#])
+
+        ;; Tabs are displayed as ⇥
+        ;; Fall back to the greater than symbol if ⇥ cannot be displayed
+        (tab-mark ?\t [?⇥ ?\t] [?> ?\t])))
 #+end_src
 
 Show trailing white space.
 #+begin_src emacs-lisp
 (setq-default show-trailing-whitespace t)
+#+end_src
+
+Disable whitespace mode in buffers that don't need it.
+#+begin_src emacs-lisp
+(setq-default whitespace-global-modes
+              '(not shell-mode
+                    help-mode
+                    magit-mode
+                    magit-diff-mode
+                    ibuffer-mode
+                    dired-mode
+                    occur-mode
+                    elpaca-log-mode
+                    elpaca-ui-mode))
+#+end_src
+
+Setup clean up actions for whitespace mode. The configuration below will remove all empty lines at the beginning and end of the buffer, and also remove all trailing tabs and spaces.
+#+begin_src emacs-lisp
+(setq-default whitespace-action
+              '(cleanup auto-cleanup))
 #+end_src
 
 Enable whitespace mode.

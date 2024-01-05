@@ -37,8 +37,10 @@
 
 ;; Install use-package support
 (elpaca elpaca-use-package
+
   ;; Enable :elpaca use-package keyword.
   (elpaca-use-package-mode)
+
   ;; Assume :elpaca t unless otherwise specified.
   (setq elpaca-use-package-by-default t))
 
@@ -230,6 +232,7 @@
     "pw" '(dired :wk "Open Dired")
     "pf" '(counsel-fzf :wk "Search for a file")
     "ps" '(counsel-rg :wk "Search for a term using ripgrep")
+    "pc" '(find-file :wk "Create a file")
     )
 
   ;; Key binds for git
@@ -371,8 +374,17 @@
                          ;; Enable highlighting of whitespace
                          face
 
+                         ;; Show tabs
+                         tabs
+
+                         ;; Show empty lines at the beginning or the end of a buffer
+                         empty
+
                          ;; Show trailing spaces
                          trailing
+
+                         ;; Show missing newline at the end of a buffer
+                         missing-newline-at-eof
 
                          ;; Show indentation
                          indentation
@@ -381,24 +393,48 @@
                          space-before-tab
                          space-after-tab
 
-                         ;; Show hard spaces using a special character
+                         ;; Show spaces using a special character
                          space-mark
+
+                         ;; Show tabs using a special character
+                         tab-mark
 
                          ;; Show new lines using a special character
                          newline-mark))
 
 (setq whitespace-display-mappings
 
-      ;; Hard spaces are displayed as ¤
-      ;; Fall back to underscores if ¤ cannot be displayed
-      '((space-mark   ?\xA0 [?¤]     [?_])
+      ;; Non-breaking spaces are displayed as ‡
+      ;; Fall back to underscores if ‡ cannot be displayed
+      '((space-mark ?\xA0 [?‡] [?_])
 
         ;; New lines are displayed as ↵
         ;; Fall back to the dollar sign symbol if ↵ cannot be displayed
-        (newline-mark ?\n   [?↵ ?\n] [?$ ?\n])
-        ))
+        (newline-mark ?\n [?↵ ?\n] [?$ ?\n])
+
+        ;; Carriage return (Windows) are displayed as ¶
+        ;; Fall back to the hash symbol if ¶ cannot be displayed
+        (newline-mark ?\r [?¶] [?#])
+
+        ;; Tabs are displayed as ⇥
+        ;; Fall back to the greater than symbol if ⇥ cannot be displayed
+        (tab-mark ?\t [?⇥ ?\t] [?> ?\t])))
 
 (setq-default show-trailing-whitespace t)
+
+(setq-default whitespace-global-modes
+              '(not shell-mode
+                    help-mode
+                    magit-mode
+                    magit-diff-mode
+                    ibuffer-mode
+                    dired-mode
+                    occur-mode
+                    elpaca-log-mode
+                    elpaca-ui-mode))
+
+(setq-default whitespace-action
+              '(cleanup auto-cleanup))
 
 (global-whitespace-mode 1)
 
