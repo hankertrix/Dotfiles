@@ -255,6 +255,13 @@
     "ot" '(org-todo-list :wk "Org todo")
     )
 
+  ;; Key binds in lsp mode
+  (hankertrix/leader-keys
+    "tt" '(flycheck-list-errors :wk "List all the errors in the current buffer")
+    "tw" '(flycheck-list-errors :wk "List all the errors in the current buffer")
+    "tb" '(flycheck-list-errors :wk "List all the errors in the current buffer")
+    )
+
   ;; Key binds for help files
   ;; I'm using "/" because it is where the question mark is
   ;; But I don't want to press shift to access the help files
@@ -537,10 +544,6 @@
 
   ;; Set the LSP completion provider to none
   (lsp-completion-provider :none)
-
-  ;; Custom keybindings for LSP mode
-  :bind (:map lsp-mode-map
-              ("C-; d" . flycheck-list-errors))
 
   ;; Initialise LSP mode
   :init
