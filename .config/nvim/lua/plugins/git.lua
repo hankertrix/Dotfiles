@@ -4,19 +4,9 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to configure the git plugin
-local function setup()
-
-    -- Set the highlight groups to the correct colours
-    vim.api.nvim_set_hl(0, "diffAdded", { link = "DiffviewStatusAdded" })
-    vim.api.nvim_set_hl(0, "diffRemoved", { link = "DiffviewStatusDeleted" })
-
-end
-
 -- Returns the git plugin for lazy.nvim
 return {
     "tpope/vim-fugitive",
-    config = setup,
     lazy = true,
     cond = utils.firenvim_not_active,
     cmd = "Git",
