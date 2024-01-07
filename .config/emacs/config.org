@@ -516,6 +516,17 @@ Disable tool tips.
 (tooltip-mode -1)
 #+end_src
 
+*** Show the maximum column width
+This shows a column on the right that marks the maximum number of characters you should have in a line. This is enabled only when programming since there's no need for it when writing text.
+#+begin_src emacs-lisp
+
+;; Set the fill column to 80
+(setq-default fill-column 80)
+
+;; Enable the fill column display in programming mode
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+#+end_src
+
 
 ** Error bells
 Disable all error bells.
@@ -613,14 +624,8 @@ Set up whitespace mode to show trailing spaces, non-breaking spaces, new lines, 
                          ;; Show tabs
                          tabs
 
-                         ;; Show empty lines at the beginning or the end of a buffer
-                         empty
-
                          ;; Show trailing spaces
                          trailing
-
-                         ;; Show missing newline at the end of a buffer
-                         missing-newline-at-eof
 
                          ;; Show indentation
                          indentation

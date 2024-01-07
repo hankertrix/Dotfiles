@@ -364,6 +364,12 @@
 
 (tooltip-mode -1)
 
+;; Set the fill column to 80
+(setq-default fill-column 80)
+
+;; Enable the fill column display in programming mode
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
 (setq ring-bell-function 'ignore)
 
 (setq make-backup-files nil)
@@ -400,14 +406,8 @@
                          ;; Show tabs
                          tabs
 
-                         ;; Show empty lines at the beginning or the end of a buffer
-                         empty
-
                          ;; Show trailing spaces
                          trailing
-
-                         ;; Show missing newline at the end of a buffer
-                         missing-newline-at-eof
 
                          ;; Show indentation
                          indentation
