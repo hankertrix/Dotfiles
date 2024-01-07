@@ -1,7 +1,9 @@
 -- Vim options file
 
--- Relative line numbers
-vim.opt.nu = true
+-- Enable line numbers
+vim.opt.number = true
+
+-- Enable relative line numbers
 vim.opt.relativenumber = true
 
 -- Indentation
@@ -14,7 +16,7 @@ vim.opt.expandtab = true
 -- Smart indentation
 vim.opt.smartindent = true
 
--- Wrap the text when they overflow
+-- Wrap the text when it overflows
 vim.opt.wrap = true
 
 -- Break line at predefined characters
@@ -59,6 +61,10 @@ vim.opt.termguicolors = true
 -- Always show the line that has symbols (for LSP and stuff)
 vim.opt.signcolumn = "yes"
 
+-- Show a line on the right that represents the maximum column width
+-- This makes it easier to keep to a character limit, usually 80
+vim.opt.colorcolumn = "80"
+
 -- Faster update time
 vim.opt.updatetime = 50
 
@@ -81,7 +87,15 @@ vim.opt.listchars = {
 }
 
 -- Add more types of matching pairs
-vim.opt.matchpairs:append { "<:>", "「:」", "『:』", "【:】", "“:”", "‘:’", "《:》" }
+vim.opt.matchpairs:append {
+    "<:>",
+    "「:」",
+    "『:』",
+    "【:】",
+    "“:”",
+    "‘:’",
+    "《:》"
+}
 
 
 -- Sets the grep command in vim to use ripgrep if it's available
