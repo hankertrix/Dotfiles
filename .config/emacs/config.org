@@ -14,19 +14,12 @@
   - [[#key-bindings-with-generalel][Key bindings (with general.el)]]
   - [[#which-key][Which Key]]
 - [[#fonts][Fonts]]
-- [[#gui-settings][GUI Settings]]
-  - [[#splash-screen][Splash Screen]]
-  - [[#padding][Padding]]
-  - [[#menus][Menus]]
-- [[#error-bells][Error bells]]
-- [[#emacs-interface][Emacs Interface]]
-  - [[#line-numbers][Line numbers]]
-  - [[#column-numbers][Column numbers]]
-  - [[#scrolling][Scrolling]]
-  - [[#line-wrap][Line wrap]]
-- [[#indentation-and-brackets][Indentation and brackets]]
-  - [[#indentation][Indentation]]
-  - [[#auto-close-brackets][Auto close brackets]]
+- [[#emacs-settings][Emacs' settings]]
+  - [[#gui-settings][GUI Settings]]
+  - [[#error-bells][Error bells]]
+  - [[#backups][Backups]]
+  - [[#emacs-interface][Emacs Interface]]
+  - [[#indentation-and-brackets][Indentation and brackets]]
 - [[#whitespace-mode][Whitespace Mode]]
 - [[#beautifying-emacs][Beautifying Emacs]]
   - [[#theme][Theme]]
@@ -36,8 +29,6 @@
   - [[#nerd-icons][Nerd Icons]]
 - [[#miscellaneous][Miscellaneous]]
   - [[#zoom][Zoom]]
-  - [[#backups][Backups]]
-  - [[#revert-without-querying][Revert without querying]]
   - [[#file-previews-in-dired][File previews in dired]]
 - [[#development][Development]]
   - [[#lsp-mode][LSP mode]]
@@ -252,6 +243,23 @@ Evil surround allows for easily changing the surroundings of a text objects, suc
 #+end_src
 
 
+*** Evil Anzu
+Evil anzu highlights search terms. This package is required for doom modeline to display the match count when searching.
+#+begin_src emacs-lisp
+(use-package evil-anzu
+
+  ;; Initialise evil anzu
+  :init
+  (global-anzu-mode t)
+
+  ;; Configure evil anzu
+  :config
+
+  ;; Set the threshold for anzu
+  (setq anzu-search-threshold 1000))
+#+end_src
+
+
 ** Key bindings (with general.el)
 #+begin_src emacs-lisp
 (use-package general
@@ -414,8 +422,6 @@ Evil surround allows for easily changing the surroundings of a text objects, suc
 #+end_src
 
 
-
-
 ** Which Key
 Install and configure the which key plugin, which is a plugin that displays the possible key binds and what each key bind does when you press a key.
 #+begin_src emacs-lisp
@@ -479,23 +485,25 @@ Set up the font such that it will work on emacsclient.
 
 
 
-* GUI Settings
+* Emacs' settings
 
-** Splash Screen
+** GUI Settings
+
+*** Splash Screen
 Remove the startup splash screen.
 #+begin_src emacs-lisp
 (setq inhibit-startup-message t)
 #+end_src
 
 
-** Padding
+*** Padding
 Have some padding before the edge of the screen.
 #+begin_src emacs-lisp
 (set-fringe-mode 5)
 #+end_src
 
 
-** Menus
+*** Menus
 Disable the menu, the toolbar and the scroll bar.
 #+begin_src emacs-lisp
 (menu-bar-mode -1)
@@ -509,20 +517,23 @@ Disable tool tips.
 #+end_src
 
 
-
-
-* Error bells
+** Error bells
 Disable all error bells.
 #+begin_src emacs-lisp
 (setq ring-bell-function 'ignore)
 #+end_src
 
 
+** Backups
+Don't create backups.
+#+begin_src emacs-lisp
+(setq make-backup-files nil)
+#+end_src
 
 
-* Emacs Interface
+** Emacs Interface
 
-** Line numbers
+*** Line numbers
 Display relative line numbers.
 #+begin_src emacs-lisp
 (setq display-line-numbers-type 'relative)
@@ -538,14 +549,14 @@ Disable line numbers for some modes, specifically terminal, E-shell and PDF view
 #+end_src
 
 
-** Column numbers
+*** Column numbers
 Display column numbers on the mode line.
 #+begin_src emacs-lisp
 (column-number-mode)
 #+end_src
 
 
-** Scrolling
+*** Scrolling
 Set the scroll margin (scrolloff in vim) and the scroll step to have vim-like scrolling.
 #+begin_src emacs-lisp
 (setq scroll-margin 8)
@@ -553,16 +564,23 @@ Set the scroll margin (scrolloff in vim) and the scroll step to have vim-like sc
 #+end_src
 
 
-** Line wrap
+*** Line wrap
 Wrap long lines.
 #+begin_src emacs-lisp
 (global-visual-line-mode t)
 #+end_src
 
 
-* Indentation and brackets
+*** Revert without querying
+This is just to stop Emacs from asking if I want to reread the PDF file from disk every time I reopen a PDF file that has changed. Instead, Emacs will now just automatically reread the PDF file without asking.
+#+begin_src emacs-lisp
+(setq revert-without-query '(".pdf"))
+#+end_src
 
-** Indentation
+
+** Indentation and brackets
+
+*** Indentation
 Use spaces instead of tabs for indentation.
 #+begin_src emacs-lisp
 (setq-default indent-tabs-mode nil)
@@ -575,11 +593,12 @@ Set a default indentation of 4 spaces.
 #+end_src
 
 
-** Auto close brackets
+*** Auto close brackets
 Electric pair mode is a mode to auto close brackets.
 #+begin_src emacs-lisp
 (electric-pair-mode 1)
 #+end_src
+
 
 
 
@@ -790,20 +809,6 @@ Set Ctrl + the mouse wheel to zoom in and out.
 #+begin_src emacs-lisp
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
-#+end_src
-
-
-** Backups
-Don't create backups.
-#+begin_src emacs-lisp
-(setq make-backup-files nil)
-#+end_src
-
-
-** Revert without querying
-This is just to stop Emacs from asking if I want to reread the PDF file from disk every time I reopen a PDF file that has changed. Instead, Emacs will now just automatically reread the PDF file without asking.
-#+begin_src emacs-lisp
-(setq revert-without-query '(".pdf"))
 #+end_src
 
 

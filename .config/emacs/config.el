@@ -145,6 +145,18 @@
   :config
   (global-evil-surround-mode 1))
 
+(use-package evil-anzu
+
+  ;; Initialise evil anzu
+  :init
+  (global-anzu-mode t)
+
+  ;; Configure evil anzu
+  :config
+
+  ;; Set the threshold for anzu
+  (setq anzu-search-threshold 1000))
+
 (use-package general
 
   ;; Configure general.el
@@ -354,6 +366,8 @@
 
 (setq ring-bell-function 'ignore)
 
+(setq make-backup-files nil)
+
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
 
@@ -368,6 +382,8 @@
 (setq scroll-step 1)
 
 (global-visual-line-mode t)
+
+(setq revert-without-query '(".pdf"))
 
 (setq-default indent-tabs-mode nil)
 
@@ -520,10 +536,6 @@
 
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
-
-(setq make-backup-files nil)
-
-(setq revert-without-query '(".pdf"))
 
 (use-package dired-preview
 
