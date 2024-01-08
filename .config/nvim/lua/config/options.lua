@@ -61,10 +61,6 @@ vim.opt.termguicolors = true
 -- Always show the line that has symbols (for LSP and stuff)
 vim.opt.signcolumn = "yes"
 
--- Show a line on the right that represents the maximum column width
--- This makes it easier to keep to a character limit, usually 80
-vim.opt.colorcolumn = "80"
-
 -- Faster update time
 vim.opt.updatetime = 50
 
