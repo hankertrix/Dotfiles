@@ -98,6 +98,8 @@ Undo history viewer - [undotree](https://github.com/mbbill/undotree)
 
 Markdown previewer - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
 
+Hide the colour column when not needed - [smartcolumn.nvim](https://github.com/m4xshen/smartcolumn.nvim)
+
 ### Miscellaneous
 
 VimBeGood game - [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
