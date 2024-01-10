@@ -20,7 +20,12 @@ return {
         build = function() vim.fn["mkdp#util#install"]() end,
         lazy = true,
         cond = utils.firenvim_not_active,
-        ft = "markdown"
+        ft = "markdown",
+        cmd = {
+            "MarkdownPreviewToggle",
+            "MarkdownPreview",
+            "MarkdownPreviewStop"
+        }
     },
 
     -- Vim Be Good game to practice Vim motions
