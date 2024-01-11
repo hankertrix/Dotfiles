@@ -9,7 +9,7 @@ return {
     "tpope/vim-fugitive",
     lazy = true,
     cond = utils.firenvim_not_active,
-    cmd = "Git",
+    cmd = { "Git", "G" },
     keys = {
 
         -- The keybind to open Git
