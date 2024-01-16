@@ -1,0 +1,97 @@
+{
+	"name": "Vimium C",
+	"@time": "16/01/2024, 10:07:19 pm",
+	"time": 1705414039273,
+	"environment": {
+		"extension": "1.99.997",
+		"platform": "linux",
+		"firefox": 121
+	},
+	"exclusionRules": [
+		{
+			"passKeys": "",
+			"pattern": "^https://docs.google.com/.*/d/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://mail.google.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": "^https://replit.com/.*#"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://web.telegram.org/"
+		}
+	],
+	"keyLayout": 2,
+	"keyMappings": [
+		"#!no-check",
+		"# Automatically open the Vomnibar when creating a new tab",
+		"run t createTab+Vomnibar.activate",
+		""
+	],
+	"searchEngines": [
+		"bi: https://cn.bing.com/search?q=$s",
+		"bi|bing: https://www.bing.com/search?q=%s \\",
+		"  blank=https://www.bing.com/ Bing",
+		"b|ba|baidu|百度: https://www.baidu.com/s?ie=utf-8&wd=%s \\",
+		"  blank=https://www.baidu.com/ 百度",
+		"g|go|gg|google|Google: https://www.google.com/search?q=%s \\",
+		"  www.google.com re=/^(?:\\.[a-z]{2,4})?\\/search\\b.*?[#&?]q=([^#&]*)/i\\",
+		"  blank=https://www.google.com/ Google",
+		"br|brave: https://search.brave.com/search?q=%s \\",
+		"  blank=https://search.brave.com/ Brave",
+		"d|dd|ddg|duckduckgo: https://duckduckgo.com/?q=%s \\",
+		"  blank=https://duckduckgo.com/ DuckDuckGo",
+		"ec|ecosia: https://www.ecosia.org/search?q=%s \\",
+		"  blank=https://www.ecosia.org/search Ecosia",
+		"qw|qwant: https://www.qwant.com/?q=%s \\",
+		"  blank=https://www.qwant.com/ Qwant",
+		"ya|yd|yandex: https://yandex.com/search/?text=%s \\",
+		"  blank=https://yandex.com/search/ Yandex",
+		"yh|yahoo: https://search.yahoo.com/search?p=%s \\",
+		"  blank=https://search.yahoo.com/search Yahoo",
+		"maru|mailru|mail.ru: https://go.mail.ru/search?q=%s \\",
+		"  blank=https://go.mail.ru/search Mail.ru",
+		"di|dis|disroot: https://search.disroot.org/search?q=%s \\",
+		"  blank=https://search.disroot.org/search Disroot Searx",
+		"pa|paul|paulgo: https://paulgo.io/search?q=%s \\",
+		"  blank=https://paulgo.io/search PaulGO Searx",
+		"ti|tiek|tiekoetter: https://searx.tiekoetter.com/search?q=%s \\",
+		"  blank=https://searx.tiekoetter.com/search Tiekoetter Searx",
+		"mo|moj|jeek|mojeek: https://www.mojeek.com/search?q=%s \\",
+		"  blank=https://www.mojeek.com/search Mojeek",
+		"",
+		"g.m|gm|g.map|gmap: https://www.google.com/maps?q=%s \\",
+		"  blank=https://www.google.com/maps Google Maps",
+		"b.m|bm|map|b.map|bmap|百度地图: \\",
+		"  https://api.map.baidu.com/geocoder?output=html&address=%s&src=vimium-c",
+		"y|yt: https://www.youtube.com/results?search_query=%s \\",
+		"  blank=https://www.youtube.com/ YouTube",
+		"w|wiki: https://www.wikipedia.org/w/index.php?search=%s Wikipedia",
+		"g.s|gs|gscholar: https://scholar.google.com/scholar?q=$s \\",
+		"  scholar.google.com re=/^(?:\\.[a-z]{2,4})?\\/scholar\\b.*?[#&?]q=([^#&]*)/i\\",
+		"  blank=https://scholar.google.com/ Google Scholar",
+		"",
+		"ae|ali|alie|aliexp: https://www.aliexpress.com/wholesale?SearchText=%s \\",
+		"  blank=https://www.aliexpress.com/ AliExpress",
+		"j|jd|jb|joy|joybuy: https://www.joybuy.com/search?keywords=%s \\",
+		"  blank=https://www.joybuy.com/ Joybuy",
+		"az|amazon: https://www.amazon.com/s?k=%s \\",
+		"  blank=https://www.amazon.com/ Amazon",
+		"",
+		"\\:i: vimium://sed/s/^//,lower\\ $S re= Lower case",
+		"v.m|math: vimium://math\\ $S re= Calculate",
+		"v.p: vimium://parse\\ $S re= Redo Search",
+		"gh|github: https://github.com/search?q=$s \\",
+		"  blank=https://github.com/ GitHub Repo",
+		"ge|gitee: https://search.gitee.com/?type=repository&q=$s \\",
+		"  blank=https://gitee.com/ Gitee 仓库",
+		"js\\:|Js: javascript:\\ $S; JavaScript",
+		""
+	],
+	"searchUrl": "https://search.brave.com/search?q=$s Brave",
+	"vimSync": true
+}
