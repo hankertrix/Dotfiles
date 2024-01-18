@@ -1,4 +1,3 @@
-
 // My overrides for Arkenfox's user.js
 
 // Enable session restore
@@ -28,7 +27,7 @@ user_pref("extensions.formautofill.creditCards.enabled", false);
 // This actually doesn't matter since I use Vimium C's new tab adapter
 // Which already makes the page a blank page
 user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);              // Shortcuts
-user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);       // Sponsored shortcuts 
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);       // Sponsored shortcuts
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);    // Recommended by Pocket
 user_pref("browser.newtabpage.activity-stream.showSponsored", false);               // Sponsored Stories
 
@@ -72,6 +71,10 @@ user_pref("dom.security.https_only_mode_error_page_user_suggestions", true);
 
 // Don't clear history on shutdown
 user_pref("privacy.clearOnShutdown.history", false);
+
+// Allow the creation of custom search engines
+// Secret pref
+user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 
 // Exempt Telegram web from resist fingerprinting
 user_pref("privacy.resistFingerprinting.exemptedDomains", "*.example.invalid, web.telegram.org");
