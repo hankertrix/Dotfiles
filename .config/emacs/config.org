@@ -917,10 +917,14 @@ LSP mode allows Emacs to use various language servers to provide auto completion
 
 
 *** Language Support
-Emacs doesn't have built-in support for Lua and Haskell, so let's add support for those.
+Emacs doesn't have built-in support for Lua, Haskell, and Rust, so let's add support for those.
 #+begin_src emacs-lisp
 (use-package lua-mode)
 (use-package haskell-mode)
+(use-package rust-mode
+
+  ;; Enable the lsp when in rust mode
+  :hook (rust-mode . #'lsp-deferred))
 #+end_src
 
 

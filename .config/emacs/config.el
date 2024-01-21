@@ -618,6 +618,10 @@
 
 (use-package lua-mode)
 (use-package haskell-mode)
+(use-package rust-mode
+
+  ;; Enable the lsp when in rust mode
+  :hook (rust-mode . #'lsp-deferred))
 
 (use-package lsp-ltex
 
