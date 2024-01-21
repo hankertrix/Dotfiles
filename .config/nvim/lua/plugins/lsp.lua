@@ -89,11 +89,12 @@ local function setup()
 
         -- Make sure the listed servers are always installed
         ensure_installed = {
-            "lua_ls",        -- Lua
-            "pylsp",         -- Python
-            "taplo",         -- TOML
-            "tsserver",      -- TypeScript and JavaScript
-            "ltex",          -- English checker
+            "lua_ls",           -- Lua
+            "pylsp",            -- Python
+            "tsserver",         -- TypeScript and JavaScript
+            "rust_analyzer",    -- Rust
+            "taplo",            -- TOML
+            "ltex",             -- English checker
         },
 
         -- Use lsp-zero's default setup for all servers
