@@ -347,9 +347,8 @@ Evil anzu highlights search terms. This package is required for doom modeline to
   ;; Key binds for searching
   (hankertrix/leader-keys
     "pw" '(dired :wk "Open Dired")
-    "pf" '(counsel-fzf :wk "Search for a file")
+    "pf" '(find-file :wk "Search for a file")
     "ps" '(counsel-rg :wk "Search for a term using ripgrep")
-    "pc" '(find-file :wk "Create a file")
     )
 
   ;; Key binds for git
@@ -1461,9 +1460,7 @@ Evil TeX provides useful text objects for LaTeX editing.
 Below is a list of external programs that are being used with my Emacs configuration.
 
 ** Miscellaneous
-- [[https://github.com/junegunn/fzf][fzf]]
 - [[https://github.com/BurntSushi/ripgrep][rg]]
-- [[https://isync.sourceforge.io/][isync (mbsync)]]
 
 ** TeX and LaTeX
 - [[https://tug.org/texlive][texlive-basic]]
