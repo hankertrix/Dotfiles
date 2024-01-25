@@ -922,6 +922,8 @@
                                        `(lambda (c)
                                           (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 
+(setq org-latex-toc-command "\\tableofcontents \\clearpage")
+
 (use-package evil-org
 
   ;; Ensure that evil org is always installed
@@ -941,8 +943,6 @@
   (evil-org-agenda-set-keys))
 
 (setq org-highlight-latex-and-related '(native))
-
-(setq org-latex-toc-command "\\tableofcontents \\clearpage")
 
 (use-package citeproc)
 

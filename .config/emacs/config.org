@@ -43,9 +43,9 @@
   - [[#stopping-org-mode-from-indenting-2-spaces-in-code-blocks][Stopping org mode from indenting 2 spaces in code blocks]]
   - [[#enabling-org-tempo][Enabling Org Tempo]]
   - [[#stop-auto-completing--in-org-mode][Stop auto completing "<" in org mode]]
+  - [[#add-a-page-break-immediately-after-the-table-of-contents-in-latex][Add a page break immediately after the table of contents in LaTeX]]
   - [[#evil-org][Evil Org]]
   - [[#turn-on-latex-syntax-highlighting-in-org-mode][Turn on LaTeX syntax highlighting in org mode]]
-  - [[#add-a-page-break-immediately-after-the-table-of-contents-in-latex][Add a page break immediately after the table of contents in LaTeX]]
   - [[#citeproc][Citeproc]]
   - [[#literate-programming][Literate programming]]
 - [[#working-with-pdfs][Working with PDFs]]
@@ -1334,6 +1334,12 @@ Electric pair mode auto completes the "<" in org mode, which causes issues with 
 #+end_src
 
 
+** Add a page break immediately after the table of contents in LaTeX
+#+begin_src emacs-lisp
+(setq org-latex-toc-command "\\tableofcontents \\clearpage")
+#+end_src
+
+
 ** Evil Org
 Evil org provides a set of evil key bindings that work with org mode
 #+begin_src emacs-lisp
@@ -1361,12 +1367,6 @@ Evil org provides a set of evil key bindings that work with org mode
 This sets the variable org-highlight-latex-and-related to "native", which will highlight LaTeX syntax like it is a TeX file. The "latex" setting will just highlight all LaTeX fragments in a different colour. So a LaTeX block will just be one colour and all the entities are not highlighted. For the other options, the Emacs help (C-h v org-highlight-latex-and-related) should be sufficient to understand what they do.
 #+begin_src emacs-lisp
 (setq org-highlight-latex-and-related '(native))
-#+end_src
-
-
-** Add a page break immediately after the table of contents in LaTeX
-#+begin_src emacs-lisp
-(setq org-latex-toc-command "\\tableofcontents \\clearpage")
 #+end_src
 
 
