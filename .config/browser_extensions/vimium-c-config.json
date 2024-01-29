@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "18/01/2024, 11:55:49 am",
-	"time": 1705550149956,
+	"@time": "29/01/2024, 9:53:17 am",
+	"time": 1706493197864,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
-		"firefox": 121
+		"firefox": 122
 	},
 	"exclusionRules": [
 		{
@@ -66,7 +66,7 @@
 		"  blank=https://searx.tiekoetter.com/search Tiekoetter Searx",
 		"fa|far|farside: https://farside.link/searxng?q=%s \\",
 		"  blank=https://farside.link/searxng Farside Searx",
-		"who|whoo|whoogle: https://farside.link/whoogle?q=%s \\",
+		"wg|wgle|whoo|whogle|whoogle: https://farside.link/whoogle?q=%s \\",
 		"  blank=https://farside.link/whoogle Whoogle",
 		"",
 		"g.m|gm|g.map|gmap: https://www.google.com/maps?q=%s \\",
