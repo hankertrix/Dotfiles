@@ -453,7 +453,9 @@
                     dired-mode
                     occur-mode
                     elpaca-log-mode
-                    elpaca-ui-mode))
+                    elpaca-ui-mode
+                    elpaca-ui-live-update-mode
+                    fundamental-mode))
 
 (setq-default whitespace-action
               '(cleanup auto-cleanup))

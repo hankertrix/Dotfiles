@@ -680,7 +680,9 @@ Disable whitespace mode in buffers that don't need it.
                     dired-mode
                     occur-mode
                     elpaca-log-mode
-                    elpaca-ui-mode))
+                    elpaca-ui-mode
+                    elpaca-ui-live-update-mode
+                    fundamental-mode))
 #+end_src
 
 Setup clean up actions for whitespace mode. The configuration below will remove all empty lines at the beginning and end of the buffer, and also remove all trailing tabs and spaces.
