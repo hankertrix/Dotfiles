@@ -39,6 +39,7 @@ return {
     config = setup,
     lazy = true,
     keys = {
-        { "<Leader>pw", function() require("mini.files").open(vim.api.nvim_buf_get_name(0), true) end, mode = "n", desc = "Opens the directory of the current file" }
+        { "<Leader>pw", function() require("mini.files").open(vim.api.nvim_buf_get_name(0), true) end, mode = "n", desc = "Opens the directory of the current file" },
+        { "<Leader>ec", function() require("mini.files").open("~/.config/nvim/lua/", true) end, mode = "n", desc = "Opens the Neovim config directory" }
     }
 }
