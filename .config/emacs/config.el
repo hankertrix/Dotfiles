@@ -722,7 +722,7 @@
 (use-package corfu
 
   ;; Pull the corfu extensions from the repo as well
-  :elpaca (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
+  :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
 
   ;; Customise corfu
   :custom
@@ -903,7 +903,7 @@
           (list '+elpaca-unload-seq 'elpaca--activate-package)))
 
 ;; Force elpaca to update seq
-(use-package seq :elpaca `(seq :build ,(+elpaca-seq-build-steps)))
+(use-package seq :ensure `(seq :build ,(+elpaca-seq-build-steps)))
 
 (use-package toc-org
   :commands toc-org-enable
@@ -956,7 +956,7 @@
    (python . t)))
 
 (use-package ox-ipynb
-  :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
+  :ensure (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
 
 (use-package pdf-tools
@@ -965,7 +965,7 @@
   :config (pdf-tools-install))
 
 (use-package auctex :defer t
-  :elpaca ( :pre-build (("./autogen.sh")
+  :ensure ( :pre-build (("./autogen.sh")
                         ("./configure"
                          "--without-texmf-dir"
                          "--with-packagelispdir=./"

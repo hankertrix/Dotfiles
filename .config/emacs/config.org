@@ -1059,7 +1059,7 @@ Corfu is a plugin for in-buffer completions.
 (use-package corfu
 
   ;; Pull the corfu extensions from the repo as well
-  :elpaca (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
+  :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
 
   ;; Customise corfu
   :custom
@@ -1267,7 +1267,7 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
           (list '+elpaca-unload-seq 'elpaca--activate-package)))
 
 ;; Force elpaca to update seq
-(use-package seq :elpaca `(seq :build ,(+elpaca-seq-build-steps)))
+(use-package seq :ensure `(seq :build ,(+elpaca-seq-build-steps)))
 #+end_src
 
 
@@ -1399,7 +1399,7 @@ This just allows org babel to execute the code in code blocks that is written in
 *** Installing ox-ipynb to support exporting org files to Jupyter notebooks
 #+begin_src emacs-lisp
 (use-package ox-ipynb
-  :elpaca (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
+  :ensure (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
 #+end_src
 
@@ -1424,7 +1424,7 @@ PDF-tools is a great plugin that makes working with PDFs very easy. A lot of tim
 AUCTeX is an Emacs package for writing LaTeX documents.
 #+begin_src emacs-lisp
 (use-package auctex :defer t
-  :elpaca ( :pre-build (("./autogen.sh")
+  :ensure ( :pre-build (("./autogen.sh")
                         ("./configure"
                          "--without-texmf-dir"
                          "--with-packagelispdir=./"
