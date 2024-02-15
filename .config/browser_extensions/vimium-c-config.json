@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "06/02/2024, 5:25:38 pm",
-	"time": 1707211538921,
+	"@time": "15/02/2024, 12:57:09 pm",
+	"time": 1707973029600,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
@@ -74,7 +74,7 @@
 		"  blank=https://searx.be/search Searx Belgium",
 		"sc|swisscow|swisscows: https://swisscows.com/en/web?query=%s \\",
 		"  blank=https://swisscows.com/en/ Swisscows",
-		"wg|wgle|whoo|whogle|whoogle: https://farside.link/whoogle?q=%s \\",
+		"wg|wgle|whoo|whogle|whoogle: https://farside.link/whoogle/search?q=%s&lang_interface=en \\",
 		"  blank=https://farside.link/whoogle Whoogle",
 		"",
 		"g.m|gm|g.map|gmap: https://www.google.com/maps?q=%s \\",
