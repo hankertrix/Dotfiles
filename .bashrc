@@ -5,7 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Run the welcome screen script if it exists
 [[ -f ~/.welcome_screen ]] && . ~/.welcome_screen
+
+# Enable Vi mode
+set -o vi
 
 # Make a new command that changes
 # the directory when lf exits
