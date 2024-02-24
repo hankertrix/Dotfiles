@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "15/02/2024, 12:57:09 pm",
-	"time": 1707973029600,
+	"@time": "24/02/2024, 2:29:36 pm",
+	"time": 1708756176420,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
-		"firefox": 122
+		"firefox": 123
 	},
 	"exclusionRules": [
 		{
@@ -13,15 +13,11 @@
 			"pattern": "^https://docs.google.com/.*/d/"
 		},
 		{
-			"passKeys": "",
-			"pattern": ":https://mail.google.com/"
-		},
-		{
-			"passKeys": "",
+			"passKeys": "^ J K O T o t x ",
 			"pattern": "^https://replit.com/.*#"
 		},
 		{
-			"passKeys": "",
+			"passKeys": "^ J K O T o t x ",
 			"pattern": ":https://web.telegram.org/"
 		}
 	],
