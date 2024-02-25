@@ -31,19 +31,6 @@ local function setup()
 
             -- Linters
 
-            -- Shell scripts
-            null_ls.builtins.diagnostics.shellcheck,
-            null_ls.builtins.code_actions.shellcheck,
-
-            -- JavaScript ecosystem
-            null_ls.builtins.diagnostics.eslint_d.with {
-                extra_filetypes = { "svelte" }
-            },
-            null_ls.builtins.code_actions.eslint_d.with {
-                extra_filetypes = { "svelte" }
-            },
-
-
             -- Miscellaneous
             null_ls.builtins.code_actions.gitsigns
         }
