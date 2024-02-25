@@ -92,7 +92,9 @@ local function setup()
             "lua_ls",           -- Lua
             "pylsp",            -- Python
             "tsserver",         -- TypeScript and JavaScript
+            "eslint",           -- TypeScript and the JavaScript ecosystem
             "rust_analyzer",    -- Rust
+            "bashls",           -- Bash and shell
             "taplo",            -- TOML
             "ltex",             -- English checker
         },
