@@ -928,7 +928,7 @@ Emacs doesn't have built-in support for Lua, Haskell, and Rust, so let's add sup
   :init (setq rust-mode-treesitter-derive t)
 
   ;; Enable the lsp when in rust mode
-  :hook (rust-mode . #'lsp-deferred))
+  :hook (rust-mode . lsp-deferred))
 #+end_src
 
 
