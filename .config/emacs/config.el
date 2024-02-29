@@ -621,6 +621,9 @@
 (use-package haskell-mode)
 (use-package rust-mode
 
+  ;; Initialise the treesitter
+  :init (setq rust-mode-treesitter-derive t)
+
   ;; Enable the lsp when in rust mode
   :hook (rust-mode . #'lsp-deferred))
 
@@ -887,23 +890,6 @@
   ([remap describe-key] . helpful-key))
 
 (use-package magit)
-
-;; Force elpaca to update transient
-(use-package transient)
-
-(defun +elpaca-unload-seq (e)
-  "The funcion to unload the seq package."
-  (and (featurep 'seq) (unload-feature 'seq t))
-  (elpaca--continue-build e))
-
-(defun +elpaca-seq-build-steps ()
-  "The function to unload seq before building the seq package."
-  (append (butlast (if (file-exists-p (expand-file-name "seq" elpaca-builds-directory))
-                       elpaca--pre-built-steps elpaca-build-steps))
-          (list '+elpaca-unload-seq 'elpaca--activate-package)))
-
-;; Force elpaca to update seq
-(use-package seq :ensure `(seq :build ,(+elpaca-seq-build-steps)))
 
 (use-package toc-org
   :commands toc-org-enable
