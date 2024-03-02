@@ -1,0 +1,39 @@
+
+# Configurations for the file manager
+[manager]
+
+# Ratio for the panes in the file manager
+# This follows the lf configuration
+ratio = [1, 2, 3]
+
+# Show directories first
+sort_dir_first = true
+
+# Show hidden files
+show_hidden = true
+
+# Set the scroll offset to 8 from the bottom and top
+scrolloff = 8
+
+
+# Configuration for the file previewer
+[preview]
+
+# Make the maximum size of the images larger
+max_width = 3000
+max_height = 3000
+
+
+# Configuration for the openers
+[opener]
+emacs = [
+    { exec = 'emacs "$@"', block = false, desc = "Open in Emacs" }
+]
+
+
+# Configuration for the opener rules
+[open]
+prepend_rules = [
+    { name = "*.org", use = "emacs" },
+    { name = "*.tex", use = "emacs" }
+]

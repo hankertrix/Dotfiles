@@ -18,6 +18,13 @@ if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
 
+# Make a new command that changes
+# the directory when yazi exits
+YA="/home/hanker/.config/yazi/ya.sh"
+if [ -f "$YA" ]; then
+    source "$YA"
+fi
+
 _set_liveuser_PS1() {
     PS1='[\u@\h \W]\$ '
     if [ "$(whoami)" = "liveuser" ] ; then
