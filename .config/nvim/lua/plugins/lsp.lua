@@ -37,6 +37,9 @@ local root_files = {
 
     -- Awesomewm configuration file
     "rc.lua",
+
+    -- Yazi init.lua file
+    "init.lua",
 }
 
 
