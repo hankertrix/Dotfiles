@@ -113,7 +113,8 @@ cmd open-file ${{
         # For text files, JSON files and JavaScript files,
         # as well as empty files with no extensions,
         # open them in the editor
-        text/*|application/json|application/javascript|inode/x-empty) $EDITOR -- "$file";;
+        text/*|application/json|application/javascript|inode/x-empty) \
+        $EDITOR -- "$file";;
 
         # Open the other files with xdg-open
         *) xdg-open "$file";;
@@ -286,9 +287,50 @@ cmd edit-config ${{
 }}
 
 
+# Command to copy the absolute file path to the clipboard.
+# Requires xclip.
+cmd yank-path ${{
+    printf '%s' "$fx" | xclip -i -selection clipboard
+}}
+
+# Command to copy the directory name to the clipboard.
+# Requires xclip.
+cmd yank-dirname ${{
+    dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
+}}
+
+# Command to copy the file name to the clipboard.
+# Requires xclip.
+cmd yank-basename ${{
+    basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
+}}
+
+# Command to copy the file name without the file extension to the clipboard.
+# Requires xclip.
+cmd yank-basename-without-extension &{{
+    basename -a -- $fx | rev | cut -d. -f2- | rev | head -c-1 | \
+    xclip -i -selection clipboard
+}}
+
+
 
 
 # Keymaps
+
+# Unmap using e to open a file with the editor
+map e
+
+# Unmap using c to clear the cut files
+map c
+
+# Unmap w to open a shell
+map w
+
+# Use Ctrl + s to open a shell instead
+map <c-s> $$SHELL
+
+# Use o to open a file with the editor
+map o $$EDITOR "$f"
 
 # Make Ctrl-p and Ctrl-n move up and down respectively
 map <c-p> up
@@ -330,11 +372,23 @@ map m :toggle; down
 # This is in addition to unselecting selected files
 map u :unselect; clear
 
+# Make cc copy the absolute path of the files
+map cc yank-path
+
+# Make cd copy the path of the parent directory
+map cd yank-dirname
+
+# Make cf copy the name of the file
+map cf yank-basename
+
+# Make cn copy the name of the file without the extension
+map cn yank-basename-without-extension
+
 # Mappings for easier renames
 map r smart-rename
 map I smart-rename "cmd-home"
 map A smart-rename "cmd-end"
-map c smart-rename "cmd-delete-home"
+map cw smart-rename "cmd-delete-home"
 map C smart-rename "cmd-end; cmd-delete-home"
 map R smart-rename "cmd-end; cmd-delete-home"
 
@@ -343,8 +397,8 @@ map br bulk-rename
 map bR bulk-rename
 
 # Mapping to unarchive a file
-map oa extract
+map ee extract
 
 # Mapping to edit the lf configuration file
-map oe edit-config
+map ec edit-config
 
