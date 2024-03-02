@@ -5,6 +5,9 @@ export TERMINAL=xterm-kitty
 # Use neovim as the default editor
 export EDITOR=/usr/bin/nvim
 
+# Use less as the default pager
+export PAGER=/usr/bin/less
+
 # Add cargo to path
 # export PATH="$PATH:/home/hankertrix/.cargo/bin"
 
