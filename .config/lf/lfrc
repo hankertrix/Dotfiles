@@ -275,11 +275,14 @@ cmd extract ${{
 }}
 
 
-# The command to edit the LF config file
+# The command to edit the lf config file
 cmd edit-config ${{
 
-    # Use the set editor to edit the LF config file
-    $EDITOR -- "$HOME/.config/lf/lfrc"
+    # Use the set editor to edit the lf config file
+    $EDITOR -- ~/.config/lf/lfrc
+
+    # Source the configuration file for lf
+    lf -remote "send $id source ~/.config/lf/lfrc"
 }}
 
 
@@ -342,6 +345,6 @@ map bR bulk-rename
 # Mapping to unarchive a file
 map oa extract
 
-# Mapping to edit the LF configuration file
+# Mapping to edit the lf configuration file
 map oe edit-config
 
