@@ -1,6 +1,6 @@
 
 # Use kitty as the default terminal
-export TERMINAL=xterm-kitty
+export TERM=xterm-kitty
 
 # Use neovim as the default editor
 export EDITOR=/usr/bin/nvim
