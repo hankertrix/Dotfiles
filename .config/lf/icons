@@ -16,7 +16,7 @@ di             # DIR
 pi      󰈲       # FIFO
 so             # SOCK
 bd      󱊍       # BLK
-cd              # CHR
+cd             # CHR
 su             # SETUID
 sg      󰪋       # SETGID
 ex      󰓾       # EXEC
