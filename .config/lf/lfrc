@@ -401,3 +401,12 @@ map ee extract
 
 # Mapping to edit the lf configuration file
 map ec edit-config
+
+# Mapping to go to the config directory
+map gc cd ~/.config/
+
+# Mapping to go to the Downloads directory
+map gd cd ~/Downloads/
+
+# Mapping to go to the temporary directory
+map gt cd /tmp/
