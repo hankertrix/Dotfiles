@@ -627,7 +627,7 @@
   :init (setq rust-mode-treesitter-derive t)
 
   ;; Enable the lsp when in rust mode
-  :hook (rust-mode . lsp-deferred))
+  :hook (rust-mode . #'lsp-deferred))
 
 (use-package lsp-ltex
 
