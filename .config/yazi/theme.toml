@@ -3,7 +3,7 @@
 [manager]
 
 # Set the hover colour to be more readable
-hovered = { bg = "blue", reversed = false }
+hovered = { bg = "blue", fg = "white", reversed = false }
 
 # Remove the borders
 border_symbol = " "
@@ -62,7 +62,7 @@ footer = { bg = "#282c34", fg = "#b9c0cb" }
 rules = [
 
     # Images
-    { mime = "image/*", fg = "#4483aa" },
+    { mime = "image/*", fg = "#68c9b8" },
 
     # Videos
     { mime = "video/*", fg = "#da08ff" },
@@ -273,10 +273,10 @@ rules = [
     { name = "*.yml"         , text = "", fg = "#6d8086" },
     { name = "*.json"        , text = "", fg = "#cbcb41" },
     { name = "*.bson"        , text = "", fg = "#cbcb41" },
-    { name = "*.md"          , text = "", fg = "#ffffff" },
     { name = "*.conf"        , text = "⚙", fg = "#6d8086" },
     { name = "*.ini"         , text = "⚙", fg = "#6d8086" },
-    { name = "*.toml"        , text = "⚙", fg = "#ffffff" },
+    { name = "*.toml"        , text = "⚙" },
+    { name = "*.md"          , text = "" },
     { name = "*.styl"        , text = "" },
     { name = "*.slim"        , text = "" },
     { name = "*.haml"        , text = "" },
