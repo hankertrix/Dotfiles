@@ -4,6 +4,7 @@
 
 # Set the hover colour to be more readable
 hovered = { bg = "blue", fg = "white", reversed = false }
+# hovered = { bg = "white", fg = "blue", reversed = true }
 
 # Remove the borders
 border_symbol = " "
