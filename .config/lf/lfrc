@@ -402,6 +402,9 @@ map ee extract
 # Mapping to edit the lf configuration file
 map ec edit-config
 
+# Mapping to go to the lf configuration directory
+map ed cd ~/.config/lf/
+
 # Mapping to go to the config directory
 map gc cd ~/.config/
 
