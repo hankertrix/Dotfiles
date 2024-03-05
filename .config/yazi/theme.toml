@@ -22,6 +22,13 @@ mode_select = { fg = "#282c34", bg = "#3fc56b" }
 mode_unset  = { fg = "#282c34", bg = "#ff6480" }
 
 
+# The theme for the completion items
+[completion]
+
+# The style for the selected completion item
+active = { bg = "blue", fg = "white", reversed = false }
+
+
 # The theme for the whichkey thing
 [which]
 
@@ -51,7 +58,7 @@ exec = { fg = "#10b1fe" }
 # Set the description to be a more muted white colour
 desc = { fg = "#b9c0cb" }
 
-# Set the hovered colour to the Neovim default hoevered colour
+# Set the hovered colour to the Neovim default hovered colour
 hovered = { bg = "#274670", bold = true }
 
 # Set the footer to be a dark background with the more muted white text
