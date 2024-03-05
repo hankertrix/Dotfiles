@@ -38,6 +38,20 @@ exec = "yank --cut"
 desc = "Cut the selected files"
 
 
+# Use K to move up in the parent directory
+[[manager.prepend_keymap]]
+on   = [ "K" ]
+exec = [ "leave", "escape --visual --select", "arrow -1", "enter" ]
+desc = "Move up in the parent directory"
+
+
+# Use J to move down in the parent directory
+[[manager.prepend_keymap]]
+on   = [ "J" ]
+exec = [ "leave", "escape --visual --select", "arrow 1", "enter" ]
+desc = "Move down in the parent directory"
+
+
 # Use _ to create a new file or directory
 [[manager.prepend_keymap]]
 on   = [ "_" ]
