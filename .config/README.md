@@ -18,8 +18,8 @@ There are a few changes to the theme files to make them look better,
 as the default theme files end up making the windows too small for the entire text display.
 
 
-## [Gummy](https://github.com/Fushko/gummy)
-The gummy configuration file (gummyconf.json) is to set the time for the red-shifter and the default backlight brightness.
+## [Gummy](https://codeberg.org/fusco/gummy)
+The gummy configuration file (`gummyconf.json`) is to set the time for the red-shifter and the default backlight brightness.
 
 
 ## [Neovim](https://neovim.io/)
