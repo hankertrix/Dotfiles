@@ -336,7 +336,7 @@ map o $$EDITOR "$f"
 map <c-p> up
 map <c-n> down
 
-# Make J and K move up and down in the parent directory respectively
+# Use K and J move up and down in the parent directory respectively
 map K move-in-parent-dir up
 map J move-in-parent-dir down
 
