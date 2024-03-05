@@ -171,6 +171,12 @@ on   = [ "<C-[>" ]
 exec = "close"
 desc = "Cancel selection"
 
+# Use q to close the selection menu
+[[select.prepend_keymap]]
+on   = [ "q" ]
+exec = "close"
+desc = "Cancel selection"
+
 
 
 
