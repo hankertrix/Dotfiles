@@ -191,6 +191,23 @@ desc = "Move to the BOL"
 
 
 
+# Completion keymaps
+
+# Use Ctrl + p to move the cursor up
+[[completion.prepend_keymap]]
+on   = [ "<C-p>" ]
+exec = "arrow -1"
+desc = "Move cursor up"
+
+# Use Ctrl + n to move the cursor down
+[[completion.prepend_keymap]]
+on   = [ "<C-n>" ]
+exec = "arrow 1"
+desc = "Move cursor down"
+
+
+
+
 # Help keymaps
 
 # Use Ctrl + [ to behave as an escape key like in vim
