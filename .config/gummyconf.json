@@ -4,6 +4,10 @@
         "poll_ms": 5000,
         "scale": 1.0
     },
+    "gamma": {
+        "enabled": 1,
+        "refresh_s": 10
+    },
     "screenlight": {
         "adaptation_ms": 5000,
         "poll_ms": 200,
