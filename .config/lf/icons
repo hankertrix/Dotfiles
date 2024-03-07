@@ -25,39 +25,15 @@ fi             # FILE
 
 # Named files
 *COPYING                   󰯂
-*COPYING.txt               󰯂
 *LICENSE                   󰯂
-*LICENSE.txt               󰯂
 *LICENCE                   󰯂
+*COPYING.txt               󰯂
+*LICENSE.txt               󰯂
 *LICENCE.txt               󰯂
-*copying                   󰯂
-*copying.txt               󰯂
-*license                   󰯂
-*license.txt               󰯂
-*licence                   󰯂
-*licence.txt               󰯂
 *Containerfile             󰡨
 *Dockerfile                󰡨
-*Dockerfile-compose.yml    󰡨
-*gruntfile.coffee          
-*gruntfile.js              
-*gruntfile.ls              
-*gulpfile.coffee           
-*gulpfile.js               
-*gulpfile.ls               
-*mix.lock                  
-*dropbox                   
-*favicon.ico               
-*react.jsx                 
-*procfile                  
-*dockerfile                󰡨
-*docker-compose.yml        󰡨
-*rakefile                  
-*config.ru                 
-*gemfile                   
-*makefile                  ⚙
-*cmakelists.txt            ⚙
-*robots.txt                󰚩
+*Docker-compose.yml        󰡨
+*Docker-compose.yaml       󰡨
 *Gruntfile.coffee          
 *Gruntfile.js              
 *Gruntfile.ls              
@@ -67,12 +43,42 @@ fi             # FILE
 *Dropbox                   
 *React.jsx                 
 *Procfile                  
-*Dockerfile                󰡨
-*Docker-compose.yml        󰡨
-*Rakefile                  
-*Gemfile                   
 *Makefile                  ⚙
 *CMakeLists.txt            ⚙
+*Rakefile                  
+*Gemfile                   
+
+
+# Lowercased named files
+*copying                   󰯂
+*license                   󰯂
+*licence                   󰯂
+*copying.txt               󰯂
+*license.txt               󰯂
+*licence.txt               󰯂
+*containerfile             󰡨
+*dockerfile                󰡨
+*docker-compose.yml        󰡨
+*docker-compose.yaml       󰡨
+*compose.yml               󰡨
+*compose.yaml              󰡨
+*gruntfile.coffee          
+*gruntfile.js              
+*gruntfile.ls              
+*gulpfile.coffee           
+*gulpfile.js               
+*gulpfile.ls               
+*dropbox                   
+*react.jsx                 
+*procfile                  
+*makefile                  ⚙
+*cmakelists.txt            ⚙
+*rakefile                  
+*gemfile                   
+*config.ru                 
+*robots.txt                󰚩
+*favicon.ico               
+*mix.lock                  
 
 
 # Programming and text files
