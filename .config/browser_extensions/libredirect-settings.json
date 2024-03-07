@@ -40,9 +40,9 @@
     "instance": "public"
   },
   "nitter": [
-    "https://farside.link",
     "https://nitter.privacydev.net",
-    "https://nitter:nitter@nitter.nixnet.services"
+    "https://nitter:nitter@nitter.nixnet.services",
+    "https://nitter.tiekoetter.com"
   ],
   "twitch": {
     "enabled": false,
@@ -62,17 +62,17 @@
     "redirectType": "main_frame"
   },
   "proxiTok": [
-    "https://farside.link"
+    "https://proxitok.privacydev.net"
   ],
   "instagram": {
-    "enabled": true,
+    "enabled": false,
     "frontend": "proxigram",
     "unsupportedUrls": "bypass",
     "instance": "public",
     "redirectType": "main_frame"
   },
   "proxigram": [
-    "https://farside.link"
+    "https://ig.opnxng.com"
   ],
   "reddit": {
     "enabled": true,
@@ -82,8 +82,9 @@
     "redirectType": "main_frame"
   },
   "libreddit": [
-    "https://farside.link",
-    "https://libreddit.privacydev.net"
+    "https://libreddit.privacydev.net",
+    "https://libreddit.pussthecat.org",
+    "https://libreddit.northboot.xyz"
   ],
   "teddit": [
     "https://teddit.net"
@@ -96,7 +97,7 @@
     "instance": "public"
   },
   "rimgo": [
-    "https://farside.link"
+    "https://rimgo.pussthecat.org"
   ],
   "pixiv": {
     "enabled": false,
