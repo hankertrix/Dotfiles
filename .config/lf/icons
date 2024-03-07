@@ -141,8 +141,8 @@ fi             # FILE
 *.xcplayground    
 *.kdl             
 *.txt             
-*.yaml            
 *.yml             
+*.yaml            
 *.json            
 *.bson            
 *.md              
@@ -510,6 +510,7 @@ Vagrantfile             
 *_vimrc            
 *_gvimrc           
 *.gitlab-ci.yml    
+*.gitlab-ci.yaml   
 
 
 # Directories
