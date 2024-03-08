@@ -65,14 +65,15 @@
     "https://proxitok.privacydev.net"
   ],
   "instagram": {
-    "enabled": false,
+    "enabled": true,
     "frontend": "proxigram",
     "unsupportedUrls": "bypass",
     "instance": "public",
     "redirectType": "main_frame"
   },
   "proxigram": [
-    "https://ig.opnxng.com"
+    "https://proxigram.lunar.icu",
+    "https://gram.whatever.social"
   ],
   "reddit": {
     "enabled": true,
@@ -84,7 +85,8 @@
   "libreddit": [
     "https://libreddit.privacydev.net",
     "https://libreddit.pussthecat.org",
-    "https://libreddit.northboot.xyz"
+    "https://l.opnxng.com",
+    "https://reddit.invak.id"
   ],
   "teddit": [
     "https://teddit.net"
