@@ -7,10 +7,35 @@ local utils = require("utils")
 local function setup()
 
     -- Stops executing if the package isn't installed
-    if not utils.status_ok("mason") then return end
+    if not utils.status_ok({ "mason", "mason-tool-installer" }) then return end
 
     -- Set up Mason
     require("mason").setup()
+
+    -- Set up Mason tool installer
+    require("mason-tool-installer").setup {
+
+        -- Ensure that these packages are always installed
+        ensure_installed = {
+
+            -- LSPs
+            "lua_ls",           -- Lua
+            "pylsp",            -- Python
+            "tsserver",         -- TypeScript and JavaScript
+            "eslint",           -- TypeScript and the JavaScript ecosystem
+            "rust_analyzer",    -- Rust
+            "bashls",           -- Bash and shell
+            "taplo",            -- TOML
+            "ltex",             -- English checker
+
+            -- Formatters
+            "stylua",           -- Lua formatter
+            "prettierd",        -- JavaScript ecosystem formatter
+
+            -- Linters
+            "cspell"            -- English checker within code
+        },
+    }
 
 end
 
@@ -21,5 +46,12 @@ return {
     config = setup,
     lazy = true,
     cond = utils.firenvim_not_active,
-    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    cmd = {
+        "Mason",
+        "MasonInstall",
+        "MasonUninstall",
+        "MasonUninstallAll",
+        "MasonLog"
+    },
 }
