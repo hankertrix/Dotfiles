@@ -90,20 +90,10 @@ local function setup()
     -- Set up mason lsp config
     require("mason-lspconfig").setup {
 
-        -- Make sure the listed servers are always installed
-        ensure_installed = {
-            "lua_ls",           -- Lua
-            "pylsp",            -- Python
-            "tsserver",         -- TypeScript and JavaScript
-            "eslint",           -- TypeScript and the JavaScript ecosystem
-            "rust_analyzer",    -- Rust
-            "bashls",           -- Bash and shell
-            "taplo",            -- TOML
-            "ltex",             -- English checker
-        },
-
-        -- Use lsp-zero's default setup for all servers
+        -- The handlers for the various LSPs
         handlers = {
+
+            -- Use lsp-zero's default setup for all servers
             lsp.default_setup,
 
             -- Configure lua ls
