@@ -26,6 +26,12 @@ local function setup()
         -- The actual configuration for CSpell
         config = {
 
+            -- The function to get the location of the
+            -- CSpell configuration file
+            find_json = function(_)
+                return vim.fn.expand("~/.config/cspell.json")
+            end,
+
             -- Format the JSON file when adding to the CSpell config file
             on_add_to_json = function(payload)
                 os.execute(
