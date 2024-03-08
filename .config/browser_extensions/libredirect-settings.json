@@ -65,7 +65,7 @@
     "https://proxitok.privacydev.net"
   ],
   "instagram": {
-    "enabled": true,
+    "enabled": false,
     "frontend": "proxigram",
     "unsupportedUrls": "bypass",
     "instance": "public",
