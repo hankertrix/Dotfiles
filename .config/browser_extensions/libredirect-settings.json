@@ -62,7 +62,10 @@
     "redirectType": "main_frame"
   },
   "proxiTok": [
-    "https://proxitok.privacydev.net"
+    "https://proxitok.privacydev.net",
+    "https://proxitok.pussthecat.org",
+    "https://cringe.whatever.social",
+    "https://proxitok.lunar.icu"
   ],
   "instagram": {
     "enabled": false,
