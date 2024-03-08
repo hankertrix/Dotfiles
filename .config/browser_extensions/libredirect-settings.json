@@ -132,7 +132,7 @@
     "https://md.vern.cc"
   ],
   "quora": {
-    "enabled": true,
+    "enabled": false,
     "unsupportedUrls": "bypass",
     "frontend": "quetre",
     "instance": "public",
@@ -140,7 +140,9 @@
   },
   "quetre": [
     "https://quetre.pussthecat.org",
-    "https://quetre.privacydev.net"
+    "https://quetre.privacydev.net",
+    "https://quetre.iket.me",
+    "https://quetre.lunar.icu"
   ],
   "imdb": {
     "enabled": false,
