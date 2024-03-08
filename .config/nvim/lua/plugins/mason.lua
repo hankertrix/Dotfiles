@@ -18,7 +18,7 @@ local function setup()
         -- Ensure that these packages are always installed
         ensure_installed = {
 
-            -- LSPs
+            -- LSP servers
             "lua_ls",           -- Lua
             "pylsp",            -- Python
             "tsserver",         -- TypeScript and JavaScript
