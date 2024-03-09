@@ -399,6 +399,8 @@
 
 (electric-pair-mode 1)
 
+(setq dabbrev-case-fold-search nil)
+
 (setq whitespace-style '(
 
                          ;; Enable highlighting of whitespace

@@ -20,6 +20,7 @@
   - [[#backups][Backups]]
   - [[#emacs-interface][Emacs Interface]]
   - [[#indentation-and-brackets][Indentation and brackets]]
+  - [[#search][Search]]
 - [[#whitespace-mode][Whitespace Mode]]
 - [[#beautifying-emacs][Beautifying Emacs]]
   - [[#theme][Theme]]
@@ -609,6 +610,13 @@ Set a default indentation of 4 spaces.
 Electric pair mode is a mode to auto close brackets.
 #+begin_src emacs-lisp
 (electric-pair-mode 1)
+#+end_src
+
+
+** Search
+Make Dabbrev completions case-sensitive.
+#+begin_src emacs-lisp
+(setq dabbrev-case-fold-search nil)
 #+end_src
 
 
