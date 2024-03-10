@@ -8,173 +8,150 @@
 # Use the smart enter for the l key
 [[manager.prepend_keymap]]
 on   = [ "l" ]
-exec = "plugin --sync smart-enter"
+run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 
 # Use the smart enter for the <Enter> key
 [[manager.prepend_keymap]]
 on   = [ "<Enter>" ]
-exec = "plugin --sync smart-enter"
+run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
-
-# Use Ctrl + [ to behave as an escape key like in vim
-[[manager.prepend_keymap]]
-on   = [ "<C-[>" ]
-exec = "escape"
-desc = "Exit visual mode, clear selected, or cancel search"
 
 
 # Use u to unselect and unyank all files
 [[manager.prepend_keymap]]
 on   = [ "u" ]
-exec = ["select_all --state=false", "unyank"]
+run  = ["select_all --state=false", "unyank"]
 desc = "Unselect all files and also unyank cut files"
 
 
 # Use d to cut files
 [[manager.prepend_keymap]]
 on   = [ "d" ]
-exec = "yank --cut"
+run  = "yank --cut"
 desc = "Cut the selected files"
 
 
 # Use K to move up in the parent directory
 [[manager.prepend_keymap]]
 on   = [ "K" ]
-exec = [ "leave", "escape --visual --select", "arrow -1", "enter" ]
+run  = [ "leave", "escape --visual --select", "arrow -1", "enter" ]
 desc = "Move up in the parent directory"
 
 
 # Use J to move down in the parent directory
 [[manager.prepend_keymap]]
 on   = [ "J" ]
-exec = [ "leave", "escape --visual --select", "arrow 1", "enter" ]
+run  = [ "leave", "escape --visual --select", "arrow 1", "enter" ]
 desc = "Move down in the parent directory"
 
 
 # Use _ to create a new file or directory
 [[manager.prepend_keymap]]
 on   = [ "_" ]
-exec = "create"
+run  = "create"
 desc = "Create a file or directory (ends with / for directories)"
 
 
 # Use + to create a new file or directory
 [[manager.prepend_keymap]]
 on   = [ "+" ]
-exec = "create"
+run  = "create"
 desc = "Create a file or directory (ends with / for directories)"
 
 
 # Use x to delete files permanently
 [[manager.prepend_keymap]]
 on   = [ "x" ]
-exec = "remove --permanently"
+run  = "remove --permanently"
 desc = "Permanently delete the files"
 
 
 # Use X to move files to the trash
 [[manager.prepend_keymap]]
 on   = [ "X" ]
-exec = "remove"
+run  = "remove"
 desc = "Move the files to the trash"
 
 
 # Use Ctrl + s to open a shell in the current directory
 [[manager.prepend_keymap]]
 on   = [ "<C-s>" ]
-exec = 'shell "$SHELL" --block --confirm'
+run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 
 
 # Use z to jump to a directory using fzf, since I don't use zoxide
 [[manager.prepend_keymap]]
 on   = [ "z" ]
-exec = "jump fzf"
+run  = "jump fzf"
 desc = "Jump to a directory, or reveal a file using fzf"
 
 
 # Use ec to go to the config directory for yazi
 [[manager.prepend_keymap]]
 on   = [ "e", "c" ]
-exec = "cd ~/.config/yazi/"
+run  = "cd ~/.config/yazi/"
 desc = "Edit the Yazi configuration"
 
 
 # Use o to open a file using the editor
 [[manager.prepend_keymap]]
 on   = [ "o" ]
-exec = 'shell "$EDITOR $@" --block --confirm'
+run  = 'shell "$EDITOR $@" --block --confirm'
 desc = "Open files with the default editor"
 
 
 # Use i to open a file using the pager
 [[manager.prepend_keymap]]
 on   = [ "i" ]
-exec = 'shell "$PAGER $@" --block --confirm'
+run  = 'shell "$PAGER $@" --block --confirm'
 desc = "Open files with the default pager"
 
 
 # Use I to rename files with the cursor at the start of the file name
 [[manager.prepend_keymap]]
 on   = [ "I" ]
-exec = "rename --cursor=start"
+run  = "rename --cursor=start"
 desc = "Rename file at the start of the file name"
 
 
 # Use A to rename files with the cursor at the end of the file name
 [[manager.prepend_keymap]]
 on   = [ "A" ]
-exec = "rename --cursor=end"
+run  = "rename --cursor=end"
 desc = "Rename file with the cursor at the end of the file name"
 
 
 # Use cw to remove the file name when renaming
 [[manager.prepend_keymap]]
 on   = [ "c", "w" ]
-exec = "rename --empty=stem --cursor=start"
+run  = "rename --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
 
 
 # Use C to remove the whole file name when renaming
 [[manager.prepend_keymap]]
 on   = [ "C" ]
-exec = "rename --empty=all"
+run  = "rename --empty=all"
 desc = "Rename file and remove the whole file name"
 
 
 # Use R to remove the whole file name when renaming
 [[manager.prepend_keymap]]
 on   = [ "R" ]
-exec = "rename --empty=all"
+run  = "rename --empty=all"
 desc = "Rename file and remove the whole file name"
-
-
-
-
-# Tasks keymaps
-
-# Use Ctrl + [ to behave as an escape key like in vim
-[[tasks.prepend_keymap]]
-on   = [ "<C-[>" ]
-exec = "close"
-desc = "Hide the task manager"
 
 
 
 
 # Selection keymaps
 
-# Use Ctrl + [ to behave as an escape key like in vim
-[[select.prepend_keymap]]
-on   = [ "<C-[>" ]
-exec = "close"
-desc = "Cancel selection"
-
 # Use q to close the selection menu
 [[select.prepend_keymap]]
 on   = [ "q" ]
-exec = "close"
+run  = "close"
 desc = "Cancel selection"
 
 
@@ -182,42 +159,8 @@ desc = "Cancel selection"
 
 # Input keymaps
 
-# Use Ctrl + [ to behave as an escape key like in vim
-[[input.prepend_keymap]]
-on   = [ "<C-[>" ]
-exec = "escape"
-desc = "Go back the normal mode, or cancel input"
-
 # Use ^ to move to the beginning of the line, like in vim
 [[input.prepend_keymap]]
 on   = [ "^" ]
-exec = "move -999"
+run  = "move -999"
 desc = "Move to the BOL"
-
-
-
-
-# Completion keymaps
-
-# Use Ctrl + p to move the cursor up
-[[completion.prepend_keymap]]
-on   = [ "<C-p>" ]
-exec = "arrow -1"
-desc = "Move cursor up"
-
-# Use Ctrl + n to move the cursor down
-[[completion.prepend_keymap]]
-on   = [ "<C-n>" ]
-exec = "arrow 1"
-desc = "Move cursor down"
-
-
-
-
-# Help keymaps
-
-# Use Ctrl + [ to behave as an escape key like in vim
-[[help.prepend_keymap]]
-on   = [ "<C-[>" ]
-exec = "escape"
-desc = "Clear the filter, or hide the help"

@@ -27,7 +27,7 @@ max_height = 3000
 # Configuration for the openers
 [opener]
 emacs = [
-    { exec = 'emacs "$@"', block = false, desc = "Open in Emacs" }
+    { run = 'emacs "$@"', block = false, desc = "Open in Emacs" }
 ]
 
 
