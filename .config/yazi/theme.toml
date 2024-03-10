@@ -2,12 +2,19 @@
 # The theme for the file manager
 [manager]
 
-# Set the hover colour to be more readable
-hovered = { bg = "blue", fg = "white", reversed = false }
-# hovered = { bg = "white", fg = "blue", reversed = true }
-
 # Remove the borders
 border_symbol = " "
+
+# Set the marker colours to match Neovim ones
+marker_copied   = { fg = "lightyellow", bg = "lightyellow" }
+marker_cut      = { fg = "lightred"   , bg = "lightred" }
+marker_marked   = { fg = "#3fc56b"    , bg = "#3fc56b" }
+marker_selected = { fg = "#10b1fe"    , bg = "#10b1fe" }
+
+# Set the colour of the count display
+count_copied   = { fg = "black", bg = "lightyellow" }
+count_cut      = { fg = "black", bg = "lightred" }
+count_selected = { fg = "black", bg = "#10b1fe" }
 
 
 # The theme for the status bar
