@@ -1,5 +1,5 @@
 
-# The theme for the file manager
+# Th theme for the file manager
 [manager]
 
 # Remove the borders
@@ -60,13 +60,10 @@ on = { fg = "#ff936a" }
 
 # Set the colour of the command executed
 # to be the same as the whichkey description colour
-exec = { fg = "#10b1fe" }
+run = { fg = "#10b1fe" }
 
 # Set the description to be a more muted white colour
 desc = { fg = "#b9c0cb" }
-
-# Set the hovered colour to the Neovim default hovered colour
-hovered = { bg = "#274670", bold = true }
 
 # Set the footer to be a dark background with the more muted white text
 footer = { bg = "#282c34", fg = "#b9c0cb" }
