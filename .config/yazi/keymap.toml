@@ -95,17 +95,33 @@ run  = "cd ~/.config/yazi/"
 desc = "Edit the Yazi configuration"
 
 
-# Use o to open a file using the editor
+# Use o to open files using the editor
 [[manager.prepend_keymap]]
 on   = [ "o" ]
-run  = 'shell "$EDITOR $@" --block --confirm'
+run  = '''
+shell "
+# Check if the hovered file is selected
+if printf '%s\0' \"$@\" | grep -Fxqz -- \"$0\"; then
+    $EDITOR $@
+else
+    $EDITOR $0
+fi" --block --confirm
+'''
 desc = "Open files with the default editor"
 
 
-# Use i to open a file using the pager
+# Use i to open files using the pager
 [[manager.prepend_keymap]]
 on   = [ "i" ]
-run  = 'shell "$PAGER $@" --block --confirm'
+run  = '''
+shell "
+# Check if the hovered file is selected
+if printf '%s\0' \"$@\" | grep -Fxqz -- \"$0\"; then
+    $PAGER $@
+else
+    $PAGER $0
+fi" --block --confirm
+'''
 desc = "Open files with the default pager"
 
 
