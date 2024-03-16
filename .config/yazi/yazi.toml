@@ -6,6 +6,9 @@
 # This follows the lf configuration
 ratio = [1, 2, 3]
 
+# Sort naturally
+sort_by = "natural"
+
 # Show directories first
 sort_dir_first = true
 
