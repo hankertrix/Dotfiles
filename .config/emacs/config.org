@@ -1264,6 +1264,9 @@ Helpful is a better help buffer for Emacs that provides more context and details
 Magit is an awesome plugin that provides excellent Git integration in Emacs.
 #+begin_src emacs-lisp
 (use-package magit)
+
+;; Update transient, which is a magit dependency
+(use-package transient)
 #+end_src
 
 
