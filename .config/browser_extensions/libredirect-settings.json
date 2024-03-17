@@ -32,18 +32,6 @@
   "tuboYoutube": [
     "https://tubo.migalmoreno.com"
   ],
-  "twitter": {
-    "enabled": true,
-    "redirectType": "both",
-    "unsupportedUrls": "bypass",
-    "frontend": "nitter",
-    "instance": "public"
-  },
-  "nitter": [
-    "https://nitter.privacydev.net",
-    "https://nitter:nitter@nitter.nixnet.services",
-    "https://nitter.tiekoetter.com"
-  ],
   "twitch": {
     "enabled": false,
     "redirectType": "main_frame",
@@ -102,7 +90,11 @@
     "instance": "public"
   },
   "rimgo": [
-    "https://rimgo.pussthecat.org"
+    "https://rimgo.pussthecat.org",
+    "https://imgur.010032.xyz",
+    "https://rimgo.ducks.party",
+    "https://rimgo.frylo.net",
+    "https://rimgo.eu.projectsegfau.lt"
   ],
   "pixiv": {
     "enabled": false,
@@ -186,7 +178,6 @@
   ],
   "searx": [],
   "whoogle": [],
-  "librex": [],
   "4get": [
     "https://4get.ca"
   ],
@@ -339,7 +330,6 @@
   "theme": "detect",
   "popupServices": [
     "youtube",
-    "twitter",
     "tiktok",
     "imgur",
     "reddit",
@@ -349,8 +339,63 @@
     "instagram"
   ],
   "fetchInstances": "github",
-  "facil": [
-    " https://facilmap.org "
+  "viewtube": [
+    "https://viewtube.io"
   ],
-  "version": "2.8.1"
+  "invidiousMusic": [],
+  "bluesky": {
+    "enabled": false,
+    "unsupportedUrls": "bypass",
+    "frontend": "skyview"
+  },
+  "skyview": [
+    "https://skyview.social"
+  ],
+  "redlib": [
+    "https://safereddit.com"
+  ],
+  "tumblr": {
+    "enabled": false,
+    "redirectType": "main_frame",
+    "unsupportedUrls": "bypass",
+    "frontend": "priviblur",
+    "instance": "public"
+  },
+  "priviblur": [
+    "https://pb.bloat.cat"
+  ],
+  "twineo": [
+    "https://twineo.exozy.me"
+  ],
+  "tekstowo": {
+    "enabled": false,
+    "unsupportedUrls": "bypass",
+    "frontend": "tekstoLibre"
+  },
+  "tekstoLibre": [
+    "https://davilarek.github.io/TekstoLibre"
+  ],
+  "librey": [],
+  "mozhi": [
+    "https://mozhi.aryak.me"
+  ],
+  "meet": {
+    "enabled": false,
+    "unsupportedUrls": "bypass",
+    "frontend": "jitsi"
+  },
+  "jitsi": [],
+  "sendFiles": {
+    "enabled": false,
+    "unsupportedUrls": "bypass",
+    "frontend": "send"
+  },
+  "send": [],
+  "textStorage": {
+    "enabled": false,
+    "unsupportedUrls": "bypass",
+    "frontend": "privateBin"
+  },
+  "privateBin": [],
+  "version": "2.8.2"
 }
