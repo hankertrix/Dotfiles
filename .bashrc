@@ -103,3 +103,5 @@ _open_files_for_editing() {
 # alias pacdiff=eos-pacdiff
 ################################################################################
 
+# Use thefuck to correct commands
+eval "$(thefuck --alias)"
