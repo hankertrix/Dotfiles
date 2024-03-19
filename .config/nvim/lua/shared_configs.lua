@@ -168,6 +168,9 @@ M.lsp_kind_icons = {
 }
 
 
+-- Set the max line length to 80
+M.max_line_length = 80
+
 
 -- Returns the module
 return M

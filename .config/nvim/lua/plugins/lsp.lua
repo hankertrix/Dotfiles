@@ -87,6 +87,9 @@ local function setup()
         vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts, { desc = descriptions["diagnostic_next"] })
     end)
 
+    -- Gets the shared configs file
+    local shared_configs = require("shared_configs")
+
     -- Set up mason lsp config
     require("mason-lspconfig").setup {
 
@@ -173,6 +176,26 @@ local function setup()
                 }
             end,
 
+            -- Configure pylsp
+            pylsp = function()
+                lspconfig.pylsp.setup {
+                    settings = {
+                        plugins = {
+
+                            -- Configure the pycodestyle plugin
+                            pycodestyle = {
+                                maxLineLength = shared_configs.max_line_length
+                            },
+
+                            -- Configure the black plugin
+                            black = {
+                                line_length = shared_configs.max_line_length
+                            }
+                        }
+                    }
+                }
+            end,
+
             -- Configure ltex LSP
             ltex = function()
                 lspconfig.ltex.setup {
@@ -186,9 +209,6 @@ local function setup()
 
         }
     }
-
-    -- Gets the shared configs file
-    local shared_configs = require("shared_configs")
 
     -- Set up the completion sources
     local cmp_sources = {
