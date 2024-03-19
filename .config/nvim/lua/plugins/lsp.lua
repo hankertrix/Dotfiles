@@ -180,16 +180,18 @@ local function setup()
             pylsp = function()
                 lspconfig.pylsp.setup {
                     settings = {
-                        plugins = {
+                        pylsp = {
+                            plugins = {
 
-                            -- Configure the pycodestyle plugin
-                            pycodestyle = {
-                                maxLineLength = shared_configs.max_line_length
-                            },
+                                -- Configure the pycodestyle plugin
+                                pycodestyle = {
+                                    maxLineLength = shared_configs.max_line_length
+                                },
 
-                            -- Configure the black plugin
-                            black = {
-                                line_length = shared_configs.max_line_length
+                                -- Configure the black plugin
+                                black = {
+                                    line_length = shared_configs.max_line_length
+                                }
                             }
                         }
                     }
