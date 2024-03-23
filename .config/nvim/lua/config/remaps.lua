@@ -51,7 +51,7 @@ vim.keymap.set("n", "#", "#zzzv", { desc = "Search the word under the cursor in 
 
 -- Use the Leader key to yank to system clipboard
 vim.keymap.set({"n", "v"}, "<Leader>y", [["+y]], { desc = "Yank to system clipboard" })
-vim.keymap.set("n", "<Leader>Y", [["+Y]], { desc = "Yank till the end of the line to system clipboard" })
+vim.keymap.set("n", "<Leader>Y", [["+y$]], { desc = "Yank till the end of the line to system clipboard" })
 
 -- Deleting something instead of cutting
 vim.keymap.set({"n", "v"}, "<Leader>d", [["_d]], { desc = "Delete" })
