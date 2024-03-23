@@ -88,13 +88,6 @@ run  = "jump fzf"
 desc = "Jump to a directory, or reveal a file using fzf"
 
 
-# Use ec to go to the config directory for yazi
-[[manager.prepend_keymap]]
-on   = [ "e", "c" ]
-run  = "cd ~/.config/yazi/"
-desc = "Edit the Yazi configuration"
-
-
 # Use o to open files using the editor
 [[manager.prepend_keymap]]
 on   = [ "o" ]
@@ -158,6 +151,27 @@ desc = "Rename file and remove the whole file name"
 on   = [ "R" ]
 run  = "rename --empty=all"
 desc = "Rename file and remove the whole file name"
+
+
+# Use ec to go to the config directory for yazi
+[[manager.prepend_keymap]]
+on   = [ "e", "c" ]
+run  = "cd ~/.config/yazi/"
+desc = "Edit the Yazi configuration"
+
+
+# Use gp to go to the project directory
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ]
+run  = "cd ~/projects/"
+desc = "Go to the projects directory"
+
+
+# Use gu to go to school directory
+[[manager.prepend_keymap]]
+on   = [ "g", "u" ]
+run  = "cd ~/school/"
+desc = "Go to the school directory"
 
 
 

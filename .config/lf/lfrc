@@ -413,3 +413,9 @@ map gd cd ~/Downloads/
 
 # Mapping to go to the temporary directory
 map gt cd /tmp/
+
+# Mapping to go to the projects directory
+map gp cd ~/projects/
+
+# Mapping to go to the school directory
+map gu cd ~/school/
