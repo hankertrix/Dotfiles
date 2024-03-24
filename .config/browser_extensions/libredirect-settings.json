@@ -231,7 +231,7 @@
     "https://md.vern.cc"
   ],
   "quora": {
-    "enabled": true,
+    "enabled": false,
     "unsupportedUrls": "bypass",
     "frontend": "quetre",
     "instance": "public",
