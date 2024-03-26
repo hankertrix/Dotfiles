@@ -110,11 +110,11 @@ rules = [
     { name = "*.DOCX",            fg = "#0000ff" },
 
     # Excel sheets
-    { name = "*.ods",  fg = "#00ff00" },
-    { name = "*.xls",  fg = "#00ff00" },
-    { name = "*.XLS",  fg = "#00ff00" },
-    { name = "*.xlsx", fg = "#00ff00" },
-    { name = "*.XLSX", fg = "#00ff00" },
+    { name = "*.ods",  fg = "#3fc56b" },
+    { name = "*.xls",  fg = "#3fc56b" },
+    { name = "*.XLS",  fg = "#3fc56b" },
+    { name = "*.xlsx", fg = "#3fc56b" },
+    { name = "*.XLSX", fg = "#3fc56b" },
 
     # Powerpoint presentations
     { name = "*.odp",  fg = "#f93e00" },
@@ -543,17 +543,17 @@ rules = [
     { name = "*.csv" , text = "", fg = "#89e051" },
     { name = "*.CSV" , text = "", fg = "#89e051" },
     { name = "*.tsv" , text = "", fg = "#89e051" },
-    { name = "*.xlc" , text = "󱎏", fg = "#207245" },
-    { name = "*.xlm" , text = "󱎏", fg = "#207245" },
-    { name = "*.xls" , text = "󱎏", fg = "#207245" },
-    { name = "*.XLS" , text = "󱎏", fg = "#207245" },
-    { name = "*.xlsm", text = "󱎏", fg = "#207245" },
-    { name = "*.XLSM", text = "󱎏", fg = "#207245" },
-    { name = "*.xlsx", text = "󱎏", fg = "#207245" },
-    { name = "*.XLSX", text = "󱎏", fg = "#207245" },
-    { name = "*.xlt" , text = "󱎏", fg = "#207245" },
-    { name = "*.ods" , text = "󱎏", fg = "#207245" },
-    { name = "*.ots" , text = "󱎏", fg = "#207245" },
+    { name = "*.xlc" , text = "󱎏", fg = "#3fc56b" },
+    { name = "*.xlm" , text = "󱎏", fg = "#3fc56b" },
+    { name = "*.xls" , text = "󱎏", fg = "#3fc56b" },
+    { name = "*.XLS" , text = "󱎏", fg = "#3fc56b" },
+    { name = "*.xlsm", text = "󱎏", fg = "#3fc56b" },
+    { name = "*.XLSM", text = "󱎏", fg = "#3fc56b" },
+    { name = "*.xlsx", text = "󱎏", fg = "#3fc56b" },
+    { name = "*.XLSX", text = "󱎏", fg = "#3fc56b" },
+    { name = "*.xlt" , text = "󱎏", fg = "#3fc56b" },
+    { name = "*.ods" , text = "󱎏", fg = "#3fc56b" },
+    { name = "*.ots" , text = "󱎏", fg = "#3fc56b" },
 
 
     # Misc
