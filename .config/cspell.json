@@ -1,6 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-  "version": "0.2",
+  "ignorePaths": [
+    "node_modules"
+  ],
   "language": "en-GB",
-  "ignorePaths": ["node_modules"]
+  "version": "0.2",
+  "words": [
+    "bezier"
+  ]
 }
