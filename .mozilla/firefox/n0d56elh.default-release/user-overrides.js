@@ -59,6 +59,9 @@ user_pref("dom.vr.openvr.enabled", false);
 user_pref("dom.vr.osvr.enabled", false);
 user_pref("dom.vr.puppet.enabled", false);
 
+// Stop the pop-up to add applications for mailto: links
+user_pref("network.protocol-handler.external.mailto", false);
+
 // Set Quad9 as the DNS provider
 user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 
