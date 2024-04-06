@@ -148,7 +148,7 @@ fi             # FILE
 *.md              
 *.conf            ⚙
 *.ini             ⚙
-*.toml            ⚙
+*.toml            
 *.styl            
 *.slim            
 *.haml            

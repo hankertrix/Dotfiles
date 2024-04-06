@@ -293,7 +293,7 @@ rules = [
     { name = "*.bson"        , text = "", fg = "#cbcb41" },
     { name = "*.conf"        , text = "⚙", fg = "#6d8086" },
     { name = "*.ini"         , text = "⚙", fg = "#6d8086" },
-    { name = "*.toml"        , text = "⚙" },
+    { name = "*.toml"        , text = "" },
     { name = "*.md"          , text = "" },
     { name = "*.styl"        , text = "" },
     { name = "*.slim"        , text = "" },
