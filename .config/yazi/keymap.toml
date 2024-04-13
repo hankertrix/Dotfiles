@@ -19,9 +19,9 @@ run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 
 
-# Use the smart enter for the <Left> key
+# Use the smart enter for the <Right> key
 [[manager.prepend_keymap]]
-on   = [ "<Left>" ]
+on   = [ "<Right>" ]
 run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 
