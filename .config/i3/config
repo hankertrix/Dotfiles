@@ -201,11 +201,11 @@ bindsym $mod+F1 exec ~/.config/i3/scripts/keyhint-2
 #bindsym XF86MonBrightnessUp exec xbacklight +10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 #bindsym XF86MonBrightnessDown exec xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # Backlight setting using dunst osc
-#bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
-#bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
 # Backlight setting using gummy
-bindsym XF86MonBrightnessUp exec --no-startup-id gummy -b +5
-bindsym XF86MonBrightnessDown exec --no-startup-id gummy -b -5
+# bindsym XF86MonBrightnessUp exec --no-startup-id gummy -b +5
+# bindsym XF86MonBrightnessDown exec --no-startup-id gummy -b -5
 # Backlight setting using brightnessctl
 #bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
 #bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=0 -q set 5%-

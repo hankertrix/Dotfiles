@@ -20,8 +20,28 @@ function get_mute {
 }
 
 # Uses regex to get brightness from xbacklight
-function get_brightness {
+function get_brightness_xbacklight {
     xbacklight | grep -Po '[0-9]{1,3}' | head -n 1
+}
+
+# Uses regex to get brightness from gummyconf.json file
+function get_brightness {
+
+    # Get the backlight settings from the gummyconf.json file
+    backlight_settings=$(sed -n '/backlight/,$p' ~/.config/gummyconf.json)
+
+    # Get the max value of the backlight
+    max_value=$(echo "$backlight_settings" |
+        sed -nr 's/^.*max[": \t]*([0-9]+).*$/\1/p' |
+        head -n 1)
+
+    # Get the current value of the backlight
+    current_value=$(echo "$backlight_settings" |
+        sed -nr 's/^.*val[": \t]*([0-9]+).*$/\1/p' |
+        head -n 1)
+
+    # Print the current value as a percentage of the maximum value
+    echo $((current_value * 100 / max_value))
 }
 
 # Returns a mute icon, a volume-low icon, or a volume-high icon, depending on the volume
@@ -46,14 +66,14 @@ function get_brightness_icon {
 function show_volume_notif {
     volume=$(get_mute)
     get_volume_icon
-    dunstify -i audio-volume-muted-blocking -t 1000 -r 2593 -u normal "$volume_icon  $volume%" -h int:value:$volume -h string:hlcolor:$bar_color
+    dunstify -t 1000 -r 2593 -u normal "$volume_icon    $volume%" -h int:value:$volume -h string:hlcolor:$bar_color
 }
 
 # Displays a brightness notification using dunstify
 function show_brightness_notif {
     brightness=$(get_brightness)
     get_brightness_icon
-    dunstify -t 1000 -r 2593 -u normal "$brightness_icon $brightness%" -h int:value:$brightness -h string:hlcolor:$bar_color
+    dunstify -t 1000 -r 2593 -u normal "$brightness_icon   $brightness%" -h int:value:$brightness -h string:hlcolor:$bar_color
 }
 
 # Main function - Takes user input, "volume_up", "volume_down", "brightness_up", or "brightness_down"
@@ -84,13 +104,15 @@ case $1 in
 
     brightness_up)
     # Increases brightness and displays the notification
-    xbacklight -inc $brightness_step -time 0 
+    # xbacklight -inc $brightness_step -time 0
+    gummy -b +5
     show_brightness_notif
     ;;
 
     brightness_down)
     # Decreases brightness and displays the notification
-    xbacklight -dec $brightness_step -time 0
+    # xbacklight -dec $brightness_step -time 0
+    gummy -b -5
     show_brightness_notif
     ;;
 esac
