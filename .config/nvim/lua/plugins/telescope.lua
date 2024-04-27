@@ -5,17 +5,20 @@ local utils = require("utils")
 
 -- The table of descriptions
 local descriptions = {
-    find_file = "Find files with Telescope",
+    find_file = "Find files using Telescope",
     search_string = "Search within files for a given string using Telescope",
-    search_marked_file = "Search marked files",
-    search_code_symbols = "Search code symbols",
+    regex_search = "Search within files using the given regex using Telescope",
+    search_marked_file = "Search marked files using Telescope",
+    search_code_symbols = "Search code symbols using Telescope",
 }
 
 -- Function to set up telescope
 local function setup()
 
     -- Stops executing if the packages aren't installed
-    if not utils.status_ok("telescope", "trouble.providers.telescope") then return end
+    if not utils.status_ok("telescope", "trouble.providers.telescope") then
+        return
+    end
 
     -- Gets the telescope module
     local telescope = require("telescope")
