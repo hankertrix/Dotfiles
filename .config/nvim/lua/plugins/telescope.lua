@@ -26,16 +26,32 @@ local function setup()
     -- Gets the trouble module
     local trouble = require("trouble.providers.telescope")
 
-
-    -- Set up telescope with trouble
-    telescope.setup {
+    -- Set up telescope
+    telescope.setup({
         defaults = {
+
+            -- The default vimgrep arguments
+            -- Add the hidden flag to find hidden files as well
+            -- Add the trim flag to remove the indentation when searching
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--hidden",
+                "--trim",
+            },
+
+            -- Mappings to open the Telescope results with trouble
             mappings = {
                 i = { ["<C-t>"] = trouble.open_with_trouble },
-                n = { ["<C-t>"] = trouble.open_with_trouble }
-            }
-        }
-    }
+                n = { ["<C-t>"] = trouble.open_with_trouble },
+            },
+        },
+    })
 
     -- Loads the fzf native extension
     telescope.load_extension("fzf")
@@ -50,17 +66,40 @@ local function setup()
     local builtin = require("telescope.builtin")
 
     -- Key maps that use the telescope fuzzy finder
-    vim.keymap.set("n", "<Leader>pf", builtin.find_files, { desc = descriptions["find_file"] })
-    vim.keymap.set("n", "<Leader>ps", function()
-        builtin.grep_string({ search = vim.fn.input("Grep > ") });
-    end, { desc = descriptions["search_string"] })
+    vim.keymap.set(
+        "n",
+        "<Leader>pf",
+        builtin.find_files,
+        { desc = descriptions["find_file"] }
+    )
+    vim.keymap.set(
+        "n",
+        "<Leader>ps",
+        builtin.live_grep,
+        { desc = descriptions["search_string"] }
+    )
+    vim.keymap.set(
+        "n",
+        "<Leader>pr",
+        builtin.live_grep({ additional_args = { "--pcre2" } }),
+        { desc = descriptions["regex_search"] }
+    )
 
     -- Key map to search files that have been marked by harpoon
-    vim.keymap.set("n", "<Leader>ph", telescope.extensions.harpoon.marks, { desc = descriptions["search_marked_file"] })
+    vim.keymap.set(
+        "n",
+        "<Leader>ph",
+        telescope.extensions.harpoon.marks,
+        { desc = descriptions["search_marked_file"] }
+    )
 
     -- Key map to search for code symbols
-    vim.keymap.set("n", "<Leader>pa", telescope.extensions.aerial.aerial, { desc = descriptions["search_code_symbols"] })
-
+    vim.keymap.set(
+        "n",
+        "<Leader>pa",
+        telescope.extensions.aerial.aerial,
+        { desc = descriptions["search_code_symbols"] }
+    )
 end
 
 -- Returns the telescope plugin for lazy.nvim
@@ -74,15 +113,19 @@ return {
     keys = {
         { "<Leader>pf", mode = "n", desc = descriptions["find_file"] },
         { "<Leader>ps", mode = "n", desc = descriptions["search_string"] },
+        { "<Leader>ps", mode = "n", desc = descriptions["regex_search"] },
         { "<Leader>ph", mode = "n", desc = descriptions["search_marked_file"] },
-        { "<Leader>pa", mode = "n", desc = descriptions["search_code_symbols"] }
+        {
+            "<Leader>pa",
+            mode = "n",
+            desc = descriptions["search_code_symbols"],
+        },
     },
     dependencies = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "aerial.nvim",
         "harpoon",
-        "trouble.nvim"
-    }
+        "trouble.nvim",
+    },
 }
-
