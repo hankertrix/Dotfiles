@@ -79,7 +79,7 @@ Highlighting and removing trailing spaces and new lines - [mini.trailspace](http
 
 Marking files for quick access - [Harpoon](https://github.com/ThePrimeagen/harpoon)
 
-File explorer - [mini.files](https://github.com/echasnovski/mini.files)
+File explorer - [yazi.nvim](https://github.com/mikavilpas/yazi.nvim)
 
 Fuzzy finder - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) with [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 
@@ -110,8 +110,9 @@ VimBeGood game - [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
 
 ### External programs
 
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [fd](https://github.com/sharkdp/fd)
+- [ripgrep (for searching within files)](https://github.com/BurntSushi/ripgrep)
+- [fd (for finding files)](https://github.com/sharkdp/fd)
+- [yazi (terminal file manager)](https://github.com/sxyazi/yazi)
 - [gcc](https://gcc.gnu.org/)
 - [python (for installing `pylsp`)](https://www.python.org/)
 - [npm (for installing JavaScript ecosystem tools, like `prettierd`, `eslint_d`, `tsserver`, etc.)](https://www.npmjs.com/)
