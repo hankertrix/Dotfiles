@@ -7,7 +7,6 @@ local utils = require("utils")
 local descriptions = {
     find_file = "Find files using Telescope",
     search_string = "Search within files for a given string using Telescope",
-    regex_search = "Search within files using the given regex using Telescope",
     search_marked_file = "Search marked files using Telescope",
     search_code_symbols = "Search code symbols using Telescope",
 }
@@ -78,12 +77,6 @@ local function setup()
         builtin.live_grep,
         { desc = descriptions["search_string"] }
     )
-    vim.keymap.set(
-        "n",
-        "<Leader>pr",
-        builtin.live_grep({ additional_args = { "--pcre2" } }),
-        { desc = descriptions["regex_search"] }
-    )
 
     -- Key map to search files that have been marked by harpoon
     vim.keymap.set(
@@ -113,7 +106,6 @@ return {
     keys = {
         { "<Leader>pf", mode = "n", desc = descriptions["find_file"] },
         { "<Leader>ps", mode = "n", desc = descriptions["search_string"] },
-        { "<Leader>ps", mode = "n", desc = descriptions["regex_search"] },
         { "<Leader>ph", mode = "n", desc = descriptions["search_marked_file"] },
         {
             "<Leader>pa",
