@@ -78,6 +78,7 @@ end
 -- Returns the none-ls plugin to lazy.nvim
 return {
     "nvimtools/none-ls.nvim",
+    cond = utils.firenvim_not_active,
     config = setup,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     lazy = true,
