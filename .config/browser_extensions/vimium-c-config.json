@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "25/02/2024, 3:16:32 pm",
-	"time": 1708845392844,
+	"@time": "05/05/2024, 2:06:21 pm",
+	"time": 1714889181501,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
-		"firefox": 123
+		"firefox": 125
 	},
 	"exclusionRules": [
 		{
@@ -107,6 +107,6 @@
 		"js\\:|Js: javascript:\\ $S; JavaScript",
 		""
 	],
-	"searchUrl": "https://search.brave.com/search?q=$s Brave",
+	"searchUrl": "https://duckduckgo.com/?q=$s DuckDuckGo",
 	"vimSync": true
 }
