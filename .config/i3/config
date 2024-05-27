@@ -171,7 +171,7 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+space exec kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -252,7 +252,7 @@ bindsym $mod+u layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Return focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
