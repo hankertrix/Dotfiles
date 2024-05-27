@@ -92,7 +92,7 @@ desc = "Open shell here"
 # Use z to jump to a directory using fzf, since I don't use zoxide
 [[manager.prepend_keymap]]
 on   = [ "z" ]
-run  = "jump fzf"
+run  = "plugin fzf"
 desc = "Jump to a directory, or reveal a file using fzf"
 
 
