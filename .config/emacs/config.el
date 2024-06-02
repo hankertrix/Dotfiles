@@ -270,8 +270,7 @@
 
   ;; Key binds in lsp mode
   (hankertrix/leader-keys
-    "tt" '(flycheck-list-errors :wk "List all the errors in the current buffer")
-    "tw" '(flycheck-list-errors :wk "List all the errors in the current buffer")
+    "tr" '(flycheck-list-errors :wk "List all the errors in the current buffer")
     "tb" '(flycheck-list-errors :wk "List all the errors in the current buffer")
     )
 
