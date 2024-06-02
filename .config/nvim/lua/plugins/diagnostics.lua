@@ -12,7 +12,7 @@ local function setup()
 
     -- Set up the diagnostics plugin
     require("trouble").setup({
-        signs = require("shared_configs").lsp_kind_icons,
+        kinds = require("shared_configs").lsp_kind_icons,
     })
 end
 
@@ -25,50 +25,32 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         {
-            "<Leader>tt",
-            function()
-                require("trouble").toggle()
-            end,
+            "<Leader>tr",
+            "<cmd>Trouble diagnostics toggle<cr>",
             mode = "n",
             desc = "Toggles the Trouble window",
         },
         {
-            "<Leader>tw",
-            function()
-                require("trouble").toggle("workspace_diagnostics")
-            end,
-            mode = "n",
-            desc = "Display diagnostics for all open buffers in a Trouble window",
-        },
-        {
             "<Leader>tb",
-            function()
-                require("trouble").toggle("document_diagnostics")
-            end,
+            "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
             mode = "n",
             desc = "Display buffer diagnostics in a Trouble window",
         },
         {
             "<Leader>tq",
-            function()
-                require("trouble").toggle("quickfix")
-            end,
+            "<cmd>Trouble qflist toggle<cr>",
             mode = "n",
             desc = "Display quick fix items in a Trouble window",
         },
         {
             "<Leader>tl",
-            function()
-                require("trouble").toggle("loclist")
-            end,
+            "<cmd>Trouble loclist toggle<cr>",
             mode = "n",
             desc = "Display the window's location list items in a Trouble window",
         },
         {
             "gR",
-            function()
-                require("trouble").toggle("lsp_references")
-            end,
+            "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
             mode = "n",
             desc = "Display all references in a Trouble window",
         },

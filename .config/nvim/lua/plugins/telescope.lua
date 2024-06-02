@@ -15,7 +15,7 @@ local descriptions = {
 local function setup()
 
     -- Stops executing if the packages aren't installed
-    if not utils.status_ok("telescope", "trouble.providers.telescope") then
+    if not utils.status_ok("telescope", "trouble.sources.telescope") then
         return
     end
 
@@ -23,7 +23,7 @@ local function setup()
     local telescope = require("telescope")
 
     -- Gets the trouble module
-    local trouble = require("trouble.providers.telescope")
+    local trouble = require("trouble.sources.telescope")
 
     -- Set up telescope
     telescope.setup({
@@ -46,8 +46,8 @@ local function setup()
 
             -- Mappings to open the Telescope results with trouble
             mappings = {
-                i = { ["<C-t>"] = trouble.open_with_trouble },
-                n = { ["<C-t>"] = trouble.open_with_trouble },
+                i = { ["<C-t>"] = trouble.open },
+                n = { ["<C-t>"] = trouble.open },
             },
         },
     })
