@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "05/05/2024, 2:06:21 pm",
-	"time": 1714889181501,
+	"@time": "05/06/2024, 9:01:34 pm",
+	"time": 1717592494754,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
-		"firefox": 125
+		"firefox": 126
 	},
 	"exclusionRules": [
 		{
@@ -64,15 +64,22 @@
 		"  blank=https://paulgo.io/search PaulGO Searx",
 		"ti|tiek|tiekoetter: https://searx.tiekoetter.com/search?q=%s \\",
 		"  blank=https://searx.tiekoetter.com/search Tiekoetter Searx",
-		"fa|far|farside: https://farside.link/searxng?q=%s \\",
-		"  blank=https://farside.link/searxng Farside Searx",
 		"bel|searx|searxng|searxbe|searxbel: https://searx.be/search?q=%s \\",
 		"  blank=https://searx.be/search Searx Belgium",
 		"sc|swisscow|swisscows: https://swisscows.com/en/web?query=%s \\",
 		"  blank=https://swisscows.com/en/ Swisscows",
+		"fa|far|farside|searxng: https://farside.link/searxng?q=%s \\",
+		"  blank=https://farside.link/searxng Farside SearXNG",
+		"fget|4get: https://farside.link/4get/web?s=%s \\",
+		"  blank=https://farside.link/4get Farside 4get",
+		"libx|librex: https://farside.link/librex/search.php?q=%s \\",
+		"  blank=https://farside.link/librex/ Farside LibreX",
+		"liby|librey: https://farside.link/librey/search.php?q=%s \\",
+		"  blank=https://farside.link/librey/ Farside LibreY",
 		"wg|wgle|whoo|whogle|whoogle: https://farside.link/whoogle/search?q=%s&lang_interface=en \\",
-		"  blank=https://farside.link/whoogle Whoogle",
+		"  blank=https://farside.link/whoogle Farside Whoogle",
 		"",
+		"# Maps",
 		"g.m|gm|g.map|gmap: https://www.google.com/maps?q=%s \\",
 		"  blank=https://www.google.com/maps Google Maps",
 		"b.m|bm|map|b.map|bmap|百度地图: \\",
