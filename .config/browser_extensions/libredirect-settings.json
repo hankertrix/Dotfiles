@@ -55,11 +55,11 @@
   "libreddit": [
     "https://libreddit.privacydev.net",
     "https://libreddit.kavin.rocks",
-    "https://libreddit.pussthecat.org",
-    "https://libreddit.northboot.xyz",
     "https://l.opnxng.com",
+    "https://reddit.rtrace.io",
+    "https://libreddit.bus-hit.me",
     "https://lr.vern.cc",
-    "https://libreddit.lunar.icu"
+    "https://reddit.simo.sh"
   ],
   "redlib": [
     "https://safereddit.com"
@@ -159,7 +159,7 @@
     "https://breezewiki.com"
   ],
   "imgur": {
-    "enabled": true,
+    "enabled": false,
     "redirectType": "main_frame",
     "unsupportedUrls": "bypass",
     "frontend": "rimgo",
@@ -378,13 +378,15 @@
   "meet": {
     "enabled": false,
     "unsupportedUrls": "bypass",
-    "frontend": "jitsi"
+    "frontend": "jitsi",
+    "redirectType": "main_frame"
   },
   "jitsi": [],
   "sendFiles": {
     "enabled": false,
     "unsupportedUrls": "bypass",
-    "frontend": "send"
+    "frontend": "send",
+    "redirectType": "main_frame"
   },
   "send": [],
   "textStorage": {
@@ -409,5 +411,29 @@
   ],
   "fetchInstances": "github",
   "redirectOnlyInIncognito": false,
-  "version": "2.8.2"
+  "version": "2.8.4",
+  "ifunny": {
+    "enabled": false,
+    "unsupportedUrls": "bypass",
+    "frontend": "unfunny"
+  },
+  "unfunny": [
+    "https://uf.vern.cc"
+  ],
+  "tenor": {
+    "enabled": false,
+    "unsupportedUrls": "bypass",
+    "frontend": "soprano"
+  },
+  "soprano": [
+    "https://sp.vern.cc"
+  ],
+  "knowyourmeme": {
+    "enabled": false,
+    "unsupportedUrls": "bypass",
+    "frontend": "meme"
+  },
+  "meme": [
+    "https://mm.vern.cc"
+  ]
 }
