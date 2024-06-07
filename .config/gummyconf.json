@@ -19,7 +19,7 @@
                 "max": 1000,
                 "min": 350,
                 "mode": 0,
-                "val": 50
+                "val": 0
             },
             "brightness": {
                 "max": 1000,
