@@ -1,0 +1,171 @@
+{
+  "autoUpdateInterval": "0",
+  "autoUpdateLast": 0,
+  "cmOptions": "",
+  "counter": true,
+  "customOptionsCSS": "",
+  "customPopupCSS": "",
+  "globalScriptExcludeMatches": "",
+  "sync": true,
+  "template": {
+    "css": "",
+    "js": ""
+  },
+  "_Enable seeking on NTU videos": {
+    "name": "Enable seeking on NTU videos",
+    "author": "Hankertrix",
+    "description": "Allow seeking on NTU websites that stop the user from seeking using the seek bar.",
+    "version": "0.1",
+    "updateURL": "https://raw.githubusercontent.com/hankertrix/Dotfiles/master/.config/browser_extensions/userscripts/Enable%20seeking%20on%20NTU%20videos.user.js",
+    "metaURL": "",
+    "preprocessor": "",
+    "injectInto": "",
+    "runAt": "document_idle",
+    "allFrames": false,
+    "matchAboutBlank": false,
+    "antifeatures": [],
+    "container": [],
+    "excludes": [],
+    "includes": [],
+    "require": [],
+    "resource": {},
+    "matches": [
+      "https://contentweb.ntu.edu.sg/*",
+      "https://ntulearn.ntu.edu.sg/courses/*/index_lms.html"
+    ],
+    "excludeMatches": [],
+    "includeGlobs": [],
+    "excludeGlobs": [],
+    "grant": [
+      "none"
+    ],
+    "i18n": {
+      "name": {},
+      "description": {}
+    },
+    "storage": {},
+    "userMeta": "",
+    "userVar": {},
+    "autoUpdate": true,
+    "enabled": true,
+    "error": "",
+    "requireRemote": [],
+    "style": [],
+    "js": "// ==UserScript==\n// @name         Enable seeking on NTU videos\n// @version      0.1\n// @description  Allow seeking on NTU websites that stop the user from seeking using the seek bar.\n// @author       Hankertrix\n// @match        https://contentweb.ntu.edu.sg/*\n// @match        https://ntulearn.ntu.edu.sg/courses/*/index_lms.html\n// @grant        none\n// ==/UserScript==\n\n(function() {\n    'use strict';\n\n    // Create an observer to watch for changes to the page\n    const observer = new MutationObserver(() => {\n\n        // Tries to get the seek bar element\n        const seekBar = document.getElementById(\"seek\");\n\n        // If the seek bar element is found, remove the \"read-only\" class from it\n        if (seekBar) {\n          seekBar.classList.remove(\"read-only\");\n        }\n    });\n\n    // Gets the observer to observe the document body for changes\n    observer.observe(document.body, {\n        childList: true,\n        subtree: true\n    });\n})();",
+    "css": ""
+  },
+  "_Google Unlocked": {
+    "name": "Google Unlocked",
+    "author": "Ibit - The Best Torrents",
+    "description": "Google Unlocked scans hidden search results that were censored by Google due to complaints",
+    "version": "1.6",
+    "updateURL": "https://raw.githubusercontent.com/Ibit-to/google-unlocked/master/google-unlocked.user.js",
+    "metaURL": "",
+    "preprocessor": "",
+    "injectInto": "",
+    "runAt": "document_idle",
+    "allFrames": false,
+    "matchAboutBlank": false,
+    "antifeatures": [],
+    "container": [],
+    "excludes": [],
+    "includes": [],
+    "require": [],
+    "resource": {},
+    "matches": [],
+    "excludeMatches": [],
+    "includeGlobs": [
+      "*://www.google.*/*"
+    ],
+    "excludeGlobs": [],
+    "grant": [
+      "GM_xmlhttpRequest"
+    ],
+    "i18n": {
+      "name": {},
+      "description": {}
+    },
+    "storage": {},
+    "userMeta": "",
+    "userVar": {},
+    "autoUpdate": false,
+    "enabled": true,
+    "error": "",
+    "requireRemote": [
+      "http://code.jquery.com/jquery-3.4.1.min.js"
+    ],
+    "style": [],
+    "js": "// ==UserScript==\n// @name         Google Unlocked\n// @version      1.6\n// @namespace    45c9a6614fccd4edff9592da\n// @description  Google Unlocked scans hidden search results that were censored by Google due to complaints\n// @home         https://github.com/Ibit-to/google-unlocked\n// @supportURL   https://github.com/Ibit-to/google-unlocked/issues\n// @updateURL    https://raw.githubusercontent.com/Ibit-to/google-unlocked/master/google-unlocked.user.js\n// @downloadURL  https://raw.githubusercontent.com/Ibit-to/google-unlocked/master/google-unlocked.user.js\n// @author       Ibit - The Best Torrents\n// @license      MIT License\n// @icon         https://raw.githubusercontent.com/Ibit-to/google-unlocked/master/extension/32.png\n// @include      *://www.google.*/*\n// @grant        GM_xmlhttpRequest\n// @require      http://code.jquery.com/jquery-3.4.1.min.js\n// @noframes\n// ==/UserScript==\n\n/* eslint-env browser, es6, greasemonkey, jquery */\n\n$(function () {\n    if (window.location.href.indexOf('//www.google') === -1) return;\n\n    $('#search div.g').last().after(`\n    <div id=\"cc\">\n       <div id=\"cc_loading\" style=\"display: inline-flex;align-items: center;\"></div>\n       <h2 id=\"cc_timeouts\" style=\"color:orange\"></h2>\n       <h2 id=\"cc_errors\" style=\"color:red\"></h2>\n    </div>\n    `)\n    const s = $('#cc')\n    const loadingElement = $('#cc_loading')\n    const timeoutsElement = $('#cc_timeouts')\n    const errorsElement = $('#cc_errors')\n\n    let firstRun = true\n    let totalFetchs = 0\n    $('div i > a').each((i, a) => {\n        if (a.href === 'https://www.google.com/support/answer/1386831') return;\n\n        totalFetchs++\n\n        // Give a loading feedback to user\n        firstRun && loadingElement.prepend(`\n           <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n           width=\"40px\" height=\"40px\" viewBox=\"0 0 50 50\" style=\"enable-background:new 0 0 50 50;\" xml:space=\"preserve\">\n              <path fill=\"#4285f4\" d=\"M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z\">\n                 <animateTransform attributeType=\"xml\"\n                    attributeName=\"transform\"\n                    type=\"rotate\"\n                    from=\"0 25 25\"\n                    to=\"360 25 25\"\n                    dur=\"0.6s\"\n                    repeatCount=\"indefinite\"\n                 />\n              </path>\n           </svg>\n           <h2>Loading uncensored links...</h2>\n        `)\n\n        firstRun = false\n\n        return new Promise((resolve, reject) => {\n            GM_xmlhttpRequest({\n                method: 'GET',\n                url: a.href,\n                timeout: 30000, // In milliseconds. If your connection is slow I'll suggest you to increase the time or just comment this line.\n                onload: (response) => {\n                    if (response.status === 429) {\n                        console.error('ERROR 429 Too Many Requests')\n                        errorsElement.html('ERROR 429 Too Many Requests')\n                        reject()\n                        return;\n                    }\n                    let hm = {}\n                    const links = response.responseText.matchAll(/class=\"infringing_url\">([^\\s-<]+)\\s*-\\s*([0-9]+)/g)\n\n                    for (const i of links) {\n                        if (i[1] in hm) continue;\n\n                        hm[i[1]] = 1\n                        let l = $('#l' + i[2])\n                        if (l.length < 1) {\n                            s.prepend(`<div id=\"l${i[2]}\" data-num=\"${i[2]}\"></div>`)\n                            l = $('#l' + i[2])\n                        }\n                        l.append(`\n                        <div class=\"g\">\n                           <a href=\"http://${i[1]}\" target=\"_blank\">${i[1]} (${i[2]} URLs)</a>\n                        </div>\n                        `)\n                    }\n                    const divs = $('div[data-num]', s)\n                    divs.sort((a, b) => b.dataset.num - a.dataset.num)\n                    s.append(divs)\n                    resolve()\n                },\n                onerror: (err) => {\n                    console.error('Request Error!\\n', err.error)\n                    if(!$.trim(errorsElement.html())) errorsElement.append('Error on some requests');\n                    reject()\n                },\n                ontimeout: () => {\n                    console.warn(`[${i}] Request timeout`)\n                    if(!$.trim(timeoutsElement.html())) timeoutsElement.append('Request timeouts:');\n                    timeoutsElement.append(' ' + i)\n                    reject()\n                }\n            })\n        })\n        // Cleanup\n          .finally(() => {\n            totalFetchs--\n\n            if (totalFetchs > 0) return;\n            loadingElement.remove()\n        })\n        // Promise error when rejected, ignore\n        .catch(e => {})\n    })\n})\n",
+    "css": ""
+  },
+  "_[Working] linkvertise and krnl bypasser": {
+    "name": "[Working] linkvertise and krnl bypasser",
+    "author": "bypass.city team",
+    "description": "just waits 15 seconds for krnl and works fine with the other stuff 2 (it waits no time for other stuff) :)",
+    "version": "12.9.2",
+    "updateURL": "https://api2.adbypass.org/userscript/download/bypass.user.js",
+    "metaURL": "https://api2.adbypass.org/userscript/download/bypass.meta.js",
+    "preprocessor": "",
+    "injectInto": "",
+    "runAt": "document_idle",
+    "allFrames": false,
+    "matchAboutBlank": false,
+    "antifeatures": [],
+    "container": [],
+    "excludes": [],
+    "includes": [],
+    "require": [],
+    "resource": {},
+    "matches": [
+      "*://*.linkvertise.com/*",
+      "*://*.linkvertise.net/*",
+      "*://*.link-to.net/*",
+      "https://bypass.city/*",
+      "https://adbypass.org/*",
+      "http://localhost:3000/*"
+    ],
+    "excludeMatches": [
+      "*://publisher.linkvertise.com/*",
+      "*://linkvertise.com/search*",
+      "*://linkvertise.com/login*",
+      "*://linkvertise.com/profile*",
+      "*://blog.linkvertise.com/",
+      "*://blog.linkvertise.com/*",
+      "*://linkvertise.com/assets/vendor/*",
+      "*://link-mutation.linkvertise.com/*",
+      "*://linkvertise.com/assets/external/thinksuggest"
+    ],
+    "includeGlobs": [],
+    "excludeGlobs": [],
+    "grant": [
+      "GM_getValue",
+      "GM.getValue",
+      "GM_setValue",
+      "GM.setValue",
+      "GM_deleteValue",
+      "GM.deleteValue",
+      "GM_addStyle",
+      "GM.addStyle",
+      "GM_xmlhttpRequest",
+      "GM.xmlHttpRequest",
+      "GM.info",
+      "GM_info",
+      "GM_getResourceURL",
+      "GM.getResourceURL"
+    ],
+    "i18n": {
+      "name": {},
+      "description": {}
+    },
+    "storage": {},
+    "userMeta": "",
+    "userVar": {},
+    "autoUpdate": false,
+    "enabled": true,
+    "error": "",
+    "requireRemote": [],
+    "style": [],
+    "js": "// ==UserScript==\n// @name         [Working] linkvertise and krnl bypasser\n// @namespace    bypass-city\n// @homepageURL  https://bypass.city\n// @supportURL   https://discord.gg/bypass-city\n// @description  just waits 15 seconds for krnl and works fine with the other stuff 2 (it waits no time for other stuff) :)\n// @match        *://*.linkvertise.com/*\n// @match        *://*.linkvertise.net/*\n// @match        *://*.link-to.net/*\n// @match        https://bypass.city/*\n// @match        https://adbypass.org/*\n// @match        http://localhost:3000/*\n// @license      CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/).\n// @exclude      *://publisher.linkvertise.com/*\n// @exclude      *://linkvertise.com/search*\n// @exclude      *://linkvertise.com/login*\n// @exclude      *://linkvertise.com/profile*\n// @exclude      *://blog.linkvertise.com\n// @exclude      *://blog.linkvertise.com/*\n// @exclude      *://linkvertise.com/assets/vendor/*\n// @exclude      *://publisher.linkvertise.com/*\n// @exclude      *://link-mutation.linkvertise.com/*\n// @exclude      *://linkvertise.com/assets/external/thinksuggest\n// @downloadURL  https://api2.adbypass.org/userscript/download/bypass.user.js\n// @updateURL    https://api2.adbypass.org/userscript/download/bypass.meta.js\n\n// @grant        GM_getValue\n// @grant        GM.getValue\n\n// @grant        GM_setValue\n// @grant        GM.setValue\n\n// @grant        GM_deleteValue\n// @grant        GM.deleteValue\n\n// @grant        GM_addStyle\n// @grant        GM.addStyle\n\n// @grant        GM_xmlhttpRequest\n// @grant        GM.xmlHttpRequest\n\n// @grant        GM.info\n// @grant        GM_info\n\n// @grant        GM_getResourceURL\n// @grant        GM.getResourceURL\n\n\n\n// @version      12.9.2\n// @releaseDate  2024-03-04T14:24:26.592Z\n// @author       bypass.city team\n// @connect      bypass.city\n// @connect      adbypass.org\n// @icon         https://adbypass.org/favicon.ico\n\n// ==/UserScript==\n/*\nrelease: 12.9.2 (9d591eb), 3/4/2024, 2:24:26 PM\nDiscord: https://discord.gg/bypass-city\nadditional copyright/license info:\nLinkvertise Bypass by \"bypass.city team\" is licensed under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/).\n\nLinkvertise Bypass © 2024 by bypass.city team.\n\nPlease Leave this section here if you plan on re-posting this script.\nIf you plan on re-posting this script to GreasyFork then go to the admin\ntab and under source syncing put\nthis URL to always have the latest version: https://api2.adbypass.org/userscript/download/bypass.user.js\n*/\n\n(() => {\n  // src/polyfills.ts\n  var UserScript = {\n    getValue: (key, defaultValue) => {\n      return typeof GM_getValue == \"undefined\" ? GM.getValue(key, defaultValue) : new Promise((resolve) => resolve(GM_getValue(key, defaultValue)));\n    },\n    setValue: (key, value) => {\n      return typeof GM_setValue === \"undefined\" ? GM.setValue(key, value) : new Promise((resolve) => resolve(GM_setValue(key, value)));\n    },\n    deleteValue: (key) => {\n      return typeof GM_deleteValue === \"undefined\" ? GM.deleteValue(key) : new Promise((resolve) => resolve(GM_deleteValue(key)));\n    },\n    addStyle: (css) => {\n      return typeof GM_addStyle === \"undefined\" ? GM.addStyle(css) : new Promise((resolve) => resolve(GM_addStyle(css)));\n    },\n    xmlHttpRequest: (details) => {\n      return typeof GM_xmlhttpRequest === \"undefined\" ? GM.xmlHttpRequest(details) : GM_xmlhttpRequest(details);\n    },\n    getResourceURL: (name, fallbackUrl) => {\n      return typeof GM_getResourceURL !== \"undefined\" ? new Promise((resolve) => resolve(GM_getResourceURL(name))) : typeof GM.getResourceUrl !== \"undefined\" ? GM.getResourceUrl(name) : new Promise((resolve) => resolve(fallbackUrl));\n    },\n    info: typeof GM_info === \"undefined\" ? GM.info : GM_info\n  };\n\n  // src/config.ts\n  var config = {\n    version: UserScript.info.script.version,\n    buildTime: \"3/4/2024, 2:24:26 PM\",\n    branch: \"release\",\n    release: \"9d591eb\",\n    installed: true,\n    releaseTag: \"12.9.2 (9d591eb)\",\n    downloadURL: GM_info.script.downloadURL\n  };\n\n  // src/gmWrappedStorage.ts\n  var WrappedGet = async (key) => {\n    const value = await UserScript.getValue(key);\n    return value ? JSON.parse(value) : void 0;\n  };\n  var WrappedSet = async (key, value) => {\n    await UserScript.setValue(key, JSON.stringify(value));\n  };\n\n  // src/utils.ts\n  var sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));\n\n  // src/bypass-city.ts\n  var bypassCityListener = async () => {\n    if (window.location.hostname !== \"bypass.city\" && window.location.hostname !== \"localhost\" && window.location.hostname !== \"adbypass.org\") {\n      return;\n    }\n    injectScriptInfo();\n    sendUserscriptInfoEvent();\n    window.addEventListener(\"bypassComplete\", async (event) => {\n      const data = event.detail;\n      console.log(\"bypassMessage\", data);\n      await UserScript.deleteValue(\"bypass.data\");\n      await sleep(1);\n      WrappedSet(\"bypass.data\", data);\n      window.open(\"https://linkvertise.com/\", \"_self\", \"noopener,noreferrer\");\n    });\n  };\n  var injectScriptInfo = () => {\n    const injectJs = `window.scriptInfo = JSON.parse('${JSON.stringify(config)}')`;\n    const script = document.createElement(\"script\");\n    script.textContent = injectJs;\n    document.body.appendChild(script);\n  };\n  var sendUserscriptInfoEvent = () => {\n    const event = new CustomEvent(\"userScriptInfo\", {\n      detail: config\n    });\n    window.dispatchEvent(event);\n  };\n\n  // src/notify.scss\n  var notify_default = `.notification-tray {\n  position: fixed;\n  top: 10px;\n  right: 10px;\n  z-index: 4000000;\n}\n\n.notification {\n  position: block;\n  margin: 10px;\n  padding: 10px;\n  padding-right: 20px;\n  background-color: #25262b;\n  color: white;\n  transition: opacity 0.6s; /* 600ms to fade out */\n  width: 300px;\n  border-radius: 10px; /* Rounded border */\n  border: 2px solid #3b5bdb;\n  animation: glow 1s ease-in-out infinite alternate;\n}\n\n.notification .grid-container {\n  display: grid;\n  grid-template-columns: auto auto;\n  gap: 10px;\n}\n\n.notification .links {\n  display: flex;\n  justify-content: right;\n  align-items: center;\n}\n\n.notification .links span {\n  padding-bottom: 4px;\n  opacity: 0.7;\n}\n\n.notification .links a, .notification .links span {\n  display: block;\n  color: white;\n  font-size: 0.8rem;\n  padding: 5px;\n  margin-bottom: 5px;\n}\n\n.grid-item img {\n  margin-top: 15px;\n  margin-right: 5px;\n  width: 32px;\n}\n\n.grid-item h3 {\n  padding-top: 10px;\n  padding-bottom: 3px;\n  font-size: 1.5rem;\n  color: white;\n}\n\n.grid-item p {\n  font-style: italic;\n  font-size: 1rem;\n  color: white;\n}\n.grid-item p a {\n  opacity: 1;\n  font-weight: 600;\n  text-decoration: underline !important;\n  margin-bottom: 8px;\n  display: inline-block;\n}\n\n.grid-item h3, .grid-item p {\n  margin: 0;\n}\n\n@keyframes glow {\n  from {\n    box-shadow: 0 0 10px #3b5bdb;\n  }\n  to {\n    box-shadow: 0 0 20px #3b5bdb;\n  }\n}`;\n\n  // src/notify-element.html\n  var notify_element_default = '<div id=\"bypass-notification\" class=\"notification\">\\n    <div class=\"grid-container\">\\n      <div class=\"grid-item\">\\n        <img height=\"32\" id=\"bypass-logo\" alt=\"B\">\\n      </div>\\n      <div class=\"grid-item\">\\n        <h3 id=\"title\"></h3>\\n        <p>\\n            <span id=\"text\"></span>\\n            <a id=\"help\" href=\"https://discord.gg/tX8G9G5BMV\">Get Support on our Discord</a>\\n        </p>\\n      </div>\\n    </div>\\n   \\n      <div id=\"links\" class=\"links\">\\n        <span id=\"version\">Release</span>\\n        <span>&#8226;</span>\\n        <a  href=\"https://discord.gg/tX8G9G5BMV\">Get Support</a>\\n        <span>&#8226;</span>\\n        <a href=\"https://bypass.city/privacy\">Privacy Policy</a>\\n      \\n      </div>\\n  </div>\\n  ';\n\n  // src/logo.svg\n  var logo_default = 'data:image/svg+xml,<svg width=\"1280\" height=\"1280\" viewBox=\"0 0 1280 1280\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">%0A<path d=\"M109 180C109 140.788 140.788 109 180 109H1101C1140.21 109 1172 140.788 1172 180V1101C1172 1140.21 1140.21 1172 1101 1172H180C140.788 1172 109 1140.21 109 1101V180Z\" fill=\"%231A1B1E\"/>%0A<path d=\"M611.881 198C1078.56 198 1078.56 733.341 611.881 733.341H407V198H611.881Z\" fill=\"url(%23paint0_linear_1_4)\"/>%0A<path d=\"M611.881 547.659C1078.56 547.659 1078.56 1083 611.881 1083H407V547.659H611.881Z\" fill=\"%231971C2\"/>%0A<defs>%0A<linearGradient id=\"paint0_linear_1_4\" x1=\"684.443\" y1=\"198\" x2=\"684.443\" y2=\"733.341\" gradientUnits=\"userSpaceOnUse\">%0A<stop stop-color=\"%235F3DC4\"/>%0A<stop offset=\"1\" stop-color=\"%235F3DC4\" stop-opacity=\"0\"/>%0A</linearGradient>%0A</defs>%0A</svg>%0A';\n\n  // src/notify.ts\n  window.scriptStatus = {\n    notifyCount: 0\n  };\n  var BypassElement = class extends HTMLElement {\n    static get observedAttributes() {\n      return [\"text\", \"title\", \"is-help\"];\n    }\n    constructor() {\n      super();\n      const shadow = this.attachShadow({ mode: \"open\" });\n      const div = document.createElement(\"div\");\n      div.innerHTML = notify_element_default;\n      const style = document.createElement(\"style\");\n      style.textContent = notify_default;\n      shadow.appendChild(style);\n      shadow.appendChild(div);\n      shadow.getElementById(\"bypass-notification\").style.opacity = \"0\";\n      shadow.getElementById(\"version\").innerText = config.releaseTag;\n      const logoImg = shadow.querySelector(\"img#bypass-logo\");\n      logoImg.onload = () => {\n        shadow.getElementById(\"bypass-notification\").style.opacity = \"1\";\n      };\n      logoImg.src = logo_default;\n    }\n    connectedCallback() {\n      this.updateContent();\n    }\n    attributeChangedCallback(name, oldValue, newValue) {\n      this.updateContent();\n    }\n    updateContent() {\n      const text = this.getAttribute(\"text\") || \"\";\n      const title = this.getAttribute(\"title\") || \"\";\n      const isHelp = this.hasAttribute(\"is-help\");\n      const hideLinks = this.hasAttribute(\"hide-links\");\n      if (isHelp || hideLinks) {\n        this.shadowRoot.getElementById(\"links\").remove();\n      }\n      this.shadowRoot.getElementById(\"help\").style.display = isHelp ? \"block\" : \"none\";\n      this.shadowRoot.querySelector(\"#title\").textContent = title;\n      this.shadowRoot.querySelector(\"#text\").textContent = text;\n    }\n  };\n  customElements.define(\"bypass-notification\", BypassElement);\n  var setupNotifications = () => {\n    const style = document.createElement(\"style\");\n    style.textContent = notify_default;\n    document.head.appendChild(style);\n    const tray = document.createElement(\"div\");\n    tray.id = \"bypass-tray\";\n    tray.classList.add(\"notification-tray\");\n    document.body.appendChild(tray);\n  };\n  var notify = ({ text, title, isHelp, hideLinks }) => {\n    if (!document.getElementById(\"bypass-tray\")) {\n      setupNotifications();\n    }\n    const titleContent = title || \"Bypass in progress...\";\n    const textContent = text || \"Please wait while we redirect you\";\n    const notificationElement = document.createElement(\"bypass-notification\");\n    notificationElement.setAttribute(\"title\", titleContent);\n    notificationElement.setAttribute(\"text\", textContent);\n    if (hideLinks) {\n      notificationElement.setAttribute(\"hide-links\", \"true\");\n    }\n    if (isHelp) {\n      notificationElement.setAttribute(\"is-help\", \"true\");\n    }\n    document.getElementById(\"bypass-tray\").appendChild(notificationElement);\n  };\n\n  // src/fetch.ts\n  var jsonFetch = async (url, options) => {\n    return new Promise((resolve, reject) => {\n      UserScript.xmlHttpRequest({\n        method: options.method,\n        data: options.data ? JSON.stringify(options.data) : void 0,\n        headers: options.headers,\n        url,\n        onload: (response) => {\n          if (response.responseText && typeof response.responseText === \"string\") {\n            try {\n              const data = JSON.parse(response.responseText);\n              resolve(data);\n            } catch (e) {\n              reject();\n            }\n          } else {\n            reject();\n          }\n        },\n        onerror: reject,\n        ontimeout: reject,\n        onabort: reject,\n        timeout: 5e3\n      });\n    });\n  };\n\n  // src/ping.ts\n  var ping = async () => {\n    try {\n      const data = await jsonFetch(\n        `${\"https://bypass.city\"}/.well-known/ping.json`,\n        {\n          method: \"GET\",\n          headers: {\n            \"Content-Type\": \"application/json\"\n          }\n        }\n      );\n      return data.ping;\n    } catch (e) {\n      return false;\n    }\n  };\n\n  // src/linkvertise.ts\n  var linkvertiseListener = async () => {\n    if (!matchLinkvertise(window.location.href)) {\n      return;\n    }\n    const bypassData = await WrappedGet(\"bypass.data\");\n    if (bypassData) {\n      notify({});\n      await sleep(6e3);\n      const targetUrl = bypassData.bypassData;\n      await UserScript.deleteValue(\"bypass.data\");\n      await sleep(1);\n      window.open(targetUrl, \"_self\");\n    } else if (!/(https?:\\/\\/linkvertise\\.com\\/?$)/g.test(window.location.href)) {\n      let redirectBase = \"https://bypass.city\";\n      const isPing = await ping();\n      if (!isPing) {\n        redirectBase = \"https://adbypass.org\";\n      }\n      notify({});\n      await UserScript.deleteValue(\"bypass.data\");\n      const bypassCityUrl = new URL(`${redirectBase}/bypass`);\n      bypassCityUrl.searchParams.set(\"bypass\", window.location.href);\n      bypassCityUrl.searchParams.set(\"userscript\", \"true\");\n      bypassCityUrl.searchParams.set(\"userscript-version\", config.version);\n      window.open(bypassCityUrl.href, \"_self\");\n    }\n  };\n  var matchLinkvertise = (url) => {\n    const regex = /^https?:\\/\\/(linkvertise\\.(com|download)|(link-(center|target|hub|to)|direct-link|file-link)\\.net)/i;\n    return regex.test(url) && !url.startsWith(\"https://linkvertise.com/profile\") && !url.startsWith(\"https://linkvertise.com/login\");\n  };\n\n  // src/main.ts\n  (async () => {\n    console.info(\"Linkvertise Userscript\", config.version, window.location.href);\n    await bypassCityListener();\n    await linkvertiseListener();\n  })();\n})();\n",
+    "css": ""
+  }
+}

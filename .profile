@@ -1,12 +1,17 @@
 
 # Use kitty as the default terminal
 export TERM=xterm-kitty
+export TERMINAL=kitty
 
-# Use neovim as the default editor
-export EDITOR=/usr/bin/nvim
+# Use Firefox as the default browser
+export BROWSER=firefox
+
+# Use Neovim as the default editor
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Use less as the default pager
-export PAGER=/usr/bin/less
+export PAGER=less
 
 # Add cargo to path
 # export PATH="$PATH:/home/hankertrix/.cargo/bin"
