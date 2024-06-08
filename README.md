@@ -20,7 +20,7 @@ The `.Xresources` configuration is just to make sure the display works properly 
 I also turned on antialiasing.
 
 ## .bash_profile
-The `.bash_profile` configuration is just to load `.profile` when starting bash.
+The `.bash_profile` configuration is just to load the `.profile` file when starting bash.
 This is needed thanks to the Arch Linux LightDM package
 [changing the script to source the files](https://gitlab.archlinux.org/archlinux/packaging/packages/lightdm/-/commit/75c048cabfe9693749f5f363ab6257400d954ffa).
 

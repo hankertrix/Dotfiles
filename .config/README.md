@@ -2,7 +2,7 @@
 Here are all the config files for the applications I use on Linux, all located within `~/.config/`, or `/home/username/.config/`.
 
 ## Browser extensions
-There is a `README.md` file inside the `browser extensions` folder that explains the configuration.
+There is a `README.md` file inside the `browser_extensions` folder that explains the configuration.
 
 
 ## [Emacs](https://www.gnu.org/software/emacs/)
