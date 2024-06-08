@@ -16,8 +16,13 @@ There is a README inside that briefly explains the configuration for the various
 The `.mozilla` folder is just to store my overrides for [arkenfox user.js](https://github.com/arkenfox/user.js).
 
 ## .Xresources
-The .Xresources configuration is just to make sure the display works properly with my high DPI screen.
+The `.Xresources` configuration is just to make sure the display works properly with my high DPI screen.
 I also turned on antialiasing.
+
+## .bash_profile
+The `.bash_profile` configuration is just to load `.profile` when starting bash.
+This is needed thanks to the Arch Linux LightDM package
+[changing the script to source the files](https://gitlab.archlinux.org/archlinux/packaging/packages/lightdm/-/commit/75c048cabfe9693749f5f363ab6257400d954ffa).
 
 ## .bashrc
 The `.bashrc` file is mostly just the default EndeavourOS configuration, with an if statement added in so that I can change the shell's directory when using `lf`.
@@ -30,4 +35,4 @@ the default browser is set to Firefox and
 the default pager is set to less.
 
 ## .xinitrc
-The .xinitrc file is just so merge the configuration inside .Xresources into xrdb so that the changes will apply.
+The `.xinitrc` file is just so merge the configuration inside .Xresources into xrdb so that the changes will apply.
