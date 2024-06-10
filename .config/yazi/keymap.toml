@@ -147,6 +147,13 @@ run  = "rename --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
 
 
+# Use cW to remove the file name when renaming
+[[manager.prepend_keymap]]
+on   = [ "c", "W" ]
+run  = "rename --empty=stem --cursor=start"
+desc = "Rename file and remove the file name"
+
+
 # Use C to remove the whole file name when renaming
 [[manager.prepend_keymap]]
 on   = [ "C" ]
