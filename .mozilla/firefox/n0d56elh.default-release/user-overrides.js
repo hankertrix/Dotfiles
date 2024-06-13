@@ -79,5 +79,17 @@ user_pref("privacy.clearOnShutdown.history", false);
 // Secret pref
 user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 
+// Resist fingerprinting
+user_pref("privacy.resistFingerprinting", true);
+
+// Enable letter boxing (the borders on the sides of the window to fake screen size)
+user_pref("privacy.resistFingerprinting.letterboxing", true);
+
+// Disable WebGL
+user_pref("webgl.disabled", true);
+
+// Spoof the language so that my Firefox locale doesn't match my OS locale
+user_pref("privacy.spoof_english", 2);
+
 // Exempt Telegram web from resist fingerprinting
-user_pref("privacy.resistFingerprinting.exemptedDomains", "*.example.invalid, web.telegram.org");
+user_pref("privacy.resistFingerprinting.exemptedDomains", "web.telegram.org");
