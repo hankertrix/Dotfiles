@@ -16,7 +16,6 @@ local function setup()
             close_command = function(bufnr) require("mini.bufremove").delete(bufnr) end,
             right_mouse_command = function (bufnr) require("mini.bufremove").delete(bufnr) end,
             separator_style = "slant",
-            diagnostics = "nvim_lsp",
             offsets = {
                 { filetype = "NvimTree", text = "File Explorer" },
                 { filetype = "undotree", text = "Undo Tree" },
