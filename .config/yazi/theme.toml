@@ -16,6 +16,9 @@ count_copied   = { fg = "black", bg = "lightyellow" }
 count_cut      = { fg = "black", bg = "lightred" }
 count_selected = { fg = "black", bg = "#10b1fe" }
 
+# Set the syntax highlighting theme to Bluloco Dark
+syntect_theme = "~/.config/yazi/syntax-highlighting-themes/bluloco-dark.tmTheme"
+
 
 # The theme for the status bar
 [status]
