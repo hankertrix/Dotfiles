@@ -388,8 +388,7 @@ map cn yank-basename-without-extension
 map r smart-rename
 map I smart-rename "cmd-home"
 map A smart-rename "cmd-end"
-map cw smart-rename "cmd-delete-home"
-map cW smart-rename "cmd-delete-home"
+map cn smart-rename "cmd-delete-home"
 map C smart-rename "cmd-end; cmd-delete-home"
 map R smart-rename "cmd-end; cmd-delete-home"
 

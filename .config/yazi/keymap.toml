@@ -140,16 +140,9 @@ run  = "rename --cursor=end"
 desc = "Rename file with the cursor at the end of the file name"
 
 
-# Use cw to remove the file name when renaming
+# Use cn to remove the file name when renaming
 [[manager.prepend_keymap]]
-on   = [ "c", "w" ]
-run  = "rename --empty=stem --cursor=start"
-desc = "Rename file and remove the file name"
-
-
-# Use cW to remove the file name when renaming
-[[manager.prepend_keymap]]
-on   = [ "c", "W" ]
+on   = [ "c", "n" ]
 run  = "rename --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
 
