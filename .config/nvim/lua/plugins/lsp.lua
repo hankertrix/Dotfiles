@@ -62,29 +62,29 @@ local function setup()
         local opts = { buffer = bufnr, remap = false }
 
         -- LSP key bindings
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts, { desc = descriptions["hover"] })
-        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts, { desc = descriptions["definition"] })
-        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts, { desc = descriptions["declaration"] })
-        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts, { desc = descriptions["implementation"] })
-        vim.keymap.set('n', 'go', function() vim.lsp.buf.type_definition() end, opts, { desc = descriptions["type_definition"] })
-        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts, { desc = descriptions["references"] })
-        vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end, opts, { desc = descriptions["signature_help"] })
-        vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end, opts, { desc = descriptions["rename"] })
-        vim.keymap.set({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts, { desc = descriptions["format"] })
-        vim.keymap.set({ 'n', 'x' }, '<Leader>f', function() vim.lsp.buf.format({ async = true }) end, opts, { desc = descriptions["format"] })
-        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.code_action() end, opts, { desc = descriptions["code_action"] })
+        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, { unpack(opts), desc = descriptions["hover"] })
+        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, { unpack(opts), desc = descriptions["definition"] })
+        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, { unpack(opts), desc = descriptions["declaration"] })
+        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, { unpack(opts), desc = descriptions["implementation"] })
+        vim.keymap.set('n', 'go', function() vim.lsp.buf.type_definition() end, { unpack(opts), desc = descriptions["type_definition"] })
+        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, { unpack(opts), desc = descriptions["references"] })
+        vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end, { unpack(opts), desc = descriptions["signature_help"] })
+        vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end, { unpack(opts), desc = descriptions["rename"] })
+        vim.keymap.set({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format({ async = true }) end, { unpack(opts), desc = descriptions["format"] })
+        vim.keymap.set({ 'n', 'x' }, '<Leader>f', function() vim.lsp.buf.format({ async = true }) end, { unpack(opts), desc = descriptions["format"] })
+        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.code_action() end, { unpack(opts), desc = descriptions["code_action"] })
 
         -- If a range is selected and a range code action is available, use the range code action
         if vim.lsp.buf.range_code_action then
-            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.range_code_action() end, opts, { desc = descriptions["code_action"] })
+            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.range_code_action() end, { unpack(opts), desc = descriptions["code_action"] })
         else
-            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.code_action() end, opts, { desc = descriptions["code_action"] })
+            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.code_action() end, { unpack(opts), desc = descriptions["code_action"] })
         end
 
         -- Diagnostic key bindings
-        vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, opts, { desc = descriptions["diagnostic_window"] })
-        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts, { desc = descriptions["diagnostic_prev"] })
-        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts, { desc = descriptions["diagnostic_next"] })
+        vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, { unpack(opts), desc = descriptions["diagnostic_window"] })
+        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, { unpack(opts), desc = descriptions["diagnostic_prev"] })
+        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, { unpack(opts), desc = descriptions["diagnostic_next"] })
     end)
 
     -- Gets the shared configs file
@@ -160,6 +160,13 @@ local function setup()
 
                                 -- Get the language server to recognise the vim global
                                 globals = { "vim" }
+                            },
+
+                            -- Enable inlay hints
+                            hint = {
+                                enable = true,
+                                arrayIndex = "Enable",
+                                setType = true,
                             },
 
                             workspace = {
