@@ -6,14 +6,6 @@ local utils = require("utils")
 -- Returns the list of plugins for lazy.nvim
 return {
 
-    -- Plugin to automatically detect shift width and tabstop
-    {
-        "tpope/vim-sleuth",
-        lazy = true,
-        event = "InsertEnter",
-        cond = utils.firenvim_not_active
-    },
-
     -- Markdown previewer
     {
         "iamcco/markdown-preview.nvim",
