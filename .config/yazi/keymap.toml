@@ -68,18 +68,18 @@ run  = "create"
 desc = "Create a file or directory (ends with / for directories)"
 
 
-# Use x to delete files permanently
+# Use x to move files to the trash
 [[manager.prepend_keymap]]
 on   = [ "x" ]
-run  = "remove --permanently"
-desc = "Permanently delete the files"
-
-
-# Use X to move files to the trash
-[[manager.prepend_keymap]]
-on   = [ "X" ]
 run  = "remove"
 desc = "Move the files to the trash"
+
+
+# Use X to delete files permanently
+[[manager.prepend_keymap]]
+on   = [ "X" ]
+run  = "remove --permanently"
+desc = "Permanently delete the files"
 
 
 # Use Ctrl + s to open a shell in the current directory
