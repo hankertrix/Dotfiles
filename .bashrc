@@ -20,7 +20,7 @@ fi
 
 # Make a new command that changes
 # the directory when yazi exits
-YA="/home/hanker/.config/yazi/ya.sh"
+YA="/home/hanker/.config/yazi/yy.sh"
 if [ -f "$YA" ]; then
     source "$YA"
 fi
