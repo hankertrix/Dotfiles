@@ -20,9 +20,9 @@ fi
 
 # Make a new command that changes
 # the directory when yazi exits
-YA="/home/hanker/.config/yazi/yy.sh"
-if [ -f "$YA" ]; then
-    source "$YA"
+YY="/home/hanker/.config/yazi/yy.sh"
+if [ -f "$YY" ]; then
+    source "$YY"
 fi
 
 _set_liveuser_PS1() {
