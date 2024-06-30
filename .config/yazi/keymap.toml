@@ -5,25 +5,69 @@
 
 # File manager keymaps
 
-# Use the smart enter for the l key
+# Use the augmented arrow up command for the k key
+[[manager.prepend_keymap]]
+on   = [ "k" ]
+run  = "plugin augment-command --args='arrow -1'"
+desc = "Move cursor up"
+
+
+# Use the augmented arrow down command for the j key
+[[manager.prepend_keymap]]
+on   = [ "j" ]
+run  = "plugin augment-command --args='arrow 1'"
+desc = "Move cursor down"
+
+
+# Use K to move up in the parent directory
+[[manager.prepend_keymap]]
+on   = [ "K" ]
+run  = "plugin augment-command --args='parent-arrow -1'"
+desc = "Move cursor up in the parent directory"
+
+
+# Use J to move down in the parent directory
+[[manager.prepend_keymap]]
+on   = [ "J" ]
+run  = "plugin augment-command --args='parent-arrow 1'"
+desc = "Move cursor down in the parent directory"
+
+
+# Use the augmented enter command for the l key
 [[manager.prepend_keymap]]
 on   = [ "l" ]
-run  = "plugin --sync smart-enter"
+run  = "plugin augment-command --args='enter'"
 desc = "Enter the child directory, or open the file"
 
 
-# Use the smart enter for the <Enter> key
+# Use the augmented enter command for the <Enter> key
 [[manager.prepend_keymap]]
 on   = [ "<Enter>" ]
-run  = "plugin --sync smart-enter"
+run  = "plugin augment-command --args='enter'"
 desc = "Enter the child directory, or open the file"
 
 
-# Use the smart enter for the <Right> key
+# Use the augmented enter command for the <Right> key
+# but without skipping directories
 [[manager.prepend_keymap]]
 on   = [ "<Right>" ]
-run  = "plugin --sync smart-enter"
+run  = "plugin augment-command --args='enter --no-skip'"
 desc = "Enter the child directory, or open the file"
+
+
+# Use the augmented leave command for the h key
+[[manager.prepend_keymap]]
+on   = [ "h" ]
+run  = "plugin augment-command --args='leave'"
+desc = "Go back to the parent directory"
+
+
+# Use the augmented leave command for the <Left> key
+# but without skipping directories
+[[manager.prepend_keymap]]
+on   = [ "<Left>" ]
+run  = "plugin augment-command --args='leave --no-skip'"
+desc = "Go back to the parent directory"
 
 
 # Use u to unselect and unyank all files
@@ -40,18 +84,19 @@ run  = "yank --cut"
 desc = "Cut the selected files"
 
 
-# Use K to move up in the parent directory
+# Use p to paste files
 [[manager.prepend_keymap]]
-on   = [ "K" ]
-run  = [ "leave", "escape --visual --select", "arrow -1", "enter" ]
-desc = "Move up in the parent directory"
+on   = [ "p" ]
+run  = "plugin augment-command --args='paste'"
+desc = "Paste the files"
 
 
-# Use J to move down in the parent directory
+# Use P to paste files and
+# overwrite the destination file if it exists
 [[manager.prepend_keymap]]
-on   = [ "J" ]
-run  = [ "leave", "escape --visual --select", "arrow 1", "enter" ]
-desc = "Move down in the parent directory"
+on   = [ "P" ]
+run  = "plugin augment-command --args='paste --force'"
+desc = "Paste the files (overwrite if the destination exists)"
 
 
 # Use _ to create a new file or directory
@@ -71,14 +116,14 @@ desc = "Create a file or directory (ends with / for directories)"
 # Use x to move files to the trash
 [[manager.prepend_keymap]]
 on   = [ "x" ]
-run  = "remove"
+run  = "plugin augment-command --args='remove'"
 desc = "Move the files to the trash"
 
 
 # Use X to delete files permanently
 [[manager.prepend_keymap]]
 on   = [ "X" ]
-run  = "remove --permanently"
+run  = "plugin augment-command --args='remove --permanently'"
 desc = "Permanently delete the files"
 
 
@@ -99,45 +144,50 @@ desc = "Jump to a directory, or reveal a file using fzf"
 # Use o to open files using the editor
 [[manager.prepend_keymap]]
 on   = [ "o" ]
-run  = '''
-shell "
-# Check if the hovered file is selected
-if printf '%s\0' \"$@\" | grep -Fxqz -- \"$0\"; then
-    $EDITOR $@
-else
-    $EDITOR $0
-fi" --block --confirm
-'''
+run  = "plugin augment-command --args='editor'"
 desc = "Open files with the default editor"
 
 
 # Use i to open files using the pager
 [[manager.prepend_keymap]]
 on   = [ "i" ]
-run  = '''
-shell "
-# Check if the hovered file is selected
-if printf '%s\0' \"$@\" | grep -Fxqz -- \"$0\"; then
-    $PAGER $@
-else
-    $PAGER $0
-fi" --block --confirm
-'''
+run  = "plugin augment-command --args='pager'"
 desc = "Open files with the default pager"
+
+
+# Use r to rename files with the cursor before the file extension
+[[manager.prepend_keymap]]
+on   = [ "r" ]
+run  = "plugin augment-command --args='rename --cursor=before_ext'"
+desc = "Rename a file or directory"
+
+
+# Use R to remove the whole file name when renaming
+[[manager.prepend_keymap]]
+on   = [ "R" ]
+run  = "plugin augment-command --args='rename --empty=all'"
+desc = "Rename file and remove the whole file name"
 
 
 # Use I to rename files with the cursor at the start of the file name
 [[manager.prepend_keymap]]
 on   = [ "I" ]
-run  = "rename --cursor=start"
+run  = "plugin augment-command --args='rename --cursor=start'"
 desc = "Rename file at the start of the file name"
 
 
 # Use A to rename files with the cursor at the end of the file name
 [[manager.prepend_keymap]]
 on   = [ "A" ]
-run  = "rename --cursor=end"
+run  = "plugin augment-command --args='rename --cursor=end'"
 desc = "Rename file with the cursor at the end of the file name"
+
+
+# Use C to remove the whole file name when renaming
+[[manager.prepend_keymap]]
+on   = [ "C" ]
+run  = "plugin augment-command --args='rename --empty=all'"
+desc = "Rename file and remove the whole file name"
 
 
 # Use cn to remove the file name when renaming
@@ -147,21 +197,7 @@ run  = "rename --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
 
 
-# Use C to remove the whole file name when renaming
-[[manager.prepend_keymap]]
-on   = [ "C" ]
-run  = "rename --empty=all"
-desc = "Rename file and remove the whole file name"
-
-
-# Use R to remove the whole file name when renaming
-[[manager.prepend_keymap]]
-on   = [ "R" ]
-run  = "rename --empty=all"
-desc = "Rename file and remove the whole file name"
-
-
-# Use ec to go to the config directory for yazi
+# Use ec to go to the config directory for Yazi
 [[manager.prepend_keymap]]
 on   = [ "e", "c" ]
 run  = "cd ~/.config/yazi/"
