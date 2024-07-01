@@ -1341,7 +1341,7 @@ Electric pair mode auto completes the "<" in org mode, which causes issues with 
 
 
 ** Evil Org
-Evil org provides a set of evil key bindings that work with org mode
+Evil org provides a set of evil key bindings that work with org mode.
 #+begin_src emacs-lisp
 (use-package evil-org
 
