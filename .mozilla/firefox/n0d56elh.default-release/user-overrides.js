@@ -73,7 +73,7 @@ user_pref("network.dns.skipTRR-when-parental-control-enabled", false);
 user_pref("dom.security.https_only_mode_error_page_user_suggestions", true);
 
 // Don't clear history on shutdown
-user_pref("privacy.clearOnShutdown.history", false);
+user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", false);
 
 // Allow the creation of custom search engines
 // Secret pref
