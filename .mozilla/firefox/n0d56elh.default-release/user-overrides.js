@@ -47,11 +47,11 @@ user_pref("browser.newtabpage.activity-stream.showSponsored", false);
 // not that it really matters since the new tab page is already clean.
 user_pref(
   "browser.newtabpage.activity-stream.discoverystream.sendToPocket.enabled",
-  false,
+  false
 );
 user_pref(
   "browser.newtabpage.activity-stream.discoverystream.saveToPocketCard.enabled",
-  false,
+  false
 );
 
 // Disable pocket entirely
@@ -119,5 +119,5 @@ user_pref("webgl.disabled", true);
 // Use the user js parrot pref to report if the overrides section is successful
 user_pref(
   "_user.js.parrot",
-  "SUCCESS: No no he's not dead, he's, he's restin'!",
+  "SUCCESS: No no he's not dead, he's, he's restin'!"
 );
