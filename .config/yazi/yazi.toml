@@ -30,13 +30,18 @@ max_height = 3000
 # Configuration for the openers
 [opener]
 emacs = [
-    { run = 'emacs "$@"', block = false, desc = "Open in Emacs" }
+    { run = 'emacs -- "$@"', block = false, desc = "Open in Emacs" }
+]
+
+analyse = [
+    { run = 'spek -- "$@"', block = false, desc = "Analyse spectrum" }
 ]
 
 
 # Configuration for the opener rules
 [open]
 prepend_rules = [
+    { mime = "{audio,video}/*", use = [ "play", "reveal", "analyse" ] },
     { name = "*.org", use = "emacs" },
     { name = "*.tex", use = "emacs" }
 ]
