@@ -205,6 +205,16 @@ local function setup()
                 }
             end,
 
+            -- Configure rust analyzer
+            rust_analyzer = function()
+                lspconfig.rust_analyzer.setup {
+                    on_attach = function(_, buffer_number)
+                        vim.lsp.inlay_hint.enable(true, { bufnr = buffer_number })
+                    end
+                }
+
+            end,
+
             -- Configure ltex LSP
             ltex = function()
                 lspconfig.ltex.setup {
