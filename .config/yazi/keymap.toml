@@ -47,6 +47,13 @@ run  = "plugin augment-command --args='enter'"
 desc = "Enter the child directory, or open the file"
 
 
+# Use the augmented enter command for the <S-Enter> key
+[[manager.prepend_keymap]]
+on   = [ "<S-Enter>" ]
+run  = "plugin augment-command --args='enter --interactive'"
+desc = "Enter the child directory, or open the file interactively"
+
+
 # Use the augmented enter command for the <Right> key
 # but without skipping directories
 [[manager.prepend_keymap]]
@@ -68,6 +75,13 @@ desc = "Go back to the parent directory"
 on   = [ "<Left>" ]
 run  = "plugin augment-command --args='leave --no-skip'"
 desc = "Go back to the parent directory"
+
+
+# Use the augmented open to open files interactively with O
+[[manager.prepend_keymap]]
+on   = [ "O" ]
+run  = "plugin augment-command --args='open --interactive'"
+desc = "Open selected files interactively"
 
 
 # Use u to unselect and unyank all files
