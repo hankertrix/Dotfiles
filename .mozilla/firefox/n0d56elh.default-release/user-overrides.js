@@ -98,6 +98,7 @@ user_pref("network.trr.mode", 3);
 user_pref("network.dns.skipTRR-when-parental-control-enabled", false);
 
 // Don't clear history on shutdown
+user_pref("privacy.clearOnShutdown.history", false);
 user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", false);
 
 // Resist fingerprinting
