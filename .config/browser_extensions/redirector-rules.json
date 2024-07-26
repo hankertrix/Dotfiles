@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2024-06-05T14:20:23.104Z",
+    "createdAt": "2024-07-23T02:34:19.527Z",
     "redirects": [
         {
             "description": "Redirect YouTube Shorts to YouTube Video",
@@ -235,6 +235,23 @@
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "Redirect YouTube to Invidious or Piped",
+            "exampleUrl": "https://www.youtube.com/watch?v=ZdtPTUsrAA4",
+            "exampleResult": "https://farside.link/https://www.youtube.com/watch?v=ZdtPTUsrAA4",
+            "error": null,
+            "includePattern": "(https?://(?:www\\.)?(?:youtube.com|youtu.be).*)",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://farside.link/$1",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
