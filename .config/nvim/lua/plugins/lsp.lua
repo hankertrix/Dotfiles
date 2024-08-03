@@ -118,7 +118,7 @@ local function setup()
             -- Configure lua ls
             lua_ls = function()
 
--- Gets the runtime path for Neovim
+                -- Gets the runtime path for Neovim
                 -- Comment out when configuring other applications, like awesomewm or wezterm
                 local runtime_path = vim.split(package.path, ';')
                 table.insert(runtime_path, 'lua/?.lua')
