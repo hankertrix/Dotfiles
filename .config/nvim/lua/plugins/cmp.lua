@@ -124,7 +124,7 @@ local function setup()
         sources = default_sources
     })
 
-    -- Set up the AI autocompletion, which is currently codeium
+    -- Set up the AI autocompletion, which is currently Codeium
     require("codeium").setup()
 
 end
