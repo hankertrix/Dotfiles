@@ -62,29 +62,45 @@ local function setup()
         local opts = { buffer = bufnr, remap = false }
 
         -- LSP key bindings
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, vim.tbl_extend("error", opts, { desc = descriptions["hover"] }))
-        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, vim.tbl_extend("error", opts, { desc = descriptions["definition"] }))
-        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, vim.tbl_extend("error", opts, { desc = descriptions["declaration"] }))
-        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, vim.tbl_extend("error", opts, { desc = descriptions["implementation"] }))
-        vim.keymap.set('n', 'go', function() vim.lsp.buf.type_definition() end, vim.tbl_extend("error", opts, { desc = descriptions["type_definition"] }))
-        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, vim.tbl_extend("error", opts, { desc = descriptions["references"] }))
-        vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end, vim.tbl_extend("error", opts, { desc = descriptions["signature_help"] }))
-        vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end, vim.tbl_extend("error", opts, { desc = descriptions["rename"] }))
-        vim.keymap.set({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format({ async = true }) end, vim.tbl_extend("error", opts, { desc = descriptions["format"] }))
-        vim.keymap.set({ 'n', 'x' }, '<Leader>f', function() vim.lsp.buf.format({ async = true }) end, vim.tbl_extend("error", opts, { desc = descriptions["format"] }))
-        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.code_action() end, vim.tbl_extend("error", opts, { desc = descriptions["code_action"] }))
+        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["hover"] }))
+        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["definition"] }))
+        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["declaration"] }))
+        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["implementation"] }))
+        vim.keymap.set('n', 'go', function() vim.lsp.buf.type_definition() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["type_definition"] }))
+        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["references"] }))
+        vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["signature_help"] }))
+        vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["rename"] }))
+        vim.keymap.set({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format({ async = true }) end,
+            vim.tbl_extend("error", opts, { desc = descriptions["format"] }))
+        vim.keymap.set({ 'n', 'x' }, '<Leader>f', function() vim.lsp.buf.format({ async = true }) end,
+            vim.tbl_extend("error", opts, { desc = descriptions["format"] }))
+        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.code_action() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["code_action"] }))
 
         -- If a range is selected and a range code action is available, use the range code action
         if vim.lsp.buf.range_code_action then
-            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.range_code_action() end, vim.tbl_extend("error", opts, { desc = descriptions["code_action"] }))
+            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.range_code_action() end,
+                vim.tbl_extend("error", opts, { desc = descriptions["code_action"] }))
         else
-            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.code_action() end, vim.tbl_extend("error", opts, { desc = descriptions["code_action"] }))
+            vim.keymap.set('x', '<F4>', function() vim.lsp.buf.code_action() end,
+                vim.tbl_extend("error", opts, { desc = descriptions["code_action"] }))
         end
 
         -- Diagnostic key bindings
-        vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, vim.tbl_extend("error", opts, { desc = descriptions["diagnostic_window"] }))
-        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, vim.tbl_extend("error", opts, { desc = descriptions["diagnostic_prev"] }))
-        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, vim.tbl_extend("error", opts, { desc = descriptions["diagnostic_next"] }))
+        vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["diagnostic_window"] }))
+        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["diagnostic_prev"] }))
+        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end,
+            vim.tbl_extend("error", opts, { desc = descriptions["diagnostic_next"] }))
     end)
 
     -- Gets the shared configs file
@@ -102,7 +118,7 @@ local function setup()
             -- Configure lua ls
             lua_ls = function()
 
-                -- Gets the runtime path for Neovim
+-- Gets the runtime path for Neovim
                 -- Comment out when configuring other applications, like awesomewm or wezterm
                 local runtime_path = vim.split(package.path, ';')
                 table.insert(runtime_path, 'lua/?.lua')
@@ -120,7 +136,6 @@ local function setup()
                         -- If the root directory exists
                         -- and is not the Neovim configuration directory
                         if root and root ~= vim.env.HOME then
-
                             -- Then immediately return the root directory
                             return root
                         end
@@ -212,7 +227,6 @@ local function setup()
                         vim.lsp.inlay_hint.enable(true, { bufnr = buffer_number })
                     end
                 }
-
             end,
 
             -- Configure ltex LSP
@@ -233,11 +247,11 @@ local function setup()
     local cmp_sources = {
         { name = "path" },
         { name = "nvim_lsp_signature_help" },
-        { name = "nvim_lsp", keyword_length = 3 },
-        { name = "cmp_tabnine" },
-        { name = "buffer", keywword_length = 3 },
-        { name = "treesitter", keyword_length = 3 },
-        { name = "luasnip", keyword_length = 2 },
+        { name = "nvim_lsp",               keyword_length = 3 },
+        { name = "codeium" },
+        { name = "buffer",                 keywword_length = 3 },
+        { name = "treesitter",             keyword_length = 3 },
+        { name = "luasnip",                keyword_length = 2 },
         { name = "calc" },
         { name = "emoji" },
     }
@@ -262,7 +276,6 @@ local function setup()
 
             -- Returns the item
             return item
-
         end
     }
 
@@ -284,7 +297,6 @@ local function setup()
     vim.diagnostic.config({
         virtual_text = true,
     })
-
 end
 
 
@@ -297,20 +309,20 @@ return {
     event = { "BufReadPre", "BufNewFile" },
 
     keys = {
-        { "K", mode = "n", desc = descriptions["hover"] },
-        { "gd", mode = "n", desc = descriptions["definition"] },
-        { "gD", mode = "n", desc = descriptions["declaration"] },
-        { "gi", mode = "n", desc = descriptions["implementation"] },
-        { "go", mode = "n", desc = descriptions["type_definition"] },
-        { "gr", mode = "n", desc = descriptions["references"] },
-        { "gs", mode = "n", desc = descriptions["signature_help"] },
-        { "<F2>", mode = "n", desc = descriptions["rename"] },
-        { "<F3>", mode = { "n", "x" }, desc = descriptions["format"] },
-        { "<Leader>f", mode =  { "n", "x" }, desc = descriptions["format"] },
-        { "<F4>", mode = { "n", "x" }, desc = descriptions["code_action"] },
-        { "gl", mode = "n", desc = descriptions["diagnostic_window"] },
-        { "[d", mode = "n", desc = descriptions["diagnostic_prev"] },
-        { "]d", mode = "n", desc = descriptions["diagnostic_next"] },
+        { "K",         mode = "n",           desc = descriptions["hover"] },
+        { "gd",        mode = "n",           desc = descriptions["definition"] },
+        { "gD",        mode = "n",           desc = descriptions["declaration"] },
+        { "gi",        mode = "n",           desc = descriptions["implementation"] },
+        { "go",        mode = "n",           desc = descriptions["type_definition"] },
+        { "gr",        mode = "n",           desc = descriptions["references"] },
+        { "gs",        mode = "n",           desc = descriptions["signature_help"] },
+        { "<F2>",      mode = "n",           desc = descriptions["rename"] },
+        { "<F3>",      mode = { "n", "x" },  desc = descriptions["format"] },
+        { "<Leader>f", mode = { "n", "x" },  desc = descriptions["format"] },
+        { "<F4>",      mode = { "n", "x" },  desc = descriptions["code_action"] },
+        { "gl",        mode = "n",           desc = descriptions["diagnostic_window"] },
+        { "[d",        mode = "n",           desc = descriptions["diagnostic_prev"] },
+        { "]d",        mode = "n",           desc = descriptions["diagnostic_next"] },
     },
 
     dependencies = {
@@ -320,14 +332,12 @@ return {
         "mason.nvim",
         { "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
 
-
         -- Autocompletion
         "nvim-cmp",
         "cmp-nvim-lsp",
 
         -- Snippets
-        { "L3MON4D3/LuaSnip", event = "InsertEnter" },
+        { "L3MON4D3/LuaSnip",            event = "InsertEnter" },
         { "rafamadriz/friendly-snippets" },
     }
 }
-

@@ -164,6 +164,7 @@ M.lsp_kind_icons = {
     Value = "",
     Variable = "󰫧",
     Collapsed = "",
+    Codeium = "",
 
 }
 

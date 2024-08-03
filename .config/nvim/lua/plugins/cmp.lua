@@ -7,7 +7,7 @@ local utils = require("utils")
 local function setup()
 
     -- Stops executing if the package isn"t installed
-    if not utils.status_ok("cmp") then return end
+    if not utils.status_ok("cmp", "codeium") then return end
 
     -- Gets the nvim-cmp module
     local cmp = require("cmp")
@@ -124,6 +124,9 @@ local function setup()
         sources = default_sources
     })
 
+    -- Set up the AI autocompletion, which is currently codeium
+    require("codeium").setup()
+
 end
 
 -- Returns the nvim-cmp plugin for lazy.nvim
@@ -144,7 +147,7 @@ return {
         { "hrsh7th/cmp-calc" },
         { "f3fora/cmp-spell" },
         { "hrsh7th/cmp-emoji" },
-        { "tzachar/cmp-tabnine", build = "./install.sh" },
+        { "Exafunction/codeium.nvim", dependencies = "nvim-lua/plenary.nvim" },
 
         -- Completion within the command line
         { "hrsh7th/cmp-cmdline" },
