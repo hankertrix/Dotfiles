@@ -204,9 +204,9 @@ run  = "plugin augment-command --args='rename --empty=all'"
 desc = "Rename file and remove the whole file name"
 
 
-# Use cn to remove the file name when renaming
+# Use cm to remove the file name when renaming
 [[manager.prepend_keymap]]
-on   = [ "c", "n" ]
+on   = [ "c", "m" ]
 run  = "rename --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
 
