@@ -47,13 +47,11 @@ Autocompletion sources:
 - [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
 - [cmp-cmdline-history](https://github.com/dmitmel/cmp-cmdline-history)
 - [cmp-nvim-lsp-document-symbol](https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol)
-- [codeium.nvim](https://github.com/Exafunction/codeium.nvim)
+- [codeium.nvim (AI autocompletion)](https://github.com/Exafunction/codeium.nvim)
 
 Snippet engine - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 
 Snippets - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
-
-AI autocompletion - [codeium.nvim](https://github.com/jcdickinson/codeium.nvim)
 
 Treesitter - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
