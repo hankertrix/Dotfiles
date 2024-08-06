@@ -245,13 +245,15 @@ local function setup()
 
     -- Set up the completion sources
     local cmp_sources = {
-        { name = "path" },
+        { name = "async_path" },
+        { name = "luasnip", keyword_length = 2 },
         { name = "nvim_lsp_signature_help" },
-        { name = "nvim_lsp",               keyword_length = 3 },
+        { name = "nvim_lsp", keyword_length = 3 },
         { name = "codeium" },
-        { name = "buffer",                 keywword_length = 3 },
-        { name = "treesitter",             keyword_length = 3 },
-        { name = "luasnip",                keyword_length = 2 },
+        { name = "supermaven" },
+        { name = "cmp_tabnine" },
+        { name = "buffer", keywword_length = 3 },
+        { name = "treesitter", keyword_length = 3 },
         { name = "calc" },
         { name = "emoji" },
     }
@@ -334,10 +336,9 @@ return {
 
         -- Autocompletion
         "nvim-cmp",
-        "cmp-nvim-lsp",
 
         -- Snippets
-        { "L3MON4D3/LuaSnip",            event = "InsertEnter" },
+        { "L3MON4D3/LuaSnip", event = "InsertEnter" },
         { "rafamadriz/friendly-snippets" },
     }
 }

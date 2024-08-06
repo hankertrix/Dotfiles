@@ -1,4 +1,4 @@
-# My Neovim Configuration
+# Neovim Configuration
 
 ## Plugins
 
@@ -34,7 +34,7 @@ Autocompletion - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
 Autocompletion sources:
 
-- [cmp-path](https://github.com/hrsh7th/cmp-path)
+- [cmp-async-path](https://codeberg.org/FelipeLema/cmp-async-path)
 - [cmp-nvim-lsp-signature-help](https://github.com/hrsh7th/cmp-nvim-lsp-signature-help)
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
 - [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)
@@ -47,7 +47,11 @@ Autocompletion sources:
 - [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
 - [cmp-cmdline-history](https://github.com/dmitmel/cmp-cmdline-history)
 - [cmp-nvim-lsp-document-symbol](https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol)
-- [codeium.nvim (AI autocompletion)](https://github.com/Exafunction/codeium.nvim)
+
+AI autocompletion sources:
+- [codeium.nvim](https://github.com/Exafunction/codeium.nvim)
+- [supermaven.nvim](https://github.com/supermaven-inc/supermaven-nvim)
+- [cmp-tabnine](https://github.com/tzachar/cmp-tabnine)
 
 Snippet engine - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 

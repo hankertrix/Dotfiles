@@ -107,7 +107,7 @@ local function setup()
     cmp.setup.cmdline(":", {
         mapping = cmp_cmdline_mappings,
         sources = cmp.config.sources({
-            { name = "path" },
+            { name = "async_path" },
             {
                 name = "cmdline",
                 option = {
@@ -124,8 +124,15 @@ local function setup()
         sources = default_sources
     })
 
-    -- Set up the AI autocompletion, which is currently Codeium
+    -- Set up Codeium for AI autocompletion
     require("codeium").setup()
+
+    -- Set up Supermaven for AI autocompletion
+    require("supermaven-nvim").setup({
+        log_level = "info",
+        disable_inline_completion = true,
+        disable_keymaps = true,
+    })
 
 end
 
@@ -139,7 +146,7 @@ return {
         -- Regular completion within a buffer
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-nvim-lua" },
-        { "hrsh7th/cmp-path" },
+        { "https://codeberg.org/FelipeLema/cmp-async-path" },
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-nvim-lsp-signature-help" },
         { "ray-x/cmp-treesitter" },
@@ -147,7 +154,11 @@ return {
         { "hrsh7th/cmp-calc" },
         { "f3fora/cmp-spell" },
         { "hrsh7th/cmp-emoji" },
+
+        -- AI autocompletion
         { "Exafunction/codeium.nvim", dependencies = "nvim-lua/plenary.nvim" },
+        { "supermaven-inc/supermaven-nvim" },
+        { "tzachar/cmp-tabnine", build = "./install.sh" },
 
         -- Completion within the command line
         { "hrsh7th/cmp-cmdline" },

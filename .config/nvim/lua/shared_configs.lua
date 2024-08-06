@@ -165,6 +165,7 @@ M.lsp_kind_icons = {
     Variable = "󰫧",
     Collapsed = "",
     Codeium = "󰘦",
+    Supermaven = "",
 
 }
 
