@@ -5,9 +5,10 @@ For the most part, the `keymap.toml` file just includes
 most of the `lf` key binds so that both Yazi and `lf` will behave similarly.
 
 A lot of the keybinds use my own plugin called `augment-command.yazi`
-to improve a lot of the default Yazi commands, as well as to auto skip directories
-with only one subdirectory, like GitHub does, and automatically extract and enter
-archive files. You can find more information about the plugin
+to improve a lot of the default Yazi commands, like auto-skipping directories
+with only one subdirectory, like GitHub does, automatically extracting and entering
+archive files, and smartly determining an item group to operate on for a few commands.
+You can find more information about the plugin
 [here](https://github.com/hankertrix/augment-command.yazi).
 
 ## [`theme.toml`](https://yazi-rs.github.io/docs/configuration/theme)
