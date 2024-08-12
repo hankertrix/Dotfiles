@@ -1,18 +1,14 @@
 # Yazi configuration files
 
-## [Smart-enter plugin](https://yazi-rs.github.io/docs/tips#smart-enter-enter-for-directory-open-for-file)
-This plugin is just to make Yazi behave more like most other
-[ranger](https://github.com/ranger/ranger)-style file managers,
-like [lf](https://github.com/gokcehan/lf),
-which have one key bind to both open files and enter directories.
-
-Yazi doesn't do this however, as
-[the concept of files and directories are not very distinct for things like archive files](https://yazi-rs.github.io/docs/faq#why-cant-open-and-enter-be-a-single-command).
-Hence, the plugin provides that functionality.
-
 ## [`keymap.toml`](https://yazi-rs.github.io/docs/configuration/keymap)
 For the most part, the `keymap.toml` file just includes
 most of the `lf` key binds so that both Yazi and `lf` will behave similarly.
+
+A lot of the keybinds use my own plugin called `augment-command.yazi`
+to improve a lot of the default Yazi commands, as well as to auto skip directories
+with only one subdirectory, like GitHub does, and automatically extract and enter
+archive files. You can find more information about the plugin
+[here](https://github.com/hankertrix/augment-command.yazi).
 
 ## [`theme.toml`](https://yazi-rs.github.io/docs/configuration/theme)
 The `theme.toml` file is mostly to make the icons and colours the same as the `lf` configuration,
