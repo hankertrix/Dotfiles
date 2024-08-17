@@ -180,6 +180,9 @@
    "C-j" '(evil-window-down :wk "Go to the window below")
    "C-k" '(evil-window-up :wk "Go to the window above")
    "C-l" '(evil-window-right :wk "Go to the window on the right")
+
+    ;; Activate LSP code actions with F4
+    "<f4>" '(lsp-execute-code-action :wk "Execute code action")
    )
 
   ;; Key binds for dired
@@ -572,7 +575,6 @@
 
 
   ;; Functions to set up LSP mode
-
   (defun lsp-mode-setup ()
     "The function to set up LSP mode"
 
