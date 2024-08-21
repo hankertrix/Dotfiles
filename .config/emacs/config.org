@@ -286,16 +286,38 @@ Evil anzu highlights search terms. This package is required for doom modeline to
    "C-j" '(evil-window-down :wk "Go to the window below")
    "C-k" '(evil-window-up :wk "Go to the window above")
    "C-l" '(evil-window-right :wk "Go to the window on the right")
-
-    ;; Activate LSP code actions with F4
-    "<f4>" '(lsp-execute-code-action :wk "Execute code action")
    )
 
   ;; Key binds for dired
   (general-define-key
-   :states '(normal)
+   :states 'normal
    :keymaps 'dired-mode-map
    "_" '(counsel-find-file :wk "Create a file")
+   )
+
+  ;; Key binds for normal mode in LSP mode
+  (general-define-key
+   :states 'normal
+   :keymaps 'lsp-mode-map
+   "K" '(lsp-describe-thing-at-point :wk "Describe the currently hovered item")
+   "gd" '(lsp-find-definition :wk "Go to definition")
+   "gD" '(lsp-find-declaration :wk "Go to declaration")
+   "gi" '(lsp-find-implementation :wk "List all implementations")
+   "go" '(lsp-find-type-definition :wk "Go to type definition")
+   "gr" '(lsp-find-references :wk "List all references")
+   "gs" '(lsp-signature-activate :wk "Show signature information")
+   "<f2>" '(lsp-rename :wk "Renames all references to the symbol under the cursor")
+   "<f3>" '(lsp-format-buffer :wk "Formats the buffer using the LSP")
+   "SPC f" '(lsp-format-buffer :wk "Formats the buffer using the LSP")
+   "<f4>" '(lsp-execute-code-action :wk "Select a code action")
+   )
+
+  ;; Key binds for visual mode in LSP mode
+  (general-define-key
+   :states 'visual
+   :keymaps 'lsp-mode-map
+   "<f3>" '(lsp-format-region :wk "Formats the region using the LSP")
+   "SPC f" '(lsp-format-region :wk "Formats the region using the LSP")
    )
 
   ;; Set the leader key to the space key
