@@ -229,19 +229,6 @@ local function setup()
                 }
             end,
 
-            -- Configure arduino language server
-            arduino_language_server = function()
-                lspconfig.arduino_language_server.setup {
-                    cmd = {
-                        "arduino-language-server",
-                        "-cli-config",
-                        "$HOME/.arduino15/arduino-cli.yaml",
-                        "-fqbn",
-                        "arduino:avr:uno",
-                    }
-                }
-            end,
-
             -- Configure ltex LSP
             ltex = function()
                 lspconfig.ltex.setup {

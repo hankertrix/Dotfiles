@@ -26,7 +26,6 @@ local function setup()
             "rust_analyzer",            -- Rust
             "bashls",                   -- Bash and shell
             "clangd",                   -- C/C++
-            "arduino_language_server",  -- Arduino
             "taplo",                    -- TOML
             "jsonls",                   -- JSON
             "ltex",                     -- English checker
