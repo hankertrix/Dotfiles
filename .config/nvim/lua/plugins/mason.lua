@@ -19,14 +19,17 @@ local function setup()
         ensure_installed = {
 
             -- LSP servers
-            "lua_ls",           -- Lua
-            "pylsp",            -- Python
-            "tsserver",         -- TypeScript and JavaScript
-            "eslint",           -- TypeScript and the JavaScript ecosystem
-            "rust_analyzer",    -- Rust
-            "bashls",           -- Bash and shell
-            "taplo",            -- TOML
-            "ltex",             -- English checker
+            "lua_ls",                   -- Lua
+            "pylsp",                    -- Python
+            "tsserver",                 -- TypeScript and JavaScript
+            "eslint",                   -- TypeScript and JavaScript ecosystem
+            "rust_analyzer",            -- Rust
+            "bashls",                   -- Bash and shell
+            "clangd",                   -- C/C++
+            "arduino_language_server",  -- Arduino
+            "taplo",                    -- TOML
+            "jsonls",                   -- JSON
+            "ltex",                     -- English checker
 
             -- Formatters
             "stylua",           -- Lua formatter
@@ -52,6 +55,11 @@ return {
         "MasonInstall",
         "MasonUninstall",
         "MasonUninstallAll",
-        "MasonLog"
+        "MasonLog",
+        "MasonToolsInstall",
+        "MasonToolsInstallSync",
+        "MasonToolsUpdate",
+        "MasonToolsUpdateSync",
+        "MasonToolsClean"
     },
 }
