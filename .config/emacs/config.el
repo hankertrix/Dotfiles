@@ -916,10 +916,12 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
-(use-package magit)
+(use-package magit
+  :ensure ( :branch "main" :pre-build ("make" "info")))
 
 ;; Update transient, which is a magit dependency
-(use-package transient)
+(use-package transient
+  :ensure ( :branch "main"))
 
 (use-package toc-org
   :commands toc-org-enable
@@ -1001,3 +1003,6 @@
 ;; Update PDF buffers after successful LaTeX runs
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
+
+(use-package with-editor
+  :ensure ( :branch "main"))

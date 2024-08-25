@@ -54,6 +54,8 @@
   - [[#auctex][AUCTeX]]
   - [[#evil-tex][Evil TeX]]
   - [[#using-pdf-tools-to-open-compiled-latex-pdf-files][Using PDF-tools to open compiled LaTeX PDF files]]
+- [[#workarounds][Workarounds]]
+  - [[#workaround-with-editor-failing-to-merge][Workaround "with-editor" failing to merge]]
 - [[#external-programs][External programs]]
   - [[#miscellaneous-1][Miscellaneous]]
   - [[#tex-and-latex][TeX and LaTeX]]
@@ -1286,10 +1288,12 @@ Helpful is a better help buffer for Emacs that provides more context and details
 * Git Integration
 Magit is an awesome plugin that provides excellent Git integration in Emacs.
 #+begin_src emacs-lisp
-(use-package magit)
+(use-package magit
+  :ensure ( :branch "main" :pre-build ("make" "info")))
 
 ;; Update transient, which is a magit dependency
-(use-package transient)
+(use-package transient
+  :ensure ( :branch "main"))
 #+end_src
 
 
@@ -1475,6 +1479,17 @@ Evil TeX provides useful text objects for LaTeX editing.
 ;; Update PDF buffers after successful LaTeX runs
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
+#+end_src
+
+
+
+
+* Workarounds
+
+** Workaround "with-editor" failing to merge
+#+begin_src emacs-lisp
+(use-package with-editor
+  :ensure ( :branch "main"))
 #+end_src
 
 
