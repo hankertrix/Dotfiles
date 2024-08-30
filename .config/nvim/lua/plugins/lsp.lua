@@ -220,7 +220,7 @@ local function setup()
                 }
             end,
 
-            -- Configure rust analyzer
+            -- Configure rust analyzer to enable inlay hints
             rust_analyzer = function()
                 lspconfig.rust_analyzer.setup {
                     on_attach = function(_, buffer_number)

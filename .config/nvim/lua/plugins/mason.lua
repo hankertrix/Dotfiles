@@ -24,8 +24,8 @@ local function setup()
             "tsserver",                 -- TypeScript and JavaScript
             "eslint",                   -- TypeScript and JavaScript ecosystem
             "rust_analyzer",            -- Rust
-            "bashls",                   -- Bash and shell
             "clangd",                   -- C/C++
+            "bashls",                   -- Bash and shell
             "taplo",                    -- TOML
             "jsonls",                   -- JSON
             "ltex",                     -- English checker
