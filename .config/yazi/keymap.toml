@@ -136,8 +136,8 @@ desc = "Create a file or directory (ends with / for directories)"
 # Use + to create a new file or directory
 [[manager.prepend_keymap]]
 on   = [ "+" ]
-run  = "create"
-desc = "Create a file or directory (ends with / for directories)"
+run  = "create --dir"
+desc = "Create a directory"
 
 
 # Use x to move files to the trash
@@ -227,21 +227,28 @@ desc = "Rename file and remove the file name"
 # Use ec to go to the config directory for Yazi
 [[manager.prepend_keymap]]
 on   = [ "e", "c" ]
-run  = "cd ~/.config/yazi/"
+run  = "cd ~/.config/yazi"
 desc = "Edit the Yazi configuration"
 
 
-# Use gp to go to the project directory
+# Use gc to go to the config directory
+[[manager.prepend_keymap]]
+on   = [ "g", "c" ]
+run  = "cd ~/.config"
+desc = "Go to the config directory"
+
+
+# Use gp to go to the projects directory
 [[manager.prepend_keymap]]
 on   = [ "g", "p" ]
-run  = "cd ~/projects/"
+run  = "cd ~/projects"
 desc = "Go to the projects directory"
 
 
 # Use gu to go to school directory
 [[manager.prepend_keymap]]
 on   = [ "g", "u" ]
-run  = "cd ~/school/"
+run  = "cd ~/school"
 desc = "Go to the school directory"
 
 
