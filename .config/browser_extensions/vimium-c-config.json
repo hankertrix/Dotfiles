@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "07/08/2024, 9:26:05 pm",
-	"time": 1723037165468,
+	"@time": "09/09/2024, 1:55:21 am",
+	"time": 1725818121339,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
-		"firefox": 129
+		"firefox": 130
 	},
 	"exclusionRules": [
 		{
@@ -19,6 +19,10 @@
 		{
 			"passKeys": "^ F J K O T f o t x ",
 			"pattern": ":https://web.telegram.org/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://discord.com/"
 		}
 	],
 	"grabBackFocus": true,
