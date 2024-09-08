@@ -32,7 +32,7 @@ so the configuration also increases the maximum size to a rather absurd number,
 so the previews will use all the available space in the preview pane,
 which is the same as the configuration for `lf`.
 
-## `yy.sh`
+## [`yy.sh`](https://yazi-rs.github.io/docs/quick-start/#shell-wrapper)
 This file is very similar to the `lfcd.sh` file in the `lf` configuration,
 it just adds the `yy` command which changes the directory
 to the current directory Yazi is in when Yazi exits.
