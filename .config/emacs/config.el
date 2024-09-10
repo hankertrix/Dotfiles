@@ -991,7 +991,7 @@
                         ("make"))
             :build (:not elpaca--compile-info)
             :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style")
-            :version (lambda (_) (require 'tex-site) AUCTeX-version))
+            :version (lambda (_) (require 'auctex) AUCTeX-version))
   :mode (("\\.tex\\'" . LaTeX-mode)))
 
 (use-package evil-tex
