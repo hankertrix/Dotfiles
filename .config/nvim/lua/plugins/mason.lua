@@ -21,7 +21,7 @@ local function setup()
             -- LSP servers
             "lua_ls",                   -- Lua
             "pylsp",                    -- Python
-            "tsserver",                 -- TypeScript and JavaScript
+            "ts_ls",                    -- TypeScript and JavaScript
             "eslint",                   -- TypeScript and JavaScript ecosystem
             "rust_analyzer",            -- Rust
             "clangd",                   -- C/C++
