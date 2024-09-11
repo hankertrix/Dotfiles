@@ -102,6 +102,3 @@ _open_files_for_editing() {
 # alias ef='_open_files_for_editing'     # 'ef' opens given file(s) for editing
 # alias pacdiff=eos-pacdiff
 ################################################################################
-
-# Use thefuck to correct commands
-eval "$(thefuck --alias)"
