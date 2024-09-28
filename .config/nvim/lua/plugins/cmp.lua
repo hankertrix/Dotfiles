@@ -7,7 +7,7 @@ local utils = require("utils")
 local function setup()
 
     -- Stops executing if the package isn"t installed
-    if not utils.status_ok("cmp", "codeium") then return end
+    if not utils.status_ok("cmp", "supermaven-nvim") then return end
 
     -- Gets the nvim-cmp module
     local cmp = require("cmp")
@@ -124,9 +124,6 @@ local function setup()
         sources = default_sources
     })
 
-    -- Set up Codeium for AI autocompletion
-    require("codeium").setup()
-
     -- Set up Supermaven for AI autocompletion
     require("supermaven-nvim").setup({
         log_level = "info",
@@ -156,7 +153,6 @@ return {
         { "hrsh7th/cmp-emoji" },
 
         -- AI autocompletion
-        { "Exafunction/codeium.nvim", dependencies = "nvim-lua/plenary.nvim" },
         { "supermaven-inc/supermaven-nvim" },
         { "tzachar/cmp-tabnine", build = "./install.sh" },
 

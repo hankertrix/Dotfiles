@@ -253,7 +253,6 @@ local function setup()
         { name = "luasnip", keyword_length = 2 },
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lsp", keyword_length = 3 },
-        { name = "codeium" },
         { name = "supermaven" },
         { name = "cmp_tabnine" },
         { name = "buffer", keywword_length = 3 },
