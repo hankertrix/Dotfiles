@@ -129,6 +129,7 @@ local function setup()
 
                     -- Set the root directory
                     root_dir = function(fname)
+                        --
 
                         -- Tries to get the root directory
                         local root = lspconfig.util.root_pattern(unpack(root_files))(fname)
@@ -136,6 +137,8 @@ local function setup()
                         -- If the root directory exists
                         -- and is not the Neovim configuration directory
                         if root and root ~= vim.env.HOME then
+                            --
+
                             -- Then immediately return the root directory
                             return root
                         end
@@ -146,6 +149,7 @@ local function setup()
 
                         -- If the root directory is found
                         if root then
+                            --
 
                             -- Then return the lua folder in the
                             -- Neovim configuration directory
