@@ -14,7 +14,7 @@ Bufferline / tabline - [bufferline.nvim](https://github.com/akinsho/bufferline.n
 
 ### Integrations
 
-Git integration - [vim-fugitive](https://github.com/tpope/vim-fugitive)
+Git integration - [Neogit](https://github.com/NeogitOrg/neogit)
 
 Git gutter plugin (to show the changes at the side while editing a file) - [gitsign.nvim](https://github.com/lewis6991/gitsigns.nvim)
 
