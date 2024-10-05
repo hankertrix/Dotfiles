@@ -189,6 +189,12 @@
    "_" '(counsel-find-file :wk "Create a file")
    )
 
+  ;; Key binds for transient (used by Magit)
+  (general-define-key
+   :keymaps 'transient-base-map
+   "<escape>" 'transient-quit-one
+   )
+
   ;; Key binds for normal mode in LSP mode
   (general-define-key
    :states 'normal
@@ -214,8 +220,8 @@
    "SPC f" '(lsp-format-region :wk "Formats the region using the LSP")
    )
 
-  ;; Set the leader key to the space key
-  (general-create-definer hankertrix/leader-keys
+  ;; Create a new definer for the leader keys
+  (general-create-definer hanker/leader-keys
 
     ;; Set the leader key in all modes
     :states '(normal insert visual emacs)
@@ -246,7 +252,7 @@
   ;; Key bindings involving the leader key
 
   ;; Key binds to copy and paste from the clipboard
-  (hankertrix/leader-keys
+  (hanker/leader-keys
     "P" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before))
           :wk "Paste from the system clipboard before the cursor")
     "pp" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after))
@@ -260,31 +266,31 @@
     )
 
   ;; Key binds for buffer management
-  (hankertrix/leader-keys
+  (hanker/leader-keys
     "l" '(next-buffer :wk "Go to the next buffer")
     "h" '(previous-buffer :wk "Go to the previous buffer")
     "x" '(kill-this-buffer :wk "Close the current buffer")
     )
 
   ;; Key binds for searching
-  (hankertrix/leader-keys
+  (hanker/leader-keys
     "pw" '(dired :wk "Open Dired")
     "pf" '(find-file :wk "Search for a file")
     "ps" '(counsel-rg :wk "Search for a term using ripgrep")
     )
 
   ;; Key binds for git
-  (hankertrix/leader-keys
+  (hanker/leader-keys
     "gs" '(magit :wk "Open Git"))
 
   ;; Key binds for opening specific files
-  (hankertrix/leader-keys
+  (hanker/leader-keys
     "ec" '((lambda () (interactive) (find-file "~/.config/emacs/config.org"))
            :wk "Edit Emacs config")
     )
 
   ;; Key binds in org mode
-  (hankertrix/leader-keys
+  (hanker/leader-keys
     "o" '(:ignore t :wk "Org mode keybinds")
     "oe" '(org-export-dispatch :wk "Org export dispatch")
     "ob" '(org-babel-tangle :wk "Org babel tangle")
@@ -294,7 +300,7 @@
     )
 
   ;; Key binds in lsp mode
-  (hankertrix/leader-keys
+  (hanker/leader-keys
     "tr" '(flycheck-list-errors :wk "List all the errors in the current buffer")
     "tb" '(flycheck-list-errors :wk "List all the errors in the current buffer")
     )
@@ -302,7 +308,7 @@
   ;; Key binds for help files
   ;; I'm using "/" because it is where the question mark is
   ;; But I don't want to press shift to access the help files
-  (hankertrix/leader-keys
+  (hanker/leader-keys
     "/" '(:ignore t :wk "Help")
     "/a" '(counsel-apropos :wk "Apropos")
     "/b" '(describe-bindings :wk "Describe bindings")
