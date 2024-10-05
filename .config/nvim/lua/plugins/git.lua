@@ -29,7 +29,6 @@ local function config()
             status = {
                 ["X"] = "Untrack",
                 ["K"] = false,
-                ["<C-g>"] = "Close",
             },
         },
     })
