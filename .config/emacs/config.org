@@ -47,6 +47,7 @@
   - [[#add-a-page-break-immediately-after-the-table-of-contents-in-latex][Add a page break immediately after the table of contents in LaTeX]]
   - [[#evil-org][Evil Org]]
   - [[#turn-on-latex-syntax-highlighting-in-org-mode][Turn on LaTeX syntax highlighting in org mode]]
+  - [[#add-syntax-highlighting-to-latex-exports-of-org-mode-code-blocks][Add syntax highlighting to LaTeX exports of org mode code blocks]]
   - [[#citeproc][Citeproc]]
   - [[#literate-programming][Literate programming]]
 - [[#working-with-pdfs][Working with PDFs]]
@@ -54,8 +55,6 @@
   - [[#auctex][AUCTeX]]
   - [[#evil-tex][Evil TeX]]
   - [[#using-pdf-tools-to-open-compiled-latex-pdf-files][Using PDF-tools to open compiled LaTeX PDF files]]
-- [[#workarounds][Workarounds]]
-  - [[#workaround-with-editor-failing-to-merge][Workaround "with-editor" failing to merge]]
 - [[#external-programs][External programs]]
   - [[#miscellaneous-1][Miscellaneous]]
   - [[#tex-and-latex][TeX and LaTeX]]
@@ -1319,7 +1318,7 @@ Org-bullets gives us attractive bullets rather than asterisks.
 
 
 ** Disabling electric indent
-Org mode source code blocks have some really weird and annoying default indentation behaviour. It is likely due to electric-indent-mode, which is turned on by default in Emacs. So I'm going to turn it off.
+Org mode source code blocks have some really weird and annoying default indentation behaviour. It is likely due to =electric-indent-mode=, which is turned on by default in Emacs. So I'm going to turn it off.
 #+begin_src emacs-lisp
 (electric-indent-mode -1)
 #+end_src
@@ -1332,7 +1331,7 @@ Org mode source code blocks have some really weird and annoying default indentat
 
 
 ** Enabling Org Tempo
-Org-tempo provides shortcuts for various expansions in Org mode, such as "<s" to create a source code block. Below are shortcuts for org-tempo.
+Org-tempo provides shortcuts for various expansions in Org mode, such as "<s" to create a source code block. Below are shortcuts for =org-tempo=.
 
 | Typing the below + TAB | Expands to ...                          |
 |------------------------+-----------------------------------------|
@@ -1392,9 +1391,25 @@ Evil org provides a set of evil key bindings that work with org mode.
 
 
 ** Turn on LaTeX syntax highlighting in org mode
-This sets the variable org-highlight-latex-and-related to "native", which will highlight LaTeX syntax like it is a TeX file. The "latex" setting will just highlight all LaTeX fragments in a different colour. So a LaTeX block will just be one colour and all the entities are not highlighted. For the other options, the Emacs help (C-h v org-highlight-latex-and-related) should be sufficient to understand what they do.
+This sets the variable =org-highlight-latex-and-related= to "native", which will highlight LaTeX syntax like it is a TeX file. The "latex" setting will just highlight all LaTeX fragments in a different colour. So a LaTeX block will just be one colour and all the entities are not highlighted. For the other options, the Emacs help (=C-h v org-highlight-latex-and-related=) should be sufficient to understand what they do.
 #+begin_src emacs-lisp
 (setq org-highlight-latex-and-related '(native))
+#+end_src
+
+
+** Add syntax highlighting to LaTeX exports of org mode code blocks
+This allows the code blocks in Org mode to have syntax highlighting when it is being exported to LaTeX.
+#+begin_src emacs-lisp
+;; Add the minted LaTeX package
+;; to the header of all Org mode LaTeX exports
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+
+;; Use the minted LaTeX package for source code blocks
+;; instead of the default LaTeX verbatim block
+(setq org-latex-listings 'minted)
+
+;; Add the shell escape to the latexmk command
+(setq org-latex-pdf-process '("latexmk -shell-escape -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f"))
 #+end_src
 
 
@@ -1479,17 +1494,6 @@ Evil TeX provides useful text objects for LaTeX editing.
 ;; Update PDF buffers after successful LaTeX runs
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
-#+end_src
-
-
-
-
-* Workarounds
-
-** Workaround "with-editor" failing to merge
-#+begin_src emacs-lisp
-(use-package with-editor
-  :ensure ( :branch "main"))
 #+end_src
 
 

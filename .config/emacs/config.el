@@ -964,6 +964,17 @@
 
 (setq org-highlight-latex-and-related '(native))
 
+;; Add the minted LaTeX package
+;; to the header of all Org mode LaTeX exports
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+
+;; Use the minted LaTeX package for source code blocks
+;; instead of the default LaTeX verbatim block
+(setq org-latex-listings 'minted)
+
+;; Add the shell escape to the latexmk command
+(setq org-latex-pdf-process '("latexmk -shell-escape -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f"))
+
 (use-package citeproc)
 
 (setq org-confirm-babel-evaluate nil)
@@ -1003,6 +1014,3 @@
 ;; Update PDF buffers after successful LaTeX runs
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
-
-(use-package with-editor
-  :ensure ( :branch "main"))
