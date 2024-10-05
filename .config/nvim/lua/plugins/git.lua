@@ -13,6 +13,11 @@ local function config()
 
     -- Setup the key binds to be the same as Magit
     require("neogit").setup({
+        sections = {
+            untracked = {
+                folded = true,
+            },
+        },
         mappings = {
             popup = {
                 ["F"] = "PullPopup",
