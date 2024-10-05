@@ -168,6 +168,9 @@ Install and set up evil mode.
   ;; Make evil-search-word look for symbols rather than word boundaries
   (setq-default evil-symbol-word-search t)
 
+  ;; Add the hook to enter insert mode when editing a commit
+  (add-hook 'git-commit-mode-hook 'evil-insert-state)
+
   ;; The function to centre the screen on the current cursor position
   (defun centre-screen (&rest _)
     (evil-scroll-line-to-center nil))
