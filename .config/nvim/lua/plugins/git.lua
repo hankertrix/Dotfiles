@@ -1,20 +1,27 @@
 -- Git plugin configuration
--- Currently it's vim-fugitive
+-- Currently it's Neogit
 
 -- Gets the module with the utilities
 local utils = require("utils")
 
 -- Returns the git plugin for lazy.nvim
 return {
-    "tpope/vim-fugitive",
+    "NeogitOrg/neogit",
+    dependencies = "nvim-lua/plenary.nvim",
     lazy = true,
     cond = utils.firenvim_not_active,
-    cmd = { "Git", "G" },
+    config = true,
+    cmd = "Neogit",
     keys = {
 
-        -- The keybind to open Git
-        { "<Leader>gs", vim.cmd.Git, mode = "n", desc = "Open Git" }
+        -- The keybind to open Neogit
+        {
+            "<Leader>gs",
+            function()
+                require("neogit").open()
+            end,
+            mode = "n",
+            desc = "Open Git",
+        },
     },
-    -- event = "User InGitRepo"
 }
-
