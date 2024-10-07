@@ -5,6 +5,7 @@ local utils = require("utils")
 
 -- Function to set up the themes
 local function setup()
+    --
 
     -- The theme that I want to use
     local theme = "bluloco"
@@ -13,11 +14,13 @@ local function setup()
     if not utils.status_ok(theme) then return end
 
     -- If firenvim isn't active, sets the colour scheme to bluloco dark
-    if utils.firenvim_not_active() then vim.cmd("colorscheme bluloco-dark")
+    if utils.firenvim_not_active() then
+        vim.cmd("colorscheme bluloco-dark")
 
-        -- Otherwise, sets the colour scheme to bluloco light
-    else vim.cmd("colorscheme bluloco-light") end
-
+    -- Otherwise, sets the colour scheme to bluloco light
+    else
+        vim.cmd("colorscheme bluloco-light")
+    end
 end
 
 -- Returns the theme plugin for lazy.nvim
@@ -28,6 +31,5 @@ return {
     config = setup,
     lazy = false,
     priority = 1000,
-    dependencies = { "rktjmp/lush.nvim" }
+    dependencies = { "rktjmp/lush.nvim" },
 }
-

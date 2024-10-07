@@ -4,14 +4,14 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up the highlighting plugin
-local function setup()
-
-    -- Stops executing if the package isn't installed
-    if not utils.status_ok("illuminate") then return end
-
-    -- Set up the plugin
-    require("illuminate").configure({
+-- Returns the plugin to highlight the same word for lazy.nvim
+return {
+    "RRethy/vim-illuminate",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    config = function(_, opts)
+        require("illuminate").configure(opts)
+    end,
+    opts = {
 
         -- Don't illuminate text on these file types
         filetypes_denylist = utils.plugin_file_types,
@@ -29,14 +29,5 @@ local function setup()
         large_file_overrides = {
             providers = { "lsp" },
         },
-    })
-
-end
-
--- Returns the plugin to highlight the same word for lazy.nvim
-return {
-    "RRethy/vim-illuminate",
-    config = setup,
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-    cond = utils.firenvim_not_active
+    },
 }

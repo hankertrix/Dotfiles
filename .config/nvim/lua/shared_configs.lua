@@ -3,7 +3,6 @@
 -- Initialise the module
 local M = {}
 
-
 -- The default completion sources for nvim-cmp
 M.default_cmp_sources = {
     {
@@ -12,17 +11,17 @@ M.default_cmp_sources = {
             keep_all_entries = false,
             enable_in_context = function()
                 return true
-            end
-        }
+            end,
+        },
     },
     { name = "buffer" },
     { name = "calc" },
-    { name = "emoji" }
+    { name = "emoji" },
 }
-
 
 -- The function to return the default mappings for nvim-cmp
 function M.default_cmp_mappings()
+    --
 
     -- Tries loading nvim-cmp
     local status_ok, cmp = pcall(require, "cmp")
@@ -36,21 +35,21 @@ function M.default_cmp_mappings()
     -- The default mappings for nvim-cmp
     local default_cmp_mappings = {
 
-        -- Use vim's default scrolling to scroll the documentation in the cmp menu
-        ['<C-d>'] = cmp.mapping.scroll_docs(5),
-        ['<C-u>'] = cmp.mapping.scroll_docs(-5),
+        -- Use vim's default scrolling to scroll
+        -- the documentation in the cmp menu
+        ["<C-d>"] = cmp.mapping.scroll_docs(5),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-5),
         ["<C-f>"] = cmp.mapping.scroll_docs(5),
         ["<C-b>"] = cmp.mapping.scroll_docs(-5),
 
-
-        -- Use up and down arrow keys to select the previous and next item respectively
-        ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
-        ['<Down>'] = cmp.mapping.select_next_item(select_opts),
-
+        -- Use up and down arrow keys to select the previous
+        -- and next item respectively
+        ["<Up>"] = cmp.mapping.select_prev_item(select_opts),
+        ["<Down>"] = cmp.mapping.select_next_item(select_opts),
 
         -- Ctrl + p  and Ctrl + n work similarly to the up and down arrow keys
         -- but will turn on cmp if the cmp menu is not visible
-        ['<C-p>'] = cmp.mapping(function()
+        ["<C-p>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item(select_opts)
             else
@@ -58,7 +57,7 @@ function M.default_cmp_mappings()
             end
         end),
 
-        ['<C-n>'] = cmp.mapping(function()
+        ["<C-n>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_next_item(select_opts)
             else
@@ -66,13 +65,12 @@ function M.default_cmp_mappings()
             end
         end),
 
-
         -- Use tab or Ctrl + y to complete
         ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-        ['<C-y>'] = cmp.mapping.confirm({ select = false }),
+        ["<C-y>"] = cmp.mapping.confirm({ select = false }),
 
         -- Use Ctrl + e to exit the cmp menu
-        ['<C-e>'] = cmp.mapping.abort(),
+        ["<C-e>"] = cmp.mapping.abort(),
 
         -- Vim's default mapping for completions
         ["<C-Space>"] = cmp.mapping.complete(),
@@ -80,13 +78,11 @@ function M.default_cmp_mappings()
 
     -- Returns the default cmp mappings
     return default_cmp_mappings
-
 end
-
-
 
 -- Function to return the LSP diagnostic icons I use
 function M.lsp_diagnostic_icons(warning_text)
+    --
 
     -- Sets the warning text to "warn" if it isn't given
     warning_text = warning_text or "warn"
@@ -103,9 +99,7 @@ function M.lsp_diagnostic_icons(warning_text)
 
     -- Returns the LSP icons
     return lsp_icons
-
 end
-
 
 -- The list of short names for the sources
 M.source_names = {
@@ -116,13 +110,11 @@ M.source_names = {
     latex_symbols = "LaTeX",
     cmp_tabnine = "Tabnine",
     nvim_lsp_signature_help = "LSP Signature Help",
-    cmdline_history = "Cmdline History"
+    cmdline_history = "Cmdline History",
 }
-
 
 -- The list of LSP kind icons that I want to use
 M.lsp_kind_icons = {
-
     Array = "󰅪",
     Boolean = "◩",
     Class = "󰠱",
@@ -166,13 +158,10 @@ M.lsp_kind_icons = {
     Collapsed = "",
     Codeium = "󰘦",
     Supermaven = "",
-
 }
-
 
 -- Set the max line length to 80
 M.max_line_length = 80
-
 
 -- Returns the module
 return M

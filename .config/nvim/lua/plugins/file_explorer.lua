@@ -7,6 +7,7 @@ local utils = require("utils")
 -- Returns the file explorer plugin for lazy.nvim
 return {
     "mikavilpas/yazi.nvim",
+    cond = utils.firenvim_not_active,
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { open_for_directories = true },

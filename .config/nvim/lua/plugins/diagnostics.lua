@@ -4,25 +4,15 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up the diagnostics plugin
-local function setup()
-
-    -- Stops executing if the package isn't installed
-    if not utils.status_ok("trouble") then return end
-
-    -- Set up the diagnostics plugin
-    require("trouble").setup({
-        kinds = require("shared_configs").lsp_kind_icons,
-    })
-end
-
 -- Return the diagnostics plugin for lazy.nvim
 return {
     "folke/trouble.nvim",
-    config = setup,
     cond = utils.firenvim_not_active,
     cmd = { "TroubleToggle", "Trouble" },
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+        kinds = require("shared_configs").lsp_kind_icons,
+    },
     keys = {
         {
             "<Leader>tr",
@@ -46,7 +36,8 @@ return {
             "<Leader>tl",
             "<cmd>Trouble loclist toggle<cr>",
             mode = "n",
-            desc = "Display the window's location list items in a Trouble window",
+            desc = "Display the window's location list items "
+                .. "in a Trouble window",
         },
         {
             "gR",

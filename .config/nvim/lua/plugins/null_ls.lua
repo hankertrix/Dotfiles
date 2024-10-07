@@ -5,6 +5,7 @@ local utils = require("utils")
 
 -- Function to set up null-ls
 local function setup()
+    --
 
     -- Stops executing if the packages aren't installed
     if not utils.status_ok({ "null-ls", "cspell" }) then return end
@@ -41,12 +42,12 @@ local function setup()
                         payload.cspell_config_path
                     )
                 )
-            end
+            end,
         },
     }
 
     -- Set up null-ls
-    null_ls.setup {
+    null_ls.setup({
 
         sources = {
 
@@ -56,11 +57,10 @@ local function setup()
             null_ls.builtins.formatting.stylua,
 
             -- JavaScript ecosystem
-            null_ls.builtins.formatting.prettierd.with {
+            null_ls.builtins.formatting.prettierd.with({
                 prefer_local = "node_modules/.bin",
-                extra_filetypes = { "svelte" }
-            },
-
+                extra_filetypes = { "svelte" },
+            }),
 
             -- Linters
 
@@ -68,11 +68,10 @@ local function setup()
             cspell.diagnostics.with(cspell_config),
             cspell.code_actions.with(cspell_config),
 
-
             -- Miscellaneous
-            null_ls.builtins.code_actions.gitsigns
-        }
-    }
+            null_ls.builtins.code_actions.gitsigns,
+        },
+    })
 end
 
 -- Returns the none-ls plugin to lazy.nvim
@@ -85,6 +84,6 @@ return {
     dependencies = {
         "mason.nvim",
         "gitsigns.nvim",
-        "davidmh/cspell.nvim"
-    }
+        "davidmh/cspell.nvim",
+    },
 }

@@ -8,6 +8,13 @@ return {
     keys = {
 
         -- Close the current buffer with <Leader>x
-        { "<Leader>x", function() require("mini.bufremove").delete() end, mode = "n", desc = "Closes the current buffer" },
-    }
+        {
+            "<Leader>x",
+            function()
+                require("mini.bufremove").delete()
+            end,
+            mode = "n",
+            desc = "Closes the current buffer",
+        },
+    },
 }

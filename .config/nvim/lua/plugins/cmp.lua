@@ -5,6 +5,7 @@ local utils = require("utils")
 
 -- Function to set up nvim-cmp
 local function setup()
+    --
 
     -- Stops executing if the package isn"t installed
     if not utils.status_ok("cmp", "supermaven-nvim") then return end
@@ -18,24 +19,23 @@ local function setup()
     -- Gets the default sources
     local default_sources = shared_configs.default_cmp_sources
 
-
     -- The formatting for nvim-cmp
     local cmp_format = {
         fields = { "abbr", "kind", "menu" },
         format = function(entry, item)
+            --
 
             -- The menu name for the source of the completion
-            local menu_name = require("shared_configs").source_names[entry.source.name] or utils.titlecase(entry.source.name)
+            local menu_name = require("shared_configs").source_names[entry.source.name]
+                or utils.titlecase(entry.source.name)
 
             -- Sets the menu to the menu name enclosed in square brackets
             item.menu = string.format("[%s]", menu_name)
 
             -- Returns the item
             return item
-
-        end
+        end,
     }
-
 
     -- Sets up nvim-cmp with my settings
     -- Also get nvim-cmp to always preselect the first item
@@ -45,10 +45,9 @@ local function setup()
         sources = default_sources,
         formatting = cmp_format,
         completion = {
-            completeopt = "menu,menuone,noinsert"
-        }
+            completeopt = "menu,menuone,noinsert",
+        },
     })
-
 
     -- Command line mappings
     local cmp_cmdline_mappings = cmp.mapping.preset.cmdline({
@@ -57,8 +56,9 @@ local function setup()
         ["<Tab>"] = { c = cmp.mapping.confirm({ select = true }) },
         ["<C-y>"] = { c = cmp.mapping.confirm({ select = false }) },
 
-        -- Alternative button to select the next item in the completion window
-        ["<C-f>"] =  {
+        -- Alternative button to select the
+        -- next item in the completion window
+        ["<C-f>"] = {
             c = function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
@@ -68,7 +68,8 @@ local function setup()
             end,
         },
 
-        -- Alternative button to select the previous item in the completion window
+        -- Alternative button to select the
+        -- previous item in the completion window
         ["<C-u>"] = {
             c = function(fallback)
                 if cmp.visible() then
@@ -79,7 +80,8 @@ local function setup()
             end,
         },
 
-        -- Alternative button to select the previous item in the completion window
+        -- Alternative button to select the
+        -- previous item in the completion window
         ["<C-b>"] = {
             c = function(fallback)
                 if cmp.visible() then
@@ -91,17 +93,15 @@ local function setup()
         },
     })
 
-
     -- Sets up the slash search completion
     cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp_cmdline_mappings,
         sources = cmp.config.sources({
             { name = "nvim_lsp_document_symbol" },
             { name = "buffer" },
-            { name = "cmdline_history" }
-        })
+            { name = "cmdline_history" },
+        }),
     })
-
 
     -- Sets up the command line completion
     cmp.setup.cmdline(":", {
@@ -111,17 +111,16 @@ local function setup()
             {
                 name = "cmdline",
                 option = {
-                    ignore_cmds = { "Man", "!" }
-                }
+                    ignore_cmds = { "Man", "!" },
+                },
             },
-            { name = "cmdline_history" }
-        })
+            { name = "cmdline_history" },
+        }),
     })
-
 
     -- Set up the completion sources for text and markdown files
     cmp.setup.filetype({ "text", "markdown" }, {
-        sources = default_sources
+        sources = default_sources,
     })
 
     -- Set up Supermaven for AI autocompletion
@@ -130,7 +129,6 @@ local function setup()
         disable_inline_completion = true,
         disable_keymaps = true,
     })
-
 end
 
 -- Returns the nvim-cmp plugin for lazy.nvim
@@ -154,12 +152,14 @@ return {
 
         -- AI autocompletion
         { "supermaven-inc/supermaven-nvim" },
-        { "tzachar/cmp-tabnine", build = "./install.sh" },
+        {
+            "tzachar/cmp-tabnine",
+            build = "./install.sh",
+        },
 
         -- Completion within the command line
         { "hrsh7th/cmp-cmdline" },
         { "dmitmel/cmp-cmdline-history" },
         { "hrsh7th/cmp-nvim-lsp-document-symbol" },
-    }
+    },
 }
-

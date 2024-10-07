@@ -5,6 +5,7 @@ local utils = require("utils")
 
 -- Function to set up lualine
 local function setup()
+    --
 
     -- Stops executing if the theme isn't installed
     if not utils.status_ok("lualine") then return end
@@ -12,8 +13,7 @@ local function setup()
     -- Gets the lualine module
     local lualine = require("lualine")
 
-
-    ---------------------------- Quickfix List Extension -------------------------
+    ------------------------- Quickfix List Extension -------------------------
 
     -- Checks if the quickfix list is a location list
     local function is_loclist()
@@ -22,7 +22,7 @@ local function setup()
 
     -- The label for the quickfix extension
     local function label()
-        return is_loclist() and 'Location List' or 'Quickfix List'
+        return is_loclist() and "Location List" or "Quickfix List"
     end
 
     -- The title of the quickfix or location list
@@ -33,36 +33,37 @@ local function setup()
         return vim.fn.getqflist({ title = 0 }).title
     end
 
-
     -- The quickfix extension for lualine
     local quickfix_ext = {
 
         init = function()
-            -- Make sure the quick fix window doesn't create a custom statusline
+            --
+
+            -- Make sure the quick fix window
+            -- doesn't create a custom status line
             vim.g.qf_disable_statusline = true
         end,
 
         sections = {
             lualine_a = {
-                { label, separator = {} }
+                { label, separator = {} },
             },
 
             lualine_b = {
-                { title, separator = {} }
+                { title, separator = {} },
             },
 
             lualine_z = {
-                { "location", separator = {} }
+                { "location", separator = {} },
             },
         },
 
-        filetypes = { "qf" }
-   }
+        filetypes = { "qf" },
+    }
 
-    -----------------------------------------------------------------------------
+    ---------------------------------------------------------------------------
 
-
-    ---------------------------- Git Fugitive Extension -------------------------
+    ------------------------- Git Fugitive Extension --------------------------
 
     -- Function to get the fugitive branch name
     local function fugitive_branch()
@@ -73,81 +74,96 @@ local function setup()
     -- The fugitive extension for lualine
     local fugitive_ext = {
         sections = {
-            lualine_a = { { fugitive_branch, separator = { left = "", right = "" } } },
-            lualine_z = { { "location", separator = { left = "", right = "" } } }
+            lualine_a = {
+                {
+                    fugitive_branch,
+                    separator = { left = "", right = "" },
+                },
+            },
+            lualine_z = {
+                { "location", separator = { left = "", right = "" } },
+            },
         },
 
-        filetypes = { "fugitive" }
+        filetypes = { "fugitive" },
     }
 
-    -----------------------------------------------------------------------------
+    ---------------------------------------------------------------------------
 
-
-    ---------------------------- Undotree Extension -----------------------------
+    ---------------------------- Undotree Extension ---------------------------
 
     -- A general lualine extension for most other buffers
     local undotree_ext = {
         sections = {
             lualine_b = {
-                { function() return " undotree" end, separator = {} }
+                {
+                    function()
+                        return " undotree"
+                    end,
+                    separator = {},
+                },
             },
 
-            lualine_x = { "location" }
+            lualine_x = { "location" },
         },
 
-        filetypes = { "undotree" }
+        filetypes = { "undotree" },
     }
 
-    -----------------------------------------------------------------------------
+    ---------------------------------------------------------------------------
 
-
-    ----------------------------- Aerial Extension ------------------------------
+    ---------------------------- Aerial Extension -----------------------------
 
     -- A lualine extension for aerial
     local aerial_ext = {
         sections = {
             lualine_y = {
-                { function() return " aerial" end, separator = {} }
+                {
+                    function()
+                        return " aerial"
+                    end,
+                    separator = {},
+                },
             },
         },
 
-        filetypes = { "aerial" }
+        filetypes = { "aerial" },
     }
 
-    -----------------------------------------------------------------------------
+    ---------------------------------------------------------------------------
 
-
-    ----------------------------- General Extension -----------------------------
+    ---------------------------- General Extension ----------------------------
 
     -- A general lualine extension for most other buffers
     local general_ext = {
         sections = {
             lualine_b = {
-                { "filetype", separator = {} }
+                { "filetype", separator = {} },
             },
 
-            lualine_x = { "location" }
+            lualine_x = { "location" },
         },
 
-        filetypes = { "diff" }
+        filetypes = { "diff" },
     }
 
-    -----------------------------------------------------------------------------
-
+    ---------------------------------------------------------------------------
 
     -- Function to check if a file is UTF-8
     local function not_utf8()
+        --
 
         -- Gets the file encoding
         local file_encoding = vim.opt.fenc:get()
 
         -- Returns false if the file isn't UTF-8
-        return string.len(file_encoding) > 0 and string.lower(file_encoding) ~= "utf-8"
+        return string.len(file_encoding) > 0
+            and string.lower(file_encoding) ~= "utf-8"
     end
-
 
     -- Function to disable the winbar based on the file type type
     local function is_not_plugin_buffer()
+        --
 
         -- Gets the file type of the current buffer
         local file_type = vim.bo.filetype
@@ -155,9 +171,7 @@ local function setup()
         -- Returns true if the file is not in the list of plugin file types
         -- and false otherwise
         return not utils.has_value(utils.plugin_file_types, file_type)
-
     end
-
 
     -- The breadcrumb separator for the winbar
     -- A breadcrumb displays the current location within a hierarchy
@@ -171,23 +185,27 @@ local function setup()
                 "filetype",
                 icon_only = true,
                 separator = {},
-                cond = is_not_plugin_buffer
+                cond = is_not_plugin_buffer,
             },
 
             {
                 "filename",
                 file_status = false,
                 cond = is_not_plugin_buffer,
-                separator = vim.trim(breadcrumb_separator)
+                separator = vim.trim(breadcrumb_separator),
             },
 
-            { "aerial", sep = breadcrumb_separator, cond = is_not_plugin_buffer }
-        }
+            {
+                "aerial",
+                sep = breadcrumb_separator,
+                cond = is_not_plugin_buffer,
+            },
+        },
     }
-
 
     -- If firenvim isn't active
     if utils.firenvim_not_active() then
+        --
 
         -- Sets up lualine to look like bubbles in the lualine GitHub
         lualine.setup({
@@ -207,7 +225,10 @@ local function setup()
                 },
 
                 lualine_b = {
-                    "branch", "diff", "diagnostics", "filename"
+                    "branch",
+                    "diff",
+                    "diagnostics",
+                    "filename",
                 },
 
                 lualine_c = { "fileformat" },
@@ -221,7 +242,7 @@ local function setup()
                         "location",
                         separator = { right = "" },
                     },
-                }
+                },
             },
 
             inactive_sections = {
@@ -230,7 +251,7 @@ local function setup()
                 lualine_c = { "filename" },
                 lualine_x = { "location" },
                 lualine_y = {},
-                lualine_z = {}
+                lualine_z = {},
             },
 
             -- Winbar with aerial
@@ -248,33 +269,33 @@ local function setup()
 
     -- Otherwise
     else
+        --
 
-        -- Sets up lualine to show no icons, no special characters and have no filename (the file name on the website looks really bad)
+        -- Sets up lualine to show no icons, no special characters
+        -- and have no filename
+        -- (the file name on the website looks really bad)
         lualine.setup({
 
             options = {
                 icons_enabled = false,
                 section_separators = "",
-                component_separators = { left = "", right = "|" }
+                component_separators = { left = "", right = "|" },
             },
 
             -- Remove the filename section
             sections = {
-                lualine_c = {}
+                lualine_c = {},
             },
 
             -- The extensions to load
-            extensions = { quickfix_ext }
+            extensions = { quickfix_ext },
         })
-
     end
-
 end
 
 -- Returns the lualine plugin for lazy.nvim
 return {
     "nvim-lualine/lualine.nvim",
     config = setup,
-    dependencies = { "nvim-tree/nvim-web-devicons" }
+    dependencies = { "nvim-tree/nvim-web-devicons" },
 }
-

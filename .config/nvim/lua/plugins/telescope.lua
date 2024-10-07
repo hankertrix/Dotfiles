@@ -13,6 +13,7 @@ local descriptions = {
 
 -- Function to set up telescope
 local function setup()
+    --
 
     -- Stops executing if the packages aren't installed
     if not utils.status_ok("telescope", "trouble.sources.telescope") then

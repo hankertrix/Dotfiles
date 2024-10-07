@@ -4,15 +4,14 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- The configuration for the git plugin
-local function config()
-    --
-
-    -- If the git plugin is not installed, then don't do anything
-    if not utils.status_ok("neogit") then return end
-
-    -- Setup the key binds to be the same as Magit
-    require("neogit").setup({
+-- Returns the git plugin for lazy.nvim
+return {
+    "NeogitOrg/neogit",
+    dependencies = "nvim-lua/plenary.nvim",
+    lazy = true,
+    cond = utils.firenvim_not_active,
+    cmd = "Neogit",
+    opts = {
         sections = {
             untracked = {
                 folded = true,
@@ -36,17 +35,7 @@ local function config()
                 ["K"] = false,
             },
         },
-    })
-end
-
--- Returns the git plugin for lazy.nvim
-return {
-    "NeogitOrg/neogit",
-    dependencies = "nvim-lua/plenary.nvim",
-    lazy = true,
-    cond = utils.firenvim_not_active,
-    config = config,
-    cmd = "Neogit",
+    },
     keys = {
 
         -- The key bind to open Neogit

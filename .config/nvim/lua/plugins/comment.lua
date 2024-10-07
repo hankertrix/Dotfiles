@@ -12,44 +12,41 @@ local descriptions = {
     linewise = "Comment toggle linewise",
 }
 
--- Function to set up the comment plugin
-local function setup()
-
-    -- Stops executing if the package isn't installed
-    if not utils.status_ok("Comment.api") then return end
-
-    -- Gets the api from Comment.nvim
-    local api = require("Comment.api")
-
-    -- Toggle current line (linewise) using C-/ in normal mode
-    vim.keymap.set("n", "<C-/>", api.toggle.linewise.current, { desc = descriptions["current_line"] })
-
-    -- Gets the escape key
-    local esc = vim.api.nvim_replace_termcodes(
-        "<ESC>", true, false, true
-    )
-
-    -- Toggle selection (linewise) in visual mode
-    vim.keymap.set("x", "<C-/>", function()
-        vim.api.nvim_feedkeys(esc, "nx", false)
-        api.toggle.linewise(vim.fn.visualmode())
-    end, { desc = descriptions["current_selection"] })
-
-    -- Set up the commenting plugin
-    require("Comment").setup()
-
-end
+-- The escape key
+local esc_key = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
 
 -- Returns the comment plugin for lazy.nvim
 return {
     "numToStr/Comment.nvim",
-    config = setup,
     cond = utils.firenvim_not_active,
+    opts = {},
     keys = {
-        { "<C-/>", mode = "n", desc = descriptions["current_line"] },
-        { "<C-/>", mode = "v", desc = descriptions["current_selection"] },
-        { "gb", mode = { "n", "v" }, desc = descriptions["blockwise"] },
-        { "gc", mode = { "n", "v" }, desc = descriptions["linewise"] },
-    }
+        {
+            "<C-/>",
+            function()
+                require("Comment.api").toggle.linewise.current()
+            end,
+            mode = "n",
+            desc = descriptions["current_line"],
+        },
+        {
+            "<C-/>",
+            function()
+                vim.api.nvim_feedkeys(esc_key, "nx", false)
+                require("Comment.api").toggle.linewise(vim.fn.visualmode())
+            end,
+            mode = "v",
+            desc = descriptions["current_selection"],
+        },
+        {
+            "gb",
+            mode = { "n", "v" },
+            desc = descriptions["blockwise"],
+        },
+        {
+            "gc",
+            mode = { "n", "v" },
+            desc = descriptions["linewise"],
+        },
+    },
 }
-

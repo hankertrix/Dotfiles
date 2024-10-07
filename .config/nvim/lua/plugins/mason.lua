@@ -5,6 +5,7 @@ local utils = require("utils")
 
 -- Function to set up Mason
 local function setup()
+    --
 
     -- Stops executing if the package isn't installed
     if not utils.status_ok({ "mason", "mason-tool-installer" }) then return end
@@ -13,7 +14,7 @@ local function setup()
     require("mason").setup()
 
     -- Set up Mason tool installer
-    require("mason-tool-installer").setup {
+    require("mason-tool-installer").setup({
 
         -- Ensure that these packages are always installed
         ensure_installed = {
@@ -37,8 +38,7 @@ local function setup()
             -- Linters
             "cspell"            -- English checker within code
         },
-    }
-
+    })
 end
 
 -- Returns the Mason plugin for lazy.nvim
@@ -59,6 +59,6 @@ return {
         "MasonToolsInstallSync",
         "MasonToolsUpdate",
         "MasonToolsUpdateSync",
-        "MasonToolsClean"
+        "MasonToolsClean",
     },
 }

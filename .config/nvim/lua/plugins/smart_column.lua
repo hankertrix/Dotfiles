@@ -1,24 +1,15 @@
 -- The configuration for the smart column plugin
 -- Currently it's smartcolumn.nvim
 
--- Gets the module with the utilities
-local utils = require("utils")
-
--- Function to set up the smart column plugin
-local function setup()
-
-    -- Stops executing if the package isn't installed
-    if not utils.status_ok("smartcolumn") then return end
-
-    -- Gets the shared configs file
-    local shared_configs = require("shared_configs")
-
-    -- Set up the smart column plugin
-    require("smartcolumn").setup {
+-- Returns the smart column plugin for lazy.nvim
+return {
+    "m4xshen/smartcolumn.nvim",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    opts = {
 
         -- Show a line on the right that represents the maximum column width
         -- This makes it easier to keep to a character limit, usually 80
-        colorcolumn = tostring(shared_configs.max_line_length),
+        colorcolumn = tostring(require("shared_configs").max_line_length),
 
         -- Disable the plugins for the filetypes below
         disabled_filetypes = {
@@ -40,15 +31,7 @@ local function setup()
             "minifiles",
             "Trouble",
             "TelescopePrompt",
-            "WhichKey"
-        }
-    }
-
-end
-
--- Returns the smart column plugin for lazy.nvim
-return {
-    "m4xshen/smartcolumn.nvim",
-    config = setup,
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" }
+            "WhichKey",
+        },
+    },
 }
