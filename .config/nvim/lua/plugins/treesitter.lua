@@ -8,6 +8,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     cond = utils.firenvim_not_active,
+    config = function(_, opts)
+        require("nvim-treesitter.configs").setup(opts)
+    end,
     event = { "VeryLazy", "BufReadPost", "BufNewFile", "BufWritePre" },
     cmd = {
         "TSInstall",
