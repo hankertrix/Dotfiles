@@ -123,6 +123,9 @@
   ;; Configure evil collection
   :config
 
+  ;; Use z for folds in magit
+  (setq evil-collection-magit-use-z-for-folds t)
+
   ;; Initialise the evil collection
   (evil-collection-init))
 
