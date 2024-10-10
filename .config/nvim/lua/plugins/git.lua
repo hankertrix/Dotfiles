@@ -26,8 +26,7 @@ return {
                 ["v"] = false,
                 ["O"] = "ResetPopup",
                 ["X"] = false,
-                ["z"] = "StashPopup",
-                ["Z"] = "WorktreePopup",
+                ["%"] = "WorktreePopup",
                 ["w"] = false,
             },
             status = {
