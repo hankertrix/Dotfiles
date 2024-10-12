@@ -50,6 +50,7 @@ return {
             "NeogitRebasePopup",
             "NeogitRevertPopup",
             "NeogitWorktreePopup",
+            "NeogitCommitMessage",
         },
     },
 }
