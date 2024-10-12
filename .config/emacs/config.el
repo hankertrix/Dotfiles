@@ -201,6 +201,12 @@
    "<escape>" 'transient-quit-one
    )
 
+  ;; Key binds for BibTeX files
+  (general-define-key
+   :states 'normal
+   :keymaps 'bibtex-mode-map
+   "SPC f" '(bibtex-reformat :wk "Formats the BibTeX buffer"))
+
   ;; Key binds for normal mode in LSP mode
   (general-define-key
    :states 'normal
