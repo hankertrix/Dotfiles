@@ -85,7 +85,8 @@ local function setup()
         vim.keymap.set('n', '<F4>', function() vim.lsp.buf.code_action() end,
             vim.tbl_extend("error", opts, { desc = descriptions["code_action"] }))
 
-        -- If a range is selected and a range code action is available, use the range code action
+        -- If a range is selected and a range code action is available,
+        -- use the range code action
         if vim.lsp.buf.range_code_action then
             vim.keymap.set('x', '<F4>', function() vim.lsp.buf.range_code_action() end,
                 vim.tbl_extend("error", opts, { desc = descriptions["code_action"] }))
@@ -119,7 +120,8 @@ local function setup()
             lua_ls = function()
 
                 -- Gets the runtime path for Neovim
-                -- Comment out when configuring other applications, like awesomewm or wezterm
+                -- Comment out when configuring other applications,
+                -- like awesomewm or wezterm
                 local runtime_path = vim.split(package.path, ';')
                 table.insert(runtime_path, 'lua/?.lua')
                 table.insert(runtime_path, 'lua/?/init.lua')
@@ -166,18 +168,21 @@ local function setup()
                             -- Disable telemetry
                             telemetry = { enable = false },
 
-                            -- Tell the language server which version of Lua is being used
+                            -- Tell the language server which
+                            -- version of Lua is being used, which is
                             -- LuaJIT in the case of Neovim
                             runtime = {
                                 version = "LuaJIT",
 
-                                -- Comment out when configuring other applications, like awesomewm or wezterm
+                                -- Comment out when configuring other
+                                -- applications, like awesomewm or wezterm
                                 path = runtime_path
                             },
 
                             diagnostics = {
 
-                                -- Get the language server to recognise the vim global
+                                -- Get the language server to
+                                -- recognise the vim global
                                 globals = { "vim" }
                             },
 
@@ -270,7 +275,8 @@ local function setup()
             -- The list of kind icons
             local kind_icons = shared_configs.lsp_kind_icons
 
-            -- Sets the item kind to the concatenation of the icon with the name of the item kind
+            -- Sets the item kind to the concatenation of the icon
+            -- with the name of the item kind
             item.kind = string.format("%s %s", kind_icons[item.kind], item.kind)
 
             -- The menu name for the source of the completion
