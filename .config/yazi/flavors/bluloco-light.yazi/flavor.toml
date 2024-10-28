@@ -1,0 +1,84 @@
+# Bluloco light flavour for Yazi
+[manager]
+
+cwd = { fg = "#0099E1" }
+
+marker_copied = { fg = "#EA3971", bg = "#EA3971" }
+marker_cut = { fg = "#D52753", bg = "#D52753" }
+marker_marked = { fg = "#23974A", bg = "#23974A" }
+marker_selected = { fg = "#0098DD", bg = "#0098DD" }
+
+count_copied = { fg = "#F9F9F9", bg = "#EA3971" }
+count_cut = { fg = "#F9F9F9", bg = "#D52753" }
+count_selected = { fg = "#F9F9F9", bg = "#0098DD" }
+
+tab_active = { fg = "#0099E1", bg = "#E0E0E0" }
+tab_inactive = { fg = "#B0B0B0", bg = "#F2F2F2" }
+
+[manager.find_keyword]
+fg = "#EA3971"
+bg = "#B1EACF"
+bold = true
+italic = true
+underline = true
+
+[manager.find_position]
+fg = "#383A42"
+bg = "reset"
+bold = true
+italic = true
+
+
+[status]
+
+separator_style = { fg = "#DEE1E3", bg = "#DEE1E3" }
+
+mode_normal = { fg = "#F9F9F9", bg = "#0098DD" }
+mode_select = { fg = "#F9F9F9", bg = "#23974A" }
+mode_unset = { fg = "#F9F9F9", bg = "#D52753" }
+
+progress_label = { fg = "#F9F9F9", bold = true }
+progress_normal = { fg = "#823FF1", bg = "#A0A1A7" }
+progress_error = { fg = "#FF0000", bg = "#FCE4E4" }
+
+
+[select]
+border = { fg = "#7A82DA" }
+active = { fg = "#C5A332", bold = true }
+
+[input]
+border = { fg = "#7A82DA" }
+title = { fg = "#0099E1" }
+
+
+[confirm]
+border = { fg = "#7A82DA" }
+title = { fg = "#0099E1" }
+btn_yes = { fg = "#23974A" }
+btn_no = { fg = "#D52753" }
+btn_labels = ["Yes", "No"]
+
+
+[completion]
+border = { fg = "#7A82DA" }
+active = { bg = "#D2ECFF" }
+
+
+[tasks]
+border = { fg = "#7A82DA" }
+title = { fg = "#0099E1" }
+hovered = { fg = "#C5A332", underline = true }
+
+
+[which]
+cand = { fg = "#DE631B" }
+mask = { bg = "#ECEDEE" }
+desc = { fg = "#0098DD" }
+separator_style = { fg = "#7A82DA" }
+
+
+[help]
+on = { fg = "#DF631C" }
+run = { fg = "#0098DD" }
+desc = { fg = "#383A42" }
+footer = { bg = "#F9F9F9", fg = "#383A42" }

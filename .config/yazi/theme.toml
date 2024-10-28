@@ -1,72 +1,9 @@
+# Use the theme that I want
+[flavor]
+use = "bluloco-dark"
 
 # The theme for the file manager
 [manager]
 
 # Remove the borders
 border_symbol = " "
-
-# Set the marker colours to match Neovim ones
-marker_copied   = { fg = "lightyellow", bg = "lightyellow" }
-marker_cut      = { fg = "lightred"   , bg = "lightred" }
-marker_marked   = { fg = "#3fc56b"    , bg = "#3fc56b" }
-marker_selected = { fg = "#10b1fe"    , bg = "#10b1fe" }
-
-# Set the colour of the count display
-count_copied   = { fg = "black", bg = "lightyellow" }
-count_cut      = { fg = "black", bg = "lightred" }
-count_selected = { fg = "black", bg = "#10b1fe" }
-
-# Set the syntax highlighting theme to Bluloco Dark
-syntect_theme = "~/.config/yazi/syntax-highlighting-themes/bluloco-dark.tmTheme"
-
-
-# The theme for the status bar
-[status]
-
-# Change the separator style to match the Neovim one
-separator_style = { fg = "#384252", bg = "#384252" }
-
-# Set the mode style to match the Neovim one
-mode_normal = { fg = "#282c34", bg = "#10b1fe" }
-mode_select = { fg = "#282c34", bg = "#3fc56b" }
-mode_unset  = { fg = "#282c34", bg = "#ff6480" }
-
-
-# The theme for the completion items
-[completion]
-
-# The style for the selected completion item
-active = { bg = "blue", fg = "white", reversed = false }
-
-
-# The theme for the whichkey thing
-[which]
-
-# Set the colour of the key to match the Neovim one
-cand = { fg = "#ff936a" }
-
-# Set the background colour to match the Neovim one
-mask = { bg = "#21232c" }
-
-# Set the description colour to match the Neovim one
-desc = { fg = "#10b1fe" }
-
-# Set the arrow colour to match the Neovim one
-separator_style = { fg = "#7a82da" }
-
-
-# The theme for the help window
-[help]
-
-# Set the colour of the key to be the same as the whichkey one
-on = { fg = "#ff936a" }
-
-# Set the colour of the command executed
-# to be the same as the whichkey description colour
-run = { fg = "#10b1fe" }
-
-# Set the description to be a more muted white colour
-desc = { fg = "#b9c0cb" }
-
-# Set the footer to be a dark background with the more muted white text
-footer = { bg = "#282c34", fg = "#b9c0cb" }
