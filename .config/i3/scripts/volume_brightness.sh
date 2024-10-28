@@ -25,7 +25,7 @@ function get_brightness_xbacklight {
 }
 
 # Uses regex to get brightness from gummyconf.json file
-function get_brightness {
+function get_brightness_gummy {
 
     # Get the backlight settings from the gummyconf.json file
     backlight_settings=$(sed -n '/backlight/,$p' ~/.config/gummyconf.json)
@@ -42,6 +42,31 @@ function get_brightness {
 
     # Print the current value as a percentage of the maximum value
     echo $((current_value * 100 / max_value))
+}
+
+# Get the brightness from xsct
+function get_brightness {
+
+    # Get the current brightness value
+    current_value=$(xsct | head -n 1 | cut -d' ' -f6)
+
+    # Get the part of the brightness value before the decimal point
+    value_before_decimal=$(echo "$current_value" | cut -d'.' -f1)
+
+    # Get the part of the brightness value after the decimal point
+    value_after_decimal=$(echo "$current_value" | cut -d'.' -f2)
+
+    # Get the length of the value after the decimal point
+    value_after_decimal_length=${#value_after_decimal}
+
+    # Round the value after the decimal point
+    value_after_decimal_rounded=$((value_after_decimal / (10 ** (value_after_decimal_length - 2))))
+
+    # Get the current value
+    current_value=$((100 * value_before_decimal + value_after_decimal_rounded))
+
+    # Print the current value
+    echo "$current_value"
 }
 
 # Returns a mute icon, a volume-low icon, or a volume-high icon, depending on the volume
@@ -105,14 +130,16 @@ case $1 in
     brightness_up)
     # Increases brightness and displays the notification
     # xbacklight -inc $brightness_step -time 0
-    gummy -b +5
+    # gummy -b +5
+    xsct -d 0 0.05
     show_brightness_notif
     ;;
 
     brightness_down)
     # Decreases brightness and displays the notification
     # xbacklight -dec $brightness_step -time 0
-    gummy -b -5
+    # gummy -b -5
+    xsct -d 0 -0.05
     show_brightness_notif
     ;;
 esac
