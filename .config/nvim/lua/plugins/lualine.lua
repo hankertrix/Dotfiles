@@ -57,8 +57,26 @@ local function setup()
 
     -- Function to create a lualine extension for buffers
     -- that appear above or below the current buffer
-    local function create_full_width_ext(filetypes, buffer_name)
+    local function create_full_width_ext(
+        filetypes,
+        buffer_name,
+        git_branch_wanted
+    )
         --
+
+        -- The b section of the lualine
+        local lualine_b_section = {
+            buffer_name and function()
+                return buffer_name
+            end or "filetype",
+        }
+
+        -- If the git branch is wanted,
+        -- add it to the lualine_b_section
+        -- before the buffer name
+        if git_branch_wanted then
+            table.insert(lualine_b_section, 1, "branch")
+        end
 
         -- Create the full width extension
         local full_width_ext = {
@@ -71,11 +89,7 @@ local function setup()
                     },
                 },
 
-                lualine_b = {
-                    buffer_name and function()
-                        return buffer_name
-                    end or "filetype",
-                },
+                lualine_b = lualine_b_section,
 
                 lualine_y = { "progress" },
 
@@ -203,13 +217,14 @@ local function setup()
         --
 
         -- Create the side extensions
-        local aerial_ext =
-            create_side_ext({ "aerial" }, " aerial")
-        local undotree_ext = create_side_ext({ "undotree" }, " undotree")
-        local diff_ext = create_side_ext({ "diff" }, " diff")
+        local aerial_ext = create_side_ext({ "aerial" }, " Aerial")
+        local undotree_ext = create_side_ext({ "undotree" }, " Undo Tree")
+        local diff_ext = create_side_ext({ "diff" }, " Diff")
 
         -- Create the full width extensions
-        local trouble_ext = create_full_width_ext({ "trouble" }, "󱠪 trouble")
+        local trouble_ext = create_full_width_ext({ "trouble" }, "󱠪 Trouble")
+        local neogit_ext =
+            create_full_width_ext({ "NeogitStatus" }, "󰊢 Neogit", true)
 
         -- Sets up lualine to look like bubbles in the lualine GitHub
         lualine.setup({
@@ -268,10 +283,11 @@ local function setup()
                 diff_ext,
                 aerial_ext,
                 trouble_ext,
+                neogit_ext,
             },
         })
 
-        -- Otherwise
+    -- Otherwise
     else
         --
 
