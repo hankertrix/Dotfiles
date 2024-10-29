@@ -233,7 +233,7 @@ local function setup()
 
                 lualine_c = { "fileformat" },
 
-                -- Only displays the file enconding when the file isn't UTF-8
+                -- Only displays the file encoding when the file isn't UTF-8
                 lualine_x = { { "encoding", cond = not_utf8 } },
                 lualine_y = { "filetype", "progress" },
 
