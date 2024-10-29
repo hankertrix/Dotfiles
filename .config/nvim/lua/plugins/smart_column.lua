@@ -1,6 +1,9 @@
 -- The configuration for the smart column plugin
 -- Currently it's smartcolumn.nvim
 
+-- Gets the module with the utilities
+local utils = require("utils")
+
 -- Returns the smart column plugin for lazy.nvim
 return {
     "m4xshen/smartcolumn.nvim",
@@ -12,45 +15,9 @@ return {
         colorcolumn = tostring(require("shared_configs").max_line_length),
 
         -- Disable the plugins for the filetypes below
-        disabled_filetypes = {
-            "help",
-            "text",
-            "markdown",
-            "checkhealth",
-
-            -- Plugin specific filetypes
-            "lazy",
-            "mason",
-            "lspinfo",
-            "null-ls-info",
-            "fugitive",
-            "gitcommit",
-            "undotree",
-            "aerial",
-            "harpoon",
-            "minifiles",
-            "Trouble",
-            "TelescopePrompt",
-            "WhichKey",
-            "NeogitStatus",
-            "NeogitHelpPopup",
-            "NeogitCherryPickPopup",
-            "NeogitDiffPopup",
-            "NeogitRemotePopup",
-            "NeogitPushPopup",
-            "NeogitResetPopup",
-            "NeogitStashPopup",
-            "NeogitBranchPopup",
-            "NeogitBisectPopup",
-            "NeogitCommitPopup",
-            "NeogitFetchPopup",
-            "NeogitLogPopup",
-            "NeogitMergePopup",
-            "NeogitPullPopup",
-            "NeogitRebasePopup",
-            "NeogitRevertPopup",
-            "NeogitWorktreePopup",
-            "NeogitCommitMessage",
-        },
+        disabled_filetypes = vim.list_extend(
+            { "text", "markdown" },
+            utils.plugin_file_types
+        ),
     },
 }
