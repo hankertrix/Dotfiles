@@ -13,6 +13,87 @@ local function setup()
     -- Gets the lualine module
     local lualine = require("lualine")
 
+    -- Function to create a lualine extension for buffers
+    -- that appear on the side
+    local function create_side_ext(
+        filetypes,
+        buffer_name,
+        hide_location,
+        appear_at_the_right
+    )
+        --
+
+        -- Get the function to get the buffer name
+        local buffer_name_func = buffer_name
+                and function()
+                    return buffer_name
+                end
+            or "filetype"
+
+        -- Get the section for the display of the buffer name
+        local buffer_name_section = {
+            buffer_name_func,
+            separator = {},
+        }
+
+        -- Create the side extension
+        local side_ext = {
+            sections = {
+                lualine_b = appear_at_the_right and {}
+                    or { buffer_name_section },
+
+                lualine_x = hide_location and {} or { "location" },
+
+                lualine_y = appear_at_the_right and { buffer_name_section }
+                    or {},
+            },
+
+            filetypes = filetypes,
+        }
+
+        -- Return the side extension
+        return side_ext
+    end
+
+    -- Function to create a lualine extension for buffers
+    -- that appear above or below the current buffer
+    local function create_full_width_ext(filetypes, buffer_name)
+        --
+
+        -- Create the full width extension
+        local full_width_ext = {
+            sections = {
+
+                lualine_a = {
+                    {
+                        "mode",
+                        separator = { left = "" },
+                    },
+                },
+
+                lualine_b = {
+                    buffer_name and function()
+                        return buffer_name
+                    end or "filetype",
+                },
+
+                lualine_y = { "progress" },
+
+                lualine_z = {
+                    {
+                        "location",
+                        separator = { right = "" },
+                    },
+                },
+            },
+
+            filetypes = filetypes,
+        }
+
+        -- Return the full width extension
+        return full_width_ext
+    end
+
     ------------------------- Quickfix List Extension -------------------------
 
     -- Checks if the quickfix list is a location list
@@ -63,92 +144,6 @@ local function setup()
 
     ---------------------------------------------------------------------------
 
-    ------------------------- Git Fugitive Extension --------------------------
-
-    -- Function to get the fugitive branch name
-    local function fugitive_branch()
-        local icon = ""
-        return icon .. " " .. vim.fn.FugitiveHead()
-    end
-
-    -- The fugitive extension for lualine
-    local fugitive_ext = {
-        sections = {
-            lualine_a = {
-                {
-                    fugitive_branch,
-                    separator = { left = "", right = "" },
-                },
-            },
-            lualine_z = {
-                { "location", separator = { left = "", right = "" } },
-            },
-        },
-
-        filetypes = { "fugitive" },
-    }
-
-    ---------------------------------------------------------------------------
-
-    ---------------------------- Undotree Extension ---------------------------
-
-    -- A general lualine extension for most other buffers
-    local undotree_ext = {
-        sections = {
-            lualine_b = {
-                {
-                    function()
-                        return " undotree"
-                    end,
-                    separator = {},
-                },
-            },
-
-            lualine_x = { "location" },
-        },
-
-        filetypes = { "undotree" },
-    }
-
-    ---------------------------------------------------------------------------
-
-    ---------------------------- Aerial Extension -----------------------------
-
-    -- A lualine extension for aerial
-    local aerial_ext = {
-        sections = {
-            lualine_y = {
-                {
-                    function()
-                        return " aerial"
-                    end,
-                    separator = {},
-                },
-            },
-        },
-
-        filetypes = { "aerial" },
-    }
-
-    ---------------------------------------------------------------------------
-
-    ---------------------------- General Extension ----------------------------
-
-    -- A general lualine extension for most other buffers
-    local general_ext = {
-        sections = {
-            lualine_b = {
-                { "filetype", separator = {} },
-            },
-
-            lualine_x = { "location" },
-        },
-
-        filetypes = { "diff" },
-    }
-
-    ---------------------------------------------------------------------------
-
     -- Function to check if a file is UTF-8
     local function not_utf8()
         --
@@ -170,7 +165,7 @@ local function setup()
 
         -- Returns true if the file is not in the list of plugin file types
         -- and false otherwise
-        return not utils.has_value(utils.plugin_file_types, file_type)
+        return not vim.list_contains(utils.plugin_file_types, file_type)
     end
 
     -- The breadcrumb separator for the winbar
@@ -206,6 +201,15 @@ local function setup()
     -- If firenvim isn't active
     if utils.firenvim_not_active() then
         --
+
+        -- Create the side extensions
+        local aerial_ext =
+            create_side_ext({ "aerial" }, " aerial")
+        local undotree_ext = create_side_ext({ "undotree" }, " undotree")
+        local diff_ext = create_side_ext({ "diff" }, " diff")
+
+        -- Create the full width extensions
+        local trouble_ext = create_full_width_ext({ "trouble" }, "󱠪 trouble")
 
         -- Sets up lualine to look like bubbles in the lualine GitHub
         lualine.setup({
@@ -260,14 +264,14 @@ local function setup()
 
             extensions = {
                 quickfix_ext,
-                fugitive_ext,
                 undotree_ext,
+                diff_ext,
                 aerial_ext,
-                general_ext,
+                trouble_ext,
             },
         })
 
-    -- Otherwise
+        -- Otherwise
     else
         --
 
