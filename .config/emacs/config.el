@@ -386,16 +386,16 @@
         which-key-separator " → " ))
 
 (set-face-attribute 'default nil
-                    :font "CaskaydiaCove NFM 11"
+                    :font "CaskaydiaCove NFM 12"
                     :weight 'medium)
 
 (set-face-attribute 'fixed-pitch nil
-                    :font "CaskaydiaCove NFM 11"
+                    :font "CaskaydiaCove NFM 12"
                     :weight 'medium)
 
 (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
 
-(add-to-list 'default-frame-alist '(font . "CaskaydiaCove NFM 11"))
+(add-to-list 'default-frame-alist '(font . "CaskaydiaCove NFM 12"))
 
 (setq inhibit-startup-message t)
 
