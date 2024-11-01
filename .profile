@@ -1,7 +1,7 @@
 
-# Use kitty as the default terminal
-export TERM=xterm-kitty
-export TERMINAL=kitty
+# Set the default terminal
+export TERM=xterm-256color
+export TERMINAL=wezterm
 
 # Use Firefox as the default browser
 export BROWSER=firefox
