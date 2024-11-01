@@ -1,6 +1,6 @@
 
 # Set the default terminal
-export TERM=xterm-256color
+export TERM=wezterm
 export TERMINAL=wezterm
 
 # Use Firefox as the default browser
