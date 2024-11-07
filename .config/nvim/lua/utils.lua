@@ -53,10 +53,12 @@ end
 M.plugin_file_types = {
     "help",
     "checkhealth",
-
-    -- Plugin specific filetypes
     "netrw",
     "qf",
+    "gitcommit",
+    "gitrebase",
+
+    -- Plugin specific filetypes
     "packer",
     "dirvish",
     "diff",
@@ -65,7 +67,6 @@ M.plugin_file_types = {
     "lspinfo",
     "null-ls-info",
     "fugitive",
-    "gitcommit",
     "undotree",
     "aerial",
     "harpoon",
@@ -92,7 +93,6 @@ M.plugin_file_types = {
     "NeogitRebasePopup",
     "NeogitRevertPopup",
     "NeogitWorktreePopup",
-    "NeogitCommitMessage",
 }
 
 -- Returns the module
