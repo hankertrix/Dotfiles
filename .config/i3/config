@@ -427,11 +427,8 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 # https://wiki.archlinux.org/title/Session_lock#xautolock
 #exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
 
-# use gummy to manage the brightness of the screen
-# exec --no-startup-id gummy start
-
-# set the brightness and colour temperature using xsct
-exec --no-startup-id ~/.config/i3/scripts/run_xsct.sh
+# use clight to manage the brightness of the screen
+exec --no-startup-id clight
 
 # xscreensaver
 # https://www.jwz.org/xscreensaver
