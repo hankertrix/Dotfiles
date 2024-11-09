@@ -429,6 +429,7 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 
 # use clight to manage the brightness of the screen
 exec --no-startup-id clight
+exec --no-startup-id ~/.config/i3/scripts/clight_cli.sh decrease_brightness 1
 
 # xscreensaver
 # https://www.jwz.org/xscreensaver
