@@ -407,8 +407,8 @@
 ;; Set the fill column to 80
 (setq-default fill-column 80)
 
-;; Enable the fill column display in programming mode
-(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+;; Enable the fill column display globally
+(global-display-fill-column-indicator-mode t)
 
 (setq ring-bell-function 'ignore)
 
