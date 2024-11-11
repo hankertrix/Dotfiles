@@ -559,14 +559,14 @@ Disable tool tips.
 #+end_src
 
 *** Show the maximum column width
-This shows a column on the right that marks the maximum number of characters you should have in a line.
+This shows a column on the right that marks the maximum number of characters you should have in a line. This is enabled only when programming since there's no need for it when writing text.
 #+begin_src emacs-lisp
 
 ;; Set the fill column to 80
 (setq-default fill-column 80)
 
-;; Enable the fill column display globally
-(global-display-fill-column-indicator-mode t)
+;; Enable the fill column display in programming mode
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 #+end_src
 
 
