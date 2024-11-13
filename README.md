@@ -25,11 +25,11 @@ This is needed thanks to the Arch Linux LightDM package
 [changing the script to source the files](https://gitlab.archlinux.org/archlinux/packaging/packages/lightdm/-/commit/75c048cabfe9693749f5f363ab6257400d954ffa).
 
 ## .bashrc
-The `.bashrc` file is mostly just the default EndeavourOS configuration, with an if statement added in so that I can change the shell's directory when using `lf`.
+The `.bashrc` file is mostly just the default EndeavourOS configuration, with an if statement added in so that I can change the shell's directory when using `lf` and `yazi`.
 
 ## .profile
 This file is just to set the default applications for various tasks.
-The default terminal is set to kitty,
+The default terminal is set to Wezterm,
 the default editor is set to Neovim,
 the default browser is set to Firefox and
 the default pager is set to less.
