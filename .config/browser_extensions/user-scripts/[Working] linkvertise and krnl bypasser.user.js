@@ -47,8 +47,8 @@
 
 
 
-// @version      12.9.2
-// @releaseDate  2024-03-04T14:24:26.592Z
+// @version      13.0.0
+// @releaseDate  2024-09-02T05:23:50.212Z
 // @author       bypass.city team
 // @connect      bypass.city
 // @connect      adbypass.org
@@ -56,7 +56,7 @@
 
 // ==/UserScript==
 /*
-release: 12.9.2 (9d591eb), 3/4/2024, 2:24:26 PM
+release: 13.0.0 (bfe0633), 9/2/2024, 5:23:50 AM
 Discord: https://discord.gg/bypass-city
 additional copyright/license info:
 Linkvertise Bypass by "bypass.city team" is licensed under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/).
@@ -96,11 +96,11 @@ this URL to always have the latest version: https://api2.adbypass.org/userscript
   // src/config.ts
   var config = {
     version: UserScript.info.script.version,
-    buildTime: "3/4/2024, 2:24:26 PM",
+    buildTime: "9/2/2024, 5:23:50 AM",
     branch: "release",
-    release: "9d591eb",
+    release: "bfe0633",
     installed: true,
-    releaseTag: "12.9.2 (9d591eb)",
+    releaseTag: "13.0.0 (bfe0633)",
     downloadURL: GM_info.script.downloadURL
   };
 
@@ -363,7 +363,7 @@ this URL to always have the latest version: https://api2.adbypass.org/userscript
     const bypassData = await WrappedGet("bypass.data");
     if (bypassData) {
       notify({});
-      await sleep(6e3);
+      await sleep(2e3);
       const targetUrl = bypassData.bypassData;
       await UserScript.deleteValue("bypass.data");
       await sleep(1);
