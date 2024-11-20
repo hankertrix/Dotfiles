@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2024-08-07T13:35:30.469Z",
+    "createdAt": "2024-11-20T04:09:03.800Z",
     "redirects": [
         {
             "description": "Redirect YouTube Shorts to YouTube Video",
@@ -24,13 +24,30 @@
             "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
             "exampleResult": "https://farside.link/libreddit/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
             "error": null,
-            "includePattern": "https?://(?:(?:old|www)\\.)?reddit\\.com/([@\\w/-]*)",
+            "includePattern": "https?://(?:(?:old|www)\\.)?reddit\\.com/((?!(media|video))[@\\w/-]*)",
             "excludePattern": "",
             "patternDesc": "",
             "redirectUrl": "https://farside.link/libreddit/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "Redirect Reddit to Eddrit",
+            "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
+            "exampleResult": "https://eddrit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
+            "error": null,
+            "includePattern": "https?://(?:(?:old|www)\\.)?reddit\\.com/((?!(media|video))[@\\w/-]*)",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://eddrit.com/$1",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -249,6 +266,40 @@
             "excludePattern": "",
             "patternDesc": "",
             "redirectUrl": "https://farside.link/$1",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": true,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "No YouTube",
+            "exampleUrl": "https://www.youtube.com/watch?v=ZdtPTUsrAA4",
+            "exampleResult": "https://example.com/",
+            "error": null,
+            "includePattern": "https?://(?:www\\.)?(?:youtube.com|youtu.be).*",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://example.com/",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": true,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "No Reddit",
+            "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
+            "exampleResult": "https://example.com/",
+            "error": null,
+            "includePattern": "https?://(?:(?:old|www)\\.)?reddit\\.com/",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://example.com/",
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": true,
