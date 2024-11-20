@@ -13,6 +13,9 @@ export VISUAL=nvim
 # Use less as the default pager
 export PAGER=less
 
+# Use Neovim as the default man viewer
+export MANPAGER='nvim +Man!'
+
 # Add cargo to path
 # export PATH="$PATH:/home/hankertrix/.cargo/bin"
 
