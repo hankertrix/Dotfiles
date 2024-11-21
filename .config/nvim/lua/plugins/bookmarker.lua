@@ -4,12 +4,6 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- The table of key binds
-local keybinds = {
-    view_bookmarked_files = "<C-e>",
-    view_buffer_bookmarks = "<Leader>m",
-}
-
 -- Returns the bookmarking plugin for lazy.nvim
 return {
     "otavioschwanck/arrow.nvim",
@@ -17,19 +11,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         show_icons = true,
-        leader_key = keybinds.view_bookmarked_files,
-        buffer_leader_key = keybinds.view_buffer_bookmarks,
-    },
-    keys = {
-        {
-            keybinds.view_bookmarked_files,
-            mode = "n",
-            desc = "View bookmarked files",
-        },
-        {
-            keybinds.view_buffer_bookmarks,
-            mode = "n",
-            desc = "View buffer-local bookmarks",
-        },
+        leader_key = "<C-e>",
+        buffer_leader_key = "<Leader>m",
     },
 }

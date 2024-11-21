@@ -19,7 +19,7 @@ return {
             "<Leader>at",
             vim.cmd.AerialToggle,
             mode = "n",
-            desc = "Opens the Aerial menu",
+            desc = "Open the Aerial menu",
         },
     },
 }
