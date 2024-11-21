@@ -113,7 +113,7 @@ File explorer -
 Fuzzy finder -
 [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 
-Telescope extensions:
+Fuzzy finder extensions:
 
 - [trouble.nvim](https://github.com/folke/trouble.nvim)
 
