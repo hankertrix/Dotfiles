@@ -21,7 +21,15 @@ return {
         buffer_leader_key = keybinds.view_buffer_bookmarks,
     },
     keys = {
-        {keybinds.view_bookmarked_files, mode = "n", desc = "View bookmarked files"},
-        {keybinds.view_buffer_bookmarks, mode = "n", desc = "View buffer-local bookmarks"},
+        {
+            keybinds.view_bookmarked_files,
+            mode = "n",
+            desc = "View bookmarked files",
+        },
+        {
+            keybinds.view_buffer_bookmarks,
+            mode = "n",
+            desc = "View buffer-local bookmarks",
+        },
     },
 }
