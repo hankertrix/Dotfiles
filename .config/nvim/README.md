@@ -26,9 +26,7 @@ Using neovim in the browser -
 
 ### Coding
 
-LSP -
-[lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim)
-with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+LSP - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 
 LSP integration with linters and formatters -
 [none-ls (null-ls)](https://github.com/nvimtools/none-ls.nvim)

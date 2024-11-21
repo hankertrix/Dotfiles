@@ -21,7 +21,7 @@ local function setup()
 
         -- Set the severity of CSpell to hint
         diagnostics_postprocess = function(diagnostic)
-            diagnostic.severity = vim.diagnostic.severity["HINT"]
+            diagnostic.severity = vim.diagnostic.severity.HINT
         end,
 
         -- The actual configuration for CSpell

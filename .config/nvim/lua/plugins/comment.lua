@@ -27,7 +27,7 @@ return {
                 require("Comment.api").toggle.linewise.current()
             end,
             mode = "n",
-            desc = descriptions["current_line"],
+            desc = descriptions.current_line,
         },
         {
             "<C-/>",
@@ -36,17 +36,17 @@ return {
                 require("Comment.api").toggle.linewise(vim.fn.visualmode())
             end,
             mode = "v",
-            desc = descriptions["current_selection"],
+            desc = descriptions.current_selection,
         },
         {
             "gb",
             mode = { "n", "v" },
-            desc = descriptions["blockwise"],
+            desc = descriptions.blockwise,
         },
         {
             "gc",
             mode = { "n", "v" },
-            desc = descriptions["linewise"],
+            desc = descriptions.linewise,
         },
     },
 }

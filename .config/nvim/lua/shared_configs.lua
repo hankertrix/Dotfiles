@@ -80,26 +80,13 @@ function M.default_cmp_mappings()
     return default_cmp_mappings
 end
 
--- Function to return the LSP diagnostic icons I use
-function M.lsp_diagnostic_icons(warning_text)
-    --
-
-    -- Sets the warning text to "warn" if it isn't given
-    warning_text = warning_text or "warn"
-
-    -- The LSP icons that I want
-    local lsp_icons = {
-        error = "",
-        hint = "",
-        info = "",
-    }
-
-    -- Sets the warning text to the warning symbol
-    lsp_icons[warning_text] = ""
-
-    -- Returns the LSP icons
-    return lsp_icons
-end
+-- The diagnostic icons
+M.lsp_diagnostic_icons = {
+    [vim.diagnostic.severity.INFO] = "",
+    [vim.diagnostic.severity.HINT] = "",
+    [vim.diagnostic.severity.WARN] = "",
+    [vim.diagnostic.severity.ERROR] = "",
+}
 
 -- The list of short names for the sources
 M.source_names = {
