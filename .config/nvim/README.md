@@ -152,3 +152,5 @@ Hardtime plugin -
 - [yazi (terminal file manager)](https://github.com/sxyazi/yazi)
 - [python (for installing `pylsp`)](https://www.python.org/)
 - [npm (for installing JavaScript ecosystem tools, like `prettierd`, `tsserver`, etc.)](https://www.npmjs.com/)
+- [shellcheck (linting `sh` files for `bashls`)](https://github.com/koalaman/shellcheck#installing)
+- [shfmt (formatting `sh` files for `bashls`)](https://github.com/mvdan/sh#shfmt)
