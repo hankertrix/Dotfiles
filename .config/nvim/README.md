@@ -115,7 +115,7 @@ Fuzzy finder -
 
 Telescope extensions:
 
-- [Trouble](https://github.com/folke/trouble.nvim)
+- [trouble.nvim](https://github.com/folke/trouble.nvim)
 
 ### Helpers
 
