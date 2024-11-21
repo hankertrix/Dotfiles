@@ -47,7 +47,7 @@ function M.default_cmp_mappings()
         ["<Up>"] = cmp.mapping.select_prev_item(select_opts),
         ["<Down>"] = cmp.mapping.select_next_item(select_opts),
 
-        -- Ctrl + p  and Ctrl + n work similarly to the up and down arrow keys
+        -- Ctrl + p and Ctrl + n work similarly to the up and down arrow keys
         -- but will turn on cmp if the cmp menu is not visible
         ["<C-p>"] = cmp.mapping(function()
             if cmp.visible() then
