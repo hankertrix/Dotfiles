@@ -12,7 +12,8 @@ vim.g.mapleader = " "
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines down" })
 
--- Remap the Netrw refresh to F5 instead of Ctrl + l so I can use Ctrl + l to move between screens in Netrw
+-- Remap the Netrw refresh to F5 instead of Ctrl + l
+-- so I can use Ctrl + l to move between screens in Netrw
 vim.keymap.set("n", "<F5>", "<Plug>NetrwRefresh", { desc = "Refresh Netrw" })
 
 -- Use Ctrl + hjkl to move between splits
@@ -27,10 +28,11 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half a screen" })
 vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Scroll N screens forward" })
 vim.keymap.set("n", "<C-b>", "<C-b>zz", { desc = "Scroll N screens backward" })
 
--- Use Ctrl + s to save the file if it has been modified
-vim.keymap.set("n", "<C-s>", vim.cmd.up, { desc = "Save file" })
+-- Key maps to change buffers
+vim.keymap.set("n", "<Leader>l", vim.cmd.bnext, { desc = "Go to the next buffer" })
+vim.keymap.set("n", "<Leader>h", vim.cmd.bprevious, { desc = "Go to the previous buffer" })
 
--- Titlecase the hovered word
+-- Title case the hovered word
 vim.keymap.set("i", "<C-t>", "<Esc>b~lea", { desc = "Titlecase hovered word" })
 
 
@@ -50,15 +52,16 @@ vim.keymap.set("n", "*", "*zzzv", { desc = "Search the word under the cursor in 
 vim.keymap.set("n", "#", "#zzzv", { desc = "Search the word under the cursor in the backward direction" })
 
 -- Use the Leader key to yank to system clipboard
-vim.keymap.set({"n", "v"}, "<Leader>y", [["+y]], { desc = "Yank to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<Leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<Leader>Y", [["+y$]], { desc = "Yank till the end of the line to system clipboard" })
 
 -- Deleting something instead of cutting
-vim.keymap.set({"n", "v"}, "<Leader>d", [["_d]], { desc = "Delete" })
+vim.keymap.set({ "n", "v" }, "<Leader>d", [["_d]], { desc = "Delete" })
 
 -- Use the leader key to paste from system clipboard
-vim.keymap.set({"n", "v"}, "<Leader>pp", [["+p]], { desc = "Paste from system clipboard after the cursor" })
-vim.keymap.set({"n", "v"}, "<Leader>P", [["+P]], { desc = "Paste from system clipboard before the cursor" })
+vim.keymap.set({ "n", "v" }, "<Leader>pp", [["+p]], { desc = "Paste from system clipboard after the cursor" })
+vim.keymap.set({ "n", "v" }, "<Leader>P", [["+P]], { desc = "Paste from system clipboard before the cursor" })
 
 -- Replaces the word that the cursor is currently on throughout the entire file
-vim.keymap.set("n", "<Leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace the word hovered by the cursor throughout the entire file" })
+vim.keymap.set("n", "<Leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Replace the word hovered by the cursor throughout the entire file" })
