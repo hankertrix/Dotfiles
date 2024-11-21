@@ -4,30 +4,27 @@
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up the fuzzy finder
-local function setup()
-    --
-
-    -- Get the configuration for fzf-lua
-    local fzf_lua_config = require("fzf-lua.config")
-
-    -- Get the fzf-lua actions for trouble
-    local trouble_actions = require("trouble.sources.fzf").actions
-
-    -- Set Ctrl - t to open the results in trouble
-    fzf_lua_config.defaults.actions.files["ctrl-t"] = trouble_actions.open
-end
-
 -- Returns the fuzzy finder plugin for lazy.nvim
 return {
     "ibhagwan/fzf-lua",
-    config = setup,
     cond = utils.firenvim_not_active,
     lazy = true,
     cmd = "FzfLua",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
     },
+    config = function()
+        --
+
+        -- Get the configuration for fzf-lua
+        local fzf_lua_config = require("fzf-lua.config")
+
+        -- Get the fzf-lua actions for trouble
+        local trouble_actions = require("trouble.sources.fzf").actions
+
+        -- Set Ctrl - t to open the results in trouble
+        fzf_lua_config.defaults.actions.files["ctrl-t"] = trouble_actions.open
+    end,
     keys = {
         {
             "<F1>",
