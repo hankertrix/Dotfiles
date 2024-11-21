@@ -1029,3 +1029,25 @@
 ;; Update PDF buffers after successful LaTeX runs
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
+
+(use-package hardtime
+
+  ;; Get hardtime.el from GitHub
+  :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
+
+  ;; Configure hardtime.el
+  :config
+  (defun evil-hardtime-check-command ()
+    "Return non-nil if the currently executed command should be checked."
+    (memq this-command '( next-line previous-line evil-previous-visual-line
+                          right-char left-char left-word right-word
+                          evil-forward-char evil-backward-char
+                          evil-next-line evil-previous-line)))
+
+  ;; Enable hardtime mode
+  (hardtime-mode)
+
+  ;; Customise hardtime.el
+  :custom
+  (hardtime-predicate #'evil-hardtime-check-command))
+  (setq hardtime-period 1)

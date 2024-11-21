@@ -55,6 +55,8 @@
   - [[#auctex][AUCTeX]]
   - [[#evil-tex][Evil TeX]]
   - [[#using-pdf-tools-to-open-compiled-latex-pdf-files][Using PDF-tools to open compiled LaTeX PDF files]]
+- [[#building-better-vim-habits][Building better Vim habits]]
+  - [[#hardtimeel][Hardtime.el]]
 - [[#external-programs][External programs]]
   - [[#miscellaneous-1][Miscellaneous]]
   - [[#tex-and-latex][TeX and LaTeX]]
@@ -1509,6 +1511,37 @@ Evil TeX provides useful text objects for LaTeX editing.
 ;; Update PDF buffers after successful LaTeX runs
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
+#+end_src
+
+
+
+
+* Building better Vim habits
+
+** Hardtime.el
+Hardtime.el is a package that forces you to stop repeating the same commands to move around in Emacs.
+#+begin_src emacs-lisp
+(use-package hardtime
+
+  ;; Get hardtime.el from GitHub
+  :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
+
+  ;; Configure hardtime.el
+  :config
+  (defun evil-hardtime-check-command ()
+    "Return non-nil if the currently executed command should be checked."
+    (memq this-command '( next-line previous-line evil-previous-visual-line
+                          right-char left-char left-word right-word
+                          evil-forward-char evil-backward-char
+                          evil-next-line evil-previous-line)))
+
+  ;; Enable hardtime mode
+  (hardtime-mode)
+
+  ;; Customise hardtime.el
+  :custom
+  (hardtime-predicate #'evil-hardtime-check-command))
+  (setq hardtime-period 1)
 #+end_src
 
 
