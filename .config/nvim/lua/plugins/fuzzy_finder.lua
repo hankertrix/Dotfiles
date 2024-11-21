@@ -12,18 +12,46 @@ return {
     cmd = "FzfLua",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
+        "trouble.nvim",
     },
     config = function()
         --
 
-        -- Get the configuration for fzf-lua
-        local fzf_lua_config = require("fzf-lua.config")
-
         -- Get the fzf-lua actions for trouble
         local trouble_actions = require("trouble.sources.fzf").actions
 
-        -- Set Ctrl - t to open the results in trouble
-        fzf_lua_config.defaults.actions.files["ctrl-t"] = trouble_actions.open
+        -- Set up fzf-lua
+        require("fzf-lua").setup({
+            keymap = {
+
+                builtin = {
+
+                    -- Inherit the default mappings
+                    true,
+                    ["<C-j>"] = "preview-page-down",
+                    ["<C-k>"] = "preview-page-up",
+                    ["<M-j>"] = "preview-down",
+                    ["<M-k>"] = "preview-up",
+                },
+
+                fzf = {
+
+                    -- Inherit the default mappings
+                    true,
+                    ["ctrl-j"] = "preview-down",
+                    ["ctrl-k"] = "preview-up",
+                },
+            },
+
+            actions = {
+                files = {
+
+                    -- Inherit the default mappings
+                    true,
+                    ["ctrl-d"] = trouble_actions.open,
+                },
+            },
+        })
     end,
     keys = {
         {
