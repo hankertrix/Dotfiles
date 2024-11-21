@@ -13,9 +13,6 @@ Theme -
 Statusline -
 [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 
-Bufferline / tabline -
-[bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
-
 ### Integrations
 
 Git integration -
@@ -108,19 +105,17 @@ Highlighting and removing trailing spaces and new lines -
 ### Managing files
 
 Marking files for quick access -
-[Harpoon](https://github.com/ThePrimeagen/harpoon)
+[Arrow.nvim](https://github.com/otavioschwanck/arrow.nvim)
 
 File explorer -
 [yazi.nvim](https://github.com/mikavilpas/yazi.nvim)
 
 Fuzzy finder -
-[telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-with [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
+[fzf-lua](https://github.com/ibhagwan/fzf-lua)
 
 Telescope extensions:
 
-- [Harpoon](https://github.com/ThePrimeagen/harpoon)
-- [aerial.nvim](https://github.com/stevearc/aerial.nvim)
+- [Trouble](https://github.com/folke/trouble.nvim)
 
 ### Helpers
 
@@ -155,7 +150,7 @@ Hardtime plugin -
 
 - [ripgrep (for searching within files)](https://github.com/BurntSushi/ripgrep)
 - [fd (for finding files)](https://github.com/sharkdp/fd)
+- [fzf (for fuzzy finding)](https://github.com/junegunn/fzf)
 - [yazi (terminal file manager)](https://github.com/sxyazi/yazi)
-- [gcc](https://gcc.gnu.org/)
 - [python (for installing `pylsp`)](https://www.python.org/)
 - [npm (for installing JavaScript ecosystem tools, like `prettierd`, `tsserver`, etc.)](https://www.npmjs.com/)
