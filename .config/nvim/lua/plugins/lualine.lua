@@ -7,9 +7,6 @@ local utils = require("utils")
 local function setup()
     --
 
-    -- Stops executing if the theme isn't installed
-    if not utils.status_ok("lualine") then return end
-
     -- Gets the lualine module
     local lualine = require("lualine")
 
@@ -170,16 +167,19 @@ local function setup()
             and string.lower(file_encoding) ~= "utf-8"
     end
 
-    -- Function to disable the winbar based on the file type type
-    local function is_not_plugin_buffer()
+    -- Function to disable the winbar based on the file type
+    local function should_disable_winbar()
         --
 
         -- Gets the file type of the current buffer
         local file_type = vim.bo.filetype
 
-        -- Returns true if the file is not in the list of plugin file types
+        -- Returns true if the file is not in the list of disabled file types
         -- and false otherwise
-        return not vim.list_contains(utils.plugin_file_types, file_type)
+        return not vim.list_contains(
+            require("shared_configs").disabled_file_types,
+            file_type
+        )
     end
 
     -- The breadcrumb separator for the winbar
@@ -194,20 +194,20 @@ local function setup()
                 "filetype",
                 icon_only = true,
                 separator = {},
-                cond = is_not_plugin_buffer,
+                cond = should_disable_winbar,
             },
 
             {
                 "filename",
                 file_status = false,
-                cond = is_not_plugin_buffer,
+                cond = should_disable_winbar,
                 separator = vim.trim(breadcrumb_separator),
             },
 
             {
                 "aerial",
                 sep = breadcrumb_separator,
-                cond = is_not_plugin_buffer,
+                cond = should_disable_winbar,
             },
         },
     }
@@ -287,7 +287,7 @@ local function setup()
             },
         })
 
-    -- Otherwise
+        -- Otherwise
     else
         --
 

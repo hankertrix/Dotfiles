@@ -7,9 +7,6 @@ local utils = require("utils")
 local function setup()
     --
 
-    -- Stops executing if the package isn"t installed
-    if not utils.status_ok("cmp", "supermaven-nvim") then return end
-
     -- Gets the nvim-cmp module
     local cmp = require("cmp")
 

@@ -46,19 +46,6 @@ local root_files = {
 local function setup()
     --
 
-    -- Stops executing if the packages aren't installed
-    if
-        not utils.status_ok({
-            "cmp",
-            "cmp_nvim_lsp",
-            "lspconfig",
-            "mason",
-            "mason-lspconfig",
-        })
-    then
-        return
-    end
-
     -- Gets the lspconfig module
     local lspconfig = require("lspconfig")
 

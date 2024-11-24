@@ -7,9 +7,6 @@ local utils = require("utils")
 local function setup()
     --
 
-    -- Stops executing if the packages aren't installed
-    if not utils.status_ok({ "null-ls", "cspell" }) then return end
-
     -- Gets the null-ls module
     local null_ls = require("null-ls")
 

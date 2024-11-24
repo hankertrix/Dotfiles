@@ -7,9 +7,6 @@ local utils = require("utils")
 local function setup()
     --
 
-    -- Stops executing if the package isn't installed
-    if not utils.status_ok({ "mason", "mason-tool-installer" }) then return end
-
     -- Set up Mason
     require("mason").setup()
 
@@ -27,8 +24,9 @@ local function setup()
             "rust_analyzer",            -- Rust
             "clangd",                   -- C/C++
             "bashls",                   -- Bash and shell
-            "taplo",                    -- TOML
             "jsonls",                   -- JSON
+            "taplo",                    -- TOML
+            "yamlls",                   -- YAML
             "ltex",                     -- English checker
 
             -- Formatters
@@ -36,7 +34,7 @@ local function setup()
             "prettierd",        -- JavaScript ecosystem formatter
 
             -- Linters
-            "cspell"            -- English checker within code
+            "cspell",           -- English checker within code
         },
     })
 end
