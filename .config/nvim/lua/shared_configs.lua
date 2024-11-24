@@ -147,6 +147,53 @@ M.lsp_kind_icons = {
     Supermaven = "",
 }
 
+-- The list of disabled file types
+M.disabled_file_types = {
+    "help",
+    "checkhealth",
+    "netrw",
+    "qf",
+    "gitcommit",
+    "gitrebase",
+
+    -- Plugin specific filetypes
+    "packer",
+    "dirvish",
+    "dirbuf",
+    "diff",
+    "mason",
+    "lazy",
+    "lspinfo",
+    "null-ls-info",
+    "fugitive",
+    "undotree",
+    "aerial",
+    "harpoon",
+    "minifiles",
+    "trouble",
+    "NvimTree",
+    "TelescopePrompt",
+    "WhichKey",
+    "NeogitStatus",
+    "NeogitHelpPopup",
+    "NeogitCherryPickPopup",
+    "NeogitDiffPopup",
+    "NeogitRemotePopup",
+    "NeogitPushPopup",
+    "NeogitResetPopup",
+    "NeogitStashPopup",
+    "NeogitBranchPopup",
+    "NeogitBisectPopup",
+    "NeogitCommitPopup",
+    "NeogitFetchPopup",
+    "NeogitLogPopup",
+    "NeogitMergePopup",
+    "NeogitPullPopup",
+    "NeogitRebasePopup",
+    "NeogitRevertPopup",
+    "NeogitWorktreePopup",
+}
+
 -- Set the max line length to 80
 M.max_line_length = 80
 
