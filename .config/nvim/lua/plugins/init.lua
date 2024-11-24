@@ -14,7 +14,6 @@ return {
         end,
         lazy = true,
         cond = utils.firenvim_not_active,
-        ft = "markdown",
         cmd = {
             "MarkdownPreviewToggle",
             "MarkdownPreview",
