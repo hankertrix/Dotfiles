@@ -287,7 +287,7 @@ local function setup()
             },
         })
 
-        -- Otherwise
+    -- Otherwise
     else
         --
 
