@@ -22,6 +22,10 @@ return {
 
         -- Set up fzf-lua
         require("fzf-lua").setup({
+
+            -- Use the theme colours for the fzf window
+            fzf_colors = true,
+
             keymap = {
 
                 builtin = {
@@ -87,12 +91,12 @@ return {
             desc = "Search for open buffers using the fuzzy finder",
         },
         {
-            "<Leader>pa",
+            "<Leader>pr",
             function()
-                require("fzf-lua").lsp_document_symbols()
+                require("fzf-lua").registers()
             end,
             mode = "n",
-            desc = "Search for code symbols using the fuzzy finder",
+            desc = "Search through vim registers",
         },
     },
 }
