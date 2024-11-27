@@ -248,7 +248,9 @@ local function setup()
                     "diff",
                     {
                         "diagnostics",
-                        symbols = require("shared_configs").icons.diagnostics(),
+                        symbols = require("shared_configs").icons.diagnostics(
+                            1
+                        ),
                     },
                     "filename",
                 },

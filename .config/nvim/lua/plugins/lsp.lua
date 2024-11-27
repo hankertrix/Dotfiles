@@ -488,7 +488,7 @@ local function setup()
     vim.diagnostic.config({
         virtual_text = true,
         signs = {
-            text = shared_configs.icons.diagnostics({
+            text = shared_configs.icons.diagnostics(0, {
                 info = vim.diagnostic.severity.INFO,
                 hint = vim.diagnostic.severity.HINT,
                 warn = vim.diagnostic.severity.WARN,
