@@ -80,14 +80,6 @@ function M.default_cmp_mappings()
     return default_cmp_mappings
 end
 
--- The diagnostic icons
-M.lsp_diagnostic_icons = {
-    [vim.diagnostic.severity.INFO] = "",
-    [vim.diagnostic.severity.HINT] = "",
-    [vim.diagnostic.severity.WARN] = "",
-    [vim.diagnostic.severity.ERROR] = "",
-}
-
 -- The list of short names for the sources
 M.source_names = {
     buffer = "Buffer",
@@ -95,56 +87,107 @@ M.source_names = {
     luasnip = "LuaSnip",
     nvim_lua = "Lua",
     latex_symbols = "LaTeX",
-    cmp_tabnine = "Tabnine",
+    cmp_tabnine = "TabNine",
     nvim_lsp_signature_help = "LSP Signature Help",
-    cmdline_history = "Cmdline History",
+    cmdline_history = "Command Line History",
 }
 
--- The list of LSP kind icons that I want to use
-M.lsp_kind_icons = {
-    Array = "󰅪",
-    Boolean = "◩",
-    Class = "󰠱",
-    Color = "󰏘",
-    Constant = "󰏿",
-    Constructor = "",
-    Enum = "",
-    EnumMember = "",
-    Error = "",
-    Event = "",
-    Field = "",
-    File = "󰈙",
-    Folder = "󰉋",
-    Function = "󰊕",
-    Interface = "",
-    Key = "󰌋",
-    Keyword = "󰌋",
-    Macro = "",
-    Method = "󰆧",
-    Module = "",
-    Namespace = "󰌗",
-    Null = "󰟢",
-    Number = "󰎠",
-    Object = "󰅩",
-    Operator = "",
-    Package = "󰏖",
-    Parameter = "",
-    Property = "",
-    Reference = "",
-    Snippet = "",
-    StaticMethod = "󰠄",
-    String = "",
-    Struct = "",
-    TabNine = "󰚩",
-    Text = "󰉿",
-    TypeAlias = "",
-    TypeParameter = "",
-    Unit = "",
-    Value = "",
-    Variable = "󰫧",
-    Collapsed = "",
-    Codeium = "󰘦",
-    Supermaven = "",
+-- The list of icons that I want to use
+M.icons = {
+    lsp_kind = {
+        Array = "󰅪",
+        Boolean = "◩",
+        Class = "󰠱",
+        Color = "󰏘",
+        Constant = "󰏿",
+        Constructor = "",
+        Control = "",
+        Enum = "",
+        EnumMember = "",
+        Error = "",
+        Event = "",
+        Field = "",
+        File = "󰈙",
+        Folder = "󰉋",
+        Function = "󰊕",
+        Interface = "",
+        Key = "󰌋",
+        Keyword = "",
+        Macro = "",
+        Method = "",
+        Module = "",
+        Namespace = "󰌗",
+        Null = "󰟢",
+        Number = "",
+        Object = "󰅩",
+        Operator = "",
+        Package = "󰏖",
+        Parameter = "󰗴",
+        Property = "󰜢",
+        Reference = "",
+        Snippet = "",
+        StaticMethod = "󱇯",
+        String = "",
+        Struct = "󰆼",
+        Text = "",
+        TypeAlias = "󱄀",
+        TypeParameter = "",
+        Unit = "",
+        Value = "󰎠",
+        Variable = "󰫧",
+        Collapsed = "",
+
+        -- AI code completion
+        TabNine = "󰏚",
+        Supermaven = "",
+        Codeium = "󰘦",
+        Copilot = "",
+    },
+
+    -- Diagnostic icons
+    --
+    -- The function takes an optional mapping to the diagnostic severity
+    -- and returns the table of diagnostic icons.
+    --
+    -- An example of the diagnostic severity mapping is:
+    -- {
+    --     info = vim.diagnostic.severity.INFO,
+    --     hint = vim.diagnostic.severity.HINT,
+    --     warn = vim.diagnostic.severity.WARN,
+    --     error = vim.diagnostic.severity.ERROR,
+    -- }
+    diagnostics = function(diagnostic_severity_mapping)
+        --
+
+        -- Initialise the diagnostic icons
+        local diagnostic_icons = {
+            info = "",
+            hint = "",
+            warn = "",
+            error = "",
+        }
+
+        -- If the diagnostic severity mapping is not given
+        -- then return the diagnostic icons
+        if not diagnostic_severity_mapping then return diagnostic_icons end
+
+        -- Initialise the mapped diagnostic icons
+        local mapped_diagnostic_icons = {}
+
+        -- Otherwise, iterate over the diagnostic icons
+        for diagnostic_severity, icon in pairs(diagnostic_icons) do
+            --
+
+            -- Get the key for the mapped diagnostic icons
+            local key = diagnostic_severity_mapping[diagnostic_severity]
+
+            -- Set the diagnostic icon to the diagnostic severity
+            mapped_diagnostic_icons[key] = icon
+        end
+
+        -- Return the mapped diagnostic icons
+        return mapped_diagnostic_icons
+    end,
 }
 
 -- The list of disabled file types

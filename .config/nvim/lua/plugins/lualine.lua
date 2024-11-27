@@ -246,7 +246,12 @@ local function setup()
                 lualine_b = {
                     "branch",
                     "diff",
-                    "diagnostics",
+                    {
+                        "diagnostics",
+                        symbols = {
+                            require("shared_configs").icons.diagnostics(),
+                        },
+                    },
                     "filename",
                 },
 

@@ -10,7 +10,7 @@ return {
     cmd = "AerialToggle",
     opts = {
         attach_mode = "global",
-        icons = require("shared_configs").lsp_kind_icons,
+        icons = require("shared_configs").icons.lsp_kind,
     },
     keys = {
 

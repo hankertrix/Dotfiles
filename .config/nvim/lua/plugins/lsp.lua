@@ -69,14 +69,13 @@ local function setup()
             local opts = { buffer = event.buf }
 
             -- Key bind to show hover information
-            vim.keymap.set(
-                "n",
-                "K",
-                function()
-                    vim.lsp.buf.hover()
-                end,
-                vim.tbl_extend("error", opts, { desc = descriptions.hover })
-            )
+            vim.keymap.set("n", "K", function()
+                vim.lsp.buf.hover()
+            end, vim.tbl_extend(
+                "error",
+                opts,
+                { desc = descriptions.hover }
+            ))
 
             -- Key bind to go to definition
             vim.keymap.set(
@@ -163,34 +162,31 @@ local function setup()
             )
 
             -- Key bind to rename the variable
-            vim.keymap.set(
-                "n",
-                "<F2>",
-                function()
-                    vim.lsp.buf.rename()
-                end,
-                vim.tbl_extend("error", opts, { desc = descriptions.rename })
-            )
+            vim.keymap.set("n", "<F2>", function()
+                vim.lsp.buf.rename()
+            end, vim.tbl_extend(
+                "error",
+                opts,
+                { desc = descriptions.rename }
+            ))
 
             -- Key bind to format the buffer
-            vim.keymap.set(
-                { "n", "x" },
-                "<F3>",
-                function()
-                    vim.lsp.buf.format({ async = true })
-                end,
-                vim.tbl_extend("error", opts, { desc = descriptions.format })
-            )
+            vim.keymap.set({ "n", "x" }, "<F3>", function()
+                vim.lsp.buf.format({ async = true })
+            end, vim.tbl_extend(
+                "error",
+                opts,
+                { desc = descriptions.format }
+            ))
 
             -- Key bind to format the buffer as well
-            vim.keymap.set(
-                { "n", "x" },
-                "<Leader>f",
-                function()
-                    vim.lsp.buf.format({ async = true })
-                end,
-                vim.tbl_extend("error", opts, { desc = descriptions.format })
-            )
+            vim.keymap.set({ "n", "x" }, "<Leader>f", function()
+                vim.lsp.buf.format({ async = true })
+            end, vim.tbl_extend(
+                "error",
+                opts,
+                { desc = descriptions.format }
+            ))
 
             -- Key bind to show code actions
             vim.keymap.set(
@@ -379,7 +375,8 @@ local function setup()
                                 checkThirdParty = false,
                                 library = {
 
-                                    -- Make the server aware of Neovim runtime files
+                                    -- Make the server aware of
+                                    -- Neovim runtime files
                                     vim.fn.expand("$VIMRUNTIME/lua"),
                                     vim.fn.stdpath("config") .. "/lua",
                                 },
@@ -391,6 +388,7 @@ local function setup()
 
             -- Configure pylsp
             pylsp = function()
+                local max_line_length = shared_configs.max_line_length
                 lspconfig.pylsp.setup({
                     settings = {
                         pylsp = {
@@ -398,12 +396,12 @@ local function setup()
 
                                 -- Configure the pycodestyle plugin
                                 pycodestyle = {
-                                    maxLineLength = shared_configs.max_line_length,
+                                    maxLineLength = max_line_length,
                                 },
 
                                 -- Configure the black plugin
                                 black = {
-                                    line_length = shared_configs.max_line_length,
+                                    line_length = max_line_length,
                                 },
                             },
                         },
@@ -457,7 +455,7 @@ local function setup()
             --
 
             -- The list of kind icons
-            local kind_icons = shared_configs.lsp_kind_icons
+            local kind_icons = shared_configs.icons.lsp_kind
 
             -- Sets the item kind to the concatenation of the icon
             -- with the name of the item kind
@@ -490,8 +488,13 @@ local function setup()
     vim.diagnostic.config({
         virtual_text = true,
         signs = {
-            text = shared_configs.lsp_diagnostic_icons,
-        }
+            text = shared_configs.icons.diagnostics({
+                info = vim.diagnostic.severity.INFO,
+                hint = vim.diagnostic.severity.HINT,
+                warn = vim.diagnostic.severity.WARN,
+                error = vim.diagnostic.severity.ERROR,
+            }),
+        },
     })
 end
 
