@@ -1,4 +1,5 @@
 -- Completion engine configuration
+-- Currently using nvim-cmp
 
 -- Gets the module with the utilities
 local utils = require("utils")
@@ -22,8 +23,12 @@ local function setup()
         format = function(entry, item)
             --
 
+            -- Get the menu name from the shared configs
+            local shared_configs_menu_name =
+                require("shared_configs").source_names[entry.source.name]
+
             -- The menu name for the source of the completion
-            local menu_name = require("shared_configs").source_names[entry.source.name]
+            local menu_name = shared_configs_menu_name
                 or utils.titlecase(entry.source.name)
 
             -- Sets the menu to the menu name enclosed in square brackets
