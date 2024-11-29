@@ -22,14 +22,14 @@ desc = "Move cursor down"
 # Use K to move up in the parent directory
 [[manager.prepend_keymap]]
 on   = [ "K" ]
-run  = "plugin augment-command --args='parent-arrow -1'"
+run  = "plugin augment-command --args='parent_arrow -1'"
 desc = "Move cursor up in the parent directory"
 
 
 # Use J to move down in the parent directory
 [[manager.prepend_keymap]]
 on   = [ "J" ]
-run  = "plugin augment-command --args='parent-arrow 1'"
+run  = "plugin augment-command --args='parent_arrow 1'"
 desc = "Move cursor down in the parent directory"
 
 
