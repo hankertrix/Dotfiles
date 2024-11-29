@@ -17,6 +17,7 @@ return {
 
         -- Create an autocommand to trim whitespace and blank lines on save
         config = function()
+            require("mini.trailspace").setup()
             vim.api.nvim_create_autocmd("BufWritePre", {
                 callback = function()
                     local mini_trailspace = require("mini.trailspace")
