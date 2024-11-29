@@ -13,7 +13,7 @@ return {
         "echasnovski/mini.trailspace",
         version = false,
         lazy = true,
-        event = "BufWritePre",
+        event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 
         -- Create an autocommand to trim whitespace and blank lines on save
         config = function()
