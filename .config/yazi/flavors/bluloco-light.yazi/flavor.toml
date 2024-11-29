@@ -67,7 +67,7 @@ active = { bg = "#D2ECFF" }
 [tasks]
 border = { fg = "#7A82DA" }
 title = { fg = "#0099E1" }
-hovered = { fg = "#C5A332", underline = true }
+hovered = { fg = "#D2ECFF" }
 
 
 [which]
