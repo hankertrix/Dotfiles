@@ -1,4 +1,5 @@
 -- Aerial configuration
+-- Currently the plugin is only used for the lualine winbar
 
 -- Gets the module with the utilities
 local utils = require("utils")
