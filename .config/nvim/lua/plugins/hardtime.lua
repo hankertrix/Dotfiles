@@ -19,6 +19,7 @@ return {
         require("hardtime").setup(opts)
     end,
     opts = {
+        disabled_filetypes = require("shared_configs").disabled_file_types,
         hints = {
 
             -- Hint to use b instead of ()
