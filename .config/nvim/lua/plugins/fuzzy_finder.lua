@@ -26,6 +26,15 @@ return {
             -- Use the theme colours for the fzf window
             fzf_colors = true,
 
+            git = {
+                icons = {
+                    ["M"] = { icon = "", color = "yellow" },
+                    ["D"] = { icon = "󰚃", color = "red" },
+                    ["A"] = { icon = "", color = "green" },
+                    ["R"] = { icon = "", color = "red" },
+                },
+            },
+
             keymap = {
 
                 builtin = {
