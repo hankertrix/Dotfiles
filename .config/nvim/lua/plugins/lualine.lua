@@ -322,5 +322,8 @@ end
 return {
     "nvim-lualine/lualine.nvim",
     config = setup,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+        "aerial.nvim",
+    },
 }
