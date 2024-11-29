@@ -90,6 +90,13 @@ run  = "plugin augment-command --args='leave --no-skip'"
 desc = "Go back to the parent directory"
 
 
+# Use the augmented tab create command for the t key
+[[manager.prepend_keymap]]
+on   = [ "t" ]
+run  = "plugin augment-command --args='tab_create --current'"
+desc = "Create a new tab with CWD"
+
+
 # Use the augmented open to open files interactively with O
 [[manager.prepend_keymap]]
 on   = [ "O" ]
