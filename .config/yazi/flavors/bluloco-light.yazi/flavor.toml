@@ -48,12 +48,12 @@ active = { fg = "#C5A332", bold = true }
 
 [input]
 border = { fg = "#7A82DA" }
-title = { fg = "#0099E1" }
+title = { fg = "#7A82DA" }
 
 
 [confirm]
 border = { fg = "#7A82DA" }
-title = { fg = "#0099E1" }
+title = { fg = "#7A82DA" }
 btn_yes = { fg = "#23974A" }
 btn_no = { fg = "#D52753" }
 btn_labels = ["Yes", "No"]
@@ -66,8 +66,8 @@ active = { bg = "#D2ECFF" }
 
 [tasks]
 border = { fg = "#7A82DA" }
-title = { fg = "#0099E1" }
-hovered = { fg = "#D2ECFF" }
+title = { fg = "#7A82DA" }
+hovered = { fg = "#D2ECFF", bold = true }
 
 
 [which]
