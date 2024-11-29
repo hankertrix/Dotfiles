@@ -305,6 +305,14 @@ local function setup()
                 -- Set up lua ls using lspconfig
                 lspconfig.lua_ls.setup({
 
+                    -- Disable formatting
+                    on_init = function(client)
+                        local server_capabilities = client.server_capabilities
+                        server_capabilities.documentFormattingProvider = false
+                        server_capabilities.documentRangeFormattingProvider =
+                            false
+                    end,
+
                     -- Set the root directory
                     root_dir = function(fname)
                         --
@@ -442,7 +450,7 @@ local function setup()
         { name = "nvim_lsp", keyword_length = 3 },
         { name = "supermaven" },
         { name = "cmp_tabnine" },
-        { name = "buffer", keywword_length = 3 },
+        { name = "buffer", keyword_length = 3 },
         { name = "treesitter", keyword_length = 3 },
         { name = "calc" },
         { name = "emoji" },
