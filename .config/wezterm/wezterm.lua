@@ -19,5 +19,11 @@ config.font = wezterm.font("CaskaydiaCove NFM")
 -- Set the term environment variable to wezterm
 config.term = "wezterm"
 
+-- Set the font size to 12.0
+config.font_size = 12.0
+
+-- Set the underline thickness to 200%
+config.underline_thickness = "200%"
+
 -- Finally, return the configuration to wezterm
 return config
