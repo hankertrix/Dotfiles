@@ -146,72 +146,12 @@ M.icons = {
     },
 
     -- Diagnostic icons
-    --
-    -- The function takes an optional number of spaces to append and
-    -- an optional mapping to the diagnostic severity
-    -- and returns the table of diagnostic icons.
-    --
-    -- An example of the diagnostic severity mapping is:
-    -- {
-    --     info = vim.diagnostic.severity.INFO,
-    --     hint = vim.diagnostic.severity.HINT,
-    --     warn = vim.diagnostic.severity.WARN,
-    --     error = vim.diagnostic.severity.ERROR,
-    -- }
-    --
-    ---@param spaces_to_append number|nil The number of spaces to append
-    ---@param diagnostic_severity_mapping table|nil Diagnostic severity map
-    ---@return table diagnostic_icons The table of diagnostic icons
-    diagnostics = function(spaces_to_append, diagnostic_severity_mapping)
-        --
-
-        -- Initialise the diagnostic icons
-        local diagnostic_icons = {
-            info = "",
-            hint = "",
-            warn = "",
-            error = "",
-        }
-
-        -- If the diagnostic severity mapping is not given
-        -- and the number of spaces is not given,
-        -- then return the diagnostic icons
-        if not diagnostic_severity_mapping and not spaces_to_append then
-            return diagnostic_icons
-        end
-
-        -- If the spaces to append is not given
-        -- then set it to 0
-        spaces_to_append = spaces_to_append or 0
-
-        -- If the diagnostic severity mapping is not given
-        -- then set it to an empty table
-        diagnostic_severity_mapping = diagnostic_severity_mapping or {}
-
-        -- Create the format string
-        local format_string = string.format("%%-%ds", spaces_to_append)
-
-        -- Create the string of spaces to append
-        local string_of_spaces = string.format(format_string, " ")
-
-        -- Initialise the mapped diagnostic icons
-        local mapped_diagnostic_icons = {}
-
-        -- Otherwise, iterate over the diagnostic icons
-        for diagnostic_severity, icon in pairs(diagnostic_icons) do
-            --
-
-            -- Get the key for the mapped diagnostic icons
-            local key = diagnostic_severity_mapping[diagnostic_severity]
-                or diagnostic_severity
-
-            -- Append the spaces to the diagnostic icon and set it to the table
-            mapped_diagnostic_icons[key] = icon .. string_of_spaces
-        end
-
-        -- Return the mapped diagnostic icons
-        return mapped_diagnostic_icons
-    end,
+    diagnostics = {
+        info = "",
+        hint = "",
+        warn = "",
+        error = "",
+    },
 }
 
 -- The list of disabled file types
