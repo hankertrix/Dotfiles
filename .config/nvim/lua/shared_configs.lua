@@ -249,6 +249,7 @@ M.disabled_file_types = {
     "NeogitLogView",
     "NeogitReflogView",
     "NeogitCommitView",
+    "NeogitCommitSelectView",
     "NeogitRefsView",
 
     -- Neogit popups
