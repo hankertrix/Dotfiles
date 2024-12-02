@@ -492,16 +492,19 @@ local function setup()
         },
     })
 
+    -- Get the diagnostic icons
+    local diagnostic_icons = shared_configs.icons.diagnostics
+
     -- Enable virtual_text
     vim.diagnostic.config({
         virtual_text = true,
         signs = {
-            text = shared_configs.icons.diagnostics(0, {
-                info = vim.diagnostic.severity.INFO,
-                hint = vim.diagnostic.severity.HINT,
-                warn = vim.diagnostic.severity.WARN,
-                error = vim.diagnostic.severity.ERROR,
-            }),
+            text = {
+                [vim.diagnostic.severity.INFO] = diagnostic_icons.info,
+                [vim.diagnostic.severity.HINT] = diagnostic_icons.hint,
+                [vim.diagnostic.severity.WARN] = diagnostic_icons.warn,
+                [vim.diagnostic.severity.ERROR] = diagnostic_icons.error,
+            },
         },
     })
 end
