@@ -26,12 +26,20 @@ return {
             -- Use the theme colours for the fzf window
             fzf_colors = true,
 
+            -- Use custom git icons
             git = {
                 icons = {
                     ["M"] = { icon = "", color = "yellow" },
                     ["D"] = { icon = "󰚃", color = "red" },
                     ["A"] = { icon = "", color = "green" },
                     ["R"] = { icon = "", color = "red" },
+                },
+            },
+
+            -- Use my custom lsp kind icons
+            lsp = {
+                symbols = {
+                    symbol_icons = require("shared_configs").icons.lsp_kind,
                 },
             },
 
@@ -61,6 +69,9 @@ return {
 
                     -- Inherit the default mappings
                     true,
+
+                    -- Ctrl + d for diagnostics,
+                    -- since trouble is for diagnostics
                     ["ctrl-d"] = trouble_actions.open,
                 },
             },
