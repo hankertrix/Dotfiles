@@ -305,14 +305,6 @@ local function setup()
                 -- Set up lua ls using lspconfig
                 lspconfig.lua_ls.setup({
 
-                    -- Disable formatting
-                    on_init = function(client)
-                        local server_capabilities = client.server_capabilities
-                        server_capabilities.documentFormattingProvider = false
-                        server_capabilities.documentRangeFormattingProvider =
-                            false
-                    end,
-
                     -- Set the root directory
                     root_dir = function(fname)
                         --
@@ -370,6 +362,11 @@ local function setup()
                                 -- Get the language server to
                                 -- recognise the vim global
                                 globals = { "vim" },
+                            },
+
+                            -- Disable formatting
+                            format = {
+                                enable = false,
                             },
 
                             -- Enable inlay hints
