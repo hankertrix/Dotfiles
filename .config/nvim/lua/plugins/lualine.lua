@@ -226,6 +226,9 @@ local function setup()
         local neogit_ext =
             create_full_width_ext({ "NeogitStatus" }, "󰊢 Neogit", true)
 
+        -- Get the diagnostic icons
+        local diagnostic_icons = require("shared_configs").icons.diagnostics
+
         -- Sets up lualine to look like bubbles in the lualine GitHub
         lualine.setup({
 
@@ -248,9 +251,12 @@ local function setup()
                     "diff",
                     {
                         "diagnostics",
-                        symbols = require("shared_configs").icons.diagnostics(
-                            1
-                        ),
+                        symbols = {
+                            info = diagnostic_icons.info .. " ",
+                            hint = diagnostic_icons.hint .. " ",
+                            warn = diagnostic_icons.warn .. " ",
+                            error = diagnostic_icons.error .. " ",
+                        },
                     },
                     "filename",
                 },
