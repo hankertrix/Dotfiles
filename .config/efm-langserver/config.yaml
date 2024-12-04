@@ -43,15 +43,16 @@ tools:
       - "prettier.config.cjs"
       - "prettier.config.mjs"
 
-  # lua-stylua: &lua-stylua
-  #   format-command: >
-  #      stylua --color Never \
-  #        ${--range-start:charStart} ${--range-end:charEnd} -
-  #   format-can-range: true
-  #   format-stdin: true
-  #   root-markers:
-  #     - "stylua.toml"
-  #     - ".stylua.toml"
+  lua-stylua: &lua-stylua
+    format-command: >
+      stylua --color Never \
+        ${--range-start:charStart} ${--range-end:charEnd} \
+          --stdin-filepath ${INPUT} -
+    format-can-range: true
+    format-stdin: true
+    root-markers:
+      - "stylua.toml"
+      - ".stylua.toml"
 
   sh-shfmt: &sh-shfmt
     format-command: "shfmt -filename '${INPUT}' -"
@@ -122,8 +123,8 @@ languages:
   yaml:
     - <<: *prettierd
 
-  # lua:
-  #   - <<: *lua-stylua
+  lua:
+    - <<: *lua-stylua
 
   sh:
     - <<: *sh-shellcheck

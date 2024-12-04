@@ -15,9 +15,6 @@ local function setup()
 
         sources = {
 
-            -- Formatters
-            null_ls.builtins.formatting.stylua,
-
             -- Miscellaneous
             null_ls.builtins.code_actions.gitsigns,
         },
