@@ -1,6 +1,9 @@
 -- Fuzzy finder plugin configuration
 -- Currently the fuzzy finder is fzf-lua
 
+-- The fzf-lua separator
+local separator = " ❯ "
+
 -- Gets the module with the utilities
 local utils = require("utils")
 
@@ -26,13 +29,41 @@ return {
             -- Use the theme colours for the fzf window
             fzf_colors = true,
 
-            -- Use custom git icons
             git = {
+
+                -- Use my own custom git icons
                 icons = {
-                    ["M"] = { icon = "", color = "yellow" },
+                    ["M"] = { icon = "󰛿", color = "blue" },
                     ["D"] = { icon = "󰚃", color = "red" },
-                    ["A"] = { icon = "", color = "green" },
-                    ["R"] = { icon = "", color = "red" },
+                    ["A"] = { icon = "", color = "green" },
+                    ["R"] = { icon = "", color = "red" },
+                    ["?"] = { icon = "", color = "grey" },
+                },
+
+                -- Add a space to all the prompts
+                files = {
+                    prompt = "Git files" .. separator,
+                },
+                status = {
+                    prompt = "Git status" .. separator,
+                },
+                commits = {
+                    prompt = "Commits" .. separator,
+                },
+                bcommits = {
+                    prompt = "Commits (current buffer)" .. separator,
+                },
+                blame = {
+                    prompt = "Blame" .. separator,
+                },
+                branches = {
+                    prompt = "Branches" .. separator,
+                },
+                tags = {
+                    prompt = "Tags" .. separator,
+                },
+                stash = {
+                    prompt = "Stash" .. separator,
                 },
             },
 
@@ -40,6 +71,15 @@ return {
             lsp = {
                 symbols = {
                     symbol_icons = require("shared_configs").icons.lsp_kind,
+                },
+
+                -- Add a space to all the prompts
+                prompt_postfix = separator,
+                code_actions = {
+                    prompt = "Code actions" .. separator,
+                },
+                finder = {
+                    prompt = "LSP finder" .. separator,
                 },
             },
 
@@ -74,6 +114,54 @@ return {
                     -- since trouble is for diagnostics
                     ["ctrl-d"] = trouble_actions.open,
                 },
+            },
+
+            -- Add a space for all the prompts
+            files = {
+                prompt = "Files" .. separator,
+            },
+            grep = {
+                prompt = "Grep" .. separator,
+                input_prompt = "Grep for: ",
+            },
+            args = {
+                prompt = "Argument list" .. separator,
+            },
+            oldfiles = {
+                prompt = "History" .. separator,
+            },
+            buffers = {
+                prompt = "Buffers" .. separator,
+            },
+            tabs = {
+                prompt = "Tabs" .. separator,
+            },
+            lines = {
+                prompt = "Lines" .. separator,
+            },
+            blines = {
+                prompt = "Lines (current buffer)" .. separator,
+            },
+            tags = {
+                prompt = "Tags" .. separator,
+            },
+            btags = {
+                prompt = "Tags (current buffer)" .. separator,
+            },
+            colorschemes = {
+                prompt = "Colorschemes" .. separator,
+            },
+            awesome_colorschemes = {
+                prompt = "Awesome colorschemes" .. separator,
+            },
+            keymaps = {
+                prompt = "Keymaps" .. separator,
+            },
+            quickfix_stack = {
+                prompt = "Quickfix stack" .. separator,
+            },
+            diagnostics = {
+                prompt = "Diagnostics" .. separator,
             },
         })
     end,
