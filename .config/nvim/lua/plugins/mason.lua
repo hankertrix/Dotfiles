@@ -17,23 +17,30 @@ local function setup()
         ensure_installed = {
 
             -- LSP servers
-            "lua_ls",                   -- Lua
-            "pylsp",                    -- Python
-            "vtsls",                    -- TypeScript and JavaScript
-            "eslint",                   -- TypeScript and JavaScript ecosystem
-            "rust_analyzer",            -- Rust
-            "clangd",                   -- C/C++
-            "bashls",                   -- Bash and shell
-            "jsonls",                   -- JSON
-            "taplo",                    -- TOML
-            "yamlls",                   -- YAML
-            "ltex",                     -- English checker
+            "lua_ls",           -- Lua
+            "pylsp",            -- Python
+            "vtsls",            -- TypeScript and JavaScript
+            "rust_analyzer",    -- Rust
+            "clangd",           -- C/C++
+            "jsonls",           -- JSON
+            "taplo",            -- TOML
+            "yamlls",           -- YAML
+            "ltex",             -- English checker
+
+            -- General purpose language server
+            -- for formatters and linters
+            "efm",
 
             -- Formatters
-            "stylua",           -- Lua formatter
-            "prettierd",        -- JavaScript ecosystem formatter
+            "stylua",           -- Lua
+            "prettierd",        -- TypeScript and JavaScript ecosystem
+            "shfmt",            -- Shell
 
             -- Linters
+            "eslint_d",         -- TypeScript and JavaScript ecosystem
+            "shellcheck",       -- Shell
+            "markdownlint",     -- Markdown
+            "gitlint",          -- Git commit message
             "cspell",           -- English checker within code
         },
     })

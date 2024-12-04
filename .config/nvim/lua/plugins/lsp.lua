@@ -436,6 +436,16 @@ local function setup()
                     },
                 })
             end,
+
+            -- Configure efm-langserver
+            efm = function()
+                lspconfig.efm.setup({
+                    init_options = {
+                        documentFormatting = true,
+                        documentRangeFormatting = true,
+                    },
+                })
+            end,
         },
     })
 
