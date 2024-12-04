@@ -3,41 +3,8 @@ root-markers:
   - ".git/"
 lint-debounce: 1s
 
-
 tools:
-
-  cspell: &cspell
-    prefix: "cspell"
-    lint-source: "efm/cspell"
-    lint-command: >
-      cspell --no-color --no-progress --no-summary "${INPUT}"
-    lint-ignore-exit-code: true
-    lint-stdin: false
-    lint-severity: 4    # Severity: hint
-    lint-formats:
-      - "%f:%l:%c - %m"
-      - "%f:%l:%c %m"
-
-  prettierd: &prettierd
-    format-command: >
-      prettierd '${INPUT}' ${--range-start=charStart} ${--range-end=charEnd} \
-        ${--tab-width=tabWidth} ${--use-tabs=!insertSpaces}
-    format-stdin: true
-    root-markers:
-    - ".prettierrc"
-    - ".prettierrc.json"
-    - ".prettierrc.js"
-    - ".prettierrc.yml"
-    - ".prettierrc.yaml"
-    - ".prettierrc.json5"
-    - ".prettierrc.mjs"
-    - ".prettierrc.cjs"
-    - ".prettierrc.toml"
-    - "prettier.config.js"
-    - "prettier.config.cjs"
-    - "prettier.config.mjs"
-
-  javascript-eslint_d: &javascript-eslint_d
+  eslint_d: &eslint_d
     prefix: "eslint_d"
     lint-source: "efm/eslint_d"
     lint-command: >
@@ -57,6 +24,25 @@ tools:
       - ".eslintrc.yml"
       - "package.json"
 
+  prettierd: &prettierd
+    format-command: >
+      prettierd '${INPUT}' ${--range-start=charStart} ${--range-end=charEnd} \
+        ${--tab-width=tabWidth} ${--use-tabs=!insertSpaces}
+    format-stdin: true
+    root-markers:
+      - ".prettierrc"
+      - ".prettierrc.json"
+      - ".prettierrc.js"
+      - ".prettierrc.yml"
+      - ".prettierrc.yaml"
+      - ".prettierrc.json5"
+      - ".prettierrc.mjs"
+      - ".prettierrc.cjs"
+      - ".prettierrc.toml"
+      - "prettier.config.js"
+      - "prettier.config.cjs"
+      - "prettier.config.mjs"
+
   # lua-stylua: &lua-stylua
   #   format-command: >
   #      stylua --color Never \
@@ -67,25 +53,9 @@ tools:
   #     - "stylua.toml"
   #     - ".stylua.toml"
 
-  gitcommit-gitlint: &gitcommit-gitlint
-    prefix: "gitlint"
-    lint-source: "efm/gitlint"
-    lint-command: "gitlint"
-    lint-stdin: true
-    lint-formats:
-      - '%l: %m: "%r"'
-      - '%l: %m'
-
-  markdown-markdownlint: &markdown-markdownlint
-    prefix: "markdownlint"
-    lint-source: "efm/markdownlint"
-    lint-command: "markdownlint --stdin"
-    lint-ignore-exit-code: true
-    lint-stdin: true
-    lint-formats:
-      - "%f:%l:%c %m"
-      - "%f:%l %m"
-      - "%f: %l: %m"
+  sh-shfmt: &sh-shfmt
+    format-command: "shfmt -filename '${INPUT}' -"
+    format-stdin: true
 
   sh-shellcheck: &sh-shellcheck
     prefix: "shellcheck"
@@ -99,38 +69,72 @@ tools:
       - "-:%l:%c: %tote: %m"
     root-markers: []
 
-  sh-shfmt: &sh-shfmt
-    format-command: "shfmt -filename '${INPUT}' -"
-    format-stdin: true
+  markdown-markdownlint: &markdown-markdownlint
+    prefix: "markdownlint"
+    lint-source: "efm/markdownlint"
+    lint-command: "markdownlint --stdin"
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    lint-formats:
+      - "%f:%l:%c %m"
+      - "%f:%l %m"
+      - "%f: %l: %m"
 
+  gitcommit-gitlint: &gitcommit-gitlint
+    prefix: "gitlint"
+    lint-source: "efm/gitlint"
+    lint-command: "gitlint"
+    lint-stdin: true
+    lint-formats:
+      - '%l: %m: "%r"'
+      - "%l: %m"
+
+  cspell: &cspell
+    prefix: "cspell"
+    lint-source: "efm/cspell"
+    lint-command: >
+      cspell --no-color --no-progress --no-summary "${INPUT}"
+    lint-ignore-exit-code: true
+    lint-stdin: false
+    lint-severity: 4 # Severity: hint
+    lint-formats:
+      - "%f:%l:%c - %m"
+      - "%f:%l:%c %m"
 
 languages:
+  html:
+    - <<: *prettierd
 
   css:
     - <<: *prettierd
 
-  gitcommit:
-    - <<: *gitcommit-gitlint
-
-  html:
-    - <<: *prettierd
-
   javascript:
+    - <<: *eslint_d
     - <<: *prettierd
-    - <<: *javascript-eslint_d
+
+  typescript:
+    - <<: *eslint_d
+    - <<: *prettierd
 
   json:
+    - <<: *prettierd
+
+  yaml:
     - <<: *prettierd
 
   # lua:
   #   - <<: *lua-stylua
 
-  markdown:
-    - <<: *markdown-markdownlint
-
   sh:
     - <<: *sh-shellcheck
     - <<: *sh-shfmt
+
+  markdown:
+    - <<: *markdown-markdownlint
+    - <<: *prettierd
+
+  gitcommit:
+    - <<: *gitcommit-gitlint
 
   # Wildcard, matches all languages
   =:
