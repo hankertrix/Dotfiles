@@ -43,7 +43,7 @@ tools:
       - "prettier.config.cjs"
       - "prettier.config.mjs"
 
-  lua-stylua: &lua-stylua
+  stylua: &stylua
     format-command: >
       stylua --color Never \
         ${--range-start:charStart} ${--range-end:charEnd} \
@@ -54,11 +54,7 @@ tools:
       - "stylua.toml"
       - ".stylua.toml"
 
-  sh-shfmt: &sh-shfmt
-    format-command: "shfmt -filename '${INPUT}' -"
-    format-stdin: true
-
-  sh-shellcheck: &sh-shellcheck
+  shellcheck: &shellcheck
     prefix: "shellcheck"
     lint-source: "efm/shellcheck"
     lint-command: "shellcheck --color=never --format=gcc -"
@@ -70,7 +66,11 @@ tools:
       - "-:%l:%c: %tote: %m"
     root-markers: []
 
-  markdown-markdownlint: &markdown-markdownlint
+  shfmt: &shfmt
+    format-command: "shfmt -filename '${INPUT}' -"
+    format-stdin: true
+
+  markdownlint: &markdownlint
     prefix: "markdownlint"
     lint-source: "efm/markdownlint"
     lint-command: "markdownlint --stdin"
@@ -81,7 +81,7 @@ tools:
       - "%f:%l %m"
       - "%f: %l: %m"
 
-  gitcommit-gitlint: &gitcommit-gitlint
+  gitlint: &gitlint
     prefix: "gitlint"
     lint-source: "efm/gitlint"
     lint-command: "gitlint"
@@ -113,8 +113,18 @@ languages:
     - <<: *eslint_d
     - <<: *prettierd
 
-  typescript:
+  javascriptreact:
     - <<: *eslint_d
+    - <<: *prettierd
+
+  typescriptreact:
+    - <<: *eslint_d
+    - <<: *prettierd
+
+  svelte:
+    - <<: *prettierd
+
+  vue:
     - <<: *prettierd
 
   json:
@@ -124,18 +134,18 @@ languages:
     - <<: *prettierd
 
   lua:
-    - <<: *lua-stylua
+    - <<: *stylua
 
   sh:
-    - <<: *sh-shellcheck
-    - <<: *sh-shfmt
+    - <<: *shellcheck
+    - <<: *shfmt
 
   markdown:
-    - <<: *markdown-markdownlint
+    - <<: *markdownlint
     - <<: *prettierd
 
   gitcommit:
-    - <<: *gitcommit-gitlint
+    - <<: *gitlint
 
   # Wildcard, matches all languages
   =:
