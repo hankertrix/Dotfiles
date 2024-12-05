@@ -1,3 +1,5 @@
+# Schema
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 # Configurations for the file manager
 [manager]
