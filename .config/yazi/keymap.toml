@@ -121,15 +121,16 @@ run  = "yank --cut"
 desc = "Cut the selected files"
 
 
-# Use p to paste files
+# Use the augmented paste command for the p key
+# to paste files
 [[manager.prepend_keymap]]
 on   = [ "p" ]
 run  = "plugin augment-command --args='paste'"
 desc = "Paste the files"
 
 
-# Use P to paste files and
-# overwrite the destination file if it exists
+# Use the augmented paste command for the P key
+# to paste files and overwrite the destination file if it exists
 [[manager.prepend_keymap]]
 on   = [ "P" ]
 run  = "plugin augment-command --args='paste --force'"
