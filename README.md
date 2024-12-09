@@ -11,49 +11,57 @@ I'm using the [i3-wm setup with EndeavourOS](https://discovery.endeavouros.com/w
 
 ## Configuration files
 
-### .config folder
+### [`.config` folder](.config/)
 
-The `.config` folder is where the configuration
+The [`.config` folder](.config) is where the configuration
 for the applications I use on Linux are located.
 There is a README inside that briefly explains the configuration
 for the various applications inside.
 
-### .mozilla folder
+### [`.mozilla` folder](.mozilla/)
 
-The `.mozilla` folder is just to store my overrides for
-[arkenfox user.js](https://github.com/arkenfox/user.js).
+The [`.mozilla` folder](.mozilla/) is just to store my overrides for the
+[Arkenfox user.js](https://github.com/arkenfox/user.js).
 
-### .Xresources
+### [`.Xresources`](.Xresources)
 
-The `.Xresources` configuration is just to make sure
+The [`.Xresources`](.Xresources) configuration is just to make sure
 the display works properly with my high DPI screen.
 I also turned on antialiasing.
 
-### .bash_profile
+### [`.bash_profile`](.bash_profile)
 
-The `.bash_profile` configuration is just to
-load the `.profile` file when starting bash.
+The [`.bash_profile`](.bash_profile) configuration is just to
+load the [`.profile`](.profile) file when starting bash.
 This is needed thanks to the Arch Linux LightDM package
 [changing the script to source the files](https://gitlab.archlinux.org/archlinux/packaging/packages/lightdm/-/commit/75c048cabfe9693749f5f363ab6257400d954ffa).
 
-### .bashrc
+### [`.bashrc`](.bashrc)
 
-The `.bashrc` file is mostly just the default EndeavourOS configuration,
-with an if statement added in so that I can change the shell's directory
-when using `lf` and `yazi`.
+The [`.bashrc`](.bashrc) file is mostly
+just the default EndeavourOS configuration,
+with a few if statement added in so that
+I can change the shell's directory
+when using [`lf`](https://github.com/gokcehan/lf) and
+[`yazi`](https://yazi-rs.github.io/).
 
-### .profile
+### [`.profile`](.profile)
 
 This file is just to set the default applications for various tasks.
-The default terminal is set to Wezterm,
-the default editor is set to Neovim,
-the default browser is set to Firefox and
-the default pager is set to less.
+The default terminal is set to
+[Wezterm](https://wezfurlong.org/wezterm/index.html),
+the default editor is set to
+[Neovim](https://neovim.io/),
+the default browser is set to
+[Firefox](https://www.mozilla.org/en-US/firefox/) and
+the default pager is set to
+[`less`](https://www.greenwoodsoftware.com/less/).
 
-### .xinitrc
+### [`.xinitrc`](.xinitrc)
 
-The `.xinitrc` file is just to merge the configuration inside .Xresources
-into xrdb so that the changes will apply.
+The [`.xinitrc`](.xinitrc) file is just to merge the
+configuration inside [`.Xresources`](.Xresources)
+into `xrdb` so that the changes will apply.
 
 ## [Licence](LICENCE.txt)
 
