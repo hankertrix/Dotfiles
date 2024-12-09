@@ -16,9 +16,7 @@ return {
     {
         "RRethy/vim-illuminate",
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-        config = function(_, opts)
-            require("illuminate").configure(opts)
-        end,
+        config = function(_, opts) require("illuminate").configure(opts) end,
         opts = {
 
             -- Don't illuminate text on the disabled file types

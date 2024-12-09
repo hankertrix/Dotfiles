@@ -83,16 +83,15 @@ vim.opt.listchars = {
 }
 
 -- Add more types of matching pairs
-vim.opt.matchpairs:append {
+vim.opt.matchpairs:append({
     "<:>",
     "「:」",
     "『:』",
     "【:】",
     "“:”",
     "‘:’",
-    "《:》"
-}
-
+    "《:》",
+})
 
 -- Sets the grep command in vim to use ripgrep if it's available
 if vim.fn.executable("rg") == 1 then

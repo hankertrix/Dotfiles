@@ -41,9 +41,7 @@ return {
         keys = {
             {
                 "<Leader>x",
-                function()
-                    Snacks.bufdelete()
-                end,
+                function() Snacks.bufdelete() end,
                 mode = "n",
                 desc = "Close the current buffer",
             },

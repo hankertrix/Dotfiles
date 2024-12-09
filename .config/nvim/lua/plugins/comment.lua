@@ -23,9 +23,7 @@ return {
     keys = {
         {
             "<C-/>",
-            function()
-                require("Comment.api").toggle.linewise.current()
-            end,
+            function() require("Comment.api").toggle.linewise.current() end,
             mode = "n",
             desc = descriptions.current_line,
         },

@@ -14,17 +14,13 @@ return {
     keys = {
         {
             "<Leader>pw",
-            function()
-                require("yazi").yazi()
-            end,
+            function() require("yazi").yazi() end,
             mode = "n",
             desc = "Opens the directory of the current file",
         },
         {
             "<Leader>ec",
-            function()
-                require("yazi").yazi(nil, "~/.config/nvim/lua/")
-            end,
+            function() require("yazi").yazi(nil, "~/.config/nvim/lua/") end,
             mode = "n",
             desc = "Opens the Neovim config directory",
         },

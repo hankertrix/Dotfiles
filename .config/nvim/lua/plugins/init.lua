@@ -9,9 +9,7 @@ return {
     -- Markdown previewer
     {
         "iamcco/markdown-preview.nvim",
-        build = function()
-            vim.fn["mkdp#util#install"]()
-        end,
+        build = function() vim.fn["mkdp#util#install"]() end,
         lazy = true,
         cond = utils.firenvim_not_active,
         ft = "markdown",

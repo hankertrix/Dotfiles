@@ -69,21 +69,18 @@ local function setup()
             local opts = { buffer = event.buf }
 
             -- Key bind to show hover information
-            vim.keymap.set("n", "K", function()
-                vim.lsp.buf.hover()
-            end, vim.tbl_extend(
-                "error",
-                opts,
-                { desc = descriptions.hover }
-            ))
+            vim.keymap.set(
+                "n",
+                "K",
+                function() vim.lsp.buf.hover() end,
+                vim.tbl_extend("error", opts, { desc = descriptions.hover })
+            )
 
             -- Key bind to go to definition
             vim.keymap.set(
                 "n",
                 "gd",
-                function()
-                    vim.lsp.buf.definition()
-                end,
+                function() vim.lsp.buf.definition() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -95,9 +92,7 @@ local function setup()
             vim.keymap.set(
                 "n",
                 "gD",
-                function()
-                    vim.lsp.buf.declaration()
-                end,
+                function() vim.lsp.buf.declaration() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -109,9 +104,7 @@ local function setup()
             vim.keymap.set(
                 "n",
                 "gi",
-                function()
-                    vim.lsp.buf.implementation()
-                end,
+                function() vim.lsp.buf.implementation() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -123,9 +116,7 @@ local function setup()
             vim.keymap.set(
                 "n",
                 "go",
-                function()
-                    vim.lsp.buf.type_definition()
-                end,
+                function() vim.lsp.buf.type_definition() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -137,9 +128,7 @@ local function setup()
             vim.keymap.set(
                 "n",
                 "gr",
-                function()
-                    vim.lsp.buf.references()
-                end,
+                function() vim.lsp.buf.references() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -151,9 +140,7 @@ local function setup()
             vim.keymap.set(
                 "n",
                 "gs",
-                function()
-                    vim.lsp.buf.signature_help()
-                end,
+                function() vim.lsp.buf.signature_help() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -162,39 +149,34 @@ local function setup()
             )
 
             -- Key bind to rename the variable
-            vim.keymap.set("n", "<F2>", function()
-                vim.lsp.buf.rename()
-            end, vim.tbl_extend(
-                "error",
-                opts,
-                { desc = descriptions.rename }
-            ))
+            vim.keymap.set(
+                "n",
+                "<F2>",
+                function() vim.lsp.buf.rename() end,
+                vim.tbl_extend("error", opts, { desc = descriptions.rename })
+            )
 
             -- Key bind to format the buffer
-            vim.keymap.set({ "n", "x" }, "<F3>", function()
-                vim.lsp.buf.format({ async = true })
-            end, vim.tbl_extend(
-                "error",
-                opts,
-                { desc = descriptions.format }
-            ))
+            vim.keymap.set(
+                { "n", "x" },
+                "<F3>",
+                function() vim.lsp.buf.format({ async = true }) end,
+                vim.tbl_extend("error", opts, { desc = descriptions.format })
+            )
 
             -- Key bind to format the buffer as well
-            vim.keymap.set({ "n", "x" }, "<Leader>f", function()
-                vim.lsp.buf.format({ async = true })
-            end, vim.tbl_extend(
-                "error",
-                opts,
-                { desc = descriptions.format }
-            ))
+            vim.keymap.set(
+                { "n", "x" },
+                "<Leader>f",
+                function() vim.lsp.buf.format({ async = true }) end,
+                vim.tbl_extend("error", opts, { desc = descriptions.format })
+            )
 
             -- Key bind to show code actions
             vim.keymap.set(
                 "n",
                 "<F4>",
-                function()
-                    vim.lsp.buf.code_action()
-                end,
+                function() vim.lsp.buf.code_action() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -208,9 +190,7 @@ local function setup()
                 vim.keymap.set(
                     "x",
                     "<F4>",
-                    function()
-                        vim.lsp.buf.range_code_action()
-                    end,
+                    function() vim.lsp.buf.range_code_action() end,
                     vim.tbl_extend(
                         "error",
                         opts,
@@ -221,9 +201,7 @@ local function setup()
                 vim.keymap.set(
                     "x",
                     "<F4>",
-                    function()
-                        vim.lsp.buf.code_action()
-                    end,
+                    function() vim.lsp.buf.code_action() end,
                     vim.tbl_extend(
                         "error",
                         opts,
@@ -236,9 +214,7 @@ local function setup()
             vim.keymap.set(
                 "n",
                 "gl",
-                function()
-                    vim.diagnostic.open_float()
-                end,
+                function() vim.diagnostic.open_float() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -250,9 +226,7 @@ local function setup()
             vim.keymap.set(
                 "n",
                 "[d",
-                function()
-                    vim.diagnostic.goto_prev()
-                end,
+                function() vim.diagnostic.goto_prev() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -264,9 +238,7 @@ local function setup()
             vim.keymap.set(
                 "n",
                 "]d",
-                function()
-                    vim.diagnostic.goto_next()
-                end,
+                function() vim.diagnostic.goto_next() end,
                 vim.tbl_extend(
                     "error",
                     opts,
@@ -287,9 +259,7 @@ local function setup()
 
             -- Default server handler, which uses
             -- lspconfig's default set up function
-            function(server_name)
-                lspconfig[server_name].setup({})
-            end,
+            function(server_name) lspconfig[server_name].setup({}) end,
 
             -- Configure lua ls
             lua_ls = function()

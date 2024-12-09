@@ -168,41 +168,31 @@ return {
     keys = {
         {
             "<F1>",
-            function()
-                require("fzf-lua").helptags()
-            end,
+            function() require("fzf-lua").helptags() end,
             mode = { "n", "x", "i" },
             desc = "Search through the help text using the fuzzy finder",
         },
         {
             "<Leader>pf",
-            function()
-                require("fzf-lua").files()
-            end,
+            function() require("fzf-lua").files() end,
             mode = "n",
             desc = "Find files using the fuzzy finder",
         },
         {
             "<Leader>ps",
-            function()
-                require("fzf-lua").live_grep()
-            end,
+            function() require("fzf-lua").live_grep() end,
             mode = "n",
             desc = "Search within files for a string",
         },
         {
             "<Leader>pb",
-            function()
-                require("fzf-lua").buffers()
-            end,
+            function() require("fzf-lua").buffers() end,
             mode = "n",
             desc = "Search for open buffers using the fuzzy finder",
         },
         {
             "<Leader>pr",
-            function()
-                require("fzf-lua").registers()
-            end,
+            function() require("fzf-lua").registers() end,
             mode = "n",
             desc = "Search through vim registers",
         },

@@ -9,7 +9,8 @@ return {
     build = ":TSUpdate",
     cond = utils.firenvim_not_active,
     config = function(_, opts)
-        require("nvim-treesitter.configs").setup(opts)
+        local treesitter = require("nvim-treesitter.configs")
+        treesitter.setup(opts)
     end,
     event = { "VeryLazy", "BufReadPost", "BufNewFile", "BufWritePre" },
     cmd = {

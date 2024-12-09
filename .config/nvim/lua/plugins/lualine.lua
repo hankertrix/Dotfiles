@@ -22,9 +22,7 @@ local function setup()
 
         -- Get the function to get the buffer name
         local buffer_name_func = buffer_name
-                and function()
-                    return buffer_name
-                end
+                and function() return buffer_name end
             or "filetype"
 
         -- Get the section for the display of the buffer name
@@ -63,9 +61,7 @@ local function setup()
 
         -- The b section of the lualine
         local lualine_b_section = {
-            buffer_name and function()
-                return buffer_name
-            end or "filetype",
+            buffer_name and function() return buffer_name end or "filetype",
         }
 
         -- If the git branch is wanted,

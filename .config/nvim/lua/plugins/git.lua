@@ -40,9 +40,7 @@ return {
         -- The key bind to open Neogit
         {
             "<Leader>gs",
-            function()
-                require("neogit").open()
-            end,
+            function() require("neogit").open() end,
             mode = "n",
             desc = "Open Git",
         },

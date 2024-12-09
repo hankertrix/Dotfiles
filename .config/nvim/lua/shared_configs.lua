@@ -9,9 +9,7 @@ M.default_cmp_sources = {
         name = "spell",
         option = {
             keep_all_entries = false,
-            enable_in_context = function()
-                return true
-            end,
+            enable_in_context = function() return true end,
         },
     },
     { name = "buffer" },
