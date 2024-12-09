@@ -3,7 +3,7 @@
 Here are all the config files for the applications I use on Linux,
 all located within `~/.config/`, or `/home/username/.config/`.
 
-## Browser extensions
+## [Browser extensions](./browser_extensions/)
 
 There is a [`README.md`](./browser_extensions/README.md) file
 inside the [`browser_extensions`](./browser_extensions/)
@@ -34,7 +34,7 @@ There is a [`config.org`](./emacs/config.org) file inside the
 The i3 configuration is for the most part,
 the default configuration from EndeavourOS.
 There are only a few changes in the
-[`i3/config`](./i3/config) file to change the background,
+[`config`](./i3/config) file to change the background,
 the terminal and the default utility to adjust the screen brightness.
 I also changed some of the scripts to work with the applications I use,
 as well as the workspace icons, so they look better on my laptop.
@@ -88,21 +88,21 @@ and [Yazi](https://yazi-rs.github.io/) aren't too thin.
 There is a [`README.md`](./yazi/README.md) file
 inside the [`yazi`](./yazi/) folder that explains the configuration.
 
-## [Clight]
+## [Clight](https://github.com/FedeDP/Clight)
 
-The clight configuration file, [`clight.conf`](./clight.conf)
-is mostly just to disable all the functionality of clight that
+The Clight configuration file, [`clight.conf`](./clight.conf)
+is mostly just to disable all the functionality of Clight that
 I don't use, and to set the time and the temperature for
 the red-shifter.
 
 ## [Gummy](https://codeberg.org/fusco/gummy)
 
-The gummy configuration file, [`gummyconf.json`](./gummyconf.json)
+The Gummy configuration file, [`gummyconf.json`](./gummyconf.json)
 is to set the time and temperature for the red-shifter
 and the default backlight brightness.
 I no longer use Gummy as it is unmaintained and doesn't work
-with `sdbus-c++` version `2.0.0` and above, which is the current
-Arch Linux version.
+with [`sdbus-c++`](https://github.com/Kistler-Group/sdbus-cpp)
+version `2.0.0` and above, which is the current Arch Linux version.
 
 ## [Stylua](https://github.com/JohnnyMorganz/StyLua)
 

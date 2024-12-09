@@ -11,16 +11,16 @@ I'm using the [i3-wm setup with EndeavourOS](https://discovery.endeavouros.com/w
 
 ## Configuration files
 
-### [`.config` folder](.config/)
+### [`.config`](.config/) folder
 
-The [`.config` folder](.config) is where the configuration
+The [`.config`](.config) folder is where the configuration
 for the applications I use on Linux are located.
 There is a README inside that briefly explains the configuration
 for the various applications inside.
 
-### [`.mozilla` folder](.mozilla/)
+### [`.mozilla`](.mozilla/) folder
 
-The [`.mozilla` folder](.mozilla/) is just to store my overrides for the
+The [`.mozilla`](.mozilla/) folder is just to store my overrides for the
 [Arkenfox user.js](https://github.com/arkenfox/user.js).
 
 ### [`.Xresources`](.Xresources)
