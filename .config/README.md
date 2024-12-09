@@ -18,8 +18,13 @@ with the `height` changed to `maximum_height`.
 
 EFM Language Server is a general purpose language server
 that essentially allows you to use your linters and formatters
-as an LSP server. The [`config.yaml`](./efm-langserver/config.yaml) file
-just contains my configuration for the EFM Language Server.
+as an LSP server.
+If you know about [null-ls.nvim](https://github.com/nvimtools/none-ls.nvim)
+for [Neovim](https://neovim.io/), EFM Language Server is basically that
+plugin, but as a general purpose language server that you can use in
+any editor, instead of just [Neovim](https://neovim.io/).
+The [`config.yaml`](./efm-langserver/config.yaml) file
+contains my configuration for EFM Language Server.
 Most of the configuration is just the default configuration taken from the
 [Neovim EFM Language Server configuration repository](https://github.com/creativenull/efmls-configs-nvim)
 ported to the YAML file configuration format.
