@@ -192,27 +192,8 @@ M.disabled_file_types = {
     "NeogitCommitSelectView",
     "NeogitRefsView",
 
-    -- Neogit popups
-    "NeogitBisectPopup",
-    "NeogitBranchConfigPopup",
-    "NeogitBranchPopup",
-    "NeogitCherryPickPopup",
-    "NeogitCommitPopup",
-    "NeogitDiffPopup",
-    "NeogitFetchPopup",
-    "NeogitHelpPopup",
-    "NeogitIgnorePopup",
-    "NeogitLogPopup",
-    "NeogitMergePopup",
-    "NeogitPullPopup",
-    "NeogitPushPopup",
-    "NeogitRebasePopup",
-    "NeogitRemotePopup",
-    "NeogitResetPopup",
-    "NeogitRevertPopup",
-    "NeogitStashPopup",
-    "NeogitTagPopup",
-    "NeogitWorktreePopup",
+    -- Neogit popup
+    "NeogitPopup",
 }
 
 -- Set the max line length to 80
