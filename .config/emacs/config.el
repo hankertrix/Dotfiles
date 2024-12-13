@@ -1044,10 +1044,16 @@
                           evil-forward-char evil-backward-char
                           evil-next-line evil-previous-line)))
 
-  ;; Enable hardtime mode
-  (hardtime-mode)
+  ;; Set the hardtime period to 1 second
+  (setq hardtime-period 1)
 
   ;; Customise hardtime.el
   :custom
-  (hardtime-predicate #'evil-hardtime-check-command))
-  (setq hardtime-period 1)
+  (hardtime-predicate #'evil-hardtime-check-command)
+
+  ;; Hooks for hardtime mode
+  :hook
+  (prog-mode . hardtime-mode)
+  (org-mode . hardtime-mode)
+  (text-mode . hardtime-mode)
+)
