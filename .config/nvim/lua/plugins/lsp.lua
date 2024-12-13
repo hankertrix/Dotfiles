@@ -275,6 +275,12 @@ local function setup()
                 -- Set up lua ls using lspconfig
                 lspconfig.lua_ls.setup({
 
+                    -- Disable formatting
+                    init_options = {
+                        documentFormatting = false,
+                        documentRangeFormatting = false,
+                    },
+
                     -- Set the root directory
                     root_dir = function(fname)
                         --
@@ -380,6 +386,18 @@ local function setup()
                                 },
                             },
                         },
+                    },
+                })
+            end,
+
+            -- Configure vstsls
+            vtsls = function()
+                lspconfig.vtsls.setup({
+
+                    -- Disable formatting
+                    init_options = {
+                        documentFormatting = false,
+                        documentRangeFormatting = false,
                     },
                 })
             end,
