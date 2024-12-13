@@ -22,6 +22,7 @@ local function setup()
             "vtsls",            -- TypeScript and JavaScript
             "rust_analyzer",    -- Rust
             "clangd",           -- C/C++
+            "bashls",           -- Bash (shell)
             "jsonls",           -- JSON
             "taplo",            -- TOML
             "yamlls",           -- YAML
