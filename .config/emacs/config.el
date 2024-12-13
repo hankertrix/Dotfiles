@@ -1055,5 +1055,4 @@
   :hook
   (prog-mode . hardtime-mode)
   (org-mode . hardtime-mode)
-  (text-mode . hardtime-mode)
-)
+  (text-mode . hardtime-mode))

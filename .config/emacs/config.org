@@ -1546,8 +1546,7 @@ Hardtime.el is a package that forces you to stop repeating the same commands to 
   :hook
   (prog-mode . hardtime-mode)
   (org-mode . hardtime-mode)
-  (text-mode . hardtime-mode)
-)
+  (text-mode . hardtime-mode))
 #+end_src
 
 
