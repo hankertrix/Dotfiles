@@ -23,7 +23,6 @@ local function setup()
             "rust_analyzer",    -- Rust
             "clangd",           -- C/C++
             "bashls",           -- Bash (shell)
-            "marksman",         -- Markdown
             "jsonls",           -- JSON
             "taplo",            -- TOML
             "yamlls",           -- YAML
