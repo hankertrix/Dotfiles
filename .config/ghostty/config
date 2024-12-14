@@ -1,0 +1,28 @@
+# Ghostty configuration file
+
+
+# Font
+
+# Set the font family to Cascadia Code Nerd Font
+font-family = "CaskaydiaCove Nerd Font Mono"
+# font-family = "Maple Mono NF CN"
+font-size = 12
+
+
+# Theme and colours
+
+# Set the theme to Bluloco Dark
+theme = "BlulocoDark"
+
+# Use the theme colours as the window theme
+window-theme = ghostty
+
+# Don't use GTK
+gtk-adwaita = false
+gtk-titlebar = false
+
+
+# Hide the mouse cursor while typing
+mouse-hide-while-typing = true
+
+# vim: set ft=conf
