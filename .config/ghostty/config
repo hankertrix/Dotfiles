@@ -22,6 +22,12 @@ gtk-adwaita = false
 gtk-titlebar = false
 
 
+# Cursor
+
+# Increase the cursor width
+adjust-cursor-thickness = 2
+
+
 # Hide the mouse cursor while typing
 mouse-hide-while-typing = true
 
