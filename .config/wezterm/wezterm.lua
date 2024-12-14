@@ -14,7 +14,8 @@ if wezterm.config_builder then config = wezterm.config_builder() end
 config.color_scheme = "Bluloco Dark"
 
 -- Set the font to Cascadia Code Nerd Font
-config.font = wezterm.font("CaskaydiaCove NFM")
+config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
+-- config.font = wezterm.font("Maple Mono NF CN")
 
 -- Set the term environment variable to wezterm
 config.term = "wezterm"

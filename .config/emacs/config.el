@@ -383,16 +383,19 @@
         which-key-separator " → " ))
 
 (set-face-attribute 'default nil
-                    :font "CaskaydiaCove NFM 12"
+                    :font "CaskaydiaCove Nerd Font Mono 12"
+                    ;; :font "Maple Mono NF CN 12"
                     :weight 'medium)
 
 (set-face-attribute 'fixed-pitch nil
-                    :font "CaskaydiaCove NFM 12"
+                    :font "CaskaydiaCove Nerd Font Mono 12"
+                    ;; :font "Maple Mono NF CN 12"
                     :weight 'medium)
 
 (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
 
-(add-to-list 'default-frame-alist '(font . "CaskaydiaCove NFM 12"))
+(add-to-list 'default-frame-alist '(font . "CaskaydiaCove Nerd Font Mono 12"))
+;; (add-to-list 'default-frame-alist '(font . "Maple Mono NF CN 12"))
 
 (setq inhibit-startup-message t)
 
