@@ -19,7 +19,7 @@ Git integration -
 [Neogit](https://github.com/NeogitOrg/neogit)
 
 Git gutter plugin (to show the changes at the side while editing a file) -
-[gitsign.nvim](https://github.com/lewis6991/gitsigns.nvim)
+[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 
 Using neovim in the browser -
 [firenvim](https://github.com/glacambre/firenvim)
@@ -85,9 +85,6 @@ Document symbol viewer -
 Function arguments highlighting -
 [hlargs.nvim](https://github.com/m-demare/hlargs.nvim)
 
-Indent highlighting -
-[indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-
 Auto pairing -
 [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 
@@ -113,12 +110,17 @@ Fuzzy finder -
 
 Fuzzy finder extensions:
 
-- [trouble.nvim](https://github.com/folke/trouble.nvim)
+- Open with Trouble ([trouble.nvim](https://github.com/folke/trouble.nvim))
 
 ### Helpers
 
-Properly close buffers -
-[mini.bufremove](https://github.com/echasnovski/mini.bufremove)
+Quality of life plugin - [snacks.nvim](https://github.com/folke/snacks.nvim)
+
+- Dealing with big files ([Snacks.bigfile](https://github.com/folke/snacks.nvim/blob/main/docs/bigfile.md))
+- Opening files as quick as possible ([Snacks.quickfile](https://github.com/folke/snacks.nvim/blob/main/docs/quickfile.md))
+- Nicer looking status column ([Snacks.statuscolumn](https://github.com/folke/snacks.nvim/blob/main/docs/statuscolumn.md))
+- Highlighting indentation ([Snacks.indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md))
+- Properly closing buffers ([Snacks.bufdelete](https://github.com/folke/snacks.nvim/blob/main/docs/bufdelete.md))
 
 Helper for key bindings -
 [which-key.nvim](https://github.com/folke/which-key.nvim)
@@ -143,6 +145,8 @@ Hardtime plugin -
 ### Font
 
 [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
+
+<!-- [Maple Mono NF CN](https://github.com/subframe7536/maple-font) -->
 
 ### External programs
 
