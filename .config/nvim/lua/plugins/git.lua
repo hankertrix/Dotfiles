@@ -12,6 +12,7 @@ return {
     cond = utils.firenvim_not_active,
     cmd = "Neogit",
     opts = {
+        process_spinner = false,
         sections = {
             untracked = {
                 folded = true,
@@ -35,6 +36,7 @@ return {
             },
         },
     },
+
     keys = {
 
         -- The key bind to open Neogit
