@@ -41,7 +41,12 @@ return {
             bigfile = { enabled = true },
             quickfile = { enabled = true },
             statuscolumn = { enabled = true },
-            indent = { enabled = true },
+            indent = {
+                enabled = true,
+                scope = {
+                    hl = "Label",
+                },
+            },
         },
 
         -- Key binds
