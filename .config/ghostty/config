@@ -21,6 +21,9 @@ window-theme = ghostty
 gtk-adwaita = false
 gtk-titlebar = false
 
+# Disable the resize overlay
+resize-overlay = never
+
 
 # Cursor
 
