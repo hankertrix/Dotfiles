@@ -13,12 +13,12 @@ font-size = 12
 
 # Set the theme to Bluloco Dark
 theme = "BlulocoDark"
+# theme = "light: BlulocoLight, dark: BlulocoDark"
 
 # Use the theme colours as the window theme
 window-theme = ghostty
 
-# Don't use GTK
-gtk-adwaita = false
+# Don't use GTK title bars
 gtk-titlebar = false
 
 # Disable the resize overlay
@@ -32,5 +32,11 @@ adjust-cursor-thickness = 2
 
 # Hide the mouse cursor while typing
 mouse-hide-while-typing = true
+
+
+# Keybindings
+
+# Map Ctrl + [ to ESC
+keybind = ctrl+left_bracket=text:\x1b
 
 # vim: set ft=conf
