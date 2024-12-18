@@ -19,12 +19,27 @@ return {
         lazy = true,
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 
-        -- Create an autocommand to trim whitespace and blank lines on save
+        -- The function to configure the plugin
         config = function()
-            require("mini.trailspace").setup()
+            --
+
+            -- Get the plugin module
+            local mini_trailspace = require("mini.trailspace")
+
+            -- Set up the plugin
+            mini_trailspace.setup()
+
+            -- Create an auto command group to trim the whitespace on save
+            local trim_whitespace_on_save_augroup = vim.api.nvim_create_augroup(
+                "trim_whitespace_on_save",
+                { clear = true }
+            )
+
+            -- Create the auto command to trim the whitespace on save
             vim.api.nvim_create_autocmd("BufWritePre", {
+                group = trim_whitespace_on_save_augroup,
+                desc = "Trim whitespace on save",
                 callback = function()
-                    local mini_trailspace = require("mini.trailspace")
                     mini_trailspace.trim()
                     mini_trailspace.trim_last_lines()
                 end,
