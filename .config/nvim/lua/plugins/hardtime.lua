@@ -19,28 +19,6 @@ return {
 
         -- Set up the plugin
         require("hardtime").setup(opts)
-
-        -- Create an auto command group to disable the plugin in terminal mode
-        local disable_hardtime_in_terminal_augroup =
-            vim.api.nvim_create_augroup(
-                "disable_hardtime_in_terminal",
-                { clear = true }
-            )
-
-        -- Create the auto command to disable the plugin in terminal mode
-        vim.api.nvim_create_autocmd("TermOpen", {
-            group = disable_hardtime_in_terminal_augroup,
-            desc = "Disable hardtime in terminal mode",
-            callback = function() vim.cmd("Hardtime disable") end,
-        })
-
-        -- Create the auto command to re-enable the plugin
-        -- when leaving terminal mode
-        vim.api.nvim_create_autocmd("TermClose", {
-            group = disable_hardtime_in_terminal_augroup,
-            desc = "Re-enable hardtime when leaving terminal mode",
-            callback = function() vim.cmd("Hardtime enable") end,
-        })
     end,
 
     -- The options for the plugin
