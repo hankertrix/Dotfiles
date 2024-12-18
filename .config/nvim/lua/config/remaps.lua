@@ -6,7 +6,6 @@ vim.g.mapleader = " "
 
 -- Key remaps
 
-
 -- Allows me to move lines up and down in visual mode
 -- using the J and K keys
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines up" })
@@ -22,12 +21,6 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the window below" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the window above" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the window on the right" })
 
--- Centers the screen every time I move
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half a screen" })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half a screen" })
-vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Scroll N screens forward" })
-vim.keymap.set("n", "<C-b>", "<C-b>zz", { desc = "Scroll N screens backward" })
-
 -- Key maps to change buffers
 vim.keymap.set("n", "<Leader>l", vim.cmd.bnext, { desc = "Go to the next buffer" })
 vim.keymap.set("n", "<Leader>h", vim.cmd.bprevious, { desc = "Go to the previous buffer" })
@@ -35,14 +28,11 @@ vim.keymap.set("n", "<Leader>h", vim.cmd.bprevious, { desc = "Go to the previous
 -- Title case the hovered word
 vim.keymap.set("i", "<C-t>", "<Esc>b~lea", { desc = "Titlecase hovered word" })
 
-
--- Insert a blank line above the current line (do not move the cursor),
--- See https://stackoverflow.com/a/16136133/6064933
-vim.keymap.set("n", "<Leader><CR>", "printf('m`%sO<Esc>``', v:count1)", {
-    expr = true,
-    desc = "Insert line above",
-})
-
+-- Centers the screen every time I page
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half a screen" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half a screen" })
+vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Scroll N screens forward" })
+vim.keymap.set("n", "<C-b>", "<C-b>zz", { desc = "Scroll N screens backward" })
 
 -- Centers the screen every time I move to a match
 -- And opens all the folds for the line the match is on
@@ -65,3 +55,8 @@ vim.keymap.set({ "n", "v" }, "<Leader>P", [["+P]], { desc = "Paste from system c
 -- Replaces the word that the cursor is currently on throughout the entire file
 vim.keymap.set("n", "<Leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Replace the word hovered by the cursor throughout the entire file" })
+
+-- Escape the terminal prompt and go into normal mode.
+-- This key binding is a lifesaver.
+-- https://reddit.com/r/neovim/comments/yg2d9v/how_do_i_exit_the_terminal_mode/iu6i0kl/
+vim.keymap.set("t", "<C-space>", [[<C-\><C-n>]], { desc = "Escape the terminal prompt and enter normal mode" })
