@@ -31,7 +31,7 @@ return {
 
             -- Create an auto command group to trim the whitespace on save
             local trim_whitespace_on_save_augroup = vim.api.nvim_create_augroup(
-                "trim_whitespace_on_save",
+                "TrimWhitespaceOnSave",
                 { clear = true }
             )
 

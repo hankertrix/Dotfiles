@@ -2,7 +2,7 @@
 
 -- Create the auto command group to highlight on yank
 local highlight_yank_augroup =
-    vim.api.nvim_create_augroup("highlight_yank", { clear = true })
+    vim.api.nvim_create_augroup("HighlightOnYank", { clear = true })
 
 -- Create the auto command to highligh on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
