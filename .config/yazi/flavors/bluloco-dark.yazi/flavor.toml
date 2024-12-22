@@ -76,6 +76,11 @@ btn_no = { fg = "#FF6480" }
 btn_labels = ["Yes", "No"]
 
 
+[spot]
+border = { fg = "#7A82DA" }
+title = { fg = "#7A82DA" }
+
+
 [completion]
 border = { fg = "#7A82DA" }
 active = { bg = "#274670" }
@@ -99,3 +104,9 @@ on = { fg = "#FF936A" }
 run = { fg = "#10B1FE" }
 desc = { fg = "#ABB2BF" }
 footer = { bg = "#282C34", fg = "#ABB2BF" }
+
+
+[notify]
+title_info = { fg = "#3691FF" }
+title_warn = { fg = "#DA7A43" }
+title_error = { fg = "#FF2E3F" }
