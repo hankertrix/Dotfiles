@@ -140,15 +140,15 @@ desc = "Paste the files (overwrite if the destination exists)"
 # Use _ to create a new file or directory
 [[manager.prepend_keymap]]
 on   = [ "_" ]
-run  = "create"
-desc = "Create a file or directory (ends with / for directories)"
+run  = "plugin augment-command --args='create'"
+desc = "Create a file or directory"
 
 
 # Use + to create a new file or directory
 [[manager.prepend_keymap]]
 on   = [ "+" ]
-run  = "create --dir"
-desc = "Create a directory"
+run  = "plugin augment-command --args='create'"
+desc = "Create a file or directory"
 
 
 # Use x to move files to the trash
