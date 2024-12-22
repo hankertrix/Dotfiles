@@ -11,3 +11,9 @@ dark = "bluloco-dark"
 
 # Remove the borders
 border_symbol = " "
+
+# Set the icons for the notifications
+[notify]
+icon_info = ""
+icon_warn = ""
+icon_error = ""
