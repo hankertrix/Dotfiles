@@ -12,8 +12,7 @@ font-size = 12
 # Theme and colours
 
 # Set the theme to Bluloco Dark
-theme = "BlulocoDark"
-# theme = "light: BlulocoLight, dark: BlulocoDark"
+theme = "light: BlulocoLight, dark: BlulocoDark"
 
 # Use the theme colours as the window theme
 window-theme = ghostty
