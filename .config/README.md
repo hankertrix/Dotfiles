@@ -9,10 +9,17 @@ There is a [`README.md`](./browser_extensions/README.md) file
 inside the [`browser_extensions`](./browser_extensions/)
 folder that explains the configuration.
 
+## [Darkman](https://gitlab.com/WhyNotHugo/darkman)
+
+The [configuration for `darkman`](./darkman/config.yaml) is very simple,
+the configuration file here is literally all the values you can change
+about `darkman`. It just sets the location for changing the theme
+automatically, and also enables dbus and the xdg-desktop-portal integration.
+
 ## [Dunst](https://github.com/dunst-project/dunst)
 
-My `dunst` configuration is simply the default EndeavourOS configuration
-with the `height` changed to `maximum_height`.
+My [`dunst` configuration](./dunst/dunstrc) is simply the default
+EndeavourOS configuration with the `height` changed to `maximum_height`.
 
 ## [EFM Language Server](https://github.com/mattn/efm-langserver)
 
@@ -34,6 +41,18 @@ ported to the YAML file configuration format.
 There is a [`config.org`](./emacs/config.org) file inside the
 [`emacs`](./emacs/) folder that contains my configuration for Emacs.
 
+## [Ghostty](https://github.com/ghostty-org/ghostty)
+
+The [Ghostty configuration](./ghostty/config) sets the theme to
+[Bluloco](https://github.com/uloco/bluloco.nvim),
+sets the default font to
+[Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode),
+sets the default font size to 12, maps `Ctrl + [` to `ESC` and
+hides the mouse when typing.
+It also increases the cursor width to not have the cursor be so thin,
+disables the title bar and the resize overlay, and sets the window
+theme to use the colours used in Ghostty.
+
 ## [i3](https://i3wm.org/)
 
 The i3 configuration is for the most part,
@@ -48,7 +67,7 @@ have sufficient space away from the text and don't overlap with the text.
 
 ## [Kitty](https://sw.kovidgoyal.net/kitty/)
 
-Similarly, the kitty configuration is mostly just adding the
+The kitty configuration is mostly just adding the
 [Bluloco Dark](https://github.com/uloco/bluloco.nvim) colour scheme to kitty
 and changing the default font to
 [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode).
@@ -97,7 +116,7 @@ inside the [`yazi`](./yazi/) folder that explains the configuration.
 
 The Clight configuration file, [`clight.conf`](./clight.conf)
 is mostly just to disable all the functionality of Clight that
-I don't use, and to set the time and the temperature for
+I don't use, and to set the location and the temperature for
 the red-shifter.
 
 ## [Gummy](https://codeberg.org/fusco/gummy)
