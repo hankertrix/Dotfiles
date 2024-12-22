@@ -14,7 +14,8 @@ folder that explains the configuration.
 The [configuration for `darkman`](./darkman/config.yaml) is very simple,
 the configuration file here is literally all the values you can change
 about `darkman`. It just sets the location for changing the theme
-automatically, and also enables dbus and the xdg-desktop-portal integration.
+automatically, and also enables `dbus` and the `xdg-desktop-portal`
+integration, while disabling `geoclue`.
 
 ## [Dunst](https://github.com/dunst-project/dunst)
 
