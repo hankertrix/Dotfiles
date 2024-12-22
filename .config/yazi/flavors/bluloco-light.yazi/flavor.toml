@@ -1,14 +1,17 @@
+# Schema
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
 # Bluloco light flavour for Yazi
 [manager]
 
 cwd = { fg = "#0099E1" }
 
-marker_copied = { fg = "#EA3971", bg = "#EA3971" }
+marker_copied = { fg = "#C5A231", bg = "#C5A231" }
 marker_cut = { fg = "#D52753", bg = "#D52753" }
-marker_marked = { fg = "#23974A", bg = "#23974A" }
+marker_marked = { fg = "#823FF1", bg = "#823FF1" }
 marker_selected = { fg = "#0098DD", bg = "#0098DD" }
 
-count_copied = { fg = "#F9F9F9", bg = "#EA3971" }
+count_copied = { fg = "#F9F9F9", bg = "#C5A231" }
 count_cut = { fg = "#F9F9F9", bg = "#D52753" }
 count_selected = { fg = "#F9F9F9", bg = "#0098DD" }
 
@@ -29,20 +32,35 @@ bold = true
 italic = true
 
 
+# Colours for the modes in Yazi.
+#
+# The main styles are the styles for
+# the selection bar and sections at
+# the ends of the status bar.
+#
+# The alternate styles (alt) are the
+# styles for the separators, which are
+# the section in the status bar
+# that are right beside the sections
+# at the ends of the status bar.
+[mode]
+normal_main = { fg = "#F9F9F9", bg = "#0098DD" }
+normal_alt = { fg = "#6D7281", bg = "#DEE1E3" }
+
+select_main = { fg = "#F9F9F9", bg = "#823FF1" }
+select_alt = { fg = "#823FF1", bg = "#DEE1E3" }
+
+unset_main = { fg = "#F9F9F9", bg = "#D52753" }
+unset_alt = { fg = "#D52753", bg = "#DEE1E3" }
+
+
 [status]
-
-separator_style = { fg = "#DEE1E3", bg = "#DEE1E3" }
-
-mode_normal = { fg = "#F9F9F9", bg = "#0098DD" }
-mode_select = { fg = "#F9F9F9", bg = "#23974A" }
-mode_unset = { fg = "#F9F9F9", bg = "#D52753" }
-
 progress_label = { fg = "#F9F9F9", bold = true }
 progress_normal = { fg = "#823FF1", bg = "#A0A1A7" }
 progress_error = { fg = "#FF0000", bg = "#FCE4E4" }
 
 
-[select]
+[pick]
 border = { fg = "#7A82DA" }
 active = { fg = "#C5A332", bold = true }
 

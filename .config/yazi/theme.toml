@@ -3,7 +3,8 @@
 
 # Use the theme that I want
 [flavor]
-use = "bluloco-dark"
+light = "bluloco-light"
+dark = "bluloco-dark"
 
 # The theme for the file manager
 [manager]

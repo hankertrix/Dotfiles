@@ -110,7 +110,7 @@ desc = "Open selected files interactively"
 # Use u to unselect and unyank all files
 [[manager.prepend_keymap]]
 on   = [ "u" ]
-run  = ["select_all --state=false", "unyank"]
+run  = ["toggle_all --state=off", "unyank"]
 desc = "Unselect all files and also unyank cut files"
 
 
@@ -321,7 +321,7 @@ desc = "Move in relative steps"
 # Selection keymaps
 
 # Use q to close the selection menu
-[[select.prepend_keymap]]
+[[pick.prepend_keymap]]
 on   = [ "q" ]
 run  = "close"
 desc = "Cancel selection"
