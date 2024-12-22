@@ -65,7 +65,7 @@ This file is very similar to the `lfcd.sh` file in the `lf` configuration,
 it just adds the `yy` command which changes the directory
 to the current directory Yazi is in when Yazi exits.
 
-## `package.toml`
+## [`package.toml`](./package.toml)
 
 The `package.toml` file just tells Yazi what Yazi plugins I use,
 and it is generated when you add a Yazi plugin using the
