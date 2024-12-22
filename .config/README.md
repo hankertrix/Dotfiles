@@ -107,6 +107,17 @@ The `TERM` environment variable is also set to use
 so the underlines in [Neovim](https://neovim.io/)
 and [Yazi](https://yazi-rs.github.io/) aren't too thin.
 
+## [XDG Desktop Portal](https://flatpak.github.io/xdg-desktop-portal/)
+
+The [XDG Desktop Portal configuration](./xdg-desktop-portal/portals.conf)
+is just to set the preferred default portal implementation to
+[`xdg-desktop-portal-gtk`](https://github.com/flatpak/xdg-desktop-portal-gtk),
+which is a generic implementation that works on most tiling window managers
+running [X](https://www.x.org/archive/X11R7.6/doc/man/man1/Xserver.1.xhtml).
+The implementation for the settings portal is also set to
+[darkman](https://gitlab.com/WhyNotHugo/darkman) so that applications can
+detect when the theme changes from light to dark and vice versa.
+
 ## [Yazi](https://yazi-rs.github.io/)
 
 There is a [`README.md`](./yazi/README.md) file
