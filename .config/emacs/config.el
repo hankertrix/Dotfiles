@@ -526,26 +526,22 @@
   ;; Corrects and improves org-mode's native fontification
   (doom-themes-org-config))
 
-(use-package uwu-theme
+(use-package auto-dark
 
-  ;; Ensure that the uww theme is installed
+  ;; Ensure that the auto dark package is always installed
   :ensure t
 
-  ;; Configure the uwu theme
-  :config
+  ;; Customise the auto dark package
+  :custom
 
-  ;; Make the line numbers less distracting
-  (setq uwu-distinct-line-numbers 'nil)
+  ;; Set the dark theme and light theme.
+  ;; The first theme is when dark mode is active,
+  ;; and the second theme is when light mode is active.
+  (auto-dark-themes '((doom-bluloco-dark) (doom-bluloco-light)))
 
-  ;; Scale org-mode headlines
-  (setq uwu-scale-org-headlines 1)
-
-  ;; Scale outline-mode headlines
-  (setq uwu-scale-outline-headlines 1)
-
-  ;; Load and enable the uwu theme
-  ;; (load-theme 'uwu t)
-  )
+  ;; Initialise the auto dark package
+  :init
+  (auto-dark-mode))
 
 (use-package doom-modeline
   :ensure t

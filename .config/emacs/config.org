@@ -64,7 +64,7 @@
 * Important Programs
 
 ** Elpaca Package Manager
-Initialise elpaca. This code is copied directly off of [[https://github.com/progfolio/elpaca][elpaca's GitHub]].
+Initialise Elpaca. This code is copied directly off of [[https://github.com/progfolio/elpaca][Elpaca's GitHub]].
 #+begin_src emacs-lisp
 
 (defvar elpaca-installer-version 0.8)
@@ -108,7 +108,7 @@ Initialise elpaca. This code is copied directly off of [[https://github.com/prog
 
 #+end_src
 
-Enable use-package support for elpaca.
+Enable use-package support for Elpaca.
 #+begin_src emacs-lisp
 
 ;; Install use-package support
@@ -759,7 +759,7 @@ Enable whitespace mode.
 * Beautifying Emacs
 
 ** Theme
-Install doom themes for the bluloco dark theme inside doom themes. The bluloco dark theme is an excellent high contrast theme that I use pretty much everywhere because it has a heck ton of colours which makes everything stand out. It works great with a red-shifter too.
+Install doom themes for the Bluloco dark theme inside doom themes. The Bluloco dark theme is an excellent high contrast theme that I use pretty much everywhere because it has a heck ton of colours which makes everything stand out. It works great with a red-shifter too.
 #+begin_src emacs-lisp
 (use-package doom-themes
 
@@ -780,28 +780,24 @@ Install doom themes for the bluloco dark theme inside doom themes. The bluloco d
   (doom-themes-org-config))
 #+end_src
 
-Install the Uwu theme. The Uwu theme is another excellent high contrast theme that will serve as a good alternative for those who want something different from bluloco dark. This is the theme I used before the bluloco themes were merged into the doom themes repository. It is now here for legacy purposes.
+Install the Auto-Dark Emacs package to automatically switch between light and dark themes.
 #+begin_src emacs-lisp
-(use-package uwu-theme
+(use-package auto-dark
 
-  ;; Ensure that the uww theme is installed
+  ;; Ensure that the auto dark package is always installed
   :ensure t
 
-  ;; Configure the uwu theme
-  :config
+  ;; Customise the auto dark package
+  :custom
 
-  ;; Make the line numbers less distracting
-  (setq uwu-distinct-line-numbers 'nil)
+  ;; Set the dark theme and light theme.
+  ;; The first theme is when dark mode is active,
+  ;; and the second theme is when light mode is active.
+  (auto-dark-themes '((doom-bluloco-dark) (doom-bluloco-light)))
 
-  ;; Scale org-mode headlines
-  (setq uwu-scale-org-headlines 1)
-
-  ;; Scale outline-mode headlines
-  (setq uwu-scale-outline-headlines 1)
-
-  ;; Load and enable the uwu theme
-  ;; (load-theme 'uwu t)
-  )
+  ;; Initialise the auto dark package
+  :init
+  (auto-dark-mode))
 #+end_src
 
 
