@@ -48,9 +48,6 @@ The [Ghostty configuration](./ghostty/config) sets the theme to
 [Bluloco](https://github.com/uloco/bluloco.nvim),
 sets the default font to
 [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode),
-
-<!-- [Maple Mono NF CN](https://github.com/subframe7536/maple-font) -->
-
 sets the default font size to 12, maps `Ctrl + [` to `ESC` and
 hides the mouse when typing.
 It also increases the cursor width to not have the cursor be so thin,
@@ -73,12 +70,9 @@ have sufficient space away from the text and don't overlap with the text.
 ## [Kitty](https://sw.kovidgoyal.net/kitty/)
 
 The kitty configuration is mostly just adding the
-[Bluloco Dark](https://github.com/uloco/bluloco.nvim) colour scheme to kitty
+[Bluloco](https://github.com/uloco/bluloco.nvim) colour scheme to kitty
 and changing the default font to
 [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode).
-
-<!-- [Maple Mono NF CN](https://github.com/subframe7536/maple-font) -->
-
 The auto update function for kitty has also been disabled.
 The default font size is also set to 12.
 
@@ -107,11 +101,10 @@ For the most part, the Wezterm configuration is just adding the
 [Bluloco Dark](https://github.com/uloco/bluloco.nvim) colour scheme
 and setting the default colour scheme to
 [Bluloco](https://github.com/uloco/bluloco.nvim).
+There is also a function to get Wezterm to automatically change
+the colour scheme when the system theme changes as well.
 The default font has also been changed to use
 [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
-
-<!-- [Maple Mono NF CN](https://github.com/subframe7536/maple-font) -->
-
 and the font size has been set to 12.
 The `TERM` environment variable is also set to use
 `wezterm` and I increased the underline thickness
