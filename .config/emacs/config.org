@@ -503,6 +503,7 @@ Install and configure the which key plugin, which is a plugin that displays the 
 * Fonts
 
 Set the default font to Cascadia Code Nerd Font with a font size of 12.
+# Set the default font to Maple Mono Nerd Font and a font size of 12.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
                     :font "CaskaydiaCove Nerd Font Mono 12"
@@ -511,6 +512,7 @@ Set the default font to Cascadia Code Nerd Font with a font size of 12.
 #+end_src
 
 Set the default mono space font to Cascadia Code Nerd Font with a font size of 12.
+# Set the default mono space font to Maple Mono Nerd Font and a font size of 12.
 #+begin_src emacs-lisp
 (set-face-attribute 'fixed-pitch nil
                     :font "CaskaydiaCove Nerd Font Mono 12"
