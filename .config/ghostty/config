@@ -38,4 +38,8 @@ mouse-hide-while-typing = true
 # Map Ctrl + [ to ESC
 keybind = ctrl+left_bracket=text:\x1b
 
+
+# Disable auto updating
+auto-update = off
+
 # vim: set ft=conf
