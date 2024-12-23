@@ -83,13 +83,13 @@ title = { fg = "#7A82DA" }
 
 [completion]
 border = { fg = "#7A82DA" }
-active = { bg = "#274670" }
+active = { bg = "#284671" }
 
 
 [tasks]
 border = { fg = "#7A82DA" }
 title = { fg = "#7A82DA" }
-hovered = { bg = "#274670", bold = true }
+hovered = { bg = "#284671", bold = true }
 
 
 [which]
