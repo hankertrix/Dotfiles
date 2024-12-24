@@ -27,7 +27,7 @@ and remove the border symbols.
 The [flavours](https://yazi-rs.github.io/docs/flavors/overview/)
 that I use can be found in the [`flavors`](./flavors/) folder,
 which is just a port of the [Bluloco](https://github.com/uloco/bluloco.nvim)
-to Yazi.
+theme to Yazi.
 
 The syntax highlighting in Yazi is configured by using a
 [bat](https://github.com/sharkdp/bat) syntax highlighting file,
@@ -68,5 +68,4 @@ to the current directory Yazi is in when Yazi exits.
 ## [`package.toml`](./package.toml)
 
 The `package.toml` file just tells Yazi what Yazi plugins I use,
-and it is generated when you add a Yazi plugin using the
-`ya pack -a` command.
+and it is generated when you add a Yazi plugin using the `ya pack -a` command.
