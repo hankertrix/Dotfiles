@@ -314,14 +314,3 @@ desc = "Move in relative steps"
 on = [ "9" ]
 run = "plugin relative-motions --args=9"
 desc = "Move in relative steps"
-
-
-
-
-# Input keymaps
-
-# Use ^ to move to the beginning of the line, like in vim
-[[input.prepend_keymap]]
-on   = [ "^" ]
-run  = "move -999"
-desc = "Move to the BOL"
