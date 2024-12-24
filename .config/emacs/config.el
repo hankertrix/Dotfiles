@@ -520,9 +520,6 @@
   (setq doom-themes-enable-bold t
         doom-themes-enable-italics t)
 
-  ;; Load and enable the bluloco dark theme
-  (load-theme 'doom-bluloco-dark t)
-
   ;; Corrects and improves org-mode's native fontification
   (doom-themes-org-config))
 
