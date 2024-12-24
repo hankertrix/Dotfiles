@@ -318,17 +318,6 @@ desc = "Move in relative steps"
 
 
 
-# Selection keymaps
-
-# Use q to close the selection menu
-[[pick.prepend_keymap]]
-on   = [ "q" ]
-run  = "close"
-desc = "Cancel selection"
-
-
-
-
 # Input keymaps
 
 # Use ^ to move to the beginning of the line, like in vim
