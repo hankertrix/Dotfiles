@@ -150,6 +150,20 @@ M.icons = {
         warn = "",
         error = "",
     },
+
+    -- Git icons
+    git = {
+        modified = "",        -- Modified "M"
+        ft_changed = "",      -- File type changed "T"
+        added = "",           -- Added "A"
+        deleted = "",         -- Deleted "D"
+        renamed = "",         -- Renamed "R"
+        copied = "",          -- Copied "C"
+        unmerged = "",        -- Unmerged "U"
+        unknown = "",         -- Unknown change type "X"
+        untracked = "󱋽",       -- Untracked
+        ignored = "",         -- Ignored
+    },
 }
 
 -- The list of disabled file types

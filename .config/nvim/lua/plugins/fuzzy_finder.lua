@@ -23,6 +23,9 @@ return {
         -- Get the fzf-lua actions for trouble
         local trouble_actions = require("trouble.sources.fzf").actions
 
+        -- Get the icons
+        local icons = require("shared_configs").icons
+
         -- Set up fzf-lua
         require("fzf-lua").setup({
 
@@ -33,11 +36,13 @@ return {
 
                 -- Use my own custom git icons
                 icons = {
-                    ["M"] = { icon = "󰛿", color = "blue" },
-                    ["D"] = { icon = "󰚃", color = "red" },
-                    ["A"] = { icon = "", color = "green" },
-                    ["R"] = { icon = "", color = "red" },
-                    ["?"] = { icon = "", color = "grey" },
+                    ["M"] = { icon = icons.git.modified, color = "yellow" },
+                    ["D"] = { icon = icons.git.deleted, color = "red" },
+                    ["A"] = { icon = icons.git.added, color = "green" },
+                    ["R"] = { icon = icons.git.renamed, color = "yellow" },
+                    ["C"] = { icon = icons.git.copied, color = "yellow" },
+                    ["T"] = { icon = icons.git.ft_changed, color = "magenta" },
+                    ["?"] = { icon = icons.git.untracked, color = "grey" },
                 },
 
                 -- Add a space to all the prompts
@@ -70,7 +75,7 @@ return {
             -- Use my custom lsp kind icons
             lsp = {
                 symbols = {
-                    symbol_icons = require("shared_configs").icons.lsp_kind,
+                    symbol_icons = icons.lsp_kind,
                 },
 
                 -- Add a space to all the prompts
