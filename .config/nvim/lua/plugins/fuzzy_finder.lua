@@ -26,6 +26,10 @@ return {
         -- Get the icons
         local icons = require("shared_configs").icons
 
+        -- Get the ansi from highlight function
+        -- from fzf-lua utils
+        local ansi_from_hl = require("fzf-lua.utils").ansi_from_hl
+
         -- Set up fzf-lua
         require("fzf-lua").setup({
 
@@ -36,13 +40,48 @@ return {
 
                 -- Use my own custom git icons
                 icons = {
-                    ["M"] = { icon = icons.git.modified, color = "yellow" },
-                    ["D"] = { icon = icons.git.deleted, color = "red" },
-                    ["A"] = { icon = icons.git.added, color = "green" },
-                    ["R"] = { icon = icons.git.renamed, color = "yellow" },
-                    ["C"] = { icon = icons.git.copied, color = "yellow" },
-                    ["T"] = { icon = icons.git.ft_changed, color = "magenta" },
-                    ["?"] = { icon = icons.git.untracked, color = "grey" },
+                    ["M"] = {
+                        icon = ansi_from_hl(
+                            "DiffviewStatusModified",
+                            icons.git.modified
+                        ),
+                    },
+                    ["D"] = {
+                        icon = ansi_from_hl(
+                            "DiffviewStatusDeleted",
+                            icons.git.deleted
+                        ),
+                    },
+                    ["A"] = {
+                        icon = ansi_from_hl(
+                            "DiffviewStatusAdded",
+                            icons.git.added
+                        ),
+                    },
+                    ["R"] = {
+                        icon = ansi_from_hl(
+                            "DiffviewStatusRenamed",
+                            icons.git.renamed
+                        ),
+                    },
+                    ["C"] = {
+                        icon = ansi_from_hl(
+                            "DiffviewStatusCopied",
+                            icons.git.copied
+                        ),
+                    },
+                    ["T"] = {
+                        icon = ansi_from_hl(
+                            "DiffviewStatusTypeChanged",
+                            icons.git.ft_changed
+                        ),
+                    },
+                    ["?"] = {
+                        icon = ansi_from_hl(
+                            "DiffviewStatusIgnored",
+                            icons.git.untracked
+                        ),
+                    },
                 },
 
                 -- Add a space to all the prompts
