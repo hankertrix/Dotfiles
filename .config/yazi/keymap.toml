@@ -168,7 +168,7 @@ desc = "Permanently delete the files"
 # Use Ctrl + s to open a shell in the current directory
 [[manager.prepend_keymap]]
 on   = [ "<C-s>" ]
-run  = 'shell "$SHELL" --block --confirm'
+run  = 'shell "$SHELL" --block'
 desc = "Open shell here"
 
 
