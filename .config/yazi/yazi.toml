@@ -37,6 +37,17 @@ max_height = 3000
 emacs = [{ run = 'emacs -- "$@"', block = false, desc = "Open in Emacs" }]
 analyse = [{ run = 'spek -- "$@"', block = false, desc = "Analyse spectrum" }]
 
+# Use the augmented version of the extract opener
+[[opener.extract]]
+run = 'ya pub augmented-extract --list "$@"'
+desc = "Extract here"
+for = "unix"
+
+[[opener.extract]]
+run = 'ya pub augmented-extract --list %*'
+desc = "Extract here"
+for = "windows"
+
 
 # Configuration for the opener rules
 [open]
