@@ -33,9 +33,6 @@ max_height = 3000
 
 
 # Configuration for the openers
-[opener]
-emacs = [{ run = 'emacs -- "$@"', block = false, desc = "Open in Emacs" }]
-analyse = [{ run = 'spek -- "$@"', block = false, desc = "Analyse spectrum" }]
 
 # Use the augmented version of the extract opener
 [[opener.extract]]
@@ -47,6 +44,20 @@ for = "unix"
 run = 'ya pub augmented-extract --list %*'
 desc = "Extract here"
 for = "windows"
+
+# The Emacs opener
+[[opener.emacs]]
+run = 'emacs -- "$@"'
+block = false
+orphan = true
+desc = "Open in Emacs"
+
+# The opener to analyse audio spectrums
+[[opener.analyse]]
+run = 'spek -- "$@"'
+block = false
+orphan = true
+desc = "Analyse spectrum"
 
 
 # Configuration for the opener rules
