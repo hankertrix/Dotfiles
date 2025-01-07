@@ -927,12 +927,10 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
-(use-package magit
-  :ensure ( :branch "main" :pre-build ("make" "info")))
+(use-package magit)
 
 ;; Update transient, which is a magit dependency
-(use-package transient
-  :ensure ( :branch "main"))
+(use-package transient)
 
 (use-package toc-org
   :commands toc-org-enable
