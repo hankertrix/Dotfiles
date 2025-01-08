@@ -30,7 +30,7 @@ vim.opt.breakindent = true
 -- Put 'showbreak' at the start of the line
 vim.opt.breakindentopt = { shift = 2, min = 40, sbr = true }
 
--- The 'showbreak' character
+-- The "showbreak" character
 vim.opt.showbreak = "↪"
 
 -- Search
@@ -93,7 +93,17 @@ vim.opt.matchpairs:append({
     "《:》",
 })
 
--- Sets the grep command in vim to use ripgrep if it's available
+-- Font for GUIs like Neovide
+
+-- Set the font to Cascadia Code Nerd Font Mono
+-- with a font size of 12
+vim.opt.guifont = "CaskaydiaCove Nerd Font Mono:h12"
+
+-- Set the font to Maple Mono Nerd Font with Chinese characters
+-- with a font size of 12
+-- vim.opt.guifont = "Maple Mono NF CN:h12"
+
+-- Set the grep command in Neovim to use ripgrep if it's available
 if vim.fn.executable("rg") == 1 then
     vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
     vim.opt.grepformat = "%f:%l:%c:%m"
