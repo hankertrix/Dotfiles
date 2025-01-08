@@ -22,7 +22,7 @@ local function setup()
             "vtsls",            -- TypeScript and JavaScript
             "rust_analyzer",    -- Rust
             "clangd",           -- C/C++
-            "gdscript",         -- Godot GDScript
+            "gdtoolkit",        -- Godot GDScript
             "bashls",           -- Bash (shell)
             "marksman",         -- Markdown
             "jsonls",           -- JSON
