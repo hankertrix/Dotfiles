@@ -30,13 +30,19 @@ return {
         -- A list of parser names
         ensure_installed = {
             "python",
-            "markdown",
-            "json",
-            "org",
-            "gitcommit",
             "html",
             "javascript",
             "typescript",
+            "rust",
+            "cpp",
+            "gdscript",
+            "bash",
+            "json",
+            "toml",
+            "yaml",
+
+            -- Git commits
+            "gitcommit",
 
             -- These parsers should always be installed
             "c",
@@ -44,6 +50,8 @@ return {
             "vim",
             "vimdoc",
             "query",
+            "markdown",
+            "markdown_inline",
         },
 
         -- Don't install parsers synchronously
