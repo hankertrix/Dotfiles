@@ -1,0 +1,13 @@
+# Neovide configuration file
+
+# Set the font size to 12
+[font]
+size = 12
+
+# Set the font to Cascadia Code Nerd Font
+[[font.normal]]
+family = "CaskaydiaCove Nerd Font Mono"
+
+# Set the font to Maple Mono Nerd Font with Chinese characters
+# [[font.normal]]
+# family = "Maple Mono NF CN"

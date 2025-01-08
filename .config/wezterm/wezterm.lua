@@ -37,6 +37,9 @@ end
 -- Set the colour scheme to the Bluloco colour scheme
 config.color_scheme = get_colour_scheme(get_appearance())
 
+-- Set the font size to 12
+config.font_size = 12
+
 -- Set the font to Cascadia Code Nerd Font
 config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
 
@@ -45,9 +48,6 @@ config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
 
 -- Set the term environment variable to wezterm
 config.term = "wezterm"
-
--- Set the font size to 12
-config.font_size = 12
 
 -- Set the underline thickness to 200%
 config.underline_thickness = "200%"

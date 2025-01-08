@@ -3,10 +3,14 @@
 
 # Font
 
-# Set the font family to Cascadia Code Nerd Font
-font-family = "CaskaydiaCove Nerd Font Mono"
-# font-family = "Maple Mono NF CN"
+# Set the font size to 12
 font-size = 12
+
+# Set the font to Cascadia Code Nerd Font
+font-family = "CaskaydiaCove Nerd Font Mono"
+
+# Set the font to Maple Mono Nerd Font with Chinese characters
+# font-family = "Maple Mono NF CN"
 
 
 # Theme and colours
@@ -52,5 +56,3 @@ keybind = ctrl+shift+r=reload_config
 
 # Disable auto updating
 auto-update = off
-
-# vim: set ft=conf

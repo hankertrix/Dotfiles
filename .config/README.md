@@ -81,6 +81,11 @@ The default font size is also set to 12.
 There is a [`README.md`](./lf/README.md) file inside
 the [`lf`](./lf) folder that explains the configuration.
 
+## [Neovide](https://neovide.dev/)
+
+The Neovide configuration just sets the font size to 12, and the font to
+[Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode).
+
 ## [Neovim](https://neovim.io/)
 
 There is a [`README.md`](./nvim/README.md) file inside
