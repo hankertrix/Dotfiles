@@ -61,16 +61,10 @@ desc = "Analyse spectrum"
 
 
 # Configuration for the opener rules
-[open]
-prepend_rules = [
-    { mime = "{audio,video}/*", use = [
-        "play",
-        "reveal",
-        "analyse",
-    ] },
-    { name = "*.{org,tex,bib}", use = [
-        "emacs",
-        "edit",
-        "reveal",
-    ] },
-]
+[[open.prepend_rules]]
+mime = "{audio,video}/*"
+use = ["play", "reveal", "analyse"]
+
+[[open.prepend_rules]]
+mime = "*.{org,tex,bib}"
+use = ["emacs", "edit", "reveal"]
