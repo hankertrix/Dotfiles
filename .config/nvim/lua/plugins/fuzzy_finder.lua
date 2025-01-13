@@ -238,7 +238,7 @@ return {
             "<Leader>pr",
             function() require("fzf-lua").registers() end,
             mode = "n",
-            desc = "Search through vim registers",
+            desc = "Search through Vim registers",
         },
     },
 }

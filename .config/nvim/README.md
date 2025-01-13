@@ -41,23 +41,14 @@ Diagnostics -
 [trouble.nvim](https://github.com/folke/trouble.nvim)
 
 Autocompletion -
-[nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+[blink.cmp](https://github.com/Saghen/blink.cmp)
 
 Autocompletion sources:
 
-- [cmp-async-path](https://codeberg.org/FelipeLema/cmp-async-path)
-- [cmp-nvim-lsp-signature-help](https://github.com/hrsh7th/cmp-nvim-lsp-signature-help)
-- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)
-- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-- [cmp-treesitter](https://github.com/ray-x/cmp-treesitter)
-- [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
+- [blink.compat (compatibility layer for nvim-cmp sources)](https://github.com/Saghen/blink.compat)
 - [cmp-calc](https://github.com/hrsh7th/cmp-calc)
-- [cmp-spell](https://github.com/f3fora/cmp-spell)
-- [cmp-emoji](https://github.com/hrsh7th/cmp-emoji)
-- [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
-- [cmp-cmdline-history](https://github.com/dmitmel/cmp-cmdline-history)
-- [cmp-nvim-lsp-document-symbol](https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol)
+- [blink-cmp-spell](https://github.com/ribru17/blink-cmp-spell)
+- [blink-emoji.nvim](https://github.com/moyiz/blink-emoji.nvim)
 
 AI autocompletion sources:
 

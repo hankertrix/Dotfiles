@@ -56,7 +56,7 @@ local function setup()
     lspconfig_defaults.capabilities = vim.tbl_deep_extend(
         "force",
         lspconfig_defaults.capabilities,
-        require("cmp_nvim_lsp").default_capabilities()
+        require("blink.cmp").get_lsp_capabilities()
     )
 
     -- Create the LSP keybinds
@@ -437,56 +437,6 @@ local function setup()
         },
     })
 
-    -- Set up the completion sources
-    local cmp_sources = {
-        { name = "async_path" },
-        { name = "luasnip", keyword_length = 2 },
-        { name = "nvim_lsp_signature_help" },
-        { name = "nvim_lsp", keyword_length = 3 },
-        { name = "supermaven" },
-        { name = "cmp_tabnine" },
-        { name = "buffer", keyword_length = 3 },
-        { name = "treesitter", keyword_length = 3 },
-        { name = "calc" },
-        { name = "emoji" },
-    }
-
-    -- The formatting for nvim-cmp
-    local cmp_format = {
-        fields = { "abbr", "kind", "menu" },
-        format = function(entry, item)
-            --
-
-            -- The list of kind icons
-            local kind_icons = shared_configs.icons.lsp_kind
-
-            -- Sets the item kind to the concatenation of the icon
-            -- with the name of the item kind
-            item.kind = string.format("%s %s", kind_icons[item.kind], item.kind)
-
-            -- The menu name for the source of the completion
-            local menu_name = shared_configs.source_names[entry.source.name]
-                or utils.titlecase(entry.source.name)
-
-            -- Sets the menu to the menu name enclosed in square brackets
-            item.menu = string.format("[%s]", menu_name)
-
-            -- Returns the item
-            return item
-        end,
-    }
-
-    -- Set up the completion with my own settings
-    require("cmp").setup({
-        preselect = "item",
-        mapping = shared_configs.default_cmp_mappings(),
-        sources = cmp_sources,
-        formatting = cmp_format,
-        completion = {
-            completeopt = "menu,menuone,noinsert",
-        },
-    })
-
     -- Get the diagnostic icons
     local diagnostic_icons = shared_configs.icons.diagnostics
 
@@ -517,10 +467,9 @@ return {
         { "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
 
         -- Autocompletion
-        "nvim-cmp",
+        "blink.cmp",
 
         -- Snippets
-        { "L3MON4D3/LuaSnip", event = "InsertEnter" },
         { "rafamadriz/friendly-snippets" },
     },
 
