@@ -259,7 +259,7 @@ desc = "Go to the projects directory"
 # Use gu to go to school directory
 [[manager.prepend_keymap]]
 on   = [ "g", "u" ]
-run  = "cd ~/school"
+run  = "cd ~/school/y2s2/"
 desc = "Go to the school directory"
 
 
