@@ -66,5 +66,5 @@ mime = "{audio,video}/*"
 use = ["play", "reveal", "analyse"]
 
 [[open.prepend_rules]]
-mime = "*.{org,tex,bib}"
+name = "*.{org,tex,bib}"
 use = ["emacs", "edit", "reveal"]
