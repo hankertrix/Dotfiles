@@ -17,7 +17,7 @@ M.source_names = {
 
 -- The list of icons that I want to use
 M.icons = {
-    lsp_kind = {
+    kind = {
         Array = "󰅪",
         Boolean = "",
         Class = "󰠱",

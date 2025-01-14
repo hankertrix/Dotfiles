@@ -257,7 +257,7 @@ return {
         -- Configuration for the appearance
         appearance = {
             nerd_font_variant = "mono",
-            kind_icons = require("shared_configs").icons.lsp_kind,
+            kind_icons = require("shared_configs").icons.kind,
         },
     },
 

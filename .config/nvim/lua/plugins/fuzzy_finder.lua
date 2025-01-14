@@ -114,7 +114,7 @@ return {
             -- Use my custom lsp kind icons
             lsp = {
                 symbols = {
-                    symbol_icons = icons.lsp_kind,
+                    symbol_icons = icons.kind,
                 },
 
                 -- Add a space to all the prompts

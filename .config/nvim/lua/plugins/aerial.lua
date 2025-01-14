@@ -11,7 +11,7 @@ return {
     cmd = "AerialToggle",
     opts = {
         attach_mode = "global",
-        icons = require("shared_configs").icons.lsp_kind,
+        icons = require("shared_configs").icons.kind,
     },
     keys = {
 
