@@ -7,7 +7,6 @@ local utils = require("utils")
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    cond = utils.firenvim_not_active,
     config = function(_, opts)
         local treesitter = require("nvim-treesitter.configs")
         treesitter.setup(opts)
