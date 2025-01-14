@@ -16,7 +16,8 @@ return {
             --
 
             -- Get the colour scheme I want to use
-            local colour_scheme = utils.firenvim_not_active() and "bluloco" or "bluloco-light"
+            local colour_scheme = utils.firenvim_not_active() and "bluloco"
+                or "bluloco-light"
 
             -- Sets the theme
             vim.cmd("colorscheme " .. colour_scheme)
