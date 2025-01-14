@@ -78,7 +78,10 @@ return {
                     kind = "Emoji",
                 },
 
-                -- Nvim cmp providers using blink.compat
+                -- Nvim cmp providers using blink.compat.
+                --
+                -- Note that the names must be the same
+                -- as the names used for nvim-cmp.
                 supermaven = {
                     name = "supermaven",
                     module = "blink.compat.source",
