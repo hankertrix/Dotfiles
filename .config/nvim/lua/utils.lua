@@ -3,7 +3,7 @@
 -- The Lua module
 local M = {}
 
--- Function to check if the firenvim is active
+-- Function to check if the Firenvim is active
 function M.firenvim_not_active() return not vim.g.started_by_firenvim end
 
 -- Function to titlecase a string

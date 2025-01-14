@@ -208,7 +208,7 @@ local function setup()
         },
     }
 
-    -- If firenvim isn't active
+    -- If Firenvim isn't active
     if utils.firenvim_not_active() then
         --
 
