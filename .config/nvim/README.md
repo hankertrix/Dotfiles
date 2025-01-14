@@ -21,8 +21,8 @@ Git integration -
 Git gutter plugin (to show the changes at the side while editing a file) -
 [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 
-Using neovim in the browser -
-[firenvim](https://github.com/glacambre/firenvim)
+Using Neovim in the browser -
+[Firenvim](https://github.com/glacambre/firenvim)
 
 ### Coding
 
