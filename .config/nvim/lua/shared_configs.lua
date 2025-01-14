@@ -60,6 +60,13 @@ M.icons = {
         Variable = "󰫧",
         Collapsed = "",
 
+        -- Kind icons for completion sources
+
+        -- Regular completion sources
+        Command = "",
+        Spell = "",
+        Calculation = "",
+
         -- AI code completion
         TabNine = "󰏚",
         Supermaven = "",

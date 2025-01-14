@@ -1,34 +1,39 @@
 -- Completion engine configuration
 -- Currently using blink.cmp
 
--- Function to set up the completion engine
-local function setup()
-    --
+-- Get the utility module
+local utils = require("utils")
 
-    -- Get the completion engine
-    local cmp = require("blink.cmp")
+-- Returns the completion engine for lazy.nvim
+return {
+    "Saghen/blink.cmp",
+    version = "*",
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
 
-    -- Get the shared configuration
-    local shared_configs = require("shared_configs")
+        -- Compatibility module for nvim-cmp sources
+        {
+            "Saghen/blink.compat",
+            version = "*",
+            lazy = true,
+            opts = {},
+        },
 
-    -- Get the utilities module
-    local utils = require("utils")
+        -- Regular completion within a buffer
+        { "hrsh7th/cmp-calc" },
+        { "ribru17/blink-cmp-spell" },
+        { "moyiz/blink-emoji.nvim" },
 
-    -- The list of source names for the completion engine
-    local source_names = {
-        cmp_tabnine = "TabNine",
-        cmdline = "Command Line",
-    }
+        -- AI autocompletion
+        { "supermaven-inc/supermaven-nvim" },
+        {
+            "tzachar/cmp-tabnine",
+            build = "./install.sh",
+        },
+    },
 
-    -- Set up Supermaven for AI autocompletion
-    require("supermaven-nvim").setup({
-        log_level = "info",
-        disable_inline_completion = true,
-        disable_keymaps = true,
-    })
-
-    -- Setup the completion engine
-    require("blink.cmp").setup({
+    -- Configuration options
+    opts = {
 
         -- Sources configuration
         sources = {
@@ -48,35 +53,50 @@ local function setup()
 
             -- Configuration for the providers
             providers = {
+
+                -- Blink cmp built-in providers
+                cmdline = {
+                    name = "Command Line",
+                    kind = "Command",
+                },
+
+                -- Blink cmp providers
+                spell = {
+                    name = "Spell",
+                    module = "blink-cmp-spell",
+                    score_offset = -5,
+                    enabled = function()
+                        return vim.bo.filetype == "text"
+                            or not utils.firenvim_not_active()
+                    end,
+                    kind = "Spell",
+                },
+                emoji = {
+                    name = "Emoji",
+                    module = "blink-emoji",
+                    opts = { insert = true },
+                    kind = "Emoji",
+                },
+
+                -- Nvim cmp providers using blink.compat
                 supermaven = {
                     name = "supermaven",
                     module = "blink.compat.source",
                     enabled = utils.firenvim_not_active,
+                    kind = "Supermaven",
                 },
                 tabnine = {
                     name = "cmp_tabnine",
                     module = "blink.compat.source",
                     enabled = utils.firenvim_not_active,
-                },
-                spell = {
-                    name = "spell",
-                    module = "blink-cmp-spell",
-                    enabled = function()
-                        return vim.bo.filetype == "text"
-                            or not utils.firenvim_not_active()
-                    end,
-                    score_offset = -5,
+                    kind = "TabNine",
+                    source_name = "TabNine",
                 },
                 calc = {
                     name = "calc",
                     module = "blink.compat.source",
                     score_offset = -10,
-                },
-                emoji = {
-                    name = "emoji",
-                    module = "blink-emoji",
-                    score_offset = -15,
-                    opts = { insert = true },
+                    kind = "Calculation",
                 },
             },
         },
@@ -181,16 +201,14 @@ local function setup()
                             end,
                         },
 
-                        -- Get the source name from the source name dictionary,
-                        -- otherwise, replace all the underscores and dashes
+                        -- Replace all the underscores and dashes
                         -- with spaces and title case the source name.
                         source_name = {
                             text = function(ctx)
                                 local source_name = ctx.source_name
-                                return source_names[source_name:lower()]
-                                    or utils.titlecase(
-                                        source_name:gsub("[_%-]", " ")
-                                    )
+                                return utils.titlecase(
+                                    source_name:gsub("[_%-]", " ")
+                                )
                             end,
                         },
                     },
@@ -203,7 +221,9 @@ local function setup()
                     -- Change the preselect behaviour to only work
                     -- when the snippet is not active
                     preselect = function()
-                        return not cmp.snippet_active({ direction = 1 })
+                        return not require("blink.cmp").snippet_active({
+                            direction = 1,
+                        })
                     end,
                 },
             },
@@ -211,14 +231,12 @@ local function setup()
             -- Show documentation automatically
             documentation = {
                 auto_show = true,
-                auto_show_delay_ms = 500,
+                auto_show_delay_ms = 200,
             },
         },
 
         -- Enable signature help
-        signature = {
-            enabled = true,
-        },
+        signature = { enabled = true },
 
         -- Fuzzy finder configuration
         fuzzy = {
@@ -244,37 +262,82 @@ local function setup()
         -- Configuration for the appearance
         appearance = {
             nerd_font_variant = "mono",
-            kind_icons = shared_configs.icons.lsp_kind,
-        },
-    })
-end
-
--- Returns the completion engine for lazy.nvim
-return {
-    "Saghen/blink.cmp",
-    version = "*",
-    config = setup,
-    event = { "InsertEnter", "CmdlineEnter" },
-    dependencies = {
-
-        -- Compatibility module for nvim-cmp sources
-        {
-            "Saghen/blink.compat",
-            version = "*",
-            lazy = true,
-            opts = {},
-        },
-
-        -- Regular completion within a buffer
-        { "hrsh7th/cmp-calc" },
-        { "ribru17/blink-cmp-spell" },
-        { "moyiz/blink-emoji.nvim" },
-
-        -- AI autocompletion
-        { "supermaven-inc/supermaven-nvim" },
-        {
-            "tzachar/cmp-tabnine",
-            build = "./install.sh",
+            kind_icons = require("shared_configs").icons.lsp_kind,
         },
     },
+
+    -- The config function
+    config = function(_, opts)
+        --
+
+        -- Get the completion item kinds
+        local completion_item_kinds =
+            require("blink.cmp.types").CompletionItemKind
+
+        -- Iterate over all the providers
+        for _, provider in pairs(opts.sources.providers or {}) do
+            --
+
+            -- If the kind is given
+            if provider.kind then
+                --
+
+                -- Get the index of the new kind
+                local kind_index = #completion_item_kinds + 1
+
+                -- Map the kind index to the kind
+                completion_item_kinds[kind_index] = provider.kind
+
+                -- Map the kind to the kind index.
+                -- This is how the CompletionItemKind works in blink.cmp,
+                -- so we need to map it both ways.
+                completion_item_kinds[provider.kind] = kind_index
+
+                -- Get the provider's source name
+                local source_name = provider.source_name
+
+                -- Save the original transform items function
+                local original_transform_items = provider.transform_items
+
+                -- Override the transform items function
+                provider.transform_items = function(ctx, items)
+                    --
+
+                    -- Get the items after using the original transform
+                    -- items if it exists
+                    items = original_transform_items
+                            and original_transform_items(ctx, items)
+                        or items
+
+                    -- Iterate over the items
+                    for _, item in ipairs(items) do
+                        --
+
+                        -- Set the item kind
+                        item.kind = kind_index or item.kind
+
+                        -- Set the item's source name
+                        item.source_name = source_name or item.source_name
+                    end
+
+                    -- Return the list of items
+                    return items
+                end
+            end
+
+            -- Unset the kind and the source name to pass blink.cmp validation
+            provider.kind = nil
+            provider.source_name = nil
+        end
+
+        -- Set up Supermaven for AI autocompletion
+        require("supermaven-nvim").setup({
+            log_level = "info",
+            disable_inline_completion = true,
+            disable_keymaps = true,
+        })
+
+        -- Set up blink.cmp
+        require("blink.cmp").setup(opts)
+    end,
 }
