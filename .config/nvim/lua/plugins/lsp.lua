@@ -454,7 +454,7 @@ local function setup()
     })
 end
 
--- Returns the lsp-zero plugin for lazy.nvim
+-- Returns the lspconfig plugin for lazy.nvim
 return {
     "neovim/nvim-lspconfig",
     config = setup,
