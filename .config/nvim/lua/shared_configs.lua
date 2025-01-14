@@ -63,8 +63,11 @@ M.icons = {
         -- Kind icons for completion sources
 
         -- Regular completion sources
+        Path = "",
+        Buffer = "",
         Command = "",
         Spell = "",
+        Emoji = "󰱨",
         Calculation = "",
 
         -- AI code completion

@@ -55,8 +55,13 @@ return {
             providers = {
 
                 -- Blink cmp built-in providers
+                path = {
+                    kind = "Path",
+                },
+                buffer = {
+                    kind = "Buffer",
+                },
                 cmdline = {
-                    name = "Command Line",
                     kind = "Command",
                 },
 
@@ -93,7 +98,6 @@ return {
                     module = "blink.compat.source",
                     enabled = utils.firenvim_not_active,
                     kind = "TabNine",
-                    source_name = "TabNine",
                 },
                 calc = {
                     name = "calc",
@@ -187,7 +191,6 @@ return {
                         { "kind_icon" },
                         { "label", "label_description", gap = 1 },
                         { "kind" },
-                        { "source_name" },
                     },
 
                     -- Configure the components
@@ -200,17 +203,6 @@ return {
                                     "%s %s",
                                     vim.trim(ctx.label),
                                     vim.trim(ctx.label_detail)
-                                )
-                            end,
-                        },
-
-                        -- Replace all the underscores and dashes
-                        -- with spaces and title case the source name.
-                        source_name = {
-                            text = function(ctx)
-                                local source_name = ctx.source_name
-                                return utils.titlecase(
-                                    source_name:gsub("[_%-]", " ")
                                 )
                             end,
                         },
@@ -296,9 +288,6 @@ return {
                 -- so we need to map it both ways.
                 completion_item_kinds[provider.kind] = kind_index
 
-                -- Get the provider's source name
-                local source_name = provider.source_name
-
                 -- Save the original transform items function
                 local original_transform_items = provider.transform_items
 
@@ -318,9 +307,6 @@ return {
 
                         -- Set the item kind
                         item.kind = kind_index or item.kind
-
-                        -- Set the item's source name
-                        item.source_name = source_name or item.source_name
                     end
 
                     -- Return the list of items
@@ -330,7 +316,6 @@ return {
 
             -- Unset the kind and the source name to pass blink.cmp validation
             provider.kind = nil
-            provider.source_name = nil
         end
 
         -- Set up Supermaven for AI autocompletion
