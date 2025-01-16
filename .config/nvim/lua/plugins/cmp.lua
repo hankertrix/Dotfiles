@@ -79,6 +79,7 @@ return {
                 emoji = {
                     name = "Emoji",
                     module = "blink-emoji",
+                    score_offset = -3,
                     opts = { insert = true },
                     kind = "Emoji",
                 },
