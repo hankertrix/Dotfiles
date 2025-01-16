@@ -6,6 +6,15 @@ local M = {}
 -- Set the max line length to 80
 M.max_line_length = 80
 
+-- Set the theme
+M.theme = "bluloco"
+
+-- Set the light theme
+M.light_theme = "bluloco-light"
+
+-- Set the dark theme
+M.dark_theme = "bluloco-dark"
+
 -- The list of icons that I want to use
 M.icons = {
     kind = {

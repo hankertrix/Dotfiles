@@ -15,9 +15,13 @@ return {
         config = function()
             --
 
+            -- Get the shared configuration
+            local shared_configs = require("shared_configs")
+
             -- Get the colour scheme I want to use
-            local colour_scheme = utils.firenvim_not_active() and "bluloco"
-                or "bluloco-light"
+            local colour_scheme = utils.firenvim_not_active()
+                    and shared_configs.theme
+                or shared_configs.light_theme
 
             -- Sets the theme
             vim.cmd("colorscheme " .. colour_scheme)
