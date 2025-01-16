@@ -3,17 +3,8 @@
 -- Initialise the module
 local M = {}
 
--- The list of short names for the sources
-M.source_names = {
-    buffer = "Buffer",
-    nvim_lsp = "LSP",
-    luasnip = "LuaSnip",
-    nvim_lua = "Lua",
-    latex_symbols = "LaTeX",
-    cmp_tabnine = "TabNine",
-    nvim_lsp_signature_help = "LSP Signature Help",
-    cmdline_history = "Command Line History",
-}
+-- Set the max line length to 80
+M.max_line_length = 80
 
 -- The list of icons that I want to use
 M.icons = {
@@ -143,9 +134,6 @@ M.disabled_file_types = {
     -- Neogit popup
     "NeogitPopup",
 }
-
--- Set the max line length to 80
-M.max_line_length = 80
 
 -- Returns the module
 return M

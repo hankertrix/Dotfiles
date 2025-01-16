@@ -13,6 +13,9 @@ Theme -
 Statusline -
 [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 
+Auto theme switcher -
+[auto-dark-mode.nvim](https://github.com/f-person/auto-dark-mode.nvim)
+
 ### Integrations
 
 Git integration -
