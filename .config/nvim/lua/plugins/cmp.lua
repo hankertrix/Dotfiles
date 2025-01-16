@@ -26,6 +26,7 @@ return {
 
         -- AI autocompletion
         { "supermaven-inc/supermaven-nvim" },
+        { "Exafunction/codeium.nvim" },
         {
             "tzachar/cmp-tabnine",
             build = "./install.sh",
@@ -87,6 +88,12 @@ return {
                 --
                 -- Note that the names must be the same
                 -- as the names used for nvim-cmp.
+                calc = {
+                    name = "calc",
+                    module = "blink.compat.source",
+                    score_offset = -10,
+                    kind = "Calculation",
+                },
                 supermaven = {
                     name = "supermaven",
                     module = "blink.compat.source",
@@ -100,11 +107,11 @@ return {
                     enabled = utils.firenvim_not_active,
                     kind = "TabNine",
                 },
-                calc = {
-                    name = "calc",
+                codeium = {
+                    name = "codeium",
                     module = "blink.compat.source",
-                    score_offset = -10,
-                    kind = "Calculation",
+                    enabled = utils.firenvim_not_active,
+                    kind = "Codeium",
                 },
             },
         },
@@ -325,6 +332,9 @@ return {
             disable_inline_completion = true,
             disable_keymaps = true,
         })
+
+        -- Set up Codeium for AI autocompletion
+        require("codeium").setup({})
 
         -- Set up blink.cmp
         require("blink.cmp").setup(opts)
