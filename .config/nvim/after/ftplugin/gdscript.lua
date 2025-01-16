@@ -9,6 +9,9 @@ local command = vim.lsp.rpc.connect("127.0.0.1", port)
 -- The pipe to communicate with the Godot LSP
 local pipe = "/tmp/godot.pipe"
 
+-- Set the theme to the dark theme
+vim.cmd("colorscheme " .. require("shared_configs").dark_theme)
+
 -- Start the lsp
 vim.lsp.start({
     name = "Godot",
