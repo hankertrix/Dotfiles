@@ -56,6 +56,7 @@ M.icons = {
         TypeAlias = "󱄀",
         TypeParameter = "",
         Unit = "",
+        Unknown = "",
         Value = "󰎠",
         Variable = "󰫧",
         Collapsed = "",
