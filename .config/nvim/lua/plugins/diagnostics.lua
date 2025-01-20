@@ -46,4 +46,30 @@ return {
             desc = "Display all references in a Trouble window",
         },
     },
+
+    -- Additional package specifications for
+    -- the diagnostics plugin
+    specs = {
+        "folke/snacks.nvim",
+
+        -- Add the key bind to open selected items
+        -- in the diagnostics plugin
+        opts = function(_, opts)
+            return vim.tbl_deep_extend("force", opts or {}, {
+                picker = {
+                    actions = require("trouble.sources.snacks").actions,
+                    win = {
+                        input = {
+                            keys = {
+                                ["<C-t>"] = {
+                                    "trouble_open",
+                                    mode = { "n", "i" },
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+        end,
+    },
 }

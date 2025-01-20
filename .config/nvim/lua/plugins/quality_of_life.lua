@@ -64,6 +64,35 @@ return {
             },
         },
 
+        -- The configuration function
+        config = function(_, opts)
+            --
+
+            -- Get the icons
+            local icons = require("shared_configs").icons
+
+            -- The diagnostic icons
+            local diagnostic_icons = {
+                Error = icons.diagnostics.error,
+                Warn = icons.diagnostics.warn,
+                Hint = icons.diagnostics.hint,
+                Info = icons.diagnostics.info,
+            }
+
+            -- Merge the given options with the picker configuration
+            local options = vim.tbl_deep_extend("error", opts or {}, {
+                picker = {
+                    icons = {
+                        diagnostics = diagnostic_icons,
+                        kinds = icons.kind,
+                    },
+                },
+            })
+
+            -- Set up the snacks plugin with the options
+            require("snacks").setup(options)
+        end,
+
         -- Key binds
         keys = {
             {
@@ -71,6 +100,42 @@ return {
                 function() Snacks.bufdelete() end,
                 mode = "n",
                 desc = "Close the current buffer",
+            },
+            {
+                "<F1>",
+                function() Snacks.picker.help() end,
+                mode = { "n", "x", "i" },
+                desc = "Search through the help text using the fuzzy finder",
+            },
+            {
+                "<Leader>pf",
+                function() Snacks.picker.files() end,
+                mode = "n",
+                desc = "Find files using the fuzzy finder",
+            },
+            {
+                "<Leader>ps",
+                function() Snacks.picker.grep() end,
+                mode = "n",
+                desc = "Search within files for a string",
+            },
+            {
+                "<Leader>pb",
+                function() Snacks.picker.buffers() end,
+                mode = "n",
+                desc = "Search for open buffers using the fuzzy finder",
+            },
+            {
+                "<Leader>pr",
+                function() Snacks.picker.registers() end,
+                mode = "n",
+                desc = "Search through Vim registers",
+            },
+            {
+                "<Leader>pk",
+                function() Snacks.picker.pickers() end,
+                mode = "n",
+                desc = "Search through the list of pickers",
             },
         },
     },
