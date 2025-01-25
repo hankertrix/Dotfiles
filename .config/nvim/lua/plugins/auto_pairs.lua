@@ -5,6 +5,6 @@
 return {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    cond = function() vim.list_contains({ "typr" }, vim.bo.filetype) end,
+    cond = function() return not vim.list_contains({ "typr" }, vim.bo.filetype) end,
     opts = {},
 }
