@@ -99,13 +99,6 @@ Marking files for quick access -
 File explorer -
 [yazi.nvim](https://github.com/mikavilpas/yazi.nvim)
 
-Fuzzy finder -
-[fzf-lua](https://github.com/ibhagwan/fzf-lua)
-
-Fuzzy finder extensions:
-
-- Open with Trouble ([trouble.nvim](https://github.com/folke/trouble.nvim))
-
 ### Helpers
 
 Quality of life plugin - [snacks.nvim](https://github.com/folke/snacks.nvim)
@@ -115,6 +108,7 @@ Quality of life plugin - [snacks.nvim](https://github.com/folke/snacks.nvim)
 - Nicer looking status column ([Snacks.statuscolumn](https://github.com/folke/snacks.nvim/blob/main/docs/statuscolumn.md))
 - Highlighting indentation ([Snacks.indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md))
 - Properly closing buffers ([Snacks.bufdelete](https://github.com/folke/snacks.nvim/blob/main/docs/bufdelete.md))
+- Fuzzy finder ([Snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md))
 
 Helper for key bindings -
 [which-key.nvim](https://github.com/folke/which-key.nvim)
