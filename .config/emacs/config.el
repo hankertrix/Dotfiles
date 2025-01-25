@@ -986,16 +986,21 @@
 
 (use-package citeproc)
 
-(setq org-confirm-babel-evaluate nil)
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (python . t)))
-
 (use-package ox-ipynb
   :ensure (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
+
+(use-package jupyter
+
+  ;; Load the Jupyter languages
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)
+     (jupyter . t))))
+
+(setq org-confirm-babel-evaluate nil)
 
 (use-package pdf-tools
 

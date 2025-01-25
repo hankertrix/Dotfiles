@@ -1436,25 +1436,29 @@ Citeproc is a program that produces formatted bibliographies and citations using
 ** Literate programming
 Literate programming is a way of programming that has code snippets embedded in text that explain the code, and looks something like this configuration file.
 
-*** Stop org mode from asking me to confirm evaluation
-#+begin_src emacs-lisp
-(setq org-confirm-babel-evaluate nil)
-#+end_src
-
-*** Allowing org babel to load other programming languages
-This just allows org babel to execute the code in code blocks that is written in the programming languages specified below.
-#+begin_src emacs-lisp
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (python . t)))
-#+end_src
-
-*** Installing ox-ipynb to support exporting org files to Jupyter notebooks
+*** Installing ~ox-ipynb~ to support exporting org files to Jupyter notebooks
 #+begin_src emacs-lisp
 (use-package ox-ipynb
   :ensure (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
   :init (require 'ox-ipynb))
+#+end_src
+
+*** Installing ~emacs-jupyter~ to work with Jupyter kernels inside org mode
+#+begin_src emacs-lisp
+(use-package jupyter
+
+  ;; Load the Jupyter languages
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)
+     (jupyter . t))))
+#+end_src
+
+*** Stop org mode from asking me to confirm evaluation
+#+begin_src emacs-lisp
+(setq org-confirm-babel-evaluate nil)
 #+end_src
 
 
