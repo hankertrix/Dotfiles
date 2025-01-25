@@ -43,6 +43,9 @@ return {
             -- Git commits
             "gitcommit",
 
+            -- Regex
+            "regex",
+
             -- These parsers should always be installed
             "c",
             "lua",
