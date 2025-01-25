@@ -125,6 +125,8 @@ M.disabled_file_types = {
     "harpoon",
     "minifiles",
     "trouble",
+    "spectre_panel",
+    "typr",
     "Trouble",
     "NvimTree",
     "TelescopePrompt",
