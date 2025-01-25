@@ -5,6 +5,7 @@
 return {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    cond = function() return not vim.list_contains({ "typr" }, vim.bo.filetype) end,
-    opts = {},
+    opts = {
+        disable_filetype = { "TelescopePrompt", "spectre_panel", "typr" },
+    },
 }
