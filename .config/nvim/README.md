@@ -106,9 +106,10 @@ Quality of life plugin - [snacks.nvim](https://github.com/folke/snacks.nvim)
 - Dealing with big files ([Snacks.bigfile](https://github.com/folke/snacks.nvim/blob/main/docs/bigfile.md))
 - Opening files as quick as possible ([Snacks.quickfile](https://github.com/folke/snacks.nvim/blob/main/docs/quickfile.md))
 - Nicer looking status column ([Snacks.statuscolumn](https://github.com/folke/snacks.nvim/blob/main/docs/statuscolumn.md))
+- Nicer looking input prompt ([Snacks.input](https://github.com/folke/snacks.nvim/blob/main/docs/input.md))
+- Fuzzy finder ([Snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md))
 - Highlighting indentation ([Snacks.indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md))
 - Properly closing buffers ([Snacks.bufdelete](https://github.com/folke/snacks.nvim/blob/main/docs/bufdelete.md))
-- Fuzzy finder ([Snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md))
 
 Helper for key bindings -
 [which-key.nvim](https://github.com/folke/which-key.nvim)

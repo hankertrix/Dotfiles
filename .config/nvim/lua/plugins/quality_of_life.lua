@@ -56,6 +56,8 @@ return {
             bigfile = { enabled = true },
             quickfile = { enabled = true },
             statuscolumn = { enabled = true },
+            input = { enabled = true },
+            picker = { enabled = true },
             indent = {
                 enabled = true,
                 scope = {
