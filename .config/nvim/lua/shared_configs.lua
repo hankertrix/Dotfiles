@@ -127,6 +127,7 @@ M.disabled_file_types = {
     "trouble",
     "spectre_panel",
     "typr",
+    "tybr",
     "Trouble",
     "NvimTree",
     "TelescopePrompt",
