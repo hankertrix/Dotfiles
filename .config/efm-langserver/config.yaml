@@ -31,7 +31,6 @@ tools:
       - "requirements.txt"
       - "ruff.toml"
 
-
   eslint_d: &eslint_d
     prefix: "eslint_d"
     lint-source: "efm/eslint_d"
