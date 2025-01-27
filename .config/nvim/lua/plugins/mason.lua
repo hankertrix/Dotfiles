@@ -17,8 +17,7 @@ local function setup()
         ensure_installed = {
 
             -- LSP servers
-            "lua_ls",           -- Lua LSP
-            "selene",           -- Lua linter
+            "lua_ls",           -- Lua
             "vtsls",            -- TypeScript and JavaScript
             "rust_analyzer",    -- Rust
             "clangd",           -- C/C++
