@@ -9,8 +9,8 @@ return {
         disable_filetype = {
             "TelescopePrompt",
             "spectre_panel",
+            "Tybr",
             "typr",
-            "tybr",
         },
     },
 }
