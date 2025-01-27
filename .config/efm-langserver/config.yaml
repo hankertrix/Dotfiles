@@ -4,6 +4,34 @@ root-markers:
 lint-debounce: 1s
 
 tools:
+  ruff: &ruff
+    prefix: "ruff"
+    lint-source: "efm/ruff"
+    lint-command: >
+      ruff check --stdin-filename "${INPUT}"
+    lint-stdin: true
+    lint-formats:
+      - "%.%#:%l:%c: %t%n %m"
+    format-command: >
+      ruff format --no-cache --stdin-filename "${INPUT}"
+    format-stdin: true
+    root-markers:
+      - "pyproject.toml"
+      - "setup.py"
+      - "requirements.txt"
+      - "ruff.toml"
+
+  ruff-sort: &ruff-sort
+    format-command: >
+      ruff check --select I --fix --stdin-filename "${INPUT}"
+    format-stdin: true
+    root-markers:
+      - "pyproject.toml"
+      - "setup.py"
+      - "requirements.txt"
+      - "ruff.toml"
+
+
   eslint_d: &eslint_d
     prefix: "eslint_d"
     lint-source: "efm/eslint_d"
@@ -103,6 +131,10 @@ tools:
       - "%f:%l:%c %m"
 
 languages:
+  python:
+    - <<: *ruff
+    - <<: *ruff-sort
+
   html:
     - <<: *prettierd
 
