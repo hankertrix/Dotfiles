@@ -302,10 +302,12 @@
   (hanker/leader-keys
     "o" '(:ignore t :wk "Org mode keybinds")
     "oe" '(org-export-dispatch :wk "Org export dispatch")
-    "ob" '(org-babel-tangle :wk "Org babel tangle")
     "oi" '(org-toggle-item :wk "Org toggle item")
     "oa" '(org-agenda :wk "Org agenda")
     "ot" '(org-todo-list :wk "Org todo")
+    "ob" '(:ignore t :wk "Org babel keybinds")
+    "obt" '(org-babel-tangle :wk "Org babel tangle")
+    "obe" '(org-babel-execute-buffer :wk "Org babel execute buffer")
     )
 
   ;; Key binds in lsp mode
@@ -901,12 +903,12 @@
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-history)
   (add-to-list 'completion-at-point-functions #'cape-tex)
-  ;; (add-to-list 'completion-at-point-functions #'cape-sgml)
-  ;; (add-to-list 'completion-at-point-functions #'cape-rfc1345)
-  ;; (add-to-list 'completion-at-point-functions #'cape-abbrev)
-  ;; (add-to-list 'completion-at-point-functions #'cape-symbol)
-  ;; (add-to-list 'completion-at-point-functions #'cape-line)
-  )
+  (add-to-list 'completion-at-point-functions #'cape-sgml)
+  (add-to-list 'completion-at-point-functions #'cape-rfc1345)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev)
+  (add-to-list 'completion-at-point-functions #'cape-symbol)
+  (add-to-list 'completion-at-point-functions #'cape-line)
+)
 
 (use-package helpful
 
@@ -1001,6 +1003,8 @@
      (jupyter . t))))
 
 (setq org-confirm-babel-evaluate nil)
+
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 
 (use-package pdf-tools
 
