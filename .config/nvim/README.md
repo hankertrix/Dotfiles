@@ -131,17 +131,34 @@ VimBeGood game -
 Hardtime plugin -
 [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)
 
-### Font
+## Font
 
 [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
 
 <!-- [Maple Mono NF CN](https://github.com/subframe7536/maple-font) -->
 
-### External programs
+## External programs
+
+### Language servers
+
+The language servers below are shared with my Emacs configuration,
+so they are installed globally on my system instead of through Mason.
+
+- [efm-langserver](https://aur.archlinux.org/packages/efm-langserver)
+- [ltex-plus](https://aur.archlinux.org/packages/ltex-ls-plus-bin)
+- [basedpyright](https://aur.archlinux.org/packages/basedpyright)
+
+### Formatters
+
+The formatters below are also shared with my Emacs configuration,
+so they are installed globally on my system instead of through Mason.
+
+- [ruff](https://github.com/astral-sh/ruff)
+
+### Miscellaneous
 
 - [ripgrep (for searching within files)](https://github.com/BurntSushi/ripgrep)
 - [fd (for finding files)](https://github.com/sharkdp/fd)
 - [fzf (for fuzzy finding)](https://github.com/junegunn/fzf)
 - [yazi (terminal file manager)](https://github.com/sxyazi/yazi)
-- [python (for installing `pylsp`)](https://www.python.org/)
 - [npm (for installing JavaScript ecosystem tools, like `prettierd`, `tsserver`, etc.)](https://www.npmjs.com/)
