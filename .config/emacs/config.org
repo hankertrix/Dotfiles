@@ -51,15 +51,17 @@
   - [[#citeproc][Citeproc]]
   - [[#literate-programming][Literate programming]]
 - [[#working-with-pdfs][Working with PDFs]]
-- [[#latex-mode][LaTeX mode]]
+- [[#latex][LaTeX]]
   - [[#auctex][AUCTeX]]
   - [[#evil-tex][Evil TeX]]
   - [[#using-pdf-tools-to-open-compiled-latex-pdf-files][Using PDF-tools to open compiled LaTeX PDF files]]
 - [[#building-better-vim-habits][Building better Vim habits]]
   - [[#hardtimeel][Hardtime.el]]
 - [[#external-programs][External programs]]
-  - [[#miscellaneous-1][Miscellaneous]]
+  - [[#language-servers][Language servers]]
+  - [[#formatters][Formatters]]
   - [[#tex-and-latex][TeX and LaTeX]]
+  - [[#miscellaneous-1][Miscellaneous]]
 
 * Important Programs
 
@@ -298,6 +300,7 @@ Evil anzu highlights search terms. This package is required for doom modeline to
   (general-define-key
    :states 'normal
    :keymaps 'dired-mode-map
+   :major-modes 'dired-mode
    "_" '(counsel-find-file :wk "Create a file")
    )
 
@@ -311,18 +314,19 @@ Evil anzu highlights search terms. This package is required for doom modeline to
   (general-define-key
    :states 'normal
    :keymaps 'bibtex-mode-map
+   :major-modes 'bibtex-mode
    "SPC f" '(bibtex-reformat :wk "Formats the BibTeX buffer"))
 
   ;; Key binds for normal mode in LSP mode
   (general-define-key
    :states 'normal
    :keymaps 'lsp-mode-map
-   "K" '(lsp-describe-thing-at-point :wk "Describe the currently hovered item")
-   "gd" '(lsp-find-definition :wk "Go to definition")
-   "gD" '(lsp-find-declaration :wk "Go to declaration")
-   "gi" '(lsp-find-implementation :wk "List all implementations")
+   "K" '(lsp-ui-doc-glance :wk "Describe the currently hovered item")
+   "gd" '(lsp-ui-peek-find-definitions :wk "Go to definition")
+   "gD" '(lsp-find-declaration :wk "Go to decla~ration")
+   "gi" '(lsp-ui-peek-find-implementation :wk "List all implementations")
    "go" '(lsp-find-type-definition :wk "Go to type definition")
-   "gr" '(lsp-find-references :wk "List all references")
+   "gr" '(lsp-ui-peek-find-references :wk "List all references")
    "gs" '(lsp-signature-activate :wk "Show signature information")
    "<f2>" '(lsp-rename :wk "Renames all references to the symbol under the cursor")
    "<f3>" '(lsp-format-buffer :wk "Formats the buffer using the LSP")
@@ -891,7 +895,6 @@ Use dired-preview to preview files in dired.
 LSP mode allows Emacs to use various language servers to provide auto completions and show errors, like an IDE.
 #+begin_src emacs-lisp
 
-
 ;; Install LSP mode
 (use-package lsp-mode
 
@@ -941,15 +944,21 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   ;; LSP completion mode is started
   (lsp-completion-mode . lsp-completion-mode-setup)
 
-  ;; Disable LSP mode integration with completion at point functions in text mode
-  ;; This is to get autocompletions with corfu and cape working again in text mode
+  ;; Disable LSP mode integration with completion at point functions in text mode.
+  ;; This is to get autocompletions with corfu and cape working again in text mode.
   (text-mode . (lambda () (setq-local lsp-completion-enable nil)))
 
   ;; Configure LSP mode
   :config
 
   ;; Enable which key integration for LSP mode
-  (lsp-enable-which-key-integration t))
+  (lsp-enable-which-key-integration t)
+
+  ;; Register the efm language server
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "efm-langserver")
+                    :activation-fn (lsp-activate-on "python")
+                    :server-id 'efm)))
 #+end_src
 
 
@@ -963,8 +972,8 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   ;; Customise the UI
   :custom
 
-  ;; Set the position of the documentation to be at the bottom of the screen
-  (lsp-ui-doc-position 'bottom))
+  ;; Set the position of the documentation to be at the cursor position
+  (lsp-ui-doc-position 'at-point))
 #+end_src
 
 
@@ -985,32 +994,49 @@ Emacs doesn't have built-in support for Lua, Haskell, and Rust, so let's add sup
 
 *** Language Servers
 
-**** Ltex
-Ltex is a language server that checks the file for writing errors in various languages using LanguageTool. It works with Markdown, org, and various TeX files (e.g. LaTeX, BibTeX, etc.).
+**** LTEX+
+LTEX+ is a language server that checks the file for writing errors in various languages using LanguageTool. It works with Markdown, org, and various TeX files (e.g. LaTeX, BibTeX, etc.).
 #+begin_src emacs-lisp
-(use-package lsp-ltex
+(use-package lsp-ltex-plus
 
-  ;; Enable ltex in text mode
+  ;; Pull the plugin from GitHub
+  :ensure (lsp-ltex-plus :host github :repo "emacs-languagetool/lsp-ltex-plus")
+
+  ;; Enable LTEX+ in text mode
   :hook (text-mode . (lambda ()
-                       (require 'lsp-ltex)
+                       (require 'lsp-ltex-plus)
                        (lsp-deferred)))
 
-  ;; Initialise ltex
+  ;; Initialise LTEX+
   :init
 
-  ;; Set the language for ltex to British English
-  (setq lsp-ltex-language "en-GB")
+  ;; Set the language for LTEX+ to British English
+  (setq lsp-ltex-plus-language "en-GB")
 
   ;; Disable the oxford spelling rule
-  (setq lsp-ltex-disabled-rules '(:en-GB ["OXFORD_SPELLING_Z_NOT_S"]))
+  (setq lsp-ltex-plus-disabled-rules '(:en-GB ["OXFORD_SPELLING_Z_NOT_S"]))
 
-  ;; Set the wanted ltex version to 16.0.0
-  (setq lsp-ltex-version "16.0.0"))
+  ;; Set the wanted LTEX+ version to the latest version
+  (setq lsp-ltex-plus-version "18.4.0"))
+#+end_src
+
+**** Basedpyright
+Basedpyright is a fork of Pyright, a Python language server by Microsoft, with various improvements.
+#+begin_src emacs-lisp
+(use-package lsp-pyright
+
+  ;; Customise lsp-pyright to use basedpyright
+  :custom (lsp-pyright-langserver-command "basedpyright")
+
+  ;; Activate lsp-pyright in Python mode
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp-deferred))))
 #+end_src
 
 
 ** Flycheck
-Flycheck is better alternative to the built-in Emacs Flymake with support for a lot of programming languages out of the box. =luacheck= and =python-pylint= needs to be installed for Flycheck to support Lua and Python respectively.
+Flycheck is better alternative to the built-in Emacs Flymake with support for a lot of programming languages out of the box. ~luacheck~ and ~python-pylint~ needs to be installed for Flycheck to support Lua and Python respectively.
 #+begin_src emacs-lisp
 (use-package flycheck
   :ensure t
@@ -1334,7 +1360,7 @@ Org-bullets gives us attractive bullets rather than asterisks.
 
 
 ** Disabling electric indent
-Org mode source code blocks have some really weird and annoying default indentation behaviour. It is likely due to =electric-indent-mode=, which is turned on by default in Emacs. So I'm going to turn it off.
+Org mode source code blocks have some really weird and annoying default indentation behaviour. It is likely due to ~electric-indent-mode~, which is turned on by default in Emacs. So I'm going to turn it off.
 #+begin_src emacs-lisp
 (electric-indent-mode -1)
 #+end_src
@@ -1347,7 +1373,7 @@ Org mode source code blocks have some really weird and annoying default indentat
 
 
 ** Enabling Org Tempo
-Org-tempo provides shortcuts for various expansions in Org mode, such as "<s" to create a source code block. Below are shortcuts for =org-tempo=.
+Org-tempo provides shortcuts for various expansions in Org mode, such as "<s" to create a source code block. Below are shortcuts for ~org-tempo~.
 
 | Typing the below + TAB | Expands to ...                          |
 |------------------------+-----------------------------------------|
@@ -1407,7 +1433,7 @@ Evil org provides a set of evil key bindings that work with org mode.
 
 
 ** Turn on LaTeX syntax highlighting in org mode
-This sets the variable =org-highlight-latex-and-related= to "native", which will highlight LaTeX syntax like it is a TeX file. The "latex" setting will just highlight all LaTeX fragments in a different colour. So a LaTeX block will just be one colour and all the entities are not highlighted. For the other options, the Emacs help (=C-h v org-highlight-latex-and-related=) should be sufficient to understand what they do.
+This sets the variable ~org-highlight-latex-and-related~ to "native", which will highlight LaTeX syntax like it is a TeX file. The "latex" setting will just highlight all LaTeX fragments in a different colour. So a LaTeX block will just be one colour and all the entities are not highlighted. For the other options, the Emacs help (~C-h v org-highlight-latex-and-related~) should be sufficient to understand what they do.
 #+begin_src emacs-lisp
 (setq org-highlight-latex-and-related '(native))
 #+end_src
@@ -1484,7 +1510,7 @@ PDF-tools is a great plugin that makes working with PDFs very easy. A lot of tim
 
 
 
-* LaTeX mode
+* LaTeX
 
 ** AUCTeX
 AUCTeX is an Emacs package for writing LaTeX documents.
@@ -1563,8 +1589,13 @@ Hardtime.el is a package that forces you to stop repeating the same commands to 
 * External programs
 Below is a list of external programs that are being used with my Emacs configuration.
 
-** Miscellaneous
-- [[https://github.com/BurntSushi/ripgrep][rg]]
+** Language servers
+- [[https://aur.archlinux.org/packages/efm-langserver][efm-langserver]]
+- [[https://aur.archlinux.org/packages/ltex-ls-plus-bin][ltex-plus]]
+- [[https://aur.archlinux.org/packages/basedpyright][basedpyright]]
+
+** Formatters
+- [[https://github.com/astral-sh/ruff][Ruff]]
 
 ** TeX and LaTeX
 - [[https://tug.org/texlive][texlive-basic]]
@@ -1578,3 +1609,7 @@ Below is a list of external programs that are being used with my Emacs configura
 - [[https://tug.org/texlive][texlive-mathscience]]
 - [[https://tug.org/texlive][texlive-pictures]]
 - [[https://tug.org/texlive][texlive-plaingeneric]]
+
+** Miscellaneous
+- [[https://github.com/BurntSushi/ripgrep][ripgrep (for searching within files)]]
+- [[https://jupyter.org/][Jupyter Notebook (for literate programming)]]

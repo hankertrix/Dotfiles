@@ -189,6 +189,7 @@
   (general-define-key
    :states 'normal
    :keymaps 'dired-mode-map
+   :major-modes 'dired-mode
    "_" '(counsel-find-file :wk "Create a file")
    )
 
@@ -202,18 +203,19 @@
   (general-define-key
    :states 'normal
    :keymaps 'bibtex-mode-map
+   :major-modes 'bibtex-mode
    "SPC f" '(bibtex-reformat :wk "Formats the BibTeX buffer"))
 
   ;; Key binds for normal mode in LSP mode
   (general-define-key
    :states 'normal
    :keymaps 'lsp-mode-map
-   "K" '(lsp-describe-thing-at-point :wk "Describe the currently hovered item")
-   "gd" '(lsp-find-definition :wk "Go to definition")
-   "gD" '(lsp-find-declaration :wk "Go to declaration")
-   "gi" '(lsp-find-implementation :wk "List all implementations")
+   "K" '(lsp-ui-doc-glance :wk "Describe the currently hovered item")
+   "gd" '(lsp-ui-peek-find-definitions :wk "Go to definition")
+   "gD" '(lsp-find-declaration :wk "Go to decla~ration")
+   "gi" '(lsp-ui-peek-find-implementation :wk "List all implementations")
    "go" '(lsp-find-type-definition :wk "Go to type definition")
-   "gr" '(lsp-find-references :wk "List all references")
+   "gr" '(lsp-ui-peek-find-references :wk "List all references")
    "gs" '(lsp-signature-activate :wk "Show signature information")
    "<f2>" '(lsp-rename :wk "Renames all references to the symbol under the cursor")
    "<f3>" '(lsp-format-buffer :wk "Formats the buffer using the LSP")
@@ -636,15 +638,21 @@
   ;; LSP completion mode is started
   (lsp-completion-mode . lsp-completion-mode-setup)
 
-  ;; Disable LSP mode integration with completion at point functions in text mode
-  ;; This is to get autocompletions with corfu and cape working again in text mode
+  ;; Disable LSP mode integration with completion at point functions in text mode.
+  ;; This is to get autocompletions with corfu and cape working again in text mode.
   (text-mode . (lambda () (setq-local lsp-completion-enable nil)))
 
   ;; Configure LSP mode
   :config
 
   ;; Enable which key integration for LSP mode
-  (lsp-enable-which-key-integration t))
+  (lsp-enable-which-key-integration t)
+
+  ;; Register the efm language server
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "efm-langserver")
+                    :activation-fn (lsp-activate-on "python")
+                    :server-id 'efm)))
 
 (use-package lsp-ui
 
@@ -654,8 +662,8 @@
   ;; Customise the UI
   :custom
 
-  ;; Set the position of the documentation to be at the bottom of the screen
-  (lsp-ui-doc-position 'bottom))
+  ;; Set the position of the documentation to be at the cursor position
+  (lsp-ui-doc-position 'at-point))
 
 (use-package lua-mode)
 (use-package haskell-mode)
@@ -667,24 +675,43 @@
   ;; Enable the lsp when in rust mode
   :hook (rust-mode . #'lsp-deferred))
 
-(use-package lsp-ltex
+(use-package lsp-ltex-plus
 
-  ;; Enable ltex in text mode
+  ;; Pull the plugin from GitHub
+  :ensure (lsp-ltex-plus :host github :repo "emacs-languagetool/lsp-ltex-plus")
+
+  ;; Enable LTEX+ in text mode
   :hook (text-mode . (lambda ()
-                       (require 'lsp-ltex)
+                       (require 'lsp-ltex-plus)
                        (lsp-deferred)))
 
-  ;; Initialise ltex
+  ;; Initialise LTEX+
   :init
 
-  ;; Set the language for ltex to British English
-  (setq lsp-ltex-language "en-GB")
+  ;; Set the language for LTEX+ to British English
+  (setq lsp-ltex-plus-language "en-GB")
 
   ;; Disable the oxford spelling rule
-  (setq lsp-ltex-disabled-rules '(:en-GB ["OXFORD_SPELLING_Z_NOT_S"]))
+  (setq lsp-ltex-plus-disabled-rules '(:en-GB ["OXFORD_SPELLING_Z_NOT_S"]))
 
-  ;; Set the wanted ltex version to 16.0.0
-  (setq lsp-ltex-version "16.0.0"))
+  ;; Set the wanted LTEX+ version to the latest version
+  (setq lsp-ltex-plus-version "18.4.0"))
+
+(use-package lsp-pyright
+
+  ;; Customise lsp-pyright to use basedpyright
+  :custom (lsp-pyright-langserver-command "basedpyright")
+
+  ;; Activate lsp-pyright in Python mode
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp-deferred))))
+
+  ;; ;; Initialise lsp-pyright
+  ;; :init
+
+  ;; ;; Disable organising imports as ruff already does that
+  ;; (setq lsp-pyright-disable-organize-imports t))
 
 (use-package flycheck
   :ensure t
