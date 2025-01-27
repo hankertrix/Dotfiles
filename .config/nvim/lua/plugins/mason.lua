@@ -17,8 +17,8 @@ local function setup()
         ensure_installed = {
 
             -- LSP servers
-            "lua_ls",           -- Lua
-            "pylsp",            -- Python
+            "lua_ls",           -- Lua LSP
+            "selene",           -- Lua linter
             "vtsls",            -- TypeScript and JavaScript
             "rust_analyzer",    -- Rust
             "clangd",           -- C/C++
@@ -27,11 +27,6 @@ local function setup()
             "jsonls",           -- JSON
             "taplo",            -- TOML
             "yamlls",           -- YAML
-            "ltex",             -- English checker
-
-            -- General purpose language server
-            -- for formatters and linters
-            "efm",
 
             -- Formatters
             "stylua",           -- Lua

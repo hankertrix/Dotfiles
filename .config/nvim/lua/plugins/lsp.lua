@@ -367,29 +367,6 @@ local function setup()
                 })
             end,
 
-            -- Configure pylsp
-            pylsp = function()
-                local max_line_length = shared_configs.max_line_length
-                lspconfig.pylsp.setup({
-                    settings = {
-                        pylsp = {
-                            plugins = {
-
-                                -- Configure the pycodestyle plugin
-                                pycodestyle = {
-                                    maxLineLength = max_line_length,
-                                },
-
-                                -- Configure the black plugin
-                                black = {
-                                    line_length = max_line_length,
-                                },
-                            },
-                        },
-                    },
-                })
-            end,
-
             -- Configure vstsls
             vtsls = function()
                 lspconfig.vtsls.setup({
@@ -413,27 +390,39 @@ local function setup()
                     end,
                 })
             end,
+        },
+    })
 
-            -- Configure ltex LSP
-            ltex = function()
-                lspconfig.ltex.setup({
-                    settings = {
-                        ltex = {
-                            language = "en-GB",
-                        },
-                    },
-                })
-            end,
+    -- Set up language servers not installed by Mason
 
-            -- Configure efm-langserver
-            efm = function()
-                lspconfig.efm.setup({
-                    init_options = {
-                        documentFormatting = true,
-                        documentRangeFormatting = true,
-                    },
-                })
-            end,
+    -- Set up efm-langserver
+    lspconfig.efm.setup({
+
+        -- Enable formatting
+        init_options = {
+            documentFormatting = true,
+            documentRangeFormatting = true,
+        },
+    })
+
+    -- Set up LTEX+ LSP
+    lspconfig.ltex_plus.setup({
+        settings = {
+            ltex = {
+                language = "en-GB",
+            },
+        },
+    })
+
+    -- Set up basedpyright
+    lspconfig.basedpyright.setup({
+        settings = {
+            basedpyright = {
+
+                -- Disable organising imports as
+                -- Ruff already does that
+                disableOrganizeImports = true,
+            },
         },
     })
 
