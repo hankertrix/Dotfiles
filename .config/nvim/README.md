@@ -148,12 +148,12 @@ so they are installed globally on my system instead of through Mason.
 - [ltex-plus](https://aur.archlinux.org/packages/ltex-ls-plus-bin)
 - [basedpyright](https://aur.archlinux.org/packages/basedpyright)
 
-### Formatters
+### Formatters and linters
 
-The formatters below are also shared with my Emacs configuration,
+The formatters and linters below are also shared with my Emacs configuration,
 so they are installed globally on my system instead of through Mason.
 
-- [ruff](https://github.com/astral-sh/ruff)
+- [Ruff](https://github.com/astral-sh/ruff)
 
 ### Miscellaneous
 
