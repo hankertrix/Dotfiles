@@ -572,8 +572,13 @@
   ;; Customise nerd icons
   :custom
 
-  ;; Set the font to the Cascadia Code nerd font
-  (nerd-icons-font-family "CaskaydiaCove NFM"))
+  ;; Set the font to Cascadia Code nerd font
+  (nerd-icons-font-family "CaskaydiaCove NFM")
+
+  ;; Set the font to Maple Mono NF CN
+  ;; (nerd-icons-font-family "Maple Mono NF CN")
+
+  )
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
@@ -651,6 +656,9 @@
   ;; Register the efm language server
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection "efm-langserver")
+
+                    ;; So far, only Ruff is being used,
+                    ;; so only activate the server in Python mode
                     :activation-fn (lsp-activate-on "python")
                     :server-id 'efm)))
 
@@ -705,13 +713,10 @@
   ;; Activate lsp-pyright in Python mode
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
-                         (lsp-deferred))))
+                         (lsp-deferred)))
 
-  ;; ;; Initialise lsp-pyright
-  ;; :init
-
-  ;; ;; Disable organising imports as ruff already does that
-  ;; (setq lsp-pyright-disable-organize-imports t))
+  ;; Disable organising imports for lsp-pyright
+  :init (setq lsp-pyright-disable-organize-imports t))
 
 (use-package flycheck
   :ensure t
@@ -864,7 +869,7 @@
   ;; Load kind icon after corfu and nerd icons
   :after (corfu nerd-icons)
 
-  ;; Customise kind icon
+  ;; Customise corfu
   :custom
 
   ;; Don't use SVG based icons from kind icons
@@ -873,42 +878,44 @@
   ;; Use nerd font icons instead
   (kind-icon-mapping
    `(
-     (array, (nerd-icons-codicon "nf-cod-symbol_array") :face font-lock-type-face)
-     (boolean, (nerd-icons-codicon "nf-cod-symbol_boolean") :face font-lock-builtin-face)
-     (class, (nerd-icons-codicon "nf-cod-symbol_class") :face font-lock-type-face)
-     (color, (nerd-icons-codicon "nf-cod-symbol_color") :face success)
-     (command, (nerd-icons-codicon "nf-cod-terminal") :face default)
-     (constant, (nerd-icons-codicon "nf-cod-symbol_constant") :face font-lock-constant-face)
-     (constructor, (nerd-icons-codicon "nf-cod-triangle_right") :face font-lock-function-name-face)
-     (enummember, (nerd-icons-codicon "nf-cod-symbol_enum_member") :face font-lock-builtin-face)
-     (enum-member, (nerd-icons-codicon "nf-cod-symbol_enum_member") :face font-lock-builtin-face)
-     (enum, (nerd-icons-codicon "nf-cod-symbol_enum") :face font-lock-builtin-face)
-     (event, (nerd-icons-codicon "nf-cod-symbol_event") :face font-lock-warning-face)
-     (field, (nerd-icons-codicon "nf-cod-symbol_field") :face font-lock-variable-name-face)
-     (file, (nerd-icons-codicon "nf-cod-symbol_file") :face font-lock-string-face)
-     (folder, (nerd-icons-codicon "nf-cod-folder") :face font-lock-doc-face)
-     (interface, (nerd-icons-codicon "nf-cod-symbol_interface") :face font-lock-type-face)
-     (keyword, (nerd-icons-codicon "nf-cod-symbol_keyword") :face font-lock-keyword-face)
-     (macro, (nerd-icons-codicon "nf-cod-symbol_misc") :face font-lock-keyword-face)
-     (magic, (nerd-icons-codicon "nf-cod-wand") :face font-lock-builtin-face)
-     (method, (nerd-icons-codicon "nf-cod-symbol_method") :face font-lock-function-name-face)
-     (function, (nerd-icons-codicon "nf-cod-symbol_method") :face font-lock-function-name-face)
-     (module, (nerd-icons-codicon "nf-cod-file_submodule") :face font-lock-preprocessor-face)
-     (numeric, (nerd-icons-codicon "nf-cod-symbol_numeric") :face font-lock-builtin-face)
+     (array, (nerd-icons-mdicon "nf-md-code_brackets") :face font-lock-type-face)
+     (boolean, (nerd-icons-faicon "nf-fa-toggle_off") :face font-lock-builtin-face)
+     (class, (nerd-icons-mdicon "nf-md-shape") :face font-lock-type-face)
+     (color, (nerd-icons-mdicon "nf-md-palette") :face success)
+     (constant, (nerd-icons-mdicon "nf-md-pi") :face font-lock-constant-face)
+     (constructor, (nerd-icons-faicon "nf-fae-tools") :face font-lock-function-name-face)
+     (enum, (nerd-icons-faicon "nf-fa-arrow_down_a_z") :face font-lock-builtin-face)
+     (enummember, (nerd-icons-faicon "nf-fa-arrow_down_a_z") :face font-lock-builtin-face)
+     (enum-member, (nerd-icons-faicon "nf-fa-arrow_down_a_z") :face font-lock-builtin-face)
+     (event, (nerd-icons-faicon "nf-fa-bolt") :face font-lock-warning-face)
+     (field, (nerd-icons-mdicon "nf-md-tag_plus") :face font-lock-variable-name-face)
+     (file, (nerd-icons-mdicon "nf-md-file_document") :face font-lock-string-face)
+     (folder, (nerd-icons-mdicon "nf-md-folder") :face font-lock-doc-face)
+     (function, (nerd-icons-mdicon "nf-md-function") :face font-lock-function-name-face)
+     (interface, (nerd-icons-faicon "nf-fa-sitemap") :face font-lock-type-face)
+     (keyword, (nerd-icons-mdicon "nf-md-key_chain_variant") :face font-lock-keyword-face)
+     (macro, (nerd-icons-faicon "nf-fa-maxcdn") :face font-lock-keyword-face)
+     (magic, (nerd-icons-mdicon "nf-md-magic_staff") :face font-lock-builtin-face)
+     (method, (nerd-icons-octicon "nf-oct-package") :face font-lock-function-name-face)
+     (module, (nerd-icons-mdicon "nf-md-view_module_outline") :face font-lock-preprocessor-face)
+     (numeric, (nerd-icons-mdicon "nf-md-numeric") :face font-lock-builtin-face)
      (operator, (nerd-icons-codicon "nf-cod-symbol_operator") :face font-lock-comment-delimiter-face)
-     (param, (nerd-icons-codicon "nf-cod-symbol_parameter") :face default)
-     (property, (nerd-icons-codicon "nf-cod-symbol_property") :face font-lock-variable-name-face)
-     (reference, (nerd-icons-codicon "nf-cod-references") :face font-lock-variable-name-face)
-     (snippet, (nerd-icons-codicon "nf-cod-symbol_snippet") :face font-lock-string-face)
-     (string, (nerd-icons-codicon "nf-cod-symbol_string") :face font-lock-string-face)
-     (struct, (nerd-icons-codicon "nf-cod-symbol_structure") :face font-lock-variable-name-face)
-     (text, (nerd-icons-codicon "nf-cod-text_size") :face font-lock-doc-face)
-     (typeparameter, (nerd-icons-codicon "nf-cod-list_unordered") :face font-lock-type-face)
-     (type-parameter, (nerd-icons-codicon "nf-cod-list_unordered") :face font-lock-type-face)
-     (unit, (nerd-icons-codicon "nf-cod-symbol_ruler") :face font-lock-constant-face)
-     (value, (nerd-icons-codicon "nf-cod-symbol_field") :face font-lock-builtin-face)
-     (variable, (nerd-icons-codicon "nf-cod-symbol_variable") :face font-lock-variable-name-face)
-     (t, (nerd-icons-codicon "nf-cod-code") :face font-lock-warning-face)))
+     (param, (nerd-icons-mdicon "nf-md-format_title") :face default)
+     (property, (nerd-icons-faicon "nf-fa-wrench") :face font-lock-variable-name-face)
+     (reference, (nerd-icons-octicon "nf-oct-file_symlink_file") :face font-lock-variable-name-face)
+     (snippet, (nerd-icons-faicon "nf-fa-scissors") :face font-lock-string-face)
+     (string, (nerd-icons-codicon "nf-cod-case_sensitive") :face font-lock-string-face)
+     (struct, (nerd-icons-mdicon "nf-md-database") :face font-lock-variable-name-face)
+     (text, (nerd-icons-sucicon "nf-custom-default") :face font-lock-doc-face)
+     (typeparameter, (nerd-icons-codicon "nf-cod-symbol_parameter") :face font-lock-type-face)
+     (type-parameter, (nerd-icons-codicon "nf-cod-symbol_parameter") :face font-lock-type-face)
+     (unit, (nerd-icons-faicon "nf-fa-ruler") :face font-lock-constant-face)
+     (value, (nerd-icons-mdicon "nf-md-alphabetical_variant") :face font-lock-builtin-face)
+     (variable, (nerd-icons-mdicon "nf-md-variable") :face font-lock-variable-name-face)
+     (t, (nerd-icons-faicon "nf-fa-code") :face font-lock-warning-face)
+
+     ;; This is here to follow the Neovim ordering
+     (command, (nerd-icons-faicon "nf-fa-terminal") :face default)))
 
   ;; Have the background be the same as corfu's default
   (kind-icon-default-face 'corfu-default)
