@@ -13,7 +13,7 @@ tools:
     lint-formats:
       - "%.%#:%l:%c: %t%n %m"
     format-command: >
-      ruff format --no-cache --stdin-filename "${INPUT}"
+      ruff format --line-length 80 --no-cache --stdin-filename "${INPUT}"
     format-stdin: true
     root-markers:
       - "pyproject.toml"
