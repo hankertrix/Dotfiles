@@ -292,7 +292,7 @@
 
   ;; Key binds for git
   (hanker/leader-keys
-    "gs" '(magit :wk "Open Git"))
+    "gs" '(magit-status :wk "Open Git"))
 
   ;; Key binds for opening specific files
   (hanker/leader-keys
@@ -935,10 +935,10 @@
   (add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   (add-to-list 'completion-at-point-functions #'cape-tex)
-  (add-to-list 'completion-at-point-functions #'cape-emoji)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-line)
   (add-to-list 'completion-at-point-functions #'cape-history)
+  (add-to-list 'completion-at-point-functions #'cape-emoji)
   (add-to-list 'completion-at-point-functions #'cape-abbrev)
   (add-to-list 'completion-at-point-functions #'cape-rfc1345)
   (add-to-list 'completion-at-point-functions #'cape-sgml)
