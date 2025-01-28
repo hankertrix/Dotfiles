@@ -51,41 +51,38 @@
 
 (use-package evil
 
-  ;; Install evil if it isn't installed
-  :ensure t
-
   ;; Force evil to load first
   :demand t
 
-  ;; Tweak evil's configuration before loading it
-  :init
+  ;; Customise evil
+  :custom
 
   ;; This is optional since it's already set to t (true) by default
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
+  (evil-want-integration t)
+  (evil-want-keybinding nil)
 
   ;; Open the new window on the right
   ;; when splitting vertically, just like in vim
-  (setq evil-vsplit-window-right t)
+  (evil-vsplit-window-right t)
 
   ;; Open the new window at the bottom
   ;; when splitting horizontally, just like in vim
-  (setq evil-split-window-below t)
+  (evil-split-window-below t)
 
   ;; Use Ctrl + u to scroll up
-  (setq evil-want-C-u-scroll t)
+  (evil-want-C-u-scroll t)
 
   ;; Set "Y" to yank till the end of the line
-  (setq evil-want-Y-yank-to-eol t)
+  (evil-want-Y-yank-to-eol t)
+
+  ;; Make evil-search-word look for symbols rather than word boundaries
+  (evil-symbol-word-search t)
 
   ;; Configure evil mode
   :config
 
   ;; Set the undo system to Emacs' undo redo
   (evil-set-undo-system 'undo-redo)
-
-  ;; Make evil-search-word look for symbols rather than word boundaries
-  (setq-default evil-symbol-word-search t)
 
   ;; Add the hook to enter insert mode when editing a commit
   (add-hook 'git-commit-mode-hook 'evil-insert-state)
@@ -108,28 +105,22 @@
 
 (use-package evil-collection
 
-  ;; Load the evil collection after evil and magit
-  :after (evil magit)
-
-  ;; Ensure that the package is always installed
-  :ensure t
+  ;; Load the evil collection after evil
+  :after evil
 
   ;; Force evil collection to load first
   :demand t
 
+  ;; Use z for folds in magit
+  :custom (evil-collection-magit-use-z-for-folds t)
+
   ;; Configure evil collection
   :config
-
-  ;; Use z for folds in magit
-  (setq evil-collection-magit-use-z-for-folds t)
 
   ;; Initialise the evil collection
   (evil-collection-init))
 
 (use-package evil-goggles
-
-  ;; Ensure that evil goggles is always installed
-  :ensure t
 
   ;; Configure evil goggles
   :config
@@ -142,27 +133,26 @@
   ;; Activate evil goggles mode
   (evil-goggles-mode))
 
-(use-package evil-nerd-commenter
-  :ensure t)
+(use-package evil-nerd-commenter)
 
-(use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode 1))
+(use-package evil-surround :config (global-evil-surround-mode 1))
 
 (use-package evil-anzu
 
-  ;; Initialise evil anzu
+  ;; Initialise Anzu mode
   :init
-  (global-anzu-mode t)
 
-  ;; Configure evil anzu
-  :config
+  ;; Set the search threshold for anzu
+  (setq anzu-search-threshold 1000)
 
-  ;; Set the threshold for anzu
-  (setq anzu-search-threshold 1000))
+  ;; Use anzu mode globally
+  (global-anzu-mode t))
 
 (use-package general
+
+  ;; Load general.el immediately to make use of
+  ;; the :general use-package keyword
+  :ensure (:wait t) :demand t
 
   ;; Configure general.el
   :config
@@ -176,13 +166,13 @@
    :keymaps 'override
 
    ;; Comment out lines with Ctrl + /
-   "C-/" '(evilnc-comment-or-uncomment-lines :wk "Comment out the selected lines")
+   "C-/" '("Comment out the selected lines" . evilnc-comment-or-uncomment-lines)
 
    ;; Use Ctrl + hjkl to move between splits
-   "C-h" '(evil-window-left :wk "Go to the window on the left")
-   "C-j" '(evil-window-down :wk "Go to the window below")
-   "C-k" '(evil-window-up :wk "Go to the window above")
-   "C-l" '(evil-window-right :wk "Go to the window on the right")
+   "C-h" '("Go to the window on the left" . evil-window-left)
+   "C-j" '("Go to the window below" . evil-window-down)
+   "C-k" '("Go to the window above" . evil-window-up)
+   "C-l" '("Go to the window on the right" . evil-window-right)
    )
 
   ;; Key binds for dired
@@ -190,45 +180,13 @@
    :states 'normal
    :keymaps 'dired-mode-map
    :major-modes 'dired-mode
-   "_" '(counsel-find-file :wk "Create a file")
+   "_" '("Create a file" . find-file)
    )
 
   ;; Key binds for transient (used by Magit)
   (general-define-key
    :keymaps 'transient-base-map
    "<escape>" 'transient-quit-one
-   )
-
-  ;; Key binds for BibTeX files
-  (general-define-key
-   :states 'normal
-   :keymaps 'bibtex-mode-map
-   :major-modes 'bibtex-mode
-   "SPC f" '(bibtex-reformat :wk "Formats the BibTeX buffer"))
-
-  ;; Key binds for normal mode in LSP mode
-  (general-define-key
-   :states 'normal
-   :keymaps 'lsp-mode-map
-   "K" '(lsp-ui-doc-glance :wk "Describe the currently hovered item")
-   "gd" '(lsp-ui-peek-find-definitions :wk "Go to definition")
-   "gD" '(lsp-find-declaration :wk "Go to decla~ration")
-   "gi" '(lsp-ui-peek-find-implementation :wk "List all implementations")
-   "go" '(lsp-find-type-definition :wk "Go to type definition")
-   "gr" '(lsp-ui-peek-find-references :wk "List all references")
-   "gs" '(lsp-signature-activate :wk "Show signature information")
-   "<f2>" '(lsp-rename :wk "Renames all references to the symbol under the cursor")
-   "<f3>" '(lsp-format-buffer :wk "Formats the buffer using the LSP")
-   "SPC f" '(lsp-format-buffer :wk "Formats the buffer using the LSP")
-   "<f4>" '(lsp-execute-code-action :wk "Select a code action")
-   )
-
-  ;; Key binds for visual mode in LSP mode
-  (general-define-key
-   :states 'visual
-   :keymaps 'lsp-mode-map
-   "<f3>" '(lsp-format-region :wk "Formats the region using the LSP")
-   "SPC f" '(lsp-format-region :wk "Formats the region using the LSP")
    )
 
   ;; Create a new definer for the leader keys
@@ -243,6 +201,12 @@
 
     ;; Access leader key in insert mode using "Ctrl + Space"
     :global-prefix "C-SPC")
+
+  ;; Key binds for BibTeX files
+  (hanker/leader-keys
+    :states 'normal
+    :major-modes 'bibtex-mode
+    "f" '("Format the BibTeX buffer" . bibtex-reformat))
 
 
 
@@ -264,127 +228,145 @@
 
   ;; Key binds to copy and paste from the clipboard
   (hanker/leader-keys
-    "P" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before))
-          :wk "Paste from the system clipboard before the cursor")
-    "pp" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after))
-           :wk "Paste from the system clipboard after the cursor")
-    "y" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank))
-          :wk "Copy to the system clipboard")
-    "Y" '((lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line))
-          :wk "Copy till the end of the line to the system clipboard")
-    "d" '((lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete))
-          :wk "Delete to the black hole register")
+    :states 'normal
+    "P" '("Paste from the system clipboard before the cursor" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before)))
+    "pp" '("Paste from the system clipboard after the cursor" .
+           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after)))
+    "y" '("Copy to the system clipboard" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank)))
+    "Y" '("Copy till the end of the line to the system clipboard" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line)))
+    "d" '("Delete to the black hole register" .
+          (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete)))
     )
 
   ;; Key binds for buffer management
   (hanker/leader-keys
-    "l" '(next-buffer :wk "Go to the next buffer")
-    "h" '(previous-buffer :wk "Go to the previous buffer")
-    "x" '(kill-this-buffer :wk "Close the current buffer")
+    :states 'normal
+    "l" '("Go to the next buffer" . next-buffer)
+    "h" '("Go to the previous buffer" . previous-buffer)
+    "x" '("Close the current buffer" . kill-this-buffer)
     )
 
   ;; Key binds for searching
   (hanker/leader-keys
-    "pw" '(dired :wk "Open Dired")
-    "pf" '(find-file :wk "Search for a file")
-    "ps" '(counsel-rg :wk "Search for a term using ripgrep")
+    :states 'normal
+    "pw" '("Open Dired" . dired)
+    "pf" '("Search for a file" . find-file)
     )
 
   ;; Key binds for git
   (hanker/leader-keys
-    "gs" '(magit-status :wk "Open Git"))
+    :states 'normal
+    "gs" '("Open Git" . magit-status)
+    )
 
   ;; Key binds for opening specific files
   (hanker/leader-keys
-    "ec" '((lambda () (interactive) (find-file "~/.config/emacs/config.org"))
-           :wk "Edit Emacs config")
+    :states 'normal
+    "ec" '( "Edit Emacs config" . (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
     )
 
   ;; Key binds in org mode
   (hanker/leader-keys
+    :states 'normal
+    :major-modes 'org-mode
     "o" '(:ignore t :wk "Org mode keybinds")
-    "oe" '(org-export-dispatch :wk "Org export dispatch")
-    "oi" '(org-toggle-item :wk "Org toggle item")
-    "oa" '(org-agenda :wk "Org agenda")
-    "ot" '(org-todo-list :wk "Org todo")
+    "oe" '("Org export dispatch" . org-export-dispatch)
+    "oi" '("Org toggle item" . org-toggle-item)
+    "oa" '("Org agenda" . org-agenda)
+    "ot" '("Org todo" . org-todo-list)
     "ob" '(:ignore t :wk "Org babel keybinds")
-    "obt" '(org-babel-tangle :wk "Org babel tangle")
-    "obe" '(org-babel-execute-buffer :wk "Org babel execute buffer")
+    "obt" '("Org babel tangle" . org-babel-tangle)
+    "obe" '("Org babel execute buffer" . org-babel-execute-buffer)
     )
 
-  ;; Key binds in lsp mode
+  ;; Key binds to show diagnostics
   (hanker/leader-keys
-    "tr" '(flycheck-list-errors :wk "List all the errors in the current buffer")
-    "tb" '(flycheck-list-errors :wk "List all the errors in the current buffer")
+    :states 'normal
+    :major-modes 'flycheck-mode
+    "tr" '("List all the errors in the current buffer" . flycheck-list-errors)
+    "tb" '("List all the errors in the current buffer" . flycheck-list-errors)
     )
 
-  ;; Key binds for help files
-  ;; I'm using "/" because it is where the question mark is
-  ;; But I don't want to press shift to access the help files
+  ;; Key binds for help files.
+  ;; I'm using "/" because it is where the question mark is.
+  ;; But I don't want to press shift to access the help files.
   (hanker/leader-keys
+    :states 'normal
     "/" '(:ignore t :wk "Help")
-    "/a" '(counsel-apropos :wk "Apropos")
-    "/b" '(describe-bindings :wk "Describe bindings")
-    "/c" '(describe-char :wk "Describe character under cursor")
+    "/b" '("Describe bindings" . describe-bindings)
+    "/c" '("Describe character under cursor" . describe-char)
     "/d" '(:ignore t :wk "Emacs documentation")
-    "/da" '(about-emacs :wk "About Emacs")
-    "/dd" '(view-emacs-debugging :wk "View Emacs debugging")
-    "/df" '(view-emacs-FAQ :wk "View Emacs FAQ")
-    "/dm" '(info-emacs-manual :wk "The Emacs manual")
-    "/dn" '(view-emacs-news :wk "View Emacs news")
-    "/do" '(describe-distribution :wk "How to obtain Emacs")
-    "/dp" '(view-emacs-problems :wk "View Emacs problems")
-    "/dt" '(view-emacs-todo :wk "View Emacs todo")
-    "/dw" '(describe-no-warranty :wk "Describe no warranty")
-    "/e" '(view-echo-area-messages :wk "View echo area messages")
-    "/f" '(describe-function :wk "Describe function")
-    "/F" '(describe-face :wk "Describe face")
-    "/g" '(describe-gnu-project :wk "Describe the GNU Project")
-    "/i" '(info :wk "Info")
-    "/I" '(describe-input-method :wk "Describe input method")
-    "/k" '(describe-key :wk "Describe key")
-    "/l" '(view-lossage :wk "Display recent keystrokes and commands")
-    "/L" '(describe-language-environment :wk "Describe language environment")
-    "/m" '(describe-mode :wk "Describe mode")
-    "/r" '(:ignore t :wk "Reload")
-    "/rr" '((lambda () (interactive)
+    "/da" '("About Emacs" . about-emacs)
+    "/dd" '("View Emacs debugging" . view-emacs-debugging)
+    "/df" '("View Emacs FAQ" . view-emacs-FAQ)
+    "/dm" '("The Emacs manual" . info-emacs-manual)
+    "/dn" '("View Emacs news" . view-emacs-news)
+    "/do" '("How to obtain Emacs" . describe-distribution)
+    "/dp" '("View Emacs problems" . view-emacs-problems)
+    "/dt" '("View Emacs todo" . view-emacs-todo)
+    "/dw" '("Show the COPYING file" . describe-no-warranty)
+    "/e" '("View echo area messages" . view-echo-area-messages)
+    "/f" '("Describe function" . describe-function)
+    "/F" '("Describe face" . describe-face)
+    "/g" '("Describe the GNU Project" . describe-gnu-project)
+    "/i" '("Info" . info)
+    "/I" '("Describe input method" . describe-input-method)
+    "/k" '("Describe key" . describe-key)
+    "/l" '("Display recent keystrokes and commands" . view-lossage)
+    "/L" '("Describe language environment" . describe-language-environment)
+    "/m" '("Describe mode" . describe-mode)
+    "/r" '("Reload Emacs config" . (lambda () (interactive)
               (load-file "~/.config/emacs/init.el")
-              (ignore (elpaca-process-queues)))
-            :wk "Reload Emacs config")
-    "/t" '(load-theme :wk "Load theme")
-    "/v" '(describe-variable :wk "Describe variable")
-    "/w" '(where-is :wk "Prints keybinding for command if set")
-    "/x" '(describe-command :wk "Display full documentation for command")
+              (ignore (elpaca-process-queues))))
+    "/t" '("Load theme" . load-theme)
+    "/v" '("Describe variable" . describe-variable)
+    "/w" '("Prints keybinding for command if set" . where-is)
+    "/x" '("Display full documentation for command" . describe-command)
     )
 
   )
 
-(use-package which-key
+(use-package undo-fu-session :init (undo-fu-session-global-mode))
 
-  ;; Ensure that which key is installed
-  :ensure t
+(use-package vundo
+
+  ;; Lazy load vundo when the command is called
+  :commands vundo
+
+  ;; Use pretty unicode glyphs to draw the tree
+  :custom (vundo-glyph-alist vundo-unicode-symbols)
+
+  ;; Keybinds for vundo
+  :general
+  (hanker/leader-keys
+    :states 'normal
+    "u" '("Open the undo tree window" . vundo)))
+
+(use-package which-key
 
   ;; Force which key to load immediately on start up
   :demand t
 
-  ;; Initialise which key
-  :init
-  (which-key-mode 1)
+  ;; Customise which key
+  :custom
+  (which-key-side-window-location 'bottom)
+  (which-key-sort-order #'which-key-key-order-alpha)
+  (which-key-sort-uppercase-first nil)
+  (which-key-add-column-padding 1)
+  (which-key-max-display-columns nil)
+  (which-key-min-display-lines 6)
+  (which-key-side-window-slot -10)
+  (which-key-side-window-max-height 0.25)
+  (which-key-idle-delay 0.5)
+  (which-key-max-description-length 25)
+  (which-key-allow-imprecise-window-fit t)
+  (which-key-separator " → ")
 
-  ;; Configure which key
-  :config
-  (setq which-key-side-window-location 'bottom
-        which-key-sort-order #'which-key-key-order-alpha
-        which-key-sort-uppercase-first nil
-        which-key-add-column-padding 1
-        which-key-max-display-columns nil
-        which-key-min-display-lines 6
-        which-key-side-window-slot -10
-        which-key-side-window-max-height 0.25
-        which-key-idle-delay 0.5
-        which-key-max-description-length 25
-        which-key-allow-imprecise-window-fit t
-        which-key-separator " → " ))
+  ;; Initialise which key
+  :init (which-key-mode 1))
 
 (set-face-attribute 'default nil
                     :font "CaskaydiaCove Nerd Font Mono 12"
@@ -514,23 +496,17 @@
 
 (use-package doom-themes
 
-  ;; Ensure that doom themes is always installed
-  :ensure t
-
-  ;; Configure doom themes
-  :config
+  ;; Customise doom themes
+  :custom
 
   ;; Enable bold and italic fonts for doom themes
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italics t)
+  (doom-themes-enable-bold t)
+  (doom-themes-enable-italics t)
 
   ;; Corrects and improves org-mode's native fontification
-  (doom-themes-org-config))
+  :config (doom-themes-org-config))
 
 (use-package auto-dark
-
-  ;; Ensure that the auto dark package is always installed
-  :ensure t
 
   ;; Customise the auto dark package
   :custom
@@ -541,21 +517,15 @@
   (auto-dark-themes '((doom-bluloco-dark) (doom-bluloco-light)))
 
   ;; Initialise the auto dark package
-  :init
-  (auto-dark-mode))
+  :init (auto-dark-mode))
 
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1))
+(use-package doom-modeline :init (doom-modeline-mode 1))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; Install the all the icons package
 (use-package all-the-icons
-
-  ;; Ensure that the package is installed
-  :ensure t
 
   ;; Only load the package if the interface is graphical and not a terminal
   :if (display-graphic-p))
@@ -565,9 +535,6 @@
   :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package nerd-icons
-
-  ;; Ensure that the package is installed
-  :ensure t
 
   ;; Customise nerd icons
   :custom
@@ -594,7 +561,6 @@
   ;; Enable dired preview globally
   (dired-preview-global-mode 1))
 
-;; Install LSP mode
 (use-package lsp-mode
 
   ;; Load LSP mode only when the commands below are called
@@ -603,18 +569,14 @@
   ;; Customise LSP mode
   :custom
 
-  ;; Set the LSP completion provider to none
-  (lsp-completion-provider :none)
+  ;; Set the prefix for LSP mode key binds
+  (lsp-keymap-prefix "C-;")
+
+  ;; Disable snippet support for LSP mode
+  (lsp-enable-snippet nil)
 
   ;; Initialise LSP mode
   :init
-
-  ;; Set the prefix for LSP mode key binds
-  (setq lsp-keymap-prefix "C-;")
-
-  ;; Disable snippet support for LSP mode
-  (setq lsp-enable-snippet nil)
-
 
   ;; Functions to set up LSP mode
   (defun lsp-mode-setup ()
@@ -644,7 +606,7 @@
   (lsp-completion-mode . lsp-completion-mode-setup)
 
   ;; Disable LSP mode integration with completion at point functions in text mode.
-  ;; This is to get autocompletions with corfu and cape working again in text mode.
+  ;; This is to get autocompletions with Corfu and Cape working again in text mode.
   (text-mode . (lambda () (setq-local lsp-completion-enable nil)))
 
   ;; Configure LSP mode
@@ -660,7 +622,10 @@
                     ;; So far, only Ruff is being used,
                     ;; so only activate the server in Python mode
                     :activation-fn (lsp-activate-on "python")
-                    :server-id 'efm)))
+                    :server-id 'efm))
+
+  ;; Ensure that efm language server is installed
+  :ensure-system-package (efm-langserver . "yay -S efm-langserver"))
 
 (use-package lsp-ui
 
@@ -671,128 +636,217 @@
   :custom
 
   ;; Set the position of the documentation to be at the cursor position
-  (lsp-ui-doc-position 'at-point))
+  (lsp-ui-doc-position 'at-point)
+
+  ;; Keybinds for LSP mode
+  :general
+
+  ;; Key binds for normal mode in LSP mode
+  (:keymaps 'lsp-mode-map
+            :states 'normal
+            "K" '("Describe the currently hovered item" . lsp-ui-doc-glance)
+            "gd" '("Go to definition" . lsp-ui-peek-find-definitions)
+            "gD" '("Go to declaration" . lsp-find-declaration)
+            "gi" '("List all implementations" . lsp-ui-peek-find-implementation)
+            "go" '("Go to type definition" . lsp-find-type-definition)
+            "gr" '("List all references" . lsp-ui-peek-find-references)
+            "gs" '("Show signature information" . lsp-signature-activate)
+            "<f2>" '("Renames all references to the symbol under the cursor" . lsp-rename)
+            "<f3>" '("Formats the buffer using the LSP" . lsp-format-buffer)
+            "SPC f" '("Formats the buffer using the LSP" . lsp-format-buffer)
+            "<f4>" '("Select a code action" . lsp-execute-code-action)
+
+            :states 'visual
+            "<f3>" '("Formats the region using the LSP" . lsp-format-region)
+            "SPC f" '("Formats the region using the LSP" . lsp-format-region)
+            )
+  )
 
 (use-package lua-mode)
 (use-package haskell-mode)
 (use-package rust-mode
 
   ;; Initialise the treesitter
-  :init (setq rust-mode-treesitter-derive t)
+  :custom (rust-mode-treesitter-derive t)
 
   ;; Enable the lsp when in rust mode
-  :hook (rust-mode . #'lsp-deferred))
+  :hook (rust-mode . lsp-deferred))
 
 (use-package lsp-ltex-plus
 
   ;; Pull the plugin from GitHub
   :ensure (lsp-ltex-plus :host github :repo "emacs-languagetool/lsp-ltex-plus")
 
+  ;; Ensure LTEX+ exists
+  :ensure-system-package (ltex-ls-plus . "yay -S ltex-ls-plus-bin")
+
+  ;; Customise LTEX+
+  :custom
+
+  ;; Set the language for LTEX+ to British English
+  (lsp-ltex-plus-language "en-GB")
+
+  ;; Disable the oxford spelling rule
+  (lsp-ltex-plus-disabled-rules '(:en-GB ["OXFORD_SPELLING_Z_NOT_S"]))
+
+  ;; Set the wanted LTEX+ version to the latest version
+  (lsp-ltex-plus-version "18.4.0")
+
   ;; Enable LTEX+ in text mode
   :hook (text-mode . (lambda ()
                        (require 'lsp-ltex-plus)
-                       (lsp-deferred)))
-
-  ;; Initialise LTEX+
-  :init
-
-  ;; Set the language for LTEX+ to British English
-  (setq lsp-ltex-plus-language "en-GB")
-
-  ;; Disable the oxford spelling rule
-  (setq lsp-ltex-plus-disabled-rules '(:en-GB ["OXFORD_SPELLING_Z_NOT_S"]))
-
-  ;; Set the wanted LTEX+ version to the latest version
-  (setq lsp-ltex-plus-version "18.4.0"))
+                       (lsp-deferred))))
 
 (use-package lsp-pyright
 
-  ;; Customise lsp-pyright to use basedpyright
-  :custom (lsp-pyright-langserver-command "basedpyright")
+  ;; Ensure basedpyright exists
+  :ensure-system-package (basedpyright . "yay -S basedpyright")
+
+  ;; Customise lsp-pyright
+  :custom
+
+  ;; Use basedpyright
+  (lsp-pyright-langserver-command "basedpyright")
+
+  ;; Disable organising imports for lsp-pyright
+  (lsp-pyright-disable-organize-imports t)
 
   ;; Activate lsp-pyright in Python mode
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
-                         (lsp-deferred)))
+                         (lsp-deferred))))
 
-  ;; Disable organising imports for lsp-pyright
-  :init (setq lsp-pyright-disable-organize-imports t))
+(use-package flycheck :init (global-flycheck-mode))
 
-(use-package flycheck
-  :ensure t
-  :defer t
-  :init (global-flycheck-mode))
+(use-package vertico
 
-(use-package ivy
+  ;; Include vertico extensions
+  :ensure (vertico :host github :repo "minad/vertico" :files (:defaults "extensions/*"))
 
-  ;; Ensure that ivy is installed
-  :ensure t
+  ;; Load vertico immediately
+  :demand t
 
-  ;; Customise ivy
+  ;; Hooks for vertico
+  :hook
+
+  ;; Clean up the file path when typing
+  (rfn-eshadow-update-overlay . vertico-directory-tidy)
+
+  ;; Make sure that vertico state is saved
+  (minibuffer-setup . vertico-repeat-save)
+
+  ;; Customise vertico
   :custom
 
-  ;; Allow ivy to search closed buffers as ivy will look through closed buffers
-  (setq ivy-use-virtual-buffers t)
+  ;; Resize vertico
+  (vertico-resize t)
 
-  ;; Set the dispaly format for the number of matches that ivy has found
-  (setq ivy-count-format "(%d/%d) ")
+  ;; Cycle from bottom to top
+  (vertico-cycle t)
 
-  ;; This allows the execution of minibuffer commands while in the minibuffer
-  (setq enable-recursive-minibuffers t)
+  ;; Extensions customisations
 
-  ;; Start ivy
-  (ivy-mode))
+  ;; Customise the grid view
+  (vertico-grid-separator "       ")
+  (vertico-grid-lookahead 50)
 
-(use-package counsel
+  ;; Customise the buffer display action
+  (vertico-buffer-display-action '(display-buffer-reuse-window))
 
-  ;; Load counsel only after ivy is loaded
-  :after ivy
+  ;; Set the layouts for vertico in different modes
+  (vertico-multiform-categories
+   '((file reverse)
+     (consult-grep buffer)
+     (consult-location)
+     (imenu buffer)
+     (library reverse indexed)
+     (org-roam-node reverse indexed)
+     (t reverse)
+     ))
 
-  ;; Ensure that counsel is installed
-  :ensure t
+  ;; Set the layouts for vertico in different commands
+  (vertico-multiform-commands
+   '(("flyspell-correct-*" grid reverse)
+     (org-refile grid reverse indexed)
+     (consult-yank-pop indexed)
+     (consult-flycheck)
+     (consult-lsp-diagnostics)
+     ))
 
-  ;; Configure counsel
+  ;; Configure vertico
   :config
 
-  ;; Don't start searches with ^
-  (setq ivy-initial-inputs-alist nil)
+  ;; Start vertico
+  (vertico-mode)
 
-  ;; Start counsel mode to replace Emacs commands with ivy enhanced versions
-  (counsel-mode))
+  ;; Start vertico multiform mode
+  (vertico-multiform-mode))
 
-(use-package ivy-rich
+(use-package marginalia
 
-  ;; Load ivy rich after ivy
-  :after ivy
+  ;; Add a key bind to cycle the marginalia annotations
+  :general (:keymaps 'minibuffer-local-map
+                     "M-a" 'marginalia-cycle)
 
-  ;; Ensure that marginalia is installed
-  :ensure t
-
-  ;; This gives us descriptions in "M-x"
-  :init (ivy-rich-mode 1)
-
-  ;; Customise ivy rich
+  ;; Customise marginalia
   :custom
-  (ivy-virtual-abbreviate 'full
-                          ivy-rich-switch-buffer-align-virtual-buffer t
-                          ivy-rich-path-style 'abbrev)
 
-  ;; Configure ivy rich
-  :config
-  (ivy-set-display-transformer 'ivy-switch-buffer
-                               'ivy-rich-switch-buffer-transformer))
+  ;; Never show a relative age
+  ;; for the file annotator
+  (marginalia-max-relative-age 0)
 
-;; Install the all the icons package for ivy rich for nice icons
-(use-package all-the-icons-ivy-rich
+  ;; Add marginalia at the right side
+  (marginalia-align 'right)
 
-  ;; Ensure that the package is installed
-  :ensure t
+  ;; Start marginalia mode
+  :init (marginalia-mode))
 
-  ;; Ensure that the package is loaded after marginalia and all the icons
-  :after (ivy-rich all-the-icons)
+(use-package nerd-icons-completion
 
-  ;; Start the all the icons package
-  :init (all-the-icons-ivy-rich-mode 1))
+  ;; Load the package after marginalia
+  :after marginalia
+
+  ;; Set up nerd icons with marginalia
+  :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
+
+  ;; Start nerd icons completion
+  :init (nerd-icons-completion-mode))
+
+(use-package orderless
+
+  ;; Customise orderless
+  :custom
+
+  ;; Use basic as a fallback style
+  (completion-styles '(orderless basic))
+
+  ;; Get orderless to work with remote files
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(use-package consult
+
+  ;; Make sure fd and ripgrep are installed
+  :ensure-system-package (fd . "sudo pacman -S fd")
+  :ensure-system-package (rg . "sudo pacman -S ripgrep")
+
+  ;; Keymaps for consult
+  :general
+
+  ;; Key maps
+  (:states 'normal
+           "<f1>" '("Search the info pages" . consult-info))
+
+  ;; Leader key maps
+  (hanker/leader-keys
+    :states 'normal
+    "/a" '("Search the manpages" . consult-man)
+    "/i" '("Search the info pages" . consult-info)
+    "/h" '("Search the info pages" . consult-info)
+    "pb" '("Search for open buffers" . consult-buffer)
+    "pr" '("Search through the registers" . consult-register-load)
+    "ps" '("Search for a string within a file" . consult-ripgrep)
+    )
+  )
 
 (use-package corfu
 
@@ -817,26 +871,21 @@
   ;; Stop auto completing when there is a separator like a space
   (corfu-quit-at-boundary 'separator)
 
-  ;; Don't show the documentation for the completion
-  ;; I am using corfu-popupinfo-mode for the documentation instead
+  ;; Don't show the documentation for the completion.
+  ;; I am using corfu-popupinfo-mode for the documentation instead.
   (corfu-echo-documentation nil)
 
   ;; Do not preview current candidate
   (corfu-preview-current 'insert)
 
-  ;; Key binds for corfu
-  :bind (:map corfu-map
-              ("RET" . nil)
-              ("C-n" . corfu-next)
-              ("C-p" . corfu-previous)
-              ("TAB" . corfu-insert)
-              ([tab] . corfu-insert))
+  ;; Make sure tab doesn't indent when performing a completion
+  (tab-always-indent 'complete)
+
+  ;; Disable the return key
+  :bind (:map corfu-map ("RET" . nil))
 
   ;; Initialise corfu
   :init
-
-  ;; Use corfu everywhere
-  (global-corfu-mode)
 
   ;; Show documentation using the corfu pop up info extension
   (corfu-popupinfo-mode 1)
@@ -846,23 +895,27 @@
   (savehist-mode 1)
   (add-to-list 'savehist-additional-variables 'corfu-history)
 
-  )
+  ;; Function to corfu in the minibuffer
+  ;; if other completion plugins are not active
+  (defun corfu-enable-always-in-minibuffer ()
+    "Enable Corfu in the minibuffer if Vertico/Mct are not active."
+    (unless (or (bound-and-true-p mct--active)
+                (bound-and-true-p vertico--input)
+                (eq (current-local-map) read-passwd-map))
 
-(defun corfu-enable-always-in-minibuffer ()
-  "Enable Corfu in the minibuffer if Vertico/Mct are not active."
-  (unless (or (bound-and-true-p mct--active)
-              (bound-and-true-p vertico--input)
-              (eq (current-local-map) read-passwd-map))
+      ;; Disable automatic echo and popup
+      (setq-local corfu-echo-delay nil
+                  corfu-popupinfo-delay nil)
 
-    ;; Enable/disable auto completion
-    ;; (setq-local corfu-auto nil)
+      ;; Enable corfu
+      (corfu-mode 1)))
 
-    ;; Disable automatic echo and popup
-    (setq-local corfu-echo-delay nil
-                corfu-popupinfo-delay nil)
-    (corfu-mode 1)))
+  ;; Enable corfu everywhere
+  (global-corfu-mode)
 
-(add-hook 'minibuffer-setup-hook #'corfu-enable-always-in-minibuffer 1)
+  ;; Enable corfu in the minibuffer
+  ;; if other completion plugins are not active
+  :hook (minibuffer-setup-hook . corfu-enable-always-in-minibuffer))
 
 (use-package kind-icon
 
@@ -930,52 +983,50 @@
 
   ;; Initialise cape and add the wanted completion functions
   :init
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
-  (add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  (add-to-list 'completion-at-point-functions #'cape-tex)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-line)
-  (add-to-list 'completion-at-point-functions #'cape-history)
-  (add-to-list 'completion-at-point-functions #'cape-emoji)
-  (add-to-list 'completion-at-point-functions #'cape-abbrev)
-  (add-to-list 'completion-at-point-functions #'cape-rfc1345)
-  (add-to-list 'completion-at-point-functions #'cape-sgml)
-  ;; (add-to-list 'completion-at-point-functions #'cape-dict)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-tex)
+  (add-hook 'completion-at-point-functions #'cape-rfc1345)
+  (add-hook 'completion-at-point-functions #'cape-sgml)
+  (add-hook 'completion-at-point-functions #'cape-keyword)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block)
+  (add-hook 'completion-at-point-functions #'cape-elisp-symbol)
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-line)
+  (add-hook 'completion-at-point-functions #'cape-history)
+  (add-hook 'completion-at-point-functions #'cape-emoji)
+  ;; (add-hook 'completion-at-point-functions #'cape-abbrev)
+  ;; (add-hook 'completion-at-point-functions #'cape-dict)
   )
 
 (use-package helpful
 
-  ;; Ensure that helpful is installed
-  :ensure t
-
-  ;; Customise helpful
-  :custom
-
-  ;; Bind the helpful versions of Emacs commands to counsel
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-
   ;; Remap the default Emacs commands to the helpful versions
   :bind
-  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-function] . helpful-callable)
   ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-variable] . helpful-variable)
   ([remap describe-key] . helpful-key))
 
-(use-package magit)
+(use-package magit :commands (magit magit-status))
 
 ;; Update transient, which is a magit dependency
 (use-package transient)
 
 (use-package toc-org
   :commands toc-org-enable
-  :init (add-hook 'org-mode-hook 'toc-org-enable))
+  :hook (org-mode . toc-org-enable))
 
-(add-hook 'org-mode-hook 'org-indent-mode)
-(use-package org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(use-package org-bullets
+
+  ;; Load the package only after org mode
+  :after org
+
+  ;; Add hooks to org bullets
+  :hook
+
+  ;; Enable org indent and org bullets mode
+  (org-mode . org-indent-mode)
+  (org-mode . (lambda () (org-bullets-mode 1))))
 
 (electric-indent-mode -1)
 
@@ -991,9 +1042,6 @@
 (setq org-latex-toc-command "\\tableofcontents \\clearpage")
 
 (use-package evil-org
-
-  ;; Ensure that evil org is always installed
-  :ensure t
 
   ;; Ensure that evil org is only loaded after org mode
   :after org
@@ -1030,24 +1078,39 @@
 (use-package jupyter
 
   ;; Load the Jupyter languages
-  :config
+  :init
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
      (python . t)
-     (jupyter . t))))
+     (jupyter . t)))
+
+  ;; Hooks for emacs jupyter
+  :hook
+
+  ;; Add a hook to redisplay inline images
+  ;; after executing a code block
+  (org-babel-after-execute-hook . org-redisplay-inline-images))
 
 (setq org-confirm-babel-evaluate nil)
 
-(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
-
 (use-package pdf-tools
+
+  ;; Customise to use PDF tools to open
+  ;; LaTeX PDF files
+  :custom
+  (TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (TeX-source-correlate-start-server t)
+
+  ;; Update PDF buffers after successful LaTeX runs
+  :hook
+  (TeX-after-compilation-finished-functions . TeX-revert-document-buffer)
 
   ;; Install pdf-tools
   :config (pdf-tools-install))
 
 (use-package auctex :defer t
-  :ensure ( :pre-build (("./autogen.sh")
+  :ensure (:pre-build (("./autogen.sh")
                         ("./configure"
                          "--without-texmf-dir"
                          "--with-packagelispdir=./"
@@ -1059,22 +1122,15 @@
   :mode (("\\.tex\\'" . LaTeX-mode)))
 
 (use-package evil-tex
-  :init (add-hook 'LaTeX-mode-hook #'evil-tex-mode))
-
-(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-      TeX-source-correlate-start-server t)
-
-;; Update PDF buffers after successful LaTeX runs
-(add-hook 'TeX-after-compilation-finished-functions
-          #'TeX-revert-document-buffer)
+  :hook (LaTeX-mode-hook . evil-tex-mode))
 
 (use-package hardtime
 
   ;; Get hardtime.el from GitHub
   :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
 
-  ;; Configure hardtime.el
-  :config
+  ;; Initialise hardtime.el
+  :init
   (defun evil-hardtime-check-command ()
     "Return non-nil if the currently executed command should be checked."
     (memq this-command '( next-line previous-line evil-previous-visual-line
@@ -1083,7 +1139,7 @@
                           evil-next-line evil-previous-line)))
 
   ;; Set the hardtime period to 1 second
-  (setq hardtime-period 1)
+  :custom (hardtime-period 1)
 
   ;; Customise hardtime.el
   :custom
