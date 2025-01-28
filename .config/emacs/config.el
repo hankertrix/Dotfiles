@@ -78,14 +78,14 @@
   ;; Make evil-search-word look for symbols rather than word boundaries
   (evil-symbol-word-search t)
 
+  ;; Add the hook to enter insert mode when editing a commit
+  :hook (git-commit-mode . evil-insert-state)
+
   ;; Configure evil mode
   :config
 
   ;; Set the undo system to Emacs' undo redo
   (evil-set-undo-system 'undo-redo)
-
-  ;; Add the hook to enter insert mode when editing a commit
-  (add-hook 'git-commit-mode-hook 'evil-insert-state)
 
   ;; The function to centre the screen on the current cursor position
   (defun centre-screen (&rest _)
@@ -915,7 +915,7 @@
 
   ;; Enable corfu in the minibuffer
   ;; if other completion plugins are not active
-  :hook (minibuffer-setup-hook . corfu-enable-always-in-minibuffer))
+  :hook (minibuffer-setup . corfu-enable-always-in-minibuffer))
 
 (use-package kind-icon
 
@@ -1090,7 +1090,7 @@
 
   ;; Add a hook to redisplay inline images
   ;; after executing a code block
-  (org-babel-after-execute-hook . org-redisplay-inline-images))
+  (org-babel-after-execute . org-redisplay-inline-images))
 
 (setq org-confirm-babel-evaluate nil)
 
@@ -1103,8 +1103,8 @@
   (TeX-source-correlate-start-server t)
 
   ;; Update PDF buffers after successful LaTeX runs
-  :hook
-  (TeX-after-compilation-finished-functions . TeX-revert-document-buffer)
+  :init
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
   ;; Install pdf-tools
   :config (pdf-tools-install))
@@ -1122,14 +1122,14 @@
   :mode (("\\.tex\\'" . LaTeX-mode)))
 
 (use-package evil-tex
-  :hook (LaTeX-mode-hook . evil-tex-mode))
+  :hook (LaTeX-mode . evil-tex-mode))
 
 (use-package hardtime
 
   ;; Get hardtime.el from GitHub
   :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
 
-  ;; Initialise hardtime.el
+  ;; Define the evil hardtime check command function
   :init
   (defun evil-hardtime-check-command ()
     "Return non-nil if the currently executed command should be checked."
@@ -1138,11 +1138,13 @@
                           evil-forward-char evil-backward-char
                           evil-next-line evil-previous-line)))
 
-  ;; Set the hardtime period to 1 second
-  :custom (hardtime-period 1)
-
   ;; Customise hardtime.el
   :custom
+
+  ;; Set the hardtime period to 1 second
+  (hardtime-period 1)
+
+  ;; Use the evil hardtime check command instead
   (hardtime-predicate #'evil-hardtime-check-command)
 
   ;; Hooks for hardtime mode
