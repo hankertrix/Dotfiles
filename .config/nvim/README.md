@@ -82,9 +82,6 @@ Function arguments highlighting -
 Auto pairing -
 [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 
-Mass commenting -
-[Comment.nvim](https://github.com/numToStr/Comment.nvim)
-
 Same word highlighting -
 [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 

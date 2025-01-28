@@ -41,6 +41,11 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Continues searching in the opposite 
 vim.keymap.set("n", "*", "*zzzv", { desc = "Search the word under the cursor in the forward direction" })
 vim.keymap.set("n", "#", "#zzzv", { desc = "Search the word under the cursor in the backward direction" })
 
+-- Use Ctrl + / to comment
+vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "Toggle comment for a line" })
+vim.keymap.set("v", "<C-/>", "gc", { remap = true, desc = "Toggle comment for a region" })
+vim.keymap.set("o", "<C-/>", "gc", { remap = true, desc = "Get largest commented block near the cursor" })
+
 -- Use the Leader key to yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<Leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<Leader>Y", [["+y$]], { desc = "Yank till the end of the line to system clipboard" })
