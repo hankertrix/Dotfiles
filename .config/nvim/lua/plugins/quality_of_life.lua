@@ -66,7 +66,7 @@ return {
                         require("quicker").expand({
                             before = 2,
                             after = 2,
-                            add_to_exiting = true,
+                            add_to_existing = true,
                         })
                     end,
                     desc = "Expand quick fix context",
