@@ -55,7 +55,7 @@ return {
     -- Improved quick fix list for Neovim
     {
         "stevearc/quicker.nvim",
-        event = "FileType qf",
+        ft = "qf",
         opts = {
 
             -- Key binds within the quick fix menu
