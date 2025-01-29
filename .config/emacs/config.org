@@ -4,14 +4,11 @@
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
 
-
-
-
 * Table Of Contents :toc:
 - [[#important-programs][Important Programs]]
-  - [[#elpaca-package-manager][Elpaca Package Manager]]
-  - [[#evil-mode][Evil Mode]]
+  - [[#elpaca-package-manager][Elpaca package manager]]
   - [[#key-bindings-with-generalel][Key bindings (with general.el)]]
+  - [[#evil-mode][Evil Mode]]
   - [[#undo-system][Undo system]]
   - [[#which-key][Which Key]]
 - [[#fonts][Fonts]]
@@ -36,10 +33,13 @@
   - [[#lsp-mode][LSP mode]]
   - [[#flycheck][Flycheck]]
   - [[#completion-plugins][Completion Plugins]]
+  - [[#wgrep][Wgrep]]
+- [[#embark][Embark]]
+  - [[#integration-with-consult][Integration with consult]]
 - [[#helpful][Helpful]]
-- [[#git-integration][Git Integration]]
-- [[#org-mode][Org Mode]]
-  - [[#enable-the-table-of-contents][Enable the Table of Contents]]
+- [[#git-integration][Git integration]]
+- [[#org-mode][Org mode]]
+  - [[#enable-the-table-of-contents][Enable the table of contents]]
   - [[#enabling-org-bullets][Enabling Org Bullets]]
   - [[#disabling-electric-indent][Disabling electric indent]]
   - [[#stopping-org-mode-from-indenting-2-spaces-in-code-blocks][Stopping org mode from indenting 2 spaces in code blocks]]
@@ -65,7 +65,7 @@
 
 * Important Programs
 
-** Elpaca Package Manager
+** Elpaca package manager
 Initialise Elpaca. This code is copied directly off of [[https://github.com/progfolio/elpaca][Elpaca's GitHub]].
 #+begin_src emacs-lisp
 
@@ -127,137 +127,8 @@ Enable use-package support for Elpaca.
 
 #+end_src
 
-
-** Evil Mode
-Install and set up evil mode.
-#+begin_src emacs-lisp
-(use-package evil
-
-  ;; Force evil to load first
-  :demand t
-
-  ;; Customise evil
-  :custom
-
-  ;; This is optional since it's already set to t (true) by default
-  (evil-want-integration t)
-  (evil-want-keybinding nil)
-
-  ;; Open the new window on the right
-  ;; when splitting vertically, just like in vim
-  (evil-vsplit-window-right t)
-
-  ;; Open the new window at the bottom
-  ;; when splitting horizontally, just like in vim
-  (evil-split-window-below t)
-
-  ;; Use Ctrl + u to scroll up
-  (evil-want-C-u-scroll t)
-
-  ;; Set "Y" to yank till the end of the line
-  (evil-want-Y-yank-to-eol t)
-
-  ;; Make evil-search-word look for symbols rather than word boundaries
-  (evil-symbol-word-search t)
-
-  ;; Add the hook to enter insert mode when editing a commit
-  :hook (git-commit-mode . evil-insert-state)
-
-  ;; Configure evil mode
-  :config
-
-  ;; Set the undo system to Emacs' undo redo
-  (evil-set-undo-system 'undo-redo)
-
-  ;; The function to centre the screen on the current cursor position
-  (defun centre-screen (&rest _)
-    (evil-scroll-line-to-center nil))
-
-  ;; Centre the screen after every jump
-  (dolist (func '(evil-search-next
-                  evil-search-previous
-                  evil-scroll-up
-                  evil-scroll-down
-                  evil-scroll-page-up
-                  evil-scroll-page-down))
-    (advice-add func :after #'centre-screen))
-
-  ;; Enable evil mode
-  (evil-mode))
-#+end_src
-
-
-*** Evil Collection
-Evil collection is a collection of evil key bindings for various Emacs plugins.
-#+begin_src emacs-lisp
-(use-package evil-collection
-
-  ;; Load the evil collection after evil
-  :after evil
-
-  ;; Force evil collection to load first
-  :demand t
-
-  ;; Use z for folds in magit
-  :custom (evil-collection-magit-use-z-for-folds t)
-
-  ;; Configure evil collection
-  :config
-
-  ;; Initialise the evil collection
-  (evil-collection-init))
-#+end_src
-
-
-*** Evil Goggles
-Evil goggles highlights changes to text when deleting, replacing, copying or pasting text.
-#+begin_src emacs-lisp
-(use-package evil-goggles
-
-  ;; Configure evil goggles
-  :config
-
-  ;; Use diff faces, which will cause deleted text to be highlighted
-  ;; with the "diff-removed" face which is typically some red colour
-  ;; Other faces such as "diff-added" will be used for other actions
-  (evil-goggles-use-diff-faces)
-
-  ;; Activate evil goggles mode
-  (evil-goggles-mode))
-#+end_src
-
-
-*** Evil Nerd Commenter
-Evil nerd commenter allows for easy commenting of code.
-#+begin_src emacs-lisp
-(use-package evil-nerd-commenter)
-#+end_src
-
-
-*** Evil Surround
-Evil surround allows for easily changing the surroundings of a text objects, such as changing from single quotes to double quotes. It is similar to [[https://github.com/tpope/vim-surround][vim-surround]], [[https://github.com/kylechui/nvim-surround][nvim-surround]] and [[https://github.com/machakann/vim-sandwich][vim-sandwich]].
-#+begin_src emacs-lisp
-(use-package evil-surround :config (global-evil-surround-mode 1))
-#+end_src
-
-
-*** Evil Anzu
-Evil anzu highlights search terms. This package is required for doom modeline to display the match count when searching.
-#+begin_src emacs-lisp
-(use-package evil-anzu
-
-  ;; Initialise Anzu mode
-  :init
-
-  ;; Set the search threshold for anzu
-  (setq anzu-search-threshold 1000)
-
-  ;; Use anzu mode globally
-  (global-anzu-mode t))
-#+end_src
-
-
 ** Key bindings (with general.el)
+General.el has to be loaded first so that the ~use-package~ definitions below it can make use of the ~:general use-package~ keyword. Below are the key binds for built-in Emacs packages and modes.
 #+begin_src emacs-lisp
 (use-package general
 
@@ -271,23 +142,8 @@ Evil anzu highlights search terms. This package is required for doom modeline to
   ;; Use the evil setup for general.el
   (general-evil-setup)
 
-  ;; Key binds in normal and visual mode
-  (general-define-key
-   :states '(normal visual)
-   :keymaps 'override
-
-   ;; Comment out lines with Ctrl + /
-   "C-/" '("Comment out the selected lines" . evilnc-comment-or-uncomment-lines)
-
-   ;; Use Ctrl + hjkl to move between splits
-   "C-h" '("Go to the window on the left" . evil-window-left)
-   "C-j" '("Go to the window below" . evil-window-down)
-   "C-k" '("Go to the window above" . evil-window-up)
-   "C-l" '("Go to the window on the right" . evil-window-right)
-   )
-
   ;; Key binds for dired
-  (general-define-key
+  (general-def
    :states 'normal
    :keymaps 'dired-mode-map
    :major-modes 'dired-mode
@@ -295,7 +151,7 @@ Evil anzu highlights search terms. This package is required for doom modeline to
    )
 
   ;; Key binds for transient (used by Magit)
-  (general-define-key
+  (general-def
    :keymaps 'transient-base-map
    "<escape>" 'transient-quit-one
    )
@@ -313,45 +169,14 @@ Evil anzu highlights search terms. This package is required for doom modeline to
     ;; Access leader key in insert mode using "Ctrl + Space"
     :global-prefix "C-SPC")
 
+  ;; Key bindings involving the leader key
+
   ;; Key binds for BibTeX files
   (hanker/leader-keys
     :states 'normal
     :keymaps 'bibtex-mode-map
     :major-modes 'bibtex-mode
     "f" '("Format the BibTeX buffer" . bibtex-reformat))
-
-
-
-
-  ;; Function definitions that are used in the key bindings
-
-  ;; Function to use a register with an evil function
-  (defun use-register-with-evil-function (register evil-function)
-    "A wrapper function to easily use a specified register REGISTER
-     with an evil function EVIL-FUNCTION."
-    (interactive)
-    (let ((evil-this-register register))
-      (call-interactively evil-function)))
-
-
-
-
-  ;; Key bindings involving the leader key
-
-  ;; Key binds to copy and paste from the clipboard
-  (hanker/leader-keys
-    :states 'normal
-    "P" '("Paste from the system clipboard before the cursor" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before)))
-    "pp" '("Paste from the system clipboard after the cursor" .
-           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after)))
-    "y" '("Copy to the system clipboard" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank)))
-    "Y" '("Copy till the end of the line to the system clipboard" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line)))
-    "d" '("Delete to the black hole register" .
-          (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete)))
-    )
 
   ;; Key binds for buffer management
   (hanker/leader-keys
@@ -366,12 +191,6 @@ Evil anzu highlights search terms. This package is required for doom modeline to
     :states 'normal
     "pw" '("Open Dired" . dired)
     "pf" '("Search for a file" . find-file)
-    )
-
-  ;; Key binds for git
-  (hanker/leader-keys
-    :states 'normal
-    "gs" '("Open Git" . magit-status)
     )
 
   ;; Key binds for opening specific files
@@ -394,15 +213,6 @@ Evil anzu highlights search terms. This package is required for doom modeline to
     "ob" '(:ignore t :wk "Org babel keybinds")
     "obt" '("Org babel tangle" . org-babel-tangle)
     "obe" '("Org babel execute buffer" . org-babel-execute-buffer)
-    )
-
-  ;; Key binds to show diagnostics
-  (hanker/leader-keys
-    :states 'normal
-    :keymaps 'flycheck-mode-map
-    :major-modes 'flycheck-mode
-    "tr" '("List all the errors in the current buffer" . flycheck-list-errors)
-    "tb" '("List all the errors in the current buffer" . flycheck-list-errors)
     )
 
   ;; Key binds for help files.
@@ -445,6 +255,173 @@ Evil anzu highlights search terms. This package is required for doom modeline to
   )
 #+end_src
 
+** Evil Mode
+Install and set up evil mode.
+#+begin_src emacs-lisp
+(use-package evil
+
+  ;; Force evil to load first
+  :demand t
+
+  ;; Customise evil
+  :custom
+
+  ;; This is optional since it's already set to t (true) by default
+  (evil-want-integration t)
+  (evil-want-keybinding nil)
+
+  ;; Open the new window on the right
+  ;; when splitting vertically, just like in vim
+  (evil-vsplit-window-right t)
+
+  ;; Open the new window at the bottom
+  ;; when splitting horizontally, just like in vim
+  (evil-split-window-below t)
+
+  ;; Use Ctrl + u to scroll up
+  (evil-want-C-u-scroll t)
+
+  ;; Set "Y" to yank till the end of the line
+  (evil-want-Y-yank-to-eol t)
+
+  ;; Make evil-search-word look for symbols rather than word boundaries
+  (evil-symbol-word-search t)
+
+  ;; Add the hook to enter insert mode when editing a commit
+  :hook (git-commit-mode . evil-insert-state)
+
+  ;; Function definitions that are used in the key bindings
+  :init
+
+  ;; Function to use a register with an evil function
+  (defun use-register-with-evil-function (register evil-function)
+    "A wrapper function to easily use a specified register REGISTER
+     with an evil function EVIL-FUNCTION."
+    (interactive)
+    (let ((evil-this-register register))
+      (call-interactively evil-function)))
+
+  ;; Key binds for evil mode
+  :general
+
+  ;; Key binds in normal and visual mode
+  (general-def
+    :states '(normal visual)
+    :keymaps 'override
+
+    ;; Use Ctrl + hjkl to move between splits
+    "C-h" '("Go to the window on the left" . evil-window-left)
+    "C-j" '("Go to the window below" . evil-window-down)
+    "C-k" '("Go to the window above" . evil-window-up)
+    "C-l" '("Go to the window on the right" . evil-window-right)
+    )
+
+  ;; Key binds to copy and paste from the clipboard
+  (hanker/leader-keys
+    :states 'normal
+    "P" '("Paste from the system clipboard before the cursor" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before)))
+    "pp" '("Paste from the system clipboard after the cursor" .
+           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after)))
+    "y" '("Copy to the system clipboard" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank)))
+    "Y" '("Copy till the end of the line to the system clipboard" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line)))
+    "d" '("Delete to the black hole register" .
+          (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete)))
+    )
+
+  ;; Configure evil mode
+  :config
+
+  ;; Set the undo system to Emacs' undo redo
+  (evil-set-undo-system 'undo-redo)
+
+  ;; The function to centre the screen on the current cursor position
+  (defun centre-screen (&rest _)
+    (evil-scroll-line-to-center nil))
+
+  ;; Centre the screen after every jump
+  (dolist (func '(evil-search-next
+                  evil-search-previous
+                  evil-scroll-up
+                  evil-scroll-down
+                  evil-scroll-page-up
+                  evil-scroll-page-down))
+    (advice-add func :after #'centre-screen))
+
+  ;; Enable evil mode
+  (evil-mode))
+#+end_src
+
+*** Evil Collection
+Evil collection is a collection of evil key bindings for various Emacs plugins.
+#+begin_src emacs-lisp
+(use-package evil-collection
+
+  ;; Load the evil collection after evil
+  :after evil
+
+  ;; Force evil collection to load first
+  :demand t
+
+  ;; Use z for folds in magit
+  :custom (evil-collection-magit-use-z-for-folds t)
+
+  ;; Configure evil collection
+  :config
+
+  ;; Initialise the evil collection
+  (evil-collection-init))
+#+end_src
+
+*** Evil Goggles
+Evil goggles highlights changes to text when deleting, replacing, copying or pasting text.
+#+begin_src emacs-lisp
+(use-package evil-goggles
+
+  ;; Configure evil goggles
+  :config
+
+  ;; Use diff faces, which will cause deleted text to be highlighted
+  ;; with the "diff-removed" face which is typically some red colour
+  ;; Other faces such as "diff-added" will be used for other actions
+  (evil-goggles-use-diff-faces)
+
+  ;; Activate evil goggles mode
+  (evil-goggles-mode))
+#+end_src
+
+*** Evil Nerd Commenter
+Evil nerd commenter allows for easy commenting of code.
+#+begin_src emacs-lisp
+(use-package evil-nerd-commenter
+
+  ;; Comment out lines with Ctrl + /
+  :general (general-def :states '(normal visual)
+             "C-/" '("Comment out the selected lines" . evilnc-comment-or-uncomment-lines)))
+#+end_src
+
+*** Evil Surround
+Evil surround allows for easily changing the surroundings of a text objects, such as changing from single quotes to double quotes. It is similar to [[https://github.com/tpope/vim-surround][vim-surround]], [[https://github.com/kylechui/nvim-surround][nvim-surround]] and [[https://github.com/machakann/vim-sandwich][vim-sandwich]].
+#+begin_src emacs-lisp
+(use-package evil-surround :config (global-evil-surround-mode 1))
+#+end_src
+
+*** Evil Anzu
+Evil anzu highlights search terms. This package is required for doom modeline to display the match count when searching.
+#+begin_src emacs-lisp
+(use-package evil-anzu
+
+  ;; Initialise Anzu mode
+  :init
+
+  ;; Set the search threshold for anzu
+  (setq anzu-search-threshold 1000)
+
+  ;; Use anzu mode globally
+  (global-anzu-mode t))
+#+end_src
 
 ** Undo system
 The built-in Emacs undo system is awesome, but doesn't have good UI and UX, so there's a need for some plugins to make it easier to use.
@@ -470,12 +447,17 @@ Vundo is short for visual undo, and it helps visualise the undo and redo history
   :general
   (hanker/leader-keys
     :states 'normal
-    "u" '("Open the undo tree window" . vundo)))
+    "u" '("Open the undo tree window" . vundo))
+
+  ;; Use escape to quit vundo as well
+  (general-def
+    :states 'normal
+    :keymaps 'vundo-mode-map
+    "<escape>" '("Close the undo tree window" . vundo-quit)))
 #+end_src
 
-
 ** Which Key
-Install and configure the which key plugin, which is a plugin that displays the possible key binds and what each key bind does when you press a key.
+Which key is a plugin that displays the possible key binds and what each key bind does when you press a key.
 #+begin_src emacs-lisp
 (use-package which-key
 
@@ -500,9 +482,6 @@ Install and configure the which key plugin, which is a plugin that displays the 
   ;; Initialise which key
   :init (which-key-mode 1))
 #+end_src
-
-
-
 
 * Fonts
 
@@ -535,9 +514,6 @@ Set up the font such that it will work on emacsclient.
 ;; (add-to-list 'default-frame-alist '(font . "Maple Mono NF CN 12"))
 #+end_src
 
-
-
-
 * Emacs' settings
 
 ** GUI Settings
@@ -548,13 +524,11 @@ Remove the startup splash screen.
 (setq inhibit-startup-message t)
 #+end_src
 
-
 *** Padding
 Have some padding before the edge of the screen.
 #+begin_src emacs-lisp
 (set-fringe-mode 5)
 #+end_src
-
 
 *** Menus
 Disable the menu, the toolbar and the scroll bar.
@@ -580,20 +554,17 @@ This shows a column on the right that marks the maximum number of characters you
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 #+end_src
 
-
 ** Error bells
 Disable all error bells.
 #+begin_src emacs-lisp
 (setq ring-bell-function 'ignore)
 #+end_src
 
-
 ** Backups
 Don't create backups.
 #+begin_src emacs-lisp
 (setq make-backup-files nil)
 #+end_src
-
 
 ** Emacs Interface
 
@@ -612,13 +583,11 @@ Disable line numbers for some modes, specifically terminal, E-shell and PDF view
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
-
 *** Column numbers
 Display column numbers on the mode line.
 #+begin_src emacs-lisp
 (column-number-mode)
 #+end_src
-
 
 *** Scrolling
 Set the scroll margin (scrolloff in vim) and the scroll step to have vim-like scrolling.
@@ -627,20 +596,17 @@ Set the scroll margin (scrolloff in vim) and the scroll step to have vim-like sc
 (setq scroll-step 1)
 #+end_src
 
-
 *** Line wrap
 Wrap long lines.
 #+begin_src emacs-lisp
 (global-visual-line-mode t)
 #+end_src
 
-
 *** Revert without querying
 This is just to stop Emacs from asking if I want to reread the PDF file from disk every time I reopen a PDF file that has changed. Instead, Emacs will now just automatically reread the PDF file without asking.
 #+begin_src emacs-lisp
 (setq revert-without-query '(".pdf"))
 #+end_src
-
 
 ** Indentation and brackets
 
@@ -656,22 +622,17 @@ Set a default indentation of 4 spaces.
 (setq-default evil-shift-width tab-width)
 #+end_src
 
-
 *** Auto close brackets
 Electric pair mode is a mode to auto close brackets.
 #+begin_src emacs-lisp
 (electric-pair-mode 1)
 #+end_src
 
-
 ** Search
 Make Dabbrev completions case-sensitive.
 #+begin_src emacs-lisp
 (setq dabbrev-case-fold-search nil)
 #+end_src
-
-
-
 
 * Whitespace Mode
 Set up whitespace mode to show trailing spaces, non-breaking spaces, new lines, indentation, and mixed indentation.
@@ -757,9 +718,6 @@ Enable whitespace mode.
 (global-whitespace-mode 1)
 #+end_src
 
-
-
-
 * Beautifying Emacs
 
 ** Theme
@@ -794,13 +752,11 @@ Install the Auto-Dark Emacs package to automatically switch between light and da
   :init (auto-dark-mode))
 #+end_src
 
-
 ** Mode line
 Use doom mode line for the Emacs mode line.
 #+begin_src emacs-lisp
 (use-package doom-modeline :init (doom-modeline-mode 1))
 #+end_src
-
 
 ** Rainbow Delimiters
 This is to make it easier to see the different brackets as lisp has a heck ton of brackets.
@@ -808,7 +764,6 @@ This is to make it easier to see the different brackets as lisp has a heck ton o
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
-
 
 ** All The Icons
 All the icons is an icon set that can be used with dashboard, dired, ibuffer and other Emacs programs.
@@ -824,7 +779,6 @@ All the icons is an icon set that can be used with dashboard, dired, ibuffer and
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
 #+end_src
-
 
 ** Nerd Icons
 Nerd Icons is another icon set that can be used with anything in Emacs. I am currently using it through kind-icons with Corfu.
@@ -843,9 +797,6 @@ Nerd Icons is another icon set that can be used with anything in Emacs. I am cur
   )
 #+end_src
 
-
-
-
 * Miscellaneous
 
 ** Zoom
@@ -861,7 +812,6 @@ Set Ctrl + the mouse wheel to zoom in and out.
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 #+end_src
 
-
 ** File previews in dired
 Use dired-preview to preview files in dired.
 #+begin_src emacs-lisp
@@ -873,9 +823,6 @@ Use dired-preview to preview files in dired.
   ;; Enable dired preview globally
   (dired-preview-global-mode 1))
 #+end_src
-
-
-
 
 * Development
 
@@ -890,8 +837,12 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   ;; Customise LSP mode
   :custom
 
-  ;; Set the prefix for LSP mode key binds
-  (lsp-keymap-prefix "C-;")
+  ;; Set the prefix for LSP mode key binds.
+  ;;
+  ;; I have custom keybinds for LSP mode
+  ;; so this is just a fallback for LSP mode
+  ;; functions that I haven't mapped a key for.
+  (lsp-keymap-prefix "C-.")
 
   ;; Disable snippet support for LSP mode
   (lsp-enable-snippet nil)
@@ -949,7 +900,6 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   :ensure-system-package (efm-langserver . "yay -S efm-langserver"))
 #+end_src
 
-
 *** Enable the UI for LSP mode
 #+begin_src emacs-lisp
 (use-package lsp-ui
@@ -967,7 +917,8 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   :general
 
   ;; Key binds for normal mode in LSP mode
-  (:keymaps 'lsp-mode-map
+  (general-def :keymaps 'lsp-mode-map
+
             :states 'normal
             "K" '("Describe the currently hovered item" . lsp-ui-doc-glance)
             "gd" '("Go to definition" . lsp-ui-peek-find-definitions)
@@ -988,7 +939,6 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   )
 #+end_src
 
-
 *** Language Support
 Emacs doesn't have built-in support for Lua, Haskell, and Rust, so let's add support for those.
 #+begin_src emacs-lisp
@@ -1002,7 +952,6 @@ Emacs doesn't have built-in support for Lua, Haskell, and Rust, so let's add sup
   ;; Enable the lsp when in rust mode
   :hook (rust-mode . lsp-deferred))
 #+end_src
-
 
 *** Language Servers
 
@@ -1058,18 +1007,30 @@ Basedpyright is a fork of Pyright, a Python language server by Microsoft, with v
                          (lsp-deferred))))
 #+end_src
 
-
 ** Flycheck
 Flycheck is better alternative to the built-in Emacs Flymake with support for a lot of programming languages out of the box. ~luacheck~ and ~python-pylint~ needs to be installed for Flycheck to support Lua and Python respectively.
 #+begin_src emacs-lisp
-(use-package flycheck :init (global-flycheck-mode))
-#+end_src
+(use-package flycheck
 
+  ;; Key binds for flycheck
+  :general
+
+  (hanker/leader-keys
+    :states 'normal
+    :keymaps 'flycheck-mode-map
+    :major-modes 'flycheck-mode
+    "tr" '("List all the errors in the current buffer" . flycheck-list-errors)
+    "tb" '("List all the errors in the current buffer" . flycheck-list-errors)
+    )
+
+  ;; Start flycheck globally
+  :init (global-flycheck-mode))
+#+end_src
 
 ** Completion Plugins
 
 *** Vertico
-Vertico is a minimal completion UI for the Emacs mini buffer, like Ivy. However, it does not do completions by itself, but rather relies on Emacs' default completion at point functions and completing-read, unlike Ivy.
+Vertico is a minimal completion UI for the Emacs mini buffer, like Ivy. However, it does not do completions by itself, but rather relies on Emacs' default completion at point functions and completing-read, unlike Ivy which has its own completion mechanism.
 #+begin_src emacs-lisp
 (use-package vertico
 
@@ -1136,15 +1097,15 @@ Vertico is a minimal completion UI for the Emacs mini buffer, like Ivy. However,
   (vertico-multiform-mode))
 #+end_src
 
-
 *** Marginalia
-Marginalia is a plugin that adds annotations to the mini-buffer, like file permissions for example.
+Marginalia is a plugin that adds annotations to the mini-buffer, like file permissions for example. It is the Vertico alternative to Ivy Rich, but can be used with other plugins as well, not just Vertico.
 #+begin_src emacs-lisp
 (use-package marginalia
 
   ;; Add a key bind to cycle the marginalia annotations
-  :general (:keymaps 'minibuffer-local-map
-                     "M-a" 'marginalia-cycle)
+  :general (general-def
+             :keymaps 'minibuffer-local-map
+             "M-a" 'marginalia-cycle)
 
   ;; Customise marginalia
   :custom
@@ -1161,7 +1122,7 @@ Marginalia is a plugin that adds annotations to the mini-buffer, like file permi
 #+end_src
 
 *** Nerd icons completion
-Nerd icons completion is a plugin that displays pretty icons alongside the marginalia annotations using nerd icons. It is the Vertico alternative to Ivy Rich.
+Nerd icons completion is a plugin that displays pretty icons alongside the marginalia annotations using nerd icons. It is the Vertico alternative to the all the icons ivy rich package, but with nerd icons.
 #+begin_src emacs-lisp
 (use-package nerd-icons-completion
 
@@ -1176,7 +1137,7 @@ Nerd icons completion is a plugin that displays pretty icons alongside the margi
 #+end_src
 
 *** Orderless
-Orderless is essentially fuzzy matching for Emacs completion plugins, like ~fzf~.
+Orderless is essentially fuzzy matching for Emacs completion plugins, like ~fzf~. It doesn't work exactly like ~fzf~ or other fuzzy finders though, it is only somewhat fuzzy and depends on delimiters like spaces to fuzzy match.
 #+begin_src emacs-lisp
 (use-package orderless
 
@@ -1190,9 +1151,8 @@ Orderless is essentially fuzzy matching for Emacs completion plugins, like ~fzf~
   (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
 
-
 *** Consult
-Consult is a plugin that consults Emacs' completing read functions. It is essentially a picker, but only works on some items and isn't generic.
+Consult is a plugin that consults Emacs' completing-read functions for you to pick one from. It is essentially a picker for Emacs' completing-read functions.
 #+begin_src emacs-lisp
 (use-package consult
 
@@ -1200,12 +1160,12 @@ Consult is a plugin that consults Emacs' completing read functions. It is essent
   :ensure-system-package (fd . "sudo pacman -S fd")
   :ensure-system-package (rg . "sudo pacman -S ripgrep")
 
-  ;; Keymaps for consult
+  ;; Key maps for consult
   :general
 
   ;; Key maps
-  (:states 'normal
-           "<f1>" '("Search the info pages" . consult-info))
+  (general-def :states 'normal
+    "<f1>" '("Search the info pages" . consult-info))
 
   ;; Leader key maps
   (hanker/leader-keys
@@ -1219,7 +1179,6 @@ Consult is a plugin that consults Emacs' completing read functions. It is essent
     )
   )
 #+end_src
-
 
 *** Corfu
 Corfu is a plugin for in-buffer completions.
@@ -1294,7 +1253,6 @@ Corfu is a plugin for in-buffer completions.
   :hook (minibuffer-setup . corfu-enable-always-in-minibuffer))
 #+end_src
 
-
 **** Adding kind icons to corfu
 #+begin_src emacs-lisp
 (use-package kind-icon
@@ -1360,7 +1318,6 @@ Corfu is a plugin for in-buffer completions.
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
 
-
 *** Cape
 Cape is a plugin that provides extensions to completion at point plugins like Corfu or Company.
 #+begin_src emacs-lisp
@@ -1384,8 +1341,36 @@ Cape is a plugin that provides extensions to completion at point plugins like Co
   )
 #+end_src
 
+** Wgrep
+Wgrep is augments the ~grep~ buffer in Emacs so that it becomes writable, and changes to the buffer will affect the files as well. It is similar to the [[https://github.com/stevearc/quicker.nvim][quicker.nvim]] plugin for the Neovim quick fix list.
+#+begin_src emacs-lisp
+(use-package wgrep)
+#+end_src
 
+* Embark
+Embark is a plugin that essentially gives you a keyboard-based right click menu everywhere in Emacs, allowing you to easily operate on items in the buffer.
+#+begin_src emacs-lisp
+(use-package embark
 
+  ;; Replace the prefix help command
+  ;; with embark's completing-read interface
+  :init (setq prefix-help-command #'embark-prefix-help-command)
+
+  ;; Key binds for embark
+  :general (general-def
+             :states '(normal insert visual emacs)
+             "C-;" '("Open embark" . embark-act)
+             "M-;" '("Run the default action" . embark-dwim))
+
+  ;; Remap the describe bindings function to embark's
+  :bind ([remap describe-bindings] . embark-bindings))
+#+end_src
+
+** Integration with consult
+#+begin_src emacs-lisp
+(use-package embark-consult
+  :hook (emback-collect-mode . consult-preview-at-point-mode))
+#+end_src
 
 * Helpful
 Helpful is a better help buffer for Emacs that provides more context and details.
@@ -1400,30 +1385,35 @@ Helpful is a better help buffer for Emacs that provides more context and details
   ([remap describe-key] . helpful-key))
 #+end_src
 
-
-
-
-* Git Integration
+* Git integration
 Magit is an awesome plugin that provides excellent Git integration in Emacs.
 #+begin_src emacs-lisp
-(use-package magit :commands (magit magit-status))
+(use-package magit
 
-;; Update transient, which is a magit dependency
+  ;; Lazy load magit when the status command is called
+  :commands (magit magit-status)
+
+  ;; Key binds for magit
+  :general
+  (hanker/leader-keys
+    :states 'normal
+    "gs" '("Open Git" . magit-status)
+    )
+  )
+
+;; Ensure transient is updated as well,
+;; as it is a magit dependency
 (use-package transient)
 #+end_src
 
+* Org mode
 
-
-
-* Org Mode
-
-** Enable the Table of Contents
+** Enable the table of contents
 #+begin_src emacs-lisp
 (use-package toc-org
   :commands toc-org-enable
   :hook (org-mode . toc-org-enable))
 #+end_src
-
 
 ** Enabling Org Bullets
 Org-bullets gives us attractive bullets rather than asterisks.
@@ -1441,19 +1431,16 @@ Org-bullets gives us attractive bullets rather than asterisks.
   (org-mode . (lambda () (org-bullets-mode 1))))
 #+end_src
 
-
 ** Disabling electric indent
 Org mode source code blocks have some really weird and annoying default indentation behaviour. It is likely due to ~electric-indent-mode~, which is turned on by default in Emacs. So I'm going to turn it off.
 #+begin_src emacs-lisp
 (electric-indent-mode -1)
 #+end_src
 
-
 ** Stopping org mode from indenting 2 spaces in code blocks
 #+begin_src emacs-lisp
 (setq org-edit-src-content-indentation 0)
 #+end_src
-
 
 ** Enabling Org Tempo
 Org-tempo provides shortcuts for various expansions in Org mode, such as "<s" to create a source code block. Below are shortcuts for ~org-tempo~.
@@ -1475,7 +1462,6 @@ Org-tempo provides shortcuts for various expansions in Org mode, such as "<s" to
 (require 'org-tempo)
 #+end_src
 
-
 ** Stop auto completing "<" in org mode
 Electric pair mode auto completes the "<" in org mode, which causes issues with the org tempo expansions. The code below stops electric pair mode from auto completing "<" in org mode.
 #+begin_src emacs-lisp
@@ -1485,12 +1471,10 @@ Electric pair mode auto completes the "<" in org mode, which causes issues with 
                                           (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 #+end_src
 
-
 ** Add a page break immediately after the table of contents in LaTeX
 #+begin_src emacs-lisp
 (setq org-latex-toc-command "\\tableofcontents \\clearpage")
 #+end_src
-
 
 ** Evil Org
 Evil org provides a set of evil key bindings that work with org mode.
@@ -1511,13 +1495,11 @@ Evil org provides a set of evil key bindings that work with org mode.
   (evil-org-agenda-set-keys))
 #+end_src
 
-
 ** Turn on LaTeX syntax highlighting in org mode
 This sets the variable ~org-highlight-latex-and-related~ to "native", which will highlight LaTeX syntax like it is a TeX file. The "latex" setting will just highlight all LaTeX fragments in a different colour. So a LaTeX block will just be one colour and all the entities are not highlighted. For the other options, the Emacs help (~C-h v org-highlight-latex-and-related~) should be sufficient to understand what they do.
 #+begin_src emacs-lisp
 (setq org-highlight-latex-and-related '(native))
 #+end_src
-
 
 ** Add syntax highlighting to LaTeX exports of org mode code blocks
 This allows the code blocks in Org mode to have syntax highlighting when it is being exported to LaTeX.
@@ -1534,13 +1516,11 @@ This allows the code blocks in Org mode to have syntax highlighting when it is b
 (setq org-latex-pdf-process '("latexmk -shell-escape -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f"))
 #+end_src
 
-
 ** Citeproc
 Citeproc is a program that produces formatted bibliographies and citations using the Citation Style Language (CSL) styles.
 #+begin_src emacs-lisp
 (use-package citeproc)
 #+end_src
-
 
 ** Literate programming
 Literate programming is a way of programming that has code snippets embedded in text that explain the code, and looks something like this configuration file.
@@ -1577,9 +1557,6 @@ Literate programming is a way of programming that has code snippets embedded in 
 (setq org-confirm-babel-evaluate nil)
 #+end_src
 
-
-
-
 * Working with PDFs
 PDF-tools is a great plugin that makes working with PDFs very easy. A lot of times, I am exporting org files or TeX files to PDF, so this makes my life much easier.
 #+begin_src emacs-lisp
@@ -1599,9 +1576,6 @@ PDF-tools is a great plugin that makes working with PDFs very easy. A lot of tim
   :config (pdf-tools-install))
 #+end_src
 
-
-
-
 * LaTeX
 
 ** AUCTeX
@@ -1620,16 +1594,12 @@ AUCTeX is an Emacs package for writing LaTeX documents.
   :mode (("\\.tex\\'" . LaTeX-mode)))
 #+end_src
 
-
 ** Evil TeX
 Evil TeX provides useful text objects for LaTeX editing.
 #+begin_src emacs-lisp
 (use-package evil-tex
   :hook (LaTeX-mode . evil-tex-mode))
 #+end_src
-
-
-
 
 * Building better Vim habits
 
@@ -1665,9 +1635,6 @@ Hardtime.el is a package that forces you to stop repeating the same commands to 
   (org-mode . hardtime-mode)
   (text-mode . hardtime-mode))
 #+end_src
-
-
-
 
 * External programs
 Below is a list of external programs that are being used with my Emacs configuration.

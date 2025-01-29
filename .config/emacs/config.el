@@ -49,6 +49,130 @@
 ;; Block until current queue processed.
 (elpaca-wait)
 
+(use-package general
+
+  ;; Load general.el immediately to make use of
+  ;; the :general use-package keyword
+  :ensure (:wait t) :demand t
+
+  ;; Configure general.el
+  :config
+
+  ;; Use the evil setup for general.el
+  (general-evil-setup)
+
+  ;; Key binds for dired
+  (general-def
+   :states 'normal
+   :keymaps 'dired-mode-map
+   :major-modes 'dired-mode
+   "_" '("Create a file" . find-file)
+   )
+
+  ;; Key binds for transient (used by Magit)
+  (general-def
+   :keymaps 'transient-base-map
+   "<escape>" 'transient-quit-one
+   )
+
+  ;; Create a new definer for the leader keys
+  (general-create-definer hanker/leader-keys
+
+    ;; Set the leader key in all modes
+    :states '(normal insert visual emacs)
+    :keymaps 'override
+
+    ;; Set the leader key to space
+    :prefix "SPC"
+
+    ;; Access leader key in insert mode using "Ctrl + Space"
+    :global-prefix "C-SPC")
+
+  ;; Key bindings involving the leader key
+
+  ;; Key binds for BibTeX files
+  (hanker/leader-keys
+    :states 'normal
+    :keymaps 'bibtex-mode-map
+    :major-modes 'bibtex-mode
+    "f" '("Format the BibTeX buffer" . bibtex-reformat))
+
+  ;; Key binds for buffer management
+  (hanker/leader-keys
+    :states 'normal
+    "l" '("Go to the next buffer" . next-buffer)
+    "h" '("Go to the previous buffer" . previous-buffer)
+    "x" '("Close the current buffer" . kill-this-buffer)
+    )
+
+  ;; Key binds for searching
+  (hanker/leader-keys
+    :states 'normal
+    "pw" '("Open Dired" . dired)
+    "pf" '("Search for a file" . find-file)
+    )
+
+  ;; Key binds for opening specific files
+  (hanker/leader-keys
+    :states 'normal
+    "ec" '("Edit Emacs config" .
+           (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
+    )
+
+  ;; Key binds in org mode
+  (hanker/leader-keys
+    :states 'normal
+    :keymaps 'org-mode-map
+    :major-modes 'org-mode
+    "o" '(:ignore t :wk "Org mode keybinds")
+    "oe" '("Org export dispatch" . org-export-dispatch)
+    "oi" '("Org toggle item" . org-toggle-item)
+    "oa" '("Org agenda" . org-agenda)
+    "ot" '("Org todo" . org-todo-list)
+    "ob" '(:ignore t :wk "Org babel keybinds")
+    "obt" '("Org babel tangle" . org-babel-tangle)
+    "obe" '("Org babel execute buffer" . org-babel-execute-buffer)
+    )
+
+  ;; Key binds for help files.
+  ;; I'm using "/" because it is where the question mark is.
+  ;; But I don't want to press shift to access the help files.
+  (hanker/leader-keys
+    :states 'normal
+    "/" '(:ignore t :wk "Help")
+    "/b" '("Describe bindings" . describe-bindings)
+    "/c" '("Describe character under cursor" . describe-char)
+    "/d" '(:ignore t :wk "Emacs documentation")
+    "/da" '("About Emacs" . about-emacs)
+    "/dd" '("View Emacs debugging" . view-emacs-debugging)
+    "/df" '("View Emacs FAQ" . view-emacs-FAQ)
+    "/dm" '("The Emacs manual" . info-emacs-manual)
+    "/dn" '("View Emacs news" . view-emacs-news)
+    "/do" '("How to obtain Emacs" . describe-distribution)
+    "/dp" '("View Emacs problems" . view-emacs-problems)
+    "/dt" '("View Emacs todo" . view-emacs-todo)
+    "/dw" '("Show the COPYING file" . describe-no-warranty)
+    "/e" '("View echo area messages" . view-echo-area-messages)
+    "/f" '("Describe function" . describe-function)
+    "/F" '("Describe face" . describe-face)
+    "/g" '("Describe the GNU Project" . describe-gnu-project)
+    "/i" '("Info" . info)
+    "/I" '("Describe input method" . describe-input-method)
+    "/k" '("Describe key" . describe-key)
+    "/l" '("Display recent keystrokes and commands" . view-lossage)
+    "/L" '("Describe language environment" . describe-language-environment)
+    "/m" '("Describe mode" . describe-mode)
+    "/r" '("Reload Emacs config" . (lambda () (interactive)
+                                     (load-file "~/.config/emacs/init.el")
+                                     (ignore (elpaca-process-queues))))
+    "/t" '("Load theme" . load-theme)
+    "/v" '("Describe variable" . describe-variable)
+    "/w" '("Prints keybinding for command if set" . where-is)
+    "/x" '("Display full documentation for command" . describe-command)
+    )
+
+  )
+
 (use-package evil
 
   ;; Force evil to load first
@@ -80,6 +204,47 @@
 
   ;; Add the hook to enter insert mode when editing a commit
   :hook (git-commit-mode . evil-insert-state)
+
+  ;; Function definitions that are used in the key bindings
+  :init
+
+  ;; Function to use a register with an evil function
+  (defun use-register-with-evil-function (register evil-function)
+    "A wrapper function to easily use a specified register REGISTER
+     with an evil function EVIL-FUNCTION."
+    (interactive)
+    (let ((evil-this-register register))
+      (call-interactively evil-function)))
+
+  ;; Key binds for evil mode
+  :general
+
+  ;; Key binds in normal and visual mode
+  (general-def
+    :states '(normal visual)
+    :keymaps 'override
+
+    ;; Use Ctrl + hjkl to move between splits
+    "C-h" '("Go to the window on the left" . evil-window-left)
+    "C-j" '("Go to the window below" . evil-window-down)
+    "C-k" '("Go to the window above" . evil-window-up)
+    "C-l" '("Go to the window on the right" . evil-window-right)
+    )
+
+  ;; Key binds to copy and paste from the clipboard
+  (hanker/leader-keys
+    :states 'normal
+    "P" '("Paste from the system clipboard before the cursor" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before)))
+    "pp" '("Paste from the system clipboard after the cursor" .
+           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after)))
+    "y" '("Copy to the system clipboard" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank)))
+    "Y" '("Copy till the end of the line to the system clipboard" .
+          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line)))
+    "d" '("Delete to the black hole register" .
+          (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete)))
+    )
 
   ;; Configure evil mode
   :config
@@ -133,7 +298,11 @@
   ;; Activate evil goggles mode
   (evil-goggles-mode))
 
-(use-package evil-nerd-commenter)
+(use-package evil-nerd-commenter
+
+  ;; Comment out lines with Ctrl + /
+  :general (general-def :states '(normal visual)
+             "C-/" '("Comment out the selected lines" . evilnc-comment-or-uncomment-lines)))
 
 (use-package evil-surround :config (global-evil-surround-mode 1))
 
@@ -147,191 +316,6 @@
 
   ;; Use anzu mode globally
   (global-anzu-mode t))
-
-(use-package general
-
-  ;; Load general.el immediately to make use of
-  ;; the :general use-package keyword
-  :ensure (:wait t) :demand t
-
-  ;; Configure general.el
-  :config
-
-  ;; Use the evil setup for general.el
-  (general-evil-setup)
-
-  ;; Key binds in normal and visual mode
-  (general-define-key
-   :states '(normal visual)
-   :keymaps 'override
-
-   ;; Comment out lines with Ctrl + /
-   "C-/" '("Comment out the selected lines" . evilnc-comment-or-uncomment-lines)
-
-   ;; Use Ctrl + hjkl to move between splits
-   "C-h" '("Go to the window on the left" . evil-window-left)
-   "C-j" '("Go to the window below" . evil-window-down)
-   "C-k" '("Go to the window above" . evil-window-up)
-   "C-l" '("Go to the window on the right" . evil-window-right)
-   )
-
-  ;; Key binds for dired
-  (general-define-key
-   :states 'normal
-   :keymaps 'dired-mode-map
-   :major-modes 'dired-mode
-   "_" '("Create a file" . find-file)
-   )
-
-  ;; Key binds for transient (used by Magit)
-  (general-define-key
-   :keymaps 'transient-base-map
-   "<escape>" 'transient-quit-one
-   )
-
-  ;; Create a new definer for the leader keys
-  (general-create-definer hanker/leader-keys
-
-    ;; Set the leader key in all modes
-    :states '(normal insert visual emacs)
-    :keymaps 'override
-
-    ;; Set the leader key to space
-    :prefix "SPC"
-
-    ;; Access leader key in insert mode using "Ctrl + Space"
-    :global-prefix "C-SPC")
-
-  ;; Key binds for BibTeX files
-  (hanker/leader-keys
-    :states 'normal
-    :keymaps 'bibtex-mode-map
-    :major-modes 'bibtex-mode
-    "f" '("Format the BibTeX buffer" . bibtex-reformat))
-
-
-
-
-  ;; Function definitions that are used in the key bindings
-
-  ;; Function to use a register with an evil function
-  (defun use-register-with-evil-function (register evil-function)
-    "A wrapper function to easily use a specified register REGISTER
-     with an evil function EVIL-FUNCTION."
-    (interactive)
-    (let ((evil-this-register register))
-      (call-interactively evil-function)))
-
-
-
-
-  ;; Key bindings involving the leader key
-
-  ;; Key binds to copy and paste from the clipboard
-  (hanker/leader-keys
-    :states 'normal
-    "P" '("Paste from the system clipboard before the cursor" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before)))
-    "pp" '("Paste from the system clipboard after the cursor" .
-           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after)))
-    "y" '("Copy to the system clipboard" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank)))
-    "Y" '("Copy till the end of the line to the system clipboard" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line)))
-    "d" '("Delete to the black hole register" .
-          (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete)))
-    )
-
-  ;; Key binds for buffer management
-  (hanker/leader-keys
-    :states 'normal
-    "l" '("Go to the next buffer" . next-buffer)
-    "h" '("Go to the previous buffer" . previous-buffer)
-    "x" '("Close the current buffer" . kill-this-buffer)
-    )
-
-  ;; Key binds for searching
-  (hanker/leader-keys
-    :states 'normal
-    "pw" '("Open Dired" . dired)
-    "pf" '("Search for a file" . find-file)
-    )
-
-  ;; Key binds for git
-  (hanker/leader-keys
-    :states 'normal
-    "gs" '("Open Git" . magit-status)
-    )
-
-  ;; Key binds for opening specific files
-  (hanker/leader-keys
-    :states 'normal
-    "ec" '("Edit Emacs config" .
-           (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
-    )
-
-  ;; Key binds in org mode
-  (hanker/leader-keys
-    :states 'normal
-    :keymaps 'org-mode-map
-    :major-modes 'org-mode
-    "o" '(:ignore t :wk "Org mode keybinds")
-    "oe" '("Org export dispatch" . org-export-dispatch)
-    "oi" '("Org toggle item" . org-toggle-item)
-    "oa" '("Org agenda" . org-agenda)
-    "ot" '("Org todo" . org-todo-list)
-    "ob" '(:ignore t :wk "Org babel keybinds")
-    "obt" '("Org babel tangle" . org-babel-tangle)
-    "obe" '("Org babel execute buffer" . org-babel-execute-buffer)
-    )
-
-  ;; Key binds to show diagnostics
-  (hanker/leader-keys
-    :states 'normal
-    :keymaps 'flycheck-mode-map
-    :major-modes 'flycheck-mode
-    "tr" '("List all the errors in the current buffer" . flycheck-list-errors)
-    "tb" '("List all the errors in the current buffer" . flycheck-list-errors)
-    )
-
-  ;; Key binds for help files.
-  ;; I'm using "/" because it is where the question mark is.
-  ;; But I don't want to press shift to access the help files.
-  (hanker/leader-keys
-    :states 'normal
-    "/" '(:ignore t :wk "Help")
-    "/b" '("Describe bindings" . describe-bindings)
-    "/c" '("Describe character under cursor" . describe-char)
-    "/d" '(:ignore t :wk "Emacs documentation")
-    "/da" '("About Emacs" . about-emacs)
-    "/dd" '("View Emacs debugging" . view-emacs-debugging)
-    "/df" '("View Emacs FAQ" . view-emacs-FAQ)
-    "/dm" '("The Emacs manual" . info-emacs-manual)
-    "/dn" '("View Emacs news" . view-emacs-news)
-    "/do" '("How to obtain Emacs" . describe-distribution)
-    "/dp" '("View Emacs problems" . view-emacs-problems)
-    "/dt" '("View Emacs todo" . view-emacs-todo)
-    "/dw" '("Show the COPYING file" . describe-no-warranty)
-    "/e" '("View echo area messages" . view-echo-area-messages)
-    "/f" '("Describe function" . describe-function)
-    "/F" '("Describe face" . describe-face)
-    "/g" '("Describe the GNU Project" . describe-gnu-project)
-    "/i" '("Info" . info)
-    "/I" '("Describe input method" . describe-input-method)
-    "/k" '("Describe key" . describe-key)
-    "/l" '("Display recent keystrokes and commands" . view-lossage)
-    "/L" '("Describe language environment" . describe-language-environment)
-    "/m" '("Describe mode" . describe-mode)
-    "/r" '("Reload Emacs config" . (lambda () (interactive)
-                                     (load-file "~/.config/emacs/init.el")
-                                     (ignore (elpaca-process-queues))))
-    "/t" '("Load theme" . load-theme)
-    "/v" '("Describe variable" . describe-variable)
-    "/w" '("Prints keybinding for command if set" . where-is)
-    "/x" '("Display full documentation for command" . describe-command)
-    )
-
-  )
 
 (use-package undo-fu-session :init (undo-fu-session-global-mode))
 
@@ -347,7 +331,13 @@
   :general
   (hanker/leader-keys
     :states 'normal
-    "u" '("Open the undo tree window" . vundo)))
+    "u" '("Open the undo tree window" . vundo))
+
+  ;; Use escape to quit vundo as well
+  (general-def
+    :states 'normal
+    :keymaps 'vundo-mode-map
+    "<escape>" '("Close the undo tree window" . vundo-quit)))
 
 (use-package which-key
 
@@ -573,8 +563,12 @@
   ;; Customise LSP mode
   :custom
 
-  ;; Set the prefix for LSP mode key binds
-  (lsp-keymap-prefix "C-;")
+  ;; Set the prefix for LSP mode key binds.
+  ;;
+  ;; I have custom keybinds for LSP mode
+  ;; so this is just a fallback for LSP mode
+  ;; functions that I haven't mapped a key for.
+  (lsp-keymap-prefix "C-.")
 
   ;; Disable snippet support for LSP mode
   (lsp-enable-snippet nil)
@@ -646,7 +640,8 @@
   :general
 
   ;; Key binds for normal mode in LSP mode
-  (:keymaps 'lsp-mode-map
+  (general-def :keymaps 'lsp-mode-map
+
             :states 'normal
             "K" '("Describe the currently hovered item" . lsp-ui-doc-glance)
             "gd" '("Go to definition" . lsp-ui-peek-find-definitions)
@@ -720,7 +715,21 @@
                          (require 'lsp-pyright)
                          (lsp-deferred))))
 
-(use-package flycheck :init (global-flycheck-mode))
+(use-package flycheck
+
+  ;; Key binds for flycheck
+  :general
+
+  (hanker/leader-keys
+    :states 'normal
+    :keymaps 'flycheck-mode-map
+    :major-modes 'flycheck-mode
+    "tr" '("List all the errors in the current buffer" . flycheck-list-errors)
+    "tb" '("List all the errors in the current buffer" . flycheck-list-errors)
+    )
+
+  ;; Start flycheck globally
+  :init (global-flycheck-mode))
 
 (use-package vertico
 
@@ -789,8 +798,9 @@
 (use-package marginalia
 
   ;; Add a key bind to cycle the marginalia annotations
-  :general (:keymaps 'minibuffer-local-map
-                     "M-a" 'marginalia-cycle)
+  :general (general-def
+             :keymaps 'minibuffer-local-map
+             "M-a" 'marginalia-cycle)
 
   ;; Customise marginalia
   :custom
@@ -833,12 +843,12 @@
   :ensure-system-package (fd . "sudo pacman -S fd")
   :ensure-system-package (rg . "sudo pacman -S ripgrep")
 
-  ;; Keymaps for consult
+  ;; Key maps for consult
   :general
 
   ;; Key maps
-  (:states 'normal
-           "<f1>" '("Search the info pages" . consult-info))
+  (general-def :states 'normal
+    "<f1>" '("Search the info pages" . consult-info))
 
   ;; Leader key maps
   (hanker/leader-keys
@@ -1002,6 +1012,26 @@
   ;; (add-hook 'completion-at-point-functions #'cape-dict)
   )
 
+(use-package wgrep)
+
+(use-package embark
+
+  ;; Replace the prefix help command
+  ;; with embark's completing-read interface
+  :init (setq prefix-help-command #'embark-prefix-help-command)
+
+  ;; Key binds for embark
+  :general (general-def
+             :states '(normal insert visual emacs)
+             "C-;" '("Open embark" . embark-act)
+             "M-;" '("Run the default action" . embark-dwim))
+
+  ;; Remap the describe bindings function to embark's
+  :bind ([remap describe-bindings] . embark-bindings))
+
+(use-package embark-consult
+  :hook (emback-collect-mode . consult-preview-at-point-mode))
+
 (use-package helpful
 
   ;; Remap the default Emacs commands to the helpful versions
@@ -1011,9 +1041,21 @@
   ([remap describe-variable] . helpful-variable)
   ([remap describe-key] . helpful-key))
 
-(use-package magit :commands (magit magit-status))
+(use-package magit
 
-;; Update transient, which is a magit dependency
+  ;; Lazy load magit when the status command is called
+  :commands (magit magit-status)
+
+  ;; Key binds for magit
+  :general
+  (hanker/leader-keys
+    :states 'normal
+    "gs" '("Open Git" . magit-status)
+    )
+  )
+
+;; Ensure transient is updated as well,
+;; as it is a magit dependency
 (use-package transient)
 
 (use-package toc-org
