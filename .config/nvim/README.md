@@ -88,6 +88,12 @@ Same word highlighting -
 Highlighting and removing trailing spaces and new lines -
 [mini.trailspace](https://github.com/echasnovski/mini.trailspace)
 
+Guessing indentation -
+[vim-sleuth](https://github.com/tpope/vim-sleuth)
+
+Better quick fix list -
+[quicker.nvim](https://github.com/stevearc/quicker.nvim)
+
 ### Managing files
 
 Marking files for quick access -
