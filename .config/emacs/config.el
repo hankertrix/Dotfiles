@@ -205,6 +205,7 @@
   ;; Key binds for BibTeX files
   (hanker/leader-keys
     :states 'normal
+    :keymaps 'bibtex-mode-map
     :major-modes 'bibtex-mode
     "f" '("Format the BibTeX buffer" . bibtex-reformat))
 
@@ -265,12 +266,14 @@
   ;; Key binds for opening specific files
   (hanker/leader-keys
     :states 'normal
-    "ec" '( "Edit Emacs config" . (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
+    "ec" '("Edit Emacs config" .
+           (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
     )
 
   ;; Key binds in org mode
   (hanker/leader-keys
     :states 'normal
+    :keymaps 'org-mode-map
     :major-modes 'org-mode
     "o" '(:ignore t :wk "Org mode keybinds")
     "oe" '("Org export dispatch" . org-export-dispatch)
@@ -285,6 +288,7 @@
   ;; Key binds to show diagnostics
   (hanker/leader-keys
     :states 'normal
+    :keymaps 'flycheck-mode-map
     :major-modes 'flycheck-mode
     "tr" '("List all the errors in the current buffer" . flycheck-list-errors)
     "tb" '("List all the errors in the current buffer" . flycheck-list-errors)
@@ -319,8 +323,8 @@
     "/L" '("Describe language environment" . describe-language-environment)
     "/m" '("Describe mode" . describe-mode)
     "/r" '("Reload Emacs config" . (lambda () (interactive)
-              (load-file "~/.config/emacs/init.el")
-              (ignore (elpaca-process-queues))))
+                                     (load-file "~/.config/emacs/init.el")
+                                     (ignore (elpaca-process-queues))))
     "/t" '("Load theme" . load-theme)
     "/v" '("Describe variable" . describe-variable)
     "/w" '("Prints keybinding for command if set" . where-is)
