@@ -12,6 +12,33 @@ return {
     -- such as indentation using tabs vs spaces
     { "tpope/vim-sleuth" },
 
+    -- Improved quick fix list for Neovim
+    {
+        "stevearc/quicker.nvim",
+        event = "FileType qf",
+        opts = {
+            keys = {
+                {
+                    ">",
+                    function()
+                        require("quicker").expand({
+                            before = 2,
+                            after = 2,
+                            add_to_exiting = true,
+                        })
+                    end,
+                    desc = "Expand quick fix context",
+                },
+
+                {
+                    "<",
+                    function() require("quicker").collapse() end,
+                    desc = "Collapse quick fix context",
+                },
+            },
+        },
+    },
+
     -- Trim trailing whitespace and blank lines
     {
         "echasnovski/mini.trailspace",
