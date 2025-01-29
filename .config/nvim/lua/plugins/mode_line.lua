@@ -1,17 +1,18 @@
--- Configuration for lualine
+-- Configuration for the mode line plugin
+-- Current it is lualine
 
 -- Gets the module with the utilities
 local utils = require("utils")
 
--- Function to set up lualine
+-- Function to set up the mode line
 local function setup()
     --
 
-    -- Gets the lualine module
+    -- Get the lualine module
     local lualine = require("lualine")
 
-    -- Function to create a lualine extension for buffers
-    -- that appear on the side
+    -- Function to create a lualine extension
+    -- for buffers that appear on the side
     local function create_side_ext(
         filetypes,
         buffer_name,
@@ -59,7 +60,7 @@ local function setup()
     )
         --
 
-        -- The b section of the lualine
+        -- The b section of lualine
         local lualine_b_section = {
             buffer_name and function() return buffer_name end or "filetype",
         }
@@ -225,7 +226,7 @@ local function setup()
         -- Get the diagnostic icons
         local diagnostic_icons = require("shared_configs").icons.diagnostics
 
-        -- Sets up lualine to look like bubbles in the lualine GitHub
+        -- Set up lualine to look like bubbles in the lualine GitHub
         lualine.setup({
 
             options = {
@@ -314,13 +315,13 @@ local function setup()
                 lualine_c = {},
             },
 
-            -- The extensions to load
+            -- Load the quick fix extension
             extensions = { quickfix_ext },
         })
     end
 end
 
--- Returns the lualine plugin for lazy.nvim
+-- Returns the mode line plugin for lazy.nvim
 return {
     "nvim-lualine/lualine.nvim",
     config = setup,
