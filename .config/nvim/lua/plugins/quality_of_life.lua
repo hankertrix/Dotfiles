@@ -3,7 +3,12 @@
 -- Currently the plugins used are:
 --   - vim-sleuth for automatically detecting the indentation type
 --   - mini.trailspace to trim trailing whitespaces and blank lines
+--   - quicker.nvim for an improved and editable quick fix list
+--   - aerial.nvim to view an outline of the code
 --   - snacks.nvim for general quality of life improvements
+
+-- Get the icons from the shared configurations
+local icons = require("shared_configs").icons
 
 -- Return the quality of life related plugins for lazy.nvim
 return {
@@ -11,33 +16,6 @@ return {
     -- Automatically detect the indentation type
     -- such as indentation using tabs vs spaces
     { "tpope/vim-sleuth" },
-
-    -- Improved quick fix list for Neovim
-    {
-        "stevearc/quicker.nvim",
-        event = "FileType qf",
-        opts = {
-            keys = {
-                {
-                    ">",
-                    function()
-                        require("quicker").expand({
-                            before = 2,
-                            after = 2,
-                            add_to_exiting = true,
-                        })
-                    end,
-                    desc = "Expand quick fix context",
-                },
-
-                {
-                    "<",
-                    function() require("quicker").collapse() end,
-                    desc = "Collapse quick fix context",
-                },
-            },
-        },
-    },
 
     -- Trim trailing whitespace and blank lines
     {
@@ -74,6 +52,60 @@ return {
         end,
     },
 
+    -- Improved quick fix list for Neovim
+    {
+        "stevearc/quicker.nvim",
+        event = "FileType qf",
+        opts = {
+
+            -- Key binds within the quick fix menu
+            keys = {
+                {
+                    ">",
+                    function()
+                        require("quicker").expand({
+                            before = 2,
+                            after = 2,
+                            add_to_exiting = true,
+                        })
+                    end,
+                    desc = "Expand quick fix context",
+                },
+
+                {
+                    "<",
+                    function() require("quicker").collapse() end,
+                    desc = "Collapse quick fix context",
+                },
+            },
+        },
+    },
+
+    -- Show an outline of the code in the current file
+    {
+        "stevearc/aerial.nvim",
+        cmd = "AerialToggle",
+        opts = {
+
+            -- Display symbols for the current window
+            attach_mode = "global",
+            icons = icons.kind,
+            layout = {
+                min_width = 20,
+            },
+        },
+
+        -- Toggle the Aerial menu
+        keys = {
+            {
+                "<Leader>at",
+                vim.cmd.AerialToggle,
+                mode = "n",
+                desc = "Open the Aerial menu",
+            },
+        },
+    },
+
     -- Snacks.nvim quality of life plugin
     {
         "folke/snacks.nvim",
@@ -96,9 +128,6 @@ return {
         -- The configuration function
         config = function(_, opts)
             --
-
-            -- Get the icons
-            local icons = require("shared_configs").icons
 
             -- The diagnostic icons
             local diagnostic_icons = {
