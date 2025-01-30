@@ -1031,6 +1031,9 @@
   ;; Lazy load embark
   :commands (embark-act embark-dwim embark-bindings)
 
+  ;; Set the help key to ?
+  :custom (embark-help-key "?")
+
   ;; Replace the prefix help command
   ;; with embark's completing-read interface
   :init (setq prefix-help-command #'embark-prefix-help-command)
