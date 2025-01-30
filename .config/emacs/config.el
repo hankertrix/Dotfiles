@@ -308,11 +308,11 @@
 
 (use-package evil-anzu
 
+  ;; Set the search threshold for anzu
+  :custom (anzu-search-threshold 1000)
+
   ;; Initialise Anzu mode
   :init
-
-  ;; Set the search threshold for anzu
-  (setq anzu-search-threshold 1000)
 
   ;; Use anzu mode globally
   (global-anzu-mode t))
@@ -568,7 +568,7 @@
   ;; I have custom keybinds for LSP mode
   ;; so this is just a fallback for LSP mode
   ;; functions that I haven't mapped a key for.
-  (lsp-keymap-prefix "C-.")
+  (lsp-keymap-prefix "C-'")
 
   ;; Disable snippet support for LSP mode
   (lsp-enable-snippet nil)
@@ -589,9 +589,9 @@
   (defun lsp-completion-mode-setup ()
     "The function to set up LSP completion with Corfu"
 
-    ;; Set up completion with Corfu with the flex configuration
+    ;; Set up completion with Corfu with the orderless style
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(flex)))
+          '(orderless)))
 
   ;; The hooks for LSP mode
   :hook
@@ -856,11 +856,20 @@
     "/a" '("Search the manpages" . consult-man)
     "/i" '("Search the info pages" . consult-info)
     "/h" '("Search the info pages" . consult-info)
-    "pb" '("Search for open buffers" . consult-buffer)
-    "pr" '("Search through the registers" . consult-register-load)
-    "ps" '("Search for a string within a file" . consult-ripgrep)
+    "ps" '("Search within files for a string" . consult-ripgrep)
+    "pb" '("Search through the open buffers" . consult-buffer)
+    "pr" '("Search through Emacs registers" . consult-register-load)
+    "pl" '("Search through the lines in the current buffer" . consult-line)
+
+    ;; https://emacs.stackexchange.com/questions/82850/call-execute-extended-command-with-prefilled-prefix-string
+    "pk" '("Search through the list of pickers" .
+           (lambda ()
+             (interactive)
+             (command-execute (intern (completing-read "Picker: " obarray #'commandp t '("consult-" . 8))))))
     )
   )
+
+(use-package consult-dir)
 
 (use-package corfu
 
@@ -1016,21 +1025,31 @@
 
 (use-package embark
 
+  ;; Make sure consult-dir is available
+  :after consult-dir
+
+  ;; Lazy load embark
+  :commands (embark-act embark-dwim embark-bindings)
+
   ;; Replace the prefix help command
   ;; with embark's completing-read interface
   :init (setq prefix-help-command #'embark-prefix-help-command)
 
   ;; Key binds for embark
   :general (general-def
-             :states '(normal insert visual emacs)
              "C-;" '("Open embark" . embark-act)
              "M-;" '("Run the default action" . embark-dwim))
+
+  ;; Add consult-dir to embark's general mappings
+  (general-def
+    :keymaps 'embark-general-map
+    "C d" 'consult-dir)
 
   ;; Remap the describe bindings function to embark's
   :bind ([remap describe-bindings] . embark-bindings))
 
 (use-package embark-consult
-  :hook (emback-collect-mode . consult-preview-at-point-mode))
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package helpful
 

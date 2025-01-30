@@ -8,7 +8,7 @@
 - [[#important-programs][Important Programs]]
   - [[#elpaca-package-manager][Elpaca package manager]]
   - [[#key-bindings-with-generalel][Key bindings (with general.el)]]
-  - [[#evil-mode][Evil Mode]]
+  - [[#evil][Evil]]
   - [[#undo-system][Undo system]]
   - [[#which-key][Which Key]]
 - [[#fonts][Fonts]]
@@ -28,7 +28,7 @@
   - [[#nerd-icons][Nerd Icons]]
 - [[#miscellaneous][Miscellaneous]]
   - [[#zoom][Zoom]]
-  - [[#file-previews-in-dired][File previews in dired]]
+  - [[#file-previews-in-dired][File previews in Dired]]
 - [[#development][Development]]
   - [[#lsp-mode][LSP mode]]
   - [[#flycheck][Flycheck]]
@@ -51,7 +51,7 @@
   - [[#add-syntax-highlighting-to-latex-exports-of-org-mode-code-blocks][Add syntax highlighting to LaTeX exports of org mode code blocks]]
   - [[#citeproc][Citeproc]]
   - [[#literate-programming][Literate programming]]
-- [[#working-with-pdfs][Working with PDFs]]
+- [[#pdf-tools][PDF Tools]]
 - [[#latex][LaTeX]]
   - [[#auctex][AUCTeX]]
   - [[#evil-tex][Evil TeX]]
@@ -255,8 +255,8 @@ General.el has to be loaded first so that the ~use-package~ definitions below it
   )
 #+end_src
 
-** Evil Mode
-Install and set up evil mode.
+** Evil
+Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi and Vim key bindings to Emacs.
 #+begin_src emacs-lisp
 (use-package evil
 
@@ -413,11 +413,11 @@ Evil anzu highlights search terms. This package is required for doom modeline to
 #+begin_src emacs-lisp
 (use-package evil-anzu
 
+  ;; Set the search threshold for anzu
+  :custom (anzu-search-threshold 1000)
+
   ;; Initialise Anzu mode
   :init
-
-  ;; Set the search threshold for anzu
-  (setq anzu-search-threshold 1000)
 
   ;; Use anzu mode globally
   (global-anzu-mode t))
@@ -812,8 +812,8 @@ Set Ctrl + the mouse wheel to zoom in and out.
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 #+end_src
 
-** File previews in dired
-Use dired-preview to preview files in dired.
+** File previews in Dired
+Use dired-preview to preview files in Dired.
 #+begin_src emacs-lisp
 (use-package dired-preview
 
@@ -842,7 +842,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   ;; I have custom keybinds for LSP mode
   ;; so this is just a fallback for LSP mode
   ;; functions that I haven't mapped a key for.
-  (lsp-keymap-prefix "C-.")
+  (lsp-keymap-prefix "C-'")
 
   ;; Disable snippet support for LSP mode
   (lsp-enable-snippet nil)
@@ -863,9 +863,9 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   (defun lsp-completion-mode-setup ()
     "The function to set up LSP completion with Corfu"
 
-    ;; Set up completion with Corfu with the flex configuration
+    ;; Set up completion with Corfu with the orderless style
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(flex)))
+          '(orderless)))
 
   ;; The hooks for LSP mode
   :hook
@@ -1173,11 +1173,24 @@ Consult is a plugin that consults Emacs' completing-read functions for you to pi
     "/a" '("Search the manpages" . consult-man)
     "/i" '("Search the info pages" . consult-info)
     "/h" '("Search the info pages" . consult-info)
-    "pb" '("Search for open buffers" . consult-buffer)
-    "pr" '("Search through the registers" . consult-register-load)
-    "ps" '("Search for a string within a file" . consult-ripgrep)
+    "ps" '("Search within files for a string" . consult-ripgrep)
+    "pb" '("Search through the open buffers" . consult-buffer)
+    "pr" '("Search through Emacs registers" . consult-register-load)
+    "pl" '("Search through the lines in the current buffer" . consult-line)
+
+    ;; https://emacs.stackexchange.com/questions/82850/call-execute-extended-command-with-prefilled-prefix-string
+    "pk" '("Search through the list of pickers" .
+           (lambda ()
+             (interactive)
+             (command-execute (intern (completing-read "Picker: " obarray #'commandp t '("consult-" . 8))))))
     )
   )
+#+end_src
+
+**** Consult Dir
+Consult Dir stands for consult directory, which helps you easily add file and directory paths into the mini buffer. It can also be used elsewhere, but it is most helpful in the mini buffer.
+#+begin_src emacs-lisp
+(use-package consult-dir)
 #+end_src
 
 *** Corfu
@@ -1342,7 +1355,7 @@ Cape is a plugin that provides extensions to completion at point plugins like Co
 #+end_src
 
 ** Wgrep
-Wgrep is augments the ~grep~ buffer in Emacs so that it becomes writable, and changes to the buffer will affect the files as well. It is similar to the [[https://github.com/stevearc/quicker.nvim][quicker.nvim]] plugin for the Neovim quick fix list.
+Wgrep stands for writable grep, and it augments the ~grep~ buffer in Emacs so that it becomes writable, and changes to the buffer will affect the files as well. It is similar to the [[https://github.com/stevearc/quicker.nvim][quicker.nvim]] plugin for the Neovim quick fix list.
 #+begin_src emacs-lisp
 (use-package wgrep)
 #+end_src
@@ -1352,15 +1365,25 @@ Embark is a plugin that essentially gives you a keyboard-based right click menu 
 #+begin_src emacs-lisp
 (use-package embark
 
+  ;; Make sure consult-dir is available
+  :after consult-dir
+
+  ;; Lazy load embark
+  :commands (embark-act embark-dwim embark-bindings)
+
   ;; Replace the prefix help command
   ;; with embark's completing-read interface
   :init (setq prefix-help-command #'embark-prefix-help-command)
 
   ;; Key binds for embark
   :general (general-def
-             :states '(normal insert visual emacs)
              "C-;" '("Open embark" . embark-act)
              "M-;" '("Run the default action" . embark-dwim))
+
+  ;; Add consult-dir to embark's general mappings
+  (general-def
+    :keymaps 'embark-general-map
+    "C d" 'consult-dir)
 
   ;; Remap the describe bindings function to embark's
   :bind ([remap describe-bindings] . embark-bindings))
@@ -1369,7 +1392,7 @@ Embark is a plugin that essentially gives you a keyboard-based right click menu 
 ** Integration with consult
 #+begin_src emacs-lisp
 (use-package embark-consult
-  :hook (emback-collect-mode . consult-preview-at-point-mode))
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
 
 * Helpful
@@ -1557,8 +1580,8 @@ Literate programming is a way of programming that has code snippets embedded in 
 (setq org-confirm-babel-evaluate nil)
 #+end_src
 
-* Working with PDFs
-PDF-tools is a great plugin that makes working with PDFs very easy. A lot of times, I am exporting org files or TeX files to PDF, so this makes my life much easier.
+* PDF Tools
+PDF Tools is a great plugin that makes working with PDFs very easy. A lot of times, I am exporting org files or TeX files to PDF, so this makes my life much easier. It makes use of the ~poppler~ library, so make sure to have that installed.
 #+begin_src emacs-lisp
 (use-package pdf-tools
 
@@ -1662,4 +1685,5 @@ Below is a list of external programs that are being used with my Emacs configura
 
 ** Miscellaneous
 - [[https://github.com/BurntSushi/ripgrep][ripgrep (for searching within files)]]
-- [[https://jupyter.org/][Jupyter Notebook (for literate programming)]]
+- [[https://gitlab.freedesktop.org/poppler/poppler][poppler (for PDF Tools)]]
+- [[https://github.com/jupyter/notebook][Jupyter Notebook (for literate programming)]]
