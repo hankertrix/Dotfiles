@@ -645,25 +645,29 @@
   :general
 
   ;; Key binds for normal mode in LSP mode
-  (general-def :keymaps 'lsp-mode-map
+  (general-def
+    :keymaps 'lsp-mode-map
+    :states 'normal
+    "K" '("Describe the currently hovered item" . lsp-ui-doc-glance)
+    "gd" '("Go to definition" . lsp-ui-peek-find-definitions)
+    "gD" '("Go to declaration" . lsp-find-declaration)
+    "gi" '("List all implementations" . lsp-ui-peek-find-implementation)
+    "go" '("Go to type definition" . lsp-find-type-definition)
+    "gr" '("List all references" . lsp-ui-peek-find-references)
+    "gs" '("Show signature information" . lsp-signature-activate)
+    "<f2>" '("Renames all references to the symbol under the cursor" . lsp-rename)
+    "<f3>" '("Formats the buffer using the LSP" . lsp-format-buffer)
+    "SPC f" '("Formats the buffer using the LSP" . lsp-format-buffer)
+    "<f4>" '("Select a code action" . lsp-execute-code-action)
 
-            :states 'normal
-            "K" '("Describe the currently hovered item" . lsp-ui-doc-glance)
-            "gd" '("Go to definition" . lsp-ui-peek-find-definitions)
-            "gD" '("Go to declaration" . lsp-find-declaration)
-            "gi" '("List all implementations" . lsp-ui-peek-find-implementation)
-            "go" '("Go to type definition" . lsp-find-type-definition)
-            "gr" '("List all references" . lsp-ui-peek-find-references)
-            "gs" '("Show signature information" . lsp-signature-activate)
-            "<f2>" '("Renames all references to the symbol under the cursor" . lsp-rename)
-            "<f3>" '("Formats the buffer using the LSP" . lsp-format-buffer)
-            "SPC f" '("Formats the buffer using the LSP" . lsp-format-buffer)
-            "<f4>" '("Select a code action" . lsp-execute-code-action)
-
-            :states 'visual
-            "<f3>" '("Formats the region using the LSP" . lsp-format-region)
-            "SPC f" '("Formats the region using the LSP" . lsp-format-region)
-            )
+    ;; Key binds for visual mode in LSP mode
+    (general-def
+      :keymaps 'lsp-mode-map
+      :states 'visual
+      "<f3>" '("Formats the region using the LSP" . lsp-format-region)
+      "SPC f" '("Formats the region using the LSP" . lsp-format-region)
+      )
+    )
   )
 
 (use-package lua-mode)
@@ -856,6 +860,10 @@
   ;; Make sure ripgrep is installed
   :ensure-system-package (rg . "sudo pacman -S ripgrep")
 
+  ;; Load consult only when its commands are called
+  :commands ( consult-info consult-man consult-ripgrep
+              consult-buffer consult-register-load consult)
+
   ;; Key maps for consult
   :general
 
@@ -882,7 +890,23 @@
     )
   )
 
-(use-package consult-dir)
+(use-package consult-dir
+
+  ;; Load consult-dir only when its commands are called
+  :commands (consult-dir consult-dir-jump-file)
+
+  ;; Key binds for consult-dir
+  :general
+
+  ;; Key binds to apply everywhere
+  (general-def
+    "M-d" '("Insert a directory path into the current buffer" . consult-dir))
+
+  ;; Mini buffer key maps
+  (general-def
+    :keymaps 'vertico-map
+    "M-d" '("Insert a directory path into the current buffer" . consult-dir)
+    "M-D" '("Jump to file from the directory in the mini buffer prompt" . consult-dir-jump-file)))
 
 (use-package corfu
 
@@ -1020,29 +1044,41 @@
 
 (use-package cape
 
-  ;; Initialise cape and add the wanted completion functions
-  :init
+  ;; Configure cape
+  :config
+
+  ;; Merge the static completion functions together
+  (defun static-completion-functions ()
+    (cape-wrap-super
+     #'cape-sgml
+     #'cape-rfc1345
+     #'cape-keyword
+     #'cape-line
+     #'cape-dabbrev
+     #'cape-history
+     #'cape-emoji
+     ;; #'cape-elisp-block
+     ;; #'cape-elisp-symbol
+     ;; #'cape-abbrev
+     ;; #'cape-dict
+
+     ;; This completion inserts the unicode
+     ;; character for the LaTeX command,
+     ;; not the full LaTeX command, so I
+     ;; never want it, as LaTeX doesn't
+     ;; support unicode and will error out.
+     ;; #'cape-tex
+     ))
+
+  ;; Add the file completion function
   (add-hook 'completion-at-point-functions #'cape-file)
-  (add-hook 'completion-at-point-functions #'cape-tex)
-  (add-hook 'completion-at-point-functions #'cape-rfc1345)
-  (add-hook 'completion-at-point-functions #'cape-sgml)
-  (add-hook 'completion-at-point-functions #'cape-keyword)
-  (add-hook 'completion-at-point-functions #'cape-elisp-block)
-  (add-hook 'completion-at-point-functions #'cape-elisp-symbol)
-  (add-hook 'completion-at-point-functions #'cape-dabbrev)
-  (add-hook 'completion-at-point-functions #'cape-line)
-  (add-hook 'completion-at-point-functions #'cape-history)
-  (add-hook 'completion-at-point-functions #'cape-emoji)
-  ;; (add-hook 'completion-at-point-functions #'cape-abbrev)
-  ;; (add-hook 'completion-at-point-functions #'cape-dict)
-  )
+
+  ;; Add the static completion functions
+  (add-hook 'completion-at-point-functions #'static-completion-functions))
 
 (use-package wgrep)
 
 (use-package embark
-
-  ;; Ensure consult-dir is available
-  :after consult-dir
 
   ;; Lazy load embark
   :commands (embark-act embark-dwim embark-bindings)
@@ -1059,13 +1095,13 @@
 
   ;; Key binds for embark
   :general (general-def
-             "C-;" '("Open embark" . embark-act)
-             "M-;" '("Run the default action" . embark-dwim))
+             "M-;" '("Run the default action" . embark-dwim)
 
-  ;; Add consult-dir to embark's general mappings
-  (general-def
-    :keymaps 'embark-general-map
-    "C d" 'consult-dir)
+             ;; Load consult before opening embark
+             "C-;" '("Open embark" .
+                     (lambda () (interactive)
+                       (require 'consult)
+                       (embark-act))))
 
   ;; Remap the describe bindings function to embark's
   :bind ([remap describe-bindings] . embark-bindings))
