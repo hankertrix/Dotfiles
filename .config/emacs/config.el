@@ -242,7 +242,7 @@
           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank)))
     "Y" '("Copy till the end of the line to the system clipboard" .
           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line)))
-    "d" '("Delete to the black hole register" .
+    "d" '("Delete" .
           (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete)))
     )
 
