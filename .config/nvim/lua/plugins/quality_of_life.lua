@@ -153,17 +153,21 @@ return {
 
         -- Key binds
         keys = {
+
+            -- Key bind to close the current buffer
             {
                 "<Leader>x",
                 function() Snacks.bufdelete() end,
                 mode = "n",
                 desc = "Close the current buffer",
             },
+
+            -- Key binds involving the Snacks picker
             {
                 "<F1>",
                 function() Snacks.picker.help() end,
                 mode = { "n", "x", "i" },
-                desc = "Search through the help text using the fuzzy finder",
+                desc = "Search through the help text",
             },
             {
                 "<Leader>pf",
@@ -181,13 +185,19 @@ return {
                 "<Leader>pb",
                 function() Snacks.picker.buffers() end,
                 mode = "n",
-                desc = "Search for open buffers using the fuzzy finder",
+                desc = "Search through the open buffers",
             },
             {
                 "<Leader>pr",
                 function() Snacks.picker.registers() end,
                 mode = "n",
                 desc = "Search through Vim registers",
+            },
+            {
+                "<Leader>pl",
+                function() Snacks.picker.lines() end,
+                mode = "n",
+                desc = "Search through the lines in the current buffer",
             },
             {
                 "<Leader>pk",
