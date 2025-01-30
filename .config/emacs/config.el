@@ -574,6 +574,10 @@
   ;; Disable snippet support for LSP mode
   (lsp-enable-snippet nil)
 
+  ;; Disable the LSP completion provider
+  ;; as Corfu is used instead
+  (lsp-completion-provider :none)
+
   ;; Function definitions that are used in the hooks
   :init
 
@@ -841,10 +845,10 @@
   ;; Customise orderless
   :custom
 
-  ;; Use basic as a fallback style
-  (completion-styles '(orderless basic))
+  ;; Use partial completion and basic as fallback styles
+  (completion-styles '(orderless partial-completion basic))
 
-  ;; Get orderless to work with remote files
+  ;; Don't use orderless with remote files
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
