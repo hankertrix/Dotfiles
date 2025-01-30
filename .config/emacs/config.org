@@ -435,7 +435,7 @@ Vundo is short for visual undo, and it helps visualise the undo and redo history
 #+begin_src emacs-lisp
 (use-package vundo
 
-  ;; Lazy load vundo when the command is called
+  ;; Load vundo only when its command is called
   :commands vundo
 
   ;; Use pretty unicode glyphs to draw the tree
@@ -829,7 +829,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
 #+begin_src emacs-lisp
 (use-package lsp-mode
 
-  ;; Load LSP mode only when the commands below are called
+  ;; Load LSP mode only when its commands are called
   :commands (lsp lsp-deferred)
 
   ;; Customise LSP mode
@@ -1432,7 +1432,7 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
 #+begin_src emacs-lisp
 (use-package magit
 
-  ;; Lazy load magit when the status command is called
+  ;; Load magit only when its status command is called
   :commands (magit magit-status)
 
   ;; Key binds for magit
@@ -1457,7 +1457,7 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
   ;; Only load the package after org mode
   :after org
 
-  ;; Load toc-org when it is enabled
+  ;; Load toc-org only when its enable command is called
   :commands toc-org-enable
 
   ;; Enable toc-org in org mode
@@ -1574,7 +1574,8 @@ Citeproc is a program that produces formatted bibliographies and citations using
 ** Literate programming
 Literate programming is a way of programming that has code snippets embedded in text that explain the code, and looks something like this configuration file.
 
-*** Installing ~ox-ipynb~ to support exporting org files to Jupyter notebooks
+*** Org export to ~ipynb~
+Install ~ox-ipynb~ to support exporting org files to Jupyter notebooks, which have the file extension ~ipynb~.
 #+begin_src emacs-lisp
 (use-package ox-ipynb
 
@@ -1585,7 +1586,8 @@ Literate programming is a way of programming that has code snippets embedded in 
   :after org)
 #+end_src
 
-*** Installing ~emacs-jupyter~ to work with Jupyter kernels inside org mode
+*** Emacs Jupyter
+Emacs Jupyter is a plugin to work with Jupyter kernels inside org mode.
 #+begin_src emacs-lisp
 (use-package jupyter
 

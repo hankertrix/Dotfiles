@@ -318,7 +318,7 @@
 
 (use-package vundo
 
-  ;; Lazy load vundo when the command is called
+  ;; Load vundo only when its command is called
   :commands vundo
 
   ;; Use pretty unicode glyphs to draw the tree
@@ -558,7 +558,7 @@
 
 (use-package lsp-mode
 
-  ;; Load LSP mode only when the commands below are called
+  ;; Load LSP mode only when its commands are called
   :commands (lsp lsp-deferred)
 
   ;; Customise LSP mode
@@ -1084,7 +1084,7 @@
 
 (use-package magit
 
-  ;; Lazy load magit when the status command is called
+  ;; Load magit only when its status command is called
   :commands (magit magit-status)
 
   ;; Key binds for magit
@@ -1104,7 +1104,7 @@
   ;; Only load the package after org mode
   :after org
 
-  ;; Load toc-org when it is enabled
+  ;; Load toc-org only when its enable command is called
   :commands toc-org-enable
 
   ;; Enable toc-org in org mode
