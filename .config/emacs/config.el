@@ -40,13 +40,13 @@
 ;; Install use-package support
 (elpaca elpaca-use-package
 
-  ;; Enable :elpaca use-package keyword.
+  ;; Enable elpaca use-package keyword
   (elpaca-use-package-mode)
 
-  ;; Assume :elpaca t unless otherwise specified.
+  ;; Assume :elpaca t and :ensure t unless otherwise specified
   (setq elpaca-use-package-by-default t))
 
-;; Block until current queue processed.
+;; Block until the above is done executing
 (elpaca-wait)
 
 (use-package general
@@ -175,7 +175,7 @@
 
 (use-package evil
 
-  ;; Force evil to load first
+  ;; Load evil mode immediately
   :demand t
 
   ;; Customise evil
@@ -273,17 +273,11 @@
   ;; Load the evil collection after evil
   :after evil
 
-  ;; Force evil collection to load first
-  :demand t
-
   ;; Use z for folds in magit
   :custom (evil-collection-magit-use-z-for-folds t)
 
-  ;; Configure evil collection
-  :config
-
-  ;; Initialise the evil collection
-  (evil-collection-init))
+  ;; Start evil collection
+  :config (evil-collection-init))
 
 (use-package evil-goggles
 
@@ -300,24 +294,27 @@
 
 (use-package evil-nerd-commenter
 
+  ;; Load evil nerd commenter only when its command is called
+  :commands evilnc-comment-or-uncomment-lines
+
   ;; Comment out lines with Ctrl + /
   :general (general-def :states '(normal visual)
              "C-/" '("Comment out the selected lines" . evilnc-comment-or-uncomment-lines)))
 
-(use-package evil-surround :config (global-evil-surround-mode 1))
+(use-package evil-surround :after evil :config (global-evil-surround-mode 1))
 
 (use-package evil-anzu
+
+  ;; Load evil anzu after evil
+  :after evil
 
   ;; Set the search threshold for anzu
   :custom (anzu-search-threshold 1000)
 
-  ;; Initialise Anzu mode
-  :init
+  ;; Start anzu mode globally
+  :config (global-anzu-mode t))
 
-  ;; Use anzu mode globally
-  (global-anzu-mode t))
-
-(use-package undo-fu-session :init (undo-fu-session-global-mode))
+(use-package undo-fu-session :demand t :config (undo-fu-session-global-mode))
 
 (use-package vundo
 
@@ -341,7 +338,7 @@
 
 (use-package which-key
 
-  ;; Force which key to load immediately on start up
+  ;; Load which key immediately
   :demand t
 
   ;; Customise which key
@@ -359,8 +356,8 @@
   (which-key-allow-imprecise-window-fit t)
   (which-key-separator " → ")
 
-  ;; Initialise which key
-  :init (which-key-mode 1))
+  ;; Start which key
+  :config (which-key-mode 1))
 
 (set-face-attribute 'default nil
                     :font "CaskaydiaCove Nerd Font Mono 12"
@@ -411,8 +408,6 @@
 (setq scroll-step 1)
 
 (global-visual-line-mode t)
-
-(setq revert-without-query '(".pdf"))
 
 (setq-default indent-tabs-mode nil)
 
@@ -502,6 +497,12 @@
 
 (use-package auto-dark
 
+  ;; Ensure that doom-themes is installed
+  :after doom-themes
+
+  ;; Load auto dark mode immediately
+  :demand t
+
   ;; Customise the auto dark package
   :custom
 
@@ -510,10 +511,10 @@
   ;; and the second theme is when light mode is active.
   (auto-dark-themes '((doom-bluloco-dark) (doom-bluloco-light)))
 
-  ;; Initialise the auto dark package
-  :init (auto-dark-mode))
+  ;; Start auto dark mode
+  :config (auto-dark-mode))
 
-(use-package doom-modeline :init (doom-modeline-mode 1))
+(use-package doom-modeline :demand t :config (doom-modeline-mode 1))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -573,7 +574,7 @@
   ;; Disable snippet support for LSP mode
   (lsp-enable-snippet nil)
 
-  ;; Initialise LSP mode
+  ;; Function definitions that are used in the hooks
   :init
 
   ;; Functions to set up LSP mode
@@ -673,7 +674,7 @@
 
 (use-package lsp-ltex-plus
 
-  ;; Pull the plugin from GitHub
+  ;; Install lsp-ltex-plus from GitHub
   :ensure (lsp-ltex-plus :host github :repo "emacs-languagetool/lsp-ltex-plus")
 
   ;; Ensure LTEX+ exists
@@ -717,6 +718,9 @@
 
 (use-package flycheck
 
+  ;; Load flycheck immediately
+  :demand t
+
   ;; Key binds for flycheck
   :general
 
@@ -729,7 +733,7 @@
     )
 
   ;; Start flycheck globally
-  :init (global-flycheck-mode))
+  :config (global-flycheck-mode))
 
 (use-package vertico
 
@@ -797,6 +801,9 @@
 
 (use-package marginalia
 
+  ;; Load marginalia immediately
+  :demand t
+
   ;; Add a key bind to cycle the marginalia annotations
   :general (general-def
              :keymaps 'minibuffer-local-map
@@ -813,18 +820,21 @@
   (marginalia-align 'right)
 
   ;; Start marginalia mode
-  :init (marginalia-mode))
+  :config (marginalia-mode))
 
 (use-package nerd-icons-completion
 
-  ;; Load the package after marginalia
+  ;; Load nerd icons completion after marginalia
   :after marginalia
+
+  ;; Load nerd icons completion immediately
+  :demand t
 
   ;; Set up nerd icons with marginalia
   :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
 
   ;; Start nerd icons completion
-  :init (nerd-icons-completion-mode))
+  :config (nerd-icons-completion-mode))
 
 (use-package orderless
 
@@ -839,8 +849,7 @@
 
 (use-package consult
 
-  ;; Make sure fd and ripgrep are installed
-  :ensure-system-package (fd . "sudo pacman -S fd")
+  ;; Make sure ripgrep is installed
   :ensure-system-package (rg . "sudo pacman -S ripgrep")
 
   ;; Key maps for consult
@@ -873,8 +882,11 @@
 
 (use-package corfu
 
-  ;; Pull the corfu extensions from the repo as well
+  ;; Include corfu extensions
   :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
+
+  ;; Load corfu immediately
+  :demand t
 
   ;; Customise corfu
   :custom
@@ -907,8 +919,30 @@
   ;; Disable the return key
   :bind (:map corfu-map ("RET" . nil))
 
-  ;; Initialise corfu
-  :init
+  ;; Function to enable corfu in the minibuffer
+  ;; if other completion plugins are not active
+  :init (defun corfu-enable-always-in-minibuffer ()
+          "Enable Corfu in the minibuffer if Vertico/Mct are not active."
+          (unless (or (bound-and-true-p mct--active)
+                      (bound-and-true-p vertico--input)
+                      (eq (current-local-map) read-passwd-map))
+
+            ;; Disable automatic echo and popup
+            (setq-local corfu-echo-delay nil
+                        corfu-popupinfo-delay nil)
+
+            ;; Enable corfu
+            (corfu-mode 1)))
+
+  ;; Enable corfu in the minibuffer
+  ;; if other completion plugins are not active
+  :hook (minibuffer-setup . corfu-enable-always-in-minibuffer)
+
+  ;; Configure corfu
+  :config
+
+  ;; Enable corfu everywhere
+  (global-corfu-mode)
 
   ;; Show documentation using the corfu pop up info extension
   (corfu-popupinfo-mode 1)
@@ -916,33 +950,11 @@
   ;; Save completion history for better sorting
   (corfu-history-mode 1)
   (savehist-mode 1)
-  (add-to-list 'savehist-additional-variables 'corfu-history)
-
-  ;; Function to corfu in the minibuffer
-  ;; if other completion plugins are not active
-  (defun corfu-enable-always-in-minibuffer ()
-    "Enable Corfu in the minibuffer if Vertico/Mct are not active."
-    (unless (or (bound-and-true-p mct--active)
-                (bound-and-true-p vertico--input)
-                (eq (current-local-map) read-passwd-map))
-
-      ;; Disable automatic echo and popup
-      (setq-local corfu-echo-delay nil
-                  corfu-popupinfo-delay nil)
-
-      ;; Enable corfu
-      (corfu-mode 1)))
-
-  ;; Enable corfu everywhere
-  (global-corfu-mode)
-
-  ;; Enable corfu in the minibuffer
-  ;; if other completion plugins are not active
-  :hook (minibuffer-setup . corfu-enable-always-in-minibuffer))
+  (add-to-list 'savehist-additional-variables 'corfu-history))
 
 (use-package kind-icon
 
-  ;; Load kind icon after corfu and nerd icons
+  ;; Load kind icons after corfu and nerd icons
   :after (corfu nerd-icons)
 
   ;; Customise corfu
@@ -1025,18 +1037,21 @@
 
 (use-package embark
 
-  ;; Make sure consult-dir is available
+  ;; Ensure consult-dir is available
   :after consult-dir
 
   ;; Lazy load embark
   :commands (embark-act embark-dwim embark-bindings)
 
+  ;; Customise embark
+  :custom
+
   ;; Set the help key to ?
-  :custom (embark-help-key "?")
+  (embark-help-key "?")
 
   ;; Replace the prefix help command
   ;; with embark's completing-read interface
-  :init (setq prefix-help-command #'embark-prefix-help-command)
+  (prefix-help-command #'embark-prefix-help-command)
 
   ;; Key binds for embark
   :general (general-def
@@ -1081,15 +1096,22 @@
 (use-package transient)
 
 (use-package toc-org
+
+  ;; Only load the package after org mode
+  :after org
+
+  ;; Load toc-org when it is enabled
   :commands toc-org-enable
+
+  ;; Enable toc-org in org mode
   :hook (org-mode . toc-org-enable))
 
 (use-package org-bullets
 
-  ;; Load the package only after org mode
+  ;; Only load the package after org mode
   :after org
 
-  ;; Add hooks to org bullets
+  ;; Hooks for org bullets
   :hook
 
   ;; Enable org indent and org bullets mode
@@ -1111,7 +1133,7 @@
 
 (use-package evil-org
 
-  ;; Ensure that evil org is only loaded after org mode
+  ;; Only load the package after org mode
   :after org
 
   ;; Start evil org when org mode is started
@@ -1140,42 +1162,27 @@
 (use-package citeproc)
 
 (use-package ox-ipynb
+
+  ;; Install ox-ipynb from GitHub
   :ensure (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
-  :init (require 'ox-ipynb))
+
+  ;; Only load the package after org mode
+  :after org)
 
 (use-package jupyter
 
   ;; Load the Jupyter languages
-  :init
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (python . t)
-     (jupyter . t)))
-
-  ;; Hooks for emacs jupyter
-  :hook
+  :init (org-babel-do-load-languages
+         'org-babel-load-languages
+         '((emacs-lisp . t)
+           (python . t)
+           (jupyter . t)))
 
   ;; Add a hook to redisplay inline images
   ;; after executing a code block
-  (org-babel-after-execute . org-redisplay-inline-images))
+  :hook (org-babel-after-execute . org-redisplay-inline-images))
 
 (setq org-confirm-babel-evaluate nil)
-
-(use-package pdf-tools
-
-  ;; Customise to use PDF tools to open
-  ;; LaTeX PDF files
-  :custom
-  (TeX-view-program-selection '((output-pdf "PDF Tools")))
-  (TeX-source-correlate-start-server t)
-
-  ;; Update PDF buffers after successful LaTeX runs
-  :init
-  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-
-  ;; Install pdf-tools
-  :config (pdf-tools-install))
 
 (use-package auctex :defer t
   :ensure (:pre-build (("./autogen.sh")
@@ -1190,21 +1197,41 @@
   :mode (("\\.tex\\'" . LaTeX-mode)))
 
 (use-package evil-tex
+
+  ;; Ensure that auctex is installed
+  :after auctex
+
+  ;; Enable evil tex in latex mode
   :hook (LaTeX-mode . evil-tex-mode))
+
+(use-package pdf-tools
+
+  ;; Customise to use PDF tools to open
+  ;; LaTeX PDF files
+  :custom
+  (TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (TeX-source-correlate-start-server t)
+
+  ;; Update PDF buffers after successful LaTeX runs
+  :init (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
+  ;; Install pdf-tools
+  :config (pdf-tools-install))
+
+(setq revert-without-query '(".pdf"))
 
 (use-package hardtime
 
-  ;; Get hardtime.el from GitHub
+  ;; Install hardtime.el from GitHub
   :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
 
   ;; Define the evil hardtime check command function
-  :init
-  (defun evil-hardtime-check-command ()
-    "Return non-nil if the currently executed command should be checked."
-    (memq this-command '( next-line previous-line evil-previous-visual-line
-                          right-char left-char left-word right-word
-                          evil-forward-char evil-backward-char
-                          evil-next-line evil-previous-line)))
+  :init (defun evil-hardtime-check-command ()
+          "Return non-nil if the currently executed command should be checked."
+          (memq this-command '( next-line previous-line evil-previous-visual-line
+                                right-char left-char left-word right-word
+                                evil-forward-char evil-backward-char
+                                evil-next-line evil-previous-line)))
 
   ;; Customise hardtime.el
   :custom
@@ -1215,8 +1242,5 @@
   ;; Use the evil hardtime check command instead
   (hardtime-predicate #'evil-hardtime-check-command)
 
-  ;; Hooks for hardtime mode
-  :hook
-  (prog-mode . hardtime-mode)
-  (org-mode . hardtime-mode)
-  (text-mode . hardtime-mode))
+  ;; Enable hardtime mode in programming, text and org mode
+  :hook ((prog-mode text-mode org-mode) . hardtime-mode))

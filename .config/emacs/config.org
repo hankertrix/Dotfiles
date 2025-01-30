@@ -7,7 +7,7 @@
 * Table Of Contents :toc:
 - [[#important-programs][Important Programs]]
   - [[#elpaca-package-manager][Elpaca package manager]]
-  - [[#key-bindings-with-generalel][Key bindings (with general.el)]]
+  - [[#key-bindings-with-general][Key bindings with General]]
   - [[#evil][Evil]]
   - [[#undo-system][Undo system]]
   - [[#which-key][Which Key]]
@@ -32,7 +32,7 @@
 - [[#development][Development]]
   - [[#lsp-mode][LSP mode]]
   - [[#flycheck][Flycheck]]
-  - [[#completion-plugins][Completion Plugins]]
+  - [[#completion-plugins][Completion plugins]]
   - [[#wgrep][Wgrep]]
 - [[#embark][Embark]]
   - [[#integration-with-consult][Integration with consult]]
@@ -51,12 +51,13 @@
   - [[#add-syntax-highlighting-to-latex-exports-of-org-mode-code-blocks][Add syntax highlighting to LaTeX exports of org mode code blocks]]
   - [[#citeproc][Citeproc]]
   - [[#literate-programming][Literate programming]]
-- [[#pdf-tools][PDF Tools]]
 - [[#latex][LaTeX]]
   - [[#auctex][AUCTeX]]
   - [[#evil-tex][Evil TeX]]
+  - [[#pdf-tools][PDF Tools]]
+  - [[#revert-without-querying][Revert without querying]]
 - [[#building-better-vim-habits][Building better Vim habits]]
-  - [[#hardtimeel][Hardtime.el]]
+  - [[#hardtime][Hardtime]]
 - [[#external-programs][External programs]]
   - [[#language-servers][Language servers]]
   - [[#formatters-and-linters][Formatters and linters]]
@@ -116,19 +117,19 @@ Enable use-package support for Elpaca.
 ;; Install use-package support
 (elpaca elpaca-use-package
 
-  ;; Enable :elpaca use-package keyword.
+  ;; Enable elpaca use-package keyword
   (elpaca-use-package-mode)
 
-  ;; Assume :elpaca t unless otherwise specified.
+  ;; Assume :elpaca t and :ensure t unless otherwise specified
   (setq elpaca-use-package-by-default t))
 
-;; Block until current queue processed.
+;; Block until the above is done executing
 (elpaca-wait)
 
 #+end_src
 
-** Key bindings (with general.el)
-General.el has to be loaded first so that the ~use-package~ definitions below it can make use of the ~:general use-package~ keyword. Below are the key binds for built-in Emacs packages and modes.
+** Key bindings with General
+General has to be loaded first so that the ~use-package~ definitions below it can make use of the ~:general use-package~ keyword. Below are the key binds for built-in Emacs packages and modes.
 #+begin_src emacs-lisp
 (use-package general
 
@@ -260,7 +261,7 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
 #+begin_src emacs-lisp
 (use-package evil
 
-  ;; Force evil to load first
+  ;; Load evil mode immediately
   :demand t
 
   ;; Customise evil
@@ -362,17 +363,11 @@ Evil collection is a collection of evil key bindings for various Emacs plugins.
   ;; Load the evil collection after evil
   :after evil
 
-  ;; Force evil collection to load first
-  :demand t
-
   ;; Use z for folds in magit
   :custom (evil-collection-magit-use-z-for-folds t)
 
-  ;; Configure evil collection
-  :config
-
-  ;; Initialise the evil collection
-  (evil-collection-init))
+  ;; Start evil collection
+  :config (evil-collection-init))
 #+end_src
 
 *** Evil Goggles
@@ -397,6 +392,9 @@ Evil nerd commenter allows for easy commenting of code.
 #+begin_src emacs-lisp
 (use-package evil-nerd-commenter
 
+  ;; Load evil nerd commenter only when its command is called
+  :commands evilnc-comment-or-uncomment-lines
+
   ;; Comment out lines with Ctrl + /
   :general (general-def :states '(normal visual)
              "C-/" '("Comment out the selected lines" . evilnc-comment-or-uncomment-lines)))
@@ -405,7 +403,7 @@ Evil nerd commenter allows for easy commenting of code.
 *** Evil Surround
 Evil surround allows for easily changing the surroundings of a text objects, such as changing from single quotes to double quotes. It is similar to [[https://github.com/tpope/vim-surround][vim-surround]], [[https://github.com/kylechui/nvim-surround][nvim-surround]] and [[https://github.com/machakann/vim-sandwich][vim-sandwich]].
 #+begin_src emacs-lisp
-(use-package evil-surround :config (global-evil-surround-mode 1))
+(use-package evil-surround :after evil :config (global-evil-surround-mode 1))
 #+end_src
 
 *** Evil Anzu
@@ -413,14 +411,14 @@ Evil anzu highlights search terms. This package is required for doom modeline to
 #+begin_src emacs-lisp
 (use-package evil-anzu
 
+  ;; Load evil anzu after evil
+  :after evil
+
   ;; Set the search threshold for anzu
   :custom (anzu-search-threshold 1000)
 
-  ;; Initialise Anzu mode
-  :init
-
-  ;; Use anzu mode globally
-  (global-anzu-mode t))
+  ;; Start anzu mode globally
+  :config (global-anzu-mode t))
 #+end_src
 
 ** Undo system
@@ -429,11 +427,11 @@ The built-in Emacs undo system is awesome, but doesn't have good UI and UX, so t
 *** Undo Fu Session
 Undo fu session is a plugin that saves undo and redo information.
 #+begin_src emacs-lisp
-(use-package undo-fu-session :init (undo-fu-session-global-mode))
+(use-package undo-fu-session :demand t :config (undo-fu-session-global-mode))
 #+end_src
 
 *** Vundo
-Vundo is short for visual undo, and it helps visualise the undo and redo history as a tree so it is easier to work with, just like the undo tree plugin for Vim.
+Vundo is short for visual undo, and it helps visualise the undo and redo history as a tree so it is easier to work with, just like the [[https://github.com/mbbill/undotree][undotree]] plugin for Vim.
 #+begin_src emacs-lisp
 (use-package vundo
 
@@ -461,7 +459,7 @@ Which key is a plugin that displays the possible key binds and what each key bin
 #+begin_src emacs-lisp
 (use-package which-key
 
-  ;; Force which key to load immediately on start up
+  ;; Load which key immediately
   :demand t
 
   ;; Customise which key
@@ -479,8 +477,8 @@ Which key is a plugin that displays the possible key binds and what each key bin
   (which-key-allow-imprecise-window-fit t)
   (which-key-separator " → ")
 
-  ;; Initialise which key
-  :init (which-key-mode 1))
+  ;; Start which key
+  :config (which-key-mode 1))
 #+end_src
 
 * Fonts
@@ -600,12 +598,6 @@ Set the scroll margin (scrolloff in vim) and the scroll step to have vim-like sc
 Wrap long lines.
 #+begin_src emacs-lisp
 (global-visual-line-mode t)
-#+end_src
-
-*** Revert without querying
-This is just to stop Emacs from asking if I want to reread the PDF file from disk every time I reopen a PDF file that has changed. Instead, Emacs will now just automatically reread the PDF file without asking.
-#+begin_src emacs-lisp
-(setq revert-without-query '(".pdf"))
 #+end_src
 
 ** Indentation and brackets
@@ -740,6 +732,12 @@ Install the Auto-Dark Emacs package to automatically switch between light and da
 #+begin_src emacs-lisp
 (use-package auto-dark
 
+  ;; Ensure that doom-themes is installed
+  :after doom-themes
+
+  ;; Load auto dark mode immediately
+  :demand t
+
   ;; Customise the auto dark package
   :custom
 
@@ -748,14 +746,14 @@ Install the Auto-Dark Emacs package to automatically switch between light and da
   ;; and the second theme is when light mode is active.
   (auto-dark-themes '((doom-bluloco-dark) (doom-bluloco-light)))
 
-  ;; Initialise the auto dark package
-  :init (auto-dark-mode))
+  ;; Start auto dark mode
+  :config (auto-dark-mode))
 #+end_src
 
 ** Mode line
 Use doom mode line for the Emacs mode line.
 #+begin_src emacs-lisp
-(use-package doom-modeline :init (doom-modeline-mode 1))
+(use-package doom-modeline :demand t :config (doom-modeline-mode 1))
 #+end_src
 
 ** Rainbow Delimiters
@@ -847,7 +845,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   ;; Disable snippet support for LSP mode
   (lsp-enable-snippet nil)
 
-  ;; Initialise LSP mode
+  ;; Function definitions that are used in the hooks
   :init
 
   ;; Functions to set up LSP mode
@@ -900,7 +898,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   :ensure-system-package (efm-langserver . "yay -S efm-langserver"))
 #+end_src
 
-*** Enable the UI for LSP mode
+*** UI for LSP mode
 #+begin_src emacs-lisp
 (use-package lsp-ui
 
@@ -939,7 +937,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   )
 #+end_src
 
-*** Language Support
+*** Language support
 Emacs doesn't have built-in support for Lua, Haskell, and Rust, so let's add support for those.
 #+begin_src emacs-lisp
 (use-package lua-mode)
@@ -953,14 +951,14 @@ Emacs doesn't have built-in support for Lua, Haskell, and Rust, so let's add sup
   :hook (rust-mode . lsp-deferred))
 #+end_src
 
-*** Language Servers
+*** Language servers
 
 **** LTEX+
 LTEX+ is a language server that checks the file for writing errors in various languages using LanguageTool. It works with Markdown, org, and various TeX files (e.g. LaTeX, BibTeX, etc.).
 #+begin_src emacs-lisp
 (use-package lsp-ltex-plus
 
-  ;; Pull the plugin from GitHub
+  ;; Install lsp-ltex-plus from GitHub
   :ensure (lsp-ltex-plus :host github :repo "emacs-languagetool/lsp-ltex-plus")
 
   ;; Ensure LTEX+ exists
@@ -1012,6 +1010,9 @@ Flycheck is better alternative to the built-in Emacs Flymake with support for a 
 #+begin_src emacs-lisp
 (use-package flycheck
 
+  ;; Load flycheck immediately
+  :demand t
+
   ;; Key binds for flycheck
   :general
 
@@ -1024,10 +1025,10 @@ Flycheck is better alternative to the built-in Emacs Flymake with support for a 
     )
 
   ;; Start flycheck globally
-  :init (global-flycheck-mode))
+  :config (global-flycheck-mode))
 #+end_src
 
-** Completion Plugins
+** Completion plugins
 
 *** Vertico
 Vertico is a minimal completion UI for the Emacs mini buffer, like Ivy. However, it does not do completions by itself, but rather relies on Emacs' default completion at point functions and completing-read, unlike Ivy which has its own completion mechanism.
@@ -1102,6 +1103,9 @@ Marginalia is a plugin that adds annotations to the mini-buffer, like file permi
 #+begin_src emacs-lisp
 (use-package marginalia
 
+  ;; Load marginalia immediately
+  :demand t
+
   ;; Add a key bind to cycle the marginalia annotations
   :general (general-def
              :keymaps 'minibuffer-local-map
@@ -1118,7 +1122,7 @@ Marginalia is a plugin that adds annotations to the mini-buffer, like file permi
   (marginalia-align 'right)
 
   ;; Start marginalia mode
-  :init (marginalia-mode))
+  :config (marginalia-mode))
 #+end_src
 
 *** Nerd icons completion
@@ -1126,14 +1130,17 @@ Nerd icons completion is a plugin that displays pretty icons alongside the margi
 #+begin_src emacs-lisp
 (use-package nerd-icons-completion
 
-  ;; Load the package after marginalia
+  ;; Load nerd icons completion after marginalia
   :after marginalia
+
+  ;; Load nerd icons completion immediately
+  :demand t
 
   ;; Set up nerd icons with marginalia
   :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
 
   ;; Start nerd icons completion
-  :init (nerd-icons-completion-mode))
+  :config (nerd-icons-completion-mode))
 #+end_src
 
 *** Orderless
@@ -1156,8 +1163,7 @@ Consult is a plugin that consults Emacs' completing-read functions for you to pi
 #+begin_src emacs-lisp
 (use-package consult
 
-  ;; Make sure fd and ripgrep are installed
-  :ensure-system-package (fd . "sudo pacman -S fd")
+  ;; Make sure ripgrep is installed
   :ensure-system-package (rg . "sudo pacman -S ripgrep")
 
   ;; Key maps for consult
@@ -1187,8 +1193,8 @@ Consult is a plugin that consults Emacs' completing-read functions for you to pi
   )
 #+end_src
 
-**** Consult Dir
-Consult Dir stands for consult directory, which helps you easily add file and directory paths into the mini buffer. It can also be used elsewhere, but it is most helpful in the mini buffer.
+**** Consult dir
+Consult dir stands for consult directory, which helps you easily add file and directory paths into the mini buffer. It can also be used elsewhere, but it is most helpful in the mini buffer.
 #+begin_src emacs-lisp
 (use-package consult-dir)
 #+end_src
@@ -1198,8 +1204,11 @@ Corfu is a plugin for in-buffer completions.
 #+begin_src emacs-lisp
 (use-package corfu
 
-  ;; Pull the corfu extensions from the repo as well
+  ;; Include corfu extensions
   :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
+
+  ;; Load corfu immediately
+  :demand t
 
   ;; Customise corfu
   :custom
@@ -1232,8 +1241,30 @@ Corfu is a plugin for in-buffer completions.
   ;; Disable the return key
   :bind (:map corfu-map ("RET" . nil))
 
-  ;; Initialise corfu
-  :init
+  ;; Function to enable corfu in the minibuffer
+  ;; if other completion plugins are not active
+  :init (defun corfu-enable-always-in-minibuffer ()
+          "Enable Corfu in the minibuffer if Vertico/Mct are not active."
+          (unless (or (bound-and-true-p mct--active)
+                      (bound-and-true-p vertico--input)
+                      (eq (current-local-map) read-passwd-map))
+
+            ;; Disable automatic echo and popup
+            (setq-local corfu-echo-delay nil
+                        corfu-popupinfo-delay nil)
+
+            ;; Enable corfu
+            (corfu-mode 1)))
+
+  ;; Enable corfu in the minibuffer
+  ;; if other completion plugins are not active
+  :hook (minibuffer-setup . corfu-enable-always-in-minibuffer)
+
+  ;; Configure corfu
+  :config
+
+  ;; Enable corfu everywhere
+  (global-corfu-mode)
 
   ;; Show documentation using the corfu pop up info extension
   (corfu-popupinfo-mode 1)
@@ -1241,36 +1272,14 @@ Corfu is a plugin for in-buffer completions.
   ;; Save completion history for better sorting
   (corfu-history-mode 1)
   (savehist-mode 1)
-  (add-to-list 'savehist-additional-variables 'corfu-history)
-
-  ;; Function to corfu in the minibuffer
-  ;; if other completion plugins are not active
-  (defun corfu-enable-always-in-minibuffer ()
-    "Enable Corfu in the minibuffer if Vertico/Mct are not active."
-    (unless (or (bound-and-true-p mct--active)
-                (bound-and-true-p vertico--input)
-                (eq (current-local-map) read-passwd-map))
-
-      ;; Disable automatic echo and popup
-      (setq-local corfu-echo-delay nil
-                  corfu-popupinfo-delay nil)
-
-      ;; Enable corfu
-      (corfu-mode 1)))
-
-  ;; Enable corfu everywhere
-  (global-corfu-mode)
-
-  ;; Enable corfu in the minibuffer
-  ;; if other completion plugins are not active
-  :hook (minibuffer-setup . corfu-enable-always-in-minibuffer))
+  (add-to-list 'savehist-additional-variables 'corfu-history))
 #+end_src
 
-**** Adding kind icons to corfu
+**** Adding kind icons to Corfu
 #+begin_src emacs-lisp
 (use-package kind-icon
 
-  ;; Load kind icon after corfu and nerd icons
+  ;; Load kind icons after corfu and nerd icons
   :after (corfu nerd-icons)
 
   ;; Customise corfu
@@ -1365,18 +1374,21 @@ Embark is a plugin that essentially gives you a keyboard-based right click menu 
 #+begin_src emacs-lisp
 (use-package embark
 
-  ;; Make sure consult-dir is available
+  ;; Ensure consult-dir is available
   :after consult-dir
 
   ;; Lazy load embark
   :commands (embark-act embark-dwim embark-bindings)
 
+  ;; Customise embark
+  :custom
+
   ;; Set the help key to ?
-  :custom (embark-help-key "?")
+  (embark-help-key "?")
 
   ;; Replace the prefix help command
   ;; with embark's completing-read interface
-  :init (setq prefix-help-command #'embark-prefix-help-command)
+  (prefix-help-command #'embark-prefix-help-command)
 
   ;; Key binds for embark
   :general (general-def
@@ -1437,7 +1449,14 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
 ** Enable the table of contents
 #+begin_src emacs-lisp
 (use-package toc-org
+
+  ;; Only load the package after org mode
+  :after org
+
+  ;; Load toc-org when it is enabled
   :commands toc-org-enable
+
+  ;; Enable toc-org in org mode
   :hook (org-mode . toc-org-enable))
 #+end_src
 
@@ -1446,10 +1465,10 @@ Org-bullets gives us attractive bullets rather than asterisks.
 #+begin_src emacs-lisp
 (use-package org-bullets
 
-  ;; Load the package only after org mode
+  ;; Only load the package after org mode
   :after org
 
-  ;; Add hooks to org bullets
+  ;; Hooks for org bullets
   :hook
 
   ;; Enable org indent and org bullets mode
@@ -1507,7 +1526,7 @@ Evil org provides a set of evil key bindings that work with org mode.
 #+begin_src emacs-lisp
 (use-package evil-org
 
-  ;; Ensure that evil org is only loaded after org mode
+  ;; Only load the package after org mode
   :after org
 
   ;; Start evil org when org mode is started
@@ -1554,8 +1573,12 @@ Literate programming is a way of programming that has code snippets embedded in 
 *** Installing ~ox-ipynb~ to support exporting org files to Jupyter notebooks
 #+begin_src emacs-lisp
 (use-package ox-ipynb
+
+  ;; Install ox-ipynb from GitHub
   :ensure (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
-  :init (require 'ox-ipynb))
+
+  ;; Only load the package after org mode
+  :after org)
 #+end_src
 
 *** Installing ~emacs-jupyter~ to work with Jupyter kernels inside org mode
@@ -1563,43 +1586,20 @@ Literate programming is a way of programming that has code snippets embedded in 
 (use-package jupyter
 
   ;; Load the Jupyter languages
-  :init
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (python . t)
-     (jupyter . t)))
-
-  ;; Hooks for emacs jupyter
-  :hook
+  :init (org-babel-do-load-languages
+         'org-babel-load-languages
+         '((emacs-lisp . t)
+           (python . t)
+           (jupyter . t)))
 
   ;; Add a hook to redisplay inline images
   ;; after executing a code block
-  (org-babel-after-execute . org-redisplay-inline-images))
+  :hook (org-babel-after-execute . org-redisplay-inline-images))
 #+end_src
 
 *** Stop org mode from asking me to confirm evaluation
 #+begin_src emacs-lisp
 (setq org-confirm-babel-evaluate nil)
-#+end_src
-
-* PDF Tools
-PDF Tools is a great plugin that makes working with PDFs very easy. A lot of times, I am exporting org files or TeX files to PDF, so this makes my life much easier. It makes use of the ~poppler~ library, so make sure to have that installed.
-#+begin_src emacs-lisp
-(use-package pdf-tools
-
-  ;; Customise to use PDF tools to open
-  ;; LaTeX PDF files
-  :custom
-  (TeX-view-program-selection '((output-pdf "PDF Tools")))
-  (TeX-source-correlate-start-server t)
-
-  ;; Update PDF buffers after successful LaTeX runs
-  :init
-  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-
-  ;; Install pdf-tools
-  :config (pdf-tools-install))
 #+end_src
 
 * LaTeX
@@ -1624,27 +1624,55 @@ AUCTeX is an Emacs package for writing LaTeX documents.
 Evil TeX provides useful text objects for LaTeX editing.
 #+begin_src emacs-lisp
 (use-package evil-tex
+
+  ;; Ensure that auctex is installed
+  :after auctex
+
+  ;; Enable evil tex in latex mode
   :hook (LaTeX-mode . evil-tex-mode))
+#+end_src
+
+** PDF Tools
+PDF Tools is a great plugin that makes working with PDFs very easy. A lot of times, I am exporting org files or TeX files to PDF, so this makes my life much easier. It makes use of the ~poppler~ library, so make sure to have that installed.
+#+begin_src emacs-lisp
+(use-package pdf-tools
+
+  ;; Customise to use PDF tools to open
+  ;; LaTeX PDF files
+  :custom
+  (TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (TeX-source-correlate-start-server t)
+
+  ;; Update PDF buffers after successful LaTeX runs
+  :init (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
+  ;; Install pdf-tools
+  :config (pdf-tools-install))
+#+end_src
+
+** Revert without querying
+This is to stop Emacs from asking if I want to reread the PDF file from disk every time I reopen a PDF file that has changed. Instead, Emacs will now just automatically reread the PDF file without asking.
+#+begin_src emacs-lisp
+(setq revert-without-query '(".pdf"))
 #+end_src
 
 * Building better Vim habits
 
-** Hardtime.el
-Hardtime.el is a package that forces you to stop repeating the same commands to move around in Emacs.
+** Hardtime
+Hardtime is a package that forces you to stop repeating the same commands to move around in Emacs.
 #+begin_src emacs-lisp
 (use-package hardtime
 
-  ;; Get hardtime.el from GitHub
+  ;; Install hardtime.el from GitHub
   :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
 
   ;; Define the evil hardtime check command function
-  :init
-  (defun evil-hardtime-check-command ()
-    "Return non-nil if the currently executed command should be checked."
-    (memq this-command '( next-line previous-line evil-previous-visual-line
-                          right-char left-char left-word right-word
-                          evil-forward-char evil-backward-char
-                          evil-next-line evil-previous-line)))
+  :init (defun evil-hardtime-check-command ()
+          "Return non-nil if the currently executed command should be checked."
+          (memq this-command '( next-line previous-line evil-previous-visual-line
+                                right-char left-char left-word right-word
+                                evil-forward-char evil-backward-char
+                                evil-next-line evil-previous-line)))
 
   ;; Customise hardtime.el
   :custom
@@ -1655,11 +1683,8 @@ Hardtime.el is a package that forces you to stop repeating the same commands to 
   ;; Use the evil hardtime check command instead
   (hardtime-predicate #'evil-hardtime-check-command)
 
-  ;; Hooks for hardtime mode
-  :hook
-  (prog-mode . hardtime-mode)
-  (org-mode . hardtime-mode)
-  (text-mode . hardtime-mode))
+  ;; Enable hardtime mode in programming, text and org mode
+  :hook ((prog-mode text-mode org-mode) . hardtime-mode))
 #+end_src
 
 * External programs
