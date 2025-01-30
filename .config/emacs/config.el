@@ -692,7 +692,7 @@
   :custom
 
   ;; Set the language for LTEX+ to British English
-  (lsp-ltex-plus-language "en-GB")
+  (lsp-ltex-plus-plus-language "en-GB")
 
   ;; Disable the oxford spelling rule
   (lsp-ltex-plus-disabled-rules '(:en-GB ["OXFORD_SPELLING_Z_NOT_S"]))
@@ -1051,12 +1051,12 @@
   (defun static-completion-functions ()
     (cape-wrap-super
      #'cape-sgml
+     #'cape-emoji
      #'cape-rfc1345
      #'cape-keyword
-     #'cape-line
      #'cape-dabbrev
+     #'cape-line
      #'cape-history
-     #'cape-emoji
      ;; #'cape-elisp-block
      ;; #'cape-elisp-symbol
      ;; #'cape-abbrev
