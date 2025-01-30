@@ -46,11 +46,14 @@ vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "Toggle comment for a
 vim.keymap.set("v", "<C-/>", "gc", { remap = true, desc = "Toggle comment for a region" })
 vim.keymap.set("o", "<C-/>", "gc", { remap = true, desc = "Get largest commented block near the cursor" })
 
+-- Use Ctrl + Backspace to delete a full word in insert mode
+vim.keymap.set("i", "<C-BS>", "<C-w>", { desc = "Delete a full word" })
+
 -- Use the Leader key to yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<Leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<Leader>Y", [["+y$]], { desc = "Yank till the end of the line to system clipboard" })
 
--- Deleting something instead of cutting
+-- Use the leader key to delete something instead of cutting
 vim.keymap.set({ "n", "v" }, "<Leader>d", [["_d]], { desc = "Delete" })
 
 -- Use the leader key to paste from system clipboard
