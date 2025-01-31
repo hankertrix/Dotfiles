@@ -692,7 +692,7 @@
   :custom
 
   ;; Set the language for LTEX+ to British English
-  (lsp-ltex-plus-plus-language "en-GB")
+  (lsp-ltex-plus-language "en-GB")
 
   ;; Disable the oxford spelling rule
   (lsp-ltex-plus-disabled-rules '(:en-GB ["OXFORD_SPELLING_Z_NOT_S"]))
