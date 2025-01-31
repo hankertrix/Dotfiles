@@ -295,7 +295,7 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
   :init
 
   ;; Function to use a register with an evil function
-  (defun use-register-with-evil-function (register evil-function)
+  (defun hanker/use-register-with-evil-function (register evil-function)
     "A wrapper function to easily use a specified register REGISTER
      with an evil function EVIL-FUNCTION."
     (interactive)
@@ -321,15 +321,15 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
   (hanker/leader-keys
     :states 'normal
     "P" '("Paste from the system clipboard before the cursor" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-before)))
+          (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-paste-before)))
     "pp" '("Paste from the system clipboard after the cursor" .
-           (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-paste-after)))
+           (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-paste-after)))
     "y" '("Copy to the system clipboard" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank)))
+          (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-yank)))
     "Y" '("Copy till the end of the line to the system clipboard" .
-          (lambda () (interactive) (use-register-with-evil-function ?+ 'evil-yank-line)))
+          (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-yank-line)))
     "d" '("Delete" .
-          (lambda () (interactive) (use-register-with-evil-function ?_ 'evil-delete)))
+          (lambda () (interactive) (hanker/use-register-with-evil-function ?_ 'evil-delete)))
     )
 
   ;; Configure evil mode
@@ -339,7 +339,8 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
   (evil-set-undo-system 'undo-redo)
 
   ;; The function to centre the screen on the current cursor position
-  (defun centre-screen (&rest _)
+  (defun hanker/centre-screen (&rest _)
+    "Function to centre the screen on the current cursor position"
     (evil-scroll-line-to-center nil))
 
   ;; Centre the screen after every jump
@@ -349,7 +350,7 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
                   evil-scroll-down
                   evil-scroll-page-up
                   evil-scroll-page-down))
-    (advice-add func :after #'centre-screen))
+    (advice-add func :after #'hanker/centre-screen))
 
   ;; Enable evil mode
   (evil-mode))
@@ -811,7 +812,7 @@ Set Ctrl + the mouse wheel to zoom in and out.
 #+end_src
 
 ** File previews in Dired
-Use dired-preview to preview files in Dired.
+Use Dired preview to preview files in Dired.
 #+begin_src emacs-lisp
 (use-package dired-preview
 
@@ -849,35 +850,14 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   ;; as Corfu is used instead
   (lsp-completion-provider :none)
 
-  ;; Function definitions that are used in the hooks
-  :init
-
-  ;; Functions to set up LSP mode
-  (defun lsp-mode-setup ()
-    "The function to set up LSP mode"
-
-    ;; Set up the headerline in LSP mode
-    (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-
-    ;; Enable the headerline
-    (lsp-headerline-breadcrumb-mode))
-
-  (defun lsp-completion-mode-setup ()
-    "The function to set up LSP completion with Corfu"
-
-    ;; Set up completion with Corfu with the orderless style
-    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(orderless)))
+  ;; Set up the headerline in LSP mode
+  (lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
 
   ;; The hooks for LSP mode
   :hook
 
-  ;; Run the LSP mode setup function every time LSP mode is started
-  (lsp-mode . lsp-mode-setup)
-
-  ;; Run the LSP mode completion setup function every time the
-  ;; LSP completion mode is started
-  (lsp-completion-mode . lsp-completion-mode-setup)
+  ;; Start LSP headerline breadcrumb mode when LSP mode is enabled
+  (lsp-mode . lsp-headerline-breadcrumb-mode)
 
   ;; Disable LSP mode integration with completion at point functions in text mode.
   ;; This is to get autocompletions with Corfu and Cape working again in text mode.
@@ -1099,6 +1079,25 @@ Vertico is a minimal completion UI for the Emacs mini buffer, like Ivy. However,
   ;; Configure vertico
   :config
 
+  ;; Prefix the current candidate with an arrow
+  ;; https://github.com/minad/vertico/wiki#prefix-current-candidate-with-arrow
+  (defvar +vertico-current-arrow t)
+
+  (cl-defmethod vertico--format-candidate :around
+    (cand prefix suffix index start &context ((and +vertico-current-arrow
+                                                   (not (bound-and-true-p vertico-flat-mode)))
+                                              (eql t)))
+    (setq cand (cl-call-next-method cand prefix suffix index start))
+    (if (bound-and-true-p vertico-grid-mode)
+        (if (= vertico--index index)
+            (concat #("▶" 0 1 (face vertico-current)) cand)
+          (concat #("_" 0 1 (display " ")) cand))
+      (if (= vertico--index index)
+          (concat
+           #(" " 0 1 (display (left-fringe right-triangle vertico-current)))
+           cand)
+        cand)))
+
   ;; Start vertico
   (vertico-mode)
 
@@ -1163,7 +1162,18 @@ Orderless is essentially fuzzy matching for Emacs completion plugins, like ~fzf~
   (completion-styles '(orderless partial-completion basic))
 
   ;; Don't use orderless with remote files
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  (completion-category-overrides '((file (styles basic partial-completion))))
+
+  ;; Function to set the orderless completion style in LSP mode
+  :init (defun hanker/orderless-lsp-completion-mode-setup ()
+    "Function to set the LSP completion style to orderless"
+
+    ;; Set up completion with Corfu with the orderless style
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(orderless)))
+
+  ;; Set up orderless completion in LSP completion mode
+  :hook (lsp-completion-mode . hanker/orderless-lsp-completion-mode-setup))
 #+end_src
 
 *** Consult
@@ -1256,11 +1266,18 @@ Corfu is a plugin for in-buffer completions.
   ;; Stop auto completing when there is a separator like a space
   (corfu-quit-at-boundary 'separator)
 
+  ;; Always quit when there is no match
+  (corfu-quit-no-match t)
+
   ;; Don't show the documentation for the completion.
   ;; I am using corfu-popupinfo-mode for the documentation instead.
   (corfu-echo-documentation nil)
 
-  ;; Do not preview current candidate
+  ;; Set the delay to display the documentation to 250 milliseconds.
+  ;; This has the same value as my Neovim configuration.
+  (corfu-popupinfo-delay 0.25)
+
+  ;; Insert the candidate when previewing
   (corfu-preview-current 'insert)
 
   ;; Make sure tab doesn't indent when performing a completion
@@ -1271,7 +1288,7 @@ Corfu is a plugin for in-buffer completions.
 
   ;; Function to enable corfu in the minibuffer
   ;; if other completion plugins are not active
-  :init (defun corfu-enable-always-in-minibuffer ()
+  :init (defun hanker/corfu-always-enable-in-minibuffer ()
           "Enable Corfu in the minibuffer if Vertico/Mct are not active."
           (unless (or (bound-and-true-p mct--active)
                       (bound-and-true-p vertico--input)
@@ -1282,11 +1299,11 @@ Corfu is a plugin for in-buffer completions.
                         corfu-popupinfo-delay nil)
 
             ;; Enable corfu
-            (corfu-mode 1)))
+            (corfu-mode)))
 
   ;; Enable corfu in the minibuffer
   ;; if other completion plugins are not active
-  :hook (minibuffer-setup . corfu-enable-always-in-minibuffer)
+  :hook (minibuffer-setup . hanker/corfu-always-enable-in-minibuffer)
 
   ;; Configure corfu
   :config
@@ -1295,11 +1312,11 @@ Corfu is a plugin for in-buffer completions.
   (global-corfu-mode)
 
   ;; Show documentation using the corfu pop up info extension
-  (corfu-popupinfo-mode 1)
+  (corfu-popupinfo-mode)
 
   ;; Save completion history for better sorting
-  (corfu-history-mode 1)
-  (savehist-mode 1)
+  (corfu-history-mode)
+  (savehist-mode)
   (add-to-list 'savehist-additional-variables 'corfu-history))
 #+end_src
 
@@ -1376,34 +1393,117 @@ Cape is a plugin that provides extensions to completion at point plugins like Co
   ;; Configure cape
   :config
 
+  ;; Function to check if the current buffer is not a minibuffer
+  (defun hanker/not-in-minibuffer (&rest _)
+    "Check if the current buffer is not a minibuffer"
+    (not (minibufferp)))
+
   ;; Merge the static completion functions together
-  (defun static-completion-functions ()
-    (cape-wrap-super
-     #'cape-sgml
-     #'cape-emoji
-     #'cape-rfc1345
-     #'cape-keyword
-     #'cape-dabbrev
-     #'cape-line
-     #'cape-history
-     ;; #'cape-elisp-block
-     ;; #'cape-elisp-symbol
-     ;; #'cape-abbrev
-     ;; #'cape-dict
+  (defalias 'hanker/static-completion-functions
 
-     ;; This completion inserts the unicode
-     ;; character for the LaTeX command,
-     ;; not the full LaTeX command, so I
-     ;; never want it, as LaTeX doesn't
-     ;; support unicode and will error out.
-     ;; #'cape-tex
-     ))
+    ;; Cache bust the merged completion functions
+    (cape-capf-buster
+     (cape-capf-super
+      #'cape-sgml
 
-  ;; Add the file completion function
-  (add-hook 'completion-at-point-functions #'cape-file)
+      ;; Enable the emoji completion when the buffer is not a minibuffer
+      ;; and silence the errors from it.
+      ;;
+      ;; I have no idea what is causing the errors, but it seems to be something
+      ;; regarding using cape-capf-super to combine the cape-emoji completion function
+      ;; predicated to only enable in minibuffers.
+      ;;
+      ;; Using the predicated cape-emoji completion function by itself
+      ;; without combining it with other static completion functions
+      ;; seem to work just fine, so this is really weird.
+      ;;
+      ;; I'm assuming the predicated version probably changes the function to not
+      ;; be static or something, because I keep getting a error,
+      ;; (wrong-number-of-arguments (1 . 1), 2), which means the calling function is
+      ;; somehow passing two arguments when the predicated cape-emoji function only expects 1,
+      ;; and this only happens in the minibuffer for some reason, the completion in regular
+      ;; buffers still work just fine, which is exactly what I want.
+      ;; Hence I'm just going to silence the error and not deal with it.
+      ;;
+      (cape-capf-silent (cape-capf-predicate #'cape-emoji #'hanker/not-in-minibuffer))
+      #'cape-rfc1345
+      #'cape-keyword
+      #'cape-history
+      #'cape-line
 
-  ;; Add the static completion functions
-  (add-hook 'completion-at-point-functions #'static-completion-functions))
+      ;; Dabbrev completion as fallback
+      #'cape-dabbrev
+
+      ;; The elisp completions work in text and org mode
+      ;; instead of in Elisp mode, so I have no use for it.
+      ;;
+      ;; I believe cape-elisp-symbol also wraps the symbol
+      ;; in code blocks, which is also not what I want since
+      ;; I want it to complete inside org mode source blocks.
+      ;;
+      ;; #'cape-elisp-block
+      ;; #'cape-elisp-symbol
+
+      ;; I don't have a dictionary file or an abbreviations file,
+      ;; so there's no point enabling these two completions.
+      ;;
+      ;; #'cape-abbrev
+      ;; #'cape-dict
+
+      ;; This completion inserts the unicode
+      ;; character for the LaTeX command,
+      ;; not the full LaTeX command, so I
+      ;; never want it, as LaTeX doesn't
+      ;; support unicode and will error out.
+      ;;
+      ;; #'cape-tex
+      )))
+
+  ;; Function to add the general completion functions
+  (defun hanker/add-general-completion-functions ()
+    "Function to add the general completion functions."
+
+    (add-hook 'completion-at-point-functions #'cape-file)
+    (add-hook 'completion-at-point-functions #'hanker/static-completion-functions)
+    )
+
+  ;; Function to add file and dabbrev
+  ;; and dabbrev completion as fallback
+  (defun hanker/add-file-and-dabbrev-completions ()
+    "Function to add file completion as first priority and dabbrev as a fallback."
+
+    ;; Add the file completion at a depth of -90/100, so that
+    ;; it comes before any LSP completion function
+    (add-hook 'completion-at-point-functions #'cape-file -90)
+
+    ;; Add dabbrev completion as a fallback.
+    ;; The 90 means the function depth is 90/100, which means
+    ;; the dabbrev completion is near the end of the list.
+    (add-hook 'completion-at-point-functions #'cape-dabbrev 90))
+
+  ;; Function to set up completion for LSP mode
+  (defun hanker/cape-lsp-completion-mode-setup ()
+    "Function to set up completions for LSP mode"
+
+    ;; Replace the default lsp-completion-at-point with
+    ;; the cache busted version
+    (setf (elt (cl-member 'lsp-completion-at-point completion-at-point-functions) 0)
+          (cape-capf-buster #'lsp-completion-at-point))
+
+    ;; Call the function to add file and dabbrev completions
+    (hanker/add-file-and-dabbrev-completions))
+
+  ;; Hooks for cape
+  :hook
+
+  ;; Add the wanted completion functions in text and org modes
+  ((text-mode org-mode) . hanker/add-general-completion-functions)
+
+  ;; Setup the completion functions in LSP mode
+  (lsp-completion-mode . hanker/cape-lsp-completion-mode-setup)
+
+  ;; Add file and dabbrev completions in programming mode
+  (prog-mode . hanker/add-file-and-dabbrev-completions))
 #+end_src
 
 ** Wgrep
@@ -1709,7 +1809,7 @@ Hardtime is a package that forces you to stop repeating the same commands to mov
   :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
 
   ;; Define the evil hardtime check command function
-  :init (defun evil-hardtime-check-command ()
+  :init (defun hanker/evil-hardtime-check-command ()
           "Return non-nil if the currently executed command should be checked."
           (memq this-command '( next-line previous-line evil-previous-visual-line
                                 right-char left-char left-word right-word
@@ -1723,7 +1823,7 @@ Hardtime is a package that forces you to stop repeating the same commands to mov
   (hardtime-period 1)
 
   ;; Use the evil hardtime check command instead
-  (hardtime-predicate #'evil-hardtime-check-command)
+  (hardtime-predicate #'hanker/evil-hardtime-check-command)
 
   ;; Enable hardtime mode in programming, text and org mode
   :hook ((prog-mode text-mode org-mode) . hardtime-mode))
