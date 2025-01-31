@@ -1100,10 +1100,8 @@
       #'cape-rfc1345
       #'cape-keyword
       #'cape-history
-      #'cape-line
-
-      ;; Dabbrev completion as fallback
       #'cape-dabbrev
+      #'cape-line
 
       ;; The elisp completions work in text and org mode
       ;; instead of in Elisp mode, so I have no use for it.
@@ -1134,7 +1132,10 @@
   (defun hanker/add-general-completion-functions ()
     "Function to add the general completion functions."
 
-    (add-hook 'completion-at-point-functions #'cape-file)
+
+    ;; Add the file completion at a depth of -90/100, so that
+    ;; it comes before any completion function
+    (add-hook 'completion-at-point-functions #'cape-file -90)
     (add-hook 'completion-at-point-functions #'hanker/static-completion-functions)
     )
 
@@ -1144,7 +1145,7 @@
     "Function to add file completion as first priority and dabbrev as a fallback."
 
     ;; Add the file completion at a depth of -90/100, so that
-    ;; it comes before any LSP completion function
+    ;; it comes before any completion function
     (add-hook 'completion-at-point-functions #'cape-file -90)
 
     ;; Add dabbrev completion as a fallback.
