@@ -26,4 +26,14 @@ return {
         lazy = true,
         cmd = "VimBeGood",
     },
+
+    -- Tybr plugin to practice typing
+    {
+        "hankertrix/tybr",
+        dev = true,
+        dir = "~/projects/tybr",
+        dependencies = { "nvzone/volt" },
+        opts = {},
+        cmd = { "Tybr", "TybrStats" },
+    },
 }
