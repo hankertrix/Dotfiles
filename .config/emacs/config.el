@@ -551,6 +551,9 @@
 
 (use-package dired-preview
 
+  ;; Show the preview immediately
+  :custom (dired-preview-delay 0.0)
+
   ;; Configure dired preview
   :config
 

@@ -816,6 +816,9 @@ Use Dired preview to preview files in Dired.
 #+begin_src emacs-lisp
 (use-package dired-preview
 
+  ;; Show the preview immediately
+  :custom (dired-preview-delay 0.0)
+
   ;; Configure dired preview
   :config
 
