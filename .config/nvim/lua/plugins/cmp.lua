@@ -77,12 +77,38 @@ return {
                     name = "Spell",
                     module = "blink-cmp-spell",
                     score_offset = -5,
-                    enabled = function()
-                        return vim.bo.filetype == "text"
-                            or not utils.firenvim_not_active()
-                    end,
+                    opts = {
+
+                        -- Enable the source only in `@spell` captures,
+                        -- and disable it in `@nospell` captures
+                        enable_in_context = function()
+                            -- Get the captures at the current
+                            -- cursor position
+                            local captures =
+                                vim.treesitter.get_captures_at_cursor(0)
+
+                            -- Iterate over the captures
+                            for _, capture in ipairs(captures) do
+                                --
+
+                                -- If the cursor is in a spell capture,
+                                -- return true to enable the source
+                                if capture == "spell" then
+                                    return true
+
+                                -- Otherwise, if the cursor
+                                -- is in a nospell capture,
+                                -- return false to disable the source
+                                elseif capture == "nospell" then
+                                    return false
+                                end
+                            end
+                        end,
+                    },
+
                     kind = "Spell",
                 },
+
                 emoji = {
                     name = "Emoji",
                     module = "blink-emoji",
