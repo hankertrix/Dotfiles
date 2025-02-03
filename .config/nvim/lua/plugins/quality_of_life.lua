@@ -205,6 +205,12 @@ return {
                 mode = "n",
                 desc = "Search through the list of pickers",
             },
+            {
+                "<Leader>/b",
+                function() Snacks.picker.keymaps() end,
+                mode = "n",
+                desc = "Search through the list of key bindings",
+            },
         },
     },
 }
