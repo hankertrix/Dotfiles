@@ -116,7 +116,30 @@ return {
             quickfile = { enabled = true },
             statuscolumn = { enabled = true },
             input = { enabled = true },
-            picker = { enabled = true },
+            picker = {
+                enabled = true,
+                icons = {
+                    kinds = icons.kind,
+                    diagnostics = {
+                        Error = icons.diagnostics.error,
+                        Warn = icons.diagnostics.warn,
+                        Hint = icons.diagnostics.hint,
+                        Info = icons.diagnostics.info,
+                    },
+                    git = {
+                        enabled = true,
+                        commit = icons.git.commit .. " ",
+                        staged = icons.git.staged,
+                        added = icons.git.added,
+                        deleted = icons.git.deleted,
+                        ignored = icons.git.ignored,
+                        modified = icons.git.modified,
+                        renamed = icons.git.renamed,
+                        unmerged = icons.git.unmerged .. " ",
+                        untracked = icons.git.untracked,
+                    },
+                },
+            },
             indent = {
                 enabled = true,
                 scope = {
@@ -124,32 +147,6 @@ return {
                 },
             },
         },
-
-        -- The configuration function
-        config = function(_, opts)
-            --
-
-            -- The diagnostic icons
-            local diagnostic_icons = {
-                Error = icons.diagnostics.error,
-                Warn = icons.diagnostics.warn,
-                Hint = icons.diagnostics.hint,
-                Info = icons.diagnostics.info,
-            }
-
-            -- Merge the given options with the picker configuration
-            local options = vim.tbl_deep_extend("error", opts or {}, {
-                picker = {
-                    icons = {
-                        diagnostics = diagnostic_icons,
-                        kinds = icons.kind,
-                    },
-                },
-            })
-
-            -- Set up the snacks plugin with the options
-            require("snacks").setup(options)
-        end,
 
         -- Key binds
         keys = {

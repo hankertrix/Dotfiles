@@ -98,10 +98,12 @@ M.icons = {
         deleted = "", -- Deleted "D"
         renamed = "", -- Renamed "R"
         copied = "", -- Copied "C"
-        unmerged = "", -- Unmerged "U"
+        unmerged = "", -- Unmerged "U"
         unknown = "", -- Unknown change type "X"
         untracked = "󱋽", -- Untracked
         ignored = "", -- Ignored
+        commit = "󰜘", -- Commit
+        staged = "", -- Staged changes
     },
 }
 

@@ -82,6 +82,8 @@ return {
                         -- Enable the source only in `@spell` captures,
                         -- and disable it in `@nospell` captures
                         enable_in_context = function()
+                            --
+
                             -- Get the captures at the current
                             -- cursor position
                             local captures =
