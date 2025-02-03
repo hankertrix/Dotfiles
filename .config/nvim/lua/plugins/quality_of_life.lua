@@ -118,12 +118,34 @@ return {
             input = { enabled = true },
             picker = {
                 enabled = true,
+
+                -- Enable frecency
                 matcher = {
                     frecency = true,
                 },
+
+                -- Show scores to debug the frecency scores
                 debug = {
                     scores = true,
                 },
+
+                -- Key binds in the window
+                win = {
+                    input = {
+                        keys = {
+                            ["<C-j>"] = {
+                                "preview_scroll_down",
+                                mode = { "n", "i" },
+                            },
+                            ["<C-k>"] = {
+                                "preview_scroll_up",
+                                mode = { "n", "i" },
+                            },
+                        },
+                    },
+                },
+
+                -- Icons
                 icons = {
                     kinds = icons.kind,
                     diagnostics = {
