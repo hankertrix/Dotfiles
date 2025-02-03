@@ -896,7 +896,7 @@
     "pl" '("Search through the lines in the current buffer" . consult-line)
 
     ;; https://emacs.stackexchange.com/questions/82850/call-execute-extended-command-with-prefilled-prefix-string
-    "pk" '("Search through the list of pickers" .
+    "pi" '("Search through the list of pickers" .
            (lambda ()
              (interactive)
              (command-execute (intern (completing-read "Picker: " obarray #'commandp t '("consult-" . 8))))))

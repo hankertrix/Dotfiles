@@ -200,7 +200,7 @@ return {
                 desc = "Search through the lines in the current buffer",
             },
             {
-                "<Leader>pk",
+                "<Leader>pi",
                 function() Snacks.picker.pickers() end,
                 mode = "n",
                 desc = "Search through the list of pickers",
