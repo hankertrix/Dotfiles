@@ -121,6 +121,9 @@ return {
                 matcher = {
                     frecency = true,
                 },
+                debug = {
+                    scores = true,
+                },
                 icons = {
                     kinds = icons.kind,
                     diagnostics = {
