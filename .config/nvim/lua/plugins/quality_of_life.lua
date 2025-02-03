@@ -124,11 +124,6 @@ return {
                     frecency = true,
                 },
 
-                -- Show scores to debug the frecency scores
-                debug = {
-                    scores = true,
-                },
-
                 -- Key binds in the window
                 win = {
                     input = {
