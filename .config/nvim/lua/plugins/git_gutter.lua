@@ -8,7 +8,6 @@ local utils = require("utils")
 return {
     "lewis6991/gitsigns.nvim",
     cond = utils.firenvim_not_active,
-    cmd = "Gitsigns",
     event = "BufReadPre",
     opts = {},
 }
