@@ -16,7 +16,7 @@ return {
 
         -- Disable the plugins for the filetypes below
         disabled_filetypes = vim.list_extend(
-            { "text" },
+            { "text", "bigfile" },
             shared_configs.disabled_file_types
         ),
     },
