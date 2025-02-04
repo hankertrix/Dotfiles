@@ -2,7 +2,6 @@
 
 -- Create the auto command to highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-    pattern = "*",
     group = vim.api.nvim_create_augroup("HighlightOnYank", { clear = true }),
     desc = "Highlight yanked text",
     callback = function()
