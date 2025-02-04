@@ -112,7 +112,38 @@ return {
         priority = 1000,
         lazy = false,
         opts = {
-            bigfile = { enabled = true },
+            bigfile = {
+                enabled = true,
+
+                -- Modify the big file configuration
+                -- after it has been resolved
+                config = function(opts, defaults)
+                    --
+
+                    -- Override the setup function,
+                    -- which is called when entering
+                    -- a big file
+                    opts.setup = function(ctx)
+                        --
+
+                        -- Call the default setup function
+                        defaults.setup(ctx)
+
+                        -- Clear auto commands for the smart column plugin.
+                        --
+                        -- This plugin's auto commands is the single handedly
+                        -- responsible for the ridiculously laggy
+                        -- big file experience.
+                        vim.api.nvim_clear_autocmds({
+                            group = "SmartColumn",
+                        })
+
+                        -- Disable Supermaven
+                        require("supermaven-nvim.api").stop()
+                    end
+                end,
+            },
+
             quickfile = { enabled = true },
             statuscolumn = { enabled = true },
             input = { enabled = true },
