@@ -61,19 +61,25 @@
   ;; Use the evil setup for general.el
   (general-evil-setup)
 
+  ;; Key binds for the minibuffer
+  (general-def
+    :keymaps 'minibuffer-local-map
+    "<escape>" '("Quit the minibuffer" . keyboard-escape-quit)
+    )
+
   ;; Key binds for dired
   (general-def
-   :states 'normal
-   :keymaps 'dired-mode-map
-   :major-modes 'dired-mode
-   "_" '("Create a file" . find-file)
-   )
+    :states 'normal
+    :keymaps 'dired-mode-map
+    :major-modes 'dired-mode
+    "_" '("Create a file" . find-file)
+    )
 
   ;; Key binds for transient (used by Magit)
   (general-def
-   :keymaps 'transient-base-map
-   "<escape>" 'transient-quit-one
-   )
+    :keymaps 'transient-base-map
+    "<escape>" '("Quit transient" . transient-quit-one)
+    )
 
   ;; Create a new definer for the leader keys
   (general-create-definer hanker/leader-keys
