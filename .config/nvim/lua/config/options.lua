@@ -71,26 +71,26 @@ vim.opt.timeoutlen = 500
 -- Show newlines and space characters that are leading and trailing
 vim.opt.list = true
 vim.opt.listchars = {
-    lead = "·",
-    trail = "•",
-    multispace = "∅",
-    nbsp = "‡",
-    tab = "⇥»",
-    precedes = "❮",
-    extends = "❯",
-    eol = "↵",
-    -- eol = "⤶",
+	lead = "·",
+	trail = "•",
+	multispace = "∅",
+	nbsp = "‡",
+	tab = "⇥»",
+	precedes = "❮",
+	extends = "❯",
+	eol = "↵",
+	-- eol = "⤶",
 }
 
 -- Add more types of matching pairs
 vim.opt.matchpairs:append({
-    "<:>",
-    "「:」",
-    "『:』",
-    "【:】",
-    "“:”",
-    "‘:’",
-    "《:》",
+	"<:>",
+	"「:」",
+	"『:』",
+	"【:】",
+	"“:”",
+	"‘:’",
+	"《:》",
 })
 
 -- Font for GUIs like Neovide
@@ -108,6 +108,6 @@ vim.opt.guifont = "CaskaydiaCove Nerd Font Mono" .. font_size
 
 -- Set the grep command in Neovim to use ripgrep if it's available
 if vim.fn.executable("rg") == 1 then
-    vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
-    vim.opt.grepformat = "%f:%l:%c:%m"
+	vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
+	vim.opt.grepformat = "%f:%l:%c:%m"
 end

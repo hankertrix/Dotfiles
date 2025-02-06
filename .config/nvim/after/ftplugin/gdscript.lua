@@ -14,15 +14,15 @@ vim.cmd("colorscheme " .. require("shared_configs").dark_theme)
 
 -- Start the lsp
 vim.lsp.start({
-    name = "Godot",
-    cmd = command,
-    root_dir = vim.fs.dirname(
-        unpack(vim.fs.find({ "project.godot", ".git" }, { upward = true }))
-    ),
-    on_attach = function(_, _)
-        local server_list = vim.fn.serverlist()
-        if not vim.tbl_contains(server_list, pipe) then
-            vim.api.nvim_command(string.format('echo serverstart("%s")', pipe))
-        end
-    end,
+	name = "Godot",
+	cmd = command,
+	root_dir = vim.fs.dirname(
+		unpack(vim.fs.find({ "project.godot", ".git" }, { upward = true }))
+	),
+	on_attach = function(_, _)
+		local server_list = vim.fn.serverlist()
+		if not vim.tbl_contains(server_list, pipe) then
+			vim.api.nvim_command(string.format('echo serverstart("%s")', pipe))
+		end
+	end,
 })

@@ -6,45 +6,45 @@
 
 -- Return the hardtime plugin for lazy.nvim
 return {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	"m4xshen/hardtime.nvim",
+	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 
-    -- The function to configure the plugin
-    config = function(_, opts)
-        --
+	-- The function to configure the plugin
+	config = function(_, opts)
+		--
 
-        -- Disable the show mode
-        -- so I can see the hint messages
-        vim.opt.showmode = false
+		-- Disable the show mode
+		-- so I can see the hint messages
+		vim.opt.showmode = false
 
-        -- Set up the plugin
-        require("hardtime").setup(opts)
-    end,
+		-- Set up the plugin
+		require("hardtime").setup(opts)
+	end,
 
-    -- The options for the plugin
-    opts = {
+	-- The options for the plugin
+	opts = {
 
-        -- Disabled the plugin for the following filetypes
-        disabled_filetypes = require("shared_configs").disabled_file_types,
+		-- Disabled the plugin for the following filetypes
+		disabled_filetypes = require("shared_configs").disabled_file_types,
 
-        -- Additional hints
-        hints = {
+		-- Additional hints
+		hints = {
 
-            -- Hint to use b instead of ()
-            ["[dcyvV][ia][%(%)]"] = {
-                message = function(keys)
-                    return "Use " .. keys:sub(1, 2) .. "b instead of " .. keys
-                end,
-                length = 3,
-            },
+			-- Hint to use b instead of ()
+			["[dcyvV][ia][%(%)]"] = {
+				message = function(keys)
+					return "Use " .. keys:sub(1, 2) .. "b instead of " .. keys
+				end,
+				length = 3,
+			},
 
-            -- Hint to use B instead of {}
-            ["[dcyvV][ia][%{%}]"] = {
-                message = function(keys)
-                    return "Use " .. keys:sub(1, 2) .. "B instead of " .. keys
-                end,
-                length = 3,
-            },
-        },
-    },
+			-- Hint to use B instead of {}
+			["[dcyvV][ia][%{%}]"] = {
+				message = function(keys)
+					return "Use " .. keys:sub(1, 2) .. "B instead of " .. keys
+				end,
+				length = 3,
+			},
+		},
+	},
 }

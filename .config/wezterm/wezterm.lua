@@ -12,26 +12,26 @@ if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Function to get the appearance in a reasonable way
 local function get_appearance()
-    --
+	--
 
-    -- If Wezterm GUI is available then return the result
-    -- of the get_appearance() call
-    if wezterm.gui then return wezterm.gui.get_appearance() end
+	-- If Wezterm GUI is available then return the result
+	-- of the get_appearance() call
+	if wezterm.gui then return wezterm.gui.get_appearance() end
 
-    -- Otherwise, return the dark mode
-    return "Dark"
+	-- Otherwise, return the dark mode
+	return "Dark"
 end
 
 -- Function to get the colour scheme for the appearance
 local function get_colour_scheme(appearance)
-    --
+	--
 
-    -- If the colour scheme is the dark theme,
-    -- then return the Bluloco Dark theme
-    if appearance:find("Dark") then return "Bluloco Dark" end
+	-- If the colour scheme is the dark theme,
+	-- then return the Bluloco Dark theme
+	if appearance:find("Dark") then return "Bluloco Dark" end
 
-    -- Otherwise, return the Bluloco light theme
-    return "Bluloco Light"
+	-- Otherwise, return the Bluloco light theme
+	return "Bluloco Light"
 end
 
 -- Set the colour scheme to the Bluloco colour scheme
