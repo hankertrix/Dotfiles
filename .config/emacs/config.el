@@ -961,9 +961,6 @@
   ;; Insert the candidate when previewing
   (corfu-preview-current 'insert)
 
-  ;; Make sure tab doesn't indent when performing a completion
-  (tab-always-indent 'complete)
-
   ;; Disable the return key
   :bind (:map corfu-map ("RET" . nil))
 
