@@ -138,7 +138,7 @@ return {
 				tabnine = {
 					name = "cmp_tabnine",
 					module = "blink.compat.source",
-					score_offset = -5,
+					score_offset = -10,
 					enabled = utils.firenvim_not_active,
 					kind = "TabNine",
 				},
