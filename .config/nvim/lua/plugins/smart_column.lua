@@ -16,7 +16,7 @@ return {
 		-- This makes it easier to keep to a character limit, usually 80.
 		colour_column = shared_configs.max_line_length,
 
-		-- Disable the plugins for the filetypes below
+		-- Disable the plugins for the file types below
 		disabled_file_types = vim.list_extend(
 			{ "text" },
 			shared_configs.disabled_file_types
