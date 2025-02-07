@@ -138,8 +138,12 @@ M.disabled_file_types = {
 	"TybrStats",
 	"Trouble",
 	"NvimTree",
-	"TelescopePrompt",
 	"WhichKey",
+
+	-- Telescope buffers
+	"TelescopePrompt",
+	"TelescopeResults",
+	"TelescopePreview",
 
 	-- Neogit buffers
 	"NeogitGitCommandHistory",
@@ -151,8 +155,6 @@ M.disabled_file_types = {
 	"NeogitRefsView",
 	"NeogitConsole",
 	"NeogitDiffView",
-
-	-- Neogit popup
 	"NeogitPopup",
 }
 
