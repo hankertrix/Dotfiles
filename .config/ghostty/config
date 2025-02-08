@@ -42,11 +42,17 @@ mouse-hide-while-typing = true
 # Map Ctrl + [ to ESC
 keybind = ctrl+left_bracket=text:\x1b
 
-# Map the splits to use vim key bindings
-keybind = shift+ctrl+k=new_split:up
-keybind = shift+ctrl+j=new_split:down
-keybind = shift+ctrl+h=new_split:left
-keybind = shift+ctrl+l=new_split:right
+# Use Vim key bindings for new splits
+keybind = ctrl+shift+k=new_split:up
+keybind = ctrl+shift+j=new_split:down
+keybind = ctrl+shift+h=new_split:left
+keybind = ctrl+shift+l=new_split:right
+
+# Use Vim key bindings for moving between splits
+keybind = ctrl+alt+k=goto_split:up
+keybind = ctrl+alt+j=goto_split:down
+keybind = ctrl+alt+h=goto_split:left
+keybind = ctrl+alt+l=goto_split:right
 
 # Map Ctrl + Shift + R to reload the config
 keybind = ctrl+shift+r=reload_config
