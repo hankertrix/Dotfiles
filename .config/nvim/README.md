@@ -124,7 +124,7 @@ Markdown previewer -
 [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
 
 Hide the colour column when not needed -
-[smartcolumn.nvim](https://github.com/m4xshen/smartcolumn.nvim)
+[nerd_column.nvim](https://github.com/hankertrix/nerd_column.nvim)
 
 ### Building better Vim habits
 
