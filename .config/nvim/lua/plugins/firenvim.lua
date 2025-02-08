@@ -12,7 +12,7 @@ local local_settings = {
 	},
 
 	-- GitHub settings
-	["https?://github.com/"] = {
+	["https?://github\\.com/(?!.*edit)"] = {
 
 		-- Always takeover
 		takeover = "always",
