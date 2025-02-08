@@ -248,6 +248,12 @@ return {
 				desc = "Search through the list of pickers",
 			},
 			{
+				"<Leader>te",
+				function() Snacks.terminal.open() end,
+				mode = "n",
+				desc = "Open a terminal",
+			},
+			{
 				"<Leader>/b",
 				function() Snacks.picker.keymaps() end,
 				mode = "n",
