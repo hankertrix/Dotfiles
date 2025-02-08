@@ -125,6 +125,14 @@
            (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
     )
 
+  ;; Key binds related to the terminal
+  (hanker/leader-keys
+    :states 'normal
+    "te" '("Open a terminal" . (lambda ()
+                                 (interactive)
+                                 (evil-window-split)
+                                 (term "bash"))))
+
   ;; Key binds in org mode
   (hanker/leader-keys
     :states 'normal
@@ -146,6 +154,7 @@
   (hanker/leader-keys
     :states 'normal
     "/" '(:ignore t :wk "Help")
+    "/a" '("Open the apropos" . apropos)
     "/b" '("Describe bindings" . describe-bindings)
     "/c" '("Describe character under cursor" . describe-char)
     "/d" '(:ignore t :wk "Emacs documentation")
@@ -893,7 +902,6 @@
   ;; Leader key maps
   (hanker/leader-keys
     :states 'normal
-    "/a" '("Search the manpages" . consult-man)
     "/i" '("Search the info pages" . consult-info)
     "/h" '("Search the info pages" . consult-info)
     "ps" '("Search within files for a string" . consult-ripgrep)
