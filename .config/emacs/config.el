@@ -680,7 +680,7 @@
 
 (use-package lsp-ltex-plus
 
-  ;; Install lsp-ltex-plus from GitHub
+  ;; Install the package from GitHub
   :ensure (lsp-ltex-plus :host github :repo "emacs-languagetool/lsp-ltex-plus")
 
   ;; Ensure LTEX+ exists
@@ -1318,7 +1318,7 @@
 
 (use-package ox-ipynb
 
-  ;; Install ox-ipynb from GitHub
+  ;; Install the package from GitHub
   :ensure (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
 
   ;; Only load the package after org mode
@@ -1377,7 +1377,7 @@
 
 (use-package hardtime
 
-  ;; Install hardtime.el from GitHub
+  ;; Install the package from GitHub
   :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
 
   ;; Define the evil hardtime check command function

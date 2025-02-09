@@ -964,7 +964,7 @@ LTEX+ is a language server that checks the file for writing errors in various la
 #+begin_src emacs-lisp
 (use-package lsp-ltex-plus
 
-  ;; Install lsp-ltex-plus from GitHub
+  ;; Install the package from GitHub
   :ensure (lsp-ltex-plus :host github :repo "emacs-languagetool/lsp-ltex-plus")
 
   ;; Ensure LTEX+ exists
@@ -1730,7 +1730,7 @@ Install ~ox-ipynb~ to support exporting org files to Jupyter Notebooks, which ha
 #+begin_src emacs-lisp
 (use-package ox-ipynb
 
-  ;; Install ox-ipynb from GitHub
+  ;; Install the package from GitHub
   :ensure (ox-ipynb :host github :repo "jkitchin/ox-ipynb")
 
   ;; Only load the package after org mode
@@ -1820,7 +1820,7 @@ Hardtime is a package that forces you to stop repeating the same commands to mov
 #+begin_src emacs-lisp
 (use-package hardtime
 
-  ;; Install hardtime.el from GitHub
+  ;; Install the package from GitHub
   :ensure (hardtime :host github :repo "ichernyshovvv/hardtime.el")
 
   ;; Define the evil hardtime check command function
