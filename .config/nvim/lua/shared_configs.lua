@@ -137,6 +137,7 @@ M.disabled_file_types = {
 	"zsh",
 	"typr",
 	"typrstats",
+	"snacks_terminal",
 	"Tybr",
 	"TybrStats",
 	"Trouble",
