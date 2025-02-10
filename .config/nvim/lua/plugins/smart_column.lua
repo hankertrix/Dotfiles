@@ -1,5 +1,5 @@
 -- The configuration for the smart column plugin
--- Currently it's smartcolumn.nvim
+-- Currently it's nerd_column.nvim
 
 -- Gets the module with the shared configurations
 local shared_configs = require("shared_configs")
