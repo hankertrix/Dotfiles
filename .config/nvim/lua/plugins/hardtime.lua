@@ -7,7 +7,7 @@
 -- Return the hardtime plugin for lazy.nvim
 return {
 	"m4xshen/hardtime.nvim",
-	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	dependencies = { "MunifTanjim/nui.nvim" },
 
 	-- The function to configure the plugin
 	config = function(_, opts)
