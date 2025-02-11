@@ -1261,17 +1261,56 @@
   ;; Enable toc-org in org mode
   :hook (org-mode . toc-org-enable))
 
-(use-package org-bullets
+(use-package org-modern
 
   ;; Only load the package after org mode
   :after org
 
-  ;; Hooks for org bullets
+  ;; Customise org mode settings to work with org modern
+  :custom
+
+  ;; Disable auto alignment of tags,
+  ;; as this will break org modern's
+  ;; auto alignment of tags
+  (org-auto-align-tags nil)
+
+  ;; Set the tags column to 0,
+  ;; since org mode isn't responsible for
+  ;; aligning the tags any more
+  (org-tags-column 0)
+
+  ;; Set the org agenda tag column to 0
+  ;; as again, org mode isn't responsible for
+  ;; aligning the tags any more
+  (org-agenda-tags-column 0)
+
+  ;; Enable pretty entities
+  (org-pretty-entities t)
+
+  ;; Use the bullets style for the stars
+  ;; instead of the default fold indicators
+  (org-modern-star 'replace)
+
+  ;; Hooks for org modern
   :hook
 
-  ;; Enable org indent and org bullets mode
-  (org-mode . org-indent-mode)
-  (org-mode . (lambda () (org-bullets-mode 1))))
+  ;; Enable org indent mode, followed
+  ;; by org modern mode.
+  ;;
+  ;; Org indent mode must be enabled first,
+  ;; before org modern mode, otherwise org indent mode
+  ;; will not apply to source blocks and make
+  ;; the org document look really weird.
+  ;;
+  ;; Note that this disables org modern's
+  ;; the source block prettification on the fringe.
+  ;;
+  ;; However, that is fine since I have
+  ;; line numbers on the side,
+  ;; so it doesn't look nice anyway.
+  (org-mode . (lambda ()
+                (org-indent-mode)
+                (global-org-modern-mode))))
 
 (electric-indent-mode -1)
 
