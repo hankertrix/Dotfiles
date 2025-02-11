@@ -116,7 +116,7 @@ M.disabled_file_types = {
 	"gitcommit",
 	"gitrebase",
 
-	-- Plugin specific filetypes
+	-- Plugin specific file types
 	"packer",
 	"dirvish",
 	"dirbuf",
