@@ -1284,9 +1284,6 @@
   ;; aligning the tags any more
   (org-agenda-tags-column 0)
 
-  ;; Enable pretty entities
-  (org-pretty-entities t)
-
   ;; Use the bullets style for the stars
   ;; instead of the default fold indicators
   (org-modern-star 'replace)
@@ -1310,7 +1307,11 @@
   ;; so it doesn't look nice anyway.
   (org-mode . (lambda ()
                 (org-indent-mode)
-                (global-org-modern-mode))))
+                (global-org-modern-mode)))
+
+  ;; Set the line spacing to 0.25 in org mode
+  ;; to have org modern display the tags nicely
+  (org-mode . (lambda () (setq-local line-spacing 0.25))))
 
 (electric-indent-mode -1)
 
@@ -1380,15 +1381,17 @@
 
 (use-package auctex :defer t
   :ensure (:pre-build (("./autogen.sh")
-                        ("./configure"
-                         "--without-texmf-dir"
-                         "--with-packagelispdir=./"
-                         "--with-packagedatadir=./")
-                        ("make"))
-            :build (:not elpaca--compile-info)
-            :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style")
-            :version (lambda (_) (require 'auctex) AUCTeX-version))
-  :mode (("\\.tex\\'" . LaTeX-mode)))
+                       ("./configure"
+                        "--without-texmf-dir"
+                        "--with-packagelispdir=./"
+                        "--with-packagedatadir=./")
+                       ("make"))
+                      :build (:not elpaca--compile-info)
+                      :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style")
+                      :version (lambda (_) (require 'auctex) AUCTeX-version))
+
+  ;; Enable prettify symbols mode in TeX mode
+  :hook (TeX-mode . prettify-symbols-mode))
 
 (use-package evil-tex
 
