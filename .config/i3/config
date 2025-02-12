@@ -301,6 +301,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
 bindsym $mod+e exec /usr/bin/emacs
+bindsym $mod+m exec /usr/bin/thunderbird
 
 # Take a screenshot using flameshot
 bindsym Print exec flameshot gui
@@ -319,9 +320,9 @@ set $ws1 "1: "
 set $ws2 "2:  "
 set $ws3 "3:  "
 set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6:  "
-set $ws7 "7"
+set $ws5 "5:  "
+set $ws6 "6: "
+set $ws7 "7:  "
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10:󰓓   "
@@ -340,8 +341,8 @@ assign [class="$terminal"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Emacs"] $ws3
 assign [class="Thunar"] $ws4
+assign [class="thunderbird"] $ws5
 assign [class="steam"] $ws10
-# assign [class="thunderbird"] $ws5
 # assign [class="TelegramDesktop"] $ws6
 
 # automatic set focus new window if it opens on another workspace than the current:
@@ -349,8 +350,8 @@ for_window [class=$terminal] focus
 for_window [class=(?i)firefox] focus
 for_window [class=Emacs] focus
 for_window [class=Thunar] focus
+for_window [class=thunderbird] focus
 for_window [class=steam] focus
-# for_window [class=Thunderbird] focus
 # for_window [class=TelegramDesktop] focus
 
 ##############
