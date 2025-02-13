@@ -16,6 +16,7 @@
   - [[#gui-settings][GUI Settings]]
   - [[#error-bells][Error bells]]
   - [[#backups][Backups]]
+  - [[#restoring-cursor-position][Restoring cursor position]]
   - [[#emacs-interface][Emacs Interface]]
   - [[#indentation-and-brackets][Indentation and brackets]]
   - [[#search][Search]]
@@ -578,6 +579,12 @@ Disable all error bells.
 Don't create backups.
 #+begin_src emacs-lisp
 (setq make-backup-files nil)
+#+end_src
+
+** Restoring cursor position
+Enable ~save-place-mode~ to restore the last cursor position when opening a file.
+#+begin_src emacs-lisp
+(save-place-mode)
 #+end_src
 
 ** Emacs Interface

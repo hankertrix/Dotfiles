@@ -410,6 +410,8 @@
 
 (setq make-backup-files nil)
 
+(save-place-mode)
+
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
 
