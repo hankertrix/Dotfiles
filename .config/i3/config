@@ -340,8 +340,8 @@ set $ws10 "10:󰓓   "
 assign [class="$terminal"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Emacs"] $ws3
-assign [class="Thunar"] $ws4
-assign [class="thunderbird"] $ws5
+assign [class="thunderbird"] $ws4
+assign [class="Thunar"] $ws5
 assign [class="steam"] $ws10
 # assign [class="TelegramDesktop"] $ws6
 
