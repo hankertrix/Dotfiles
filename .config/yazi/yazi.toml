@@ -72,3 +72,14 @@ use = ["edit", "emacs", "reveal"]
 [[open.prepend_rules]]
 mime = "{audio,video}/*"
 use = ["play", "reveal", "analyse"]
+
+# Configuration for the git plugin
+[[plugin.prepend_fetchers]]
+id = "git"
+name = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id = "git"
+name = "*/"
+run = "git"
