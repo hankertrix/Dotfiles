@@ -4,313 +4,281 @@
 # Keymaps customisation for yazi
 
 
-
-
 # File manager keymaps
 
 # Use the augmented arrow up command for the k key
 [[manager.prepend_keymap]]
-on   = [ "k" ]
-run  = "plugin augment-command -- arrow -1"
+on = "k"
+run = "plugin augment-command -- arrow -1"
 desc = "Move cursor up"
-
 
 # Use the augmented arrow down command for the j key
 [[manager.prepend_keymap]]
-on   = [ "j" ]
-run  = "plugin augment-command -- arrow 1"
+on = "j"
+run = "plugin augment-command -- arrow 1"
 desc = "Move cursor down"
-
 
 # Use K to move up in the parent directory
 [[manager.prepend_keymap]]
-on   = [ "K" ]
-run  = "plugin augment-command -- parent_arrow -1"
+on = "K"
+run = "plugin augment-command -- parent_arrow -1"
 desc = "Move cursor up in the parent directory"
-
 
 # Use J to move down in the parent directory
 [[manager.prepend_keymap]]
-on   = [ "J" ]
-run  = "plugin augment-command -- parent_arrow 1"
+on = "J"
+run = "plugin augment-command -- parent_arrow 1"
 desc = "Move cursor down in the parent directory"
-
 
 # Use Ctrl + k to seek 5 units up in the preview pane
 [[manager.prepend_keymap]]
-on   = [ "<C-k>" ]
-run  = "seek -5"
+on = "<C-k>"
+run = "seek -5"
 desc = "Seek up 5 units in the preview pane"
-
 
 # Use Ctrl + j to seek 5 units down in the preview pane
 [[manager.prepend_keymap]]
-on   = [ "<C-j>" ]
-run  = "seek 5"
+on = "<C-j>"
+run = "seek 5"
 desc = "Seek down 5 units in the preview pane"
 
 # Use the augmented enter command for the l key
 [[manager.prepend_keymap]]
-on   = [ "l" ]
-run  = "plugin augment-command -- enter"
+on = "l"
+run = "plugin augment-command -- enter"
 desc = "Enter the child directory, or open the file"
-
 
 # Use the augmented enter command for the <Enter> key
 [[manager.prepend_keymap]]
-on   = [ "<Enter>" ]
-run  = "plugin augment-command -- enter"
+on = "<Enter>"
+run = "plugin augment-command -- enter"
 desc = "Enter the child directory, or open the file"
-
 
 # Use the augmented enter command for the <S-Enter> key
 [[manager.prepend_keymap]]
-on   = [ "<S-Enter>" ]
-run  = "plugin augment-command -- enter --interactive"
+on = "<S-Enter>"
+run = "plugin augment-command -- enter --interactive"
 desc = "Enter the child directory, or open the file interactively"
-
 
 # Use the augmented enter command for the <Right> key
 # but without skipping directories
 [[manager.prepend_keymap]]
-on   = [ "<Right>" ]
-run  = "plugin augment-command -- enter --no-skip"
+on = "<Right>"
+run = "plugin augment-command -- enter --no-skip"
 desc = "Enter the child directory, or open the file"
-
 
 # Use the augmented leave command for the h key
 [[manager.prepend_keymap]]
-on   = [ "h" ]
-run  = "plugin augment-command -- leave"
+on = ["h"]
+run = "plugin augment-command -- leave"
 desc = "Go back to the parent directory"
-
 
 # Use the augmented leave command for the <Left> key
 # but without skipping directories
 [[manager.prepend_keymap]]
-on   = [ "<Left>" ]
-run  = "plugin augment-command -- leave --no-skip"
+on = ["<Left>"]
+run = "plugin augment-command -- leave --no-skip"
 desc = "Go back to the parent directory"
-
 
 # Use the augmented tab create command for the t key
 [[manager.prepend_keymap]]
-on   = [ "t" ]
-run  = "plugin augment-command -- tab_create --current"
+on = "t"
+run = "plugin augment-command -- tab_create --current"
 desc = "Create a new tab with CWD"
-
 
 # Use the augmented open to open files interactively with O
 [[manager.prepend_keymap]]
-on   = [ "O" ]
-run  = "plugin augment-command -- open --interactive"
+on = "O"
+run = "plugin augment-command -- open --interactive"
 desc = "Open selected files interactively"
-
 
 # Use u to unselect and unyank all files
 [[manager.prepend_keymap]]
-on   = [ "u" ]
-run  = ["toggle_all --state=off", "unyank"]
+on = "u"
+run = ["toggle_all --state=off", "unyank"]
 desc = "Unselect all files and also unyank cut files"
-
 
 # Use d to cut files
 [[manager.prepend_keymap]]
-on   = [ "d" ]
-run  = "yank --cut"
+on = "d"
+run = "yank --cut"
 desc = "Cut the selected files"
-
 
 # Use the augmented paste command for the p key
 # to paste files
 [[manager.prepend_keymap]]
-on   = [ "p" ]
-run  = "plugin augment-command -- paste"
+on = "p"
+run = "plugin augment-command -- paste"
 desc = "Paste the files"
-
 
 # Use the augmented paste command for the P key
 # to paste files and overwrite the destination file if it exists
 [[manager.prepend_keymap]]
-on   = [ "P" ]
-run  = "plugin augment-command -- paste --force"
+on = "P"
+run = "plugin augment-command -- paste --force"
 desc = "Paste the files (overwrite if the destination exists)"
-
 
 # Use _ to create a new file or directory
 [[manager.prepend_keymap]]
-on   = [ "_" ]
-run  = "plugin augment-command -- create"
+on = "_"
+run = "plugin augment-command -- create"
 desc = "Create a file or directory"
-
 
 # Use + to create a new file or directory
 [[manager.prepend_keymap]]
-on   = [ "+" ]
-run  = "plugin augment-command -- create"
+on = "+"
+run = "plugin augment-command -- create"
 desc = "Create a file or directory"
-
 
 # Use x to move files to the trash
 [[manager.prepend_keymap]]
-on   = [ "x" ]
-run  = "plugin augment-command -- remove"
+on = "x"
+run = "plugin augment-command -- remove"
 desc = "Move the files to the trash"
-
 
 # Use X to delete files permanently
 [[manager.prepend_keymap]]
-on   = [ "X" ]
-run  = "plugin augment-command -- remove --permanently"
+on = "X"
+run = "plugin augment-command -- remove --permanently"
 desc = "Permanently delete the files"
-
 
 # Use Ctrl + s to open a shell in the current directory
 [[manager.prepend_keymap]]
-on   = [ "<C-s>" ]
-run  = 'shell "$SHELL" --block'
+on = "<C-s>"
+run = 'shell "$SHELL" --block'
 desc = "Open shell here"
-
 
 # Use z to jump to a directory using fzf, since I don't use zoxide
 [[manager.prepend_keymap]]
-on   = [ "z" ]
-run  = "plugin fzf"
+on = "z"
+run = "plugin fzf"
 desc = "Jump to a directory, or reveal a file using fzf"
-
 
 # Use o to open files using the editor
 [[manager.prepend_keymap]]
-on   = [ "o" ]
-run  = "plugin augment-command -- editor"
+on = "o"
+run = "plugin augment-command -- editor"
 desc = "Open files with the default editor"
-
 
 # Use i to open files using the pager
 [[manager.prepend_keymap]]
-on   = [ "i" ]
-run  = "plugin augment-command -- pager"
+on = "i"
+run = "plugin augment-command -- pager"
 desc = "Open files with the default pager"
-
 
 # Use r to rename files with the cursor before the file extension
 [[manager.prepend_keymap]]
-on   = [ "r" ]
-run  = "plugin augment-command -- rename --cursor=before_ext"
+on = "r"
+run = "plugin augment-command -- rename --cursor=before_ext"
 desc = "Rename a file or directory"
-
 
 # Use R to remove the whole file name when renaming
 [[manager.prepend_keymap]]
-on   = [ "R" ]
-run  = "plugin augment-command -- rename --empty=all"
+on = "R"
+run = "plugin augment-command -- rename --empty=all"
 desc = "Rename file and remove the whole file name"
-
 
 # Use I to rename files with the cursor at the start of the file name
 [[manager.prepend_keymap]]
-on   = [ "I" ]
-run  = "plugin augment-command -- rename --cursor=start"
+on = "I"
+run = "plugin augment-command -- rename --cursor=start"
 desc = "Rename file at the start of the file name"
-
 
 # Use A to rename files with the cursor at the end of the file name
 [[manager.prepend_keymap]]
-on   = [ "A" ]
-run  = "plugin augment-command -- rename --cursor=end"
+on = "A"
+run = "plugin augment-command -- rename --cursor=end"
 desc = "Rename file with the cursor at the end of the file name"
-
 
 # Use C to remove the whole file name when renaming
 [[manager.prepend_keymap]]
-on   = [ "C" ]
-run  = "plugin augment-command -- rename --empty=all"
+on = "C"
+run = "plugin augment-command -- rename --empty=all"
 desc = "Rename file and remove the whole file name"
-
 
 # Use cm to remove the file name when renaming
 [[manager.prepend_keymap]]
-on   = [ "c", "m" ]
-run  = "plugin augment-command -- rename --empty=stem --cursor=start"
+on = ["c", "m"]
+run = "plugin augment-command -- rename --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
-
 
 # Use ec to go to the config directory for Yazi
 [[manager.prepend_keymap]]
-on   = [ "e", "c" ]
-run  = "cd ~/.config/yazi"
+on = ["e", "c"]
+run = "cd ~/.config/yazi"
 desc = "Edit the Yazi configuration"
-
 
 # Use gc to go to the config directory
 [[manager.prepend_keymap]]
-on   = [ "g", "c" ]
-run  = "cd ~/.config"
+on = ["g", "c"]
+run = "cd ~/.config"
 desc = "Go to the config directory"
-
 
 # Use gp to go to the projects directory
 [[manager.prepend_keymap]]
-on   = [ "g", "p" ]
-run  = "cd ~/projects"
+on = ["g", "p"]
+run = "cd ~/projects"
 desc = "Go to the projects directory"
-
 
 # Use gu to go to school directory
 [[manager.prepend_keymap]]
-on   = [ "g", "u" ]
-run  = "cd ~/school/y2s2/"
+on = ["g", "u"]
+run = "cd ~/school/y2s2/"
 desc = "Go to the school directory"
 
 
-
-
 # Plugin specific manager keymaps
+
+# The mapping to open the mount plugin
+[[manager.prepend_keymap]]
+on = "M"
+run = "plugin mount"
+desc = "Open the mount manager"
 
 # The relative motions plugin keymaps,
 # which are just to use the number
 # keys to move in relative steps
 [[manager.prepend_keymap]]
-on = [ "1" ]
+on = "1"
 run = "plugin relative-motions -- 1"
 desc = "Move in relative steps"
 
 [[manager.prepend_keymap]]
-on = [ "2" ]
+on = "2"
 run = "plugin relative-motions -- 2"
 desc = "Move in relative steps"
 
 [[manager.prepend_keymap]]
-on = [ "3" ]
+on = "3"
 run = "plugin relative-motions -- 3"
 desc = "Move in relative steps"
 
 [[manager.prepend_keymap]]
-on = [ "4" ]
+on = "4"
 run = "plugin relative-motions -- 4"
 desc = "Move in relative steps"
 
 [[manager.prepend_keymap]]
-on = [ "5" ]
+on = "5"
 run = "plugin relative-motions -- 5"
 desc = "Move in relative steps"
 
 [[manager.prepend_keymap]]
-on = [ "6" ]
+on = "6"
 run = "plugin relative-motions -- 6"
 desc = "Move in relative steps"
 
 [[manager.prepend_keymap]]
-on = [ "7" ]
+on = "7"
 run = "plugin relative-motions -- 7"
 desc = "Move in relative steps"
 
 [[manager.prepend_keymap]]
-on = [ "8" ]
+on = "8"
 run = "plugin relative-motions -- 8"
 desc = "Move in relative steps"
 
 [[manager.prepend_keymap]]
-on = [ "9" ]
+on = "9"
 run = "plugin relative-motions -- 9"
 desc = "Move in relative steps"
