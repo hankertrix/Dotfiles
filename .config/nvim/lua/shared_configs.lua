@@ -113,6 +113,7 @@ M.disabled_file_types = {
 	"checkhealth",
 	"netrw",
 	"qf",
+	"man",
 	"gitcommit",
 	"gitrebase",
 
