@@ -38,8 +38,9 @@ local root_files = {
 	-- Awesomewm configuration file
 	"rc.lua",
 
-	-- Yazi init.lua file
+	-- Yazi init.lua and main.lua files
 	"init.lua",
+	"main.lua",
 }
 
 -- Function to set up the lsp
