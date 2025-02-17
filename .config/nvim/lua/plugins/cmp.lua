@@ -42,6 +42,21 @@ return {
 				and vim.b.completion ~= false
 		end,
 
+		-- Configuration for the command line
+		cmdline = {
+			completion = {
+				menu = {
+					draw = {
+						columns = {
+							{ "kind_icon" },
+							{ "label", "label_description", gap = 1 },
+							{ "kind" },
+						},
+					},
+				},
+			},
+		},
+
 		-- Sources configuration
 		sources = {
 
@@ -286,6 +301,7 @@ return {
 				end,
 
 				-- Default order to fall back on
+				"exact",
 				"score",
 				"sort_text",
 			},
