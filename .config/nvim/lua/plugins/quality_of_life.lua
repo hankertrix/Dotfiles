@@ -138,6 +138,7 @@ return {
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			input = { enabled = true },
+			image = { enabled = true, inline = false },
 			picker = {
 				enabled = true,
 
