@@ -67,14 +67,11 @@ Snippets -
 Treesitter -
 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
-Treesitter text objects -
-[nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
+Context viewer -
+[nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
 
 Surroundings editor -
 [nvim-surround](https://github.com/kylechui/nvim-surround)
-
-Document symbol viewer -
-[aerial.nvim](https://github.com/stevearc/aerial.nvim)
 
 Function arguments highlighting -
 [hlargs.nvim](https://github.com/m-demare/hlargs.nvim)
@@ -96,9 +93,6 @@ Better quick fix list -
 
 ### Managing files
 
-Marking files for quick access -
-[Arrow.nvim](https://github.com/otavioschwanck/arrow.nvim)
-
 File explorer -
 [yazi.nvim](https://github.com/mikavilpas/yazi.nvim)
 
@@ -110,6 +104,7 @@ Quality of life plugin - [snacks.nvim](https://github.com/folke/snacks.nvim)
 - Opening files as quick as possible ([Snacks.quickfile](https://github.com/folke/snacks.nvim/blob/main/docs/quickfile.md))
 - Nicer looking status column ([Snacks.statuscolumn](https://github.com/folke/snacks.nvim/blob/main/docs/statuscolumn.md))
 - Nicer looking input prompt ([Snacks.input](https://github.com/folke/snacks.nvim/blob/main/docs/input.md))
+- Image viewer ([Snacks.image](https://github.com/folke/snacks.nvim/blob/main/docs/image.md))
 - Fuzzy finder ([Snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md))
 - Highlighting indentation ([Snacks.indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md))
 - Properly closing buffers ([Snacks.bufdelete](https://github.com/folke/snacks.nvim/blob/main/docs/bufdelete.md))
