@@ -1,5 +1,5 @@
 -- Configuration for the mode line plugin
--- Current it is lualine
+-- Currently it is lualine
 
 -- Gets the module with the utilities
 local utils = require("utils")
@@ -179,10 +179,6 @@ local function setup()
 		)
 	end
 
-	-- The breadcrumb separator for the winbar
-	-- A breadcrumb displays the current location within a hierarchy
-	local breadcrumb_separator = " ⟩ "
-
 	-- The winbar for lualine
 	local winbar = {
 		lualine_c = {
@@ -196,14 +192,7 @@ local function setup()
 
 			{
 				"filename",
-				file_status = false,
-				cond = should_disable_winbar,
-				separator = vim.trim(breadcrumb_separator),
-			},
-
-			{
-				"aerial",
-				sep = breadcrumb_separator,
+				file_status = true,
 				cond = should_disable_winbar,
 			},
 		},
@@ -214,7 +203,6 @@ local function setup()
 		--
 
 		-- Create the side extensions
-		local aerial_ext = create_side_ext({ "aerial" }, " Aerial")
 		local undotree_ext = create_side_ext({ "undotree" }, " Undo Tree")
 		local diff_ext = create_side_ext({ "diff" }, " Diff")
 
@@ -281,7 +269,7 @@ local function setup()
 				lualine_z = {},
 			},
 
-			-- Winbar with aerial
+			-- Custom winbar
 			winbar = winbar,
 			inactive_winbar = winbar,
 
@@ -289,7 +277,6 @@ local function setup()
 				quickfix_ext,
 				undotree_ext,
 				diff_ext,
-				aerial_ext,
 				trouble_ext,
 				neogit_ext,
 			},
@@ -325,8 +312,5 @@ end
 return {
 	"nvim-lualine/lualine.nvim",
 	config = setup,
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-		"aerial.nvim",
-	},
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 }

@@ -81,31 +81,6 @@ return {
 		},
 	},
 
-	-- Show an outline of the code in the current file
-	{
-		"stevearc/aerial.nvim",
-		cmd = "AerialToggle",
-		opts = {
-
-			-- Display symbols for the current window
-			attach_mode = "global",
-			icons = icons.kind,
-			layout = {
-				min_width = 20,
-			},
-		},
-
-		-- Toggle the Aerial menu
-		keys = {
-			{
-				"<Leader>at",
-				vim.cmd.AerialToggle,
-				mode = "n",
-				desc = "Open the Aerial menu",
-			},
-		},
-	},
-
 	-- Snacks.nvim quality of life plugin
 	{
 		"folke/snacks.nvim",
