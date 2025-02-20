@@ -1537,29 +1537,24 @@ Cape is a plugin that provides extensions to completion at point plugins like Co
 #+end_src
 
 ** Terminal emulator
-The current options for a terminal in Emacs aren't that great, as all the options don't support terminal manipulation capabilities properly, so programs like Neovim and Yazi won't work in the Emacs terminal. Installing ~vterm~, which is a proper terminal emulator, would solve these issues and provide better performance.
+The current options for a terminal in Emacs aren't that great, as all the options don't support terminal manipulation capabilities properly, so programs like Neovim and Yazi won't work in the Emacs terminal. Installing a proper terminal emulator would solve these issues and provide better performance.
 #+begin_src emacs-lisp
-(use-package vterm
+(use-package eat
 
-  ;; Customise vterm
+  ;; Customise eat
   :custom
 
   ;; Kill the buffer when exiting
-  (vterm-kill-buffer-on-exit t)
-
-  ;; Exclude the prompt when copying
-  (vterm-copy-exclude-prompt t)
-
-  ;; Remove the fake newlines added by vterm when copying
-  (vterm-copy-mode-remove-fake-newlines t)
+  (eat-kill-buffer-on-exit t)
 
   ;; Key binds to open the terminal
+  ;; in a horizontal split
   :general (hanker/leader-keys
              :states 'normal
              "te" '("Open a terminal" . (lambda ()
                                           (interactive)
                                           (evil-window-split)
-                                          (vterm)))))
+                                          (eat)))))
 #+end_src
 
 ** Wgrep

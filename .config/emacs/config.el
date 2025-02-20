@@ -1196,27 +1196,22 @@
   ;; Add file and dabbrev completions in programming mode
   (prog-mode . hanker/add-file-and-dabbrev-completions))
 
-(use-package vterm
+(use-package eat
 
-  ;; Customise vterm
+  ;; Customise eat
   :custom
 
   ;; Kill the buffer when exiting
-  (vterm-kill-buffer-on-exit t)
-
-  ;; Exclude the prompt when copying
-  (vterm-copy-exclude-prompt t)
-
-  ;; Remove the fake newlines added by vterm when copying
-  (vterm-copy-mode-remove-fake-newlines t)
+  (eat-kill-buffer-on-exit t)
 
   ;; Key binds to open the terminal
+  ;; in a horizontal split
   :general (hanker/leader-keys
              :states 'normal
              "te" '("Open a terminal" . (lambda ()
                                           (interactive)
                                           (evil-window-split)
-                                          (vterm)))))
+                                          (eat)))))
 
 (use-package wgrep)
 
