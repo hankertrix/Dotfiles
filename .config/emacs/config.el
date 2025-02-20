@@ -1215,6 +1215,9 @@
 
 (use-package wgrep)
 
+(use-package indent-bars
+  :hook ((prog-mode LaTeX-mode) . indent-bars-mode))
+
 (use-package embark
 
   ;; Lazy load embark
@@ -1428,8 +1431,32 @@
                       :files ("*.el" "doc/*.info*" "etc" "images" "latex" "style")
                       :version (lambda (_) (require 'auctex) AUCTeX-version))
 
-  ;; Enable prettify symbols mode in TeX mode
-  :hook (TeX-mode . prettify-symbols-mode))
+  ;; Add the mode
+  :mode ("\\.tex\\'" . latex-mode)
+
+  ;; Initialise AUCTeX
+  :init
+
+  ;; Update buffers after successful TeX runs
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
+  ;; Customise AUCTeX
+  :custom
+
+  ;; Auto parse TeX files on load
+  (TeX-parse-self t)
+
+  ;; Auto parse TeX files on save
+  (TeX-auto-save t)
+
+  ;; Hooks for LaTeX
+  :hook
+
+  ;; Enable referencing
+  (LaTeX-mode . reftex-mode)
+
+  ;; Enable prettify symbols mode in LaTeX mode
+  (LaTeX-mode . prettify-symbols-mode))
 
 (use-package evil-tex
 
@@ -1445,10 +1472,11 @@
   ;; LaTeX PDF files
   :custom
   (TeX-view-program-selection '((output-pdf "PDF Tools")))
-  (TeX-source-correlate-start-server t)
+  (TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
 
-  ;; Update PDF buffers after successful LaTeX runs
-  :init (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  ;; Correlate the TeX source with the PDF buffer
+  (TeX-source-correlate-mode t)
+  (TeX-source-correlate-start-server t)
 
   ;; Install pdf-tools
   :config (pdf-tools-install))
