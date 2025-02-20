@@ -125,14 +125,6 @@
            (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
     )
 
-  ;; Key binds related to the terminal
-  (hanker/leader-keys
-    :states 'normal
-    "te" '("Open a terminal" . (lambda ()
-                                 (interactive)
-                                 (evil-window-split)
-                                 (term "bash"))))
-
   ;; Key binds in org mode
   (hanker/leader-keys
     :states 'normal
@@ -447,7 +439,7 @@
 
 (global-visual-line-mode t)
 
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode t)
 
 (setq-default tab-width 4)
 (setq-default evil-shift-width tab-width)
@@ -501,20 +493,11 @@
         ;; Fall back to the greater than symbol if ⇥ cannot be displayed
         (tab-mark ?\t [?⇥ ?\t] [?> ?\t])))
 
-(setq-default show-trailing-whitespace t)
+(setq show-trailing-whitespace t)
 
-(setq-default whitespace-global-modes
-              '(not shell-mode
-                    help-mode
-                    magit-mode
-                    magit-diff-mode
-                    ibuffer-mode
-                    dired-mode
-                    occur-mode
-                    elpaca-log-mode
-                    elpaca-ui-mode
-                    elpaca-ui-live-update-mode
-                    fundamental-mode))
+(setq-default whitespace-global-modes '(prog-mode
+                                        text-mode
+                                        org-mode))
 
 (setq-default whitespace-action
               '(cleanup auto-cleanup))
@@ -1212,6 +1195,28 @@
 
   ;; Add file and dabbrev completions in programming mode
   (prog-mode . hanker/add-file-and-dabbrev-completions))
+
+(use-package vterm
+
+  ;; Customise vterm
+  :custom
+
+  ;; Kill the buffer when exiting
+  (vterm-kill-buffer-on-exit t)
+
+  ;; Exclude the prompt when copying
+  (vterm-copy-exclude-prompt t)
+
+  ;; Remove the fake newlines added by vterm when copying
+  (vterm-copy-mode-remove-fake-newlines t)
+
+  ;; Key binds to open the terminal
+  :general (hanker/leader-keys
+             :states 'normal
+             "te" '("Open a terminal" . (lambda ()
+                                          (interactive)
+                                          (evil-window-split)
+                                          (vterm)))))
 
 (use-package wgrep)
 

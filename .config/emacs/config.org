@@ -34,6 +34,7 @@
   - [[#lsp-mode][LSP mode]]
   - [[#flycheck][Flycheck]]
   - [[#completion-plugins][Completion plugins]]
+  - [[#terminal-emulator][Terminal emulator]]
   - [[#wgrep][Wgrep]]
 - [[#embark][Embark]]
   - [[#integration-with-consult][Integration with consult]]
@@ -207,14 +208,6 @@ General has to be loaded first so that the ~use-package~ definitions below it ca
     "ec" '("Edit Emacs config" .
            (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
     )
-
-  ;; Key binds related to the terminal
-  (hanker/leader-keys
-    :states 'normal
-    "te" '("Open a terminal" . (lambda ()
-                                 (interactive)
-                                 (evil-window-split)
-                                 (term "bash"))))
 
   ;; Key binds in org mode
   (hanker/leader-keys
@@ -650,9 +643,9 @@ Wrap long lines.
 ** Indentation and brackets
 
 *** Indentation
-Use spaces instead of tabs for indentation.
+Use tabs for indentation instead of spaces by default.
 #+begin_src emacs-lisp
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode t)
 #+end_src
 
 Set a default indentation of 4 spaces.
@@ -727,23 +720,14 @@ Set up whitespace mode to show new lines and non-breaking spaces.
 
 Show trailing white space.
 #+begin_src emacs-lisp
-(setq-default show-trailing-whitespace t)
+(setq show-trailing-whitespace t)
 #+end_src
 
-Disable whitespace mode in buffers that don't need it.
+Enable whitespace mode when programming, writing text, or using org mode.
 #+begin_src emacs-lisp
-(setq-default whitespace-global-modes
-              '(not shell-mode
-                    help-mode
-                    magit-mode
-                    magit-diff-mode
-                    ibuffer-mode
-                    dired-mode
-                    occur-mode
-                    elpaca-log-mode
-                    elpaca-ui-mode
-                    elpaca-ui-live-update-mode
-                    fundamental-mode))
+(setq-default whitespace-global-modes '(prog-mode
+                                        text-mode
+                                        org-mode))
 #+end_src
 
 Setup clean up actions for whitespace mode. The configuration below will remove all empty lines at the beginning and end of the buffer, and also remove all trailing tabs and spaces.
@@ -1550,6 +1534,32 @@ Cape is a plugin that provides extensions to completion at point plugins like Co
 
   ;; Add file and dabbrev completions in programming mode
   (prog-mode . hanker/add-file-and-dabbrev-completions))
+#+end_src
+
+** Terminal emulator
+The current options for a terminal in Emacs aren't that great, as all the options don't support terminal manipulation capabilities properly, so programs like Neovim and Yazi won't work in the Emacs terminal. Installing ~vterm~, which is a proper terminal emulator, would solve these issues and provide better performance.
+#+begin_src emacs-lisp
+(use-package vterm
+
+  ;; Customise vterm
+  :custom
+
+  ;; Kill the buffer when exiting
+  (vterm-kill-buffer-on-exit t)
+
+  ;; Exclude the prompt when copying
+  (vterm-copy-exclude-prompt t)
+
+  ;; Remove the fake newlines added by vterm when copying
+  (vterm-copy-mode-remove-fake-newlines t)
+
+  ;; Key binds to open the terminal
+  :general (hanker/leader-keys
+             :states 'normal
+             "te" '("Open a terminal" . (lambda ()
+                                          (interactive)
+                                          (evil-window-split)
+                                          (vterm)))))
 #+end_src
 
 ** Wgrep
