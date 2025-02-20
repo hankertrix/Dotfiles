@@ -277,7 +277,7 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
 #+begin_src emacs-lisp
 (use-package evil
 
-  ;; Load evil mode immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Customise evil
@@ -442,7 +442,7 @@ Evil anzu highlights search terms. This package is required for doom modeline to
 The built-in Emacs undo system is awesome, but doesn't have good UI and UX, so there's a need for some plugins to make it easier to use.
 
 *** Undo Fu Session
-Undo fu session is a plugin that saves undo and redo information.
+Undo fu session is a plugin that persists undo and redo information.
 #+begin_src emacs-lisp
 (use-package undo-fu-session :demand t :config (undo-fu-session-global-mode))
 #+end_src
@@ -471,12 +471,24 @@ Vundo is short for visual undo, and it helps visualise the undo and redo history
     "<escape>" '("Close the undo tree window" . vundo-quit)))
 #+end_src
 
+*** Undo highlight
+The ~undo-hl~ package is a simple package that highlights undos and redos.
+#+begin_src emacs-lisp
+(use-package undo-hl
+
+  ;; Install the package from GitHub
+  :ensure (undo-hl :host github :repo "casouri/undo-hl")
+
+;; Enable undo highlight mode in text editing modes
+  :hook ((prog-mode text-mode org-mode) . undo-hl-mode))
+#+end_src
+
 ** Which Key
 Which key is a plugin that displays the possible key binds and what each key bind does when you press a key.
 #+begin_src emacs-lisp
 (use-package which-key
 
-  ;; Load which key immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Customise which key
@@ -758,7 +770,7 @@ Install the Auto-Dark Emacs package to automatically switch between light and da
   ;; Ensure that doom-themes is installed
   :after doom-themes
 
-  ;; Load auto dark mode immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Customise the auto dark package
@@ -1023,7 +1035,7 @@ Flycheck is better alternative to the built-in Emacs Flymake with support for a 
 #+begin_src emacs-lisp
 (use-package flycheck
 
-  ;; Load flycheck immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Key binds for flycheck
@@ -1051,7 +1063,7 @@ Vertico is a minimal completion UI for the Emacs mini buffer, like Ivy. However,
   ;; Include vertico extensions
   :ensure (vertico :host github :repo "minad/vertico" :files (:defaults "extensions/*"))
 
-  ;; Load vertico immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Hooks for vertico
@@ -1135,7 +1147,7 @@ Marginalia is a plugin that adds annotations to the mini-buffer, like file permi
 #+begin_src emacs-lisp
 (use-package marginalia
 
-  ;; Load marginalia immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Add a key bind to cycle the marginalia annotations
@@ -1165,7 +1177,7 @@ Nerd icons completion is a plugin that displays pretty icons alongside the margi
   ;; Load nerd icons completion after marginalia
   :after marginalia
 
-  ;; Load nerd icons completion immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Set up nerd icons with marginalia
@@ -1269,7 +1281,7 @@ Corfu is a plugin for in-buffer completions.
   ;; Include corfu extensions
   :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
 
-  ;; Load corfu immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Customise corfu

@@ -190,7 +190,7 @@
 
 (use-package evil
 
-  ;; Load evil mode immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Customise evil
@@ -352,9 +352,17 @@
     :keymaps 'vundo-mode-map
     "<escape>" '("Close the undo tree window" . vundo-quit)))
 
+(use-package undo-hl
+
+  ;; Install the package from GitHub
+  :ensure (undo-hl :host github :repo "casouri/undo-hl")
+
+;; Enable undo highlight mode in text editing modes
+  :hook ((prog-mode text-mode org-mode) . undo-hl-mode))
+
 (use-package which-key
 
-  ;; Load which key immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Customise which key
@@ -518,7 +526,7 @@
   ;; Ensure that doom-themes is installed
   :after doom-themes
 
-  ;; Load auto dark mode immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Customise the auto dark package
@@ -726,7 +734,7 @@
 
 (use-package flycheck
 
-  ;; Load flycheck immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Key binds for flycheck
@@ -748,7 +756,7 @@
   ;; Include vertico extensions
   :ensure (vertico :host github :repo "minad/vertico" :files (:defaults "extensions/*"))
 
-  ;; Load vertico immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Hooks for vertico
@@ -828,7 +836,7 @@
 
 (use-package marginalia
 
-  ;; Load marginalia immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Add a key bind to cycle the marginalia annotations
@@ -854,7 +862,7 @@
   ;; Load nerd icons completion after marginalia
   :after marginalia
 
-  ;; Load nerd icons completion immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Set up nerd icons with marginalia
@@ -942,7 +950,7 @@
   ;; Include corfu extensions
   :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
 
-  ;; Load corfu immediately
+  ;; Load the package immediately
   :demand t
 
   ;; Customise corfu
