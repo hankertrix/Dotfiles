@@ -1198,12 +1198,6 @@
 
 (use-package eat
 
-  ;; Customise eat
-  :custom
-
-  ;; Kill the buffer when exiting
-  (eat-kill-buffer-on-exit t)
-
   ;; Key binds to open the terminal
   ;; in a horizontal split
   :general (hanker/leader-keys
