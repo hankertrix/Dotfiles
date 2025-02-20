@@ -348,6 +348,18 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
           (lambda () (interactive) (hanker/use-register-with-evil-function ?_ 'evil-delete)))
     )
 
+  ;; Unbind the Ctrl + n and the Ctrl + p
+  ;; keys in the evil command line.
+  ;;
+  ;; This is so that I can use Ctrl + n
+  ;; to get the completion item below
+  ;; and Ctrl + p to get the completion
+  ;; item above in the completion window,
+  ;; instead of going through the command line history.
+  :bind (:map evil-ex-completion-map
+              ("C-n" . nil)
+              ("C-p" . nil))
+
   ;; Configure evil mode
   :config
 
@@ -1629,6 +1641,22 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
 
   ;; Load toc-org only when its enable command is called
   :commands toc-org-enable
+
+  ;; Create the function to fix org-open-at-point-global.
+  ;;
+  ;; This is particularly useful when following toc-org links
+  ;; which don't work with org-open-at-point-global.
+  :init (defun hanker/fixed-org-open-at-point-global ()
+          "Fix the org-open-at-point-global function to fallback to org-open-at-point when in Org mode"
+          (interactive)
+          (condition-case _ (org-open-at-point-global)
+            (error
+             (if (eq major-mode 'org-mode)
+                 (org-open-at-point)))))
+
+  ;; Rebind the org-open-at-point-global
+  ;; function to the fixed version
+  :bind ([remap org-open-at-point-global] . hanker/fixed-org-open-at-point-global)
 
   ;; Enable toc-org in org mode
   :hook (org-mode . toc-org-enable))
