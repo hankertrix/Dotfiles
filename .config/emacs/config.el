@@ -1198,6 +1198,13 @@
 
 (use-package eat
 
+  ;; Hooks for eat
+  :hook
+
+  ;; Close the window after the
+  ;; shell process exits
+  (eat-exit . evil-quit)
+
   ;; Key binds to open the terminal
   ;; in a horizontal split
   :general (hanker/leader-keys
