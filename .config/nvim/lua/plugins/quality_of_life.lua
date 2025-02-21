@@ -1,11 +1,12 @@
 -- Configuration for quality of life related plugins
 --
 -- Currently the plugins used are:
---   - vim-sleuth for automatically detecting the indentation type
---   - mini.trailspace to trim trailing whitespaces and blank lines
---   - quicker.nvim for an improved and editable quick fix list
---   - aerial.nvim to view an outline of the code
---   - snacks.nvim for general quality of life improvements
+--	- vim-sleuth for automatically detecting the indentation type
+--	- markdown-preview.nvim to preview markdown files
+--	- mini.trailspace to trim trailing whitespaces and blank lines
+--	- quicker.nvim for an improved and editable quick fix list
+--	- aerial.nvim to view an outline of the code
+--	- snacks.nvim for general quality of life improvements
 
 -- Get the icons from the shared configurations
 local icons = require("shared_configs").icons
@@ -16,6 +17,20 @@ return {
 	-- Automatically detect the indentation type
 	-- such as indentation using tabs vs spaces
 	{ "tpope/vim-sleuth" },
+
+	-- Markdown previewer
+	{
+		"iamcco/markdown-preview.nvim",
+		build = function() vim.fn["mkdp#util#install"]() end,
+		lazy = true,
+		cond = require("utils").firenvim_not_active,
+		ft = "markdown",
+		cmd = {
+			"MarkdownPreviewToggle",
+			"MarkdownPreview",
+			"MarkdownPreviewStop",
+		},
+	},
 
 	-- Trim trailing whitespace and blank lines
 	{

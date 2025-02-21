@@ -1,10 +1,12 @@
 -- Configuration for highlight related plugins
 -- Currently the plugins used are:
---   - hlargs to highlight arguments
---   - vim-illuminate to highlight the word under the cursor
+--	- hlargs to highlight function arguments
+--	- vim-illuminate to highlight the word under the cursor
 
 -- Returns the highlight related plugins to lazy.nvim
 return {
+
+	-- Plugin to highlight function arguments
 	{
 		"m-demare/hlargs.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
@@ -13,6 +15,8 @@ return {
 			excluded_filetypes = { "bigfile" },
 		},
 	},
+
+	-- Plugin to highlight the word under the cursor
 	{
 		"RRethy/vim-illuminate",
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },

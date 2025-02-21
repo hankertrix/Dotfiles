@@ -126,8 +126,14 @@ Hide the colour column when not needed -
 VimBeGood game -
 [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
 
-Hardtime plugin -
+Nvim-training plugin -
+[nvim-training](https://github.com/Weyaaron/nvim-training)
+
+Hardtime plugin to force me to use more efficient Vim motions -
 [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)
+
+Precognition plugin to better discover Vim motions -
+[precognition.nvim](https://github.com/tris203/precognition.nvim)
 
 ## Font
 
