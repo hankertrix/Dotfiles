@@ -240,7 +240,7 @@
 
   ;; Key binds to copy and paste from the clipboard
   (hanker/leader-keys
-    :states 'normal
+    :states '(normal visual)
     "P" '("Paste from the system clipboard before the cursor" .
           (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-paste-before)))
     "pp" '("Paste from the system clipboard after the cursor" .
