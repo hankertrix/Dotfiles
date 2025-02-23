@@ -20,7 +20,6 @@ return {
 		},
 
 		-- Regular completion within a buffer
-		{ "hrsh7th/cmp-calc" },
 		{ "ribru17/blink-cmp-spell" },
 		{ "moyiz/blink-emoji.nvim" },
 
@@ -69,7 +68,6 @@ return {
 				"supermaven",
 				"tabnine",
 				"spell",
-				"calc",
 				"emoji",
 			},
 
@@ -138,11 +136,6 @@ return {
 				--
 				-- Note that the names must be the same
 				-- as the names used for nvim-cmp.
-				calc = {
-					name = "calc",
-					module = "blink.compat.source",
-					kind = "Calculation",
-				},
 				supermaven = {
 					name = "supermaven",
 					module = "blink.compat.source",
