@@ -91,5 +91,8 @@ return {
 			"TSContextDisable",
 			"TSContextToggle",
 		},
+		opts = {
+			max_lines = 5,
+		},
 	},
 }
