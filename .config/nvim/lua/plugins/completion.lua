@@ -141,12 +141,12 @@ return {
 				calc = {
 					name = "calc",
 					module = "blink.compat.source",
-					score_offset = -10,
 					kind = "Calculation",
 				},
 				supermaven = {
 					name = "supermaven",
 					module = "blink.compat.source",
+					score_offset = 5,
 					enabled = utils.firenvim_not_active,
 					kind = "Supermaven",
 				},
