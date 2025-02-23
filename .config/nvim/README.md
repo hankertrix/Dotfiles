@@ -132,9 +132,6 @@ Nvim-training plugin -
 Hardtime plugin to force me to use more efficient Vim motions -
 [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)
 
-Precognition plugin to better discover Vim motions -
-[precognition.nvim](https://github.com/tris203/precognition.nvim)
-
 ## Font
 
 [Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)

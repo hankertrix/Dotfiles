@@ -63,14 +63,4 @@ return {
 			},
 		},
 	},
-
-	-- Precognition plugin to help me discover
-	-- Vim motions to move to a point
-	{
-		"tris203/precognition.nvim",
-		event = "VeryLazy",
-		opts = {
-			disabled_fts = shared_configs.disabled_filetypes,
-		},
-	},
 }
