@@ -389,6 +389,20 @@ local function setup()
 							{ bufnr = buffer_number }
 						)
 					end,
+
+					settings = {
+						["rust-analyzer"] = {
+							checkOnSave = true,
+							check = {
+								enable = true,
+								command = "clippy",
+								features = "all",
+							},
+							procMacro = {
+								enable = true,
+							},
+						},
+					},
 				})
 			end,
 		},
