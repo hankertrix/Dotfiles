@@ -40,6 +40,9 @@ Language server manager -
 [mason.nvim](https://github.com/williamboman/mason.nvim)
 with [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
 
+Rust owl for showing lifetimes in Rust -
+[rustowl](https://github.com/cordx56/rustowl)
+
 Diagnostics -
 [trouble.nvim](https://github.com/folke/trouble.nvim)
 
