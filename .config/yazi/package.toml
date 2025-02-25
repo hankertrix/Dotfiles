@@ -1,16 +1,16 @@
 [[plugin.deps]]
 use = "dedukun/relative-motions"
-rev = "0d9c8cf"
-hash = "561ad872c77b95360c2657c5e8d395ed"
+rev = "a1466a9"
+hash = "26d7fd10e163e0624d733c067eba4b61"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "beb586a"
+rev = "5186af7"
 hash = "5c4d8080367dd2561a18c1cf5a1dd295"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "beb586a"
+rev = "5186af7"
 hash = "771f18427fb75fb19990ce602bb322f4"
 
 [flavor]
