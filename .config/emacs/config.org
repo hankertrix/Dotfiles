@@ -1313,6 +1313,10 @@ Corfu is a plugin for in-buffer completions.
   ;; Insert the candidate when previewing
   (corfu-preview-current 'insert)
 
+  ;; Disable ispell completion as I have
+  ;; no dictionary set, and it throwing errors
+  (text-mode-ispell-word-completion nil)
+
   ;; Disable the return key
   :bind (:map corfu-map ("RET" . nil))
 
