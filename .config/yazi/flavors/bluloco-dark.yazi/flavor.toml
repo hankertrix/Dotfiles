@@ -79,6 +79,8 @@ btn_labels = ["Yes", "No"]
 [spot]
 border = { fg = "#7A82DA" }
 title = { fg = "#7A82DA" }
+
+# Hovered item in the spotter
 tbl_cell = { bg = "#284671" }
 
 
