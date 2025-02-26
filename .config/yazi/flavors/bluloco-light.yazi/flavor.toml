@@ -58,6 +58,7 @@ unset_alt = { fg = "#D52753", bg = "#DEE1E3" }
 progress_label = { fg = "#F9F9F9", bold = true }
 progress_normal = { fg = "#823FF1", bg = "#A0A1A7" }
 progress_error = { fg = "#FF0000", bg = "#FCE4E4" }
+overall = { fg = "#6D7281", bg = "#EDEDEE" }
 
 
 [pick]
@@ -85,7 +86,7 @@ title = { fg = "#7A82DA" }
 tbl_cell = { bg = "#D1ECFF" }
 
 
-[completion]
+[cmp]
 border = { fg = "#7A82DA" }
 active = { bg = "#D1ECFF" }
 
