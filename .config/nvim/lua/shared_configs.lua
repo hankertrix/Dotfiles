@@ -70,7 +70,7 @@ M.icons = {
 		-- Regular completion sources
 		Path = "",
 		Buffer = "",
-		Command = "",
+		Command = "",
 		Spell = "",
 		Emoji = "󰱨",
 		Calculation = "",

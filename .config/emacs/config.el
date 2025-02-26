@@ -1071,7 +1071,7 @@
      (t, (nerd-icons-faicon "nf-fa-code") :face font-lock-warning-face)
 
      ;; This is here to follow the Neovim ordering
-     (command, (nerd-icons-faicon "nf-fa-terminal") :face default)))
+     (command, (nerd-icons-octicon "nf-oct-terminal") :face default)))
 
   ;; Have the background be the same as corfu's default
   (kind-icon-default-face 'corfu-default)
