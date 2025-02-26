@@ -79,6 +79,7 @@ btn_labels = ["Yes", "No"]
 [spot]
 border = { fg = "#7A82DA" }
 title = { fg = "#7A82DA" }
+tbl_cell = { bg = "#284671" }
 
 
 [completion]
