@@ -108,7 +108,7 @@
     :states 'normal
     "l" '("Go to the next buffer" . next-buffer)
     "h" '("Go to the previous buffer" . previous-buffer)
-    "x" '("Close the current buffer" . kill-this-buffer)
+    "x" '("Close the current buffer" . (lambda () (interactive) (kill-this-buffer)))
     )
 
   ;; Key binds for searching
