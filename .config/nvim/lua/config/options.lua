@@ -100,11 +100,8 @@ vim.opt.matchpairs:append({
 -- absolutely tiny when the font size is set to 12.
 local font_size = require("utils").firenvim_not_active() and ":h12" or ""
 
--- Set the GUI font to Cascadia Code Nerd Font Mono
-vim.opt.guifont = "CaskaydiaCove Nerd Font Mono" .. font_size
-
 -- Set the GUI font to Maple Mono Nerd Font with Chinese characters
--- vim.opt.guifont = "Maple Mono NF CN" .. font_size
+vim.opt.guifont = "Maple Mono NF CN" .. font_size
 
 -- Set the grep command in Neovim to use ripgrep if it's available
 if vim.fn.executable("rg") == 1 then

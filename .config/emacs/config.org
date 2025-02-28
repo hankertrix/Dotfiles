@@ -518,14 +518,14 @@ Which key is a plugin that displays the possible key binds and what each key bin
 
 * Fonts
 
-Set the default font to Maple Mono Nerd Font and a font size of 12.
+Set the default font to Maple Mono Nerd Font with Chinese characters and a font size of 12.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
                     :font "Maple Mono NF CN 12"
                     :weight 'medium)
 #+end_src
 
-Set the default mono space font to Maple Mono Nerd Font and a font size of 12.
+Set the default mono space font to Maple Mono Nerd Font with Chinese characters and a font size of 12.
 #+begin_src emacs-lisp
 (set-face-attribute 'fixed-pitch nil
                     :font "Maple Mono NF CN 12"
