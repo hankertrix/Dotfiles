@@ -24,6 +24,9 @@ gtk-titlebar = false
 # Disable the resize overlay
 resize-overlay = never
 
+# Set the top and bottom window padding to nothing
+window-padding-y = 0
+
 
 # Cursor
 
