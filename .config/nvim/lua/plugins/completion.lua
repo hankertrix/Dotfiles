@@ -45,6 +45,7 @@ return {
 		cmdline = {
 			completion = {
 				menu = {
+					auto_show = true,
 					draw = {
 						columns = {
 							{ "kind_icon" },
@@ -309,6 +310,9 @@ return {
 	-- The config function
 	config = function(_, opts)
 		--
+
+		-- Apply the configured keymap to the command line keymap as well
+		opts.cmdline.keymap = opts.keymap
 
 		-- Get the completion item kinds
 		local completion_item_kinds =
