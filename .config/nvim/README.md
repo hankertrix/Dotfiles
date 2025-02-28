@@ -137,9 +137,7 @@ Hardtime plugin to force me to use more efficient Vim motions -
 
 ## Font
 
-[Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
-
-<!-- [Maple Mono NF CN](https://github.com/subframe7536/maple-font) -->
+[Maple Mono NF CN](https://github.com/subframe7536/maple-font)
 
 ## External programs
 

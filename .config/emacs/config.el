@@ -113,7 +113,7 @@
 
   ;; Key binds for searching
   (hanker/leader-keys
-    :states 'normal
+    :states '(normal visual)
     "pw" '("Open Dired" . dired)
     "pf" '("Search for a file" . find-file)
     )
@@ -388,19 +388,16 @@
   :config (which-key-mode 1))
 
 (set-face-attribute 'default nil
-                    :font "CaskaydiaCove Nerd Font Mono 12"
-                    ;; :font "Maple Mono NF CN 12"
+                    :font "Maple Mono NF CN 12"
                     :weight 'medium)
 
 (set-face-attribute 'fixed-pitch nil
-                    :font "CaskaydiaCove Nerd Font Mono 12"
-                    ;; :font "Maple Mono NF CN 12"
+                    :font "Maple Mono NF CN 12"
                     :weight 'medium)
 
 (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
 
-(add-to-list 'default-frame-alist '(font . "CaskaydiaCove Nerd Font Mono 12"))
-;; (add-to-list 'default-frame-alist '(font . "Maple Mono NF CN 12"))
+(add-to-list 'default-frame-alist '(font . "Maple Mono NF CN 12"))
 
 (setq inhibit-startup-message t)
 
@@ -555,13 +552,8 @@
   ;; Customise nerd icons
   :custom
 
-  ;; Set the font to Cascadia Code nerd font
-  (nerd-icons-font-family "CaskaydiaCove NFM")
-
   ;; Set the font to Maple Mono NF CN
-  ;; (nerd-icons-font-family "Maple Mono NF CN")
-
-  )
+  (nerd-icons-font-family "Maple Mono NF CN"))
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)

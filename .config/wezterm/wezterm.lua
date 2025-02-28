@@ -40,11 +40,8 @@ config.color_scheme = get_colour_scheme(get_appearance())
 -- Set the font size to 12
 config.font_size = 12
 
--- Set the font to Cascadia Code Nerd Font
-config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
-
 -- Set the font to Maple Mono Nerd Font with Chinese characters
--- config.font = wezterm.font("Maple Mono NF CN")
+config.font = wezterm.font("Maple Mono NF CN")
 
 -- Set the term environment variable to wezterm
 config.term = "wezterm"

@@ -6,11 +6,8 @@
 # Set the font size to 12
 font-size = 12
 
-# Set the font to Cascadia Code Nerd Font
-font-family = "CaskaydiaCove Nerd Font Mono"
-
 # Set the font to Maple Mono Nerd Font with Chinese characters
-# font-family = "Maple Mono NF CN"
+font-family = "Maple Mono NF CN"
 
 
 # Theme and colours
