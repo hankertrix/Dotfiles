@@ -49,5 +49,82 @@ config.term = "wezterm"
 -- Set the underline thickness to 200%
 config.underline_thickness = "200%"
 
+-- Keybinds
+config.keys = {
+
+	-- Key bind to open a new split
+	{
+		key = "Enter",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SplitPane({
+			direction = "Right",
+		}),
+	},
+
+	-- Key bind to open a new split on top
+	{
+		key = "k",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SplitPane({
+			direction = "Up",
+		}),
+	},
+
+	-- Key bind to open a new split below
+	{
+		key = "j",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SplitPane({
+			direction = "Down",
+		}),
+	},
+
+	-- Key bind to open a new split on the left
+	{
+		key = "h",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SplitPane({
+			direction = "Left",
+		}),
+	},
+
+	-- Key bind to open a new split on the right
+	{
+		key = "l",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SplitPane({
+			direction = "Right",
+		}),
+	},
+
+	-- Key bind to move to the pane above
+	{
+		key = "k",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ActivatePaneDirection("Up"),
+	},
+
+	-- Key bind to move to the pane below
+	{
+		key = "j",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ActivatePaneDirection("Down"),
+	},
+
+	-- Key bind to move to the pane on the left
+	{
+		key = "h",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ActivatePaneDirection("Left"),
+	},
+
+	-- Key bind to move to the pane on the right
+	{
+		key = "l",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+}
+
 -- Finally, return the configuration to wezterm
 return config

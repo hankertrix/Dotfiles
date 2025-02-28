@@ -42,6 +42,9 @@ mouse-hide-while-typing = true
 # Map Ctrl + [ to ESC
 keybind = ctrl+left_bracket=text:\x1b
 
+# Key bind to open a new split
+keybind = ctrl+shift+enter=new_split:right
+
 # Use Vim key bindings for new splits
 keybind = ctrl+shift+k=new_split:up
 keybind = ctrl+shift+j=new_split:down

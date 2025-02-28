@@ -1,7 +1,6 @@
-
 # Set the default terminal
-export TERM=xterm-ghostty
-export TERMINAL=ghostty
+export TERM=xterm-kitty
+export TERMINAL=kitty
 
 # Use Firefox as the default browser
 export BROWSER=firefox
