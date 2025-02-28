@@ -185,8 +185,8 @@ return {
 
 			-- Ctrl + p and Ctrl + n work similarly
 			-- to the up and down arrow keys
-			["<C-p>"] = { "select_prev", "fallback" },
-			["<C-n>"] = { "select_next", "fallback" },
+			["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+			["<C-n>"] = { "select_next", "fallback_to_mappings" },
 
 			-- Super tab
 			["<Tab>"] = {
@@ -294,7 +294,6 @@ return {
 				end,
 
 				-- Default order to fall back on
-				"exact",
 				"score",
 				"sort_text",
 			},
