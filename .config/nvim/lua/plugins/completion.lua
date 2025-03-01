@@ -282,6 +282,9 @@ return {
 		-- Fuzzy finder configuration
 		fuzzy = {
 
+			-- Prefer the Rust implementation
+			implementation = "prefer_rust",
+
 			-- Set label as the primary source for the spell source
 			sorts = {
 				function(item_1, item_2)
