@@ -94,14 +94,17 @@ vim.opt.matchpairs:append({
 })
 
 -- Font for GUIs like Neovide
+--
+-- Set the font to Maple Mono NF CN by default
+if require("utils").firenvim_not_active() then
+	vim.opt.guifont = "Maple Mono NF CN:h12"
 
--- Set the font size to 12 if Firenvim is not active.
--- The reason for this is that Firenvim's font becomes
--- absolutely tiny when the font size is set to 12.
-local font_size = require("utils").firenvim_not_active() and ":h12" or ""
-
--- Set the GUI font to Maple Mono Nerd Font with Chinese characters
-vim.opt.guifont = "Maple Mono NF CN" .. font_size
+-- Otherwise, if in the browser,
+-- set the font to Cascadia Code Nerd Font Mono
+-- as I need a monospace font there.
+else
+	vim.opt.guifont = "CaskaydiaCove Nerd Font Mono"
+end
 
 -- Set the grep command in Neovim to use ripgrep if it's available
 if vim.fn.executable("rg") == 1 then
