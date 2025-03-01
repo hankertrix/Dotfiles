@@ -9,7 +9,7 @@
 --	- snacks.nvim for general quality of life improvements
 
 -- Get the icons from the shared configurations
-local icons = require("shared_configs").icons
+local icons = require("shared_configs").icons()
 
 -- Return the quality of life related plugins for lazy.nvim
 return {

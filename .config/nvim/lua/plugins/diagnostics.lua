@@ -11,7 +11,7 @@ return {
 	cmd = { "TroubleToggle", "Trouble" },
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
-		kinds = require("shared_configs").icons.kind,
+		kinds = require("shared_configs").icons().kind,
 	},
 	keys = {
 		{

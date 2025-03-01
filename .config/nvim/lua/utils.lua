@@ -16,5 +16,27 @@ function M.titlecase(str)
 	)
 end
 
+-- Create the function to trim the spaces off of the icons.
+--
+-- This function edits the table of icons
+-- and does not return anything.
+M.trim_icons = function(icons)
+	--
+
+	-- Iterate over the table of icons
+	for key, value in pairs(icons) do
+		--
+
+		-- If the value is a string,
+		-- trim the spaces off of the icon
+		if type(value) == "string" then icons[key] = vim.trim(value) end
+
+		-- If the value is a table,
+		-- call the function recursively
+		-- on the table.
+		if type(value) == "table" then M.trim_icons(value) end
+	end
+end
+
 -- Returns the module
 return M

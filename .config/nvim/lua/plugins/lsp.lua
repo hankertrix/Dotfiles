@@ -459,7 +459,7 @@ local function setup()
 	})
 
 	-- Get the diagnostic icons
-	local diagnostic_icons = shared_configs.icons.diagnostics
+	local diagnostic_icons = shared_configs.icons().diagnostics
 
 	-- Enable virtual_text
 	vim.diagnostic.config({
