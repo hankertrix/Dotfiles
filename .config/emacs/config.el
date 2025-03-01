@@ -478,9 +478,9 @@
       ;; Fall back to underscores if ‡ cannot be displayed
       '((space-mark ?\xA0 [?‡] [?_])
 
-        ;; New lines are displayed as ↵
-        ;; Fall back to the dollar sign symbol if ↵ cannot be displayed
-        (newline-mark ?\n [?↵ ?\n] [?$ ?\n])
+        ;; New lines are displayed as ↫
+        ;; Fall back to the dollar sign symbol if ↫ cannot be displayed
+        (newline-mark ?\n [?↫ ?\n] [?$ ?\n])
 
         ;; Carriage return (Windows) are displayed as ¶
         ;; Fall back to the hash symbol if ¶ cannot be displayed

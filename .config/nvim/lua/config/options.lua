@@ -73,13 +73,12 @@ vim.opt.list = true
 vim.opt.listchars = {
 	lead = "·",
 	trail = "•",
-	multispace = "∅",
+	multispace = "ø",
 	nbsp = "‡",
 	tab = "⇥»",
 	precedes = "❮",
 	extends = "❯",
-	eol = "↵",
-	-- eol = "⤶",
+	eol = "↫",
 }
 
 -- Add more types of matching pairs
