@@ -30,6 +30,9 @@ set $mod Mod4
 # set the terminal emulator to use:
 set $terminal kitty
 
+# set the browser to use:
+set $browser zen-browser
+
 #####################
 # workspace layout: #
 #####################
@@ -298,7 +301,7 @@ bindsym XF86TouchpadToggle exec xinput list-props "ASUF1204:00 2808:0202 Touchpa
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec /usr/bin/firefox
+bindsym $mod+w exec /usr/bin/$browser
 bindsym $mod+n exec /usr/bin/thunar
 bindsym $mod+e exec /usr/bin/emacs
 bindsym $mod+m exec /usr/bin/thunderbird
@@ -317,7 +320,7 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
-set $ws2 "2:  "
+set $ws2 "2:󰺕   "
 set $ws3 "3:  "
 set $ws4 "4:  "
 set $ws5 "5: "
@@ -338,7 +341,7 @@ set $ws10 "10:󰓓   "
 
 # bind program to workspace and focus to them on startup:
 assign [class="$terminal"] $ws1
-assign [class="(?i)firefox"] $ws2
+assign [class="zen"] $ws2
 assign [class="Emacs"] $ws3
 assign [class="thunderbird"] $ws4
 assign [class="Thunar"] $ws5
@@ -347,7 +350,7 @@ assign [class="steam"] $ws10
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=$terminal] focus
-for_window [class=(?i)firefox] focus
+for_window [class=$browser] focus
 for_window [class=Emacs] focus
 for_window [class=Thunar] focus
 for_window [class=thunderbird] focus
