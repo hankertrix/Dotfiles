@@ -58,6 +58,14 @@ user_pref(
   false
 );
 
+// Remove all pins from the new tab page
+user_pref("browser.newtabpage.pinned", []);
+user_pref(
+  "browser.newtabpage.activity-stream." +
+    "improvesearch.topSiteSearchShortcuts.havePinned",
+  ""
+);
+
 // Allow the creation of custom search engines.
 // Secret pref.
 user_pref("browser.urlbar.update2.engineAliasRefresh", true);
@@ -126,6 +134,34 @@ user_pref("media.eme.enabled", false);
 
 // Disable the prompt to enable DRM
 user_pref("browser.eme.ui.enabled", false);
+
+// My configuration for the Zen browser
+
+// Use the user js parrot pref to report if there's a syntax error
+// with the Zen browser section
+user_pref("_user.js.parrot", "ERROR: Zen browser section syntax error");
+
+// Change splits when hovering over another split
+user_pref("zen.splitView.change-on-hover", true);
+
+// Hide the toolbar
+user_pref("zen.view.compact.hide-toolbar", true);
+
+// Show the new tab button on the bottom
+user_pref("zen.view.show-newtab-button-top", false);
+
+// Show the border on top of the new tab button
+user_pref("zen.view.show-newtab-button-border-top", true);
+
+// Collapse the side bar
+user_pref("zen.view.sidebar-expanded", false);
+
+// Don't use a single toolbar
+user_pref("zen.view.use-single-toolbar", false);
+
+// Set the welcome screen to seen, as I don't want to keep seeing it
+// when I create a new profile.
+user_pref("zen.welcome-screen.seen", true);
 
 // Use the user js parrot pref to report if the overrides section is successful.
 // The message used here is the default one used in the Arkenfox user js.
