@@ -153,8 +153,8 @@ user_pref("zen.view.show-newtab-button-top", false);
 // Show the border on top of the new tab button
 user_pref("zen.view.show-newtab-button-border-top", true);
 
-// Collapse the side bar
-user_pref("zen.view.sidebar-expanded", false);
+// Expand the side bar
+user_pref("zen.view.sidebar-expanded", true);
 
 // Don't use a single toolbar
 user_pref("zen.view.use-single-toolbar", false);
