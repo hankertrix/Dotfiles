@@ -31,7 +31,7 @@ set $mod Mod4
 set $terminal kitty
 
 # set the browser to use:
-set $browser zen-browser
+set $browser zen
 
 #####################
 # workspace layout: #
@@ -301,7 +301,7 @@ bindsym XF86TouchpadToggle exec xinput list-props "ASUF1204:00 2808:0202 Touchpa
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec /usr/bin/$browser
+bindsym $mod+w exec /usr/bin/$browser-browser
 bindsym $mod+n exec /usr/bin/thunar
 bindsym $mod+e exec /usr/bin/emacs
 bindsym $mod+m exec /usr/bin/thunderbird
@@ -341,7 +341,7 @@ set $ws10 "10:󰓓   "
 
 # bind program to workspace and focus to them on startup:
 assign [class="$terminal"] $ws1
-assign [class="zen"] $ws2
+assign [class="$browser"] $ws2
 assign [class="Emacs"] $ws3
 assign [class="thunderbird"] $ws4
 assign [class="Thunar"] $ws5
