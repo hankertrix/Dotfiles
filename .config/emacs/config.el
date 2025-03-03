@@ -547,13 +547,7 @@
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
 
-(use-package nerd-icons
-
-  ;; Customise nerd icons
-  :custom
-
-  ;; Set the font to Maple Mono NF CN
-  (nerd-icons-font-family "Maple Mono NF CN"))
+(use-package nerd-icons)
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)

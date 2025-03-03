@@ -430,7 +430,7 @@ Evil surround allows for easily changing the surroundings of a text objects, suc
 #+end_src
 
 *** Evil Anzu
-Evil anzu highlights search terms. This package is required for doom modeline to display the match count when searching.
+Evil anzu highlights search terms. This package is required for doom mode line to display the match count when searching.
 #+begin_src emacs-lisp
 (use-package evil-anzu
 
@@ -808,13 +808,7 @@ All the icons is an icon set that can be used with dashboard, dired, ibuffer and
 ** Nerd Icons
 Nerd Icons is another icon set that can be used with anything in Emacs. I am currently using it through kind-icons with Corfu.
 #+begin_src emacs-lisp
-(use-package nerd-icons
-
-  ;; Customise nerd icons
-  :custom
-
-  ;; Set the font to Maple Mono NF CN
-  (nerd-icons-font-family "Maple Mono NF CN"))
+(use-package nerd-icons)
 #+end_src
 
 * Miscellaneous
@@ -1990,6 +1984,7 @@ Below is a list of external programs that are being used with my Emacs configura
 - [[https://tug.org/texlive][texlive-plaingeneric]]
 
 ** Miscellaneous
+- [[https://archlinux.org/packages/extra/any/ttf-nerd-fonts-symbols-mono/][Symbols Nerd Font Mono (for Doom mode line)]]
 - [[https://github.com/BurntSushi/ripgrep][ripgrep (for searching within files)]]
 - [[https://gitlab.freedesktop.org/poppler/poppler][poppler (for PDF Tools)]]
 - [[https://github.com/jupyter/notebook][Jupyter Notebook (for literate programming)]]
