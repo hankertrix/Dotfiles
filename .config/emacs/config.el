@@ -1316,9 +1316,20 @@
   ;; aligning the tags any more
   (org-agenda-tags-column 0)
 
-  ;; Use the bullets style for the stars
-  ;; instead of the default fold indicators
-  (org-modern-star 'replace)
+  ;; Use my own custom fold stars
+  (org-modern-fold-stars
+   `(("▶" . ,(nerd-icons-faicon "nf-fa-gem"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_2_box_multiple"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_3_box_multiple"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_4_box_multiple"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_5_box_multiple"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_6_box_multiple"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_7_box_multiple"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_8_box_multiple"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_9_box_multiple"))
+     ("▶" . ,(nerd-icons-mdicon "nf-md-numeric_9_plus_box_multiple"))
+     )
+   )
 
   ;; Hooks for org modern
   :hook
