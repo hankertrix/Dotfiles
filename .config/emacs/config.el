@@ -433,7 +433,7 @@
                   (save-excursion
 
                     ;; Move to the first line in the visible window
-                    (move-to-window-line 0)
+                    (ignore-errors (move-to-window-line 0))
 
                     ;; Return the position of the beginning of the line
                     (line-beginning-position)))
@@ -447,7 +447,7 @@
                   (save-excursion
 
                     ;; Move to the last line in the visible window
-                    (move-to-window-line -1)
+                    (ignore-errors (move-to-window-line -1))
 
                     ;; Return the position of the end of the line
                     (line-end-position))))
