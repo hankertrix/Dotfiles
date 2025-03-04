@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2025-03-02T11:55:31.137Z",
+    "createdAt": "2025-03-04T05:40:06.688Z",
     "redirects": [
         {
             "description": "Redirect YouTube Shorts to YouTube Video",
@@ -24,7 +24,7 @@
             "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
             "exampleResult": "https://farside.link/libreddit/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
             "error": null,
-            "includePattern": "https?://(?:(?:old|www)\\.)?reddit\\.com/((?!(media|video))[@\\w/-]*)",
+            "includePattern": "https?://(?:(?:old|www)\\.)?reddit(?:media)?\\.com/((?!(media|video))[@\\w/-]*)",
             "excludePattern": "",
             "patternDesc": "",
             "redirectUrl": "https://farside.link/libreddit/$1",
