@@ -409,11 +409,98 @@
 
 (tooltip-mode -1)
 
-;; Set the fill column to 80
-(setq-default fill-column 80)
+(use-package fill-column
 
-;; Enable the fill column display in programming mode
-(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+  ;; Built-in package
+  :ensure nil
+
+  ;; Functions for the hooks
+  :init
+
+  ;; The smart fill column function
+  (defun hanker/smart-fill-column ()
+    "Display the fill column only when the the fill column is exceeded."
+
+    ;; Get the lines in the current window
+    (let ((lines
+
+           ;; Get the start position of the line at the
+           ;; beginning of the visible window
+           (let ((start-position
+
+                  ;; Save the cursor position before
+                  ;; executing the commands and restore them afterwards
+                  (save-excursion
+
+                    ;; Move to the first line in the visible window
+                    (move-to-window-line 0)
+
+                    ;; Return the position of the beginning of the line
+                    (line-beginning-position)))
+
+                 ;; Get the end position of the line at the
+                 ;; beginning of the visible area
+                 (end-position
+
+                  ;; Save the cursor position before
+                  ;; executing the commands and restore them afterwards
+                  (save-excursion
+
+                    ;; Move to the last line in the visible window
+                    (move-to-window-line -1)
+
+                    ;; Return the position of the end of the line
+                    (line-end-position))))
+
+             ;; Get the string in the current visible window
+             ;; at split it at the new line character
+             (split-string
+              (buffer-substring-no-properties
+               start-position end-position) "\n"))))
+
+      ;; Keep track of whether the loop has been broken out of
+      (let ((broken-out-of-loop
+
+             ;; This catch is is just to break out of the loop
+             (catch 'break
+
+               ;; Iterate over the lines
+               (dolist (line lines)
+
+                 ;; If the display width of the line is greater
+                 ;; than the fill column
+                 (if (> (string-width line) fill-column)
+                     (progn
+
+                       ;; Set the fill column indicator character
+                       ;; to the default character
+                       (setq-local
+                        display-fill-column-indicator-character 9474)
+
+                       ;; Break out of the loop
+                       (throw 'break t)))))))
+
+        ;; If the loop hasn't been broken out of
+        (if (not broken-out-of-loop)
+
+            ;; Set the fill column indicator character to nil
+            (setq-local display-fill-column-indicator-character nil)))))
+
+  ;; Set the fill column to 80
+  :custom (fill-column 80)
+
+  ;; Hooks for the fill column mode
+  :hook
+
+  ;; Enable the fill column in programming mode
+  (prog-mode . display-fill-column-indicator-mode)
+
+  ;; Enable the smart fill column hook
+  ;; when display fill column indicator mode is active
+  (display-fill-column-indicator-mode
+   . (lambda ()
+       (add-hook
+        'post-command-hook #'hanker/smart-fill-column))))
 
 (setq ring-bell-function 'ignore)
 
@@ -425,6 +512,8 @@
 (global-display-line-numbers-mode)
 
 (dolist (mode '(term-mode-hook
+                shell-mode-hook
+                eat-mode-hook
                 eshell-mode-hook
                 pdf-view-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
@@ -436,7 +525,7 @@
 
 (global-visual-line-mode t)
 
-(setq-default indent-tabs-mode t)
+(setq-default indent-tabs-mode nil)
 
 (setq-default tab-width 4)
 (setq-default evil-shift-width tab-width)
