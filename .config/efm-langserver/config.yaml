@@ -56,6 +56,7 @@ tools:
       prettierd '${INPUT}' ${--range-start=charStart} ${--range-end=charEnd} \
         ${--tab-width=tabWidth} ${--use-tabs=!insertSpaces}
     format-stdin: true
+    format-can-range: true
     root-markers:
       - ".prettierrc"
       - ".prettierrc.json"
@@ -178,8 +179,8 @@ languages:
     - <<: *shfmt
 
   markdown:
-    - <<: *markdownlint
     - <<: *prettierd
+    - <<: *markdownlint
 
   gitcommit:
     - <<: *gitlint
