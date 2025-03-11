@@ -722,10 +722,10 @@
   ;; Keybinds for LSP mode
   :general
 
-  ;; Key binds for normal mode in LSP mode
+  ;; Key binds for both normal mode and visual modes in LSP mode
   (general-def
     :keymaps 'lsp-mode-map
-    :states 'normal
+    :states '(normal visual)
     "K" '("Describe the currently hovered item" . lsp-ui-doc-glance)
     "gd" '("Go to definition" . lsp-ui-peek-find-definitions)
     "gD" '("Go to declaration" . lsp-find-declaration)
@@ -734,17 +734,38 @@
     "gr" '("List all references" . lsp-ui-peek-find-references)
     "gs" '("Show signature information" . lsp-signature-activate)
     "<f2>" '("Renames all references to the symbol under the cursor" . lsp-rename)
-    "<f3>" '("Formats the buffer using the LSP" . lsp-format-buffer)
-    "SPC f" '("Formats the buffer using the LSP" . lsp-format-buffer)
     "<f4>" '("Select a code action" . lsp-execute-code-action)
+    "[d" '("Go to previous diagnostic" . flycheck-previous-error)
+    "]d" '("Go to next diagnostic" . flycheck-next-error)
+    )
 
-    ;; Key binds for visual mode in LSP mode
-    (general-def
-      :keymaps 'lsp-mode-map
-      :states 'visual
-      "<f3>" '("Formats the region using the LSP" . lsp-format-region)
-      "SPC f" '("Formats the region using the LSP" . lsp-format-region)
-      )
+  ;; Key binds for normal mode only in LSP mode
+  (general-def
+    :keymaps 'lsp-mode-map
+    :states 'normal
+    "<f3>" '("Formats the buffer using the LSP" . lsp-format-buffer)
+    )
+
+  ;; Leader key binds for normal mode only in LSP mode
+  (hanker/leader-keys
+    :keymaps 'lsp-mode-map
+    :states 'normal
+    "f" '("Formats the buffer using the LSP" . lsp-format-buffer)
+    )
+
+
+  ;; Key binds for visual mode only in LSP mode
+  (general-def
+    :keymaps 'lsp-mode-map
+    :states 'visual
+    "<f3>" '("Formats the region using the LSP" . lsp-format-region)
+    )
+
+  ;; Leader key binds for normal mode only in LSP mode
+  (hanker/leader-keys
+    :keymaps 'lsp-mode-map
+    :states 'visual
+    "f" '("Formats the region using the LSP" . lsp-format-region)
     )
   )
 
@@ -811,7 +832,7 @@
   :general
 
   (hanker/leader-keys
-    :states 'normal
+    :states '(normal visual)
     :keymaps 'flycheck-mode-map
     :major-modes 'flycheck-mode
     "tr" '("List all the errors in the current buffer" . flycheck-list-errors)
