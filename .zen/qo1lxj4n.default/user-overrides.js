@@ -109,6 +109,12 @@ user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 user_pref("network.trr.mode", 3);
 user_pref("network.dns.skipTRR-when-parental-control-enabled", false);
 
+// Exclude the NTU learn video domain from using DNS over HTTPS.
+//
+// For some reason it just doesn't work with DNS over HTTPS,
+// but either way the fallback DNS is still Quad9 so all is well.
+user_pref("network.trr.excluded-domains", "ntulearnvideo-cdn1.ntu.edu.sg");
+
 // Don't clear history on shutdown
 user_pref("privacy.clearOnShutdown.history", false);
 user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", false);
