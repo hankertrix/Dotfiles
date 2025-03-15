@@ -115,9 +115,10 @@ user_pref("network.dns.skipTRR-when-parental-control-enabled", false);
 // but either way the fallback DNS is still Quad9 so all is well.
 user_pref("network.trr.excluded-domains", "ntulearnvideo-cdn1.ntu.edu.sg");
 
-// Don't clear history on shutdown
-user_pref("privacy.clearOnShutdown.history", false);
-user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", false);
+// Don't clear history on shutdown, and by default
+user_pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", false);
+user_pref("privacy.clearSiteData.browsingHistoryAndDownloads", false);
+user_pref("privacy.clearHistory.browsingHistoryAndDownloads", false);
 
 // Resist fingerprinting
 user_pref("privacy.resistFingerprinting", true);
