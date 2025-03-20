@@ -7,7 +7,7 @@ require("relative-motions"):setup({
 })
 
 -- Configure the git plugin
-THEME.git = THEME.git or {
+th.git = th.git or {
 
 	-- Colours
 	modified = ui.Style():fg("#0096DB"),
