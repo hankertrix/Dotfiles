@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2025-03-04T05:40:06.688Z",
+    "createdAt": "2025-03-21T06:34:12.254Z",
     "redirects": [
         {
             "description": "Redirect YouTube Shorts to YouTube Video",
@@ -122,23 +122,6 @@
             ]
         },
         {
-            "description": "Redirect TikTok to ProxiTok",
-            "exampleUrl": "https://www.tiktok.com/@diariesofacodegirl/video/7307747910765038854",
-            "exampleResult": "https://farside.link/proxitok/@diariesofacodegirl/video/7307747910765038854",
-            "error": null,
-            "includePattern": "https?://(?:www\\.)?tiktok\\.com/([@\\w/-]*)\\??.*$",
-            "excludePattern": "",
-            "patternDesc": "",
-            "redirectUrl": "https://farside.link/proxitok/$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": false,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
             "description": "Redirect IMDb to Libremdb",
             "exampleUrl": "https://www.imdb.com/title/tt0451279/",
             "exampleResult": "https://farside.link/libremdb/title/tt0451279/",
@@ -150,6 +133,23 @@
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "Redirect TikTok to ProxiTok",
+            "exampleUrl": "https://www.tiktok.com/@diariesofacodegirl/video/7307747910765038854",
+            "exampleResult": "https://farside.link/proxitok/@diariesofacodegirl/video/7307747910765038854",
+            "error": null,
+            "includePattern": "https?://(?:www\\.)?tiktok\\.com/([@\\w/-]*)\\??.*$",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://farside.link/proxitok/$1",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -302,7 +302,7 @@
             "redirectUrl": "https://example.com/",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
