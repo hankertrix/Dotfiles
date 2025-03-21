@@ -301,8 +301,21 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
   ;; Add the hook to enter insert mode when editing a commit
   :hook (git-commit-mode . evil-insert-state)
 
-  ;; Function definitions that are used in the key bindings
+  ;; Initialise evil
   :init
+
+  ;; Set "Y" to yank till the end of the line.
+  ;;
+  ;; This must be set in the :init section
+  ;; as the :custom section is calling
+  ;; custom-set-variable in a :config section,
+  ;; but you need to do it in the :init section.
+  ;;
+  ;; References:
+  ;; https://github.com/emacs-evil/evil/issues/1836
+  ;; https://github.com/emacs-evil/evil/issues/1486#issuecomment-876371225
+  ;; https://www.reddit.com/r/emacs/comments/1au893i/setting_evilwantyyanktoeol_does_not_work_for_me/
+  (setq evil-want-Y-yank-to-eol t)
 
   ;; Function to use a register with an evil function
   (defun hanker/use-register-with-evil-function (register evil-function)
@@ -359,12 +372,6 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
 
   ;; Set the undo system to Emacs' undo redo
   (evil-set-undo-system 'undo-redo)
-
-  ;; Set "Y" to yank till the end of the line.
-  ;;
-  ;; For some reason, ;; this doesn't work when used within :custom,
-  ;; but it works here, so here it is instead of in :custom.
-  (setopt evil-want-Y-yank-to-eol t)
 
   ;; The function to centre the screen on the current cursor position
   (defun hanker/centre-screen (&rest _)
