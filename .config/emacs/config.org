@@ -32,6 +32,7 @@
   - [[#file-previews-in-dired][File previews in Dired]]
 - [[#development][Development]]
   - [[#lsp-mode][LSP mode]]
+  - [[#treesitter][Treesitter]]
   - [[#flycheck][Flycheck]]
   - [[#completion-plugins][Completion plugins]]
   - [[#terminal-emulator][Terminal emulator]]
@@ -1131,6 +1132,24 @@ Basedpyright is a fork of Pyright, a Python language server by Microsoft, with v
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
                          (lsp-deferred))))
+#+end_src
+
+** Treesitter
+Treesitter is an incremental parsing library which is general enough to parse any programming language. Emacs has treesitter built-in, but it isn't really that easy to use, I'm using the ~treesit-auto~ package to make things installing treesitter grammers easier.
+#+begin_src emacs-lisp
+(use-package treesit-auto
+
+  ;; Customise the package
+  :custom
+
+  ;; Prompt when auto installing treesitter grammers
+  (treesit-auto-install 'prompt)
+
+  ;; Configure treesitter auto
+  :config
+
+  ;; Start treesitter auto
+  (global-treesit-auto-mode))
 #+end_src
 
 ** Flycheck

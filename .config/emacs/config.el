@@ -836,6 +836,20 @@
                          (require 'lsp-pyright)
                          (lsp-deferred))))
 
+(use-package treesit-auto
+
+  ;; Customise the package
+  :custom
+
+  ;; Prompt when auto installing treesitter grammers
+  (treesit-auto-install 'prompt)
+
+  ;; Configure treesitter auto
+  :config
+
+  ;; Start treesitter auto
+  (global-treesit-auto-mode))
+
 (use-package flycheck
 
   ;; Load the package immediately
