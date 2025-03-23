@@ -2,5 +2,5 @@
 
 # Script to sync dotfiles
 
-# Sync the dotfiles for the home directory
-stow -vR -t ~ home
+# Sync the dotfiles with the tilde directory
+stow -vR -t ~ tilde

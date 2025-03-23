@@ -10,70 +10,69 @@ I'm using the [i3-wm setup with EndeavourOS](https://discovery.endeavouros.com/w
 
 ## Configuration files
 
-The configuration files are all stored in either [`home`](home),
+The configuration files are all stored in either [`tilde`](tilde),
 which refers to user specific configuration found under `~/`,
-as the users on Linux are always found under the `home` folder,
 or [`etc`](etc), which are the global configuration options
 that apply to all users, which can be found under the `/etc` folder.
 
-### [`home`](home) folder
+### [`tilde`](tilde) folder
 
-#### [Browser extensions](home/browser-extensions/)
+#### [Browser extensions](tilde/browser-extensions/)
 
-There is a [`README.md`](home/browser-extensions/README.md) file
-inside the [`browser-extensions`](home/browser-extensions/)
+There is a [`README.md`](tilde/browser-extensions/README.md) file
+inside the [`browser-extensions`](tilde/browser-extensions/)
 folder that explains the configuration.
 
-#### [`.config`](home/.config/) folder
+#### [`.config`](tilde/.config/) folder
 
-The [`.config`](home/.config/) folder is where the configuration
+The [`.config`](tilde/.config/) folder is where the configuration
 for the applications I use on Linux are located.
-There is a [`README.md` file](home/.config/) inside that
+There is a [`README.md` file](tilde/.config/) inside that
 briefly explains the configuration for the various applications inside.
 
-#### [`.librewolf`](home/.librewolf/) folder
+#### [`.librewolf`](tilde/.librewolf/) folder
 
-The [`.librewolf`](home/.librewolf/) folder is just to store my
+The [`.librewolf`](tilde/.librewolf/) folder is just to store my
 overrides for the Librewolf browser.
 All the overrides are exactly the same as my overrides for the
 [Arkenfox user.js](https://github.com/arkenfox/user.js).
 
-#### [`.mozilla`](home/.mozilla/) folder
+#### [`.mozilla`](tilde/.mozilla/) folder
 
-The [`.mozilla`](home/.mozilla/) folder is just to store my overrides for the
+The [`.mozilla`](tilde/.mozilla/) folder is just to store my overrides for the
 [Arkenfox user.js](https://github.com/arkenfox/user.js).
 
-#### [`.zen`](home/.zen/) folder
+#### [`.zen`](tilde/.zen/) folder
 
-The [`.zen`](home/.zen/) folder is just to store my overrides for the
+The [`.zen`](tilde/.zen/) folder is just to store my overrides for the
 [Arkenfox user.js](https://github.com/arkenfox/user.js), as well as
 some configuration options specific to the Zen browser.
 It also contains the keyboard shortcuts and the Zen mods that
 I have installed and configured for the Zen browser.
 
-#### [`.Xresources`](home/.Xresources)
+#### [`.Xresources`](tilde/.Xresources)
 
-The [`.Xresources`](home/.Xresources) configuration is just to make sure
+The [`.Xresources`](tilde/.Xresources) configuration is just to make sure
 the display works properly with my high DPI screen.
 I also turned on antialiasing.
 
-#### [`.bash_profile`](home/.bash_profile)
+#### [`.bash_profile`](tilde/.bash_profile)
 
-The [`.bash_profile`](home/.bash_profile) configuration is just to
-load the [`.profile`](home/.profile) file when starting bash.
+The [`.bash_profile`](tilde/.bash_profile) configuration is just to
+load the [`.profile`](tilde/.profile) file when starting bash.
 This is needed thanks to the Arch Linux LightDM package
 [changing the script to source the files](https://gitlab.archlinux.org/archlinux/packaging/packages/lightdm/-/commit/75c048cabfe9693749f5f363ab6257400d954ffa).
 
-#### [`.bashrc`](home/.bashrc)
+#### [`.bashrc`](tilde/.bashrc)
 
-The [`.bashrc`](home/.bashrc) file is mostly
+The [`.bashrc`](tilde/.bashrc) file is mostly
 just the default EndeavourOS configuration,
 with a few if statement added in so that
 I can change the shell's directory
 when using [`lf`](https://github.com/gokcehan/lf) and
 [`yazi`](https://yazi-rs.github.io/).
 
-#### [`.profile`](home/.profile)
+#### [`.profile`](tilde/.profile)
 
 This file is just to set the default applications for various tasks.
 The default terminal is set to
@@ -85,10 +84,10 @@ the default browser is set to
 the default pager is set to
 [`less`](https://www.greenwoodsoftware.com/less/).
 
-#### [`.xinitrc`](home/.xinitrc)
+#### [`.xinitrc`](tilde/.xinitrc)
 
-The [`.xinitrc`](home/.xinitrc) file is just to merge the
-configuration inside [`.Xresources`](home/.Xresources)
+The [`.xinitrc`](tilde/.xinitrc) file is just to merge the
+configuration inside [`.Xresources`](tilde/.Xresources)
 into `xrdb` so that the changes will apply.
 
 ## [Licence](LICENCE.txt)
