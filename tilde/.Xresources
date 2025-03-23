@@ -1,3 +1,4 @@
+! X configuration to work with my Hi-DPI screen
 Xcursor.theme: Qogir
 Xcursor.size: 32
 Xft.dpi: 150
