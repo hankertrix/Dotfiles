@@ -20,7 +20,9 @@ return {
 		},
 		{
 			"<Leader>ec",
-			function() require("yazi").yazi(nil, "~/.config/nvim/lua/") end,
+			function()
+				require("yazi").yazi(nil, "~/.dotfiles/user/.config/nvim/lua/")
+			end,
 			mode = "n",
 			desc = "Opens the Neovim config directory",
 		},

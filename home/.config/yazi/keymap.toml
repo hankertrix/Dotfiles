@@ -93,6 +93,12 @@ on = "O"
 run = "plugin augment-command -- open --interactive"
 desc = "Open selected files interactively"
 
+# Use the plugin's arrow command for the toggle instead of Yazi's default
+[[manager.prepend_keymap]]
+on = "<Space>"
+run = ["toggle", "plugin augment-command -- arrow 1"]
+desc = "Toggle the current selection state"
+
 # Use u to unselect and unyank all files
 [[manager.prepend_keymap]]
 on = "u"
@@ -130,6 +136,12 @@ desc = "Create a file or directory"
 on = "+"
 run = "plugin augment-command -- create"
 desc = "Create a file or directory"
+
+# Use = to hard link files
+[[manager.prepend_keymap]]
+on = "="
+run = "hardlink"
+desc = "Hardlink yanked files"
 
 # Use x to move files to the trash
 [[manager.prepend_keymap]]
@@ -206,7 +218,7 @@ desc = "Rename file and remove the file name"
 # Use ec to go to the config directory for Yazi
 [[manager.prepend_keymap]]
 on = ["e", "c"]
-run = "cd ~/.config/yazi"
+run = "cd ~/.dotfiles/user/.config/yazi"
 desc = "Edit the Yazi configuration"
 
 # Use gc to go to the config directory
@@ -214,6 +226,12 @@ desc = "Edit the Yazi configuration"
 on = ["g", "c"]
 run = "cd ~/.config"
 desc = "Go to the config directory"
+
+# Use gv to go to the dotfiles directory
+[[manager.prepend_keymap]]
+on = ["g", "v"]
+run = "cd ~/.dotfiles"
+desc = "Go to the dotfiles directory"
 
 # Use gp to go to the projects directory
 [[manager.prepend_keymap]]
@@ -224,7 +242,7 @@ desc = "Go to the projects directory"
 # Use gu to go to school directory
 [[manager.prepend_keymap]]
 on = ["g", "u"]
-run = "cd ~/school/y2s2/"
+run = "cd ~/school/y2s2"
 desc = "Go to the school directory"
 
 

@@ -1,0 +1,29 @@
+# Git
+\.git
+\.gitignore
+\.gitmodules
+
+# Other VCS
+\.svn
+_darcs
+\.hg
+
+# Emacs
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
+# README and LICENSE files
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Ignore the browser extensions
+browser-extensions
+
+# Ignore the extra files in the augment-command Yazi plugin
+cspell.json
+generate_videos.py
+ruff.toml
+stylua.toml
+words.txt
+yazi_types.lua
