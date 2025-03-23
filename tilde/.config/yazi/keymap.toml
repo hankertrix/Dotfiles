@@ -218,7 +218,7 @@ desc = "Rename file and remove the file name"
 # Use ec to go to the config directory for Yazi
 [[manager.prepend_keymap]]
 on = ["e", "c"]
-run = "cd ~/.dotfiles/user/.config/yazi"
+run = "cd ~/.dotfiles/tilde/.config/yazi"
 desc = "Edit the Yazi configuration"
 
 # Use gc to go to the config directory
