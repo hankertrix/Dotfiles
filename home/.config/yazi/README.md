@@ -1,5 +1,16 @@
 # Yazi configuration files
 
+## [`init.lua`](https://yazi-rs.github.io/docs/plugins/overview/#sync-vs-async)
+
+The `init.lua` file is to configure the plugins that I use for Yazi.
+Currently, I only need to configure the
+[`relative-motions.yazi`](https://github.com/dedukun/relative-motions.yazi)
+plugin and the
+[`git.yazi`](https://github.com/yazi-rs/plugins/tree/main/git.yazi) plugin,
+as I use the default options for my own
+[`augment-command.yazi`](https://github.com/hankertrix/augment-command.yazi)
+plugin.
+
 ## [`keymap.toml`](https://yazi-rs.github.io/docs/configuration/keymap)
 
 For the most part, the `keymap.toml` file just includes
@@ -19,6 +30,11 @@ There are also some key binds for the
 which are just the default key binds that you can find on the
 [`README.md`](https://github.com/dedukun/relative-motions.yazi/blob/main/README.md#configuration)
 of the plugin.
+
+## [`package.toml`](./package.toml)
+
+The `package.toml` file just tells Yazi what Yazi plugins I use,
+and it is generated when you add a Yazi plugin using the `ya pack -a` command.
 
 ## [`theme.toml`](https://yazi-rs.github.io/docs/configuration/theme)
 
@@ -50,22 +66,8 @@ There are also additional openers to open `.org` and `.tex` files in
 [Emacs](https://www.gnu.org/software/emacs/) and all audio and video streams
 in [Spek](https://github.com/alexkay/spek) for spectrum analysis.
 
-## [`init.lua`](https://yazi-rs.github.io/docs/plugins/overview/#sync-vs-async)
-
-The `init.lua` file is to configure the plugins that I use for Yazi.
-Currently, I only need to configure the
-[`relative-motions.yazi`](https://github.com/dedukun/relative-motions.yazi)
-plugin, as I use the default options for my own
-[`augment-command.yazi`](https://github.com/hankertrix/augment-command.yazi)
-plugin.
-
 ## [`yy.sh`](https://yazi-rs.github.io/docs/quick-start/#shell-wrapper)
 
 This file is very similar to the `lfcd.sh` file in the `lf` configuration,
 it just adds the `yy` command which changes the directory
 to the current directory Yazi is in when Yazi exits.
-
-## [`package.toml`](./package.toml)
-
-The `package.toml` file just tells Yazi what Yazi plugins I use,
-and it is generated when you add a Yazi plugin using the `ya pack -a` command.

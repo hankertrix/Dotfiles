@@ -18,6 +18,12 @@ that apply to all users, which can be found under the `/etc` folder.
 
 ### [`home`](home) folder
 
+#### [Browser extensions](home/browser-extensions/)
+
+There is a [`README.md`](home/browser-extensions/README.md) file
+inside the [`browser-extensions`](home/browser-extensions/)
+folder that explains the configuration.
+
 #### [`.config`](home/.config/) folder
 
 The [`.config`](home/.config/) folder is where the configuration
@@ -25,10 +31,25 @@ for the applications I use on Linux are located.
 There is a [`README.md` file](home/.config/) inside that
 briefly explains the configuration for the various applications inside.
 
+#### [`.librewolf`](home/.librewolf/) folder
+
+The [`.librewolf`](home/.librewolf/) folder is just to store my
+overrides for the Librewolf browser.
+All the overrides are exactly the same as my overrides for the
+[Arkenfox user.js](https://github.com/arkenfox/user.js).
+
 #### [`.mozilla`](home/.mozilla/) folder
 
 The [`.mozilla`](home/.mozilla/) folder is just to store my overrides for the
 [Arkenfox user.js](https://github.com/arkenfox/user.js).
+
+#### [`.zen`](home/.zen/) folder
+
+The [`.zen`](home/.zen/) folder is just to store my overrides for the
+[Arkenfox user.js](https://github.com/arkenfox/user.js), as well as
+some configuration options specific to the Zen browser.
+It also contains the keyboard shortcuts and the Zen mods that
+I have installed and configured for the Zen browser.
 
 #### [`.Xresources`](home/.Xresources)
 

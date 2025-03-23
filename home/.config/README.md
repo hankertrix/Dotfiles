@@ -3,12 +3,6 @@
 Here are all the config files for the applications I use on Linux,
 all located within `~/.config/`, or `/home/username/.config/`.
 
-## [Browser extensions](./browser_extensions/)
-
-There is a [`README.md`](./browser_extensions/README.md) file
-inside the [`browser_extensions`](./browser_extensions/)
-folder that explains the configuration.
-
 ## [Darkman](https://gitlab.com/WhyNotHugo/darkman)
 
 The [configuration for `darkman`](./darkman/config.yaml) is very simple,
@@ -42,12 +36,20 @@ ported to the YAML file configuration format.
 There is a [`config.org`](./emacs/config.org) file inside the
 [`emacs`](./emacs/) folder that contains my configuration for Emacs.
 
+## [Fontconfig](https://www.freedesktop.org/wiki/Software/fontconfig/)
+
+The [Fontconfig configuration](./fontconfig/fonts.conf) just enables
+the alternate not equals `~=` in Lua (`SS02`) for
+[Cascadia Code](https://github.com/microsoft/cascadia-code) and enables
+dotted zero (`zero`) and double-headed arrows (`SS08`) for
+[Maple Mono](https://github.com/subframe7536/Maple-font).
+
 ## [Ghostty](https://github.com/ghostty-org/ghostty)
 
 The [Ghostty configuration](./ghostty/config) sets the theme to
 [Bluloco](https://github.com/uloco/bluloco.nvim),
 sets the default font to
-[Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode),
+[Maple Mono](https://github.com/subframe7536/Maple-font),
 sets the default font size to 12, maps `Ctrl + [` to `ESC` and
 hides the mouse when typing.
 It also increases the cursor width to not have the cursor be so thin,
@@ -81,10 +83,21 @@ The default font size is also set to 12.
 There is a [`README.md`](./lf/README.md) file inside
 the [`lf`](./lf) folder that explains the configuration.
 
-## [Neovide](https://neovide.dev/)
+## [Marimo](https://marimo.io/)
 
-The Neovide configuration just sets the font size to 12, and the font to
-[Cascadia Code Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode).
+Marimo is an alternative to Jupyter notebooks that doesn't use the `ipynb`
+file format, and instead has notebooks in regular Python files.
+The [configuration for Marimo](./marimo/marimo.toml) is almost exactly
+the same as the default configuration, but with the watcher
+set to automatically run when the file is saved,
+the line length being set to 80 instead of 79,
+and enabling Vim key bindings.
+
+## [`mpv`](https://mpv.io/)
+
+`mpv` is a video player that is extremely performant and lightweight.
+The [configuration for `mpv`](./mpv/input.conf) is just to
+set Vim keybindings for the `mpv` instead of using the arrow keys.
 
 ## [Neovim](https://neovim.io/)
 
