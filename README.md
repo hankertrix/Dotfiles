@@ -11,7 +11,7 @@ I'm using the [i3-wm setup with EndeavourOS](https://discovery.endeavouros.com/w
 ## Configuration files
 
 The configuration files are all stored in either [`tilde`](tilde),
-which refers to user specific configuration found under `~/`,
+which refers to user-specific configuration found under `~/`,
 or [`etc`](etc), which are the global configuration options
 that apply to all users, which can be found under the `/etc` folder.
 
