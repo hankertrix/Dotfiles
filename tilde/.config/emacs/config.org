@@ -1137,7 +1137,7 @@ Basedpyright is a fork of Pyright, a Python language server by Microsoft, with v
 #+end_src
 
 ** Treesitter
-Treesitter is an incremental parsing library which is general enough to parse any programming language. Emacs has treesitter built-in, but it isn't really that easy to use, I'm using the ~treesit-auto~ package to make things installing treesitter grammers easier.
+Treesitter is an incremental parsing library which is general enough to parse any programming language. Emacs has treesitter built-in, but it isn't really that easy to use, I'm using the ~treesit-auto~ package to make things installing treesitter grammars easier.
 #+begin_src emacs-lisp
 (use-package treesit-auto
 
@@ -1294,7 +1294,7 @@ Marginalia is a plugin that adds annotations to the mini-buffer, like file permi
 #+end_src
 
 *** Nerd icons completion
-Nerd icons completion is a plugin that displays pretty icons alongside the marginalia annotations using nerd icons. It is the Vertico alternative to the all the icons ivy rich package, but with nerd icons.
+Nerd icons completion is a plugin that displays pretty icons alongside the marginalia annotations using nerd icons. It is the Vertico alternative to the all the icons' ivy rich package, but with nerd icons.
 #+begin_src emacs-lisp
 (use-package nerd-icons-completion
 
@@ -1889,7 +1889,7 @@ Org-tempo provides shortcuts for various expansions in Org mode, such as "<s" to
 
 | Typing the below + TAB | Expands to ...                          |
 |------------------------+-----------------------------------------|
-| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT  |
+| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT' |
 | <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
 | <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
 | <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
