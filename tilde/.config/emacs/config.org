@@ -20,6 +20,7 @@
   - [[#emacs-interface][Emacs Interface]]
   - [[#indentation-and-brackets][Indentation and brackets]]
   - [[#search][Search]]
+  - [[#large-file-warning][Large file warning]]
 - [[#whitespace-mode][Whitespace Mode]]
 - [[#beautifying-emacs][Beautifying Emacs]]
   - [[#theme][Theme]]
@@ -764,6 +765,12 @@ Electric pair mode is a mode to auto close brackets.
 Make Dabbrev completions case-sensitive.
 #+begin_src emacs-lisp
 (setq dabbrev-case-fold-search nil)
+#+end_src
+
+** Large file warning
+Set the large file warning threshold to 24MiB, as my PDF files are often larger than 10MB but less than 24MiB.
+#+begin_src emacs-lisp
+(setq large-file-warning-threshold 25000000)
 #+end_src
 
 * Whitespace Mode
