@@ -15,13 +15,13 @@ which refers to user-specific configuration found under `~/`,
 or [`etc`](etc), which are the global configuration options
 that apply to all users, which can be found under the `/etc/` folder.
 
-### [`tilde`](tilde) folder
+### [Browser extensions](browser-extensions/) folder
 
-#### [Browser extensions](tilde/browser-extensions/)
-
-There is a [`README.md`](tilde/browser-extensions/README.md) file
-inside the [`browser-extensions`](tilde/browser-extensions/)
+There is a [`README.md`](browser-extensions/README.md) file
+inside the [`browser-extensions`](browser-extensions/)
 folder that explains the configuration.
+
+### [`tilde`](tilde) folder
 
 #### [`.config`](tilde/.config/) folder
 
