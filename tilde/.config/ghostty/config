@@ -9,6 +9,10 @@ font-size = 12
 # Set the font to Maple Mono Nerd Font with Chinese characters
 font-family = "Maple Mono NF CN"
 
+# Enable the font features I want
+font-feature = zero
+font-feature = ss08
+
 
 # Theme and colours
 

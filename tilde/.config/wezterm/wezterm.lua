@@ -43,6 +43,9 @@ config.font_size = 12
 -- Set the font to Maple Mono Nerd Font with Chinese characters
 config.font = wezterm.font("Maple Mono NF CN")
 
+-- Enable the font features I want
+config.harfbuzz_features = { "zero", "ss08" }
+
 -- Set the term environment variable to wezterm
 config.term = "wezterm"
 
