@@ -227,10 +227,10 @@ on = ["g", "c"]
 run = "cd ~/.config"
 desc = "Go to the config directory"
 
-# Use gv to go to the dotfiles directory
+# Use gv to go to the dotfiles config directory
 [[manager.prepend_keymap]]
 on = ["g", "v"]
-run = "cd ~/.dotfiles"
+run = "cd ~/.dotfiles/tilde/.config"
 desc = "Go to the dotfiles directory"
 
 # Use gp to go to the projects directory
