@@ -16,8 +16,6 @@ local descriptions = {
 	format = "Formats the buffer using the LSP",
 	code_action = "Select a code action",
 	diagnostic_window = "Show diagnostics in a floating window",
-	diagnostic_prev = "Go to the previous diagnostic",
-	diagnostic_next = "Go to the next diagnostic",
 }
 
 -- The list of root files
@@ -220,30 +218,6 @@ local function setup()
 					"error",
 					opts,
 					{ desc = descriptions.diagnostic_window }
-				)
-			)
-
-			-- Key bind to go to the previous diagnostic
-			vim.keymap.set(
-				"n",
-				"[d",
-				function() vim.diagnostic.goto_prev() end,
-				vim.tbl_extend(
-					"error",
-					opts,
-					{ desc = descriptions.diagnostic_prev }
-				)
-			)
-
-			-- Key bind to go to the next diagnostic
-			vim.keymap.set(
-				"n",
-				"]d",
-				function() vim.diagnostic.goto_next() end,
-				vim.tbl_extend(
-					"error",
-					opts,
-					{ desc = descriptions.diagnostic_next }
 				)
 			)
 		end,
@@ -533,16 +507,6 @@ return {
 			"gl",
 			mode = "n",
 			desc = descriptions.diagnostic_window,
-		},
-		{
-			"[d",
-			mode = "n",
-			desc = descriptions.diagnostic_prev,
-		},
-		{
-			"]d",
-			mode = "n",
-			desc = descriptions.diagnostic_next,
 		},
 	},
 }
