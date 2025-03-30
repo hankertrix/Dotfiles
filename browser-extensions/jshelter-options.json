@@ -13,7 +13,7 @@
       "hardware": 1,
       "xhr": 0,
       "arrays": 0,
-      "webworker": 1,
+      "webworker": 0,
       "geolocation": 3,
       "coopschedule": 1,
       "gamepads": 1,
