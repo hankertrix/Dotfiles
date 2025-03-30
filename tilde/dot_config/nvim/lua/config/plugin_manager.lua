@@ -15,4 +15,15 @@ end
 vim.opt.rtp:prepend(lazy_path)
 
 -- Plugin manager setup
-return require("lazy").setup("plugins")
+return require("lazy").setup({
+	spec = {
+
+		-- Import the plugins directory
+		{ import = "plugins" },
+	},
+
+	-- Set the lockfile location
+	-- to be in the dotfiles directory
+	lockfile = vim.env.HOME
+		.. "/.dotfiles/tilde/dot_config/nvim/lazy-lock.json",
+})
