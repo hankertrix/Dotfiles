@@ -1,0 +1,42 @@
+{
+  "custom_levels": {
+    "RecommendedWithWebWorkers": {
+      "level_text": "Recommended with WebWorkers",
+      "level_id": "RecommendedWithWebWorkers",
+      "level_description": "Recommended level but with WebWorkers support",
+      "time_precision": 3,
+      "htmlcanvaselement": 1,
+      "audiobuffer": 1,
+      "webgl": 1,
+      "plugins": 2,
+      "enumerateDevices": 2,
+      "hardware": 1,
+      "xhr": 0,
+      "arrays": 0,
+      "webworker": 1,
+      "geolocation": 3,
+      "coopschedule": 1,
+      "gamepads": 1,
+      "playback": 0,
+      "analytics": 1,
+      "windowname": 0,
+      "wasm": 1
+    }
+  },
+  "domains": {},
+  "nbsWhitelist": {},
+  "nbsSettings": {
+    "notifications": 1,
+    "blocking": 1
+  },
+  "fpdWhitelist": {},
+  "fpdSettings": {
+    "behavior": 0,
+    "detection": 0,
+    "notifications": 1
+  },
+  "requestShieldOn": true,
+  "version": 7,
+  "fpDetectionOn": true,
+  "__default__": "RecommendedWithWebWorkers"
+}
