@@ -50,6 +50,12 @@ some configuration options specific to the Zen browser.
 It also contains the keyboard shortcuts and the Zen mods that
 I have installed and configured for the Zen browser.
 
+#### [`.chezmoiignore`](tilde/.chezmoiignore)
+
+The `.chezmoiignore` file is just to ignore the files that do not need to be
+deployed to the system, like READMEs, licences,
+and formatter configuration files.
+
 #### [`.Xresources`](tilde/executable_dot_Xresources)
 
 The [`.Xresources`](tilde/executable_dot_Xresources)
