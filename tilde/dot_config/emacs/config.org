@@ -211,7 +211,7 @@ General has to be loaded first so that the ~use-package~ definitions below it ca
     "ec" '("Edit Emacs config" .
            (lambda ()
              (interactive)
-             (find-file "~/.dotfiles/tilde/.config/emacs/config.org")))
+             (find-file "~/.dotfiles/tilde/dot_config/emacs/config.org")))
     )
 
   ;; Key binds in org mode

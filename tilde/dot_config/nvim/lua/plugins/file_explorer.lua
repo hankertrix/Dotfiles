@@ -21,7 +21,10 @@ return {
 		{
 			"<Leader>ec",
 			function()
-				require("yazi").yazi(nil, "~/.dotfiles/tilde/.config/nvim/lua/")
+				require("yazi").yazi(
+					nil,
+					"~/.dotfiles/tilde/dot_config/nvim/lua/"
+				)
 			end,
 			mode = "n",
 			desc = "Opens the Neovim config directory",

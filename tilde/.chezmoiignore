@@ -1,0 +1,7 @@
+# Ignore READMEs and formatting files
+**/README.md
+**/stylua.toml
+
+# Ignore everything except main.lua in the augment command plugin
+**/augment-command.yazi/*
+!**/augment-command.yazi/main.lua
