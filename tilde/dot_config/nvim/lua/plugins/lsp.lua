@@ -424,14 +424,6 @@ local function setup()
 		},
 	})
 
-	-- Set up rust owl to show lifetimes in Rust
-	lspconfig.rustowl.setup({
-		trigger = {
-			hover = true,
-			idle_time = 2000,
-		},
-	})
-
 	-- Get the diagnostic icons
 	local diagnostic_icons = shared_configs.icons().diagnostics
 
@@ -462,7 +454,12 @@ return {
 		{ "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
 
 		-- Rust owl to show lifetimes in Rust
-		{ "cordx56/rustowl" },
+		{
+			"cordx56/rustowl",
+			build = "cd rustowl && cargo install --path . --locked",
+			lazy = false,
+			opts = {},
+		},
 
 		-- Autocompletion
 		"blink.cmp",
