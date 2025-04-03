@@ -167,6 +167,12 @@ on = "z"
 run = "plugin fzf"
 desc = "Jump to a directory, or reveal a file using fzf"
 
+# Use Z to jump to a directory using fzf, since I don't use zoxide
+[[manager.prepend_keymap]]
+on = "Z"
+run = "plugin fzf"
+desc = "Jump to a directory, or reveal a file using fzf"
+
 # Use o to open files using the editor
 [[manager.prepend_keymap]]
 on = "o"
