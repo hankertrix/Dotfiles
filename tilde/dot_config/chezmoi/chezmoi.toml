@@ -1,1 +1,7 @@
+# Use .dotfiles as the dotfiles directory
 sourceDir = "~/.dotfiles"
+
+# Use Neovim as the merge tool
+[merge]
+command = "nvim"
+args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
