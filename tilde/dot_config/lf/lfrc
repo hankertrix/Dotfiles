@@ -356,6 +356,9 @@ map _ touch
 # Make x delete files and directories
 map x delete
 
+# Make X delete files and directories
+map X delete
+
 # Make D delete files and directories
 map D delete
 
@@ -407,6 +410,9 @@ map ed cd ~/.config/lf/
 
 # Mapping to go to the config directory
 map gc cd ~/.config/
+
+# Mapping to go to the dotfiles config directory
+map gv cd ~/.dotfiles/tilde/dot_config/
 
 # Mapping to go to the Downloads directory
 map gd cd ~/Downloads/
