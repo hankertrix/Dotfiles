@@ -70,6 +70,11 @@ user_pref(
 // Secret pref.
 user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 
+// Never trim the URLs in the URL bar.
+// This is mostly just for Zen,
+// because the layout shifts when I interact with the bar.
+user_pref("browser.urlbar.trimURLs", false);
+
 // Disable Pocket entirely
 user_pref("extensions.pocket.enabled", false);
 
