@@ -129,8 +129,9 @@ user_pref("privacy.clearHistory.browsingHistoryAndDownloads", false);
 user_pref("privacy.resistFingerprinting", true);
 
 // Enable letter boxing,
-// which are the borders on the sides of the window to fake screen size
-user_pref("privacy.resistFingerprinting.letterboxing", true);
+// which are the borders on the sides of the window to fake screen size.
+// Disable letter boxing for now, since it breaks on Zen.
+user_pref("privacy.resistFingerprinting.letterboxing", false);
 
 // Exempt Telegram web from resist fingerprinting
 user_pref("privacy.resistFingerprinting.exemptedDomains", "web.telegram.org");
