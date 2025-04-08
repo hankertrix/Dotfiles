@@ -24,6 +24,5 @@ return require("lazy").setup({
 
 	-- Set the lockfile location
 	-- to be in the dotfiles directory
-	lockfile = vim.env.HOME
-		.. "/.dotfiles/tilde/dot_config/nvim/lazy-lock.json",
+	lockfile = "~/.dotfiles/tilde/dot_config/nvim/lazy-lock.json",
 })
