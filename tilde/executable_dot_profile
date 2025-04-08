@@ -1,9 +1,9 @@
 # Set the default terminal
-export TERM=xterm-ghostty
-export TERMINAL=ghostty
+export TERM=xterm-kitty
+export TERMINAL=kitty
 
-# Use Firefox as the default browser
-export BROWSER=firefox
+# Use Zen browser as the default browser
+export BROWSER=zen-browser
 
 # Use Neovim as the default editor
 export EDITOR=nvim
