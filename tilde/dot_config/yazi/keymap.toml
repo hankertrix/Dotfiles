@@ -215,6 +215,12 @@ on = "C"
 run = "plugin augment-command -- rename --empty=all"
 desc = "Rename file and remove the whole file name"
 
+# Use cr to create a file
+[[manager.prepend_keymap]]
+on = ["c", "m"]
+run = "create"
+desc = "Create a file (ends with / for directories)"
+
 # Use cm to remove the file name when renaming
 [[manager.prepend_keymap]]
 on = ["c", "m"]
