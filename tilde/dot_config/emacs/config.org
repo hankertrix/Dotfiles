@@ -2143,6 +2143,7 @@ Below is a list of external programs that are being used with my Emacs configura
 - [[https://tug.org/texlive][texlive-mathscience]]
 - [[https://tug.org/texlive][texlive-pictures]]
 - [[https://tug.org/texlive][texlive-plaingeneric]]
+- [[https://archlinux.org/packages/extra/any/texlive-langchinese/][texlive-langchinese]]
 
 ** Miscellaneous
 - [[https://archlinux.org/packages/extra/any/ttf-nerd-fonts-symbols-mono/][Symbols Nerd Font Mono (for Doom mode line)]]
