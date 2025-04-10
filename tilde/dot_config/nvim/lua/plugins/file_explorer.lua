@@ -8,7 +8,6 @@ local utils = require("utils")
 return {
 	"mikavilpas/yazi.nvim",
 	cond = utils.firenvim_not_active,
-	event = "VeryLazy",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = { open_for_directories = true },
 	keys = {
