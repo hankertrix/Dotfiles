@@ -20,16 +20,33 @@ return {
 
 	-- Markdown previewer
 	{
-		"iamcco/markdown-preview.nvim",
-		build = function() vim.fn["mkdp#util#install"]() end,
-		lazy = true,
-		cond = require("utils").firenvim_not_active,
-		ft = "markdown",
-		cmd = {
-			"MarkdownPreviewToggle",
-			"MarkdownPreview",
-			"MarkdownPreviewStop",
+		"OXY2DEV/markview.nvim",
+		event = "InsertEnter",
+		ft = { "markdown", "html", "tex", "plaintex", "typst", "yaml" },
+
+		-- Configure the label of the code block to be on the right
+		opts = {
+			markdown = {
+				code_blocks = {
+					label_direction = "left",
+				},
+			},
 		},
+
+		-- Function to configure the plugin
+		config = function(_, opts)
+			--
+
+			-- Get the presets
+			local presets = require("markview.presets")
+
+			-- Configure the plugin
+			require("markview").setup(vim.tbl_deep_extend("error", opts, {
+				markdown = {
+					headings = presets.headings.arrowed,
+				},
+			}))
+		end,
 	},
 
 	-- Trim trailing whitespace and blank lines
