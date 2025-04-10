@@ -2132,17 +2132,17 @@ Below is a list of external programs that are being used with my Emacs configura
 - [[https://github.com/astral-sh/ruff][Ruff]]
 
 ** TeX and LaTeX
-- [[https://tug.org/texlive][texlive-basic]]
-- [[https://tug.org/texlive][texlive-bin]]
-- [[https://tug.org/texlive][texlive-binextra]]
-- [[https://tug.org/texlive][texlive-fontsextra]]
-- [[https://tug.org/texlive][texlive-fontsrecommended]]
-- [[https://tug.org/texlive][texlive-latex]]
-- [[https://tug.org/texlive][texlive-latexextra]]
-- [[https://tug.org/texlive][texlive-latexrecommended]]
-- [[https://tug.org/texlive][texlive-mathscience]]
-- [[https://tug.org/texlive][texlive-pictures]]
-- [[https://tug.org/texlive][texlive-plaingeneric]]
+- [[https://archlinux.org/packages/extra/any/texlive-basic/][texlive-basic]]
+- [[https://archlinux.org/packages/extra/x86_64/texlive-bin/][texlive-bin]]
+- [[https://archlinux.org/packages/extra/any/texlive-binextra/][texlive-binextra]]
+- [[https://archlinux.org/packages/extra/any/texlive-fontsextra/][texlive-fontsextra]]
+- [[https://archlinux.org/packages/extra/any/texlive-fontsrecommended/][texlive-fontsrecommended]]
+- [[https://archlinux.org/packages/extra/any/texlive-latex/][texlive-latex]]
+- [[https://archlinux.org/packages/extra/any/texlive-latexextra/][texlive-latexextra]]
+- [[https://archlinux.org/packages/extra/any/texlive-latexrecommended/][texlive-latexrecommended]]
+- [[https://archlinux.org/packages/extra/any/texlive-mathscience/][texlive-mathscience]]
+- [[https://archlinux.org/packages/extra/any/texlive-pictures/][texlive-pictures]]
+- [[https://archlinux.org/packages/extra/any/texlive-plaingeneric/][texlive-plaingeneric]]
 - [[https://archlinux.org/packages/extra/any/texlive-langchinese/][texlive-langchinese]]
 
 ** Miscellaneous
