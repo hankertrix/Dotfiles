@@ -31,6 +31,9 @@ return {
 					label_direction = "left",
 				},
 			},
+			preview = {
+				hybrid_modes = { "n" },
+			},
 		},
 
 		-- Function to configure the plugin
