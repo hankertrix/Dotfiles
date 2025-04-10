@@ -1,28 +1,50 @@
 -- Treesitter config
 
--- Gets the module with the utilities
-local utils = require("utils")
-
 -- Returns the treesitter plugins for lazy.nvim
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function(_, opts)
+			--
+
+			-- Get the treesitter plugin
 			local treesitter = require("nvim-treesitter.configs")
+
+			-- Set up treesitter
 			treesitter.setup(opts)
 		end,
-		event = { "VeryLazy", "BufReadPost", "BufNewFile", "BufWritePre" },
+
+		-- Events to lazy load on
+		event = {
+			"VeryLazy",
+			"BufReadPost",
+			"BufNewFile",
+			"BufWritePre",
+		},
+
+		-- Commands to lazy load on
 		cmd = {
 			"TSInstall",
+			"TSInstallFromGrammar",
+			"TSInstallInfo",
+			"TSInstallSync",
 			"TSUninstall",
 			"TSUpdate",
 			"TSUpdateSync",
-			"TSInstallInfo",
-			"TSInstallSync",
-			"TSInstallFromGrammar",
+			"TSBufDisable",
+			"TSBufEnable",
+			"TSBufToggle",
+			"TSConfigInfo",
+			"TSDisable",
+			"TSEditQuery",
+			"TSEditQueryUserAfter",
+			"TSEnable",
+			"TSModuleInfo",
+			"TSToggle",
 		},
 
+		-- Set up the plugin
 		opts = {
 
 			-- A list of parser names
@@ -33,7 +55,6 @@ return {
 				"typescript",
 				"rust",
 				"cpp",
-				"gdscript",
 				"bash",
 				"json",
 				"toml",
@@ -85,12 +106,24 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		event = { "VeryLazy", "BufReadPost", "BufNewFile", "BufWritePre" },
+		dependencies = { "nvim-treesitter" },
+
+		-- Events to lazy load on
+		event = {
+			"VeryLazy",
+			"BufReadPost",
+			"BufNewFile",
+			"BufWritePre",
+		},
+
+		-- Commands to lazy load on
 		cmd = {
-			"TSContextEnable",
 			"TSContextDisable",
+			"TSContextEnable",
 			"TSContextToggle",
 		},
+
+		-- Set the maximum number of lines to 5
 		opts = {
 			max_lines = 5,
 		},
