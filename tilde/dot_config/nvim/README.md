@@ -119,7 +119,7 @@ Undo history viewer -
 [undotree](https://github.com/mbbill/undotree)
 
 Markdown previewer -
-[markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
+[markview.nvim](https://github.com/OXY2DEV/markview.nvim)
 
 Hide the colour column when not needed -
 [nerd_column.nvim](https://github.com/hankertrix/nerd_column.nvim)
