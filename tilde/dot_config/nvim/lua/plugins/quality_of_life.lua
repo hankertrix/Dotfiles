@@ -24,8 +24,10 @@ return {
 		event = "InsertEnter",
 		ft = { "markdown", "html", "tex", "plaintex", "typst", "yaml" },
 
-		-- Configure the label of the code block to be on the right
+		-- Plugin configuration
 		opts = {
+
+			-- Have the label for the code blocks appear on the left
 			markdown = {
 				code_blocks = {
 					label_direction = "left",
@@ -50,6 +52,7 @@ return {
 			require("markview").setup(vim.tbl_deep_extend("error", opts, {
 				markdown = {
 					headings = presets.headings.arrowed,
+					tables = presets.tables.rounded,
 				},
 			}))
 		end,
