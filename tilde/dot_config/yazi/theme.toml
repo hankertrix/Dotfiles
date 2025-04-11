@@ -12,8 +12,19 @@ dark = "bluloco-dark"
 # Remove the borders
 border_symbol = " "
 
+# Set the status separators
+[status]
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
 # Set the icons for the notifications
 [notify]
 icon_info = ""
 icon_warn = ""
 icon_error = ""
+
+# Set the icons for the completion
+[cmp]
+icon_file = "󰈙"
+icon_folder = "󰉋"
+icon_command = ""
