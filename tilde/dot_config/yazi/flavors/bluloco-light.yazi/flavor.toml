@@ -4,20 +4,37 @@
 # Bluloco light flavour for Yazi
 [manager]
 
+# Current working directory
 cwd = { fg = "#0099E1" }
 
+# Hovered
+hovered = { reversed = true }
+preview_hovered = { underline = true }
+
+# Symlink
+symlink_target = { italic = true }
+
+# Marker
 marker_copied = { fg = "#C5A231", bg = "#C5A231" }
 marker_cut = { fg = "#D52753", bg = "#D52753" }
 marker_marked = { fg = "#823FF1", bg = "#823FF1" }
 marker_selected = { fg = "#0098DD", bg = "#0098DD" }
 
+# Tab
+tab_active = { fg = "#0099E1", bg = "#E0E0E0" }
+tab_inactive = { fg = "#B0B0B0", bg = "#F2F2F2" }
+tab_width = 1
+
+# Count
 count_copied = { fg = "#F9F9F9", bg = "#C5A231" }
 count_cut = { fg = "#F9F9F9", bg = "#D52753" }
 count_selected = { fg = "#F9F9F9", bg = "#0098DD" }
 
-tab_active = { fg = "#0099E1", bg = "#E0E0E0" }
-tab_inactive = { fg = "#B0B0B0", bg = "#F2F2F2" }
+# Border
+border_symbol = "│"
+border_style = { fg = "#7A82DA" }
 
+# Find
 [manager.find_keyword]
 fg = "#EA3971"
 bg = "#B1EACF"
@@ -35,42 +52,60 @@ italic = true
 # Colours for the modes in Yazi.
 #
 # The main styles are the styles for
-# the selection bar and sections at
-# the ends of the status bar.
+# sections at the ends of the status bar.
 #
 # The alternate styles (alt) are the
 # styles for the separators, which are
-# the section in the status bar
+# the sections in the status bar
 # that are right beside the sections
 # at the ends of the status bar.
 [mode]
+
+# Normal mode
 normal_main = { fg = "#F9F9F9", bg = "#0098DD" }
 normal_alt = { fg = "#6D7281", bg = "#DEE1E3" }
 
+# Select mode
 select_main = { fg = "#F9F9F9", bg = "#823FF1" }
 select_alt = { fg = "#823FF1", bg = "#DEE1E3" }
 
+# Unset mode
 unset_main = { fg = "#F9F9F9", bg = "#D52753" }
 unset_alt = { fg = "#D52753", bg = "#DEE1E3" }
 
 
 [status]
+overall = { fg = "#6D7281", bg = "#EDEDEE" }
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Permissions
+perm_sep = { fg = "#B0B0B0" }
+perm_type = { fg = "#0098DD" }
+perm_read = { fg = "#823FF1" }
+perm_write = { fg = "#D52753" }
+perm_exec = { fg = "#23974A" }
+
+# Progress
 progress_label = { fg = "#F9F9F9", bold = true }
 progress_normal = { fg = "#823FF1", bg = "#A0A1A7" }
 progress_error = { fg = "#FF0000", bg = "#FCE4E4" }
-overall = { fg = "#6D7281", bg = "#EDEDEE" }
 
 
 [which]
-cand = { fg = "#DE631B" }
+cols = 3
 mask = { bg = "#ECEDEE" }
+cand = { fg = "#DE631B" }
 desc = { fg = "#0098DD" }
+separator = " ➜ "
 separator_style = { fg = "#7A82DA" }
 
 
 [confirm]
 border = { fg = "#7A82DA" }
 title = { fg = "#7A82DA" }
+content = {}
+list = {}
 btn_yes = { fg = "#23974A" }
 btn_no = { fg = "#D52753" }
 btn_labels = ["Yes", "No"]
@@ -79,6 +114,9 @@ btn_labels = ["Yes", "No"]
 [spot]
 border = { fg = "#7A82DA" }
 title = { fg = "#7A82DA" }
+
+# Value of the items in the table
+tbl_col = { fg = "#0099E1" }
 
 # Hovered item in the spotter
 tbl_cell = { bg = "#D1ECFF" }
@@ -89,20 +127,34 @@ title_info = { fg = "#0099E1" }
 title_warn = { fg = "#FF8F3A" }
 title_error = { fg = "#FF0000" }
 
+# Icons
+icon_info = ""
+icon_warn = ""
+icon_error = ""
+
 
 [pick]
 border = { fg = "#7A82DA" }
 active = { fg = "#C5A332", bold = true }
+inactive = {}
 
 
 [input]
 border = { fg = "#7A82DA" }
 title = { fg = "#7A82DA" }
+value = {}
+selected = { reversed = true }
 
 
 [cmp]
 border = { fg = "#7A82DA" }
 active = { bg = "#D1ECFF" }
+inactive = {}
+
+# Icons
+icon_file = ""
+icon_folder = ""
+icon_command = ""
 
 
 [tasks]
@@ -113,6 +165,37 @@ hovered = { bg = "#D1ECFF", bold = true }
 
 [help]
 on = { fg = "#DF631C" }
-run = { fg = "#0098DD" }
-desc = { fg = "#383A42" }
+run = { fg = "#7A82DA" }
+desc = { fg = "#0098DD" }
 footer = { bg = "#F9F9F9", fg = "#383A42" }
+
+
+[filetype]
+rules = [
+	# Images
+	{ mime = "image/*", fg = "#DF631C" },
+
+	# Videos
+	{ mime = "video/*", fg = "#823FF1" },
+
+	# Audio
+	{ mime = "audio/*", fg = "#40B8C5" },
+
+	# Archives
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#D52753" },
+
+	# Documents
+	{ mime = "application/{pdf,doc,rtf}", fg = "#275FE4" },
+
+	# Special files
+	{ name = "*", is = "orphan", fg = "#F9F9F9", bg = "#FF0000" },
+	{ name = "*", is = "exec", fg = "#3FC56B" },
+
+	# Dummy files
+	{ name = "*", is = "dummy", fg = "#F9F9F9", bg = "#FF0000" },
+	{ name = "*/", is = "dummy", fg = "#F9F9F9", bg = "#FF0000" },
+
+	# Fallback
+	{ name = "*", fg = "#383A42" },
+	{ name = "*/", fg = "#0098DD" },
+]
