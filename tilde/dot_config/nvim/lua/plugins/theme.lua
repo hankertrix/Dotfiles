@@ -12,7 +12,8 @@ return {
 		lazy = false,
 		priority = 1000,
 		dependencies = { "rktjmp/lush.nvim" },
-		config = function()
+		opts = { rainbow_headings = true },
+		config = function(_, opts)
 			--
 
 			-- Get the shared configuration
@@ -22,6 +23,9 @@ return {
 			local colour_scheme = utils.firenvim_not_active()
 					and shared_configs.theme
 				or shared_configs.light_theme
+
+			-- Set up the theme
+			require("bluloco").setup(opts)
 
 			-- Sets the theme
 			vim.cmd("colorscheme " .. colour_scheme)
