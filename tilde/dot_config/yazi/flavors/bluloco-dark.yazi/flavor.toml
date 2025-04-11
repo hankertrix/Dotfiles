@@ -60,13 +60,11 @@ progress_error = { fg = "#FF2E3F", bg = "#FDCFD1" }
 overall = { fg = "#8691A3", bg = "#2D333E" }
 
 
-[pick]
-border = { fg = "#7A82DA" }
-active = { fg = "#F9C859", bold = true }
-
-[input]
-border = { fg = "#7A82DA" }
-title = { fg = "#7A82DA" }
+[which]
+cand = { fg = "#FF936A" }
+mask = { bg = "#21232C" }
+desc = { fg = "#10B1FE" }
+separator_style = { fg = "#7A82DA" }
 
 
 [confirm]
@@ -85,6 +83,22 @@ title = { fg = "#7A82DA" }
 tbl_cell = { bg = "#284671" }
 
 
+[notify]
+title_info = { fg = "#3691FF" }
+title_warn = { fg = "#DA7A43" }
+title_error = { fg = "#FF2E3F" }
+
+
+[pick]
+border = { fg = "#7A82DA" }
+active = { fg = "#F9C859", bold = true }
+
+
+[input]
+border = { fg = "#7A82DA" }
+title = { fg = "#7A82DA" }
+
+
 [cmp]
 border = { fg = "#7A82DA" }
 active = { bg = "#284671" }
@@ -96,21 +110,8 @@ title = { fg = "#7A82DA" }
 hovered = { bg = "#284671", bold = true }
 
 
-[which]
-cand = { fg = "#FF936A" }
-mask = { bg = "#21232C" }
-desc = { fg = "#10B1FE" }
-separator_style = { fg = "#7A82DA" }
-
-
 [help]
 on = { fg = "#FF936A" }
 run = { fg = "#10B1FE" }
 desc = { fg = "#ABB2BF" }
 footer = { bg = "#282C34", fg = "#ABB2BF" }
-
-
-[notify]
-title_info = { fg = "#3691FF" }
-title_warn = { fg = "#DA7A43" }
-title_error = { fg = "#FF2E3F" }
