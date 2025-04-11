@@ -217,7 +217,7 @@ desc = "Rename file and remove the whole file name"
 
 # Use cr to create a file
 [[manager.prepend_keymap]]
-on = ["c", "m"]
+on = ["c", "r"]
 run = "create"
 desc = "Create a file (ends with / for directories)"
 
