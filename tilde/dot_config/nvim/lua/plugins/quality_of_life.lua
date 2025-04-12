@@ -21,8 +21,6 @@ return {
 	-- Markdown previewer
 	{
 		"OXY2DEV/markview.nvim",
-		event = "InsertEnter",
-		ft = { "markdown", "html", "tex", "plaintex", "typst", "yaml" },
 
 		-- Plugin configuration
 		opts = {
@@ -42,8 +40,11 @@ return {
 		},
 
 		-- Function to configure the plugin
-		config = function(_, opts)
+		config = function(plugin, opts)
 			--
+
+			-- Force markview.nvim to be sourced before everything else
+			vim.opt.rtp:prepend(plugin.dir)
 
 			-- Get the presets
 			local presets = require("markview.presets")
