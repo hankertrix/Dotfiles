@@ -26,7 +26,6 @@
   - [[#theme][Theme]]
   - [[#mode-line][Mode line]]
   - [[#rainbow-delimiters][Rainbow Delimiters]]
-  - [[#all-the-icons][All The Icons]]
   - [[#nerd-icons][Nerd Icons]]
 - [[#miscellaneous][Miscellaneous]]
   - [[#zoom][Zoom]]
@@ -74,8 +73,7 @@
 ** Elpaca package manager
 Initialise Elpaca. This code is copied directly off of [[https://github.com/progfolio/elpaca][Elpaca's GitHub]].
 #+begin_src emacs-lisp
-
-(defvar elpaca-installer-version 0.10)
+(defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
@@ -110,15 +108,13 @@ Initialise Elpaca. This code is copied directly off of [[https://github.com/prog
   (unless (require 'elpaca-autoloads nil t)
     (require 'elpaca)
     (elpaca-generate-autoloads "elpaca" repo)
-    (load "./elpaca-autoloads")))
+    (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
-
 #+end_src
 
 Enable use-package support for Elpaca.
 #+begin_src emacs-lisp
-
 ;; Install use-package support
 (elpaca elpaca-use-package
 
@@ -130,7 +126,6 @@ Enable use-package support for Elpaca.
 
 ;; Block until the above is done executing
 (elpaca-wait)
-
 #+end_src
 
 ** Key bindings with General
@@ -901,25 +896,14 @@ This is to make it easier to see the different brackets as lisp has a heck ton o
   :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 
-** All The Icons
-All the icons is an icon set that can be used with dashboard, dired, ibuffer and other Emacs programs.
-#+begin_src emacs-lisp
-
-;; Install the all the icons package
-(use-package all-the-icons
-
-  ;; Only load the package if the interface is graphical and not a terminal
-  :if (display-graphic-p))
-
-;; Install the all the icons package for dired and enable it in dired mode
-(use-package all-the-icons-dired
-  :hook (dired-mode . all-the-icons-dired-mode))
-#+end_src
-
 ** Nerd Icons
 Nerd Icons is another icon set that can be used with anything in Emacs. I am currently using it through kind-icons with Corfu.
 #+begin_src emacs-lisp
 (use-package nerd-icons)
+
+;; Use nerd icons in dired
+(use-package nerd-icons-dired
+  :hook (dired-mode . nerd-icons-dired-mode))
 #+end_src
 
 * Miscellaneous
@@ -1974,6 +1958,14 @@ Citeproc is a program that produces formatted bibliographies and citations using
 ** Literate programming
 Literate programming is a way of programming that has code snippets embedded in text that explain the code, and looks something like this configuration file.
 
+*** Add more languages to org babel
+Add additional languages that I want to evaluate using org babel.
+#+begin_src emacs-lisp
+(org-babel-do-load-languages 'org-babel-load-languages
+                             (append org-babel-load-languages
+                                     '((python . t))))
+#+end_src
+
 *** Org export to Jupyter Notebooks
 Install ~ox-ipynb~ to support exporting org files to Jupyter Notebooks, which have the file extension ~ipynb~.
 #+begin_src emacs-lisp
@@ -1992,15 +1984,28 @@ Emacs Jupyter is a plugin to work with Jupyter kernels inside org mode.
 (use-package jupyter
 
   ;; Load the Jupyter languages
-  :init (org-babel-do-load-languages
+  :config (org-babel-do-load-languages
          'org-babel-load-languages
-         '((emacs-lisp . t)
-           (python . t)
-           (jupyter . t)))
+         (append org-babel-load-languages
+                 '((jupyter . t))))
 
   ;; Add a hook to redisplay inline images
   ;; after executing a code block
   :hook (org-babel-after-execute . org-redisplay-inline-images))
+#+end_src
+
+*** Org babel support for mermaid CLI
+#+begin_src emacs-lisp
+(use-package ob-mermaid
+
+  ;; Ensure that mermaid CLI is installed
+  :ensure-system-package (mmdc . "sudo pacman -S mermaid-cli")
+
+  ;; Load the mermaid language
+  :config (org-babel-do-load-languages
+           'org-babel-load-languages
+           (append org-babel-load-languages
+                   '((mermaid . t)))))
 #+end_src
 
 *** Stop org mode from asking me to confirm evaluation
