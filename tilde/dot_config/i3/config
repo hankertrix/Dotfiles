@@ -301,7 +301,7 @@ bindsym XF86TouchpadToggle exec xinput list-props "ASUF1204:00 2808:0202 Touchpa
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec /usr/bin/$browser-browser
+bindsym $mod+w exec /usr/bin/$browser
 bindsym $mod+n exec /usr/bin/thunar
 bindsym $mod+e exec /usr/bin/emacs
 bindsym $mod+m exec /usr/bin/thunderbird
