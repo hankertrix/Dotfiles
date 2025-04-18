@@ -59,10 +59,9 @@ user_pref(
 );
 
 // Remove all pins from the new tab page
-user_pref("browser.newtabpage.pinned", []);
+user_pref("browser.newtabpage.pinned", "");
 user_pref(
-  "browser.newtabpage.activity-stream." +
-    "improvesearch.topSiteSearchShortcuts.havePinned",
+  "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned",
   ""
 );
 
