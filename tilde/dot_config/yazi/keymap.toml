@@ -96,7 +96,7 @@ desc = "Open selected files interactively"
 # Use the plugin's arrow command for the toggle instead of Yazi's default
 [[manager.prepend_keymap]]
 on = "<Space>"
-run = ["toggle", "plugin augment-command -- arrow 1"]
+run = ["toggle", "plugin augment-command -- arrow 1 --no-wrap"]
 desc = "Toggle the current selection state"
 
 # Use u to unselect and unyank all files
