@@ -18,7 +18,7 @@ symlink_target = { italic = true }
 marker_copied = { fg = "#C5A231", bg = "#C5A231" }
 marker_cut = { fg = "#D52753", bg = "#D52753" }
 marker_marked = { fg = "#823FF1", bg = "#823FF1" }
-marker_selected = { fg = "#0098DD", bg = "#0098DD" }
+marker_selected = { fg = "#275FE4", bg = "#275FE4" }
 
 # Tab
 tab_active = { fg = "#0099E1", bg = "#E0E0E0" }
@@ -28,7 +28,7 @@ tab_width = 1
 # Count
 count_copied = { fg = "#F9F9F9", bg = "#C5A231" }
 count_cut = { fg = "#F9F9F9", bg = "#D52753" }
-count_selected = { fg = "#F9F9F9", bg = "#0098DD" }
+count_selected = { fg = "#F9F9F9", bg = "#275FE4" }
 
 # Border
 border_symbol = "│"
@@ -119,7 +119,7 @@ title = { fg = "#7A82DA" }
 tbl_col = { fg = "#0099E1" }
 
 # Hovered item in the spotter
-tbl_cell = { bg = "#D1ECFF" }
+tbl_cell = { bg = "#D2ECFF" }
 
 
 [notify]
@@ -148,7 +148,7 @@ selected = { reversed = true }
 
 [cmp]
 border = { fg = "#7A82DA" }
-active = { bg = "#D1ECFF" }
+active = { bg = "#D2ECFF" }
 inactive = {}
 
 # Icons
@@ -160,7 +160,7 @@ icon_command = ""
 [tasks]
 border = { fg = "#7A82DA" }
 title = { fg = "#7A82DA" }
-hovered = { bg = "#D1ECFF", bold = true }
+hovered = { bg = "#D2ECFF", bold = true }
 
 
 [help]
@@ -185,7 +185,7 @@ rules = [
 	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#D52753" },
 
 	# Documents
-	{ mime = "application/{pdf,doc,rtf}", fg = "#275FE4" },
+	{ mime = "application/{pdf,doc,rtf}", fg = "#047485" },
 
 	# Special files
 	{ name = "*", is = "orphan", fg = "#F9F9F9", bg = "#FF0000" },
