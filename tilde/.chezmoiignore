@@ -1,10 +1,11 @@
-# Ignore READMEs, LICENSES, and formatting files
+# Ignore READMEs, LICENSES, formatting files and backup files
 **/README.md
 **/stylua.toml
 **/LICENSE
 **/LICENCE
 **/LICENSE.*
 **/LICENCE.*
+**/*.bak
 
 # Ignore everything except main.lua in the augment command plugin
 **/augment-command.yazi/*
