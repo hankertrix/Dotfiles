@@ -155,6 +155,12 @@ on = "X"
 run = "plugin augment-command -- remove --permanently"
 desc = "Permanently delete the files"
 
+# Use a to add files to an archive
+[[manager.prepend_keymap]]
+on = "a"
+run = "plugin augment-command -- archive"
+desc = "Add files to an archive"
+
 # Use Ctrl + s to open a shell in the current directory
 [[manager.prepend_keymap]]
 on = "<C-s>"
