@@ -31,12 +31,6 @@ return {
 					label_direction = "left",
 				},
 			},
-
-			-- Enable line wise hybrid mode in normal mode
-			preview = {
-				hybrid_modes = { "n" },
-				linewise_hybrid_mode = true,
-			},
 		},
 
 		-- Function to configure the plugin
