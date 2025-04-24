@@ -51,7 +51,7 @@ local function setup()
 	-- Get the default configuration from lspconfig
 	local lspconfig_defaults = lspconfig.util.default_config
 
-	-- Add cmp_nvim_lsp capabilities settings to lspconfig
+	-- Add blink.cmp capabilities settings to lspconfig
 	lspconfig_defaults.capabilities = vim.tbl_deep_extend(
 		"force",
 		lspconfig_defaults.capabilities,
@@ -427,9 +427,10 @@ local function setup()
 	-- Get the diagnostic icons
 	local diagnostic_icons = shared_configs.icons().diagnostics
 
-	-- Enable virtual_text
+	-- Configure the diagnostics
 	vim.diagnostic.config({
 		virtual_text = true,
+		virtual_lines = { current_line = true },
 		signs = {
 			text = {
 				[vim.diagnostic.severity.INFO] = diagnostic_icons.info,
