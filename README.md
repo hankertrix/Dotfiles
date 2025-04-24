@@ -10,10 +10,20 @@ I'm using the [i3-wm setup with EndeavourOS](https://discovery.endeavouros.com/w
 
 ## Configuration files
 
+I am making use of [Chezmoi (pronounced shay-mwa)](https://www.chezmoi.io/)
+to manage my configuration files. To use my configuration files,
+install [Chezmoi](https://www.chezmoi.io/install/),
+clone this repository using [Git](https://git-scm.com/),
+and then run the command below to deploy the configuration files:
+
+```sh
+chezmoi init --apply
+```
+
 The configuration files are all stored in either [`tilde`](tilde),
 which refers to user-specific configuration found under `~/`,
-or [`etc`](etc), which are the global configuration options
-that apply to all users, which can be found under the `/etc/` folder.
+or [`root`](root), which are the global configuration options
+that apply to all users, which can be found under the `/` folder.
 
 ### [Browser extensions](browser-extensions/) folder
 
