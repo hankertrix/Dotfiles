@@ -25,10 +25,6 @@ return {
 		-- but it's pretty impressive.
 		process_spinner = false,
 
-		-- Disable signs to stop Neogit from crashing
-		-- https://github.com/NeogitOrg/neogit/issues/1691
-		disable_signs = true,
-
 		-- Fold the untracked files
 		-- by default, following Magit's
 		-- default behaviour
