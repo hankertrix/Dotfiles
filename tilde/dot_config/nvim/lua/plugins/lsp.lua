@@ -454,14 +454,6 @@ return {
 		-- Mason lspconfig for automatic server setup
 		{ "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
 
-		-- Rust owl to show lifetimes in Rust
-		{
-			"cordx56/rustowl",
-			build = "cd rustowl && cargo install --path . --locked",
-			lazy = false,
-			opts = {},
-		},
-
 		-- Autocompletion
 		"blink.cmp",
 
