@@ -161,19 +161,19 @@ return {
 			-- Use Vim's default scrolling to scroll
 			-- the documentation in the completion menu
 			["<C-d>"] = {
-				function(cmp) cmp.scroll_documentation_down(5) end,
+				"scroll_documentation_down",
 				"fallback",
 			},
 			["<C-u>"] = {
-				function(cmp) cmp.scroll_documentation_up(5) end,
+				"scroll_documentation_up",
 				"fallback",
 			},
 			["<C-f>"] = {
-				function(cmp) cmp.scroll_documentation_down(10) end,
+				"scroll_documentation_down",
 				"fallback",
 			},
 			["<C-b>"] = {
-				function(cmp) cmp.scroll_documentation_up(10) end,
+				"scroll_documentation_up",
 				"fallback",
 			},
 
