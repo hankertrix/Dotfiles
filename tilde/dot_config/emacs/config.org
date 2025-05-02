@@ -1994,23 +1994,6 @@ Emacs Jupyter is a plugin to work with Jupyter kernels inside org mode.
   :hook (org-babel-after-execute . org-redisplay-inline-images))
 #+end_src
 
-*** Org babel support for mermaid CLI
-#+begin_src emacs-lisp
-(use-package ob-mermaid
-
-  ;; Ensure that mermaid CLI is installed
-  :ensure-system-package (mmdc . "sudo pacman -S mermaid-cli")
-
-  ;; Load the mermaid language
-  :init (org-babel-do-load-languages
-           'org-babel-load-languages
-           (append org-babel-load-languages
-                   '((mermaid . t))))
-
-  ;; Set the mermaid-cli path
-  :custom (ob-mermaid-cli-path "/usr/bin/mmdc"))
-#+end_src
-
 *** Stop org mode from asking me to confirm evaluation
 #+begin_src emacs-lisp
 (setq org-confirm-babel-evaluate nil)
