@@ -18,6 +18,9 @@ return {
 	-- such as indentation using tabs vs spaces
 	{ "tpope/vim-sleuth" },
 
+	-- Better looking help files
+	{ "OXY2DEV/helpview.nvim" },
+
 	-- Markdown previewer
 	{
 		"OXY2DEV/markview.nvim",

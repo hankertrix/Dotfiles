@@ -9,5 +9,4 @@ return {
 	"lewis6991/gitsigns.nvim",
 	cond = utils.firenvim_not_active,
 	event = "BufReadPre",
-	opts = {},
 }
