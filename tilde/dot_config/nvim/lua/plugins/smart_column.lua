@@ -9,7 +9,7 @@ return {
 	"hankertrix/nerd_column.nvim",
 	dev = true,
 	dir = "~/projects/nerd_column.nvim",
-	event = { "BufEnter" },
+	event = "BufEnter",
 	opts = {
 
 		-- Show a line on the right that represents the maximum column width
