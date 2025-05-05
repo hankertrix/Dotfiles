@@ -2039,8 +2039,8 @@ AUCTeX is an Emacs package for writing LaTeX documents.
   ;; Enable referencing
   (LaTeX-mode . reftex-mode)
 
-  ;; Enable prettify symbols mode in LaTeX mode
-  (LaTeX-mode . prettify-symbols-mode))
+  ;; Enable prettify symbols mode in TeX mode
+  (TeX-mode . prettify-symbols-mode))
 #+end_src
 
 ** Evil TeX
