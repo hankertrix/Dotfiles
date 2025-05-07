@@ -18,45 +18,15 @@ local descriptions = {
 	diagnostic_window = "Show diagnostics in a floating window",
 }
 
--- The list of root files
-local root_files = {
-
-	-- Default root files from lspconfig
-	".luarc.json",
-	".luarc.jsonc",
-	".luacheckrc",
-	".stylua.toml",
-	"stylua.toml",
-	"selene.toml",
-	"selene.yml",
-
-	-- Wezterm configuration file
-	"wezterm.lua",
-
-	-- Awesomewm configuration file
-	"rc.lua",
-
-	-- Yazi init.lua and main.lua files
-	"init.lua",
-	"main.lua",
+-- The list of externally installed LSPs
+local externally_installed_lsps = {
+	"basedpyright",
+	"efm",
 }
 
 -- Function to set up the lsp
 local function setup()
 	--
-
-	-- Gets the lspconfig module
-	local lspconfig = require("lspconfig")
-
-	-- Get the default configuration from lspconfig
-	local lspconfig_defaults = lspconfig.util.default_config
-
-	-- Add blink.cmp capabilities settings to lspconfig
-	lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-		"force",
-		lspconfig_defaults.capabilities,
-		require("blink.cmp").get_lsp_capabilities()
-	)
 
 	-- Create the LSP keybinds
 	vim.api.nvim_create_autocmd("LspAttach", {
@@ -223,206 +193,16 @@ local function setup()
 		end,
 	})
 
-	-- Gets the shared configs file
+	-- Iterate over the externally installed LSPs and enable them
+	for _, lsp_name in ipairs(externally_installed_lsps) do
+		vim.lsp.enable(lsp_name)
+	end
+
+	-- Set up mason-lspconfig
+	require("mason-lspconfig").setup()
+
+	-- Get the shared configs file
 	local shared_configs = require("shared_configs")
-
-	-- Set up mason lsp config
-	require("mason-lspconfig").setup({
-
-		-- The handlers for the various LSPs
-		handlers = {
-
-			-- Default server handler, which uses
-			-- lspconfig's default set up function
-			function(server_name) lspconfig[server_name].setup({}) end,
-
-			-- Configure lua ls
-			lua_ls = function()
-				--
-
-				-- Gets the runtime path for Neovim
-				-- Comment out when configuring other applications,
-				-- like awesomewm or wezterm
-				local runtime_path = vim.split(package.path, ";")
-				table.insert(runtime_path, "lua/?.lua")
-				table.insert(runtime_path, "lua/?/init.lua")
-
-				-- Set up lua ls using lspconfig
-				lspconfig.lua_ls.setup({
-
-					-- Disable formatting
-					init_options = {
-						documentFormatting = false,
-						documentRangeFormatting = false,
-					},
-
-					-- Set the root directory
-					root_dir = function(fname)
-						--
-
-						-- Tries to get the root directory
-						local root = lspconfig.util.root_pattern(
-							unpack(root_files)
-						)(fname)
-
-						-- If the root directory exists
-						-- and is not the Neovim configuration directory
-						if root and root ~= vim.env.HOME then
-							--
-
-							-- Then immediately return the root directory
-							return root
-						end
-
-						-- Otherwise, tries to find the lua folder in the
-						-- Neovim configuration directory
-						root = lspconfig.util.root_pattern("lua/")(fname)
-
-						-- If the root directory is found
-						if root then
-							--
-
-							-- Then return the lua folder in the
-							-- Neovim configuration directory
-							return root .. "/lua/"
-						end
-
-						-- Otherwise, tries to find the nearest git repository
-						return lspconfig.util.find_git_ancestor(fname)
-					end,
-
-					settings = {
-						Lua = {
-
-							-- Disable telemetry
-							telemetry = { enable = false },
-
-							-- Tell the language server which
-							-- version of Lua is being used, which is
-							-- LuaJIT in the case of Neovim
-							runtime = {
-								version = "LuaJIT",
-
-								-- Comment out when configuring other
-								-- applications, like awesomewm or wezterm
-								path = runtime_path,
-							},
-
-							diagnostics = {
-
-								-- Get the language server to
-								-- recognise the vim global
-								globals = { "vim" },
-							},
-
-							-- Disable formatting
-							format = {
-								enable = false,
-							},
-
-							-- Enable inlay hints
-							hint = {
-								enable = true,
-								arrayIndex = "Enable",
-								setType = true,
-							},
-
-							workspace = {
-								checkThirdParty = false,
-								library = {
-
-									-- Make the server aware of
-									-- Neovim runtime files
-									vim.fn.expand("$VIMRUNTIME/lua"),
-									vim.fn.stdpath("config") .. "/lua",
-								},
-							},
-						},
-					},
-				})
-			end,
-
-			-- Configure vstsls
-			vtsls = function()
-				lspconfig.vtsls.setup({
-
-					-- Disable formatting
-					init_options = {
-						documentFormatting = false,
-						documentRangeFormatting = false,
-					},
-				})
-			end,
-
-			-- Configure rust analyzer to enable inlay hints
-			rust_analyzer = function()
-				lspconfig.rust_analyzer.setup({
-					on_attach = function(_, buffer_number)
-						vim.lsp.inlay_hint.enable(
-							true,
-							{ bufnr = buffer_number }
-						)
-					end,
-
-					settings = {
-						["rust-analyzer"] = {
-							checkOnSave = true,
-							check = {
-								enable = true,
-								command = "clippy",
-								features = "all",
-							},
-							procMacro = {
-								enable = true,
-							},
-						},
-					},
-				})
-			end,
-		},
-	})
-
-	-- Set up language servers not installed by Mason
-
-	-- Set up efm language server
-	lspconfig.efm.setup({
-
-		-- Enable formatting
-		init_options = {
-			documentFormatting = true,
-			documentRangeFormatting = true,
-		},
-	})
-
-	-- Set up LTEX+ LSP
-	lspconfig.ltex_plus.setup({
-		settings = {
-			ltex = {
-				language = "en-GB",
-			},
-		},
-	})
-
-	-- Set up basedpyright
-	lspconfig.basedpyright.setup({
-
-		-- Disable formatting.
-		-- By right, basedpyright doesn't do formatting,
-		-- but this is to ensure that it never tries to
-		-- clash with Ruff to format my code.
-		init_options = {
-			documentFormatting = false,
-			documentRangeFormatting = false,
-		},
-
-		settings = {
-			basedpyright = {
-
-				-- Disable organising imports as Ruff already does that
-				disableOrganizeImports = true,
-			},
-		},
-	})
 
 	-- Get the diagnostic icons
 	local diagnostic_icons = shared_configs.icons().diagnostics
@@ -453,9 +233,6 @@ return {
 
 		-- Mason lspconfig for automatic server setup
 		{ "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
-
-		-- Autocompletion
-		"blink.cmp",
 
 		-- Snippets
 		{ "rafamadriz/friendly-snippets" },
