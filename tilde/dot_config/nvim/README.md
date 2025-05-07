@@ -121,6 +121,9 @@ Undo history viewer -
 Markdown previewer -
 [markview.nvim](https://github.com/OXY2DEV/markview.nvim)
 
+Help file previewer -
+[helpview.nvim](https://github.com/OXY2DEV/helpview.nvim)
+
 Hide the colour column when not needed -
 [nerd_column.nvim](https://github.com/hankertrix/nerd_column.nvim)
 
