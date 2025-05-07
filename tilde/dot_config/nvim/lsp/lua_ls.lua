@@ -44,7 +44,14 @@ return {
 				workspace = {
 					checkThirdParty = false,
 					library = {
+
+						-- Neovim runtime
 						vim.env.VIMRUNTIME,
+
+						-- The vim.uv object
+						"${3rd}/luv/library",
+
+						-- The configuration folder for Neovim
 						vim.fn.stdpath("config"),
 					},
 				},
