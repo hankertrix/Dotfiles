@@ -38,5 +38,39 @@ M.trim_icons = function(icons)
 	end
 end
 
+-- Create the function to patch a plugin's runtime path
+-- so it is loaded before anything else.
+M.patch_plugin_runtime_path = function(plugin_path_pattern)
+	--
+
+	-- Initialise the plugin path
+	local plugin_path = nil
+
+	-- Get the runtime paths
+	local runtime_paths = vim.opt.rtp:get()
+
+	-- Iterate over the paths in the runtime paths
+	for index, path in ipairs(runtime_paths) do
+		--
+
+		-- If the path is the plugin path
+		if path:match(plugin_path_pattern) then
+			--
+
+			-- Remove the path and save it to the variable
+			plugin_path = table.remove(runtime_paths, index)
+
+			-- Break out of the loop
+			break
+		end
+	end
+
+	-- Insert markview path after ~/.config/nvim
+	table.insert(runtime_paths, 2, plugin_path)
+
+	-- Set the runtime paths to the modified one
+	vim.opt.rtp = runtime_paths
+end
+
 -- Returns the module
 return M

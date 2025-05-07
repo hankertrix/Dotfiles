@@ -40,41 +40,8 @@ return {
 		config = function(_, opts)
 			--
 
-			-- Function to patch the runtime path
-			-- so that markview is sourced before anything else
-			local function patch_runtime_path()
-				--
-
-				-- Initialise the markview path
-				local markview_path = nil
-
-				-- Get the runtime paths
-				local runtime_paths = vim.opt.rtp:get()
-
-				-- Iterate over the paths in the runtime paths
-				for index, path in ipairs(runtime_paths) do
-					--
-
-					-- If the path is the markview path
-					if path:match("markview%.nvim") then
-						--
-
-						-- Remove the path and save it to the variable
-						markview_path = table.remove(runtime_paths, index)
-
-						-- Break out of the loop
-						break
-					end
-				end
-
-				-- Insert markview path after ~/.config/nvim
-				table.insert(runtime_paths, 2, markview_path)
-
-				-- Set the runtime paths to the modified one
-				vim.opt.rtp = runtime_paths
-			end
-
-			patch_runtime_path()
+			-- Patch the runtime path
+			require("utils").patch_plugin_runtime_path("markview%.nvim")
 
 			-- Get the presets
 			local presets = require("markview.presets")
