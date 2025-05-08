@@ -22,7 +22,7 @@ chezmoi init --apply
 
 The configuration files are all stored in either [`tilde`](tilde),
 which refers to user-specific configuration found under `~/`,
-or [`root`](root), which are the global configuration options
+or [`slash`](slash), which are the global configuration options
 that apply to all users, which can be found under the `/` folder.
 
 ### [Browser extensions](browser-extensions/) folder
