@@ -1,0 +1,21 @@
+# vi: ft=toml
+#
+# References:
+# https://github.com/felipecrs/dotfiles/blob/master/home/dot_config/rootmoi/private_chezmoi.yaml.tmpl
+# https://github.com/00sapo/dotfiles/blob/main/home/dot_config/rootmoi/chezmoi.yaml
+
+# Get the source directory
+# {{ $sourceDir := joinPath .chezmoi.workingTree .rootConfigFolder }}
+
+# Set the source directory
+sourceDir = "{{ $sourceDir }}"
+
+# Set the destination directory to the root folder
+destDir = "/"
+
+# Enable verbose mode
+verbose = true
+
+# Set the non root user variable
+[data]
+  non_root_user = "{{ .chezmoi.username }}"

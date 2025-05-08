@@ -1,0 +1,98 @@
+#!/usr/bin/env sh
+# vi: ft=sh
+#
+# References:
+# https://github.com/felipecrs/dotfiles/blob/master/home/.chezmoiscripts/run_after_20-run-rootmoi.sh.tmpl
+# https://github.com/00sapo/dotfiles/blob/main/home/.chezmoiscripts/run_after_20-run-rootmoi.sh.tmpl
+
+# Function to log something with a colour
+log_colour() {
+	colour_code="$1"
+	shift
+
+	printf "\033[${colour_code}m%s\033[0m\n" "$*" >&2
+}
+
+log_blue() {
+	log_colour "0;34" "$@"
+}
+
+log_task() {
+	log_blue "🔃" "$@"
+}
+
+log_yellow() {
+	log_colour "1;33" "$@"
+}
+
+log_c() {
+	log_yellow "👉" "$@"
+}
+
+log_green() {
+	log_colour "1;32" "$@"
+}
+
+# Get the rootmoi path
+rootmoi_path='{{ joinPath .chezmoi.homeDir ".local/bin/rootmoi" }}'
+
+# If ROOTMOI is not set, skip running chezmoi as root
+if [ -z "${ROOTMOI:-}" ]; then
+	exit 0
+fi
+
+# Initialise the arguments to rootmoi
+set -- "apply"
+
+# Initialise whether to skip the next argument
+skip_next_argument=false
+
+# Iterate over all the arguments given and filter out incompatible arguments
+for argument in "{{ rest .chezmoi.args | quoteList | join " " }}"; do
+
+	# If the skip next argument variable is true
+	if [ "$skip_next_argument" = true ]; then
+
+		# Skip the next argument
+		skip_next_argument=false
+
+		# Continue the loop
+		continue
+	fi
+
+	# Match on the argument
+	case $argument in
+
+	# Otherwise, the argument is the source option, skip the next argument
+	-S | --source) skip_next_argument=true ;;
+
+	# Otherwise, if the argument is the source option with a value,
+	# skip it
+	-S=* | --source=*) ;;
+
+	# Otherwise, if the argument is the apply flag,
+	# skip it as rootmoi is already applying
+	-a | -a=* | --apply | --apply=*) ;;
+
+	# Otherwise, if the argument is the init flag,
+	# skip it as it doesn't make sense
+	# as chezmoi has already handled it
+	--init) ;;
+
+	# Otherwise, if the argument is a flag or option,
+	# add it to the arguments to rootmoi
+	-*) set -- "$@" "$argument" ;;
+
+	# Skip all positional arguments
+	*) ;;
+	esac
+done
+
+# Log that the root dotfiles are being applied
+log_task "Applying root dotfiles"
+
+# Log the arguments passed to rootmoi
+log_c "rootmoi" "$@"
+
+# Execute rootmoi with the arguments
+exec "$rootmoi_path" "$@"
