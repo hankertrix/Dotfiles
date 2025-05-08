@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2025-03-21T06:34:12.254Z",
+    "createdAt": "2025-05-08T02:26:05.850Z",
     "redirects": [
         {
             "description": "Redirect YouTube Shorts to YouTube Video",
@@ -81,7 +81,7 @@
             "redirectUrl": "https://farside.link/anonymousoverflow/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
