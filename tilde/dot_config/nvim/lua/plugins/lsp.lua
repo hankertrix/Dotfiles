@@ -210,7 +210,6 @@ local function setup()
 	-- Configure the diagnostics
 	vim.diagnostic.config({
 		virtual_text = true,
-		virtual_lines = { current_line = true },
 		signs = {
 			text = {
 				[vim.diagnostic.severity.INFO] = diagnostic_icons.info,
