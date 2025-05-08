@@ -9,9 +9,3 @@ sourceDir = "|| .chezmoi.workingTree ||"
 [merge]
 command = "nvim"
 args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
-
-# Additional data for chezmoi
-[data]
-rootConfigFolder = "slash"
-terminalFont = "Maple Mono NF CN"
-terminalFontSize = 12

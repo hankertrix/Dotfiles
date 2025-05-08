@@ -1,0 +1,4 @@
+# Additional data for chezmoi
+rootConfigFolder = "slash"
+terminalFont = "Maple Mono NF CN"
+terminalFontSize = 12
