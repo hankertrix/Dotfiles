@@ -3,11 +3,11 @@
 
 # Font
 
-# Set the font size to 12
-font-size = 12
+# Set the font size to {{ .terminalFontSize }}
+font-size = {{ .terminalFontSize }}
 
-# Set the font to Maple Mono Nerd Font with Chinese characters
-font-family = "Maple Mono NF CN"
+# Set the font to {{ .terminalFont }}
+font-family = "{{ .terminalFont }}"
 
 # Enable the font features I want
 font-feature = zero
@@ -70,3 +70,5 @@ keybind = ctrl+shift+r=reload_config
 
 # Disable auto updating
 auto-update = off
+
+# vim: ft=conf

@@ -15,11 +15,11 @@ enable_audio_bell no
 
 # Font
 
-# Set the font size to 12
-font_size         12
+# Set the font size to {{ .terminalFontSize }}
+font_size         {{ .terminalFontSize }}
 
-# Set the font to Maple Mono Nerd Font with Chinese characters
-font_family       family="Maple Mono NF CN"
+# Set the font to {{ .terminalFont }}
+font_family       family="{{ .terminalFont }}"
 
 # Automatically get the font variants
 bold_font         auto
@@ -60,3 +60,5 @@ map ctrl+alt+l neighboring_window right
 
 # Keybind to reload the configuration
 map ctrl+shift+r load_config_file
+
+# vi: ft=conf

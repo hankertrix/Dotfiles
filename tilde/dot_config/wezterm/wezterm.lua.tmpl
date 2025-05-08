@@ -1,3 +1,5 @@
+-- vi: ft=lua
+
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
@@ -37,11 +39,11 @@ end
 -- Set the colour scheme to the Bluloco colour scheme
 config.color_scheme = get_colour_scheme(get_appearance())
 
--- Set the font size to 12
-config.font_size = 12
+-- Set the font size to {{ .terminalFontSize }}
+config.font_size = "{{ .terminalFontSize }}"
 
--- Set the font to Maple Mono Nerd Font with Chinese characters
-config.font = wezterm.font("Maple Mono NF CN")
+-- Set the font to {{ .terminalFont }}
+config.font = wezterm.font("{{ .terminalFont }}")
 
 -- Enable the font features I want
 config.harfbuzz_features = { "zero", "ss08" }

@@ -1,10 +1,17 @@
 # vi: ft=toml
 # chezmoi:template:left-delimiter="||" right-delimiter="||"
 
-# Use .dotfiles as the dotfiles directory
-sourceDir = "~/.dotfiles"
+# Use the working tree as the source directory.
+# It also retains the value passed with --source on chezmoi init.
+sourceDir = "|| .chezmoi.workingTree ||"
 
 # Use Neovim as the merge tool
 [merge]
 command = "nvim"
 args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+
+# Additional data for chezmoi
+[data]
+rootConfigFolder = "slash"
+terminalFont = "Maple Mono NF CN"
+terminalFontSize = 12
