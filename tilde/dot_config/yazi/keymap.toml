@@ -221,11 +221,29 @@ on = "C"
 run = "plugin augment-command -- rename --empty=all"
 desc = "Rename file and remove the whole file name"
 
-# Use cr to create a file
+# Use the augmented copy command for cc
 [[manager.prepend_keymap]]
-on = ["c", "r"]
-run = "create"
-desc = "Create a file (ends with / for directories)"
+on = ["c", "c"]
+run = "plugin augment-command -- copy path"
+desc = "Copy the file path"
+
+# Use the augmented copy command for cd
+[[manager.prepend_keymap]]
+on = ["c", "d"]
+run = "plugin augment-command -- copy dirname"
+desc = "Copy the directory path"
+
+# Use the augmented copy command for cf
+[[manager.prepend_keymap]]
+on = ["c", "f"]
+run = "plugin augment-command -- copy filename"
+desc = "Copy the filename"
+
+# Use the augmented copy command for cn
+[[manager.prepend_keymap]]
+on = ["c", "n"]
+run = "plugin augment-command -- copy name_without_ext"
+desc = "Copy the filename without extension"
 
 # Use cm to remove the file name when renaming
 [[manager.prepend_keymap]]
@@ -233,11 +251,23 @@ on = ["c", "m"]
 run = "plugin augment-command -- rename --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
 
+# Use cr to create a file
+[[manager.prepend_keymap]]
+on = ["c", "r"]
+run = "create"
+desc = "Create a file (ends with / for directories)"
+
 # Use ec to go to the config directory for Yazi
 [[manager.prepend_keymap]]
 on = ["e", "c"]
 run = "cd ~/.dotfiles/tilde/dot_config/yazi"
 desc = "Edit the Yazi configuration"
+
+# Use em to emit a Yazi command
+[[manager.prepend_keymap]]
+on = ["e", "m"]
+run = "plugin augment-command -- emit"
+desc = "Emit a Yazi command"
 
 # Use gc to go to the config directory
 [[manager.prepend_keymap]]
