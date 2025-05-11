@@ -20,14 +20,12 @@ return {
 		opts = {},
 	},
 
-	-- Tybr plugin to practice typing
+	-- Typr plugin to practice typing
 	{
-		"hankertrix/tybr",
-		dev = true,
-		dir = "~/projects/tybr",
+		"nvzone/typr",
 		lazy = true,
-		dependencies = { "nvzone/volt" },
-		cmd = { "Tybr", "TybrStats" },
+		dependencies = "nvzone/volt",
+		cmd = { "Typr", "TyprStats" },
 		opts = {},
 	},
 }

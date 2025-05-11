@@ -138,6 +138,11 @@ Nvim-training plugin -
 Hardtime plugin to force me to use more efficient Vim motions -
 [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)
 
+### Miscellaneous
+
+Typr typing plugin -
+[typr][https://github.com/nvzone/typr]
+
 ## Font
 
 [Maple Mono NF CN](https://github.com/subframe7536/maple-font)
