@@ -48,3 +48,4 @@ remotexs.ntu.edu.sg
 google.com
 duckduckgo.com
 archive.ph
+statics.teams.cdn.office.net
