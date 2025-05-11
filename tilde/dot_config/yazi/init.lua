@@ -7,6 +7,7 @@ require("relative-motions"):setup({
 })
 
 -- Configure the git plugin
+---@diagnostic disable-next-line: inject-field
 th.git = th.git
 	or {
 
