@@ -164,6 +164,7 @@ desc = "Add files to an archive"
 # Use Ctrl + s to open a shell in the current directory
 [[manager.prepend_keymap]]
 on = "<C-s>"
+for = "unix"
 run = 'shell "$SHELL" --block'
 desc = "Open shell here"
 
