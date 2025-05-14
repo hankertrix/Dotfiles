@@ -20,11 +20,6 @@ marker_cut = { fg = "#D52753", bg = "#D52753" }
 marker_marked = { fg = "#823FF1", bg = "#823FF1" }
 marker_selected = { fg = "#275FE4", bg = "#275FE4" }
 
-# Tab
-tab_active = { fg = "#0099E1", bg = "#E0E0E0" }
-tab_inactive = { fg = "#B0B0B0", bg = "#F2F2F2" }
-tab_width = 1
-
 # Count
 count_copied = { fg = "#F9F9F9", bg = "#C5A231" }
 count_cut = { fg = "#F9F9F9", bg = "#D52753" }
@@ -47,6 +42,15 @@ fg = "#383A42"
 bg = "reset"
 bold = true
 italic = true
+
+
+[tabs]
+active = { fg = "#383A42", bg = "#F9F9F9" }
+inactive = { fg = "#A0A1A7", bg = "#DCDCDC" }
+
+# Separator
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
 
 
 # Colours for the modes in Yazi.
