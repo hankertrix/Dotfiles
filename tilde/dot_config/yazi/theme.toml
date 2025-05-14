@@ -12,6 +12,10 @@ dark = "bluloco-dark"
 # Remove the borders
 border_symbol = " "
 
+# Set the outer separators
+[tabs]
+sep_outer = { open = "█", close = "█" }
+
 # Set the status separators
 [status]
 sep_left = { open = "", close = "" }
