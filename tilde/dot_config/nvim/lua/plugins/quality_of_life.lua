@@ -264,7 +264,7 @@ return {
 			},
 			{
 				"<Leader>te",
-				function() Snacks.terminal.open() end,
+				function() Snacks.terminal.toggle() end,
 				mode = "n",
 				desc = "Open a terminal",
 			},
