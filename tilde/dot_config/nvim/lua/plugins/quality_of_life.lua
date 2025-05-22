@@ -152,7 +152,10 @@ return {
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			input = { enabled = true },
-			image = { enabled = true, inline = false },
+			image = {
+				enabled = true,
+				doc = { inline = false, float = true },
+			},
 			picker = {
 				enabled = true,
 
