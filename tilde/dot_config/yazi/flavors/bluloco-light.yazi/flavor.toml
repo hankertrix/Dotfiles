@@ -2,7 +2,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 # Bluloco light flavour for Yazi
-[manager]
+[mgr]
 
 # Current working directory
 cwd = { fg = "#0099E1" }
@@ -30,14 +30,14 @@ border_symbol = "│"
 border_style = { fg = "#7A82DA" }
 
 # Find
-[manager.find_keyword]
+[mgr.find_keyword]
 fg = "#EA3971"
 bg = "#B1EACF"
 bold = true
 italic = true
 underline = true
 
-[manager.find_position]
+[mgr.find_position]
 fg = "#383A42"
 bg = "reset"
 bold = true
