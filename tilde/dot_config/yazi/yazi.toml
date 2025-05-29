@@ -2,7 +2,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 # Configurations for the file manager
-[manager]
+[mgr]
 
 # Ratio for the panes in the file manager
 # This follows the lf configuration
