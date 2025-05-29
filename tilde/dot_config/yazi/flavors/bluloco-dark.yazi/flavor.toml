@@ -30,14 +30,14 @@ border_symbol = "│"
 border_style = { fg = "#7A82DA" }
 
 # Find
-[manager.find_keyword]
+[mgr.find_keyword]
 fg = "#E3B80D"
 bg = "#1A7247"
 bold = true
 italic = true
 underline = true
 
-[manager.find_position]
+[mgr.find_position]
 fg = "#ABB2BF"
 bg = "reset"
 bold = true
