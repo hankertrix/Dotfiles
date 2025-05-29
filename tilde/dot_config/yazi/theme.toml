@@ -7,7 +7,7 @@ light = "bluloco-light"
 dark = "bluloco-dark"
 
 # The theme for the file manager
-[manager]
+[mgr]
 
 # Remove the borders
 border_symbol = " "
