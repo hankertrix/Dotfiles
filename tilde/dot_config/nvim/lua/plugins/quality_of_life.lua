@@ -2,10 +2,10 @@
 --
 -- Currently the plugins used are:
 --	- vim-sleuth for automatically detecting the indentation type
---	- markdown-preview.nvim to preview markdown files
+--	- helpview.nvim for nicer looking help files
+--	- markview.nvim for nicer looking markdown files
 --	- mini.trailspace to trim trailing whitespaces and blank lines
 --	- quicker.nvim for an improved and editable quick fix list
---	- aerial.nvim to view an outline of the code
 --	- snacks.nvim for general quality of life improvements
 
 -- Get the icons from the shared configurations
