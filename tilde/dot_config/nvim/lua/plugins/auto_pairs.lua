@@ -8,8 +8,6 @@ return {
 	opts = {
 		disable_filetype = {
 			"TelescopePrompt",
-			"spectre_panel",
-			"Tybr",
 			"typr",
 		},
 	},
