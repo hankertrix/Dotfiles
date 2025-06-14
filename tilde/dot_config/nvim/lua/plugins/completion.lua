@@ -36,7 +36,7 @@ return {
 
 		-- Function to decide when to enable the completion engine
 		enabled = function()
-			return not vim.tbl_contains({ "Tybr", "typr" }, vim.bo.filetype)
+			return not vim.tbl_contains({ "typr" }, vim.bo.filetype)
 		end,
 
 		-- Configuration for the command line
