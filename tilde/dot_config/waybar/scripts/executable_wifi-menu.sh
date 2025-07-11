@@ -107,7 +107,7 @@ if [ -n "$is_saved" ]; then
 		grep "successfully")
 
 	# Set the connected before variable to true
-	connected_before="true"
+	connected_before=true
 fi
 
 # Initialise the counter variable
@@ -142,7 +142,7 @@ while [ $i -lt $MAX_RETRY_COUNT ]; do
 	# delete the connection before trying to connect again
 	#
 	# For some reason, network manager just can't edit an existing connection
-	if [ -n "$connected_before" ]; then
+	if [ "$connected_before" = true ]; then
 		nmcli connection delete "$chosen_id"
 	fi
 
@@ -151,7 +151,7 @@ while [ $i -lt $MAX_RETRY_COUNT ]; do
 		password "$wifi_password" | grep "successfully")
 
 	# Set the connected before variable to true
-	connected_before="true"
+	connected_before=true
 
 	# Increment the counter
 	i=$((i + 1))
