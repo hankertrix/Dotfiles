@@ -12,6 +12,17 @@ contains the configuration I use for FireMonkey,
 a super lightweight user-script and user style manager.
 It just contains the user scripts I use.
 
+## [JShelter](https://jshelter.org/)
+
+The [`jshelter-options.json`] file contains the settings I use for JShelter.
+It's mainly just to add back the WebWorkers support that JShelter removes
+by default, as it breaks a heck ton of websites.
+
+I no longer use JShelter, because it just makes most of the web unusable,
+and I have to disable it every single time for websites that use
+Cloudflare's turnstile CAPTCHA, which is most sites nowadays,
+making it more work than it's worth.
+
 ## [Libredirect](https://libredirect.github.io/)
 
 The [`libredirect-settings.json`](./libredirect-settings.json)
