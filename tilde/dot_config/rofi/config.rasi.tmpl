@@ -1,0 +1,226 @@
+// Rofi config file
+//
+// vi: ft=rasi
+
+// References:
+// https://github.com/mylinuxforwork/dotfiles/blob/main/share/dotfiles/.config/rofi/config.rasi
+
+// Configuration
+configuration {
+	modi: [drun, calc, window, run, emoji];
+	font: "{{ .guiFont }} 12";
+	show-icons: true;
+	icon-theme: "{{ .iconTheme }}";
+	display-drun: "";
+	display-window: "";
+	display-calc: "";
+	display-run: "";
+	display-emoji: "󰇳";
+	drun-display-format: "{name}";
+	window-format: "{w} {c} {t}";
+	hover-select: false;
+	scroll-method: 1;
+	me-select-entry: "";
+	me-accept-entry: "MousePrimary";
+	kb-mode-next: "Shift+Right,Control+Tab,Alt+Tab";
+	kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Alt+ISO_Left_Tab";
+}
+
+/* Include the rofi colours */
+@theme "~/.config/rofi/colours.rasi"
+
+// General settings
+* {
+	default-border-radius: 15px;
+}
+
+// Main
+window {
+	transparency: "real";
+	fullscreen: false;
+	enabled: true;
+	cursor: "default";
+	width: 40em;
+	height: 25em;
+	spacing: 0;
+	padding: 0;
+	border: 2px;
+	border-radius: @default-border-radius;
+	border-color: @border-colour;
+	background-color: @main-background;
+}
+
+mainbox {
+	enabled: true;
+	padding: 1em;
+	orientation: vertical;
+	children: [ "inputbar", "listbox" ];
+	background-color: transparent;
+	background-image: @wallpaper;
+}
+
+// Inputs
+inputbar {
+	enabled: true;
+	padding: 2em;
+	spacing: 0;
+	children: [ "prompt", "textbox-prompt-colon", "entry" ];
+	background-color: transparent;
+}
+
+prompt {
+	padding: 10px 10px 10px 15px;
+	border-radius: 20px 0 0 20px;
+	enabled: true;
+	expand: false;
+	text-color: @text-colour;
+	background-color: @translucent-background;
+}
+
+// The weird padding on this is due to one small section
+// of the app store logo being darkened
+// when there is no right padding on it, which is funky,
+// so we have the padding on the right of the prompt
+// instead of having the padding on the left of the colon.
+textbox-prompt-colon {
+	padding: 10px 10px 10px 0;
+	str: "";
+	enabled: true;
+	expand: false;
+	text-color: @text-colour;
+	background-color: @translucent-background;
+}
+
+entry {
+	padding: 10px 0;
+	border-radius: 0 20px 20px 0;
+	enabled: true;
+	background-color: @translucent-background;
+	text-color: @text-colour;
+	cursor: text;
+}
+
+// Lists
+listbox {
+	spacing: 0;
+	padding: 10px 15px;
+	border-radius: @default-border-radius;
+	orientation: vertical;
+	children: [ "listview", "mode-switcher"];
+	background-color: @translucent-background;
+}
+
+listview {
+	padding: 0;
+	spacing: 0;
+	enabled: true;
+	columns: 1;
+	cycle: true;
+	dynamic: true;
+	scrollbar: false;
+	layout: vertical;
+	reverse: false;
+	fixed-height: false;
+	fixed-columns: true;
+	cursor: "default";
+	background-color: transparent;
+	text-color: @text-colour;
+}
+
+// Modes
+mode-switcher {
+	orientation: horizontal;
+	enabled: true;
+	background-color: transparent;
+}
+
+button {
+	margin: 0 65px;
+	padding: 3px;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: transparent;
+	text-color: @text-colour;
+}
+
+button selected {
+	background-color: @selected-background;
+	text-color: @text-colour;
+}
+
+// Elements
+element {
+	padding: 5px;
+	border-radius: @default-border-radius;
+	enabled: true;
+	cursor: pointer;
+	background-color: transparent;
+	text-color: @text-colour;
+}
+
+element selected.normal {
+	background-color: @selected-background;
+	text-color: @text-colour;
+}
+
+element normal.normal {
+	background-color: inherit;
+	text-color: @text-colour;
+}
+
+element normal.urgent {
+	background-color: inherit;
+	text-color: @text-colour;
+}
+
+element normal.active {
+	background-color: inherit;
+	text-color: @text-colour;
+}
+
+element selected.active {
+	background-color: @selected-background;
+	text-color: @text-colour;
+}
+
+element alternate.normal {
+	background-color: inherit;
+	text-color: @text-colour;
+}
+
+element alternate.urgent {
+	background-color: inherit;
+	text-color: @text-colour;
+}
+
+element alternate.active {
+	background-color: inherit;
+	text-color: @text-colour;
+}
+
+element-icon {
+	size: 20px;
+	padding: 0 5px;
+	cursor: inherit;
+	background-color: transparent;
+	text-color: inherit;
+}
+
+element-text {
+	cursor: inherit;
+	background-color: transparent;
+	text-color: inherit;
+}
+
+// Error message
+error-message {
+	text-color: @text-colour;
+	background-color: @main-background;
+	text-transform: capitalize;
+	children: [ "textbox" ];
+}
+
+textbox {
+	text-color: inherit;
+	background-color: inherit;
+}

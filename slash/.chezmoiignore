@@ -1,0 +1,13 @@
+# Ignore READMEs, LICENSES, formatting files and backup files
+**/README.md
+**/stylua.toml
+**/LICENSE
+**/LICENCE
+**/LICENSE.*
+**/LICENCE.*
+**/*.bak
+
+# Ignore the efi folder as the rootmoi script will execute
+# an additional time to properly sync the efi folder with
+# the correct umask for the FAT32 file system
+**/efi/

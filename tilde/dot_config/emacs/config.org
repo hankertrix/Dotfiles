@@ -533,14 +533,14 @@ Which key is a plugin that displays the possible key binds and what each key bin
 Set the default font to Maple Mono Nerd Font with Chinese characters and a font size of 12.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
-                    :font "Maple Mono NF CN 12"
+                    :font "Maple Mono N NF CN 12"
                     :weight 'medium)
 #+end_src
 
 Set the default mono space font to Maple Mono Nerd Font with Chinese characters and a font size of 12.
 #+begin_src emacs-lisp
 (set-face-attribute 'fixed-pitch nil
-                    :font "Maple Mono NF CN 12"
+                    :font "Maple Mono N NF CN 12"
                     :weight 'medium)
 #+end_src
 
@@ -551,7 +551,7 @@ Make comments italic.
 
 Set up the font such that it will work on emacsclient.
 #+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(font . "Maple Mono NF CN 12"))
+(add-to-list 'default-frame-alist '(font . "Maple Mono N NF CN 12"))
 #+end_src
 
 * Emacs' settings
@@ -581,6 +581,11 @@ Disable the menu, the toolbar and the scroll bar.
 Disable tool tips.
 #+begin_src emacs-lisp
 (tooltip-mode -1)
+#+end_src
+
+*** Disable window decorations
+#+begin_src emacs-lisp
+(add-to-list 'default-frame-alist '(undecorated . t))
 #+end_src
 
 *** Show the maximum column width
@@ -992,7 +997,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
                     :server-id 'efm))
 
   ;; Ensure that efm language server is installed
-  :ensure-system-package (efm-langserver . "yay -S efm-langserver"))
+  :ensure-system-package (efm-langserver . "paru -S efm-langserver"))
 #+end_src
 
 *** UI for LSP mode
@@ -1084,7 +1089,7 @@ LTEX+ is a language server that checks the file for writing errors in various la
   :ensure (lsp-ltex-plus :host github :repo "emacs-languagetool/lsp-ltex-plus")
 
   ;; Ensure LTEX+ exists
-  :ensure-system-package (ltex-ls-plus . "yay -S ltex-ls-plus-bin")
+  :ensure-system-package (ltex-ls-plus . "paru -S ltex-ls-plus-bin")
 
   ;; Customise LTEX+
   :custom
@@ -1110,7 +1115,7 @@ Basedpyright is a fork of Pyright, a Python language server by Microsoft, with v
 (use-package lsp-pyright
 
   ;; Ensure basedpyright exists
-  :ensure-system-package (basedpyright . "yay -S basedpyright")
+  :ensure-system-package (basedpyright . "paru -S basedpyright")
 
   ;; Customise lsp-pyright
   :custom
@@ -1760,9 +1765,9 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
     )
   )
 
-;; Ensure transient is updated as well,
-;; as it is a magit dependency
+;; Ensure magit dependencies are updated as well.
 (use-package transient)
+(use-package llama)
 #+end_src
 
 * Org mode

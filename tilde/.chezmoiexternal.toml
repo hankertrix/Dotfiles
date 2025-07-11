@@ -1,0 +1,35 @@
+[".local/share/icons/Hacked-White-Cursor"]
+type = "archive"
+url = "https://www.dropbox.com/s/d3a4ne5fcrdjkva/Hacked-White.tgz?dl=1"
+exact = true
+stripComponents = 1
+
+[".local/share/icons/Hacked-Sky-Cursor"]
+type = "archive"
+url = "https://www.dropbox.com/s/pf22mi9es4wiz75/Hacked-Sky.tgz?dl=1"
+exact = true
+stripComponents = 1
+
+[".local/share/icons/Hacked-Red-Cursor"]
+type = "archive"
+url = "https://www.dropbox.com/s/b3nwc1y4h4urfoo/Hacked-Red.tgz?dl=1"
+exact = true
+stripComponents = 1
+
+[".local/share/icons/Hacked-Pink-Cursor"]
+type = "archive"
+url = "https://www.dropbox.com/s/tsbsxp1xu3mq70w/Hacked-Pink.tgz?dl=1"
+exact = true
+stripComponents = 1
+
+[".local/share/icons/Hacked-Green-Cursor"]
+type = "archive"
+url = "https://www.dropbox.com/s/jzinbd7o5fnkzhi/Hacked-Green.tgz?dl=1"
+exact = true
+stripComponents = 1
+
+[".local/share/icons/Hacked-Black-Cursor"]
+type = "archive"
+url = "https://www.dropbox.com/s/iwfe2xt7incdwmu/Hacked-Black.tgz?dl=1"
+exact = true
+stripComponents = 1

@@ -1,4 +1,19 @@
 # Additional data for chezmoi
 rootConfigFolder = "slash"
-terminalFont = "Maple Mono NF CN"
+
+# Maple Mono N is the standard Maple Mono with double width icons
+terminalFont = "Maple Mono N NF CN"
 terminalFontSize = 12
+
+# Maple Mono M is Maple Mono with single width icons (Nerd Fonts Mono)
+monoFont = "Maple Mono M NF CN"
+
+# Maple Mono P is Maple Mono with variable width icons (Nerd Fonts Propo)
+guiFont = "Maple Mono P NF CN"
+
+# The icon theme used
+iconTheme = "kora"
+
+# The cursor theme used
+cursorTheme = "Hacked-Sky-Cursor"
+cursorSize = 24

@@ -1,0 +1,254 @@
+#![enable(implicit_some, unwrap_newtypes, unwrap_variant_newtypes)]
+(
+    default_album_art_path: None,
+    cava: (
+        orientation: Bottom,
+
+        // The bar colours are the exact same as the cava configuration.
+        // They are doubled because each colour takes up 1 row.
+        bar_color: Rows([
+            "{{ color15 if 'light' in palette else color1 }}",
+            "{{ color15 if 'light' in palette else color1 }}",
+            "{{ color5 if 'light' in palette else color3 }}",
+            "{{ color5 if 'light' in palette else color3 }}",
+            "{{ color3 if 'light' in palette else color11 }}",
+            "{{ color3 if 'light' in palette else color11 }}",
+            "{{ color2 if 'light' in palette else color4 }}",
+            "{{ color2 if 'light' in palette else color4 }}",
+            "{{ color10 if 'light' in palette else color12 }}",
+            "{{ color10 if 'light' in palette else color12 }}",
+            "{{ color8 if 'light' in palette else color6 }}",
+            "{{ color8 if 'light' in palette else color6 }}",
+            "{{ color9 if 'light' in palette else color13 }}",
+            "{{ color9 if 'light' in palette else color13 }}",
+            "{{ color0 if 'light' in palette else color15 }}",
+            "{{ color0 if 'light' in palette else color15 }}",
+        ])
+    ),
+    show_song_table_header: true,
+    draw_borders: true,
+    format_tag_separator: " | ",
+
+    // The ratio of 1, 2, 3 from Yazi and lf
+    browser_column_widths: [17, 34, 49],
+    background_color: None,
+    text_color: "{{ color8 | blend(foreground) }}",
+    header_background_color: None,
+    modal_background_color: None,
+    modal_backdrop: false,
+    preview_label_style: (fg: "{{ color6 }}"),
+    preview_metadata_group_style: (fg: "{{ color6 }}", modifiers: "Bold"),
+    tab_bar: (
+        active_style: (
+            fg: "{{ color8 | lighten(0.4) }}",
+            bg: "{{ color1 }}",
+            modifiers: "Bold"
+        ),
+        inactive_style: (fg: "{{ color6 }}"),
+    ),
+    highlighted_item_style: (fg: "{{ color12 }}", modifiers: "Bold"),
+    current_item_style: (
+        fg: "{{ color8 | lighten(0.4) }}",
+        bg: "{{ color1 }}",
+        modifiers: "Bold",
+    ),
+    borders_style: (fg: "{{ color12 }}"),
+    highlight_border_style: (fg: "{{ color12 }}"),
+    symbols: (
+        song: "󰝚",
+        dir: "󱍙",
+        playlist: "󰲸",
+        marker: "󰷞 ",
+        ellipsis: "...",
+        song_style: (fg: "{{ color3 | blend('#FF00FF') }}"),
+        dir_style: (fg: "{{ color12 | blend('#00FFFF') }}"),
+        playlist_style: (fg: "{{ color5 | blend('#008000') }}"),
+    ),
+    level_styles: (
+        info: (fg: "{{ color3 | blend(color1) | blend('#800080') }}"),
+        warn: (fg: "{{ color8 | blend('#FFFF00') }}"),
+        error: (fg: "{{ color12 | blend('#FF0000') }}"),
+        debug: (fg: "{{ color4 | blend('#00FF00') }}"),
+        trace: (fg: "{{ color3 | blend('#FF00FF') }}"),
+    ),
+    progress_bar: (
+        symbols: [
+            "{{ ' ' if 'light' in palette else ' ' }}",
+            "█",
+            " ",
+            " ",
+            ""
+        ],
+        track_style: (fg: "{{ color11 }}"),
+        elapsed_style: (fg: "{{ color11 }}"),
+        thumb_style: (fg: "{{ color11 }}"),
+    ),
+    scrollbar: (
+        symbols: ["│", "█", "▲", "▼"],
+        track_style: (fg: "{{ color7 }}"),
+        ends_style: (fg: "{{ color6 }}"),
+        thumb_style: (fg: "{{ color12 }}"),
+    ),
+    song_table_format: [
+        (
+            prop: (kind: Property(Artist),
+                default: (kind: Text("Unknown"))
+            ),
+            width: "15%",
+        ),
+        (
+            prop: (kind: Property(Title),
+                default: (kind: Text("Unknown"))
+            ),
+            width: "40%",
+        ),
+        (
+            prop: (kind: Property(Album), style: (fg: "{{ color13 }}"),
+                default: (
+                    kind: Text("Unknown Album"), style: (fg: "{{ color13 }}")
+                )
+            ),
+            width: "25%",
+        ),
+        (
+            prop: (kind: Property(Duration),
+                default: (kind: Text("-"))
+            ),
+            width: "20%",
+            alignment: Right,
+        ),
+    ],
+    components: {
+        "progress_bar": Split(
+            direction: Horizontal,
+            panes: [
+                (
+                    size: "3",
+                    pane: Pane(Property(content:
+                        [
+                            (kind: Text(" ")),
+                            (kind: Property(Status(StateV2(
+                                playing_label: "",
+                                paused_label: "",
+                                stopped_label: "")))
+                            ),
+                        ], align: Left)),
+                ),
+                (
+                    size: "100%",
+                    pane: Pane(ProgressBar),
+                ),
+                (
+                    size: "23",
+                    pane: Pane(Property(
+                        content: [
+                            (kind: Property(Status(Elapsed))),
+                            (kind: Text(" / ")),
+                            (kind: Property(Status(Duration))),
+                            (kind: Group([
+                                (kind: Text(" (")),
+                                (kind: Property(Status(Bitrate))),
+                                (kind: Text(" kbps)")),
+                            ])),
+                        ], align: Right,
+                    )),
+                )
+            ]
+        )
+    },
+    layout: Split(
+        direction: Vertical,
+        panes: [
+            (
+                pane: Pane(Header),
+                size: "2",
+            ),
+            (
+                pane: Pane(Tabs),
+                size: "3",
+            ),
+            (
+                pane: Pane(TabContent),
+                size: "100%",
+            ),
+            (
+                pane: Pane(Property(content: [(kind: Text(""))])),
+                size: "1",
+            ),
+            (
+                pane: Component("progress_bar"),
+                size: "1",
+            ),
+        ],
+    ),
+    header: (
+        rows: [
+            (
+                left: [
+                    (kind: Property(Widget(ScanStatus)), style: (
+                        fg: "{{ color12 }}"
+                    )),
+                ],
+                center: [
+                    (kind: Property(Song(Title)), style: (modifiers: "Bold"),
+                        default: (kind: Text("No Song"), style: (
+                            modifiers: "Bold"
+                        ))
+                    )
+                ],
+                right: [
+                    (kind: Property(Widget(Volume)), style: (
+                        fg: "{{ color12 }}"
+                    ))
+                ],
+            ),
+            (
+                left: [
+                    (kind: Property(Song(Artist)),
+                        style: (fg: "{{ color6 }}", modifiers: "Bold"),
+                        default: (
+                            kind: Text("Unknown"), style: (
+                                fg: "{{ color6 }}", modifiers: "Bold"
+                            )
+                        ),
+                    ),
+                ],
+                center: [
+                    (kind: Property(Song(Album)),
+                        default: (kind: Text("Unknown Album"))
+                    )
+                ],
+                right: [
+                    (
+                        kind: Property(Widget(States(
+                            active_style: (
+                                fg: "{{ color13 }}", modifiers: "Bold"
+                            ),
+                            separator_style: (fg: "{{ color13 }}")))
+                        ),
+                        style: (fg: "{{ color14 | darken(0.2) }}")
+                    ),
+                ]
+            ),
+        ],
+    ),
+    browser_song_format: [
+        (
+            kind: Group([
+                (kind: Property(Track)),
+                (kind: Text(" ")),
+            ])
+        ),
+        (
+            kind: Group([
+                (kind: Property(Artist)),
+                (kind: Text(" - ")),
+                (kind: Property(Title)),
+            ]),
+            default: (kind: Property(Filename))
+        ),
+    ],
+    lyrics: (
+        timestamp: false
+    )
+)

@@ -1,0 +1,88 @@
+# Maintainer: Hanker
+pkgname='maple-mono-custom-git'
+pkgver=r604.b447d82
+pkgrel=1
+pkgdesc='A custom build of the Maple Mono font.'
+arch=('any')
+url='https://github.com/subframe7536/Maple-font'
+license=('OFL-1.1')
+depends=()
+makedepends=('git' 'python' 'uv' 'jq' 'fontforge')
+provides=('maple-mono-custom')
+conflicts=('maple-mono-custom')
+source=("$pkgname::git+https://github.com/subframe7536/Maple-font.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname" || exit 1
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$pkgname" || exit 1
+
+	# Install the packages required
+	uv sync
+
+	# Modify the config file to change the family name to Maple Mono N,
+	# use dotted zero, enable double headed and reverse arrows,
+	# enable alternate not equals '~=' symbol,
+	# and enable chinese characters.
+	edited_config=$(jq '.family_name = "Maple Mono N"' config.json |
+		jq '.feature_freeze.zero = "enable"' |
+		jq '.feature_freeze.ss08 = "enable"' |
+		jq '.feature_freeze.ss09 = "enable"' |
+		jq '.cn.enable = true')
+
+	# Write the edited config
+	echo "$edited_config" >config.json
+
+	# Build the TTF format with the configuration
+	uv run build.py --ttf-only
+
+	# Move the NF-CN folder out of the fonts directory
+	mv fonts/NF-CN/ MapleMonoN-NF-CN
+
+	# Edit the configuration file for nerd font mono
+	# M for mono
+	edited_config=$(jq '.family_name = "Maple Mono M"' config.json)
+
+	# Write the edited config
+	echo "$edited_config" >config.json
+
+	# Build the TTF format with monospaced nerd fonts
+	uv run build.py --ttf-only --nf-mono
+
+	# Move the NF-CN folder out of the fonts directory
+	mv fonts/NF-CN/ MapleMonoM-NF-CN
+
+	# Edit the configuration file for nerd font propo
+	# P for propo
+	edited_config=$(jq '.family_name = "Maple Mono P"' config.json |
+		jq '.nerd_font.extra_args = ["--variable-width-glyphs"]')
+
+	# Write the edited config
+	echo "$edited_config" >config.json
+
+	# Build the TTF format with variable width glyphs
+	uv run build.py --ttf-only
+
+	# Move the NF-CN folder out of the fonts directory
+	mv fonts/NF-CN/ MapleMonoP-NF-CN
+}
+
+package() {
+	cd "$pkgname" || exit 1
+
+	# Install the licence
+	install -d "$pkgdir/usr/share/licenses/maple-mono-custom-git"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/maple-mono-custom-git" OFL.txt
+
+	# Iterate over each version of Maple Mono
+	for version in "N" "M" "P"; do
+
+		# Install the font
+		install -d "$pkgdir/usr/share/fonts/MapleMono$version-NF-CN"
+		install -Dm644 -t "$pkgdir/usr/share/fonts/MapleMono$version-NF-CN" MapleMono$version-NF-CN/*.ttf
+	done
+}

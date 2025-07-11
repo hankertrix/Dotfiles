@@ -15,14 +15,14 @@ preview_hovered = { underline = true }
 symlink_target = { italic = true }
 
 # Marker
-marker_copied = { fg = "#C5A231", bg = "#C5A231" }
-marker_cut = { fg = "#D52753", bg = "#D52753" }
+marker_copied = { fg = "#C5A332", bg = "#C5A332" }
+marker_cut = { fg = "#D52652", bg = "#D52652" }
 marker_marked = { fg = "#823FF1", bg = "#823FF1" }
 marker_selected = { fg = "#275FE4", bg = "#275FE4" }
 
 # Count
-count_copied = { fg = "#F9F9F9", bg = "#C5A231" }
-count_cut = { fg = "#F9F9F9", bg = "#D52753" }
+count_copied = { fg = "#F9F9F9", bg = "#C5A332" }
+count_cut = { fg = "#F9F9F9", bg = "#D52652" }
 count_selected = { fg = "#F9F9F9", bg = "#275FE4" }
 
 # Border
@@ -74,8 +74,8 @@ select_main = { fg = "#F9F9F9", bg = "#823FF1" }
 select_alt = { fg = "#823FF1", bg = "#DEE1E3" }
 
 # Unset mode
-unset_main = { fg = "#F9F9F9", bg = "#D52753" }
-unset_alt = { fg = "#D52753", bg = "#DEE1E3" }
+unset_main = { fg = "#F9F9F9", bg = "#D52652" }
+unset_alt = { fg = "#D52652", bg = "#DEE1E3" }
 
 
 [status]
@@ -87,7 +87,7 @@ sep_right = { open = "", close = "" }
 perm_sep = { fg = "#B0B0B0" }
 perm_type = { fg = "#0098DD" }
 perm_read = { fg = "#823FF1" }
-perm_write = { fg = "#D52753" }
+perm_write = { fg = "#D52652" }
 perm_exec = { fg = "#23974A" }
 
 # Progress
@@ -108,10 +108,10 @@ separator_style = { fg = "#7A82DA" }
 [confirm]
 border = { fg = "#7A82DA" }
 title = { fg = "#7A82DA" }
-content = {}
+body = {}
 list = {}
 btn_yes = { fg = "#23974A" }
-btn_no = { fg = "#D52753" }
+btn_no = { fg = "#D52652" }
 btn_labels = ["Yes", "No"]
 
 
@@ -186,7 +186,7 @@ rules = [
 	{ mime = "audio/*", fg = "#40B8C5" },
 
 	# Archives
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#D52753" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#EE5672" },
 
 	# Documents
 	{ mime = "application/{pdf,doc,rtf}", fg = "#047485" },

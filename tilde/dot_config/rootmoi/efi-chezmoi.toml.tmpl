@@ -1,0 +1,25 @@
+# vi: ft=toml
+#
+# References:
+# https://github.com/felipecrs/dotfiles/blob/master/home/dot_config/rootmoi/private_chezmoi.yaml.tmpl
+# https://github.com/00sapo/dotfiles/blob/main/home/dot_config/rootmoi/chezmoi.yaml
+
+# Set the source directory
+sourceDir = '{{ joinPath .chezmoi.workingTree .rootConfigFolder "boot/efi" }}'
+
+# Set the destination directory to the root folder
+destDir = "/boot/efi/"
+
+# Enable verbose mode
+verbose = true
+
+# Set the umask to 0o27 for the EFI directory,
+# as the directory is a FAT32 filesystem
+# with no support for Linux file system permissions,
+# so the default permissions are 750 for directories
+# and 640 for files.
+umask = 0o27
+
+# Set the non root user variable
+[data]
+  non_root_user = "{{ .chezmoi.username }}"

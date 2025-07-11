@@ -1,13 +1,15 @@
-#!/usr/bin/env sh
-# vi: ft=sh
-#
+#!/bin/sh
+
+# Script to execute chezmoi as root to manage the / folder
+
 # References:
 # https://github.com/felipecrs/dotfiles/blob/master/home/dot_local/bin/executable_rootmoi.tmpl
 # https://github.com/00sapo/dotfiles/blob/main/home/dot_local/bin/empty_executable_rootmoi.tmpl
 
 # Get all the paths to chezmoi files
 # {{ $configDir := joinPath .chezmoi.homeDir ".config/rootmoi" }}
-# {{ $configFile := joinPath $configDir "chezmoi.toml" }}
+# {{ $rootConfigFile := joinPath $configDir "root-chezmoi.toml" }}
+# {{ $efiConfigFile := joinPath $configDir "efi-chezmoi.toml" }}
 # {{ $persistentStateFile := joinPath $configDir "chezmoistate.boltdb" }}
 # {{ $cacheDir := joinPath .chezmoi.homeDir ".cache/rootmoi" }}
 
@@ -29,6 +31,17 @@ mkdir -p '{{ $configDir }}' '{{ $cacheDir }}'
 
 # Execute chezmoi as root, also known as rootmoi
 PATH=$PATH sudo "${executable}" "$@" \
-	--config='{{ $configFile }}' \
+	--config='{{ $rootConfigFile }}' \
 	--persistent-state='{{ $persistentStateFile }}' \
 	--cache='{{ $cacheDir }}'
+
+# Execute chezmoi once more as root for the efi directory
+# so the proper umask can be set for the FAT32 file system
+# and actual changes to the files are correctly identified,
+# instead of always detecting the file mode as a change
+PATH=$PATH sudo "${executable}" "$@" \
+	--config='{{ $efiConfigFile }}' \
+	--persistent-state='{{ $persistentStateFile }}' \
+	--cache='{{ $cacheDir }}'
+
+# vi: ft=sh

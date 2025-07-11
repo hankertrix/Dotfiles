@@ -1,0 +1,244 @@
+{
+	// Waybar at the top layer
+	"layer": "top",
+	// Place waybar at the bottom
+	"position": "bottom",
+	// Reload the CSS styles when the CSS stylesheet changes
+	"reload_style_on_change": true,
+	//
+	//
+	// Modules on the left
+	"modules-left": [
+		"niri/workspaces",
+		"group/hardware",
+		"keyboard-state"
+	],
+	//
+	//
+	// Modules on the centre
+	"modules-center": [
+		"niri/window"
+	],
+	//
+	//
+	// Modules on the right
+	"modules-right": [
+		"group/indicators",
+		"network",
+		"group/time",
+		"custom/recording",
+		"tray"
+	],
+	"include": [
+		"~/.config/waybar/waybar-calendar.jsonc"
+	],
+	//
+	//
+	// Module configuration
+	"tray": {
+		"spacing": 4
+	},
+	"group/time": {
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 300,
+			"transition-left-to-right": true
+		},
+		"modules": [
+			"clock",
+			"clock#calendar"
+		]
+	},
+	"clock": {
+		"tooltip": false,
+		"format": "<span size='40%'> </span>{:%I:%M%p}"
+	},
+	"group/hardware": {
+		"orientation": "inherit",
+		"modules": [
+			"temperature",
+			"cpu",
+			"memory",
+			"disk",
+			"battery"
+		]
+	},
+	"temperature": {
+		"tooltip": false,
+		"critical-threshold": 80,
+		// "format-critical": "{temperatureC}°C {icon}",
+		"format": "{icon}<span size='30%'> </span>{temperatureC}°C",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"cpu": {
+		"tooltip": false,
+		"format": "<span size='30%'> </span>{usage}%"
+	},
+	"memory": {
+		"format": "<span size='30%'> </span>{}%"
+	},
+	"disk": {
+		"format": "<span size='30%'> </span>{percentage_used}%",
+		"path": "/home"
+	},
+	"battery": {
+		"states": {
+			// "good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon}<span size='30%'> </span>{capacity}%",
+		"format-full": "{icon}<span size='30%'> </span>{capacity}%",
+		"format-charging": "<span size='30%'> </span>{capacity}%",
+		"format-plugged": "<span size='30%'> </span>{capacity}%",
+		// "format-alt": "{icon} {time}",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	// The configuration here is just to get rid of the warning
+	"niri/window": {
+		"tooltip": false,
+		"swap-icon-label": false
+	},
+	"group/indicators": {
+		"orientation": "inherit",
+		"modules": [
+			"group/audio",
+			"backlight"
+		]
+	},
+	"group/audio": {
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 1000,
+			"transition-left-to-right": false
+		},
+		"modules": [
+			"pulseaudio",
+			"mpris"
+		]
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": "{icon}<span size='40%'> </span>{percent}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "{icon}<span size='40%'> </span>{volume}%",
+		"format-bluetooth": "{icon}󰂯<span size='30%'> </span>{volume}%",
+		"format-bluetooth-muted": "{icon}󰂯<span size='40%'> </span>",
+		"format-muted": "",
+		"format-source": "<span size='40%'> </span>{volume}%",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "󱡏",
+			"headset": "",
+			"phone": "",
+			"phone-muted": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				""
+			]
+		}
+	},
+	"mpris": {
+		"format": "{status_icon} {player_icon} {dynamic}",
+		"dynamic-order": [
+			"artist",
+			"title",
+			"album",
+			"position",
+			"length"
+		],
+		"dynamic-importance-order": [
+			"title",
+			"position",
+			"length",
+			"artist",
+			"album"
+		],
+		"status-icons": {
+			"playing": "",
+			"paused": "",
+			"stopped": ""
+		},
+		"player-icons": {
+			"default": "",
+			"firefox": "",
+			"mpd": "󰌳",
+			"zen": "󰺕",
+			"zen-browser": "󰺕",
+			"chrome": "",
+			"chromium": "",
+			"brave": "",
+			"brave-browser": ""
+		}
+	},
+	"network": {
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"format-wifi": " {essid} ({signalStrength}%)",
+		"format-ethernet": " <span size='40%'> </span>{ipaddr}/{cidr}",
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "󰌙<span size='40%'> </span>Disconnected",
+		"on-click": "~/.config/waybar/scripts/wifi-menu.sh"
+	},
+	"keyboard-state": {
+		"numlock": true,
+		"capslock": true,
+		"format": "{icon}<span size='40%'> </span>{name}",
+		"format-icons": {
+			"locked": "",
+			"unlocked": ""
+		}
+	},
+	"niri/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": "",
+			"default": "",
+			"empty": ""
+		}
+	},
+	"custom/recording": {
+		// Enable tooltip display using the 'tooltip' field from the JSON
+		"tooltip": true,
+		// Use "format": "{}" to display the 'text' field from the JSON output
+		"format": "{}",
+		// Specify that the exec script returns JSON
+		"return-type": "json",
+		// The signal to display the indicator
+		"signal": 8,
+		// Path to the status monitoring script
+		"exec": "~/.config/waybar/scripts/check-screen-recording.sh",
+		// Path to the toggle script
+		"on-click": "~/.local/bin/record-screen"
+	}
+}

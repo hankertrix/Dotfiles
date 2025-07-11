@@ -1,0 +1,30 @@
+// vi: ft=jsonc
+// chezmoi:template:left-delimiter="||" right-delimiter="||"
+// The waybar calendar module with the correct colours filled in
+{
+	"clock#calendar": {
+		"format": "{:%a %d %b %Y}",
+		"tooltip-format": "<tt><span size='10pt' font='|| .guiFont ||'>{calendar}</span></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='{{ color9 | lighten(0.7) }}'><b>{}</b></span>",
+				"days": "<span color='{{ color12 | lighten(0.7) }}'><b>{}</b></span>",
+				"weeks": "<span color='{{ color3 | blend('#00FFFF') | lighten(0.3) }}'><b>W{}</b></span>",
+				"weekdays": "<span color='{{ color11 | blend('#FFFF00') | lighten(0.3) }}'><b>{}</b></span>",
+				"today": "<span color='{{ color4 | blend('#FF0000') | lighten(0.3) }}'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+
+			// Invert the actions as the scrolling is inverted
+			// for some reason.
+			"on-scroll-up": "shift_down",
+			"on-scroll-down": "shift_up"
+		}
+	}
+}

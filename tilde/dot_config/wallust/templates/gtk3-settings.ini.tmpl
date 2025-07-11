@@ -1,0 +1,13 @@
+# GTK settings
+#
+# Reference:
+# https://github.com/mylinuxforwork/dotfiles/blob/main/share/dotfiles/.config/gtk-3.0/settings.ini
+# vi: ft=ini
+# chezmoi:template:left-delimiter="||" right-delimiter="||"
+
+[Settings]
+gtk-theme-name=Adwaita
+gtk-icon-theme-name=|| .iconTheme ||
+gtk-cursor-theme-name=|| .cursorTheme ||
+gtk-cursor-theme-size=|| .cursorSize ||
+gtk-application-prefer-dark-theme={{ "false" if "light" in palette else "true" }}

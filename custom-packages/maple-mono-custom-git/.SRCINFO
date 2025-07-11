@@ -1,0 +1,18 @@
+pkgbase = maple-mono-custom-git
+	pkgdesc = A custom build of the Maple Mono font.
+	pkgver = r603.09ea457
+	pkgrel = 1
+	url = https://github.com/subframe7536/Maple-font
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	makedepends = python
+	makedepends = uv
+	makedepends = jq
+	makedepends = fontforge
+	provides = maple-mono-custom
+	conflicts = maple-mono-custom
+	source = maple-mono-custom-git::git+https://github.com/subframe7536/Maple-font.git
+	md5sums = SKIP
+
+pkgname = maple-mono-custom-git

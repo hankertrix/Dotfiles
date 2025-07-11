@@ -1,0 +1,173 @@
+/* vi: ft=css
+ *
+ * Waybar styles
+ *
+ * Reference:
+ * https://github.com/JaKooLit/Hyprland-Dots/blob/main/config/waybar/style/[Wallust%20Transparent]%20Crystal%20Clear.css
+ */
+
+@import "colours.css";
+
+@define-color workspace-active mix(@text, @blended-background, 0.7);
+
+/* General settings */
+* {
+	font-family: "{{ .guiFont }}";
+	font-feature-settings: '"zero", "ss08", "ss09"';
+	border: none;
+	border-radius: 0;
+	color: @text;
+}
+
+window#waybar {
+	background-color: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	margin-bottom: 5px;
+}
+
+.modules-left label.module,
+.modules-right label.module {
+	padding: 0 5px;
+}
+
+tooltip {
+	background-color: transparent;
+	border: none;
+}
+
+tooltip label {
+	color: @tooltip-colour;
+	background-color: @tooltip-background;
+	padding: 10px;
+	border-radius: 10px;
+	border: solid 1px @tooltip-colour;
+	opacity: 0.8;
+}
+
+#workspaces,
+#hardware,
+#keyboard-state {
+	border-radius: 20px;
+	margin-left: 5px;
+	padding: 0 5px;
+	background-color: @blended-background;
+}
+
+#workspaces button {
+	padding: 0 4px;
+	border-radius: 50%;
+}
+
+#workspaces button.focused,
+#workspace button.active {
+	background-color: @workspace-active;
+}
+
+#temperature.critical {
+	color: @blended-red;
+}
+
+#battery {
+	border-radius: 20px;
+}
+
+#battery.plugged,
+#battery.charging {
+	color: @blended-green;
+}
+
+#battery.warning:not(.charging) {
+	color: @blended-yellow;
+}
+
+@keyframes battery-critical {
+	to {
+		background-color: @blended-red;
+		color: #ffffff;
+	}
+}
+
+#battery.critical:not(.charging) {
+	animation-name: battery-critical;
+	animation-duration: 0.5s;
+	animation-timing-function: steps(12);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+#keyboard-state {
+	padding: 0 10px;
+	margin: 0 5px;
+}
+
+#keyboard-state label.locked {
+	color: @blended-yellow;
+}
+
+
+#keyboard-state label.capslock {
+	padding-right: 8px;
+}
+
+#window {
+	border-radius: 20px;
+	padding: 0 10px;
+	margin: 0 20px;
+	background-color: @blended-background;
+}
+
+window.#waybar.empty #window {
+	background-color: transparent;
+}
+
+#indicators,
+#network,
+#time,
+#tray {
+	border-radius: 20px;
+	margin-right: 5px;
+	background-color: @blended-background;
+}
+
+#indicators,
+#time,
+#tray {
+	padding: 0 5px;
+}
+
+#network {
+	padding: 0 10px;
+}
+
+#mpris {
+	margin-right: -8px;
+}
+
+#indicators {
+	margin: 0 5px;
+}
+
+#custom-recording {
+	border-radius: 50%;
+	margin-right: 5px;
+	padding: 0 6px;
+	background-color: @blended-background;
+}
+
+@keyframes recording {
+	to {
+		color: @blended-red;
+	}
+}
+
+#custom-recording.recording {
+	animation-name: recording;
+	animation-duration: 0.7s;
+	animation-timing-function: steps(12);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}

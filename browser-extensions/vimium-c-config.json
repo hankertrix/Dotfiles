@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "03/03/2025, 1:53:37 am",
-	"time": 1740938017533,
+	"@time": "27/06/2025, 12:38:39 pm",
+	"time": 1750999119711,
 	"environment": {
-		"extension": "1.99.997",
+		"extension": "2.12.3",
 		"platform": "linux",
-		"firefox": 135
+		"firefox": 139
 	},
 	"exclusionRules": [
 		{
@@ -26,7 +26,7 @@
 		}
 	],
 	"grabBackFocus": true,
-	"keyLayout": 2,
+	"keyLayout": 34,
 	"keyMappings": [
 		"#!no-check",
 		"# Automatically open the Vomnibar when creating a new tab",
@@ -39,6 +39,7 @@
 		"map K previousTab",
 		""
 	],
+	"keyupTime": 200,
 	"searchEngines": [
 		"# Search Engines",
 		"bi: https://cn.bing.com/search?q=$s",

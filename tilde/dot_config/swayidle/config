@@ -1,0 +1,12 @@
+# Configuration for swayidle
+# vi: ft=conf
+
+# Lock the screen after 15 minutes of inactivity
+timeout 900 'swaylock'
+
+# Power off the monitors 5 seconds after the screen
+# is locked due to inactivity
+timeout 905 'niri msg action power-off-monitors'
+
+# Lock the screen right before sleeping
+before-sleep 'swaylock'

@@ -1,0 +1,190 @@
+//	Fastfetch configuration
+//
+//	Reference: https://forum.endeavouros.com/t/fastfetch-config-tinkering/60919/79
+{
+	"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+	"logo": {
+		"type": "auto",
+		"source": "~/.config/fastfetch/arch-legacy-wombat-logo.png",
+		"padding": {
+			"top": 8,
+			"left": 2,
+			"right": 2
+		}
+	},
+	"display": {
+		"separator": " "
+	},
+	"modules": [
+		{
+			"key": "╭─────────────────────╮",
+			"type": "custom"
+		},
+		{
+			"key": "│ {#33}                   {#keys}│",
+			"type": "title",
+			"format": "{user-name}"
+		},
+		{
+			"key": "├─────────────────────┤",
+			"type": "custom"
+		},
+		{
+			"key": "│ {#33}         󱓞          {#keys}│",
+			"type": "title",
+			"format": "{host-name}"
+		},
+		{
+			"key": "├─────────────────────┤",
+			"type": "custom"
+		},
+		{
+			"key": "│ {#33}󰇅  Machine          {#keys}│",
+			"type": "host"
+		},
+		{
+			"key": "│ {#33}󰍹  Monitor          {#keys}│",
+			"type": "monitor"
+		},
+		{
+			"key": "│ {#33}  Board            {#keys}│",
+			"type": "board"
+		},
+		{
+			"key": "│ {#33}  Bios             {#keys}│",
+			"type": "bios"
+		},
+		{
+			"key": "│ {#33}󱐋  Boot Manager     {#keys}│",
+			"type": "bootmgr"
+		},
+		{
+			"key": "│ {#33}󰥔  Uptime           {#keys}│",
+			"type": "uptime"
+		},
+		{
+			"key": "│ {#33}  Terminal         {#keys}│",
+			"type": "terminal"
+		},
+		{
+			"key": "│ {#33}  Terminal Font    {#keys}│",
+			"type": "terminalfont"
+		},
+		{
+			"key": "│ {#33}  Shell            {#keys}│",
+			"type": "shell"
+		},
+		{
+			"key": "│ {#33}󰍛  CPU              {#keys}│",
+			"type": "cpu",
+			"showPeCoreCount": true
+		},
+		{
+			"key": "│ {#33}󰍛  GPU              {#keys}│",
+			"type": "gpu"
+		},
+		{
+			"key": "│ {#33}󰍛  Vulkan           {#keys}│",
+			"type": "vulkan"
+		},
+		{
+			"key": "├─────────────────────┤",
+			"type": "custom"
+		},
+		{
+			"key": "│ {#33}󰉉  Root             {#keys}│",
+			"type": "disk",
+			"folders": "/"
+		},
+		{
+			"key": "│ {#33}󰉉  Home             {#keys}│",
+			"type": "disk",
+			"folders": "/home"
+		},
+		{
+			"key": "│ {#33}󰟶  Memory           {#keys}│",
+			"type": "memory"
+		},
+		{
+			"key": "│ {#33}󰣁  Swap             {#keys}│",
+			"type": "swap"
+		},
+		{
+			"key": "├─────────────────────┤",
+			"type": "custom"
+		},
+		{
+			"key": "│ {#31}  Distro           {#keys}│",
+			"type": "os"
+		},
+		{
+			"key": "│ {#34}  Window Manager   {#keys}│",
+			"type": "wm"
+		},
+		{
+			"key": "│ {#33}󰍂  Display Manager  {#keys}│",
+			"type": "lm"
+		},
+		{
+			"key": "│ {#33}  Kernel           {#keys}│",
+			"type": "kernel"
+		},
+		{
+			"key": "│ {#33}󰏖  Packages         {#keys}│",
+			"type": "packages"
+		},
+		{
+			"key": "├─────────────────────┤",
+			"type": "custom"
+		},
+		{
+			"key": "│ {#33}  Theme            {#keys}│",
+			"type": "theme"
+		},
+		{
+			"key": "│ {#33}  Icons            {#keys}│",
+			"type": "icons"
+		},
+		{
+			"key": "│ {#33}󰇀  Cursor           {#keys}│",
+			"type": "cursor"
+		},
+		{
+			"key": "│ {#33}󰛖  Font             {#keys}│",
+			"type": "font"
+		},
+		{
+			"key": "├─────────────────────┤",
+			"type": "custom"
+		},
+		{
+			"key": "│ {#33}󰤢  WiFi             {#keys}│",
+			"type": "wifi"
+		},
+		{
+			"key": "│ {#33}󰖠  Camera           {#keys}│",
+			"type": "camera"
+		},
+		{
+			"key": "│ {#33}󰜟  Sound            {#keys}│",
+			"type": "sound"
+		},
+		{
+			"key": "│ {#33}  Media            {#keys}│",
+			"type": "media"
+		},
+		{
+			"key": "├─────────────────────┤",
+			"type": "custom"
+		},
+		{
+			"key": "│ {#33}  Palette          {#keys}│",
+			"type": "colors",
+			"symbol": "circle"
+		},
+		{
+			"key": "╰─────────────────────╯",
+			"type": "custom"
+		}
+	]
+}

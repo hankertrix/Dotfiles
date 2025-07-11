@@ -1,0 +1,95 @@
+#!/bin/sh
+
+# Help text
+HELP_TEXT='
+A script to easily select a wallpaper based on the theme.
+It makes use of waypaper and darkman to do the heavy lifting.
+
+Options:
+  -h, --help
+	Show this help message and exit.
+
+  -r, --random
+	Select a random wallpaper.
+
+  -l, --light
+	Select a light wallpaper, mutually exclusive with the -d, --dark flag.
+
+  -d, --dark
+	Select a dark wallpaper, mutually exclusive with the -l, --light flag.
+'
+
+# Reset all variables that might be set
+random=
+theme=
+
+# Parse the arguments given
+while :; do
+	case $1 in
+
+	# If the argument is for the help command, show the help and exit
+	-h | -\? | --help)
+		echo "$HELP_TEXT"
+		exit
+		;;
+
+	# If the random flag is passed, set the random variable to true
+	-r | --random)
+		random=true
+		;;
+
+	# If the light flag is passed,
+	# set the theme to light if it is not already set
+	-l | --light)
+		if [ -z "$theme" ]; then
+			theme="light"
+		fi
+		;;
+
+	# If the dark flag is passed,
+	# set the theme to dark if it is not already set
+	-d | --dark)
+		if [ -z "$theme" ]; then
+			theme="dark"
+		fi
+		;;
+
+	# End of all options, stop parsing
+	--)
+		shift
+		break
+		;;
+
+	# Unknown option
+	-?*)
+		printf 'Warning: Unknown option "%s" ignored\n' "$1" >&2
+		;;
+
+	# Default case
+	*)
+		break
+		;;
+	esac
+
+	# Go to the next argument
+	shift
+done
+
+# If the theme hasn't been set, get the theme from darkman
+if [ -z $theme ]; then
+	theme=$(darkman get)
+fi
+
+# Set the wallpaper directory
+wallpaper_directory="$HOME/.dotfiles/wallpapers/$theme/"
+
+# If the random flag is passed, call waypaper to select a random wallpaper
+if [ "$random" = true ]; then
+	waypaper --folder "$wallpaper_directory" --random
+
+# Otherwise, call waypaper to interactively select a wallpaper
+else
+	waypaper --folder "$wallpaper_directory"
+fi
+
+# vi: tabstop=4 shiftwidth=4

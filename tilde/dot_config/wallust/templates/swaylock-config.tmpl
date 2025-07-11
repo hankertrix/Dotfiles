@@ -1,0 +1,119 @@
+# Configuration for the screen locker.
+#
+# vi: ft=conf
+# chezmoi:template:left-delimiter="||" right-delimiter="||"
+#
+# Note that all colours CANNOT be in quotes, be it single or double.
+#
+# Also note that the alpha values are opacity values instead
+# of transparency values.
+# So the higher the number, the more opaque the colour will be.
+#
+# Reference:
+# https://man.archlinux.org/man/swaylock.1
+
+# Daemonise
+daemonize
+
+# Don't validate empty passwords
+ignore-empty-password
+
+# Show failed attempts
+show-failed-attempts
+
+# Appearance
+image='{{ wallpaper }}'
+indicator-caps-lock
+scaling=fill
+
+# Background colour
+color={{ color3 | strip }}CC
+
+# Backspace highlight colour
+bs-hl-color={{ color9 | blend("#FF0000") | saturate(0.2) | strip }}CC
+
+# Backspace highlight colour with caps lock
+caps-lock-bs-hl-color={{ color2 | blend("#FFFF00") | blend(color9) | blend("#FF0000") | strip }}CC
+
+# Key press highlight colour with caps lock
+caps-lock-key-hl-color={{ color2 | blend("#FFFF00") | blend(color4) | blend("#00FF00") | strip }}CC
+
+# Font
+font='|| .guiFont ||'
+
+# The colour of the inside of the indicator
+inside-color={{ color12 | darken(0.3) | strip }}CC
+
+# The colour of the inside of the indicator when cleared
+inside-clear-color={{ color12 | darken(0.3) | blend("#FFA600") | strip }}CC
+
+# The colour of the inside of the indicator with caps lock active
+# (blended background with yellow)
+inside-caps-lock-color={{ color12 | darken(0.3) | blend("#FFFF00") | strip }}CC
+
+# The colour of the inside of the indicator when verifying
+inside-ver-color={{ color12 | darken(0.3) | blend("#0000FF") | strip }}CC
+
+# The colour of the inside of the indicator when invalid
+inside-wrong-color={{ color12 | darken(0.3) | blend("#FF0000") | strip }}CC
+
+# The colour of the key press highlight segments
+key-hl-color={{ color4 | blend("#00FF00") | strip }}CC
+
+# The background colour of the box containing the layout text
+layout-bg-color={{ color3 | strip }}CC
+
+# The colour of the border of the box containing the layout text
+layout-border-color={{ color4 | strip }}CC
+
+# The colour of the line between the inside and the ring
+line-color={{ color4 | strip }}CC
+
+# The colour of the line between the inside and the ring when cleared
+line-clear-color={{ color4 | blend("#FFA600") | strip }}CC
+
+# The colour of the line between the inside and the ring
+# when caps lock is active
+line-caps-lock-color={{ color4 | blend("#FFFF00") | strip }}CC
+
+# The colour of the line between the inside and the ring when verifying
+line-ver-color={{ color4 | blend("#0000FF") | strip }}CC
+
+# The colour of the line between the inside and the ring when invalid
+line-wrong-color={{ color4 | blend("#FF0000") | strip }}CC
+
+# The colour of the ring of the indicator when typing or idle
+ring-color={{ color3 | blend(color12) | strip }}CC
+
+# The colour of the ring of the indicator when cleared
+ring-clear-color={{ color3 | blend(color12) | blend("#FFA600") | strip }}CC
+
+# The colour of the ring of the indicator when caps lock is active
+ring-caps-lock-color={{ color3 | blend(color12) | blend("#FFFF00") | strip }}CC
+
+# The colour of the ring of the indicator when verifying
+ring-ver-color={{ color3 | blend(color12) | blend("#0000FF") | strip }}CC
+
+# The colour of the ring of the indicator when invalid
+ring-wrong-color={{ color3 | blend(color12) | blend("#FF0000") | strip }}CC
+
+# The colour of the lines that separate highlight segments
+separator-color={{ color4 | strip }}CC
+
+# The colour of the layout text
+layout-text-color={{ color8 | lighten(0.5) | strip }}CC
+
+# The colour of the text
+text-color={{ color8 | lighten(0.5) | strip }}CC
+
+# The colour of the text when cleared
+text-clear-color={{ color8 | lighten(0.5) | blend("#FFA600") | strip }}CC
+
+# The colour of the text when caps lock is active
+text-caps-lock-color={{ color8 | lighten(0.5) | blend("#FFFF00") | strip }}CC
+
+# The colour of the text when verifying
+text-ver-color={{ color8 | lighten(0.8) | blend("#0000FF") | strip }}CC
+
+# The colour of the text when invalid
+text-wrong-color={{ color8 | lighten(0.6) | blend("#FF0000") | strip }}CC

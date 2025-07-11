@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# Script to record the screen
+# Reference:
+# https://github.com/marcinjahn/dotfiles/blob/main/dot_config/niri/scripts/executable_record-screen.sh
+
+# Set the video directory
+VIDEO_DIR="$HOME/Videos/Screencasts"
+
+# Create the video directory if it doesn't exist
+mkdir -p "$VIDEO_DIR"
+
+# Create the file to store the file name of the video
+# that is currently being recorded.
+# This makes it easy to build proper notifications
+# once the screen recording is stopped.
+TMP_FILE="/tmp/wl-screenrec-last-file.txt"
+
+# If the recording can be stopped
+if pkill wl-screenrec; then
+
+	# Send a signal to hide the recording indicator
+	pkill -SIGRTMIN+8 waybar
+
+	# Get the file name of the screen recording
+	screencast_file=$(cat "$TMP_FILE")
+
+	# Get the directory of the screen recording
+	screencast_dir=$(dirname "$screencast_file")
+
+	# Create the action to do when clicked
+	click_action=$(notify-send -t 6000 \
+		--action=default="Open folder" \
+		"Screen recording stopped" \
+		"Saved to: $screencast_dir\nFile: ${screencast_file##*/}")
+
+	# If the action is the default one,
+	# open the directory of the screen recording
+	if [ "$click_action" = "default" ]; then
+		xdg-open "$screencast_dir" &
+	fi
+
+	# Remove the temporary file
+	rm "$TMP_FILE"
+
+# Otherwise, the screen recording has been started
+else
+
+	# Get the file name of the video
+	filename="$VIDEO_DIR/$(date +'Screencast from %d-%m-%Y %H-%M-%S.mp4')"
+
+	# Put the file name into the temporary file
+	echo "$filename" >"$TMP_FILE"
+
+	# If an area has been selected by slurp
+	if screen_area=$(slurp); then
+
+		# Record the screen
+		wl-screenrec -g "$screen_area" -f "$filename" &
+
+		# Display the recording indicator in waybar
+		pkill -SIGRTMIN+8 waybar
+
+	# Otherwise, an area isn't selected, so remove the temporary file
+	else
+		rm "$TMP_FILE"
+	fi
+fi

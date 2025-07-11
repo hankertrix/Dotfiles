@@ -1,5 +1,5 @@
 ! X configuration to work with my Hi-DPI screen
-Xcursor.theme: Qogir
-Xcursor.size: 32
+Xcursor.theme: Hacked-Sky
+Xcursor.size: 24
 Xft.dpi: 150
 Xft.antialias: 1

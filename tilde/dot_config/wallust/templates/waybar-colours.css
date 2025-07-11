@@ -1,0 +1,35 @@
+/*
+ * Waybar wallust template.
+ *
+ * Reference:
+ * https://codeberg.org/explosion-mental/wallust-templates/src/branch/master/waybar.css
+ */
+
+@define-color cursor {{ cursor }};
+@define-color background {{ background }};
+@define-color foreground {{ foreground }};
+
+@define-color text {{ color1 | blend(foreground) }};
+@define-color blended-background {{ color3 | blend(background) }};
+@define-color tooltip-colour {{ color11 | lighten(0.7) | saturate(0.2) }};
+@define-color tooltip-background {{ color6 | blend(background) }};
+@define-color blended-red {{ color12 | blend("#FF0000") }};
+@define-color blended-yellow {{ color8 | blend("#FFFF00") | lighten(0.2) }};
+@define-color blended-green {{ color4 | blend("#00FF00") }};
+
+@define-color colour0  {{ color0 }};
+@define-color colour1  {{ color1 }};
+@define-color colour2  {{ color2 }};
+@define-color colour3  {{ color3 }};
+@define-color colour4  {{ color4 }};
+@define-color colour5  {{ color5 }};
+@define-color colour6  {{ color6 }};
+@define-color colour7  {{ color7 }};
+@define-color colour8  {{ color8 }};
+@define-color colour9  {{ color9 }};
+@define-color colour10 {{ color10 }};
+@define-color colour11 {{ color11 }};
+@define-color colour12 {{ color12 }};
+@define-color colour13 {{ color13 }};
+@define-color colour14 {{ color14 }};
+@define-color colour15 {{ color15 }};

@@ -13,11 +13,11 @@ I'm using the [i3-wm setup with EndeavourOS](https://discovery.endeavouros.com/w
 I am making use of [Chezmoi (pronounced shay-mwa)](https://www.chezmoi.io/)
 to manage my configuration files. To use my configuration files,
 install [Chezmoi](https://www.chezmoi.io/install/),
-clone this repository using [Git](https://git-scm.com/),
-and then run the command below to deploy the configuration files:
+and [Git](https://git-scm.com/),
+then run the command below to deploy the configuration files:
 
 ```sh
-chezmoi init --apply
+ROOTMOI=t chezmoi init hankertrix/dotfiles --source ~/.dotfiles --apply
 ```
 
 The configuration files are all stored in either [`tilde`](tilde),

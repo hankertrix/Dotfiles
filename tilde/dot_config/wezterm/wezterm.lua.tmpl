@@ -48,6 +48,9 @@ config.font = wezterm.font("{{ .terminalFont }}")
 -- Enable the font features I want
 config.harfbuzz_features = { "zero", "ss08", "ss09" }
 
+-- Disable window decorations
+config.window_decorations = "RESIZE"
+
 -- Set the term environment variable to wezterm
 config.term = "wezterm"
 
