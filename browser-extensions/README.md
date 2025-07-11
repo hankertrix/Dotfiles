@@ -34,6 +34,21 @@ The redirects also make use of the excellent
 to select an instance to redirect to,
 which works much better than the Libredirect selector.
 
+## [Skip Redirect](https://github.com/sblask-webextensions/webextension-skip-redirect)
+
+The [`skip-redirect-no-skip-list.txt`](./skip-redirect-no-skip-list.txt) file is
+just a list of URLs to not skip the redirect for, as the extension is very
+greedy with skipping redirects and will skip every redirect possible.
+Essentially, if you have a URL as a parameter,
+this extension will open that URL every single time.
+
+## [uBlock Origin](https://ublockorigin.com/)
+
+The [`ublock-origin-settings.txt`](./ublock-origin-settings.txt) file
+is my settings for uBlock Origin, which is needed since I use medium mode
+which blocks all 3rd party scripts and frames by default,
+so the allowlist is necessary to use most websites properly.
+
 ## [Vimium C](https://github.com/gdh1995/vimium-c)
 
 The [`vimium-c-config.json`](./vimium-c-config.json) file
