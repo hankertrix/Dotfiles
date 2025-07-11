@@ -4,9 +4,10 @@ The laptop that I currently use is an
 [ASUS TUF Gaming A16 AMD Advantage Edition](https://www.asus.com/laptops/for-gaming/tuf-gaming/asus-tuf-gaming-a16-advantage-edition-2023/),
 with a Ryzen 9-7940HS processor, an AMD Radeon RX7600S GPU
 and a screen resolution of 2560x1600, model number FA617X-S.
-I am currently using [EndeavourOS](https://endeavouros.com/),
-which is an [Arch-based](https://archlinux.org/) Linux distribution.
-I'm using the [i3-wm setup with EndeavourOS](https://discovery.endeavouros.com/window-tiling-managers/i3-wm/2021/03/).
+It has 16GB of RAM and a 1TB SSD.
+I am currently using [Arch Linux](https://archlinux.org/)
+and running [Niri](https://github.com/YaLTeR/niri/)
+as my window manager and Wayland compositor.
 
 ## Configuration files
 
@@ -31,7 +32,50 @@ There is a [`README.md`](browser-extensions/README.md) file
 inside the [`browser-extensions`](browser-extensions/)
 folder that explains the configuration.
 
-### [`tilde`](tilde) folder
+### [Custom packages](custom-packages/) folder
+
+This folder stores all the packages that are custom-built for me.
+It currently only contains the PKGBUILD for building all 3
+Nerd Font variants for [Maple Mono](https://github.com/subframe7536/Maple-font),
+with the font features I want frozen so that they work in
+[Emacs](https://www.gnu.org/software/emacs/).
+Maple Mono only provides the default Nerd Font variant, but
+I need all 3 variants as I use the Propo variant in GUI applications
+like [Waybar](https://github.com/Alexays/Waybar) and
+[Rofi](https://github.com/davatorium/rofi) to ensure the icons
+don't have funky spacing.
+The Mono variant is used in the browser by
+[Firenvim](https://github.com/glacambre/firenvim) so that the icons
+are not cut off.
+The default variant is used in the terminals I use.
+
+### [`slash`](slash/)
+
+The [`slash`](slash/) folder contains all the system level configuration,
+such as configuration files for the package manager, the display manager
+and the bootloader.
+
+#### [`boot`](slash/boot/) folder
+
+The [`boot`](slash/boot/) folder contains the configuration for the bootloader
+I use, [rEFInd](https://www.rodsbooks.com/refind/). The theme I use is a
+modified version of the Gruvbox theme from
+[rEFInd minimal themes](https://github.com/quantrancse/rEFInd-minimal-themes).
+
+The selection icons were taken from [dm](https://github.com/mustaqimM/dm),
+which itself is a modified version of the
+[Dream Machine theme](https://github.com/Lindstream/dm-refind-theme).
+
+The background image was taken from
+[Pexels](https://www.pexels.com/photo/planet-earth-in-black-background-12990385/).
+
+### [`tilde`](tilde/) folder
+
+#### [`.chezmoiscripts`](tilde/.chezmoiscripts/)
+
+The [`.chezmoiscripts`](tilde/.chezmoiscripts/) folder is just to store
+the scripts that run with Chezmoi. It currently only contains
+a script to run rootmoi after the Chezmoi configuration is applied.
 
 #### [`.config`](tilde/dot_config/) folder
 
@@ -52,6 +96,21 @@ All the overrides are exactly the same as my overrides for the
 The [`.mozilla`](tilde/dot_mozilla/) folder is just to store my overrides
 for the [Arkenfox user.js](https://github.com/arkenfox/user.js).
 
+#### [`.local`](tilde/dot_local/) folder
+
+The [`bin`](tilde/dot_local/bin/) folder in the [`.local`](tilde/dot_local/)
+folder is just to store some useful scripts
+I made that can also be run as a standalone script,
+like a script to easily select the wallpapers based on
+the current system theme, a screen recording script,
+and rootmoi, which runs Chezmoi as root to manage
+system configuration.
+
+The [`share`](tilde/dot_local/share/) folder inside is to store
+the scripts to run when [darkman](https://gitlab.com/WhyNotHugo/darkman)
+changes from light to dark mode, which handles switching the wallpapers
+and dynamically theming everything.
+
 #### [`.zen`](tilde/dot_zen/) folder
 
 The [`.zen`](tilde/dot_zen/) folder is just to store my overrides for the
@@ -60,18 +119,29 @@ some configuration options specific to the Zen browser.
 It also contains the keyboard shortcuts and the Zen mods that
 I have installed and configured for the Zen browser.
 
+#### [`.chezmoi.toml`](tilde/.chezmoi.toml.tmpl)
+
+The [`.chezmoi.toml`](tilde/.chezmoi.toml.tmpl) is just to configure
+the source directory for [Chezmoi](https://www.chezmoi.io/)
+and use [Neovim](https://neovim.io/) as the merge tool.
+
+#### [`.chezmoidata.toml`](tilde/.chezmoidata.toml)
+
+The [`.chezmoidata.toml`](tilde/.chezmoidata.toml) file is just to store
+additional variables that are used in the Chezmoi templates.
+They are mostly just fonts, icon theme, cursor theme and cursor size.
+
+#### [`.chezmoiexternal.toml`](tilde/.chezmoiexternal.toml)
+
+The [`.chezmoiexternal.toml`](tilde/.chezmoiexternal.toml) file is just to
+automatically download all the different variations of the cursor theme
+I use and put them in the right place.
+
 #### [`.chezmoiignore`](tilde/.chezmoiignore)
 
 The `.chezmoiignore` file is just to ignore the files that do not need to be
 deployed to the system, like READMEs, licences,
 and formatter configuration files.
-
-#### [`.Xresources`](tilde/executable_dot_Xresources)
-
-The [`.Xresources`](tilde/executable_dot_Xresources)
-configuration is just to make sure
-the display works properly with my high DPI screen.
-I also turned on antialiasing.
 
 #### [`.bash_profile`](tilde/dot_bash_profile)
 
@@ -81,12 +151,46 @@ when starting bash.
 This is needed thanks to the Arch Linux LightDM package
 [changing the script to source the files](https://gitlab.archlinux.org/archlinux/packaging/packages/lightdm/-/commit/75c048cabfe9693749f5f363ab6257400d954ffa).
 
+This change may or may not be relevant since I am now using
+[ly](https://codeberg.org/fairyglade/ly), instead of LightDM,
+but things are working fine, so I'm not going to change it.
+
+#### [`.inputrc`](tilde/dot_inputrc)
+
+The [`.inputrc`](tilde/dot_inputrc) file is just to set the key binds
+for arrow up and arrow down to search the history for completions
+instead of just giving the last used command.
+
+#### [`.xinitrc`](tilde/dot_xinitrc)
+
+The [`.xinitrc`](tilde/dot_xinitrc) file is just to merge the
+configuration inside [`.Xresources`](tilde/executable_dot_Xresources)
+into `xrdb` so that the changes will apply.
+
+This file is no longer relevant since I am no longer on X11,
+but I am keeping it here just in case.
+
+#### [`.Xresources`](tilde/executable_dot_Xresources)
+
+The [`.Xresources`](tilde/executable_dot_Xresources)
+configuration is just to make sure
+the display works properly with my high DPI screen.
+I also turned on antialiasing.
+
+This file is no longer relevant since I am no longer on X11,
+but I am keeping it here just in case.
+
 #### [`.bashrc`](tilde/executable_dot_bashrc)
 
-The [`.bashrc`](tilde/executable_dot_bashrc) file is mostly
-just the default EndeavourOS configuration,
-with a few if statement added in so that
-I can change the shell's directory
+The [`.bashrc`](tilde/executable_dot_bashrc) file is quite minimal,
+just setting some useful settings like `vi` mode and the prompt.
+
+It also has some useful aliases that are provided by
+[Arch Linux](https://archlinux.org/) by default, mostly just colouring
+the output of `grep` and `ls` and useful aliases for `ls`.
+
+It also adds the [local binaries](tilde/dot_local/bin/) to the shell path and
+has a few if statement added in so that I can change the shell's directory
 when using [`lf`](https://github.com/gokcehan/lf) and
 [`yazi`](https://yazi-rs.github.io/).
 
@@ -94,7 +198,7 @@ when using [`lf`](https://github.com/gokcehan/lf) and
 
 This file is just to set the default applications for various tasks.
 The default terminal is set to
-[Kitty](https://sw.kovidgoyal.net/kitty/),
+[Ghostty](https://sw.kovidgoyal.net/kitty/),
 the default editor is set to
 [Neovim](https://neovim.io/),
 the default browser is set to
@@ -102,11 +206,13 @@ the default browser is set to
 the default pager is set to
 [`less`](https://www.greenwoodsoftware.com/less/).
 
-#### [`.xinitrc`](tilde/dot_xinitrc)
+### [Wallpapers folder](tilde/wallpapers/)
 
-The [`.xinitrc`](tilde/dot_xinitrc) file is just to merge the
-configuration inside [`.Xresources`](tilde/executable_dot_Xresources)
-into `xrdb` so that the changes will apply.
+This folder just contains all the wallpapers I use,
+sourced from various places, separated into two subfolders,
+[one](tilde/wallpapers/light/) containing wallpapers to use for the
+light system theme,
+and [another](tilde/wallpapers/dark/) for the dark system theme.
 
 ## [Licence](LICENCE.txt)
 
