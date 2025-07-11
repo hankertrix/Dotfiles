@@ -17,11 +17,19 @@ Options:
 
   -d, --dark
 	Select a dark wallpaper, mutually exclusive with the -l, --light flag.
+
+  -m, --monitors-off
+	Handle the situation where the monitors are powered off.
+
+	This is mainly used with the script automatically ran by darkman,
+	since the monitors might be powered off, which causes waypaper to fail
+	when setting the wallpaper.
 '
 
 # Reset all variables that might be set
 random=
 theme=
+handle_monitors_off=
 
 # Parse the arguments given
 while :; do
@@ -54,6 +62,11 @@ while :; do
 		fi
 		;;
 
+	# Handle the case when the monitors are off
+	-m | --monitors-off)
+		handle_monitors_off=true
+		;;
+
 	# End of all options, stop parsing
 	--)
 		shift
@@ -83,6 +96,27 @@ fi
 # Set the wallpaper directory
 wallpaper_directory="$HOME/.dotfiles/wallpapers/$theme/"
 
+# Initialise whether swaylock is active
+swaylock_active=
+
+# If handling the monitors being off is wanted
+if [ "$handle_monitors_off" = true ]; then
+
+	# Get whether swaylock is active
+	swaylock_active=$(pgrep -x 'swaylock')
+
+	# If swaylock is active
+	if [ -n "$swaylock_active" ]; then
+
+		# Power on the monitors because that means
+		# the system has been locked and has gone to sleep.
+		#
+		# This is required because waypaper needs an active monitor
+		# to set the wallpaper and will fail without it
+		niri msg action power-on-monitors
+	fi
+fi
+
 # If the random flag is passed, call waypaper to select a random wallpaper
 if [ "$random" = true ]; then
 	waypaper --folder "$wallpaper_directory" --random
@@ -90,6 +124,11 @@ if [ "$random" = true ]; then
 # Otherwise, call waypaper to interactively select a wallpaper
 else
 	waypaper --folder "$wallpaper_directory"
+fi
+
+# If swaylock was active, power off the monitors again
+if [ -n "$swaylock_active" ]; then
+	niri msg action power-off-monitors
 fi
 
 # vi: tabstop=4 shiftwidth=4
