@@ -1,2 +1,8 @@
 # Ignore the Yazi plugins directory
 **/yazi/plugins/
+
+# Ignore the custom packages
+**/custom-packages/**/*
+
+# Don't the PKGBUILD for the custom packages
+!**/custom-packages/**/PKGDBUILD
