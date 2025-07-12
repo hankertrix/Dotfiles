@@ -533,14 +533,14 @@ Which key is a plugin that displays the possible key binds and what each key bin
 Set the default font to Maple Mono Nerd Font with Chinese characters and a font size of 12.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
-                    :font "Maple Mono N NF CN 12"
+                    :font "Maple Mono NF CN 12"
                     :weight 'medium)
 #+end_src
 
 Set the default mono space font to Maple Mono Nerd Font with Chinese characters and a font size of 12.
 #+begin_src emacs-lisp
 (set-face-attribute 'fixed-pitch nil
-                    :font "Maple Mono N NF CN 12"
+                    :font "Maple Mono NF CN 12"
                     :weight 'medium)
 #+end_src
 
@@ -551,7 +551,7 @@ Make comments italic.
 
 Set up the font such that it will work on emacsclient.
 #+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(font . "Maple Mono N NF CN 12"))
+(add-to-list 'default-frame-alist '(font . "Maple Mono NF CN 12"))
 #+end_src
 
 * Emacs' settings

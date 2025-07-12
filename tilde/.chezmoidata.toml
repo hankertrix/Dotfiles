@@ -1,15 +1,15 @@
 # Additional data for chezmoi
 rootConfigFolder = "slash"
 
-# Maple Mono N is the standard Maple Mono with double width icons
-terminalFont = "Maple Mono N NF CN"
+# Maple Mono is the standard Maple Mono with double width icons
+terminalFont = "Maple Mono NF CN"
 terminalFontSize = 12
 
-# Maple Mono M is Maple Mono with single width icons (Nerd Fonts Mono)
-monoFont = "Maple Mono M NF CN"
+# Maple Mono NFMono is Maple Mono with single width icons (Nerd Fonts Mono)
+monoFont = "Maple Mono NFMono CN"
 
-# Maple Mono P is Maple Mono with variable width icons (Nerd Fonts Propo)
-guiFont = "Maple Mono P NF CN"
+# Maple Mono NFPropo is Maple Mono with variable width icons (Nerd Fonts Propo)
+guiFont = "Maple Mono NFPropo CN"
 
 # The icon theme used
 iconTheme = "kora"
