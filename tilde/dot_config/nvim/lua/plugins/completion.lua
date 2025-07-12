@@ -75,6 +75,7 @@ return {
 
 				-- Blink cmp built-in providers
 				path = {
+					show_hidden_files_by_default = false,
 					kind = "Path",
 				},
 				buffer = {
