@@ -68,6 +68,15 @@ The Mono variant is used in the browser by
 are not cut off.
 The default variant is used in the terminals I use.
 
+### [Package lists](package-lists/) folder
+
+This folder stores the package lists for my system.
+The [main package list](package-lists/pkglist.txt) contains all the packages
+installed through a repository using Pacman, while the
+[AUR package list](package-lists/aur-pkglist.txt) contains all the packages
+installed through the [AUR](https://aur.archlinux.org),
+as well as custom packages.
+
 ### [`slash`](slash/)
 
 The [`slash`](slash/) folder contains all the system level configuration,
