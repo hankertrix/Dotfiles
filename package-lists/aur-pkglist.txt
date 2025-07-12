@@ -1,0 +1,11 @@
+basedpyright-bin
+davmail
+efm-langserver
+kora-icon-theme
+ltex-ls-plus-bin
+maple-mono-custom-git
+python-pywalfox
+resvg
+ttf-symbola
+wallust
+waypaper

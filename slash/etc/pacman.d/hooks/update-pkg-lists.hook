@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Updating package lists...
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/pacman -Qqetn > /home/hanker/.dotfiles/package-lists/pkglist.txt && /usr/bin/pacman -Qqem > /home/hanker/.dotfiles/package-lists/aur-pkglist.txt'
