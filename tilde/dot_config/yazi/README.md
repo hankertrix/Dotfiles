@@ -22,19 +22,19 @@ to improve a lot of the default Yazi commands, like auto-skipping directories
 with only one subdirectory, like GitHub does, automatically extracting and
 entering archive files, and smartly determining an item group to operate on
 for a few commands.
-You can find more information about the plugin
-[here](https://github.com/hankertrix/augment-command.yazi).
+You can find more information about
+[the plugin here](https://github.com/hankertrix/augment-command.yazi).
 
 There are also some key binds for the
 [`relative-motions.yazi`](https://github.com/dedukun/relative-motions.yazi),
-which are just the default key binds that you can find on the
-[`README.md`](https://github.com/dedukun/relative-motions.yazi/blob/main/README.md#configuration)
-of the plugin.
+and [`mount.yazi`](https://github.com/yazi-rs/plugins/tree/main/mount.yazi)
+plugins, which are just the default key binds that you can find on the
+READMEs of the plugins.
 
 ## [`package.toml`](./package.toml)
 
 The `package.toml` file just tells Yazi what Yazi plugins I use,
-and it is generated when you add a Yazi plugin using the `ya pack -a` command.
+and it is generated when you add a Yazi plugin using the `ya pkg add` command.
 
 ## [`theme.toml`](https://yazi-rs.github.io/docs/configuration/theme)
 

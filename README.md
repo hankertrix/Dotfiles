@@ -40,18 +40,18 @@ then run the command below to deploy the configuration files:
 ROOTMOI=t chezmoi init hankertrix/dotfiles --source ~/.dotfiles --apply
 ```
 
-The configuration files are all stored in either [`tilde`](tilde),
+The configuration files are all stored in either [`tilde`](./tilde/),
 which refers to user-specific configuration found under `~/`,
-or [`slash`](slash), which are the global configuration options
+or [`slash`](./slash/), which are the global configuration options
 that apply to all users, which can be found under the `/` folder.
 
-### [Browser extensions](browser-extensions/) folder
+### [Browser extensions](./browser-extensions/) folder
 
-There is a [`README.md`](browser-extensions/README.md) file
-inside the [`browser-extensions`](browser-extensions/)
+There is a [`README.md`](./browser-extensions/README.md) file
+inside the [`browser-extensions`](./browser-extensions/)
 folder that explains the configuration.
 
-### [Custom packages](custom-packages/) folder
+### [Custom packages](./custom-packages/) folder
 
 This folder stores all the packages that are custom-built for me.
 It currently only contains the PKGBUILD for building all 3
@@ -68,26 +68,26 @@ The Mono variant is used in the browser by
 are not cut off.
 The default variant is used in the terminals I use.
 
-### [Package lists](package-lists/) folder
+### [Package lists](./package-lists/) folder
 
 This folder stores the package lists for my system.
-The [main package list](package-lists/pkglist.txt) contains all the packages
+The [main package list](./package-lists/pkglist.txt) contains all the packages
 installed through a repository using Pacman, while the
-[AUR package list](package-lists/aur-pkglist.txt) contains all the packages
+[AUR package list](./package-lists/aur-pkglist.txt) contains all the packages
 installed through the [AUR](https://aur.archlinux.org),
 as well as custom packages.
 
-### [`slash`](slash/)
+### [`slash`](./slash/)
 
-The [`slash`](slash/) folder contains all the system level configuration,
+The [`slash`](./slash/) folder contains all the system level configuration,
 such as configuration files for the package manager, the display manager
 and the bootloader.
 
-#### [`boot`](slash/boot/) folder
+#### [`boot`](./slash/boot/) folder
 
-The [`boot`](slash/boot/) folder contains the configuration for the bootloader
-I use, [rEFInd](https://www.rodsbooks.com/refind/). The theme I use is a
-modified version of the Gruvbox theme from
+The [`boot`](./slash/boot/) folder contains the configuration for
+the bootloader I use, [rEFInd](https://www.rodsbooks.com/refind/).
+The theme I use is a modified version of the Gruvbox theme from
 [rEFInd minimal themes](https://github.com/quantrancse/rEFInd-minimal-themes).
 
 The selection icons were taken from [dm](https://github.com/mustaqimM/dm),
@@ -97,84 +97,107 @@ which itself is a modified version of the
 The background image was taken from
 [Pexels](https://www.pexels.com/photo/planet-earth-in-black-background-12990385/).
 
-### [`tilde`](tilde/) folder
+#### [`etc`](./slash/etc/) folder
 
-#### [`.chezmoiscripts`](tilde/.chezmoiscripts/)
+The [`etc`](./slash/etc/) folder contains the configuration for
+system level configuration files.
 
-The [`.chezmoiscripts`](tilde/.chezmoiscripts/) folder is just to store
+##### [`ly`](./slash/etc/ly/)
+
+The [`ly` configuration](./slash/etc/ly/config.ini) is just
+the default configuration file but with the animation changed
+to use the matrix animation.
+
+##### [Network Manager](./slash/etc/NetworkManager/)
+
+The Network manager configuration
+
+#### [`.chezmoiignore`](./slash/.chezmoiignore)
+
+The `.chezmoiignore` file ignores the files that do not need to be
+deployed to the system, like READMEs and licences,
+but also ignores the [`boot/efi`](slash/boot/efi) directory
+so that `rootmoi` can apply the changes to the `/boot/efi` directory
+separately from the `/` directory.
+
+### [`tilde`](./tilde/) folder
+
+#### [`.chezmoiscripts`](./tilde/.chezmoiscripts/)
+
+The [`.chezmoiscripts`](./tilde/.chezmoiscripts/) folder is just to store
 the scripts that run with Chezmoi. It currently only contains
-a script to run rootmoi after the Chezmoi configuration is applied.
+a script to run `rootmoi` after the Chezmoi configuration is applied.
 
-#### [`.config`](tilde/dot_config/) folder
+#### [`.config`](./tilde/dot_config/) folder
 
-The [`.config`](tilde/dot_config/) folder is where the configuration
+The [`.config`](./tilde/dot_config/) folder is where the configuration
 for the applications I use on Linux are located.
-There is a [`README.md` file](tilde/dot_config/) inside that
+There is a [`README.md` file](./tilde/dot_config/) inside that
 briefly explains the configuration for the various applications inside.
 
-#### [`.librewolf`](tilde/dot_librewolf/) folder
+#### [`.librewolf`](./tilde/dot_librewolf/) folder
 
-The [`.librewolf`](tilde/dot_librewolf/) folder is just to store my
+The [`.librewolf`](./tilde/dot_librewolf/) folder is just to store my
 overrides for the Librewolf browser.
 All the overrides are exactly the same as my overrides for the
 [Arkenfox user.js](https://github.com/arkenfox/user.js).
 
-#### [`.mozilla`](tilde/dot_mozilla/) folder
+#### [`.mozilla`](./tilde/dot_mozilla/) folder
 
-The [`.mozilla`](tilde/dot_mozilla/) folder is just to store my overrides
+The [`.mozilla`](./tilde/dot_mozilla/) folder is just to store my overrides
 for the [Arkenfox user.js](https://github.com/arkenfox/user.js).
 
-#### [`.local`](tilde/dot_local/) folder
+#### [`.local`](./tilde/dot_local/) folder
 
-The [`bin`](tilde/dot_local/bin/) folder in the [`.local`](tilde/dot_local/)
-folder is just to store some useful scripts
+The [`bin`](./tilde/dot_local/bin/) folder in the
+[`.local`](./tilde/dot_local/) folder is just to store some useful scripts
 I made that can also be run as a standalone script,
 like a script to easily select the wallpapers based on
 the current system theme, a screen recording script,
 and rootmoi, which runs Chezmoi as root to manage
 system configuration.
 
-The [`share`](tilde/dot_local/share/) folder inside is to store
+The [`share`](./tilde/dot_local/share/) folder inside is to store
 the scripts to run when [darkman](https://gitlab.com/WhyNotHugo/darkman)
 changes from light to dark mode, which handles switching the wallpapers
 and dynamically theming everything.
 
-#### [`.zen`](tilde/dot_zen/) folder
+#### [`.zen`](./tilde/dot_zen/) folder
 
-The [`.zen`](tilde/dot_zen/) folder is just to store my overrides for the
+The [`.zen`](./tilde/dot_zen/) folder is just to store my overrides for the
 [Arkenfox user.js](https://github.com/arkenfox/user.js), as well as
 some configuration options specific to the Zen browser.
 It also contains the keyboard shortcuts and the Zen mods that
 I have installed and configured for the Zen browser.
 
-#### [`.chezmoi.toml`](tilde/.chezmoi.toml.tmpl)
+#### [`.chezmoi.toml`](./tilde/.chezmoi.toml.tmpl)
 
-The [`.chezmoi.toml`](tilde/.chezmoi.toml.tmpl) is just to configure
+The [`.chezmoi.toml`](./tilde/.chezmoi.toml.tmpl) is just to configure
 the source directory for [Chezmoi](https://www.chezmoi.io/)
 and use [Neovim](https://neovim.io/) as the merge tool.
 
-#### [`.chezmoidata.toml`](tilde/.chezmoidata.toml)
+#### [`.chezmoidata.toml`](./tilde/.chezmoidata.toml)
 
-The [`.chezmoidata.toml`](tilde/.chezmoidata.toml) file is just to store
+The [`.chezmoidata.toml`](./tilde/.chezmoidata.toml) file is just to store
 additional variables that are used in the Chezmoi templates.
 They are mostly just fonts, icon theme, cursor theme and cursor size.
 
-#### [`.chezmoiexternal.toml`](tilde/.chezmoiexternal.toml)
+#### [`.chezmoiexternal.toml`](./tilde/.chezmoiexternal.toml)
 
-The [`.chezmoiexternal.toml`](tilde/.chezmoiexternal.toml) file is just to
+The [`.chezmoiexternal.toml`](./tilde/.chezmoiexternal.toml) file is just to
 automatically download all the different variations of the cursor theme
 I use and put them in the right place.
 
-#### [`.chezmoiignore`](tilde/.chezmoiignore)
+#### [`.chezmoiignore`](./tilde/.chezmoiignore)
 
 The `.chezmoiignore` file is just to ignore the files that do not need to be
 deployed to the system, like READMEs, licences,
 and formatter configuration files.
 
-#### [`.bash_profile`](tilde/dot_bash_profile)
+#### [`.bash_profile`](./tilde/dot_bash_profile)
 
-The [`.bash_profile`](tilde/dot_bash_profile) configuration is just to
-load the [`.profile`](tilde/executable_dot_profile) file
+The [`.bash_profile`](./tilde/dot_bash_profile) configuration is just to
+load the [`.profile`](./tilde/executable_dot_profile) file
 when starting bash.
 This is needed thanks to the Arch Linux LightDM package
 [changing the script to source the files](https://gitlab.archlinux.org/archlinux/packaging/packages/lightdm/-/commit/75c048cabfe9693749f5f363ab6257400d954ffa).
@@ -183,24 +206,24 @@ This change may or may not be relevant since I am now using
 [ly](https://codeberg.org/fairyglade/ly), instead of LightDM,
 but things are working fine, so I'm not going to change it.
 
-#### [`.inputrc`](tilde/dot_inputrc)
+#### [`.inputrc`](./tilde/dot_inputrc)
 
-The [`.inputrc`](tilde/dot_inputrc) file is just to set the key binds
+The [`.inputrc`](./tilde/dot_inputrc) file is just to set the key binds
 for arrow up and arrow down to search the history for completions
 instead of just giving the last used command.
 
-#### [`.xinitrc`](tilde/dot_xinitrc)
+#### [`.xinitrc`](./tilde/dot_xinitrc)
 
-The [`.xinitrc`](tilde/dot_xinitrc) file is just to merge the
-configuration inside [`.Xresources`](tilde/executable_dot_Xresources)
+The [`.xinitrc`](./tilde/dot_xinitrc) file is just to merge the
+configuration inside [`.Xresources`](./tilde/executable_dot_Xresources)
 into `xrdb` so that the changes will apply.
 
 This file is no longer relevant since I am no longer on X11,
 but I am keeping it here just in case.
 
-#### [`.Xresources`](tilde/executable_dot_Xresources)
+#### [`.Xresources`](./tilde/executable_dot_Xresources)
 
-The [`.Xresources`](tilde/executable_dot_Xresources)
+The [`.Xresources`](./tilde/executable_dot_Xresources)
 configuration is just to make sure
 the display works properly with my high DPI screen.
 I also turned on antialiasing.
@@ -208,21 +231,21 @@ I also turned on antialiasing.
 This file is no longer relevant since I am no longer on X11,
 but I am keeping it here just in case.
 
-#### [`.bashrc`](tilde/executable_dot_bashrc)
+#### [`.bashrc`](./tilde/executable_dot_bashrc)
 
-The [`.bashrc`](tilde/executable_dot_bashrc) file is quite minimal,
+The [`.bashrc`](./tilde/executable_dot_bashrc) file is quite minimal,
 just setting some useful settings like `vi` mode and the prompt.
 
 It also has some useful aliases that are provided by
 [Arch Linux](https://archlinux.org/) by default, mostly just colouring
 the output of `grep` and `ls` and useful aliases for `ls`.
 
-It also adds the [local binaries](tilde/dot_local/bin/) to the shell path and
+It also adds the [local binaries](./tilde/dot_local/bin/) to the shell path and
 has a few if statement added in so that I can change the shell's directory
 when using [`lf`](https://github.com/gokcehan/lf) and
 [`yazi`](https://yazi-rs.github.io/).
 
-#### [`.profile`](tilde/executable_dot_profile)
+#### [`.profile`](./tilde/executable_dot_profile)
 
 This file is just to set the default applications for various tasks.
 The default terminal is set to
@@ -234,13 +257,13 @@ the default browser is set to
 the default pager is set to
 [`less`](https://www.greenwoodsoftware.com/less/).
 
-### [Wallpapers folder](tilde/wallpapers/)
+### [Wallpapers folder](./tilde/wallpapers/)
 
 This folder just contains all the wallpapers I use,
 sourced from various places, separated into two subfolders,
-[one](tilde/wallpapers/light/) containing wallpapers to use for the
+[one](./tilde/wallpapers/light/) containing wallpapers to use for the
 light system theme,
-and [another](tilde/wallpapers/dark/) for the dark system theme.
+and [another](./tilde/wallpapers/dark/) for the dark system theme.
 
 ## [Licence](LICENCE.txt)
 
