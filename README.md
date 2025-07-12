@@ -9,6 +9,26 @@ I am currently using [Arch Linux](https://archlinux.org/)
 and running [Niri](https://github.com/YaLTeR/niri/)
 as my window manager and Wayland compositor.
 
+I installed [Arch Linux](https://archlinux.org/)
+manually following the
+[tutorial](https://www.youtube.com/watch?v=YC7NMbl4goo)
+by [Dreams of Autonomy](https://www.youtube.com/@dreamsofautonomy).
+
+There is also a
+[written guide](https://github.com/dreamsofautonomy/arch-from-scratch)
+if you prefer to read instead of watching a video.
+
+If you are using [btrfs](https://btrfs.readthedocs.io/en/latest/index.html),
+which you would be if you are following the guide above,
+you should also install [btrfs-progs](https://github.com/kdave/btrfs-progs)
+so that the mkinitcpio hook to create the initramfs for the kernel
+doesn't throw an error due to fsck not being available.
+The system will still work fine even without installing
+[btrfs-progs](https://github.com/kdave/btrfs-progs),
+but the error gets annoying as it appears every time you update the kernel,
+and it might trick you into thinking there is actually an error in the
+mkinitcpio build hook for the kernel when there actually isn't.
+
 ## Configuration files
 
 I am making use of [Chezmoi (pronounced shay-mwa)](https://www.chezmoi.io/)
