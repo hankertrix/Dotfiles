@@ -17,11 +17,12 @@ Usage:
     - volume-up
     - volume-down
     - volume-mute
+	- mic-mute
     - brightness-up
     - brightness-down
 
   Both of the arguments are required for all operations
-  except for the volume-mute operation.
+  except for the volume-mute and mic-mute operations.
 
   The amount is in percentages without the % symbol, from 0 - 100.
 "
@@ -40,10 +41,12 @@ get_volume() {
 	# is way faster than wire plumber (wpctl),
 	# and also returns the volume as an integer percentage
 	# and not as a float, so we are using pactl instead of wpctl.
-	volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d{1,3}(?=%)' | head -1)
+	volume=$(pactl get-sink-volume @DEFAULT_SINK@ |
+		grep -Po '\d{1,3}(?=%)' | head -1)
 
 	# Get whether the audio is muted
-	is_muted=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -Po '(?<=Mute: )(yes|no)')
+	is_muted=$(pactl get-sink-mute @DEFAULT_SINK@ |
+		grep -Po '(?<=Mute: )(yes|no)')
 }
 
 # Function to get the volume icon
@@ -81,6 +84,47 @@ show_volume_notification() {
 	dunstify -t 1000 -r 2593 \
 		-u normal "$volume%$SPACER$volume_icon" \
 		-h int:value:"$volume"
+}
+
+# Function to get the mic volume level
+get_mic_volume() {
+
+	# Get the mic volume level from pactl.
+	mic_volume=$(pactl get-source-volume @DEFAULT_SOURCE@ |
+		grep -Po '\d{1,3}(?=%)' | head -1)
+
+	# Get whether the mic is muted
+	mic_is_muted=$(pactl get-source-mute @DEFAULT_SOURCE@ |
+		grep -Po '(?<=Mute: )(yes|no)')
+}
+
+# Function to get mic icon
+get_mic_icon() {
+
+	# Get the mic volume level
+	get_mic_volume
+
+	# Initialise the mic icon
+	mic_icon=
+
+	# If the mic is muted, show the muted icon
+	if [ "$mic_is_muted" = 'yes' ]; then
+		mic_icon=""
+	else
+		mic_icon=""
+	fi
+}
+
+# Function to show the mic notification
+show_mic_notification() {
+
+	# Get the mic icon (implicitly calls get brightness also)
+	get_mic_icon
+
+	# Display the notification using dunstify
+	dunstify -t 1000 -r 2593 \
+		-u normal "$mic_volume%$SPACER$mic_icon" \
+		-h int:value:"$mic_volume"
 }
 
 # Function to get the brightness level
@@ -172,11 +216,21 @@ volume-down)
 # Muting the audio
 volume-mute)
 
-	# Mute the audio
+	# Toggle the mute on the audio
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 	# Show the volume notification
 	show_volume_notification
+	;;
+
+# Muting the mic
+mic-mute)
+
+	# Toggle the mute on the mic
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+	# Show the mic notification
+	show_mic_notification
 	;;
 
 # Increasing the brightness

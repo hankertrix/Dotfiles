@@ -148,6 +148,7 @@
 	},
 	"pulseaudio": {
 		// "scroll-step": 1, // %, can be a float
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"format": "{icon}<span size='40%'> </span>{volume}%",
 		"format-bluetooth": "{icon}󰂯<span size='30%'> </span>{volume}%",
 		"format-bluetooth-muted": "{icon}󰂯<span size='40%'> </span>",

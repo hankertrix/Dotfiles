@@ -443,7 +443,7 @@ binds {
     Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "~/.config/niri/scripts/dunst-indicator.sh" "volume-up" "1"; }
     Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "~/.config/niri/scripts/dunst-indicator.sh" "volume-down" "1"; }
     XF86AudioMute        allow-when-locked=true { spawn "~/.config/niri/scripts/dunst-indicator.sh" "volume-mute"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "~/.config/niri/scripts/dunst-indicator.sh" "mic-mute"; }
 
     // Brightness controls
     XF86MonBrightnessUp allow-when-locked=true { spawn "~/.config/niri/scripts/dunst-indicator.sh" "brightness-up" "5"; }

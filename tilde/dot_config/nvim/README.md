@@ -141,7 +141,7 @@ Hardtime plugin to force me to use more efficient Vim motions -
 ### Miscellaneous
 
 Typr typing plugin -
-[typr][https://github.com/nvzone/typr]
+[typr](https://github.com/nvzone/typr)
 
 ## Font
 
