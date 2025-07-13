@@ -56,7 +56,7 @@ else
 	if screen_area=$(slurp); then
 
 		# Record the screen
-		wl-screenrec -g "$screen_area" -f "$filename" &
+		wl-screenrec -g "$screen_area" -f "$filename" -b "2 MB" &
 
 		# Display the recording indicator in waybar
 		pkill -SIGRTMIN+8 waybar
