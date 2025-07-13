@@ -87,9 +87,15 @@ and the bootloader.
 
 The [`boot`](./slash/boot/) folder contains the configuration for
 the bootloader I use, [rEFInd](https://www.rodsbooks.com/refind/).
+The [rEFInd configuration](./slash/boot/refind_linux.conf)
+is just the standard boot options that are provided by default
+when running `refind-install`. However, the `amdgpu.dcdebugmask` option
+is added so that the AMD driver doesn't crash or lock up.
+There is a really helpful
+[tutorial here](https://discuss.cachyos.org/t/tutorial-mitigate-gfx-crash-lockup-apparent-freeze-with-amdgpu/10842).
+
 The theme I use is a modified version of the Gruvbox theme from
 [rEFInd minimal themes](https://github.com/quantrancse/rEFInd-minimal-themes).
-
 The selection icons were taken from [dm](https://github.com/mustaqimM/dm),
 which itself is a modified version of the
 [Dream Machine theme](https://github.com/Lindstream/dm-refind-theme).
