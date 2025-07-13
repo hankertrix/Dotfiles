@@ -17,7 +17,9 @@ Usage:
     - volume-up
     - volume-down
     - volume-mute
-	- mic-mute
+    - mic-up
+    - mic-down
+    - mic-mute
     - brightness-up
     - brightness-down
 
@@ -109,9 +111,9 @@ get_mic_icon() {
 
 	# If the mic is muted, show the muted icon
 	if [ "$mic_is_muted" = 'yes' ]; then
-		mic_icon=""
+		mic_icon=""
 	else
-		mic_icon=""
+		mic_icon=""
 	fi
 }
 
@@ -221,6 +223,36 @@ volume-mute)
 
 	# Show the volume notification
 	show_volume_notification
+	;;
+
+# Increasing the mic volume
+mic-up)
+
+	# Get the current mic volume level
+	get_mic_volume
+
+	# If the mic volume with the amount added is greater than the max volume,
+	# set the volume to the max volume
+	if [ $(("$mic_volume" + "$2")) -gt "$MAX_VOLUME" ]; then
+		pactl set-source-volume @DEFAULT_SOURCE@ $MAX_VOLUME%
+
+	# Otherwise, increase the mic volume by that amount
+	else
+		pactl set-source-volume @DEFAULT_SOURCE@ +"$2"%
+	fi
+
+	# Show the mic notification
+	show_mic_notification
+	;;
+
+# Decreasing the mic volume
+mic-down)
+
+	# Decrease the volume by the amount given
+	pactl set-source-volume @DEFAULT_SOURCE@ -"$2"%
+
+	# Show the mic notification
+	show_mic_notification
 	;;
 
 # Muting the mic
