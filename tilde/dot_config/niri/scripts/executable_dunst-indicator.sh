@@ -32,6 +32,12 @@ Usage:
 # The maximum volume level
 MAX_VOLUME=100
 
+# The timeout duration in milliseconds
+TIMEOUT_IN_MS=1000
+
+# The notification ID to use
+NOTIFICATION_ID=2593
+
 # The spacer to use to space out the value and the icon
 SPACER=' '
 
@@ -83,7 +89,7 @@ show_volume_notification() {
 	fi
 
 	# Display the notification using dunstify
-	dunstify -t 1000 -r 2593 \
+	dunstify -t $TIMEOUT_IN_MS -r $NOTIFICATION_ID \
 		-u normal "$volume%$SPACER$volume_icon" \
 		-h int:value:"$volume"
 }
@@ -124,7 +130,7 @@ show_mic_notification() {
 	get_mic_icon
 
 	# Display the notification using dunstify
-	dunstify -t 1000 -r 2593 \
+	dunstify -t $TIMEOUT_IN_MS -r $NOTIFICATION_ID \
 		-u normal "$mic_volume%$SPACER$mic_icon" \
 		-h int:value:"$mic_volume"
 }
@@ -177,7 +183,7 @@ show_brightness_notification() {
 	get_brightness_icon
 
 	# Display the notification using dunstify
-	dunstify -t 1000 -r 2593 \
+	dunstify -t $TIMEOUT_IN_MS -r $NOTIFICATION_ID \
 		-u normal "$brightness%$SPACER$brightness_icon" \
 		-h int:value:"$brightness"
 }
