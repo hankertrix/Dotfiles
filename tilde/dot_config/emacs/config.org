@@ -891,7 +891,13 @@ Install the Auto-Dark Emacs package to automatically switch between light and da
 ** Mode line
 Use doom mode line for the Emacs mode line.
 #+begin_src emacs-lisp
-(use-package doom-modeline :demand t :config (doom-modeline-mode 1))
+(use-package doom-modeline
+
+  ;; Load the package immediately
+  :demand t
+
+  ;; Start doom mode line
+  :config (doom-modeline-mode 1))
 #+end_src
 
 ** Rainbow Delimiters
