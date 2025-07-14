@@ -102,6 +102,7 @@ uv
 vhs
 vi
 waybar
+wl-clip-persist
 wl-clipboard
 wl-screenrec-git
 xdg-desktop-portal-gnome
