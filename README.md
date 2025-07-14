@@ -40,6 +40,23 @@ then run the command below to deploy the configuration files:
 ROOTMOI=t chezmoi init hankertrix/dotfiles --source ~/.dotfiles --apply
 ```
 
+If you don't want to deploy the system level configuration files,
+remove the `ROOTMOI=t` at the front of the command to
+only deploy the user level configuration files, like this:
+
+```sh
+chezmoi init hankertrix/dotfiles --source ~/.dotfiles --apply
+```
+
+You can also choose another directory to store the source directory,
+but take note that references to the `~/.dotfiles` directory in the
+[Emacs configuration](./tilde/dot_config/emacs/config.org)
+need to be changed to point to the correct source directory
+instead of `~/.dotfiles`. The reason for not templating
+the reference to `~/.dotfiles` in the Emacs configuration
+is due to Emacs not having an easy way to set the file type,
+or to ignore the `.tmpl` file extension.
+
 The configuration files are all stored in either [`tilde`](./tilde/),
 which refers to user-specific configuration found under `~/`,
 or [`slash`](./slash/), which are the global configuration options
