@@ -438,18 +438,18 @@ binds {
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "volume-up" "5"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "volume-down" "5"; }
-    Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "volume-up" "1"; }
-    Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "volume-down" "1"; }
-    XF86AudioMute        allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "volume-mute"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "mic-mute"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "volume-up" "5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "volume-down" "5"; }
+    Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "volume-up" "1"; }
+    Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "volume-down" "1"; }
+    XF86AudioMute        allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "volume-mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "mic-mute"; }
 
     // Brightness controls
-    XF86MonBrightnessUp allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "brightness-up" "5"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "brightness-down" "5"; }
-    Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "brightness-up" "1"; }
-    Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "~/.local/bin/dunst-indicator.sh" "brightness-down" "1"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "brightness-up" "5"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "brightness-down" "5"; }
+    Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "brightness-up" "1"; }
+    Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "~/.local/bin/dunst-indicator" "brightness-down" "1"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

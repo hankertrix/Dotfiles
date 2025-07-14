@@ -12,6 +12,7 @@ btrfs-progs
 caligula
 cava
 chezmoi
+cliphist
 darkman
 downgrade
 dua-cli
@@ -102,7 +103,6 @@ uv
 vhs
 vi
 waybar
-wl-clip-persist
 wl-clipboard
 wl-screenrec-git
 xdg-desktop-portal-gnome

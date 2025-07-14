@@ -11,7 +11,7 @@ A script to use show volume and brightness levels using Dunst notifications.
 It is adapted from EndeavourOS' i3 volume-brightness script.
 
 Usage:
-  dunst-indicator.sh <operation> <amount>
+  dunst-indicator <operation> <amount>
 
   The operation can be the following:
     - volume-up

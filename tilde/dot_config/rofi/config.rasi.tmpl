@@ -7,7 +7,14 @@
 
 // Configuration
 configuration {
-	modi: [drun, calc, window, run, emoji];
+	modi: [
+		drun,
+		calc,
+		clipboard,
+		window,
+		run,
+		emoji
+	];
 	font: "{{ .guiFont }} 12";
 	show-icons: true;
 	icon-theme: "{{ .iconTheme }}";
@@ -16,14 +23,15 @@ configuration {
 	display-calc: "";
 	display-run: "";
 	display-emoji: "󰇳";
+	display-clipboard: "";
 	drun-display-format: "{name}";
 	window-format: "{w} {c} {t}";
 	hover-select: false;
 	scroll-method: 1;
 	me-select-entry: "";
 	me-accept-entry: "MousePrimary";
-	kb-mode-next: "Shift+Right,Control+Tab,Alt+Tab";
-	kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Alt+ISO_Left_Tab";
+	kb-mode-next: "Shift+Right,Control+Tab,Alt+l";
+	kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Alt+h";
 }
 
 /* Include the rofi colours */
@@ -135,7 +143,7 @@ mode-switcher {
 }
 
 button {
-	margin: 0 65px;
+	margin: 0 52px;
 	padding: 3px;
 	border-radius: 50%;
 	cursor: pointer;
