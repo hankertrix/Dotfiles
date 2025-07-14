@@ -42,6 +42,7 @@ rofi-emoji
 ruff
 rustup
 satty
+slurp
 steam
 swayidle
 tealdeer
