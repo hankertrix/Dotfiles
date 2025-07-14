@@ -226,7 +226,7 @@ The [`systemd`](./systemd/user/) directory just contains the service files
 I need to run `swayidle` and `swww` as a daemon.
 The `swayidle` service file is taken from
 [Niri's example `systemd` setup](https://github.com/YaLTeR/niri/wiki/Example-systemd-Setup)
-with a description added.
+with a description and an install section added.
 
 ## [Wallust](https://codeberg.org/explosion-mental/wallust)
 

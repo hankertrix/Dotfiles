@@ -7,3 +7,6 @@ Requisite=graphical-session.target
 [Service]
 ExecStart=/usr/bin/swayidle -w
 Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

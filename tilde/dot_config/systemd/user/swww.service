@@ -8,3 +8,6 @@ Requisite=graphical-session.target
 Environment=RUST_BACKTRACE=1
 ExecStart=/usr/bin/swww-daemon
 Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
