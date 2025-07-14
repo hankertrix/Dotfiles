@@ -9,6 +9,6 @@ Target = *
 [Action]
 Description = Updating package lists...
 When = PostTransaction
-Exec = /bin/sh -c '/usr/bin/pacman -Qqetn > {{ joinPath $pkgListDir "pkglist.txt" }} && /usr/bin/pacman -Qqem > {{ joinPath $pkgListDir "aur-pkglist.txt" }}'
+Exec = /bin/sh -c '/usr/bin/pacman -Qqen > {{ joinPath $pkgListDir "pkglist.txt" }} && /usr/bin/pacman -Qqem > {{ joinPath $pkgListDir "aur-pkglist.txt" }}'
 
 # vi: ft=confini
