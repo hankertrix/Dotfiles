@@ -21,13 +21,11 @@ ghostty
 github-cli
 kitty
 libreoffice-fresh
-linux-headers
 ly
 mediainfo
 mpd-mpris
 mpv
 namcap
-nano
 nautilus-open-any-terminal
 niri
 oculante
@@ -44,7 +42,6 @@ rofi-emoji
 ruff
 rustup
 satty
-slurp
 steam
 swayidle
 tealdeer

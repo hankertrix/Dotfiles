@@ -1,0 +1,14 @@
+# {{ $pkgListDir := joinPath .chezmoi.workingTree "package-lists" }}
+#
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Updating package lists...
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/pacman -Qqetn > {{ joinPath $pkgListDir "pkglist.txt" }} && /usr/bin/pacman -Qqem > {{ joinPath $pkgListDir "aur-pkglist.txt" }}'
+
+# vi: ft=confini

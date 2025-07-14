@@ -94,7 +94,8 @@ if [ -z $theme ]; then
 fi
 
 # Set the wallpaper directory
-wallpaper_directory="$HOME/.dotfiles/wallpapers/$theme/"
+wallpaper_base_directory='{{ joinPath .chezmoi.workingTree "wallpapers" }}'
+wallpaper_directory="$wallpaper_base_directory/$theme/"
 
 # Initialise whether swaylock is active
 swaylock_active=
@@ -131,4 +132,4 @@ if [ -n "$swaylock_active" ]; then
 	niri msg action power-off-monitors
 fi
 
-# vi: tabstop=4 shiftwidth=4
+# vi: ft=sh tabstop=4 shiftwidth=4

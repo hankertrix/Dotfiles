@@ -1,4 +1,5 @@
 -- Plugin manager configuration
+-- {{ $dotConfigDir := joinPath .chezmoi.workingTree "tilde/dot_config" }}
 
 -- Bootstrap lazy.nvim
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -24,5 +25,7 @@ return require("lazy").setup({
 
 	-- Set the lockfile location
 	-- to be in the dotfiles directory
-	lockfile = "~/.dotfiles/tilde/dot_config/nvim/lazy-lock.json",
+	lockfile = '{{ joinPath $dotConfigDir "nvim/lazy-lock.json" }}',
 })
+
+-- vi: ft=lua

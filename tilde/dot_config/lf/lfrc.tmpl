@@ -1,5 +1,7 @@
 # Lf configuration
-
+# chezmoi:template:left-delimiter="@@" right-delimiter="@@"
+# vi: ft=lf
+# @@ $dotConfigDir := joinPath .chezmoi.workingTree "tilde/dot_config" @@
 
 # Settings
 
@@ -59,7 +61,8 @@ set scrolloff 8
 # Scripts to run on startup
 
 # Warn about nested instances
-&[ $LF_LEVEL -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
+&[ $LF_LEVEL -eq 1 ] ||
+    lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
 
 
 
@@ -412,7 +415,7 @@ map ed cd ~/.config/lf/
 map gc cd ~/.config/
 
 # Mapping to go to the dotfiles config directory
-map gv cd ~/.dotfiles/tilde/dot_config/
+map gv cd @@ $dotConfigDir @@
 
 # Mapping to go to the Downloads directory
 map gd cd ~/Downloads/

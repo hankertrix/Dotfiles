@@ -40,4 +40,6 @@ UpgradeMenu
 
 # Custom PKGBUILD repositories
 [custom-packages]
-Path = /home/hanker/.dotfiles/custom-packages/
+Path = {{ joinPath .chezmoi.workingTree "custom-packages" }}
+
+# vi: ft=confini

@@ -1,3 +1,4 @@
+# {{ $dotConfigDir := joinPath .chezmoi.workingTree "tilde/dot_config" }}
 # Schema
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
@@ -261,7 +262,7 @@ desc = "Create a file (ends with / for directories)"
 # Use ec to go to the config directory for Yazi
 [[mgr.prepend_keymap]]
 on = ["e", "c"]
-run = "cd ~/.dotfiles/tilde/dot_config/yazi"
+run = 'cd {{ joinPath $dotConfigDir "yazi" }}'
 desc = "Edit the Yazi configuration"
 
 # Use em to emit a Yazi command
@@ -279,7 +280,7 @@ desc = "Go to the config directory"
 # Use gv to go to the dotfiles config directory
 [[mgr.prepend_keymap]]
 on = ["g", "v"]
-run = "cd ~/.dotfiles/tilde/dot_config"
+run = "cd {{ $dotConfigDir }}"
 desc = "Go to the dotfiles directory"
 
 # Use gp to go to the projects directory
@@ -350,3 +351,5 @@ desc = "Move in relative steps"
 on = "9"
 run = "plugin relative-motions -- 9"
 desc = "Move in relative steps"
+
+# vi: ft=toml

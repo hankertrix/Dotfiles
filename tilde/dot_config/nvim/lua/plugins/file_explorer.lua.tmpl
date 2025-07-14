@@ -1,5 +1,6 @@
 -- The configuration for the file explorer
 -- Currently, the plugin used is yazi.nvim
+-- {{ $dotConfigDir := joinPath .chezmoi.workingTree "tilde/dot_config" }}
 
 -- Gets the module with the utilities
 local utils = require("utils")
@@ -22,7 +23,7 @@ return {
 			function()
 				require("yazi").yazi(
 					nil,
-					"~/.dotfiles/tilde/dot_config/nvim/lua/"
+					'{{ joinPath $dotConfigDir "nvim/lua" }}'
 				)
 			end,
 			mode = "n",
@@ -30,3 +31,5 @@ return {
 		},
 	},
 }
+
+-- vi: ft=lua
