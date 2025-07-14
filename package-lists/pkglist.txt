@@ -5,7 +5,6 @@ base
 base-devel
 bash-completion
 blueman
-bluez-utils
 brave-bin
 brightnessctl
 btop
@@ -27,7 +26,6 @@ gammastep
 ghostty
 git
 github-cli
-gvfs
 imagemagick
 jq
 kitty
