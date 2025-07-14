@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2025-07-10T12:54:55.903Z",
+    "createdAt": "2025-07-14T11:54:19.622Z",
     "redirects": [
         {
             "description": "Redirect YouTube Shorts to YouTube Video",
@@ -234,7 +234,7 @@
             "redirectUrl": "https://farside.link/tent/release.php?artist=$1&type=$2&name=$3",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -251,7 +251,7 @@
             "redirectUrl": "https://farside.link/tent/search.php?query=$1",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -268,7 +268,7 @@
             "redirectUrl": "https://farside.link/tent/image.php?file=$1",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -285,7 +285,7 @@
             "redirectUrl": "https://farside.link/tent/audio.php?directory=$1&format=$2&file=$3&token=$4",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
