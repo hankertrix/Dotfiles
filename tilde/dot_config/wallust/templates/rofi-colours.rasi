@@ -15,6 +15,7 @@ https://github.com/JaKooLit/Hyprland-Dots/blob/main/config/wallust/templates/col
 	translucent-background: {{ color12 | blend("#000000") }}CC;
 	selected-background: rgb(255, 255, 255, 0.15);
 	border-colour: {{ color11 }};
+	translucent-border-colour: {{ color11 }}CC;
 	text-colour: {{ color8 | lighten(0.5) }};
 
 	color0: {{ color0 }};

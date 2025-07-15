@@ -1,4 +1,4 @@
-// Rofi config file
+// Main rofi config file
 //
 // vi: ft=rasi
 
@@ -7,7 +7,7 @@
 
 // Configuration
 configuration {
-	modi: [
+	modes: [
 		drun,
 		calc,
 		clipboard,
@@ -30,23 +30,72 @@ configuration {
 	scroll-method: 1;
 	me-select-entry: "";
 	me-accept-entry: "MousePrimary";
-	kb-mode-next: "Shift+Right,Control+Tab,Alt+l";
-	kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Alt+h";
+
+	// Key binds
+	kb-row-up: [
+		"Up",
+		"Control+p",
+		"Control+k"
+	];
+	kb-row-down: [
+		"Down",
+		"Control+n",
+		"Control+j"
+	];
+	kb-row-left: [
+		"Control+Page_Up",
+		"Control+h"
+	];
+	kb-row-right: [
+		"Control+Page_Down",
+		"Control+l"
+	];
+	kb-remove-to-eol: [
+		"Control+K"
+	];
+	kb-mode-complete: [
+		"Control+L"
+	];
+	kb-accept-entry: [
+		"Return",
+		"KP_Enter"
+	];
+	kb-remove-char-back: [
+		"BackSpace",
+		"Shift+BackSpace"
+	];
+	kb-mode-next: [
+		"Shift+Right",
+		"Control+Tab",
+		"Alt+l",
+		"Alt+Tab"
+	];
+	kb-mode-previous: [
+		"Shift+Left",
+		"Control+ISO_Left_Tab",
+		"Alt+h",
+		"Alt+ISO_Left_Tab"
+	];
 }
 
-/* Include the rofi colours */
-@theme "~/.config/rofi/colours.rasi"
+// Include the rofi colours
+@theme "colours"
 
 // General settings
 * {
 	default-border-radius: 15px;
+
+	// Set the default background colour to be transparent
+	background-color: transparent;
+
+	// Set the default text colour
+	text-color: @text-colour;
 }
 
 // Main
 window {
 	transparency: "real";
 	fullscreen: false;
-	enabled: true;
 	cursor: "default";
 	width: 40em;
 	height: 25em;
@@ -55,33 +104,26 @@ window {
 	border: 2px;
 	border-radius: @default-border-radius;
 	border-color: @border-colour;
-	background-color: @main-background;
+	background-image: @wallpaper;
 }
 
 mainbox {
-	enabled: true;
 	padding: 1em;
 	orientation: vertical;
-	children: [ "inputbar", "listbox" ];
-	background-color: transparent;
-	background-image: @wallpaper;
+	children: [ inputbar, listbox ];
 }
 
 // Inputs
 inputbar {
-	enabled: true;
 	padding: 2em;
 	spacing: 0;
-	children: [ "prompt", "textbox-prompt-colon", "entry" ];
-	background-color: transparent;
+	children: [ prompt, textbox-prompt-colon, entry ];
 }
 
 prompt {
 	padding: 10px 10px 10px 15px;
 	border-radius: 20px 0 0 20px;
-	enabled: true;
 	expand: false;
-	text-color: @text-colour;
 	background-color: @translucent-background;
 }
 
@@ -93,18 +135,14 @@ prompt {
 textbox-prompt-colon {
 	padding: 10px 10px 10px 0;
 	str: "";
-	enabled: true;
 	expand: false;
-	text-color: @text-colour;
 	background-color: @translucent-background;
 }
 
 entry {
 	padding: 10px 0;
 	border-radius: 0 20px 20px 0;
-	enabled: true;
 	background-color: @translucent-background;
-	text-color: @text-colour;
 	cursor: text;
 }
 
@@ -114,14 +152,13 @@ listbox {
 	padding: 10px 15px;
 	border-radius: @default-border-radius;
 	orientation: vertical;
-	children: [ "listview", "mode-switcher"];
+	children: [ listview, mode-switcher];
 	background-color: @translucent-background;
 }
 
 listview {
 	padding: 0;
 	spacing: 0;
-	enabled: true;
 	columns: 1;
 	cycle: true;
 	dynamic: true;
@@ -131,15 +168,11 @@ listview {
 	fixed-height: false;
 	fixed-columns: true;
 	cursor: "default";
-	background-color: transparent;
-	text-color: @text-colour;
 }
 
 // Modes
 mode-switcher {
 	orientation: horizontal;
-	enabled: true;
-	background-color: transparent;
 }
 
 button {
@@ -147,88 +180,68 @@ button {
 	padding: 3px;
 	border-radius: 50%;
 	cursor: pointer;
-	background-color: transparent;
-	text-color: @text-colour;
 }
 
 button selected {
 	background-color: @selected-background;
-	text-color: @text-colour;
 }
 
 // Elements
 element {
 	padding: 5px;
 	border-radius: @default-border-radius;
-	enabled: true;
 	cursor: pointer;
-	background-color: transparent;
-	text-color: @text-colour;
 }
 
 element selected.normal {
 	background-color: @selected-background;
-	text-color: @text-colour;
 }
 
 element normal.normal {
 	background-color: inherit;
-	text-color: @text-colour;
 }
 
 element normal.urgent {
 	background-color: inherit;
-	text-color: @text-colour;
 }
 
 element normal.active {
 	background-color: inherit;
-	text-color: @text-colour;
 }
 
 element selected.active {
 	background-color: @selected-background;
-	text-color: @text-colour;
 }
 
 element alternate.normal {
 	background-color: inherit;
-	text-color: @text-colour;
 }
 
 element alternate.urgent {
 	background-color: inherit;
-	text-color: @text-colour;
 }
 
 element alternate.active {
 	background-color: inherit;
-	text-color: @text-colour;
 }
 
 element-icon {
 	size: 20px;
 	padding: 0 5px;
 	cursor: inherit;
-	background-color: transparent;
-	text-color: inherit;
 }
 
 element-text {
 	cursor: inherit;
-	background-color: transparent;
-	text-color: inherit;
 }
 
 // Error message
 error-message {
-	text-color: @text-colour;
 	background-color: @main-background;
 	text-transform: capitalize;
-	children: [ "textbox" ];
+	children: [ textbox ];
 }
 
 textbox {
-	text-color: inherit;
 	background-color: inherit;
 }

@@ -1,0 +1,97 @@
+// Wallpaper theme for rofi
+
+// Include the rofi colours
+@theme "colours"
+
+// General settings
+* {
+
+	// Set the default background colour to be transparent
+	background-color: transparent;
+
+	// Set the default text colour
+	text-color: @text-colour;
+
+	// Set the default border radius
+	default-border-radius: 15px;
+
+	// Set the default spacing
+	default-spacing: 1em;
+}
+
+window {
+	fullscreen: false;
+	width: 50em;
+	height: 31em;
+	background-image: @wallpaper;
+	border-radius: @default-border-radius;
+}
+
+mainbox {
+	padding: 1em;
+	spacing: @default-spacing;
+	children: [ inputbar, listview-split ];
+}
+
+inputbar {
+	border-radius: 20px;
+	padding: 10px;
+	background-color: @translucent-background;
+	children: [ textbox-prompt-colon, entry ];
+}
+
+textbox-prompt-colon {
+	expand: false;
+	str: "  ";
+	padding: 0px 0px 0px 10px;
+}
+
+entry {
+	placeholder: "Search…";
+}
+
+listview-split {
+	orientation: horizontal;
+	children: [ listview, icon-current-entry ];
+	spacing: @default-spacing;
+}
+
+icon-current-entry {
+	expand: true;
+	size: calc((48em - 2em) / 2);
+}
+
+listview {
+	flow: horizontal;
+	fixed-columns: true;
+	columns: 4;
+	lines: 5;
+	spacing: @default-spacing;
+}
+
+element {
+	orientation: vertical;
+	padding: 0.1em;
+	background-color: @translucent-background;
+	border-radius: @default-border-radius;
+	children: [ element-icon, element-text ];
+}
+
+element-icon {
+	size: 5em;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+}
+
+element-text {
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+	padding: 10px;
+}
+
+element selected {
+	background-image: linear-gradient(white/25%, white/10%);
+	border-color: @translucent-border-colour;
+	border: 3px;
+	border-radius: @default-border-radius;
+}

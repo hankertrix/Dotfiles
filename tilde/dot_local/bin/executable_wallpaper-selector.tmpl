@@ -17,19 +17,12 @@ Options:
 
   -d, --dark
 	Select a dark wallpaper, mutually exclusive with the -l, --light flag.
-
-  -m, --monitors-off
-	Handle the situation where the monitors are powered off.
-
-	This is mainly used with the script automatically ran by darkman,
-	since the monitors might be powered off, which causes waypaper to fail
-	when setting the wallpaper.
 '
 
 # Reset all variables that might be set
 random=
 theme=
-handle_monitors_off=
+palette=
 
 # Parse the arguments given
 while :; do
@@ -62,11 +55,6 @@ while :; do
 		fi
 		;;
 
-	# Handle the case when the monitors are off
-	-m | --monitors-off)
-		handle_monitors_off=true
-		;;
-
 	# End of all options, stop parsing
 	--)
 		shift
@@ -93,43 +81,92 @@ if [ -z $theme ]; then
 	theme=$(darkman get)
 fi
 
+# Get the palette
+palette=$(printf "%s16" "$theme")
+
 # Set the wallpaper directory
 wallpaper_base_directory='{{ joinPath .chezmoi.workingTree "wallpapers" }}'
 wallpaper_directory="$wallpaper_base_directory/$theme/"
 
-# Initialise whether swaylock is active
-swaylock_active=
+# Function to select a wallpaper
+select_wallpaper() {
 
-# If handling the monitors being off is wanted
-if [ "$handle_monitors_off" = true ]; then
+	# If the random flag is given
+	if [ "$random" = true ]; then
 
-	# Get whether swaylock is active
-	swaylock_active=$(pgrep -x 'swaylock')
+		# Select a random wallpaper from the wallpaper directory
+		wallpaper_path=$(fd . "$wallpaper_directory" \
+			-e jpg -e jpeg -e png --type f |
+			shuf -n 1)
 
-	# If swaylock is active
-	if [ -n "$swaylock_active" ]; then
+	# Otherwise
+	else
 
-		# Power on the monitors because that means
-		# the system has been locked and has gone to sleep.
-		#
-		# This is required because waypaper needs an active monitor
-		# to set the wallpaper and will fail without it
-		niri msg action power-on-monitors
+		# Open the wallpaper picker to select a wallpaper
+		wallpaper_path=$(rofi \
+			-modes filebrowser \
+			-theme wallpaper \
+			-show filebrowser \
+			-filebrowser-directory "$wallpaper_directory" \
+			-filebrowser-command 'echo' \
+			-selected-row 1)
 	fi
-fi
+}
 
-# If the random flag is passed, call waypaper to select a random wallpaper
-if [ "$random" = true ]; then
-	waypaper --folder "$wallpaper_directory" --random
+# Function to set the wallpaper
+set_wallpaper() {
 
-# Otherwise, call waypaper to interactively select a wallpaper
-else
-	waypaper --folder "$wallpaper_directory"
-fi
+	# If the wallpaper path is empty, exit the script
+	if [ -z "$wallpaper_path" ]; then
+		exit
+	fi
 
-# If swaylock was active, power off the monitors again
-if [ -n "$swaylock_active" ]; then
-	niri msg action power-off-monitors
-fi
+	# Call the wallpaper program to set the wallpaper
+	swww img \
+		--filter Lanczos3 \
+		--resize crop \
+		--transition-type any \
+		--transition-step 90 \
+		--transition-duration 2 \
+		--transition-angle 45 \
+		--transition-fps 240 \
+		"$wallpaper_path"
+}
+
+# Function to theme applications
+theme_and_reload_applications() {
+
+	# Generate the colours from the wallpaper passed as the first argument
+	# and skip setting the terminal theme
+	wallust run "$wallpaper_path" --palette "$palette" --skip-sequences
+
+	# Reload waybar
+	killall -SIGUSR2 waybar
+
+	# Restart dunst
+	systemctl --user restart dunst
+
+	# Update pywalfox
+	pywalfox update
+
+	# Kill nautilus
+	killall nautilus
+}
+
+# The main function to run to set the wallpaper and theme everything
+main() {
+
+	# Select a wallpaper
+	select_wallpaper
+
+	# Set the wallpaper
+	set_wallpaper
+
+	# Theme and reload applications
+	theme_and_reload_applications
+}
+
+# Call the main function
+main
 
 # vi: ft=sh tabstop=4 shiftwidth=4

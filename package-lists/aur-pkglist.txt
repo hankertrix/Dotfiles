@@ -9,4 +9,3 @@ resvg
 spek
 ttf-symbola
 wallust
-waypaper

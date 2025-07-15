@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=/home/hanker/.local/bin/wallpaper-selector
+Name=Wallpaper Selector
+Icon=wallpaper-selector-outline
+Terminal=false
+GenericName=Wallpaper setter
+Categories=Utility;DesktopSettings;
+Keywords=wallpaper;wallpapers;
+Comment=Change wallpaper on Wayland and X11
