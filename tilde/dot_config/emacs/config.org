@@ -163,6 +163,14 @@ General has to be loaded first so that the ~use-package~ definitions below it ca
     "<escape>" '("Quit transient" . transient-quit-one)
     )
 
+  ;; Key binds for org mode
+  (general-def
+    :states '(normal visual)
+    :keymaps 'org-mode-map
+    "gj" '("Move down one visual line" . evil-next-visual-line)
+    "gk" '("Move up one visual line" . evil-previous-visual-line)
+    )
+
   ;; Create a new definer for the leader keys
   (general-create-definer hanker/leader-keys
 
@@ -214,12 +222,12 @@ General has to be loaded first so that the ~use-package~ definitions below it ca
     :states 'normal
     :keymaps 'org-mode-map
     :major-modes 'org-mode
-    "o" '(:ignore t :wk "Org mode keybinds")
+    "o" '(:ignore t :wk "Org mode key binds")
     "oe" '("Org export dispatch" . org-export-dispatch)
     "oi" '("Org toggle item" . org-toggle-item)
     "oa" '("Org agenda" . org-agenda)
     "ot" '("Org todo" . org-todo-list)
-    "ob" '(:ignore t :wk "Org babel keybinds")
+    "ob" '(:ignore t :wk "Org babel key binds")
     "obt" '("Org babel tangle" . org-babel-tangle)
     "obe" '("Org babel execute buffer" . org-babel-execute-buffer)
     )
@@ -476,7 +484,7 @@ Vundo is short for visual undo, and it helps visualise the undo and redo history
   ;; Use pretty unicode glyphs to draw the tree
   :custom (vundo-glyph-alist vundo-unicode-symbols)
 
-  ;; Keybinds for vundo
+  ;; Key binds for vundo
   :general
   (hanker/leader-keys
     :states 'normal
@@ -962,7 +970,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
 
   ;; Set the prefix for LSP mode key binds.
   ;;
-  ;; I have custom keybinds for LSP mode
+  ;; I have custom key binds for LSP mode
   ;; so this is just a fallback for LSP mode
   ;; functions that I haven't mapped a key for.
   (lsp-keymap-prefix "C-'")
@@ -1019,7 +1027,7 @@ LSP mode allows Emacs to use various language servers to provide auto completion
   ;; Set the position of the documentation to be at the cursor position
   (lsp-ui-doc-position 'at-point)
 
-  ;; Keybinds for LSP mode
+  ;; Key binds for LSP mode
   :general
 
   ;; Key binds for both normal mode and visual modes in LSP mode
@@ -1928,11 +1936,17 @@ Evil org provides a set of evil key bindings that work with org mode.
   ;; Only load the package after org mode
   :after org
 
+  ;; Customise the key themes
+  :custom (evil-org-key-theme '(insert textobjects additional calendar))
+
   ;; Start evil org when org mode is started
   :hook (org-mode . (lambda () (evil-org-mode)))
 
   ;; Configure evil org
   :config
+
+  ;; Set the key themes for evil org
+  (evil-org-set-key-theme)
 
   ;; Set the key bindings for org agenda
   (require 'evil-org-agenda)
