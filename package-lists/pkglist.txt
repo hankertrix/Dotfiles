@@ -75,6 +75,7 @@ ruff
 rustup
 satty
 slurp
+smartmontools
 steam
 swayidle
 swaylock
