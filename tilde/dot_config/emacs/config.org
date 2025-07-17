@@ -2006,17 +2006,17 @@ Install ~ox-ipynb~ to support exporting org files to Jupyter Notebooks, which ha
 *** Emacs Jupyter
 Emacs Jupyter is a plugin to work with Jupyter kernels inside org mode.
 #+begin_src emacs-lisp
-(use-package jupyter
+;; (use-package jupyter
 
-  ;; Load the Jupyter languages
-  :init (org-babel-do-load-languages
-         'org-babel-load-languages
-         (append org-babel-load-languages
-                 '((jupyter . t))))
+;;   ;; Load the Jupyter languages
+;;   :init (org-babel-do-load-languages
+;;          'org-babel-load-languages
+;;          (append org-babel-load-languages
+;;                  '((jupyter . t))))
 
-  ;; Add a hook to redisplay inline images
-  ;; after executing a code block
-  :hook (org-babel-after-execute . org-redisplay-inline-images))
+;;   ;; Add a hook to redisplay inline images
+;;   ;; after executing a code block
+;;   :hook (org-babel-after-execute . org-redisplay-inline-images))
 #+end_src
 
 *** Stop org mode from asking me to confirm evaluation
