@@ -23,6 +23,16 @@ window#waybar {
 	background-color: transparent;
 }
 
+/* Reference:
+ * https://github.com/Alexays/Waybar/issues/60
+ * https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect
+ */
+button:hover {
+	box-shadow: none; /* Remove predefined box-shadow */
+	text-shadow: none; /* Remove predefined text-shadow */
+	background: none; /* Remove predefined background color (white) */
+}
+
 .modules-left,
 .modules-center,
 .modules-right {
@@ -60,6 +70,10 @@ tooltip label {
 #workspaces button {
 	padding: 0 4px;
 	border-radius: 50%;
+}
+
+#workspaces button:hover{
+	background-color: @workspace-active;
 }
 
 #workspaces button.focused,
