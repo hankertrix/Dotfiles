@@ -14,7 +14,7 @@
 @define-color tooltip-colour {{ color11 | lighten(0.7) | saturate(0.2) }};
 @define-color tooltip-background {{ color6 | blend(background) }};
 @define-color blended-red {{ color12 | blend("#FF0000") }};
-@define-color blended-yellow {{ color8 | blend("#FFFF00") | lighten(0.2) }};
+@define-color blended-yellow {{ color8 | blend("#FFFF00") | lighten(0.5) }};
 @define-color blended-green {{ color4 | blend("#00FF00") }};
 
 @define-color colour0  {{ color0 }};
