@@ -141,7 +141,7 @@
                     pane: Pane(ProgressBar),
                 ),
                 (
-                    size: "23",
+                    size: "25",
                     pane: Pane(Property(
                         content: [
                             (kind: Property(Status(Elapsed))),
