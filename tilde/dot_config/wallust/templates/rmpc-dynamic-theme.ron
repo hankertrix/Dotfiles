@@ -65,7 +65,9 @@
         playlist_style: (fg: "{{ color5 | blend('#008000') }}"),
     ),
     level_styles: (
-        info: (fg: "{{ color3 | blend(color1) | blend('#800080') }}"),
+        info: (fg:
+            "{{ color3 | blend(color1) | blend('#800080') | lighten(0.3) }}"
+        ),
         warn: (fg: "{{ color8 | blend('#FFFF00') }}"),
         error: (fg: "{{ color12 | blend('#FF0000') }}"),
         debug: (fg: "{{ color4 | blend('#00FF00') }}"),
