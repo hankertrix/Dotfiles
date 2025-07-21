@@ -12,7 +12,7 @@
 
 /* General settings */
 * {
-	font-family: "{{ .guiFont }}";
+	font-family: "{{ .guiFont }}", polycat;
 	font-feature-settings: '"zero", "ss08", "ss09"';
 	border: none;
 	border-radius: 0;
@@ -65,6 +65,11 @@ tooltip label {
 	margin-left: 5px;
 	padding: 0 5px;
 	background-color: @blended-background;
+}
+
+#custom-runcat {
+	padding-right: 0;
+	margin-right: -2px;
 }
 
 #workspaces button {

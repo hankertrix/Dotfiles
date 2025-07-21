@@ -57,7 +57,7 @@
 		"orientation": "inherit",
 		"modules": [
 			"temperature",
-			"cpu",
+			"group/cpu",
 			"memory",
 			"disk",
 			"battery"
@@ -76,9 +76,19 @@
 			""
 		]
 	},
-	"cpu": {
+	"group/cpu": {
+		"orientation": "inherit",
+		"modules": [
+			"custom/runcat",
+			"cpu"
+		]
+	},
+	"custom/runcat": {
 		"tooltip": false,
-		"format": "<span size='30%'> </span>{usage}%"
+		"exec": "polycat"
+	},
+	"cpu": {
+		"format": "{usage}%"
 	},
 	"memory": {
 		"format": "<span size='30%'> </span>{}%"
