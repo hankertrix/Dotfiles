@@ -5,6 +5,7 @@ x-scheme-handler/chrome=zen-browser.desktop
 x-scheme-handler/about=zen-browser.desktop
 x-scheme-handler/unknown=zen-browser.desktop
 text/html=zen-browser.desktop
+text/xml=zen-browser.desktop
 application/x-extension-htm=zen-browser.desktop
 application/x-extension-html=zen-browser.desktop
 application/x-extension-shtml=zen-browser.desktop
