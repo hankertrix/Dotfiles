@@ -59,6 +59,7 @@ return {
 				"json",
 				"toml",
 				"yaml",
+				"svelte",
 
 				-- Git commits
 				"gitcommit",

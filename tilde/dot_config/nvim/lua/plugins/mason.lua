@@ -19,6 +19,7 @@ local function setup()
 			-- LSP servers
 			"lua_ls",           -- Lua
 			"vtsls",            -- TypeScript and JavaScript
+			"astro",            -- Astro
 			"rust_analyzer",    -- Rust
 			"clangd",           -- C/C++
 			"bashls",           -- Bash (shell)
