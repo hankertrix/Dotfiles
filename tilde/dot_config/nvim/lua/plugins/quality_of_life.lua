@@ -34,6 +34,12 @@ return {
 					label_direction = "left",
 				},
 			},
+
+			-- Configuration for the preview
+			preview = {
+				hybrid_modes = { "n", "no", "c" },
+				linewise_hybrid_mode = true,
+			},
 		},
 
 		-- Function to configure the plugin
@@ -258,10 +264,6 @@ return {
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			input = { enabled = true },
-			image = {
-				enabled = true,
-				doc = { inline = false, float = true },
-			},
 			picker = {
 				enabled = true,
 
