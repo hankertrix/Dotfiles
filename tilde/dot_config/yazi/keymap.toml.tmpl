@@ -277,6 +277,12 @@ on = ["g", "c"]
 run = "cd ~/.config"
 desc = "Go to the config directory"
 
+# Use gd to go to the downloads directory
+[[mgr.prepend_keymap]]
+on = ["g", "d"]
+run = "cd ~/Downloads"
+desc = "Go to the downloads directory"
+
 # Use gv to go to the dotfiles config directory
 [[mgr.prepend_keymap]]
 on = ["g", "v"]
@@ -294,6 +300,18 @@ desc = "Go to the projects directory"
 on = ["g", "u"]
 run = "cd ~/school/y2s2"
 desc = "Go to the school directory"
+
+# Use gl to follow the hovered symlink
+[[mgr.prepend_keymap]]
+on = ["g", "l"]
+run = "follow"
+desc = "Follow hovered symlink"
+
+# Use gf to jump to the first file
+[[mgr.prepend_keymap]]
+on = ["g", "f"]
+run = "plugin augment-command first_file"
+desc = "Jump to the first file"
 
 
 # Plugin specific manager keymaps
