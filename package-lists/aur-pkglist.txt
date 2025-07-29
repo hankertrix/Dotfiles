@@ -6,7 +6,6 @@ ltex-ls-plus-bin
 maple-mono-custom-git
 polycat
 python-pywalfox
-resvg
 spek
 ttf-symbola
 wallust
