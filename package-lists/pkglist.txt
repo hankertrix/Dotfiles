@@ -53,6 +53,7 @@ noto-fonts-emoji
 noto-fonts-extra
 npm
 oculante
+openh264
 paru
 pastel
 perl-image-exiftool
