@@ -1,5 +1,5 @@
 [Unit]
-Description=Start swayidle daemon
+Description=Swayidle idle daemon
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target

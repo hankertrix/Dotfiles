@@ -1,5 +1,5 @@
 [Unit]
-Description=Start swww daemon
+Description=Swww wallpaper daemon
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target
