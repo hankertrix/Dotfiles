@@ -1,6 +1,6 @@
 # Maintainer: Hanker
 pkgname='maple-mono-custom-git'
-pkgver=r615.305f3bc
+pkgver=r620.c6c20a5
 pkgrel=1
 pkgdesc='A custom build of the Maple Mono font.'
 arch=('any')
@@ -27,10 +27,13 @@ build() {
 	# Modify the config file to use dotted zeroes,
 	# enable double headed and reverse arrows,
 	# enable alternate not equals '~=' symbol,
+	# enable slashed z,
 	# and enable chinese characters.
 	edited_config=$(jq '.feature_freeze.zero = "enable"' config.json |
 		jq '.feature_freeze.ss08 = "enable"' |
 		jq '.feature_freeze.ss09 = "enable"' |
+		jq '.feature_freeze.cv10 = "enable"' |
+		jq '.feature_freeze.cv43 = "enable"' |
 		jq '.cn.enable = true')
 
 	# Write the edited config
