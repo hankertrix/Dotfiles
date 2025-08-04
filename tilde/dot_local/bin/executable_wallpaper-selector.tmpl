@@ -141,7 +141,7 @@ theme_and_reload_applications() {
 	wallust run "$wallpaper_path" --palette "$palette" --skip-sequences
 
 	# Reload waybar
-	killall -SIGUSR2 waybar
+	pkill -SIGUSR2 waybar
 
 	# Restart dunst
 	systemctl --user restart dunst
@@ -150,7 +150,7 @@ theme_and_reload_applications() {
 	pywalfox update
 
 	# Kill nautilus
-	killall nautilus
+	pkill nautilus
 }
 
 # The main function to run to set the wallpaper and theme everything
