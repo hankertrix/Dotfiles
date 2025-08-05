@@ -62,7 +62,7 @@ desc = "Analyse spectrum"
 
 # Configuration for the opener rules
 [[open.prepend_rules]]
-name = "*.{el,org,tex,bib}"
+url = "*.{el,org,tex,bib}"
 use = ["emacs", "edit", "reveal"]
 
 [[open.prepend_rules]]
@@ -76,10 +76,10 @@ use = ["play", "reveal", "analyse"]
 # Configuration for the git plugin
 [[plugin.prepend_fetchers]]
 id = "git"
-name = "*"
+url = "*"
 run = "git"
 
 [[plugin.prepend_fetchers]]
 id = "git"
-name = "*/"
+url = "*/"
 run = "git"
