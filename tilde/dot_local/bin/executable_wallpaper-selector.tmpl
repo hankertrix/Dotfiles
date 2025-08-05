@@ -183,7 +183,7 @@ theme_and_reload_applications() {
 	fi
 
 	# Reload waybar
-	killall -SIGUSR2 waybar
+	systemctl --user restart waybar
 
 	# Restart dunst
 	systemctl --user restart dunst
