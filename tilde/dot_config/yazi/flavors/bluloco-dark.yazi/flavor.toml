@@ -186,7 +186,7 @@ rules = [
 	{ mime = "audio/*", fg = "#8BCDEF" },
 
 	# Archives
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#FF839B" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#FF2E3F" },
 
 	# Documents
 	{ mime = "application/{pdf,doc,rtf}", fg = "#50ACAE" },
