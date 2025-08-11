@@ -21,7 +21,7 @@ local function setup()
 			"vtsls",            -- TypeScript and JavaScript
 			"astro",            -- Astro
 			"rust_analyzer",    -- Rust
-			"clangd",           -- C/C++
+			"asm_lsp",          -- Assembly
 			"bashls",           -- Bash (shell)
 			"marksman",         -- Markdown
 			"jsonls",           -- JSON
