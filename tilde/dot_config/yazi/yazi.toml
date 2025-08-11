@@ -59,6 +59,12 @@ block = false
 orphan = true
 desc = "Analyse spectrum"
 
+# The satty opener
+[[opener.satty]]
+run = 'satty -f "$@" -o "$@"'
+block = false
+desc = "Open in satty"
+
 
 # Configuration for the opener rules
 [[open.prepend_rules]]
@@ -72,6 +78,10 @@ use = ["edit", "emacs", "reveal"]
 [[open.prepend_rules]]
 mime = "{audio,video}/*"
 use = ["play", "reveal", "analyse"]
+
+[[open.prepend_rules]]
+mime = "image/*"
+use = ["open", "satty", "reveal"]
 
 # Configuration for the git plugin
 [[plugin.prepend_fetchers]]
