@@ -177,7 +177,7 @@ footer = { bg = "#282C34", fg = "#ABB2BF" }
 [filetype]
 rules = [
 	# Images
-	{ mime = "image/*", fg = "#FF936A" },
+	{ mime = "image/*", fg = "#FF78F8" },
 
 	# Videos
 	{ mime = "video/*", fg = "#9F7EFE" },
@@ -186,7 +186,7 @@ rules = [
 	{ mime = "audio/*", fg = "#8BCDEF" },
 
 	# Archives
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#FF2E3F" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#FF936A" },
 
 	# Documents
 	{ mime = "application/{pdf,doc,rtf}", fg = "#50ACAE" },
