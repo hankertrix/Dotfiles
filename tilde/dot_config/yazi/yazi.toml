@@ -63,7 +63,7 @@ desc = "Analyse spectrum"
 [[opener.satty]]
 run = 'satty -f "$@" -o "$@"'
 block = false
-desc = "Open in satty"
+desc = "Open in Satty"
 
 
 # Configuration for the opener rules
