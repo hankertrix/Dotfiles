@@ -45,6 +45,7 @@ mpv
 namcap
 nautilus-open-any-terminal
 neovim
+network-manager-applet
 networkmanager
 niri
 noto-fonts

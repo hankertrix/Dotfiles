@@ -24,7 +24,6 @@
 	// Modules on the right
 	"modules-right": [
 		"group/indicators",
-		"network",
 		"group/time",
 		"custom/recording",
 		"tray"
@@ -211,15 +210,6 @@
 			"brave": "",
 			"brave-browser": ""
 		}
-	},
-	"network": {
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": " {essid} ({signalStrength}%)",
-		"format-ethernet": " <span size='40%'> </span>{ipaddr}/{cidr}",
-		"tooltip-format": "{ifname} via {gwaddr} ",
-		"format-linked": "{ifname} (No IP) ",
-		"format-disconnected": "󰌙<span size='40%'> </span>Disconnected",
-		"on-click": "~/.config/waybar/scripts/wifi-menu.sh"
 	},
 	"keyboard-state": {
 		"numlock": true,
