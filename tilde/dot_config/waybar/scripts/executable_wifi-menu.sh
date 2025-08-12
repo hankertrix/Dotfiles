@@ -21,8 +21,8 @@ notify-send -u low "Getting the list of available Wi-Fi networks..."
 
 # Get a list of available wifi connections and turn it into a nice-looking list
 wifi_list=$(nmcli --fields "SECURITY,SSID,ACTIVE" device wifi list |
-	sed 1d | sort -k 4 -r | sed "s/  */ /g" | sed -E "s/WPA*.?\S//g" |
-	sed "s/^--//g" | sed "s/ //g" | sed "/--/d")
+	sed 1d | sort -k 4 -r | sed -E "s/802\.1X\s+//" | sed "s/  */ /g" |
+	sed -E "s/WPA*.?\S//g" | sed "s/^--//g" | sed "s/ //g" | sed "/--/d")
 
 # Get the connected wifi network
 connected_network=$(echo "$wifi_list" | grep -Po ".*(?=yes)")
