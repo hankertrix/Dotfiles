@@ -1,6 +1,6 @@
 # Maintainer: Hanker
 pkgname='maple-mono-custom-git'
-pkgver=r630.3142d8b
+pkgver=r632.ca4d3eb
 pkgrel=1
 pkgdesc='A custom build of the Maple Mono font.'
 arch=('any')
