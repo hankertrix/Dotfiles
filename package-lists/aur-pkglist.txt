@@ -9,3 +9,4 @@ python-pywalfox
 spek
 ttf-symbola
 wallust
+yt-dlp-git
