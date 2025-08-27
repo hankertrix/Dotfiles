@@ -1,0 +1,5 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+127.0.0.1        localhost
+::1              localhost
+172.21.32.105    ntulearnvideo-cdn.ntu.edu.sg
