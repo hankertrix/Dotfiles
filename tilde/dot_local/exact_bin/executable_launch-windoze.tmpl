@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Script to launch the windows VM
+
+# The amount of time to wait in seconds
+# before connecting to the VM using FreeRDP.
+#
+# It takes roughly 45 seconds for the VM to start
+# with the dedicated GPU connected,
+# so we wait 5 seconds more to be safe.
+WAIT_TIME=50
+
+# If the windows 11 VM is off
+if virsh --connect qemu:///system domstate win11 | grep "off"; then
+
+	# Send a notification to the user telling them the VM is starting up
+	notify-send -u low -t 3000 "Starting up Windoze..."
+
+	# Start the Windows 11 VM
+	virsh --connect qemu:///system start win11
+
+	# Wait for the VM to start
+	sleep $WAIT_TIME
+fi
+
+# Send a notification to the user telling them the VM is being opened
+notify-send -u low -t 3000 "Opening Windoze..."
+
+# Connect to the VM using FreeRDP
+xfreerdp3 -grab-keyboard /v:192.168.122.149 /u:hanker /p:win11password /d: \
+	/dynamic-resolution /scale:140 /gfx:AVC444 /audio-mode:0 \
+	/microphone:sys:alsa,format:1
+
+# vi: ft=sh

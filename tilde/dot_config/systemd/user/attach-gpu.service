@@ -1,0 +1,14 @@
+[Unit]
+Description=Attach the GPU to the VM
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/home/hanker/.local/bin/gpuctl -a
+StandardOutput=journal
+
+[Install]
+WantedBy=graphical-session.target

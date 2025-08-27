@@ -15,6 +15,7 @@ cava
 chezmoi
 cliphist
 darkman
+dmidecode
 dnsmasq
 downgrade
 dua-cli
@@ -25,6 +26,7 @@ exfatprogs
 fastfetch
 fd
 ffmpegthumbnailer
+freerdp
 fzf
 gammastep
 ghostty

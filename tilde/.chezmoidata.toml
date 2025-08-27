@@ -17,3 +17,6 @@ iconTheme = "kora"
 # The cursor theme used
 cursorTheme = "Hacked-Sky-Cursor"
 cursorSize = 24
+
+# The name of the flag to disable the GPU for the virtual machine
+gpuFlagForVM = "gpu-disabled-for-vm"

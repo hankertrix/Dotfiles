@@ -1,0 +1,158 @@
+#!/bin/sh
+
+# Script to control the GPU for virtualisation
+
+# Help text
+HELP_TEXT='
+A script to easily control the dedicated GPU on the host for virtualisation.
+
+Options:
+  -h, --help
+	Show this help message and exit.
+
+  -e, --enable
+	Enable the dedicated GPU.
+	This detaches the dedicated GPU from the VM.
+
+	The VM should not be used with the dedicated GPU
+	after it has been enabled,
+	as it will cause the GPU to not shut down properly,
+	requiring a forced shutdown using the power button to
+	properly restart the computer.
+
+  -a, --attach
+	Attach the dedicated GPU to the VM.
+	This needs to be manually done after enabling the GPU.
+
+  -d, --detach
+	Detach the dedicated GPU from the VM.
+	This is automatically done when the dedicated GPU is enabled.
+'
+
+# Function to show the VM is running error
+show_vm_running_error() {
+
+	# Print the error message
+	echo "GPU cannot be enabled while the VM is running!" >&2
+	echo "Please stop the VM before enabling the GPU." >&2
+}
+
+# Reset all variables that might be set
+enable=
+op=
+
+# Parse the arguments given
+while :; do
+	case $1 in
+
+	# If the argument is for the help command, show the help and exit
+	-h | -\? | --help)
+		echo "$HELP_TEXT"
+		exit 0
+		;;
+
+	# If the argument is to enable the GPU
+	-e | --enable)
+
+		# Set the enable variable to true
+		enable=true
+		;;
+
+	# If the argument is to attach the GPU
+	-a | --attach)
+
+		# Set the operation to attach to the VM
+		op="attach"
+		;;
+
+	# If the argument is to detach the GPU
+	-d | --detach)
+
+		# Set the operation to detach from the VM
+		op="detach"
+		;;
+
+	# End of all options, stop parsing
+	--)
+		shift
+		break
+		;;
+
+	# Unknown option
+	-?*)
+		printf 'Warning: Unknown option "%s" ignored\n' "$1" >&2
+		;;
+
+	# Default case
+	*)
+		break
+		;;
+	esac
+
+	# Go to the next argument
+	shift
+done
+
+# If enabling the GPU is wanted
+if [ "$enable" = true ]; then
+
+	# Set the operation to detach from the VM
+	op="detach"
+
+	# If the GPU has already been enabled
+	if [ -f "/tmp/{{ .gpuFlagForVM }}" ]; then
+
+		# Tell the user that it is already enabled
+		echo "GPU has already been enabled!"
+
+		# Exit the script
+		exit 0
+	fi
+
+	# Otherwise, if the virtual machine is running
+	if virsh --connect qemu:///system dominfo win11 | grep "running"; then
+
+		# Show the VM is running error
+		show_vm_running_error
+
+		# Exit the script with an error
+		exit 1
+	fi
+
+	# Otherwise, the dedicated GPU can be enabled for the host,
+	# so unload the VFIO kernel modules
+	sudo modprobe -r vfio_pci vfio_pci_core vfio_iommu_type1
+
+	# Rebind the GPU to the display driver
+	sudo virsh nodedev-reattach pci_0000_03_00_0
+	sudo virsh nodedev-reattach pci_0000_03_00_1
+fi
+
+# Iterate over the GPU drivers
+for number in "0" "1"; do
+
+	# Perform the operation on the GPU driver
+	virsh --connect qemu:///system "$op"-device --config win11 /dev/stdin <<EOF
+		<hostdev mode="subsystem" type="pci" managed="yes">
+			<source>
+				<address domain="0" bus="3" slot="0" function="$number"/>
+			</source>
+		</hostdev>
+EOF
+
+done
+
+# If enabling the GPU is wanted
+if [ "$enable" = true ]; then
+
+	# Create a temp file to mark the GPU as enabled
+	touch "/tmp/{{ .gpuFlagForVM }}"
+
+	# Set the operation to "enable" to for the message later
+	op="enabl"
+fi
+
+# Tell the user about the GPU's status
+printf "GPU has been %sed!\n" "$op"
+
+# vi: ft=sh tabstop=4 shiftwidth=4
