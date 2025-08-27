@@ -73,6 +73,7 @@ poppler
 poppler-glib
 python
 qemu-desktop
+qt5-wayland
 refind
 reflector
 resvg
