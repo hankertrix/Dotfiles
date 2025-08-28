@@ -112,6 +112,7 @@ ttf-dejavu
 ttf-liberation
 ttf-nerd-fonts-symbols-mono
 ttf-roboto
+ufw
 unzip
 uv
 vde2
