@@ -776,9 +776,9 @@ Make Dabbrev completions case-sensitive.
 #+end_src
 
 ** Large file warning
-Set the large file warning threshold to 24MiB, as my PDF files are often larger than 10MB but less than 24MiB.
+Set the large file warning threshold to nil to always open large files.
 #+begin_src emacs-lisp
-(setq large-file-warning-threshold 25000000)
+(setq large-file-warning-threshold nil)
 #+end_src
 
 * Whitespace Mode
