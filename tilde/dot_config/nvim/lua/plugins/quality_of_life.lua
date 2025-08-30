@@ -64,7 +64,7 @@ return {
 
 	-- Trim trailing whitespace and blank lines
 	{
-		"echasnovski/mini.trailspace",
+		"nvim-mini/mini.trailspace",
 		version = false,
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
