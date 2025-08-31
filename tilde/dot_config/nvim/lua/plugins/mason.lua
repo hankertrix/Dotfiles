@@ -23,6 +23,7 @@ local function setup()
 			"rust_analyzer",    -- Rust
 			"asm_lsp",          -- Assembly
 			"bashls",           -- Bash (shell)
+			"tinymist",         -- Typst
 			"marksman",         -- Markdown
 			"jsonls",           -- JSON
 			"taplo",            -- TOML

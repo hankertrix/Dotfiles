@@ -119,10 +119,13 @@ Undo history viewer -
 [undotree](https://github.com/mbbill/undotree)
 
 Markdown previewer -
-[markview.nvim](https://github.com/OXY2DEV/markview.nvim)
+[live-preview.nvim](https://github.com/brianhuster/live-preview.nvim)
 
 Help file previewer -
 [helpview.nvim](https://github.com/OXY2DEV/helpview.nvim)
+
+Typst file previewer -
+[typst-preview.nvim](https://github.com/chomosuke/typst-preview.nvim)
 
 Hide the colour column when not needed -
 [nerd_column.nvim](https://github.com/hankertrix/nerd_column.nvim)

@@ -3,7 +3,7 @@
 -- Currently the plugins used are:
 --	- vim-sleuth for automatically detecting the indentation type
 --	- helpview.nvim for nicer looking help files
---	- markview.nvim for nicer looking markdown files
+--	- live-preview.nvim for previewing markdown files
 --	- mini.trailspace to trim trailing whitespaces and blank lines
 --	- quicker.nvim for an improved and editable quick fix list
 --	- snacks.nvim for general quality of life improvements
@@ -23,43 +23,24 @@ return {
 
 	-- Markdown previewer
 	{
-		"OXY2DEV/markview.nvim",
+		"brianhuster/live-preview.nvim",
+		ft = { "markdown", "svg" },
+		cmd = "LivePreview",
+	},
 
-		-- Plugin configuration
+	-- Typst PDF previewer
+	{
+
+		"chomosuke/typst-preview.nvim",
+		ft = "typst",
+		version = "1.*",
+
+		-- Use Mason's installation of tinymist
 		opts = {
-
-			-- Have the label for the code blocks appear on the left
-			markdown = {
-				code_blocks = {
-					label_direction = "left",
-				},
-			},
-
-			-- Configuration for the preview
-			preview = {
-				hybrid_modes = { "n", "no", "c" },
-				linewise_hybrid_mode = true,
+			dependencies_bin = {
+				tinymist = "tinymist",
 			},
 		},
-
-		-- Function to configure the plugin
-		config = function(_, opts)
-			--
-
-			-- Patch the runtime path
-			require("utils").patch_plugin_runtime_path("markview%.nvim")
-
-			-- Get the presets
-			local presets = require("markview.presets")
-
-			-- Configure the plugin
-			require("markview").setup(vim.tbl_deep_extend("error", opts, {
-				markdown = {
-					headings = presets.headings.arrowed,
-					tables = presets.tables.rounded,
-				},
-			}))
-		end,
 	},
 
 	-- Trim trailing whitespace and blank lines
