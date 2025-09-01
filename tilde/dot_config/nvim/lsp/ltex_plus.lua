@@ -5,6 +5,9 @@ return {
 	settings = {
 		ltex = {
 			language = "en-GB",
+			disabledRules = {
+				["en-GB"] = { "OXFORD_SPELLING_Z_NOT_S" },
+			},
 		},
 	},
 }
