@@ -50,8 +50,17 @@ I also changed the image to show Arch's legacy wombat logo because it's cute.
 The [Fontconfig configuration](./fontconfig/fonts.conf) just enables
 the alternate not equals `~=` in Lua (`SS02`) for
 [Cascadia Code](https://github.com/microsoft/cascadia-code) and enables
-dotted zero (`zero`) and double-headed arrows (`SS08`) for
+dotted zero (`zero`), double-headed arrows (`SS08`)
+and slashed z (`cv10` and `cv43`) for
 [Maple Mono](https://github.com/subframe7536/Maple-font).
+
+## [Gammastep](https://gitlab.com/chinstrap/gammastep)
+
+Gammastep is a red-shifter similar to Gummy and Clight,
+but it doesn't control brightness at all and only works on Wayland.
+The [gammastep configuration](./gammastep/config.ini) is just to
+set the colour temperatures during the day and night and
+the location.
 
 ## [Ghostty](https://github.com/ghostty-org/ghostty)
 
@@ -118,8 +127,11 @@ to the FIFO and you won't be able to hear anything.
 ## [`mpv`](https://mpv.io/)
 
 `mpv` is a video player that is extremely performant and lightweight.
-The [configuration for `mpv`](./mpv/input.conf) is just to
+The [input configuration for `mpv`](./mpv/input.conf) is just to
 set Vim key bindings for the `mpv` instead of using the arrow keys.
+The [configuration for `mpv`](./mpv/mpv.conf) is just to disable
+mpv keeping the window's aspect ratio so I can resize it with
+my window manager.
 
 ## [Niri](https://github.com/YaLTeR/niri)
 
@@ -209,6 +221,13 @@ the [`boot/efi`](../../slash/boot/efi/) directory ignored,
 so that `rootmoi` doesn't run on the `/boot/efi` directory
 when applying the system configuration files in the `/` directory.
 
+## [Satty](https://github.com/gabm/Satty)
+
+Satty is a screenshot editor for Wayland that works quite similarly to
+Flameshot. The [Satty configuration](./satty/config.toml) is mostly just
+the default configuration but with the initial tool
+and corner roundness changed.
+
 ## [`swayidle`](https://github.com/swaywm/swayidle)
 
 `swayidle` is an idle daemon which allows you to run scripts after
@@ -223,8 +242,8 @@ after the screen is locked.
 ## [`systemd`](https://systemd.io/)
 
 The [`systemd`](./systemd/user/) directory just contains the service files
-I need to run `swayidle` and `swww` as a daemon.
-The `swayidle` service file is taken from
+I need to run as daemons like `swayidle`, `swww`, `cliphist`.
+and my polkit agent. The `swayidle` service file is taken from
 [Niri's example `systemd` setup](https://github.com/YaLTeR/niri/wiki/Example-systemd-Setup)
 with a description and an install section added.
 
@@ -352,7 +371,7 @@ is taken from the
 [Wallust template](https://codeberg.org/explosion-mental/wallust-templates/src/branch/master/waybar.css)
 for Waybar with some additional colours added in.
 
-### [Waybar](https://github.com/Alexays/Waybar)
+## [Waybar](https://github.com/Alexays/Waybar)
 
 The [Waybar configuration](./waybar/config.jsonc)
 is quite similar to the
@@ -373,17 +392,6 @@ The [styles](./waybar/style.css.tmpl) are also configured to work with
 the colours generated from the wallpaper, and to work in
 both light and dark theme. The main bulk of the styles is just
 rounding the borders around each of the modules or groups of modules.
-
-### [Waypaper](https://github.com/anufrievroman/waypaper)
-
-The [Waypaper configuration](./waypaper/config.ini) is quite simple,
-mostly just the
-[default configuration](https://anufrievroman.gitbook.io/waypaper/configuration)
-but changing the backend to `swww` and making Waypaper use an XDG state file
-instead of modifying the config file. The post command hook is also a script
-that restarts all the applications that need to be restarted so that the
-dynamically themed applications will take the colours from the wallpaper
-when it changes.
 
 ## [Wezterm](https://wezfurlong.org/wezterm/index.html)
 
@@ -445,6 +453,11 @@ version `2.0.0` and above, which is the current Arch Linux version.
 The [MIME Applications configuration file](./mimeapps.list)
 just sets the default applications for the various file types and
 adds associations for some mime types to installed applications.
+
+## [Polycat](https://github.com/2IMT/polycat)
+
+Polycat is a [RunCat](https://github.com/Kyome22/RunCat365) module
+for Polybar and Waybar. The configuration is just the default configuration.
 
 ## [Stylua](https://github.com/JohnnyMorganz/StyLua)
 
