@@ -24,7 +24,7 @@
 	// Modules on the right
 	"modules-right": [
 		"group/indicators",
-		"group/time",
+		"clock",
 		"custom/recording",
 		"tray"
 	],
@@ -36,21 +36,6 @@
 	// Module configuration
 	"tray": {
 		"spacing": 4
-	},
-	"group/time": {
-		"orientation": "inherit",
-		"drawer": {
-			"transition-duration": 300,
-			"transition-left-to-right": true
-		},
-		"modules": [
-			"clock",
-			"clock#calendar"
-		]
-	},
-	"clock": {
-		"tooltip": false,
-		"format": "<span size='40%'> </span>{:%I:%M%p}"
 	},
 	"group/hardware": {
 		"orientation": "inherit",
