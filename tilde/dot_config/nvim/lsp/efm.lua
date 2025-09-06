@@ -1,4 +1,4 @@
--- Configuration for efm language server
+-- Configuration for EFM language server
 return {
 
 	-- Enable formatting

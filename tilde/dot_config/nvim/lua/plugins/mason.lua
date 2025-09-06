@@ -24,6 +24,7 @@ local function setup()
 			"asm_lsp",          -- Assembly
 			"bashls",           -- Bash (shell)
 			"tinymist",         -- Typst
+			"texlab",           -- LaTeX and BibTeX
 			"marksman",         -- Markdown
 			"jsonls",           -- JSON
 			"taplo",            -- TOML
