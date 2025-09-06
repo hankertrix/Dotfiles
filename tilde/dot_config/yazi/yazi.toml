@@ -68,7 +68,7 @@ desc = "Open in Satty"
 
 # Configuration for the opener rules
 [[open.prepend_rules]]
-url = "*.{el,org,tex,bib}"
+url = "*.{el,org,tex}"
 use = ["emacs", "edit", "reveal"]
 
 [[open.prepend_rules]]
