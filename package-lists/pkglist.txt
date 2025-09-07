@@ -79,9 +79,9 @@ reflector
 resvg
 ripgrep
 rmpc
+rofi
 rofi-calc
 rofi-emoji
-rofi-wayland
 rsync
 ruff
 rustup
