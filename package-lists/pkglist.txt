@@ -46,7 +46,6 @@ man-db
 mate-polkit
 mediainfo
 mpd
-mpd-mpris
 mpv
 namcap
 nautilus-open-any-terminal
