@@ -1,6 +1,6 @@
 pkgbase = maple-mono-custom-git
 	pkgdesc = A custom build of the Maple Mono font.
-	pkgver = r620.c6c20a5
+	pkgver = r651.1fa8be5
 	pkgrel = 1
 	url = https://github.com/subframe7536/Maple-font
 	arch = any
