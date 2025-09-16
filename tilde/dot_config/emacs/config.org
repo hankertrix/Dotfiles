@@ -1780,7 +1780,7 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
   )
 
 ;; Ensure magit dependencies are updated as well.
-(use-package transient)
+(use-package transient :ensure t)
 (use-package llama)
 (use-package cond-let :ensure (cond-let :host github :repo "tarsius/cond-let"))
 #+end_src
