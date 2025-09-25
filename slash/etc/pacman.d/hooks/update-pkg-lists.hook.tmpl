@@ -11,4 +11,8 @@ Description = Updating package lists...
 When = PostTransaction
 Exec = /bin/sh -c '/usr/bin/pacman -Qqen > {{ joinPath $pkgListDir "pkglist.txt" }} && /usr/bin/pacman -Qqem > {{ joinPath $pkgListDir "aur-pkglist.txt" }}'
 
+# The list of packages skips the -t flag as optional dependencies
+# are also excluded from the list, which is not great,
+# since you usually have to install optional dependencies explicitly.
+
 # vi: ft=confini
