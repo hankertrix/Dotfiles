@@ -24,12 +24,15 @@ build() {
 	# Install the packages required
 	uv sync
 
-	# Modify the config file to use dotted zeroes,
+	# Modify the config file to
+	# use the unhinted font,
+	# use dotted zeroes,
 	# enable double headed and reverse arrows,
 	# enable alternate not equals '~=' symbol,
 	# enable slashed z,
-	# and enable chinese characters.
-	edited_config=$(jq '.feature_freeze.zero = "enable"' config.json |
+	# and use chinese characters.
+	edited_config=$(jq '.use_hinted = false' config.json |
+		jq '.feature_freeze.zero = "enable"' |
 		jq '.feature_freeze.ss08 = "enable"' |
 		jq '.feature_freeze.ss09 = "enable"' |
 		jq '.feature_freeze.cv10 = "enable"' |
