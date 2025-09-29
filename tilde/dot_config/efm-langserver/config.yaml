@@ -75,7 +75,7 @@ tools:
     format-command: >
       stylua --color Never \
         ${--range-start:charStart} ${--range-end:charEnd} \
-          --stdin-filepath ${INPUT} -
+          --stdin-filepath '${INPUT}' -
     format-can-range: true
     format-stdin: true
     root-markers:
