@@ -25,10 +25,6 @@ return {
 
 		-- AI autocompletion
 		{ "supermaven-inc/supermaven-nvim" },
-		{
-			"tzachar/cmp-tabnine",
-			build = "./install.sh",
-		},
 	},
 
 	-- Configuration options
