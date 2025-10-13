@@ -33,6 +33,7 @@ ghostty
 git
 github-cli
 imagemagick
+inotify-tools
 jq
 kitty
 libguestfs
