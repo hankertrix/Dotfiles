@@ -4,7 +4,7 @@
 fullscreen = false
 
 # Exit directly after copy/save action
-early-exit = true
+early-exit = false
 
 # Draw corners of rectangles round if the value is greater than 0
 # 0 disables rounded corners
@@ -35,10 +35,10 @@ default-hide-toolbars = false
 
 # Experimental: whether window focus shows/hides toolbars.
 # This does not affect initial state of toolbars, see default-hide-toolbars.
-# focus-toggles-toolbars = false
+focus-toggles-toolbars = false
 
 # Fill shapes by default
-# default-fill-shapes = true
+default-fill-shapes = true
 
 # The primary highlighter to use,
 # the other is accessible by holding CTRL
@@ -68,6 +68,20 @@ no-window-decoration = true
 # Experimental feature: adjust history size for brush input smoothing
 # (0: disabled, default: 0, try e.g. 5 or 10)
 brush-smooth-history-size = 10
+
+# Tool selection keyboard shortcuts
+[keybinds]
+pointer = "p"
+crop = "c"
+brush = "b"
+line = "i"
+arrow = "z"
+rectangle = "r"
+ellipse = "e"
+text = "t"
+marker = "m"
+blur = "u"
+highlight = "g"
 
 # Font to use for text annotations
 [font]
