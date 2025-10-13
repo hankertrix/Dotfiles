@@ -29,7 +29,7 @@ local function setup()
 			"jsonls",           -- JSON
 			"taplo",            -- TOML
 			"yamlls",           -- YAML
-			"harper_ls",		-- English checker
+			-- "harper_ls",		-- English checker
 
 			-- Formatters
 			"stylua",           -- Lua

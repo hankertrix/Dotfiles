@@ -21,6 +21,7 @@ local descriptions = {
 -- The list of externally installed LSPs
 local externally_installed_lsps = {
 	"efm",
+	"ltex_plus",
 	"basedpyright",
 }
 
