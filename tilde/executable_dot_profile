@@ -2,8 +2,8 @@
 export TERM=xterm-ghostty
 export TERMINAL=ghostty
 
-# Use Zen browser as the default browser
-export BROWSER=zen
+# Use librewolf browser as the default browser
+export BROWSER=librewolf
 
 # Use Neovim as the default editor
 export EDITOR=nvim
