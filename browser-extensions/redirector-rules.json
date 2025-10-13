@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2025-10-06T12:10:36.205Z",
+    "createdAt": "2025-10-13T08:37:21.560Z",
     "redirects": [
         {
             "description": "Redirect YouTube Shorts to YouTube Video",
@@ -20,14 +20,14 @@
             ]
         },
         {
-            "description": "Redirect Reddit to Alternative Reddit Frontend",
+            "description": "Redirect Reddit to Redlib",
             "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "exampleResult": "https://lr.ptr.moe/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
+            "exampleResult": "https://farside.link/redlib/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
             "error": null,
             "includePattern": "https?://(?:(?:old|www)\\.)?reddit(?:media)?\\.com/((?!(media|video))[@\\w/-]*)",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://lr.ptr.moe/$1",
+            "redirectUrl": "https://farside.link/redlib/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": false,
@@ -54,14 +54,14 @@
             ]
         },
         {
-            "description": "Redirect Reddit to Redlib",
+            "description": "Redirect Reddit to Alternative Reddit Frontend",
             "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "exampleResult": "https://farside.link/redlib/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
+            "exampleResult": "https://lr.ptr.moe/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
             "error": null,
             "includePattern": "https?://(?:(?:old|www)\\.)?reddit(?:media)?\\.com/((?!(media|video))[@\\w/-]*)",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://farside.link/redlib/$1",
+            "redirectUrl": "https://lr.ptr.moe/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": true,

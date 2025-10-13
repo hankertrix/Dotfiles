@@ -2,11 +2,12 @@ basedpyright-bin
 davmail
 efm-langserver
 kora-icon-theme
+librewolf-bin
 ltex-ls-plus-bin
 maple-mono-custom-git
 mpdris-bin
 polycat
-python-pywalfox
+python-pywalfox-librewolf
 spek
 ttf-symbola
 wallust
