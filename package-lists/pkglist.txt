@@ -26,6 +26,7 @@ exfatprogs
 fastfetch
 fd
 ffmpegthumbnailer
+file-roller
 freerdp
 fzf
 gammastep
@@ -49,7 +50,6 @@ mediainfo
 mpd
 mpv
 namcap
-nautilus-open-any-terminal
 neovim
 network-manager-applet
 networkmanager
@@ -106,6 +106,7 @@ texlive-latexrecommended
 texlive-mathscience
 texlive-pictures
 texlive-plaingeneric
+thunar
 thunderbird
 tlp
 ttf-dejavu
