@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "13/10/2025, 4:39:38 pm",
-	"time": 1760344778384,
+	"@time": "14/10/2025, 6:34:23 pm",
+	"time": 1760438063156,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
@@ -73,6 +73,8 @@
 		"  blank=https://swisscows.com/en/ Swisscows",
 		"fget|4get:https://4get.ca/web?s=%s \\",
 		"  blank=https://4get.ca 4get",
+		"mul|mull|mullvad|leta:https://leta.mullvad.net/search?q=%s \\",
+		"  blank=https://leta.mullvad.net Mullvad Leta",
 		"di|dis|disroot: https://search.disroot.org/search?q=%s \\",
 		"  blank=https://search.disroot.org/search Disroot SearXNG",
 		"pa|paul|paulgo: https://paulgo.io/search?q=%s \\",
