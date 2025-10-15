@@ -3,11 +3,11 @@
 {{- $pref := "" -}}
 
 {{- if eq . "firefox" -}}
-{{- $pref = "user_pref" -}}
+{{ $pref = "user_pref" }}
 
 // Use the user js parrot pref to report if there's a syntax error
 // with the overrides section
-{{- $pref -}}("_user.js.parrot", "ERROR: Overrides section syntax error");
+{{ $pref }}("_user.js.parrot", "ERROR: Overrides section syntax error");
 
 {{- else -}}
 {{- $pref = "pref" -}}
@@ -145,7 +145,7 @@
 // Disable the prompt to enable DRM
 {{$pref}}("browser.eme.ui.enabled", false);
 
-{{- if eq . "firefox" -}}
+{{ if eq . "firefox" -}}
 // Use the user js parrot pref to report if the overrides section is successful.
 // The message used here is the default one used in the Arkenfox user js.
 {{$pref}}(
