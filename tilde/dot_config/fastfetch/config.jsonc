@@ -6,10 +6,9 @@
 	"logo": {
 		"type": "auto",
 		"source": "~/.config/fastfetch/arch-legacy-wombat-logo.png",
+		"width": 32,
 		"padding": {
-			"top": 9,
-			"left": 0,
-			"right": 28
+			"left": 5
 		}
 	},
 	"display": {
