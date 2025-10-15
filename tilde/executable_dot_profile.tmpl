@@ -1,6 +1,6 @@
 # Set the default terminal
-export TERM=xterm-ghostty
-export TERMINAL=ghostty
+export TERM=xterm-{{ .defaultTerminal }}
+export TERMINAL={{ .defaultTerminal }}
 
 # Use librewolf browser as the default browser
 export BROWSER=librewolf

@@ -418,7 +418,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Bindings for running programs
-    Mod+Space hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
+    Mod+Space hotkey-overlay-title="Open a Terminal: {{ title .defaultTerminal }}" { spawn "{{ .defaultTerminal }}"; }
     Mod+D hotkey-overlay-title="Run an Application: Rofi" { spawn "rofi" "-show" "drun" ; }
     Mod+W hotkey-overlay-title="Open the Browser: Librewolf" { spawn "librewolf"; }
     Mod+M hotkey-overlay-title="Open the Email Client: Thunderbird" { spawn "thunderbird"; }
