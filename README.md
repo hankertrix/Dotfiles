@@ -272,13 +272,15 @@ when using [`lf`](https://github.com/gokcehan/lf) and
 
 This file is just to set the default applications for various tasks.
 The default terminal is set to
-[Ghostty](https://sw.kovidgoyal.net/kitty/),
+[Kitty](https://sw.kovidgoyal.net/kitty/),
 the default editor is set to
 [Neovim](https://neovim.io/),
 the default browser is set to
-[Firefox](https://www.mozilla.org/en-US/firefox/) and
+[Librewolf](https://librewolf.net/),
 the default pager is set to
-[`less`](https://www.greenwoodsoftware.com/less/).
+[`less`](https://www.greenwoodsoftware.com/less/),
+and the default man pager is
+[Neovim](https://neovim.io/),
 
 ### [Wallpapers folder](./tilde/wallpapers/)
 
