@@ -29,6 +29,9 @@ Options:
 	This is automatically done when the dedicated GPU is enabled.
 '
 
+# The GPU flag for VM
+GPU_FLAG_FOR_VM="gpu-disabled-for-vm"
+
 # Function to show the VM is running error
 show_vm_running_error() {
 
@@ -100,7 +103,7 @@ if [ "$enable" = true ]; then
 	op="detach"
 
 	# If the GPU has already been enabled
-	if [ -f "/tmp/{{ .gpuFlagForVM }}" ]; then
+	if [ -f "/tmp/$GPU_FLAG_FOR_VM" ]; then
 
 		# Tell the user that it is already enabled
 		echo "GPU has already been enabled!"
@@ -146,7 +149,7 @@ done
 if [ "$enable" = true ]; then
 
 	# Create a temp file to mark the GPU as enabled
-	touch "/tmp/{{ .gpuFlagForVM }}"
+	touch "/tmp/$GPU_FLAG_FOR_VM"
 
 	# Set the operation to "enable" to for the message later
 	op="enabl"
