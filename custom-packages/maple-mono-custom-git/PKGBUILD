@@ -1,6 +1,6 @@
 # Maintainer: Hanker
 pkgname='maple-mono-custom-git'
-pkgver=r665.5fdf596
+pkgver=r670.abc82de
 pkgrel=1
 pkgdesc='A custom build of the Maple Mono font.'
 arch=('any')
@@ -30,6 +30,7 @@ build() {
 	# enable double headed and reverse arrows,
 	# enable alternate not equals '~=' symbol,
 	# enable slashed z,
+	# use joined pipe arrows,
 	# and use chinese characters.
 	edited_config=$(jq '.use_hinted = false' config.json |
 		jq '.feature_freeze.zero = "enable"' |
@@ -37,6 +38,7 @@ build() {
 		jq '.feature_freeze.ss09 = "enable"' |
 		jq '.feature_freeze.cv10 = "enable"' |
 		jq '.feature_freeze.cv43 = "enable"' |
+		jq '.feature_freeze.cv66 = "enable"' |
 		jq '.cn.enable = true')
 
 	# Write the edited config
