@@ -52,3 +52,4 @@ image/jpg=librewolf.desktop;zen-browser.desktop;oculante.desktop;
 image/jpeg=librewolf.desktop;zen-browser.desktop;oculante.desktop;
 image/gif=librewolf.desktop;zen-browser.desktop;oculante.desktop;
 image/webp=librewolf.desktop;zen-browser.desktop;oculante.desktop;
+text/plain=nvim.desktop;
