@@ -178,6 +178,9 @@ languages:
     - <<: *shellcheck
     - <<: *shfmt
 
+  mdx:
+    - <<: *prettierd
+
   markdown:
     - <<: *prettierd
     - <<: *markdownlint

@@ -105,6 +105,7 @@ return {
 		},
 	},
 
+	-- Context at the top of the screen
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		dependencies = { "nvim-treesitter" },
@@ -128,5 +129,12 @@ return {
 		opts = {
 			max_lines = 5,
 		},
+	},
+
+	-- Syntax highlighting for MDX
+	{
+		"davidmh/mdx.nvim",
+		config = true,
+		dependencies = { "nvim-treesitter" },
 	},
 }
