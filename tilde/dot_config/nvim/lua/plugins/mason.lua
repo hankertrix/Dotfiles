@@ -21,8 +21,9 @@ local function setup()
 			"vtsls",            -- TypeScript and JavaScript
 			"astro",            -- Astro
 			"rust_analyzer",    -- Rust
-			"asm_lsp",          -- Assembly
 			"bashls",           -- Bash (shell)
+			"mdx_analyzer",     -- MDX
+			"marksman",         -- Markdown
 			"tinymist",         -- Typst
 			"texlab",           -- LaTeX and BibTeX
 			"marksman",         -- Markdown
