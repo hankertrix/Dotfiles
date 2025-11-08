@@ -188,8 +188,9 @@ theme_and_reload_applications() {
 	# Restart dunst
 	systemctl --user restart dunst
 
-	# Update pywalfox
+	# Update pywalfox and set the pywalfox theme
 	pywalfox update
+	pywalfox "$theme"
 
 	# Kill nautilus
 	killall nautilus
