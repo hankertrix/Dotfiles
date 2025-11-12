@@ -71,6 +71,7 @@ pipewire-pulse
 pnpm
 poppler
 poppler-glib
+prismlauncher
 python
 qemu-desktop
 qt5-wayland
