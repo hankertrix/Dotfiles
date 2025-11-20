@@ -36,7 +36,6 @@ imagemagick
 inotify-tools
 jq
 kitty
-libblockdev-smart
 libguestfs
 libnotify
 libreoffice-fresh
