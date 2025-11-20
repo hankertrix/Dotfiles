@@ -25,7 +25,6 @@ emacs-wayland
 exfatprogs
 fastfetch
 fd
-ffmpegthumbnailer
 file-roller
 freerdp
 fzf
@@ -37,6 +36,7 @@ imagemagick
 inotify-tools
 jq
 kitty
+libblockdev-smart
 libguestfs
 libnotify
 libreoffice-fresh
