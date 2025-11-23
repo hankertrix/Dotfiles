@@ -5,9 +5,9 @@
 # The amount of time to wait in seconds
 # before connecting to the VM using FreeRDP.
 #
-# It takes roughly 20 seconds for the VM to start,
+# It takes roughly 30 seconds for the VM to start,
 # so we wait for that long.
-WAIT_TIME=20
+WAIT_TIME=30
 
 # If the windows 11 VM is off
 if virsh --connect qemu:///system domstate win11 | grep "off"; then
