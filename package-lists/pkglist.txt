@@ -26,6 +26,7 @@ exfatprogs
 fastfetch
 fd
 file-roller
+firefox
 freerdp
 fzf
 gammastep
@@ -86,7 +87,6 @@ rsync
 ruff
 rustup
 satty
-sdl3_ttf
 slurp
 smartmontools
 steam

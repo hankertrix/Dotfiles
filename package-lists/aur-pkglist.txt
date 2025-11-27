@@ -3,7 +3,6 @@ davmail
 efm-langserver
 gallery-dl-bin
 kora-icon-theme
-librewolf-bin
 ltex-ls-plus-bin
 maple-mono-custom-git
 mpdris-bin
