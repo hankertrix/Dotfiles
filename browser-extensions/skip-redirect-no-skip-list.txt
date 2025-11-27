@@ -49,3 +49,4 @@ google.com
 duckduckgo.com
 archive.ph
 statics.teams.cdn.office.net
+firebaseapp.com
