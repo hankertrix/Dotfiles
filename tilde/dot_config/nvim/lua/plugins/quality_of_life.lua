@@ -21,7 +21,7 @@ return {
 	-- Better looking help files
 	{ "OXY2DEV/helpview.nvim" },
 
-	-- Markdown previewer
+	-- Markdown previewer in HTML form
 	{
 		"brianhuster/live-preview.nvim",
 		ft = { "markdown", "svg" },
