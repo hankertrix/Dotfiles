@@ -86,6 +86,7 @@ rsync
 ruff
 rustup
 satty
+sdl3_ttf
 slurp
 smartmontools
 steam
