@@ -7,10 +7,6 @@
 # Current working directory
 cwd = { fg = "#3691FF" }
 
-# Hovered
-hovered = { reversed = true }
-preview_hovered = { underline = true }
-
 # Symlink
 symlink_target = { italic = true }
 
@@ -42,6 +38,11 @@ fg = "#ABB2BF"
 bg = "reset"
 bold = true
 italic = true
+
+# Indicator
+[indicator]
+current = { reversed = true }
+preview = { underline = true }
 
 
 [tabs]
