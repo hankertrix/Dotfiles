@@ -80,6 +80,9 @@
 // Secret pref.
 {{$pref}}("browser.urlbar.update2.engineAliasRefresh", true);
 
+// Disable firefox sync
+{{$pref}}("identity.fxaccounts.enabled", false);
+
 // Don't allow websites to prompt for the notification permission
 {{$pref}}("permissions.default.desktop-notification", 2);
 
