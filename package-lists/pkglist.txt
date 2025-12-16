@@ -37,8 +37,6 @@ imagemagick
 inotify-tools
 jq
 kitty
-lib32-libdisplay-info
-lib32-vulkan-mesa-implicit-layers
 libguestfs
 libnotify
 libreoffice-fresh
@@ -124,7 +122,6 @@ vhs
 vi
 virt-manager
 virt-viewer
-vulkan-mesa-implicit-layers
 waybar
 wl-clipboard
 wl-screenrec-git
