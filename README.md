@@ -251,16 +251,14 @@ when using [`yazi`](https://yazi-rs.github.io/).
 #### [`.profile`](./tilde/executable_dot_profile)
 
 This file is just to set the default applications for various tasks.
-The default terminal is set to
-[Kitty](https://sw.kovidgoyal.net/kitty/),
-the default editor is set to
+The default editor is set to
 [Neovim](https://neovim.io/),
 the default browser is set to
-[Librewolf](https://librewolf.net/),
+[Firefox](https://www.firefox.com/),
 the default pager is set to
 [`less`](https://www.greenwoodsoftware.com/less/),
 and the default man pager is
-[Neovim](https://neovim.io/),
+[Neovim](https://neovim.io/).
 
 ### [Wallpapers folder](./tilde/wallpapers/)
 
