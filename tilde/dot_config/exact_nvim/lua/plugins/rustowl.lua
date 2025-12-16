@@ -1,0 +1,8 @@
+-- The plugin to visualise Rust lifetimes
+return {
+	"cordx56/rustowl",
+	version = "*",
+	build = "cargo install rustowl",
+	lazy = false,
+	opts = {},
+}
