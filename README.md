@@ -235,25 +235,6 @@ The [`.inputrc`](./tilde/dot_inputrc) file is just to set the key binds
 for arrow up and arrow down to search the history for completions
 instead of just giving the last used command.
 
-#### [`.xinitrc`](./tilde/dot_xinitrc)
-
-The [`.xinitrc`](./tilde/dot_xinitrc) file is just to merge the
-configuration inside [`.Xresources`](./tilde/executable_dot_Xresources)
-into `xrdb` so that the changes will apply.
-
-This file is no longer relevant since I am no longer on X11,
-but I am keeping it here just in case.
-
-#### [`.Xresources`](./tilde/executable_dot_Xresources)
-
-The [`.Xresources`](./tilde/executable_dot_Xresources)
-configuration is just to make sure
-the display works properly with my high DPI screen.
-I also turned on antialiasing.
-
-This file is no longer relevant since I am no longer on X11,
-but I am keeping it here just in case.
-
 #### [`.bashrc`](./tilde/executable_dot_bashrc)
 
 The [`.bashrc`](./tilde/executable_dot_bashrc) file is quite minimal,
