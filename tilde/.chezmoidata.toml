@@ -19,4 +19,4 @@ cursorTheme = "Hacked-Sky-Cursor"
 cursorSize = 24
 
 # The default terminal
-defaultTerminal = "kitty"
+defaultTerminal = "ghostty"
