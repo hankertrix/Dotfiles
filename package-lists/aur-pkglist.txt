@@ -10,4 +10,4 @@ polycat
 python-pywalfox-librewolf
 spek
 ttf-symbola
-wallust
+wallust-git

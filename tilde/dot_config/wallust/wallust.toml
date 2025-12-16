@@ -42,6 +42,9 @@ cava.target = "~/.config/cava/config"
 dunst.template = "dunstrc"
 dunst.target = "~/.config/dunst/dunstrc"
 
+niri.template = "niri-colours.kdl"
+niri.target = "~/.config/niri/colours.kdl"
+
 rmpc.template = "rmpc-dynamic-theme.ron"
 rmpc.target = "~/.config/rmpc/themes/dynamic.ron"
 
@@ -74,3 +77,8 @@ gtk4.target = "~/.config/gtk-4.0/gtk.css"
 # Pywalfox for Firefox and Thunderbird
 pywalfox.template = "pywalfox-colours.json"
 pywalfox.target = "~/.cache/wal/colors.json"
+
+[hooks]
+waybar = "systemctl --user restart waybar"
+dunst = "systemctl --user restart dunst"
+pywalfox = "pywalfox update"

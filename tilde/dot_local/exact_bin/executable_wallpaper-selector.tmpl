@@ -28,7 +28,6 @@ warn_no_arguments() {
 # Reset all variables that might be set
 random=
 theme=
-wait_time=
 palette=
 
 # Parse the arguments given
@@ -60,36 +59,6 @@ while :; do
 		if [ -z "$theme" ]; then
 			theme="dark"
 		fi
-		;;
-
-	# If the wait option is passed
-	-w | --wait)
-
-		# If the next argument is given
-		if [ -n "$2" ]; then
-
-			# Set the wait time to the next argument
-			wait_time="$2"
-
-			# Shift the arguments over by 1 to skip the argument
-			shift
-
-		# Otherwise, warn the user that there are no arguments
-		else
-			warn_no_arguments "$1"
-		fi
-		;;
-
-	# If the wait option is given with an equal sign (=)
-	--wait=?*)
-
-		# Delete everything up to "=" and assign what is left
-		wait_time="${1#*=}"
-		;;
-
-	# Handle the case of an empty "--wait=" by warning the user
-	--wait=)
-		warn_no_arguments "$1"
 		;;
 
 	# End of all options, stop parsing
@@ -171,25 +140,11 @@ set_wallpaper() {
 }
 
 # Function to theme applications
-theme_and_reload_applications() {
+theme_applications() {
 
 	# Generate the colours from the wallpaper passed as the first argument
 	# and skip setting the terminal theme
 	wallust run "$wallpaper_path" --palette "$palette" --skip-sequences
-
-	# Wait for the wait time given before reloading the applications
-	if [ -n "$wait_time" ]; then
-		sleep "$wait_time"
-	fi
-
-	# Reload waybar
-	systemctl --user restart waybar
-
-	# Restart dunst
-	systemctl --user restart dunst
-
-	# Update pywalfox
-	pywalfox update
 }
 
 # The main function to run to set the wallpaper and theme everything
@@ -201,8 +156,8 @@ main() {
 	# Set the wallpaper
 	set_wallpaper
 
-	# Theme and reload applications
-	theme_and_reload_applications
+	# Theme applications
+	theme_applications
 }
 
 # Call the main function
