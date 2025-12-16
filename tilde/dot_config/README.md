@@ -427,27 +427,6 @@ detect when the theme changes from light to dark and vice versa.
 There is a [`README.md`](./yazi/README.md) file
 inside the [`yazi`](./yazi/) folder that explains the configuration.
 
-## [Clight](https://github.com/FedeDP/Clight)
-
-The Clight configuration file, [`clight.conf`](./clight.conf)
-is mostly just to disable all the functionality of Clight that
-I don't use, and to set the location and the temperature for
-the red-shifter.
-
-I no longer use Clight since it is unmaintained and doesn't work that well
-for setting the brightness. It also required some time before it kicked
-it and didn't remember the previous brightness, causing the screen to be
-extremely bright when the computer boots up.
-
-## [Gummy](https://codeberg.org/fusco/gummy)
-
-The Gummy configuration file, [`gummyconf.json`](./gummyconf.json)
-is to set the time and temperature for the red-shifter
-and the default backlight brightness.
-I no longer use Gummy as it is unmaintained and doesn't work
-with [`sdbus-c++`](https://github.com/Kistler-Group/sdbus-cpp)
-version `2.0.0` and above, which is the current Arch Linux version.
-
 ## [MIME Applications](https://specifications.freedesktop.org/mime-apps-spec/latest/file.html)
 
 The [MIME Applications configuration file](./mimeapps.list)
