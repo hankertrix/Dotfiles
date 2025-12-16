@@ -89,24 +89,6 @@ The auto update function for kitty has also been disabled.
 The other configuration files inside are just to get kitty to automatically
 set the theme based on the system theme.
 
-## [`lf`](https://github.com/gokcehan/lf)
-
-There is a [`README.md`](./lf/README.md) file inside
-the [`lf`](./lf) folder that explains the configuration.
-
-I no longer use `lf` as I am mostly using Yazi now.
-The `lf` configuration is here so I have a backup if Yazi breaks.
-
-## [Marimo](https://marimo.io/)
-
-Marimo is an alternative to Jupyter notebooks that doesn't use the `ipynb`
-file format, and instead has notebooks in regular Python files.
-The [configuration for Marimo](./marimo/marimo.toml) is almost exactly
-the same as the default configuration, but with the watcher
-set to automatically run when the file is saved,
-the line length being set to 80 instead of 79,
-and enabling Vim key bindings.
-
 ## [`mpd`](https://www.musicpd.org/)
 
 `mpd` is a music player daemon that allows you to play music in the background
