@@ -11,4 +11,3 @@ python-pywalfox-librewolf
 spek
 ttf-symbola
 wallust
-zoom
