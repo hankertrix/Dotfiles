@@ -1,0 +1,9 @@
+// Colours for niri
+
+// Recent windows colour
+recent-windows {
+    highlight {
+        active-color "{{ color4 }}"
+        urgent-color "{{ color12 | blend("#FF0000") }}"
+    }
+}

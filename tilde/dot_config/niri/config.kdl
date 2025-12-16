@@ -1,0 +1,22 @@
+// Niri configuration
+
+// The input configuration
+include "inputs.kdl"
+
+// The output configuration
+include "outputs.kdl"
+
+// The window and layer rules
+include "rules.kdl"
+
+// The configuration for appearance
+include "appearance.kdl"
+
+// The colour configuration
+include "colours.kdl"
+
+// The keybinds
+include "keybinds.kdl"
+
+// Other miscellaneous configurations
+include "miscellaneous.kdl"

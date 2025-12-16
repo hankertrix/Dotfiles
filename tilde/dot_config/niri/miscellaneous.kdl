@@ -1,0 +1,25 @@
+// Miscellaneous settings
+
+// Where screenshots are saved
+screenshot-path "~/Pictures/Screenshots/Screenshot from %d-%m-%Y %H-%M-%S.png"
+
+// Environment for XWayland
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+    QT_QPA_PLATFORM "wayland"
+    MOZ_ENABLE_WAYLAND "1"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+}
+
+// Disable the hot corners
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// Disable the hotkey overlay at startup
+hotkey-overlay {
+    skip-at-startup
+}

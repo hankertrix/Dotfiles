@@ -20,3 +20,6 @@ cursorSize = 24
 
 # The default terminal
 defaultTerminal = "ghostty"
+
+# The window corner radius for Niri
+windowCornerRadius = 8
