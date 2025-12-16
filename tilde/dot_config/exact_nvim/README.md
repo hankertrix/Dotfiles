@@ -59,7 +59,6 @@ Autocompletion sources:
 AI autocompletion sources:
 
 - [supermaven.nvim](https://github.com/supermaven-inc/supermaven-nvim)
-- [cmp-tabnine](https://github.com/tzachar/cmp-tabnine)
 
 Snippet engine -
 [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
@@ -72,6 +71,9 @@ Treesitter -
 
 Context viewer -
 [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+
+MDX syntax highlighting -
+[mdx.nvim](https://github.com/davidmh/mdx.nvim)
 
 Surroundings editor -
 [nvim-surround](https://github.com/kylechui/nvim-surround)
@@ -141,7 +143,7 @@ Nvim-training plugin -
 Hardtime plugin to force me to use more efficient Vim motions -
 [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)
 
-### Miscellaneous
+### Miscellaneous plugins
 
 Typr typing plugin -
 [typr](https://github.com/nvzone/typr)
