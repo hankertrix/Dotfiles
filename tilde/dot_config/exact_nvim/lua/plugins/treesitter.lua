@@ -134,7 +134,6 @@ return {
 	-- Syntax highlighting for MDX
 	{
 		"davidmh/mdx.nvim",
-		config = true,
 		dependencies = { "nvim-treesitter" },
 	},
 }
