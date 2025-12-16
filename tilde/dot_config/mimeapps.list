@@ -31,6 +31,8 @@ image/jpg=oculante.desktop
 image/jpeg=oculante.desktop
 image/gif=oculante.desktop
 image/webp=oculante.desktop
+video/mp4=mpv.desktop
+video/webm=mpv.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;librewolf.desktop;zen-browser.desktop;
