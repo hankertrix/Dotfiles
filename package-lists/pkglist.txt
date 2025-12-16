@@ -33,6 +33,7 @@ gammastep
 ghostty
 git
 github-cli
+handlr-regex
 imagemagick
 inotify-tools
 jq

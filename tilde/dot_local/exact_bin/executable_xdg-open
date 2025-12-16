@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Use handlr to open files instead of xdg-open
+handlr open "$@"
