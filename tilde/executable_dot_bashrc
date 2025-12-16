@@ -21,13 +21,6 @@ alias l='ls -lav --ignore=.?*'    # show long listing but no hidden dotfiles exc
 export PATH="$HOME/.local/bin:$PATH"
 
 # Make a new command that changes
-# the directory when lf exits
-LFCD="/home/hanker/.config/lf/lfcd.sh"
-if [ -f "$LFCD" ]; then
-    source "$LFCD"
-fi
-
-# Make a new command that changes
 # the directory when yazi exits
 YY="/home/hanker/.config/yazi/yy.sh"
 if [ -f "$YY" ]; then

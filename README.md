@@ -246,8 +246,7 @@ the output of `grep` and `ls` and useful aliases for `ls`.
 
 It also adds the [local binaries](./tilde/dot_local/bin/) to the shell path and
 has a few if statement added in so that I can change the shell's directory
-when using [`lf`](https://github.com/gokcehan/lf) and
-[`yazi`](https://yazi-rs.github.io/).
+when using [`yazi`](https://yazi-rs.github.io/).
 
 #### [`.profile`](./tilde/executable_dot_profile)
 
