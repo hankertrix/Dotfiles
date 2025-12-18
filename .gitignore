@@ -1,6 +1,9 @@
 # Ignore the Yazi plugins directory
 **/yazi/plugins/
 
+# Ignore the Yazi flavors directory
+**/yazi/flavors/
+
 # Ignore the custom packages
 **/custom-packages/**/*
 

@@ -41,9 +41,9 @@ and it is generated when you add a Yazi plugin using the `ya pkg add` command.
 The `theme.toml` file is mostly to set the theme, notification icons,
 and remove the border symbols.
 The [flavours](https://yazi-rs.github.io/docs/flavors/overview/)
-that I use can be found in the [`flavors`](./flavors/) folder,
-which is just a port of the [Bluloco](https://github.com/uloco/bluloco.nvim)
-theme to Yazi.
+that I use is just a port of the
+[Bluloco](https://github.com/uloco/bluloco.nvim) theme to Yazi,
+and [can be found here](https://github.com/hankertrix/bluloco-yazi/).
 
 The syntax highlighting in Yazi is configured by using a
 [bat](https://github.com/sharkdp/bat) syntax highlighting file,
