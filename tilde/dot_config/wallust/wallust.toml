@@ -36,6 +36,9 @@ color_space = "labmixed"
 threshold = 11
 
 [templates]
+btop.template = "btop-dynamic.theme"
+btop.target = "~/.config/btop/themes/dynamic.theme"
+
 cava.template = "cava-config"
 cava.target = "~/.config/cava/config"
 

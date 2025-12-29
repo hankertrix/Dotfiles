@@ -1,0 +1,86 @@
+# Main background, empty for terminal default,
+# need to be empty if you want transparent background
+theme[main_bg]=""
+
+# Main text color
+theme[main_fg]="{{ color0 | blend(foreground) }}"
+
+# Title color for boxes
+theme[title]="{{ color7 }}"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="{{ color12 | blend(foreground) | saturate(0.3) }}"
+
+# Background color of selected item in processes box
+theme[selected_bg]="{{ color0 }}"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="{{ color14 }}"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="{{ color0 }}"
+
+# Color of text appearing on top of graphs,
+# i.e uptime and current network graph scaling
+theme[graph_text]="{{ color4 | blend(foreground) | saturate(0.3) }}"
+
+# Background color of the percentage meters
+theme[meter_bg]="{{ color3 }}"
+
+# Misc colors for processes box including mini cpu graphs,
+# details memory graph and details status text
+theme[proc_misc]="{{ color4 }}"
+
+# CPU, Memory, Network, Proc box outline colors
+theme[cpu_box]="{{ color4 }}"
+theme[mem_box]="{{ color5 }}"
+theme[net_box]="{{ color12 }}"
+theme[proc_box]="{{ color13 }}"
+
+# Box divider line and small boxes line color
+theme[div_line]="{{ color0 }}"
+
+# Temperature graph color (Green -> Yellow -> Red)
+theme[temp_start]="{{ color12 | blend('#FF0000')}}"
+theme[temp_mid]="{{ color8 | blend('#FFFF00') | lighten(0.5) }}"
+theme[temp_end]="{{ color4 | blend('#00FF00') }}"
+
+# CPU graph colors
+theme[cpu_start]="{{ color3 if 'light' in palette else color11 }}"
+theme[cpu_mid]="{{ color10 if 'light' in palette else color12 }}"
+theme[cpu_end]="{{ color9 if 'light' in palette else color13 }}"
+
+# Mem/Disk free meter
+theme[free_start]="{{ color3 if 'light' in palette else color11 }}"
+theme[free_mid]="{{ color10 if 'light' in palette else color12 }}"
+theme[free_end]="{{ color9 if 'light' in palette else color13 }}"
+
+# Mem/Disk cached meter
+theme[cached_start]="{{ color3 if 'light' in palette else color11 }}"
+theme[cached_mid]="{{ color10 if 'light' in palette else color12 }}"
+theme[cached_end]="{{ color9 if 'light' in palette else color13 }}"
+
+# Mem/Disk available meter
+theme[available_start]="{{ color15 if 'light' in palette else color1 | blend('#FF0000') }}"
+theme[available_mid]="{{ color3 if 'light' in palette else color11 | blend('#FF0000') }}"
+theme[available_end]="{{ color10 if 'light' in palette else color12 | blend('#FF0000') }}"
+
+# Mem/Disk used meter
+theme[used_start]="{{ color15 if 'light' in palette else color1 | blend('#00FF00') }}"
+theme[used_mid]="{{ color3 if 'light' in palette else color11 | blend('#00FF00') }}"
+theme[used_end]="{{ color10 if 'light' in palette else color12 | blend('#00FF00') }}"
+
+# Download graph colors
+theme[download_start]="{{ color15 if 'light' in palette else color1 | blend('#FF0000') }}"
+theme[download_mid]="{{ color3 if 'light' in palette else color11 | blend('#FF0000') }}"
+theme[download_end]="{{ color10 if 'light' in palette else color12 | blend('#FF0000') }}"
+
+# Upload graph colors
+theme[upload_start]="{{ color15 if 'light' in palette else color1 | blend('#00FF00') }}"
+theme[upload_mid]="{{ color3 if 'light' in palette else color11 | blend('#00FF00') }}"
+theme[upload_end]="{{ color10 if 'light' in palette else color12 | blend('#00FF00') }}"
+
+# Process box color gradient for threads, mem and cpu usage
+theme[process_start]="{{ color8 if "light" in palette else color6 }}"
+theme[process_mid]="{{ color2 if "light" in palette else color4 }}"
+theme[process_end]="{{ color5 if "light" in palette else color3 }}"
