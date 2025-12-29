@@ -11,3 +11,4 @@ python-pywalfox-librewolf
 spek
 ttf-symbola
 wallust-git
+zoom
