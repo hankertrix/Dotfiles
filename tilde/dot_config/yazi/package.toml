@@ -5,18 +5,18 @@ hash = "e02a788e5b8ae0fb47fd0193dda589cc"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "ac3dcaa"
+rev = "398796d"
 hash = "e2d4bfccf31e5ab05f46fee4797c5215"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "ac3dcaa"
+rev = "398796d"
 hash = "73788c7dc5827ef4677c502c3ea8fa19"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "ac3dcaa"
-hash = "ed1ec73c0020340532ef2500ea059294"
+rev = "398796d"
+hash = "a3564fe0d051557df2a191ca0b212c2d"
 
 [flavor]
 deps = []
