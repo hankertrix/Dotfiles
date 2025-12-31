@@ -5,8 +5,17 @@
 **/LICENCE
 **/LICENSE.*
 **/LICENCE.*
+**/LICENSE-*
+**/LICENCE-*
 **/*.bak
 
 # Ignore everything except main.lua in the augment command plugin
 **/augment-command.yazi/*
 !**/augment-command.yazi/main.lua
+
+# Ignore preview images
+**/preview.png
+
+# Ignore the files to generate screenshots
+**/generate-screenshots.sh
+**/screenshots.tape
