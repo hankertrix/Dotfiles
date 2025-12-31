@@ -103,7 +103,7 @@ desc = "Toggle the current selection state"
 # Use u to unselect and unyank all files
 [[mgr.prepend_keymap]]
 on = "u"
-run = ["toggle_all --state=off", "unyank"]
+run = ["escape --select", "unyank"]
 desc = "Unselect all files and also unyank cut files"
 
 # Use d to cut files
