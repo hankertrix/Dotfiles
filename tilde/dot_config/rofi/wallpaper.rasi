@@ -3,6 +3,44 @@
 // Include the rofi colours
 @theme "colours"
 
+// Configuration for the wallpaper selector
+configuration {
+
+	// Key binds
+	kb-row-up: [
+		"Up",
+		"Control+p",
+		"Control+k",
+		"Alt+k"
+	];
+	kb-row-down: [
+		"Down",
+		"Control+n",
+		"Control+j",
+		"Alt+j"
+	];
+	kb-row-left: [
+		"Control+Page_Up",
+		"Control+h",
+		"Alt+h"
+	];
+	kb-row-right: [
+		"Control+Page_Down",
+		"Control+l",
+		"Alt+l"
+	];
+	kb-mode-next: [
+		"Shift+Right",
+		"Control+Tab",
+		"Alt+Tab"
+	];
+	kb-mode-previous: [
+		"Shift+Left",
+		"Control+ISO_Left_Tab",
+		"Alt+ISO_Left_Tab"
+	];
+}
+
 // General settings
 * {
 
