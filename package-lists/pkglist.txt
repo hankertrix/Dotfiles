@@ -6,7 +6,6 @@ base-devel
 bash-completion
 blueman
 brave-bin
-bridge-utils
 brightnessctl
 btop
 btrfs-progs
