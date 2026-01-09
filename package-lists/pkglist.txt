@@ -37,6 +37,10 @@ imagemagick
 inotify-tools
 jq
 kitty
+lib32-gmp
+lib32-gnutls
+lib32-libngtcp2
+lib32-nettle
 libguestfs
 libnotify
 libreoffice-fresh
