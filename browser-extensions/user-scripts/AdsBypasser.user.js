@@ -3,13 +3,13 @@
 // @namespace      AdsBypasser
 // @description    Bypass Ads
 // @author         AdsBypasser Team
-// @version        8.5.0
+// @version        8.9.0
 // @license        BSD-3-Clause
 // @homepageURL    https://adsbypasser.github.io/
 // @supportURL     https://github.com/adsbypasser/adsbypasser/issues
 // @updateURL      https://adsbypasser.github.io/releases/adsbypasser.full.meta.js
 // @downloadURL    https://adsbypasser.github.io/releases/adsbypasser.full.user.js
-// @icon           https://raw.githubusercontent.com/adsbypasser/adsbypasser/v8.5.0/static/img/logo.png
+// @icon           https://raw.githubusercontent.com/adsbypasser/adsbypasser/v8.9.0/static/img/logo.png
 // @grant          GM_deleteValue
 // @grant          GM_getValue
 // @grant          GM_info
@@ -75,7 +75,6 @@
 // @match          *://*.directupload.eu/*
 // @match          *://*.dpic.me/*
 // @match          *://*.dz4link.com/*
-// @match          *://*.earnlink.io/*
 // @match          *://*.exe-links.com/*
 // @match          *://*.exeo.app/*
 // @match          *://*.fappic.com/*
@@ -88,7 +87,6 @@
 // @match          *://*.forex-trnd.com/*
 // @match          *://*.fotosik.pl/*
 // @match          *://*.get-click2.blogspot.com/*
-// @match          *://*.getthot.com/*
 // @match          *://*.gitlink.pro/*
 // @match          *://*.gofile.download/*
 // @match          *://*.goo.st/*
@@ -121,7 +119,6 @@
 // @match          *://*.imagexport.com/*
 // @match          *://*.imgadult.com/*
 // @match          *://*.imgair.net/*
-// @match          *://*.imgbaron.com/*
 // @match          *://*.imgbase.ru/*
 // @match          *://*.imgbb.com/*
 // @match          *://*.imgblaze.net/*
@@ -134,10 +131,11 @@
 // @match          *://*.imgfrost.net/*
 // @match          *://*.imghit.com/*
 // @match          *://*.imgouhmde.sbs/*
-// @match          *://*.imgsto.com/*
+// @match          *://*.imgpulse.top/*
 // @match          *://*.imgtaxi.com/*
 // @match          *://*.imgtraffic.com/*
 // @match          *://*.imgwallet.com/*
+// @match          *://*.imgxxt.in/*
 // @match          *://*.imx.to/*
 // @match          *://*.indishare.org/*
 // @match          *://*.infidrive.net/*
@@ -150,7 +148,7 @@
 // @match          *://*.javsunday.com/*
 // @match          *://*.javtele.net/*
 // @match          *://*.javtenshi.com/*
-// @match          *://*.katfile.cloud/*
+// @match          *://*.katfile.online/*
 // @match          *://*.keeplinks.org/*
 // @match          *://*.keptarolo.hu/*
 // @match          *://*.kimochi.info/*
@@ -166,7 +164,6 @@
 // @match          *://*.lolinez.com/*
 // @match          *://*.lookmyimg.com/*
 // @match          *://*.mangalist.org/*
-// @match          *://*.miragepics.com/*
 // @match          *://*.mirrored.to/*
 // @match          *://*.mitly.us/*
 // @match          *://*.multiup.io/*
@@ -174,6 +171,7 @@
 // @match          *://*.noelshack.com/*
 // @match          *://*.oke.io/*
 // @match          *://*.oko.sh/*
+// @match          *://*.orangepix.is/*
 // @match          *://*.otomi-games.com/*
 // @match          *://*.ouo.io/*
 // @match          *://*.ouo.press/*
@@ -182,30 +180,27 @@
 // @match          *://*.payskip.org/*
 // @match          *://*.pic-upload.de/*
 // @match          *://*.picforall.ru/*
-// @match          *://*.pics4you.org/*
 // @match          *://*.picstate.com/*
 // @match          *://*.pig69.com/*
 // @match          *://*.pilot007.org/*
 // @match          *://*.pimpandhost.com/*
 // @match          *://*.pixhost.to/*
-// @match          *://*.pixroute.com/*
 // @match          *://*.pixxxar.com/*
 // @match          *://*.pixxxels.cc/*
 // @match          *://*.porn-pig.com/*
 // @match          *://*.porn4f.com/*
 // @match          *://*.porn4f.org/*
 // @match          *://*.postimg.cc/*
-// @match          *://*.postlmg.cc/*
 // @match          *://*.prnt.sc/*
 // @match          *://*.rintor.space/*
 // @match          *://*.rlu.ru/*
 // @match          *://*.ryuugames.com/*
 // @match          *://*.s-porn.com/*
 // @match          *://*.sfile.mobi/*
+// @match          *://*.shentai-anime.com/*
 // @match          *://*.short.am/*
 // @match          *://*.shortmoz.link/*
 // @match          *://*.shotcan.com/*
-// @match          *://*.silverpic.net/*
 // @match          *://*.similarsites.com/*
 // @match          *://*.spaste.com/*
 // @match          *://*.srt.am/*
@@ -214,8 +209,6 @@
 // @match          *://*.supercheats.com/*
 // @match          *://*.sweetie-fox.com/*
 // @match          *://*.swzz.xyz/*
-// @match          *://*.techstudify.com/*
-// @match          *://*.techtrendmakers.com/*
 // @match          *://*.thefileslocker.net/*
 // @match          *://*.thinfi.com/*
 // @match          *://*.thotpacks.xyz/*
@@ -277,7 +270,9 @@
   function find(collection, fn) {
     for (const [k, v] of enumerate(collection)) {
       const r = fn(v, k, collection);
-      if (r !== none) return [k, v, r];
+      if (r !== none) {
+        return [k, v, r];
+      }
     }
     return [none, none, none];
   }
@@ -287,7 +282,9 @@
       return;
     }
     const keys = Object.getOwnPropertyNames(collection);
-    for (const k of keys) yield [k, collection[k]];
+    for (const k of keys) {
+      yield [k, collection[k]];
+    }
   }
   function isArrayLike(collection) {
     return Array.isArray(collection) || isNodeList(collection);
@@ -296,8 +293,9 @@
     return collection.constructor.name === "NodeList";
   }
   function partial(fn, ...args) {
-    if (typeof fn !== "function")
+    if (typeof fn !== "function") {
       throw new AdsBypasserError("must give a function");
+    }
     return (...innerArgs) => fn(...args.concat(innerArgs));
   }
   function isString(value) {
@@ -325,7 +323,9 @@
   }
   function dispatchByObject(rule, urlObj) {
     const matched = map(rule, (pattern, part) => {
-      if (pattern instanceof RegExp) return urlObj[part].match(pattern);
+      if (pattern instanceof RegExp) {
+        return urlObj[part].match(pattern);
+      }
       if (Array.isArray(pattern)) {
         const [, , r] = find(pattern, (sp) => {
           const m = urlObj[part].match(sp);
@@ -349,40 +349,54 @@
     return r !== none ? r : null;
   }
   function dispatchByString(rule, urlObj) {
-    const schemeRegex = /\*|https?|file|ftp|chrome-extension/;
+    const schemeRegex = /\*|https?|file/;
     const hostRegex = /\*|(\*\.)?([^/*]+)/;
     const pathRegex = /\/.*/;
     const tmp = `^(${schemeRegex.source})://(${hostRegex.source})?(${pathRegex.source})$`;
     const up = new RegExp(tmp);
     const matched = rule.match(up);
-    if (!matched) return null;
-    const [, scheme, host, wc, sd, path] = matched;
-    if (
-      (scheme === "*" && !/https?/.test(urlObj.scheme)) ||
-      scheme !== urlObj.scheme
-    )
+    if (!matched) {
       return null;
+    }
+    const [, scheme, host, wc, sd, path] = matched;
+    if (scheme === "*") {
+      if (!/https?/.test(urlObj.scheme)) {
+        return null;
+      }
+    } else if (scheme !== urlObj.scheme) {
+      return null;
+    }
+    if (scheme !== "file" && !host) {
+      return null;
+    }
     if (scheme !== "file" && host !== "*") {
       if (wc) {
         const idx = urlObj.host.indexOf(sd);
-        if (idx < 0 || idx + sd.length !== urlObj.host.length) return null;
-      } else if (host !== urlObj.host) return null;
+        if (idx <= 0 || idx + sd.length !== urlObj.host.length) {
+          return null;
+        }
+      } else if (host !== urlObj.host) {
+        return null;
+      }
     }
     const pathRegexFinal = new RegExp(
       `^${path.replace(/[*.[\]?+#]/g, (c) => (c === "*" ? ".*" : "\\" + c))}$`,
     );
-    if (!pathRegexFinal.test(urlObj.path)) return null;
+    if (!pathRegexFinal.test(urlObj.path)) {
+      return null;
+    }
     return urlObj;
   }
-  function dispatchByFunction(rule, url1, url3, url6) {
-    return rule(url1, url3, url6);
-  }
   function dispatch(rule, url1, url3, url6) {
-    if (Array.isArray(rule)) return dispatchByArray(rule, url1, url3, url6);
-    if (typeof rule === "function")
-      return dispatchByFunction(rule, url1, url3, url6);
-    if (rule instanceof RegExp) return dispatchByRegExp(rule, url1);
-    if (isString(rule)) return dispatchByString(rule, url3);
+    if (Array.isArray(rule)) {
+      return dispatchByArray(rule, url1, url3, url6);
+    }
+    if (rule instanceof RegExp) {
+      return dispatchByRegExp(rule, url1);
+    }
+    if (isString(rule)) {
+      return dispatchByString(rule, url3);
+    }
     return dispatchByObject(rule, url6);
   }
   function findHandler() {
@@ -405,8 +419,12 @@
       const m = dispatch(pattern.rule, url1, url3, url6);
       return m ? m : none;
     });
-    if (i === none) return null;
-    if (!pattern.start && !pattern.ready) return null;
+    if (i === none) {
+      return null;
+    }
+    if (!pattern.start && !pattern.ready) {
+      return null;
+    }
     return {
       start: pattern.start ? partial(pattern.start, matched) : nop,
       ready: pattern.ready ? partial(pattern.ready, matched) : nop,
@@ -600,7 +618,9 @@
     const updates = {};
     MANIFEST.forEach((d, i) => {
       let val = values[i];
-      if (!d.verify(val)) val = d.default_;
+      if (!d.verify(val)) {
+        val = d.default_;
+      }
       updates[d.key] = val;
     });
     await Promise.all(
@@ -609,7 +629,9 @@
   }
   function waitForPage() {
     return new Promise((resolve) => {
-      if (document.readyState === "complete" && usw.render) return resolve();
+      if (document.readyState === "complete" && usw.render) {
+        return resolve();
+      }
       const check = () => {
         if (document.readyState === "complete" && usw.render) {
           clearInterval(interval);
@@ -633,18 +655,24 @@
       async ready() {
         await waitForPage();
         usw.commit = async (data) => {
-          for (const [k, v] of Object.entries(data)) await GMAPI.setValue(k, v);
+          for (const [k, v] of Object.entries(data)) {
+            await GMAPI.setValue(k, v);
+          }
         };
         const config = await dumpConfig();
         const options = MANIFEST.reduce((acc, d) => {
-          if (!d.type || d.key === "version") return acc;
+          if (!d.type || d.key === "version") {
+            return acc;
+          }
           acc[d.key] = {
             type: d.type,
             value: config[d.key],
             label: d.label,
             help: d.help,
           };
-          if (d.type === "select") acc[d.key].menu = d.menu;
+          if (d.type === "select") {
+            acc[d.key].menu = d.menu;
+          }
           return acc;
         }, {});
         usw.render({ version: config.version, options });
@@ -705,12 +733,18 @@
     }
   }
   function* flattenObject(object) {
-    if (!object) return;
+    if (!object) {
+      return;
+    }
     for (const [k, v] of Object.entries(object)) {
       if (Array.isArray(v)) {
-        for (const v_ of v) yield [[k, ""], v_];
+        for (const v_ of v) {
+          yield [[k, ""], v_];
+        }
       } else if (typeof v === "object") {
-        for (const [k_, v_] of flattenObject(v)) yield [[k, ...k_], v_];
+        for (const [k_, v_] of flattenObject(v)) {
+          yield [[k, ...k_], v_];
+        }
       } else {
         yield [[k], v];
       }
@@ -725,28 +759,44 @@
     const mapped = map(keys, (k) => {
       const v = object[k];
       const key = `${prefix}[${k}]`;
-      if (typeof v === "object") return deepJoin(key, v);
+      if (typeof v === "object") {
+        return deepJoin(key, v);
+      }
       return [key, v].map(encodeURIComponent).join("=");
     });
     return mapped.join("&");
   }
   function toQuery(data) {
     const type = typeof data;
-    if (data === null || (type !== "string" && type !== "object")) return "";
-    if (type === "string") return data;
-    if (data instanceof String) return data.toString();
+    if (data === null || (type !== "string" && type !== "object")) {
+      return "";
+    }
+    if (type === "string") {
+      return data;
+    }
+    if (data instanceof String) {
+      return data.toString();
+    }
     const keys = Object.getOwnPropertyNames(data);
     return map(keys, (k) => {
       const v = data[k];
-      if (typeof v === "object") return deepJoin(k, v);
+      if (typeof v === "object") {
+        return deepJoin(k, v);
+      }
       return [k, v].map(encodeURIComponent).join("=");
     }).join("&");
   }
   function toForm(data) {
     const type = typeof data;
-    if (data === null || (type !== "string" && type !== "object")) return "";
-    if (type === "string") return data;
-    if (data instanceof String) return data.toString();
+    if (data === null || (type !== "string" && type !== "object")) {
+      return "";
+    }
+    if (type === "string") {
+      return data;
+    }
+    if (data instanceof String) {
+      return data.toString();
+    }
     const form = new FormData();
     for (const [k, v] of flattenObject(data)) {
       form.append(flattenKey(k), v);
@@ -832,10 +882,11 @@
     const h = {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     };
-    if (headers)
+    if (headers) {
       forEach(headers, (v, k) => {
         h[k] = v;
       });
+    }
     return ajax("POST", url, data, h);
   }
   function setCookie(key, value) {
@@ -844,9 +895,13 @@
   function getCookie(key) {
     const [, c] = find(document.cookie.split(";"), (v) => {
       const k = v.replace(/^\s*([a-zA-Z0-9-_]+)=.+$/, "$1");
-      if (k !== key) return none;
+      if (k !== key) {
+        return none;
+      }
     });
-    if (c === none) return null;
+    if (c === none) {
+      return null;
+    }
     const match = c.replace(/^\s*[a-zA-Z0-9-_]+=([^;]+).?$/, "$1");
     return match || null;
   }
@@ -875,9 +930,13 @@
     }
   }
   function querySelector(selector, context) {
-    if (!context || !context.querySelector) context = document;
+    if (!context || !context.querySelector) {
+      context = document;
+    }
     const node = context.querySelector(selector);
-    if (!node) throw new DomNotFoundError(selector);
+    if (!node) {
+      throw new DomNotFoundError(selector);
+    }
     return node;
   }
   function querySelectorOrNull(selector, context) {
@@ -888,7 +947,9 @@
     }
   }
   function querySelectorAll(selector, context) {
-    if (!context || !context.querySelectorAll) context = document;
+    if (!context || !context.querySelectorAll) {
+      context = document;
+    }
     return context.querySelectorAll(selector);
   }
   function toDOM(rawHTML) {
@@ -913,7 +974,9 @@
     } else if (typeof selector === "function") {
       fn = (mutation) => {
         mutation.addedNodes.forEach((node) => {
-          if (selector(node)) node.parentNode.removeChild(node);
+          if (selector(node)) {
+            node.parentNode.removeChild(node);
+          }
         });
       };
     } else {
@@ -944,9 +1007,12 @@
     return m === none ? null : m.textContent;
   }
   function searchFromScripts(pattern, context) {
-    if (pattern instanceof RegExp)
+    if (pattern instanceof RegExp) {
       return searchFromScriptsByRegExp(pattern, context);
-    if (isString(pattern)) return searchFromScriptsByString(pattern, context);
+    }
+    if (isString(pattern)) {
+      return searchFromScriptsByString(pattern, context);
+    }
     return null;
   }
   function prepare(element) {
@@ -1134,7 +1200,9 @@
   async function replaceBody(imgSrc) {
     const redirectImage = await GMAPI.getValue("redirect_image");
     if (!redirectImage || !imgSrc) {
-      if (!imgSrc) warn("false url");
+      if (!imgSrc) {
+        warn("false url");
+      }
       return;
     }
     info(`replacing body with \`${imgSrc}\` ...`);
@@ -1248,7 +1316,7 @@
   });
   _.register({
     rule: {
-      host: /^katfile\.cloud$/,
+      host: /^katfile\.online$/,
     },
     async ready() {
       const a = $('a[id="dlink"]');
@@ -1449,15 +1517,6 @@
   });
   _.register({
     rule: {
-      host: /^earnlink\.io$/,
-    },
-    async ready() {
-      const directUrl = $.searchFromScripts(/"([^"]+)"\)\.html\("Continue"\)/);
-      await $.openLink(directUrl[1]);
-    },
-  });
-  _.register({
-    rule: {
       host: /^forex-trnd\.com$/,
     },
     async ready() {
@@ -1527,16 +1586,6 @@
       clbt.removeAttribute("disabled");
       await _.wait(1);
       clbt.click();
-    },
-  });
-  _.register({
-    rule: {
-      host: /^getthot\.com$/,
-    },
-    async ready() {
-      await _.wait(12000);
-      const a = $(".skip-btn");
-      await $.openLink(a.href);
     },
   });
   _.register({
@@ -1943,32 +1992,12 @@
   });
   _.register({
     rule: {
-      host: /^techtrendmakers\.com$/,
-    },
-    async ready() {
-      const b = $(".btn-captcha.m-2.form-send.step_btn");
-      await _.wait(6000);
-      b.click();
-    },
-  });
-  _.register({
-    rule: {
       host: /^(www\.)?supercheats\.com$/,
       path: /^\/interstitial\.html$/,
       query: /(?:\?|&)oldurl=([^&]+)(?:$|&)/,
     },
     async start(m) {
       await $.openLink(m.query[1]);
-    },
-  });
-  _.register({
-    rule: {
-      host: /^techstudify\.com$/,
-      path: /^\/elon.php/,
-      query: /link=([^&]+)/,
-    },
-    async start(m) {
-      await $.openLink("https://rplinks.in/" + m.query[1]);
     },
   });
   _.register({
@@ -2075,6 +2104,30 @@
   });
   _.register({
     rule: {
+      host: [
+        /^14xpics\.space$/,
+        /^www\.2i\.(cz|sk)$/,
+        /^imgcloud\.pw$/,
+        /^www\.imghit\.com$/,
+        /^img\.javstore\.net$/,
+        /^imgpulse\.top$/,
+        /^imgxxt\.in$/,
+        /^lookmyimg\.com$/,
+        /^orangepix\.is$/,
+        /^pilot007\.org$/,
+        /^rintor\.space$/,
+        /^shotcan\.com$/,
+        /^(img\.)?trafficimage\.club$/,
+      ],
+      path: /^\/(image|i)\/.*/,
+    },
+    async ready() {
+      const l = $('link[rel="image_src"]');
+      await $.openImage(l.href);
+    },
+  });
+  _.register({
+    rule: {
       host: /^cubeupload\.com$/,
     },
     async ready() {
@@ -2103,10 +2156,16 @@
   _.register({
     rule: {
       host: /^fastpic\.org$/,
+      path: /^\/view\//,
     },
     async ready() {
-      const img = $("img.image.img-fluid");
-      await $.openImage(img.src);
+      const a = $.$("#imglink");
+      if (a) {
+        await $.openLink(a.href);
+        return;
+      }
+      const directUrl = $.searchFromScripts(/loading_img = '([^"]+)';/);
+      await $.openLink(directUrl[1]);
     },
   });
   _.register({
@@ -2204,19 +2263,10 @@
   });
   _.register({
     rule: {
-      host: /^imageup\.ru$/,
+      host: [/^imageup\.ru$/, /^imageupper\.com$/, /^imgbox\.com$/],
     },
     async ready() {
-      const i = $("#image");
-      await $.openImage(i.src);
-    },
-  });
-  _.register({
-    rule: {
-      host: [/^imageupper\.com$/, /^imgbox\.com$/],
-    },
-    async ready() {
-      const i = $("#img");
+      const i = $("#img, #image");
       await $.openImage(i.src);
     },
   });
@@ -2225,8 +2275,13 @@
       host: /^www\.imagevenue\.com$/,
     },
     async ready() {
-      const i = $("#main-image");
-      await $.openImage(i.src);
+      const i = $.$("#main-image");
+      if (i) {
+        await $.openImage(i.src);
+        return;
+      }
+      const a = $('a[title="Continue to ImageVenue"]');
+      await $.openLink(a.href);
     },
   });
   _.register({
@@ -2249,25 +2304,6 @@
   });
   _.register({
     rule: {
-      host: [
-        /^imgbaron\.com$/,
-        /^imgsto\.com$/,
-        /^pics4you\.org$/,
-        /^silverpic\.net$/,
-      ],
-    },
-    async ready() {
-      const i = $.$(".main-content-image img");
-      if (i) {
-        await $.openImage(i.src);
-        return;
-      }
-      const f = $("form");
-      f.submit();
-    },
-  });
-  _.register({
-    rule: {
       host: [/^(imgbase|picforall)\.ru$/],
     },
     async ready() {
@@ -2285,27 +2321,6 @@
     async ready() {
       const img = $(".image-viewer-container img");
       await $.openImage(img.src);
-    },
-  });
-  _.register({
-    rule: {
-      host: [
-        /^14xpics\.space$/,
-        /^www\.2i\.(cz|sk)$/,
-        /^imgcloud\.pw$/,
-        /^www\.imghit\.com$/,
-        /^img\.javstore\.net$/,
-        /^lookmyimg\.com$/,
-        /^pilot007\.org$/,
-        /^rintor\.space$/,
-        /^shotcan\.com$/,
-        /^(img\.)?trafficimage\.club$/,
-      ],
-      path: /^\/(image|i)\/.*/,
-    },
-    async ready() {
-      const l = $('link[rel="image_src"]');
-      await $.openImage(l.href);
     },
   });
   _.register({
@@ -2407,6 +2422,7 @@
       "https://hentaixnx.com/upload/en/*",
       "https://idol69.net/upload/en/*",
       "https://javball.com/upload/en/*",
+      "https://javbee.vip/upload/en/*",
       "https://javring.com/upload/en/*",
       "https://javsunday.com/upload/en/*",
       "https://javtele.net/upload/en/*",
@@ -2419,6 +2435,7 @@
       "https://porn4f.com/upload/en/*",
       "https://porn4f.org/upload/en/*",
       "https://s-porn.com/upload/en/*",
+      "https://shentai-anime.com/upload/en/*",
       "https://sweetie-fox.com/upload/en/*",
       "https://xcamcovid.com/upload/en/*",
       "https://xxpics.org/upload/en/*",
@@ -2449,13 +2466,6 @@
     },
   });
   _.register({
-    rule: "https://javbee.vip/upload/en/*",
-    async ready() {
-      const m = $('meta[property="og:image"]');
-      await $.openImage(m.content);
-    },
-  });
-  _.register({
     rule: {
       host: /^keptarolo\.hu$/,
       path: /^(\/[^/]+\/[^/]+)$/,
@@ -2464,19 +2474,6 @@
       await $.openImage("http://www.keptarolo.hu/kep" + m.path[1]);
     },
   });
-  (function () {
-    _.register({
-      rule: {
-        host: /^miragepics\.com$/,
-        path: /^\/viewer\.php$/,
-        query: /file=([^&]+)/,
-      },
-      start: helper,
-    });
-    async function helper(m) {
-      await $.openImage("/images/" + m.query[1]);
-    }
-  })();
   _.register({
     rule: {
       host: /^www\.pic-upload\.de$/,
@@ -2544,32 +2541,23 @@
   });
   _.register({
     rule: {
-      host: /^(www\.)?pixroute\.com$/,
-    },
-    async ready() {
-      const o = $("#download_box img#imgpreview.pic");
-      await $.openImage(o.src);
-    },
-  });
-  _.register({
-    rule: {
-      host: [/^pixxxels\.cc$/, /^postimg\.cc$/, /^postlmg\.cc$/],
+      host: [/^pixxxels\.cc$/, /^postimg\.cc$/],
     },
     async ready() {
       const ele = $("#download");
       const img = ele.href.replace("?dl=1", "");
-      await $.openImage(img);
+      await $.openImage(img, { referer: true });
     },
   });
   _.register({
     rule: {
-      host: [/^prnt\.sc$/],
+      host: /^prnt\.sc$/,
       path: /\.html$/,
     },
   });
   _.register({
     rule: {
-      host: [/^prnt\.sc$/],
+      host: /^prnt\.sc$/,
     },
     async ready() {
       const i = $("#screenshot-image");
@@ -2607,7 +2595,9 @@
     usw.confirm = nop;
   }
   function disableLeavePrompt(element) {
-    if (!element) return;
+    if (!element) {
+      return;
+    }
     const seal = {
       set: () => info("blocked onbeforeunload"),
     };
@@ -2660,7 +2650,9 @@
     await handler.ready();
   }
   async function main() {
-    if (rawUSW.top !== rawUSW.self) return; 
+    if (rawUSW.top !== rawUSW.self) {
+      return;
+    }
     GMAPI.registerMenuCommand("AdsBypasser - Configure", () => {
       GMAPI.openInTab("https://adsbypasser.github.io/configure.html");
     });
