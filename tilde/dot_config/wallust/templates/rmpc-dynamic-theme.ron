@@ -121,6 +121,19 @@
         ),
     ],
     components: {
+        "elapsed_and_bitrate": Pane(Property(
+            align: Right,
+            content: [
+                (kind: Property(Status(Elapsed))),
+                (kind: Text(" / ")),
+                (kind: Property(Status(Duration))),
+                (kind: Group([
+                    (kind: Text(" (")),
+                    (kind: Property(Status(Bitrate))),
+                    (kind: Text(" kbps)")),
+                ])),
+            ],
+        )),
         "progress_bar": Split(
             direction: Horizontal,
             panes: [
@@ -142,27 +155,204 @@
                 ),
                 (
                     size: "25",
+                    pane: Component("elapsed_and_bitrate"),
+                )
+            ],
+        ),
+        "states": Pane(Property(
+            align: Right,
+            content: [
+                (kind: Property(Status(ConsumeV2(
+                    on_label: "Consume",
+                    off_label: "Consume",
+                    oneshot_label: "Oneshot (C)",
+                    on_style: (
+                        fg: "{{ color13 }}",
+                        modifiers: "Bold",
+                    ),
+                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                    oneshot_style: (
+                        fg: "{{ color13 }}",
+                        modifiers: "Bold",
+                    ),
+                )))),
+                (
+                    kind: Text(" / "),
+                    style: (fg: "{{ color14 | darken(0.2) }}")
+                ),
+                (kind: Property(Status(RandomV2(
+                    on_label: "Random",
+                    off_label: "Random",
+                    on_style: (
+                        fg: "{{ color13 }}",
+                        modifiers: "Bold",
+                    ),
+                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                )))),
+                (
+                    kind: Text(" / "),
+                    style: (fg: "{{ color14 | darken(0.2) }}")
+                ),
+                (kind: Property(Status(RepeatV2(
+                    on_label: "Repeat",
+                    off_label: "Repeat",
+                    on_style: (
+                        fg: "{{ color13 }}",
+                        modifiers: "Bold",
+                    ),
+                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                )))),
+                (
+                    kind: Text(" / "),
+                    style: (fg: "{{ color14 | darken(0.2) }}")
+                ),
+                (kind: Property(Status(SingleV2(
+                    on_label: "Single",
+                    off_label: "Single",
+                    oneshot_label: "Oneshot (S)",
+                    on_style: (
+                        fg: "{{ color13 }}",
+                        modifiers: "Bold",
+                    ),
+                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                    oneshot_style: (
+                        fg: "{{ color13 }}",
+                        modifiers: "Bold"
+                    ),
+                )))),
+            ],
+        )),
+        "volume": Split(
+            direction: Horizontal,
+            panes: [
+                (size: "1", pane: Pane(Property(content: [(kind: Text(""))]))),
+                (
+                    size: "100%",
+                    pane: Pane(Volume(kind: Slider(
+                        symbols: (filled: "─", thumb: "●", track: "─"),
+                        filled_style: (fg: "{{ color4 }}"),
+                        thumb_style: (fg: "{{ color5 }}"),
+                        track_style: (fg: "{{ color7 }}"),
+                    ))),
+                ),
+                (size: "1", pane: Pane(Property(content: [(kind: Text(""))]))),
+                (
+                    size: "3",
+                    pane: Pane(Property(
+                        align: Right,
+                        content: [
+                            (
+                                kind: Property(Status(Volume)),
+                                style: (fg: "{{ color12 }}"),
+                            )
+                        ]
+                    ))
+                ),
+                (
+                    size: "1",
                     pane: Pane(Property(
                         content: [
-                            (kind: Property(Status(Elapsed))),
-                            (kind: Text(" / ")),
-                            (kind: Property(Status(Duration))),
-                            (kind: Group([
-                                (kind: Text(" (")),
-                                (kind: Property(Status(Bitrate))),
-                                (kind: Text(" kbps)")),
-                            ])),
-                        ], align: Right,
-                    )),
-                )
+                            (kind: Text("%"), style: (fg: "{{ color12 }}"))
+                        ]
+                    ))
+                ),
             ]
+        ),
+        "header_left": Split(
+            direction: Vertical,
+            panes: [
+                (
+                    size: "1",
+                    pane: Pane(Property(
+                        align: Left,
+                        content: [
+                            (
+                                kind: Property(Widget(ScanStatus)),
+                                style: (fg: "{{ color12 }}"),
+                            ),
+                        ]
+                    ))
+                ),
+                (
+                    size: "1",
+                    pane: Pane(Property(
+                        align: Left,
+                        content: [
+                            (
+                                kind: Property(Song(Artist)),
+                                style: (
+                                    fg: "{{ color6 }}",
+                                    modifiers: "Bold",
+                                ),
+                                default: (
+                                    kind: Text("Unknown"),
+                                    style: (
+                                        fg: "{{ color6 }}",
+                                        modifiers: "Bold",
+                                    )
+                                )
+                            ),
+                        ]
+                    ))
+                ),
+            ],
+        ),
+        "header_centre": Split(
+            direction: Vertical,
+            panes: [
+                (
+                    size: "1",
+                    pane: Pane(Property(
+                        align: Center,
+                        content: [
+                            (
+                                kind: Property(Song(Title)),
+                                style: (modifiers: "Bold"),
+                                default: (
+                                    kind: Text("No Song"),
+                                    style: (modifiers: "Bold"),
+                                ),
+                            ),
+                        ]
+                    ))
+                ),
+                (
+                    size: "1",
+                    pane: Pane(Property(
+                        align: Center,
+                        content: [
+                            (
+                                kind: Property(Song(Album)),
+                                default: (
+                                    kind: Text("Unknown Album")
+                                ),
+                            ),
+                        ]
+                    ))
+                ),
+            ],
+        ),
+        "header_right": Split(
+            direction: Vertical,
+            panes: [
+                (size: "1", pane: Component("volume")),
+                (size: "1", pane: Component("states")),
+            ],
+        ),
+        "header": Split(
+            direction: Horizontal,
+            panes: [
+                (size: "40", pane: Component("header_left")),
+                (size: "100%", pane: Component("header_centre")),
+                (size: "40", pane: Component("header_right")),
+            ],
         )
     },
     layout: Split(
         direction: Vertical,
         panes: [
             (
-                pane: Pane(Header),
+                pane: Component("header"),
                 size: "2",
             ),
             (
