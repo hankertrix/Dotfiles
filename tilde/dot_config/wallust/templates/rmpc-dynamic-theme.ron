@@ -162,10 +162,30 @@
         "states": Pane(Property(
             align: Right,
             content: [
+                (kind: Property(Status(RepeatV2(
+                    on_label: "",
+                    off_label: "",
+                    on_style: (
+                        fg: "{{ color13 }}",
+                        modifiers: "Bold",
+                    ),
+                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                )))),
+                (kind: Text(" ")),
+                (kind: Property(Status(RandomV2(
+                    on_label: "",
+                    off_label: "",
+                    on_style: (
+                        fg: "{{ color13 }}",
+                        modifiers: "Bold",
+                    ),
+                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                )))),
+                (kind: Text(" ")),
                 (kind: Property(Status(ConsumeV2(
-                    on_label: "Consume",
-                    off_label: "Consume",
-                    oneshot_label: "Oneshot (C)",
+                    on_label: "󰮯",
+                    off_label: "󰮯",
+                    oneshot_label: "󰲡",
                     on_style: (
                         fg: "{{ color13 }}",
                         modifiers: "Bold",
@@ -176,40 +196,11 @@
                         modifiers: "Bold",
                     ),
                 )))),
-                (
-                    kind: Text(" / "),
-                    style: (fg: "{{ color14 | darken(0.2) }}")
-                ),
-                (kind: Property(Status(RandomV2(
-                    on_label: "Random",
-                    off_label: "Random",
-                    on_style: (
-                        fg: "{{ color13 }}",
-                        modifiers: "Bold",
-                    ),
-                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
-                )))),
-                (
-                    kind: Text(" / "),
-                    style: (fg: "{{ color14 | darken(0.2) }}")
-                ),
-                (kind: Property(Status(RepeatV2(
-                    on_label: "Repeat",
-                    off_label: "Repeat",
-                    on_style: (
-                        fg: "{{ color13 }}",
-                        modifiers: "Bold",
-                    ),
-                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
-                )))),
-                (
-                    kind: Text(" / "),
-                    style: (fg: "{{ color14 | darken(0.2) }}")
-                ),
+                (kind: Text(" ")),
                 (kind: Property(Status(SingleV2(
-                    on_label: "Single",
-                    off_label: "Single",
-                    oneshot_label: "Oneshot (S)",
+                    on_label: "󰑘",
+                    off_label: "󰑘",
+                    oneshot_label: "󰎥",
                     on_style: (
                         fg: "{{ color13 }}",
                         modifiers: "Bold",
@@ -220,6 +211,7 @@
                         modifiers: "Bold"
                     ),
                 )))),
+                (kind: Text(" ")),
             ],
         )),
         "volume": Split(
@@ -342,9 +334,9 @@
         "header": Split(
             direction: Horizontal,
             panes: [
-                (size: "40", pane: Component("header_left")),
+                (size: "23", pane: Component("header_left")),
                 (size: "100%", pane: Component("header_centre")),
-                (size: "40", pane: Component("header_right")),
+                (size: "23", pane: Component("header_right")),
             ],
         )
     },
