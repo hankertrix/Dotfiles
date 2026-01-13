@@ -166,33 +166,33 @@
                     on_label: "",
                     off_label: "",
                     on_style: (
-                        fg: "{{ color13 }}",
+                        fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
                     ),
-                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                    off_style: (fg: "{{ color12 }}"),
                 )))),
                 (kind: Text(" ")),
                 (kind: Property(Status(RandomV2(
                     on_label: "",
                     off_label: "",
                     on_style: (
-                        fg: "{{ color13 }}",
+                        fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
                     ),
-                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                    off_style: (fg: "{{ color12 }}"),
                 )))),
                 (kind: Text(" ")),
                 (kind: Property(Status(ConsumeV2(
                     on_label: "󰮯",
                     off_label: "󰮯",
-                    oneshot_label: "󰲡",
+                    oneshot_label: "󰲠",
                     on_style: (
-                        fg: "{{ color13 }}",
+                        fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
                     ),
-                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                    off_style: (fg: "{{ color12 }}"),
                     oneshot_style: (
-                        fg: "{{ color13 }}",
+                        fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
                     ),
                 )))),
@@ -200,14 +200,14 @@
                 (kind: Property(Status(SingleV2(
                     on_label: "󰑘",
                     off_label: "󰑘",
-                    oneshot_label: "󰎥",
+                    oneshot_label: "󰼏",
                     on_style: (
-                        fg: "{{ color13 }}",
+                        fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
                     ),
-                    off_style: (fg: "{{ color14 | darken(0.2) }}"),
+                    off_style: (fg: "{{ color12 }}"),
                     oneshot_style: (
-                        fg: "{{ color13 }}",
+                        fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold"
                     ),
                 )))),
@@ -222,9 +222,15 @@
                     size: "100%",
                     pane: Pane(Volume(kind: Slider(
                         symbols: (filled: "─", thumb: "●", track: "─"),
-                        filled_style: (fg: "{{ color4 }}"),
-                        thumb_style: (fg: "{{ color5 }}"),
-                        track_style: (fg: "{{ color7 }}"),
+                        track_style: (fg:
+                            "{{ color7 }}"
+                        ),
+                        thumb_style: (fg:
+                            "{{ color1 if 'light' in palette else color14 }}"
+                        ),
+                        filled_style: (fg:
+                            "{{ color2 if 'light' in palette else color13 }}"
+                        ),
                     ))),
                 ),
                 (size: "1", pane: Pane(Property(content: [(kind: Text(""))]))),
@@ -232,20 +238,23 @@
                     size: "3",
                     pane: Pane(Property(
                         align: Right,
-                        content: [
-                            (
-                                kind: Property(Status(Volume)),
-                                style: (fg: "{{ color12 }}"),
+                        content: [(
+                            kind: Property(Status(Volume)),
+                            style: (fg:
+                                "{{ color2 if 'light' in palette else color13 }}"
                             )
-                        ]
+                        )]
                     ))
                 ),
                 (
                     size: "1",
                     pane: Pane(Property(
-                        content: [
-                            (kind: Text("%"), style: (fg: "{{ color12 }}"))
-                        ]
+                        content: [(
+                            kind: Text("%"),
+                            style: (fg:
+                                "{{ color2 if 'light' in palette else color13 }}"
+                            ),
+                        )]
                     ))
                 ),
             ]
@@ -410,7 +419,7 @@
                             ),
                             separator_style: (fg: "{{ color13 }}")))
                         ),
-                        style: (fg: "{{ color14 | darken(0.2) }}")
+                        style: (fg: "{{ color13 }}")
                     ),
                 ]
             ),
