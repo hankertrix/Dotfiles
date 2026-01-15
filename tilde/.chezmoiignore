@@ -9,9 +9,9 @@
 **/LICENCE-*
 **/*.bak
 
-# Ignore everything except main.lua in the augment command plugin
+# Ignore everything except Lua files in the augment command plugin
 **/augment-command.yazi/*
-!**/augment-command.yazi/main.lua
+!**/augment-command.yazi/*.lua
 
 # Ignore preview images
 **/preview.png
