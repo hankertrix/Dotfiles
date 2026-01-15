@@ -1,0 +1,2 @@
+# Use node as the JavaScript runtime
+--js-runtimes node
