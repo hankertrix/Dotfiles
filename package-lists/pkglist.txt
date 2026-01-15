@@ -29,7 +29,6 @@ firefox
 freerdp
 fzf
 gammastep
-ghostty
 git
 github-cli
 handlr-regex

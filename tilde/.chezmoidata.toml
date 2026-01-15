@@ -19,7 +19,7 @@ cursorTheme = "Hacked-Sky-Cursor"
 cursorSize = 24
 
 # The default terminal
-defaultTerminal = "ghostty"
+defaultTerminal = "kitty"
 
 # The window corner radius for Niri
 windowCornerRadius = 8
