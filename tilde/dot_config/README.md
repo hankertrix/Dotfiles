@@ -409,6 +409,10 @@ detect when the theme changes from light to dark and vice versa.
 There is a [`README.md`](./yazi/README.md) file
 inside the [`yazi`](./yazi/) folder that explains the configuration.
 
+## [`yt-dlp`](https://github.com/yt-dlp/yt-dlp)
+
+The [`config`](./yt-dlp/config) file just sets the JavaScript runtime to Node.
+
 ## [MIME Applications](https://specifications.freedesktop.org/mime-apps-spec/latest/file.html)
 
 The [MIME Applications configuration file](./mimeapps.list)
