@@ -163,29 +163,27 @@
             align: Right,
             content: [
                 (kind: Property(Status(RepeatV2(
-                    on_label: "",
-                    off_label: "",
+                    on_label: " ",
+                    off_label: " ",
                     on_style: (
                         fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
                     ),
                     off_style: (fg: "{{ color12 }}"),
                 )))),
-                (kind: Text(" ")),
                 (kind: Property(Status(RandomV2(
-                    on_label: "",
-                    off_label: "",
+                    on_label: " ",
+                    off_label: " ",
                     on_style: (
                         fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
                     ),
                     off_style: (fg: "{{ color12 }}"),
                 )))),
-                (kind: Text(" ")),
                 (kind: Property(Status(ConsumeV2(
-                    on_label: "󰮯",
-                    off_label: "󰮯",
-                    oneshot_label: "󰲠",
+                    on_label: "󰮯 ",
+                    off_label: "󰮯 ",
+                    oneshot_label: "󰲠 ",
                     on_style: (
                         fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
@@ -196,11 +194,10 @@
                         modifiers: "Bold",
                     ),
                 )))),
-                (kind: Text(" ")),
                 (kind: Property(Status(SingleV2(
-                    on_label: "󰑘",
-                    off_label: "󰑘",
-                    oneshot_label: "󰼏",
+                    on_label: "󰑘 ",
+                    off_label: "󰑘 ",
+                    oneshot_label: "󰼏 ",
                     on_style: (
                         fg: "{{ color10 if 'light' in palette else color15 }}",
                         modifiers: "Bold",
@@ -211,7 +208,6 @@
                         modifiers: "Bold"
                     ),
                 )))),
-                (kind: Text(" ")),
             ],
         )),
         "volume": Split(
