@@ -40,7 +40,7 @@ end
 config.color_scheme = get_colour_scheme(get_appearance())
 
 -- Set the font size to {{ .terminalFontSize }}
-config.font_size = "{{ .terminalFontSize }}"
+config.font_size = tonumber("{{ .terminalFontSize }}")
 
 -- Set the font to {{ .terminalFont }}
 config.font = wezterm.font("{{ .terminalFont }}")
