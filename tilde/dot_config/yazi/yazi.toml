@@ -36,32 +36,26 @@ max_height = 3000
 
 # Use the augmented version of the extract opener
 [[opener.extract]]
-run = 'ya pub augmented-extract --list "$@"'
+run = "ya pub augmented-extract --list %s"
 desc = "Extract here"
-for = "unix"
-
-[[opener.extract]]
-run = 'ya pub augmented-extract --list %*'
-desc = "Extract here"
-for = "windows"
 
 # The Emacs opener
 [[opener.emacs]]
-run = 'emacs -- "$@"'
+run = "emacs -- %s"
 block = false
 orphan = true
 desc = "Open in Emacs"
 
 # The opener to analyse audio spectrums
 [[opener.analyse]]
-run = 'spek -- "$@"'
+run = "spek -- %s1"
 block = false
 orphan = true
 desc = "Analyse spectrum"
 
 # The satty opener
 [[opener.satty]]
-run = 'satty -f "$1" -o "${1%.*}.png"'
+run = 'file="%s1"; satty -f "$file" -o "${file%.*}.png"'
 block = false
 desc = "Open in Satty"
 
