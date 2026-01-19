@@ -1,4 +1,3 @@
-basedpyright-bin
 davmail
 efm-langserver
 gallery-dl-bin

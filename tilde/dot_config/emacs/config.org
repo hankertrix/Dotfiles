@@ -1123,29 +1123,6 @@ LTEX+ is a language server that checks the file for writing errors in various la
                        (lsp-deferred))))
 #+end_src
 
-**** Basedpyright
-Basedpyright is a fork of Pyright, a Python language server by Microsoft, with various improvements.
-#+begin_src emacs-lisp
-(use-package lsp-pyright
-
-  ;; Ensure basedpyright exists
-  :ensure-system-package (basedpyright . "paru -S basedpyright")
-
-  ;; Customise lsp-pyright
-  :custom
-
-  ;; Use basedpyright
-  (lsp-pyright-langserver-command "basedpyright")
-
-  ;; Disable organising imports for lsp-pyright
-  (lsp-pyright-disable-organize-imports t)
-
-  ;; Activate lsp-pyright in Python mode
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp-deferred))))
-#+end_src
-
 ** Treesitter
 Treesitter is an incremental parsing library which is general enough to parse any programming language. Emacs has treesitter built-in, but it isn't really that easy to use, I'm using the ~treesit-auto~ package to make things installing treesitter grammars easier.
 #+begin_src emacs-lisp

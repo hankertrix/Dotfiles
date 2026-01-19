@@ -22,7 +22,7 @@ local descriptions = {
 local externally_installed_lsps = {
 	"efm",
 	"ltex_plus",
-	"basedpyright",
+	"ty",
 }
 
 -- Function to set up the lsp
