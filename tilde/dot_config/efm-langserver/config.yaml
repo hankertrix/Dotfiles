@@ -8,10 +8,11 @@ tools:
     prefix: "ruff"
     lint-source: "efm/ruff"
     lint-command: >
-      ruff check --stdin-filename "${INPUT}"
+      ruff check --quiet --output-format github --stdin-filename "${INPUT}"
     lint-stdin: true
     lint-formats:
-      - "%.%#:%l:%c: %t%n %m"
+      - "::%trror title=%.%#,file=%.%#,line=%.%#,col=%.%#,endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m"
+      - "::%tarning title=%.%#,file=%.%#,line=%.%#,col=%.%#,endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m"
     format-command: >
       ruff format --no-cache --stdin-filename "${INPUT}"
     format-stdin: true
@@ -20,6 +21,7 @@ tools:
       - "setup.py"
       - "requirements.txt"
       - "ruff.toml"
+      - "setup.cfg"
 
   ruff-sort: &ruff-sort
     format-command: >
