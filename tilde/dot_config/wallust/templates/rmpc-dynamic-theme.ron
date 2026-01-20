@@ -75,11 +75,11 @@
     ),
     progress_bar: (
         symbols: [
-            "{{ ' ' if 'light' in palette else ' ' }}",
+            "",
             "█",
-            " ",
-            " ",
-            ""
+            "",
+            "",
+            ""
         ],
         track_style: (fg: "{{ color11 }}"),
         elapsed_style: (fg: "{{ color11 }}"),
