@@ -171,7 +171,7 @@ in a horizontal bar at the bottom.
 
 The colours for Rofi can be found inside the
 [Wallust templates directory](./wallust/templates/rofi-colours.rasi),
-as it is also dynamically themed based on the colours in the wallpaper.
+as it is also dynamically themed based on the colours in the current wallpaper.
 
 ## [`rootmoi`](https://www.chezmoi.io/)
 
@@ -228,6 +228,18 @@ I need to run as daemons like `swayidle`, `swww`, `cliphist`.
 and my polkit agent. The `swayidle` service file is taken from
 [Niri's example `systemd` setup](https://github.com/YaLTeR/niri/wiki/Example-systemd-Setup)
 with a description and an install section added.
+
+## [Vicinae](https://www.vicinae.com/)
+
+Vicinae is an app launcher that is inspired by
+[Raycast](https://www.raycast.com/), but it is open-source.
+The [Vicinae configuration](./vicinae/) mainly just sets
+the settings and keybindings for Vicinae to what I'm
+used to with [Rofi](./rofi/).
+
+The theme for Vicinae can be found inside the
+[Wallust templates directory](./wallust/templates/vicinae-dynamic-theme.toml),
+as it is dynamically themed based on the colours in the current wallpaper.
 
 ## [Wallust](https://codeberg.org/explosion-mental/wallust)
 
@@ -346,6 +358,13 @@ to work with colours generated from the wallpaper, and invert the scrolling,
 as scrolling down should increase the year or month and scrolling up should
 decrease the year or month.
 
+### [Vicinae]
+
+The [Vicinae configuration](./wallust/templates/vicinae-dynamic-theme.toml)
+is mainly inspired by the
+[Matugen integration in Vicinae](https://github.com/vicinaehq/vicinae/blob/main/extra/matugen.toml)
+with everything changed to use Wallust instead.
+
 ### [Waybar colours](https://github.com/Alexays/Waybar/wiki/Styling)
 
 The [Waybar colours](./wallust/templates/waybar-colours.css)
@@ -361,8 +380,6 @@ is quite similar to the
 but with some modules added and some removed and all rearranged to my liking.
 The icons for the workspaces have been changed as well,
 and there is a custom module for recording the screen.
-The Wi-Fi module also opens up a Wi-Fi selection menu using Rofi,
-and the volume indicator can be clicked to toggle the mute.
 
 The clock module also expands out to reveal the date,
 and after hovering over it for a bit, displays the calendar as a tooltip.
@@ -412,6 +429,11 @@ inside the [`yazi`](./yazi/) folder that explains the configuration.
 ## [`yt-dlp`](https://github.com/yt-dlp/yt-dlp)
 
 The [`config`](./yt-dlp/config) file just sets the JavaScript runtime to Node.
+
+## [Brave](https://brave.com/)
+
+The [configuration for `brave`](./brave-flags.conf) is just to stop
+Brave from prompting me for a keyring password.
 
 ## [MIME Applications](https://specifications.freedesktop.org/mime-apps-spec/latest/file.html)
 
