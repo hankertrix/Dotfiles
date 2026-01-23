@@ -1,0 +1,79 @@
+// Configuration for Vicinae
+{
+	"$schema": "https://docs.vicinae.com/schemas/config.json",
+	"search_files_in_root": false,
+	"close_on_focus_loss": false,
+	//
+	// What vicinae should do when the "escape" key is pressed.
+	// Supports "navigate_back" or "close_window".
+	"escape_key_behavior": "close_window",
+	//
+	// Don't search the IME pre-edit strings
+	"consider_preedit": false,
+	//
+	// Reset the navigation state every time the window is closed
+	"pop_to_root_on_close": true,
+	//
+	// What favicon service to use when loading favicons is needed.
+	// Available values are: 'twenty' | 'google' | 'none'
+	// If this is set to 'none', favicon loading is disabled,
+	// and a placeholder icon will be used when a favicon is expected.
+	"favicon_service": "twenty",
+	//
+	// How much memory (in MB) can be used to
+	// cache small image assets in memory directly.
+	// The higher this value is the more memory vicinae will use.
+	// In exchange for this, you get lower cpu usage.
+	"pixmap_cache_mb": 50,
+	"keybinding": "default",
+	"font": {
+		"normal": {
+			"family": "{{ .guiFont }}",
+			"size": 12
+		}
+	},
+	"theme": {
+		"light": {
+			"name": "dynamic",
+			"icon_theme": "{{ .iconTheme }}"
+		},
+		"dark": {
+			"name": "dynamic",
+			"icon_theme": "{{ .iconTheme }}"
+		}
+	},
+	"launcher_window": {
+		"opacity": 0.9,
+		"blur": {
+			"enabled": false
+		},
+		"dim_around": false,
+		"client_side_decorations": {
+			"enabled": true,
+			"rounding": 15,
+			"border_width": 1
+		},
+		"compact_mode": {
+			"enabled": true
+		},
+		//
+		// Ideal aspect ratio is 770 width to 480 height
+		"size": {
+			"width": 963,
+			"height": 600
+		},
+		"screen": "auto",
+		"layer_shell": {
+			"enabled": true,
+			//
+			// Either 'exclusive' or 'on_demand'
+			"keyboard_interactivity": "exclusive",
+			//
+			// Either 'overlay' or 'top'.
+			// 'top' is recommended as using 'overlay' will make
+			// the vicinae window appear on top of IME popovers in some cases.
+			"layer": "top"
+		}
+	}
+}
+// vi: ft=jsonc

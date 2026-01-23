@@ -36,52 +36,56 @@ color_space = "lchmixed"
 threshold = 11
 
 [templates]
-btop.template = "btop-dynamic.theme"
-btop.target = "~/.config/btop/themes/dynamic.theme"
+btop.template = 'btop-dynamic.theme'
+btop.target = '~/.config/btop/themes/dynamic.theme'
 
-cava.template = "cava-config"
-cava.target = "~/.config/cava/config"
+cava.template = 'cava-config'
+cava.target = '~/.config/cava/config'
 
-dunst.template = "dunstrc"
-dunst.target = "~/.config/dunst/dunstrc"
+dunst.template = 'dunstrc'
+dunst.target = '~/.config/dunst/dunstrc'
 
-niri.template = "niri-colours.kdl"
-niri.target = "~/.config/niri/colours.kdl"
+niri.template = 'niri-colours.kdl'
+niri.target = '~/.config/niri/colours.kdl'
 
-rmpc.template = "rmpc-dynamic-theme.ron"
-rmpc.target = "~/.config/rmpc/themes/dynamic.ron"
+rmpc.template = 'rmpc-dynamic-theme.ron'
+rmpc.target = '~/.config/rmpc/themes/dynamic.ron'
 
-rofi.template = "rofi-colours.rasi"
-rofi.target = "~/.config/rofi/colours.rasi"
+rofi.template = 'rofi-colours.rasi'
+rofi.target = '~/.config/rofi/colours.rasi'
 
-swaylock.template = "swaylock-config"
-swaylock.target = "~/.config/swaylock/config"
+swaylock.template = 'swaylock-config'
+swaylock.target = '~/.config/swaylock/config'
 
-waybar.template = "waybar-colours.css"
-waybar.target = "~/.config/waybar/colours.css"
-waybar-calendar.template = "waybar-calendar.jsonc"
-waybar-calendar.target = "~/.config/waybar/waybar-calendar.jsonc"
+vicinae.template = 'vicinae-dynamic-theme.toml'
+vicinae.target = '~/.local/share/vicinae/themes/dynamic.toml'
+
+waybar.template = 'waybar-colours.css'
+waybar.target = '~/.config/waybar/colours.css'
+waybar-calendar.template = 'waybar-calendar.jsonc'
+waybar-calendar.target = '~/.config/waybar/waybar-calendar.jsonc'
 
 # Terminals
-kitty.template = "kitty-dynamic-theme.conf"
-kitty.target = "~/.config/kitty/themes/dynamic.conf"
+kitty.template = 'kitty-dynamic-theme.conf'
+kitty.target = '~/.config/kitty/themes/dynamic.conf'
 
-ghostty.template = "ghostty-dynamic-theme.conf"
-ghostty.target = "~/.config/ghostty/themes/dynamic.conf"
+ghostty.template = 'ghostty-dynamic-theme.conf'
+ghostty.target = '~/.config/ghostty/themes/dynamic.conf'
 
 # GTK applications
-gtk3.template = "gtk.css"
-gtk3.target = "~/.config/gtk-3.0/gtk.css"
-gtk3-settings.template = "gtk3-settings.ini"
-gtk3-settings.target = "~/.config/gtk-3.0/settings.ini"
-gtk4.template = "gtk.css"
-gtk4.target = "~/.config/gtk-4.0/gtk.css"
+gtk3.template = 'gtk.css'
+gtk3.target = '~/.config/gtk-3.0/gtk.css'
+gtk3-settings.template = 'gtk3-settings.ini'
+gtk3-settings.target = '~/.config/gtk-3.0/settings.ini'
+gtk4.template = 'gtk.css'
+gtk4.target = '~/.config/gtk-4.0/gtk.css'
 
 # Pywalfox for Firefox and Thunderbird
-pywalfox.template = "pywalfox-colours.json"
-pywalfox.target = "~/.cache/wal/colors.json"
+pywalfox.template = 'pywalfox-colours.json'
+pywalfox.target = '~/.cache/wal/colors.json'
 
 [hooks]
-waybar = "systemctl --user restart waybar"
 dunst = "systemctl --user restart dunst"
+vicinae = "vicinae theme set dynamic"
+waybar = "systemctl --user restart waybar"
 pywalfox = "pywalfox update"

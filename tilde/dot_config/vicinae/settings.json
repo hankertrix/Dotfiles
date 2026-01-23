@@ -1,0 +1,15 @@
+{
+	"$schema": "https://docs.vicinae.com/schemas/config.json",
+	"imports": [
+		"config.json",
+		"keybinds.json"
+	],
+	"favorites": [
+		"clipboard:history"
+	],
+	"fallbacks": [
+		"files:search"
+	],
+	"providers": {}
+}
+// vi: ft=jsonc

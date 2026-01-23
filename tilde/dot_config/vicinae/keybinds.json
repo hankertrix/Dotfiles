@@ -1,0 +1,31 @@
+// Keybinds for Vicinae
+{
+	"$schema": "https://docs.vicinae.com/schemas/config.json",
+	"keybinds": {
+		//
+		// Common shortcuts
+		"open-search-filter": "control+F",
+		"open-settings": "control+,",
+		"toggle-action-panel": "control+;",
+		//
+		// Used to assign shortcuts to generic actions.
+		// If an extension provides a specific kind of action,
+		// it is encouraged to use shortcuts as defined here.
+		"action.copy": "control+shift+C",
+		"action.copy-name": "control+shift+.",
+		"action.copy-path": "control+shift+,",
+		"action.dangerous-remove": "control+shift+D",
+		"action.duplicate": "control+Y",
+		"action.edit": "control+E",
+		"action.edit-secondary": "control+shift+E",
+		"action.move-down": "control+shift+J",
+		"action.move-up": "control+shift+K",
+		"action.new": "control+T",
+		"action.open": "control+O",
+		"action.pin": "control+shift+P",
+		"action.refresh": "control+R",
+		"action.remove": "control+D",
+		"action.save": "control+S"
+	}
+}
+// vi: ft=jsonc

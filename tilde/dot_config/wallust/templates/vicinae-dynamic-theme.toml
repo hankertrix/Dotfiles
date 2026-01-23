@@ -1,0 +1,98 @@
+# Vicinae dynamic theme
+
+[meta]
+name = "Dynamic theme"
+description = "A dynamic theme based on the wallpaper"
+variant = "{{ 'light' if 'light' in palette else 'dark' }}"
+
+# Core colours
+[colors.core]
+accent = "{{ color3 if 'light' in palette else color14 }}"
+accent_background = "{{ color2 | darken(0.2) }}"
+background = "{{ color0 }}"
+foreground = "{{ color7 }}"
+border = "{{ color10 }}"
+
+[colors.core.secondary_background]
+name = "{{ (color11 | lighten(0.4)) if 'light' in palette else color1 }}"
+
+# Window borders
+[colors.main_window]
+border = "colors.core.border"
+
+[colors.settings_window]
+border = "{{ color13 }}"
+
+# Accent palette
+[colors.accents]
+blue = "{{ color6 }}"
+green = "{{ color4 | blend('#00FF00') }}"
+magenta = "{{ color5 }}"
+orange = "{{ color10 }}"
+red = "{{ color12 | blend('#FF0000') }}"
+yellow = "{{ color8 | blend('#FFFF00') | lighten(0.5) }}"
+cyan = "{{ color12 }}"
+purple = "{{ color13 }}"
+
+# Text system
+[colors.text]
+default = "colors.core.foreground"
+muted = "{{ color11 if 'light' in palette else color14 }}"
+danger = "colors.accents.red"
+success = "colors.accents.green"
+placeholder = { name = "colors.text.muted", opacity = 0.6 }
+
+[colors.text.selection]
+background = "colors.core.secondary_background"
+foreground = "colors.core.accent"
+
+[colors.text.links]
+default = "colors.accents.blue"
+visited = "colors.accents.purple"
+
+# Input fields
+[colors.input]
+border = "colors.core.border"
+border_focus = "colors.core.accent"
+border_error = "colors.accents.red"
+
+# Buttons
+[colors.button.primary]
+background = "colors.core.secondary_background"
+foreground = "colors.core.accent"
+
+[colors.button.primary.hover]
+background = "colors.text.selection.background"
+
+[colors.button.primary.focus]
+outline = "colors.core.border"
+
+# Lists
+[colors.list.item.hover]
+background = { name = "colors.core.secondary_background", opacity = 0.25 }
+foreground = "colors.core.accent"
+
+[colors.list.item.selection]
+background = { name = "colors.core.secondary_background", opacity = 0.5 }
+foreground = "colors.core.accent"
+secondary_background = "{{ color4 }}"
+secondary_foreground = "{{ color9 }}"
+
+# Grid items
+[colors.grid.item]
+background = "colors.core.secondary_background"
+
+[colors.grid.item.hover]
+outline = { name = "{{ color6 }}", opacity = 0.8 }
+
+[colors.grid.item.selection]
+outline = "colors.core.accent"
+
+# Scrollbars
+[colors.scrollbars]
+background = { name = "colors.core.accent", opacity = 0.2 }
+
+# Loading states
+[colors.loading]
+bar = "colors.core.accent"
+spinner = "colors.core.accent"
