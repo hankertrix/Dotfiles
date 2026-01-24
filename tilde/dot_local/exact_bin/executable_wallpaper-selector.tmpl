@@ -109,11 +109,13 @@ select_wallpaper() {
 	else
 
 		# Open the wallpaper picker to select a wallpaper
-		wallpaper_path=$(
-			fd . "$wallpaper_directory" \
-				-e jpg -e jpeg -e png --type f | sort |
-				vicinae dmenu -p "Select a wallpaper..."
-		)
+		wallpaper_path=$(rofi \
+			-modes filebrowser \
+			-theme wallpaper \
+			-show filebrowser \
+			-filebrowser-directory "$wallpaper_directory" \
+			-filebrowser-command 'echo' \
+			-selected-row 1)
 	fi
 }
 

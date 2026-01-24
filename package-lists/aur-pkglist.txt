@@ -9,6 +9,5 @@ polycat
 python-pywalfox
 spek
 ttf-symbola
-vicinae-bin
 wallust-git
 zoom

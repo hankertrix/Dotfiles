@@ -12,6 +12,7 @@ btrfs-progs
 caligula
 cava
 chezmoi
+cliphist
 darkman
 dmidecode
 dnsmasq
@@ -78,6 +79,9 @@ reflector
 resvg
 ripgrep
 rmpc
+rofi
+rofi-calc
+rofi-emoji
 rsync
 ruff
 rustup
