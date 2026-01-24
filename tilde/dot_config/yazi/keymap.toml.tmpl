@@ -11,25 +11,25 @@
 # Use the augmented arrow up command for the k key
 [[mgr.prepend_keymap]]
 on = "k"
-run = "plugin augment-command -- arrow -1"
+run = "plugin augment-command.arrow -- -1"
 desc = "Move cursor up"
 
 # Use the augmented arrow down command for the j key
 [[mgr.prepend_keymap]]
 on = "j"
-run = "plugin augment-command -- arrow 1"
+run = "plugin augment-command.arrow -- 1"
 desc = "Move cursor down"
 
 # Use K to move up in the parent directory
 [[mgr.prepend_keymap]]
 on = "K"
-run = "plugin augment-command -- parent_arrow -1"
+run = "plugin augment-command.parent-arrow -- -1"
 desc = "Move cursor up in the parent directory"
 
 # Use J to move down in the parent directory
 [[mgr.prepend_keymap]]
 on = "J"
-run = "plugin augment-command -- parent_arrow 1"
+run = "plugin augment-command.parent-arrow -- 1"
 desc = "Move cursor down in the parent directory"
 
 # Use Ctrl + k to seek 5 units up in the preview pane
@@ -47,57 +47,57 @@ desc = "Seek down 5 units in the preview pane"
 # Use the augmented enter command for the l key
 [[mgr.prepend_keymap]]
 on = "l"
-run = "plugin augment-command -- enter"
+run = "plugin augment-command.enter"
 desc = "Enter the child directory, or open the file"
 
 # Use the augmented enter command for the <Enter> key
 [[mgr.prepend_keymap]]
 on = "<Enter>"
-run = "plugin augment-command -- enter"
+run = "plugin augment-command.enter"
 desc = "Enter the child directory, or open the file"
 
 # Use the augmented enter command for the <S-Enter> key
 [[mgr.prepend_keymap]]
 on = "<S-Enter>"
-run = "plugin augment-command -- enter --interactive"
+run = "plugin augment-command.enter -- --interactive"
 desc = "Enter the child directory, or open the file interactively"
 
 # Use the augmented enter command for the <Right> key
 # but without skipping directories
 [[mgr.prepend_keymap]]
 on = "<Right>"
-run = "plugin augment-command -- enter --no-skip"
+run = "plugin augment-command.enter -- --no-skip"
 desc = "Enter the child directory, or open the file"
 
 # Use the augmented leave command for the h key
 [[mgr.prepend_keymap]]
 on = ["h"]
-run = "plugin augment-command -- leave"
+run = "plugin augment-command.leave"
 desc = "Go back to the parent directory"
 
 # Use the augmented leave command for the <Left> key
 # but without skipping directories
 [[mgr.prepend_keymap]]
 on = ["<Left>"]
-run = "plugin augment-command -- leave --no-skip"
+run = "plugin augment-command.leave -- --no-skip"
 desc = "Go back to the parent directory"
 
 # Use the augmented tab create command for the t key
 [[mgr.prepend_keymap]]
 on = "t"
-run = "plugin augment-command -- tab_create --current"
+run = "plugin augment-command.tab-create -- --current"
 desc = "Create a new tab with CWD"
 
 # Use the augmented open to open files interactively with O
 [[mgr.prepend_keymap]]
 on = "O"
-run = "plugin augment-command -- open --interactive"
+run = "plugin augment-command.open -- --interactive"
 desc = "Open selected files interactively"
 
 # Use the plugin's arrow command for the toggle instead of Yazi's default
 [[mgr.prepend_keymap]]
 on = "<Space>"
-run = ["toggle", "plugin augment-command -- arrow 1 --no-wrap"]
+run = ["toggle", "plugin augment-command.arrow -- 1 --no-wrap"]
 desc = "Toggle the current selection state"
 
 # Use u to unselect and unyank all files
@@ -116,26 +116,26 @@ desc = "Cut the selected files"
 # to paste files
 [[mgr.prepend_keymap]]
 on = "p"
-run = "plugin augment-command -- paste"
+run = "plugin augment-command.paste"
 desc = "Paste the files"
 
 # Use the augmented paste command for the P key
 # to paste files and overwrite the destination file if it exists
 [[mgr.prepend_keymap]]
 on = "P"
-run = "plugin augment-command -- paste --force"
+run = "plugin augment-command.paste -- --force"
 desc = "Paste the files (overwrite if the destination exists)"
 
 # Use _ to create a new file or directory
 [[mgr.prepend_keymap]]
 on = "_"
-run = "plugin augment-command -- create"
+run = "plugin augment-command.create"
 desc = "Create a file or directory"
 
 # Use + to create a new file or directory
 [[mgr.prepend_keymap]]
 on = "+"
-run = "plugin augment-command -- create"
+run = "plugin augment-command.create"
 desc = "Create a file or directory"
 
 # Use = to hard link files
@@ -147,19 +147,19 @@ desc = "Hardlink yanked files"
 # Use x to move files to the trash
 [[mgr.prepend_keymap]]
 on = "x"
-run = "plugin augment-command -- remove"
+run = "plugin augment-command.remove"
 desc = "Move the files to the trash"
 
 # Use X to delete files permanently
 [[mgr.prepend_keymap]]
 on = "X"
-run = "plugin augment-command -- remove --permanently"
+run = "plugin augment-command.remove -- --permanently"
 desc = "Permanently delete the files"
 
 # Use a to add files to an archive
 [[mgr.prepend_keymap]]
 on = "a"
-run = "plugin augment-command -- archive"
+run = "plugin augment-command.archive"
 desc = "Add files to an archive"
 
 # Use Ctrl + s to open a shell in the current directory
@@ -184,73 +184,73 @@ desc = "Jump to a directory, or reveal a file using fzf"
 # Use o to open files using the editor
 [[mgr.prepend_keymap]]
 on = "o"
-run = "plugin augment-command -- editor"
+run = "plugin augment-command.editor"
 desc = "Open files with the default editor"
 
 # Use i to open files using the pager
 [[mgr.prepend_keymap]]
 on = "i"
-run = "plugin augment-command -- pager"
+run = "plugin augment-command.pager"
 desc = "Open files with the default pager"
 
 # Use r to rename files with the cursor before the file extension
 [[mgr.prepend_keymap]]
 on = "r"
-run = "plugin augment-command -- rename --cursor=before_ext"
+run = "plugin augment-command.rename -- --cursor=before_ext"
 desc = "Rename a file or directory"
 
 # Use R to remove the whole file name when renaming
 [[mgr.prepend_keymap]]
 on = "R"
-run = "plugin augment-command -- rename --empty=all"
+run = "plugin augment-command.rename -- --empty=all"
 desc = "Rename file and remove the whole file name"
 
 # Use I to rename files with the cursor at the start of the file name
 [[mgr.prepend_keymap]]
 on = "I"
-run = "plugin augment-command -- rename --cursor=start"
+run = "plugin augment-command.rename -- --cursor=start"
 desc = "Rename file at the start of the file name"
 
 # Use A to rename files with the cursor at the end of the file name
 [[mgr.prepend_keymap]]
 on = "A"
-run = "plugin augment-command -- rename --cursor=end"
+run = "plugin augment-command.rename -- --cursor=end"
 desc = "Rename file with the cursor at the end of the file name"
 
 # Use C to remove the whole file name when renaming
 [[mgr.prepend_keymap]]
 on = "C"
-run = "plugin augment-command -- rename --empty=all"
+run = "plugin augment-command.rename -- --empty=all"
 desc = "Rename file and remove the whole file name"
 
 # Use the augmented copy command for cc
 [[mgr.prepend_keymap]]
 on = ["c", "c"]
-run = "plugin augment-command -- copy path"
+run = "plugin augment-command.copy -- path"
 desc = "Copy the file path"
 
 # Use the augmented copy command for cd
 [[mgr.prepend_keymap]]
 on = ["c", "d"]
-run = "plugin augment-command -- copy dirname"
+run = "plugin augment-command.copy -- dirname"
 desc = "Copy the directory path"
 
 # Use the augmented copy command for cf
 [[mgr.prepend_keymap]]
 on = ["c", "f"]
-run = "plugin augment-command -- copy filename"
+run = "plugin augment-command.copy -- filename"
 desc = "Copy the filename"
 
 # Use the augmented copy command for cn
 [[mgr.prepend_keymap]]
 on = ["c", "n"]
-run = "plugin augment-command -- copy name_without_ext"
+run = "plugin augment-command.copy -- name_without_ext"
 desc = "Copy the filename without extension"
 
 # Use cm to remove the file name when renaming
 [[mgr.prepend_keymap]]
 on = ["c", "m"]
-run = "plugin augment-command -- rename --empty=stem --cursor=start"
+run = "plugin augment-command.rename -- --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
 
 # Use cr to create a file
@@ -268,7 +268,7 @@ desc = "Edit the Yazi configuration"
 # Use em to emit a Yazi command
 [[mgr.prepend_keymap]]
 on = ["e", "m"]
-run = "plugin augment-command -- emit"
+run = "plugin augment-command.emit"
 desc = "Emit a Yazi command"
 
 # Use gc to go to the config directory
@@ -310,7 +310,7 @@ desc = "Follow hovered symlink"
 # Use gf to jump to the first file
 [[mgr.prepend_keymap]]
 on = ["g", "f"]
-run = "plugin augment-command first_file"
+run = "plugin augment-command.first-file"
 desc = "Jump to the first file"
 
 
