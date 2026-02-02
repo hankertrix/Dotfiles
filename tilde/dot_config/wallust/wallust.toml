@@ -86,6 +86,6 @@ pywalfox.target = '~/.cache/wal/colors.json'
 
 [hooks]
 dunst = "systemctl --user restart dunst"
-vicinae = "vicinae theme set dynamic"
 waybar = "systemctl --user restart waybar"
 pywalfox = "pywalfox update"
+# vicinae = "vicinae theme set dynamic"

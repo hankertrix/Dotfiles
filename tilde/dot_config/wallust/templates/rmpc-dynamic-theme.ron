@@ -25,8 +25,6 @@
             "{{ color0 if 'light' in palette else color15 }}",
         ])
     ),
-    show_song_table_header: true,
-    draw_borders: true,
     format_tag_separator: " | ",
 
     // The ratio of 1, 2, 3 from Yazi and lf
@@ -77,13 +75,14 @@
         symbols: [
             "",
             "█",
-            "",
+            " ",
             "",
             ""
         ],
         track_style: (fg: "{{ color11 }}"),
         elapsed_style: (fg: "{{ color11 }}"),
         thumb_style: (fg: "{{ color11 }}"),
+        use_track_when_empty: true,
     ),
     scrollbar: (
         symbols: ["│", "█", "▲", "▼"],
@@ -133,6 +132,31 @@
                     (kind: Text(" kbps)")),
                 ])),
             ],
+        )),
+        "input_mode": Pane(Property(
+            content: [
+                (
+                    kind: Transform(Replace(
+                        content: (kind: Property(Status(InputMode()))),
+                        replacements: [
+                            (
+                                match: "Normal",
+                                replace: (kind: Text(" NORMAL "),
+                                style: (
+                                    fg: "{{ color8 | lighten(0.3) }}",
+                                    bg: "{{ color10 | blend('#0000FF') }}"
+                                ))
+                            ),
+                            (
+                                match: "Insert",
+                                replace: (kind: Text(" INSERT "),
+                                style: (
+                                    fg: "{{ color8 | blend(foreground) }}",
+                                    bg: "{{ color4 | blend('#00FF00') }}"
+                                ))
+                            ),
+                ])))
+            ], align: Center
         )),
         "progress_bar": Split(
             direction: Horizontal,
@@ -343,6 +367,33 @@
                 (size: "100%", pane: Component("header_centre")),
                 (size: "23", pane: Component("header_right")),
             ],
+        ),
+        "footer": Split(
+            direction: Horizontal,
+            panes: [
+                (
+                    size: "12",
+                    borders: "ALL",
+                    border_symbols: Inherited(
+                        parent: Rounded, top_right: "┬", bottom_right: "┴"
+                    ),
+                    pane: Component("input_mode"),
+                ),
+                (
+                    size: "100%",
+                    borders: "TOP | BOTTOM | RIGHT",
+                    border_symbols: Rounded,
+                    border_title: [
+                        (kind: Text(" ")),
+                        (kind: Property(Status(QueueLength()))),
+                        (kind: Text(" songs / ")),
+                        (kind: Property(Status(QueueTimeTotal()))),
+                        (kind: Text(" total time "))
+                    ],
+                    border_title_alignment: Right,
+                    pane: Component("progress_bar"),
+                )
+            ]
         )
     },
     layout: Split(
@@ -354,6 +405,8 @@
             ),
             (
                 pane: Pane(Tabs),
+                borders: "ALL",
+                border_symbols: Rounded,
                 size: "3",
             ),
             (
@@ -361,63 +414,12 @@
                 size: "100%",
             ),
             (
-                pane: Pane(Property(content: [(kind: Text(""))])),
+                pane: Pane(Empty()),
                 size: "1",
             ),
             (
-                pane: Component("progress_bar"),
-                size: "1",
-            ),
-        ],
-    ),
-    header: (
-        rows: [
-            (
-                left: [
-                    (kind: Property(Widget(ScanStatus)), style: (
-                        fg: "{{ color12 }}"
-                    )),
-                ],
-                center: [
-                    (kind: Property(Song(Title)), style: (modifiers: "Bold"),
-                        default: (kind: Text("No Song"), style: (
-                            modifiers: "Bold"
-                        ))
-                    )
-                ],
-                right: [
-                    (kind: Property(Widget(Volume)), style: (
-                        fg: "{{ color12 }}"
-                    ))
-                ],
-            ),
-            (
-                left: [
-                    (kind: Property(Song(Artist)),
-                        style: (fg: "{{ color6 }}", modifiers: "Bold"),
-                        default: (
-                            kind: Text("Unknown"), style: (
-                                fg: "{{ color6 }}", modifiers: "Bold"
-                            )
-                        ),
-                    ),
-                ],
-                center: [
-                    (kind: Property(Song(Album)),
-                        default: (kind: Text("Unknown Album"))
-                    )
-                ],
-                right: [
-                    (
-                        kind: Property(Widget(States(
-                            active_style: (
-                                fg: "{{ color13 }}", modifiers: "Bold"
-                            ),
-                            separator_style: (fg: "{{ color13 }}")))
-                        ),
-                        style: (fg: "{{ color13 }}")
-                    ),
-                ]
+                pane: Component("footer"),
+                size: "3",
             ),
         ],
     ),

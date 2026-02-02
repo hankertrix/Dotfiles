@@ -179,7 +179,20 @@
                     ),
                     (
                         size: "60%",
-                        pane: Pane(Queue),
+                        pane: Split(
+                            direction: Vertical,
+                            panes: [
+                                (
+                                    size: "3",
+                                    pane: Pane(QueueHeader()),
+                                    borders: "TOP | BOTTOM",
+                                ),
+                                (
+                                    size: "100%",
+                                    pane: Pane(Queue),
+                                )
+                            ]
+                        )
                     ),
                 ],
             ),
