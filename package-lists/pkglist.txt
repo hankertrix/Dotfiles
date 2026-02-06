@@ -21,6 +21,7 @@ dua-cli
 dunst
 efibootmgr
 emacs-wayland
+ex-vi-compat
 exfatprogs
 fastfetch
 fd
@@ -119,7 +120,6 @@ unzip
 uv
 vde2
 vhs
-vi
 virt-manager
 virt-viewer
 waybar
