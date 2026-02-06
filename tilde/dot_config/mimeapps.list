@@ -20,6 +20,7 @@ x-scheme-handler/snews=userapp-Thunderbird-I4M5H3.desktop;
 x-scheme-handler/webcal=userapp-Thunderbird-ETPNH3.desktop;
 x-scheme-handler/webcals=userapp-Thunderbird-ETPNH3.desktop;
 image/png=oculante.desktop;
+image/jpeg=oculante.desktop;
 
 [Default Applications]
 application/pdf=firefox.desktop;
