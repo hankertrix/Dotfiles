@@ -14,6 +14,7 @@ local function setup()
 	require("mason-tool-installer").setup({
 
 		-- Ensure that these packages are always installed
+		-- stylua: ignore
 		ensure_installed = {
 
 			-- LSP servers

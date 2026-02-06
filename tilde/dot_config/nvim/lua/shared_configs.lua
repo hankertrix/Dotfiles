@@ -93,6 +93,7 @@ M.icons = function()
 		},
 
 		-- Git icons
+		-- stylua: ignore
 		git = {
 			modified = " ",	-- Modified "M"
 			ft_changed = " ",	-- File type changed "T"
@@ -114,9 +115,7 @@ M.icons = function()
 
 	-- If Firenvim is not active,
 	-- return the icons
-	if utils.firenvim_not_active() then
-		return icons
-	end
+	if utils.firenvim_not_active() then return icons end
 
 	-- Otherwise, trim the icons
 	utils.trim_icons(icons)
