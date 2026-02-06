@@ -17,32 +17,32 @@ local function setup()
 		ensure_installed = {
 
 			-- LSP servers
-			"lua_ls",           -- Lua
-			"vtsls",            -- TypeScript and JavaScript
-			"astro",            -- Astro
-			"rust_analyzer",    -- Rust
-			"bashls",           -- Bash (shell)
-			"mdx_analyzer",     -- MDX
-			"marksman",         -- Markdown
-			"tinymist",         -- Typst
-			"texlab",           -- LaTeX and BibTeX
-			"marksman",         -- Markdown
-			"jsonls",           -- JSON
-			"taplo",            -- TOML
-			"yamlls",           -- YAML
+			"lua_ls",			-- Lua
+			"vtsls",			-- TypeScript and JavaScript
+			"astro",			-- Astro
+			"rust_analyzer",	-- Rust
+			"bashls",			-- Bash (shell)
+			"mdx_analyzer",		-- MDX
+			"marksman",			-- Markdown
+			"tinymist",			-- Typst
+			"texlab",			-- LaTeX and BibTeX
+			"marksman",			-- Markdown
+			"jsonls",			-- JSON
+			"taplo",			-- TOML
+			"yamlls",			-- YAML
 			-- "harper_ls",		-- English checker
 
 			-- Formatters
-			"stylua",           -- Lua
-			"prettierd",        -- TypeScript and JavaScript ecosystem
-			"shfmt",            -- Shell
+			"stylua",			-- Lua
+			"prettierd",		-- TypeScript and JavaScript ecosystem
+			"shfmt",			-- Shell
 
 			-- Linters
-			"eslint_d",         -- TypeScript and JavaScript ecosystem
-			"shellcheck",       -- Shell
-			"markdownlint",     -- Markdown
-			"gitlint",          -- Git commit message
-			"cspell",           -- English checker within code
+			"eslint_d",			-- TypeScript and JavaScript ecosystem
+			"shellcheck",		-- Shell
+			"markdownlint",		-- Markdown
+			"gitlint",			-- Git commit message
+			"cspell",			-- English checker within code
 		},
 	})
 end

@@ -94,18 +94,18 @@ M.icons = function()
 
 		-- Git icons
 		git = {
-			modified = " ", -- Modified "M"
-			ft_changed = " ", -- File type changed "T"
-			added = " ", -- Added "A"
-			deleted = " ", -- Deleted "D"
-			renamed = " ", -- Renamed "R"
-			copied = " ", -- Copied "C"
-			unmerged = " ", -- Unmerged "U"
-			unknown = " ", -- Unknown change type "X"
-			untracked = "󱋽 ", -- Untracked
-			ignored = " ", -- Ignored
-			commit = "󰜘", -- Commit
-			staged = "", -- Staged changes
+			modified = " ",	-- Modified "M"
+			ft_changed = " ",	-- File type changed "T"
+			added = " ",		-- Added "A"
+			deleted = " ",		-- Deleted "D"
+			renamed = " ",		-- Renamed "R"
+			copied = " ",		-- Copied "C"
+			unmerged = " ",	-- Unmerged "U"
+			unknown = " ",		-- Unknown change type "X"
+			untracked = "󱋽 ",	-- Untracked
+			ignored = " ",		-- Ignored
+			commit = "󰜘",		-- Commit
+			staged = "",		-- Staged changes
 		},
 	}
 
@@ -114,7 +114,9 @@ M.icons = function()
 
 	-- If Firenvim is not active,
 	-- return the icons
-	if utils.firenvim_not_active() then return icons end
+	if utils.firenvim_not_active() then
+		return icons
+	end
 
 	-- Otherwise, trim the icons
 	utils.trim_icons(icons)
