@@ -178,6 +178,10 @@
                         ),
                     ),
                     (
+                        size: "1",
+                        pane: Pane(Empty()),
+                    ),
+                    (
                         size: "60%",
                         pane: Split(
                             direction: Vertical,
