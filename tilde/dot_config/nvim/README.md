@@ -52,7 +52,6 @@ Autocompletion -
 Autocompletion sources:
 
 - [blink.compat (compatibility layer for nvim-cmp sources)](https://github.com/Saghen/blink.compat)
-- [cmp-calc](https://github.com/hrsh7th/cmp-calc)
 - [blink-cmp-spell](https://github.com/ribru17/blink-cmp-spell)
 - [blink-emoji.nvim](https://github.com/moyiz/blink-emoji.nvim)
 
