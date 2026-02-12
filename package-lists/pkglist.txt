@@ -37,9 +37,20 @@ imagemagick
 inotify-tools
 jq
 kitty
+libasan
+libatomic
+libgcc
+libgfortran
+libgomp
 libguestfs
+liblsan
 libnotify
+libobjc
+libquadmath
 libreoffice-fresh
+libstdc++
+libtsan
+libubsan
 linux
 linux-firmware
 lvm2
@@ -130,3 +141,4 @@ xdg-desktop-portal-gtk
 xwayland-satellite
 yazi-git
 yt-dlp
+zint
