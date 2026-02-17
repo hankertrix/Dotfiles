@@ -1,15 +1,12 @@
-# Schema
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+#:schema https://yazi-rs.github.io/schemas/theme.json
 
 # Use the theme that I want
 [flavor]
 light = "bluloco-light"
 dark = "bluloco-dark"
 
-# The theme for the file manager
-[mgr]
-
 # Remove the borders
+[mgr]
 border_symbol = " "
 
 # Set the outer separators

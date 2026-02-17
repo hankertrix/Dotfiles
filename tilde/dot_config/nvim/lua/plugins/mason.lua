@@ -29,7 +29,7 @@ local function setup()
 			"texlab",			-- LaTeX and BibTeX
 			"marksman",			-- Markdown
 			"jsonls",			-- JSON
-			"taplo",			-- TOML
+			"tombi",			-- TOML
 			"yamlls",			-- YAML
 			-- "harper_ls",		-- English checker
 
