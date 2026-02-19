@@ -43,6 +43,9 @@
 // Enable session restore
 {{$pref}}("browser.startup.page", 3);
 
+// Restore pinned tabs only when needed, rather than always loading them
+{{$pref}}("browser.sessionstore.restore_pinned_tabs_on_demand", true);
+
 // Get firefox to save new files automatically instead of asking
 {{$pref}}("browser.download.always_ask_before_handling_new_types", false);
 
