@@ -31,7 +31,7 @@ web.archive.org
 developer.blackboard.com/api/v1/gateway/oidcauth
 ntulearn.ntu.edu.sg/webapps/blackboard/execute/blti/launchPlacement
 outlook.office.com/mail/safelink.html
-www.reddit.com/media
+reddit.com/media
 translate.google.com/translate
 medium.com/m/global-identity-2
 amazon.com/ap/cnep
@@ -43,10 +43,13 @@ fastforward.team
 deviantart.com/settings/applications
 readmedium.com
 freedium.cfd
+freedium-mirror.cfd
 secure2.segpay.com
 remotexs.ntu.edu.sg
 google.com
 duckduckgo.com
 archive.ph
+archive.today
 statics.teams.cdn.office.net
 firebaseapp.com
+account.amazon.com
