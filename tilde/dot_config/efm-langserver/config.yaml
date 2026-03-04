@@ -33,25 +33,15 @@ tools:
       - "requirements.txt"
       - "ruff.toml"
 
-  eslint_d: &eslint_d
-    prefix: "eslint_d"
-    lint-source: "efm/eslint_d"
-    lint-command: >
-      eslint_d --no-color --format visualstudio --stdin-filename \
-        "${INPUT}" --stdin
-    lint-stdin: true
-    lint-ignore-exit-code: true
-    lint-formats:
-      - "%f(%l,%c): %trror %m"
-      - "%f(%l,%c): %tarning %m"
+  dprint: &dprint
+    format-command: >
+      dprint fmt --stdin '${INPUT}'
+    format-stdin: true
     root-markers:
-      - ".eslintrc"
-      - ".eslintrc.cjs"
-      - ".eslintrc.js"
-      - ".eslintrc.json"
-      - ".eslintrc.yaml"
-      - ".eslintrc.yml"
-      - "package.json"
+      - "dprint.json"
+      - "dprint.jsonc"
+      - ".dprint.json"
+      - ".dprint.jsonc"
 
   prettierd: &prettierd
     format-command: >
@@ -138,40 +128,37 @@ languages:
     - <<: *ruff-sort
 
   html:
-    - <<: *prettierd
+    - <<: *dprint
 
   css:
-    - <<: *prettierd
+    - <<: *dprint
 
   javascript:
-    - <<: *eslint_d
-    - <<: *prettierd
+    - <<: *dprint
 
   javascriptreact:
-    - <<: *eslint_d
-    - <<: *prettierd
+    - <<: *dprint
 
   typescript:
-    - <<: *eslint_d
-    - <<: *prettierd
+    - <<: *dprint
 
   typescriptreact:
-    - <<: *eslint_d
-    - <<: *prettierd
+    - <<: *dprint
 
   svelte:
-    - <<: *eslint_d
-    - <<: *prettierd
+    - <<: *dprint
 
   vue:
-    - <<: *eslint_d
-    - <<: *prettierd
+    - <<: *dprint
 
   json:
-    - <<: *prettierd
+    - <<: *dprint
+
+  toml:
+    - <<: *dprint
 
   yaml:
-    - <<: *prettierd
+    - <<: *dprint
 
   lua:
     - <<: *stylua
@@ -184,11 +171,14 @@ languages:
     - <<: *prettierd
 
   markdown:
-    - <<: *prettierd
+    - <<: *dprint
     - <<: *markdownlint
 
   gitcommit:
     - <<: *gitlint
+
+  dockerfile:
+    - <<: *dprint
 
   # Wildcard, matches all languages
   =:

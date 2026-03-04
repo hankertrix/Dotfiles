@@ -31,6 +31,7 @@ local function setup()
 			"jsonls",			-- JSON
 			"tombi",			-- TOML
 			"yamlls",			-- YAML
+			"dprint",			-- Formatting LSP
 			-- "harper_ls",		-- English checker
 
 			-- Formatters
@@ -39,7 +40,6 @@ local function setup()
 			"shfmt",			-- Shell
 
 			-- Linters
-			"eslint_d",			-- TypeScript and JavaScript ecosystem
 			"shellcheck",		-- Shell
 			"markdownlint",		-- Markdown
 			"gitlint",			-- Git commit message
