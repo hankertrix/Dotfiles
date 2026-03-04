@@ -160,7 +160,6 @@ so they are installed globally on my system instead of through Mason.
 
 - [efm-langserver](https://aur.archlinux.org/packages/efm-langserver)
 - [ltex-plus](https://aur.archlinux.org/packages/ltex-ls-plus-bin)
-- [basedpyright](https://aur.archlinux.org/packages/basedpyright)
 
 ### Formatters and linters
 
