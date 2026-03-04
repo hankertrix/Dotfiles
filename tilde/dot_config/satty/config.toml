@@ -13,7 +13,7 @@ corner-roundness = 0
 # Select the tool on startup
 # [possible values: pointer, crop, line, arrow, rectangle,
 # text, marker, blur, brush]
-initial-tool = "crop"
+initial-tool = "rectangle"
 
 # Configure the command to be called on copy, for example `wl-copy`
 copy-command = "wl-copy"
