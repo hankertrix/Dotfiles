@@ -6,9 +6,7 @@
   "typescript": {
     "semiColons": "always",
     "quoteProps": "asNeeded",
-    "arrowFunction": {
-      "useParentheses": "preferNone"
-    }
+    "arrowFunction.useParentheses": "preferNone"
   },
   "json": {
     "trailingCommas": "never"
@@ -17,9 +15,7 @@
     "textWrap": "always"
   },
   "toml": {
-    "comment": {
-      "forceLeadingSpace": false
-    }
+    "comment.forceLeadingSpace": false
   },
   "dockerfile": {},
   "malva": {
