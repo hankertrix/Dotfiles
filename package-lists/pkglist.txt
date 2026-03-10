@@ -90,6 +90,7 @@ rustup
 satty
 slurp
 smartmontools
+spandsp
 steam
 swayidle
 swaylock

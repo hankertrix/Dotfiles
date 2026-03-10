@@ -122,7 +122,7 @@ Enable use-package support for Elpaca.
   (elpaca-use-package-mode)
 
   ;; Assume :elpaca t and :ensure t unless otherwise specified
-  (setq elpaca-use-package-by-default t))
+  (setq use-package-always-ensure t))
 
 ;; Block until the above is done executing
 (elpaca-wait)
@@ -2118,7 +2118,7 @@ Below is a list of external programs that are being used with my Emacs configura
 ** Language servers
 - [[https://aur.archlinux.org/packages/efm-langserver][efm-langserver]]
 - [[https://aur.archlinux.org/packages/ltex-ls-plus-bin][ltex-plus]]
-- [[https://aur.archlinux.org/packages/basedpyright][basedpyright]]
+- [[https://archlinux.org/packages/extra/x86_64/ty/][ty]]
 
 ** Formatters and linters
 - [[https://github.com/astral-sh/ruff][Ruff]]
