@@ -13,7 +13,9 @@
   "json": {
     "trailingCommas": "never"
   },
-  "markdown": {},
+  "markdown": {
+    "textWrap": "always"
+  },
   "toml": {
     "comment": {
       "forceLeadingSpace": false
