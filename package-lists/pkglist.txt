@@ -35,6 +35,7 @@ github-cli
 handlr-regex
 imagemagick
 inotify-tools
+jemalloc
 jq
 kitty
 libguestfs
@@ -73,6 +74,7 @@ poppler
 poppler-glib
 prismlauncher
 python
+python-pywalfox
 qbittorrent
 qemu-desktop
 qt5-wayland
@@ -90,7 +92,6 @@ rustup
 satty
 slurp
 smartmontools
-spandsp
 steam
 swayidle
 swaylock
