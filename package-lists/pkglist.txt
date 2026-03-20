@@ -35,7 +35,6 @@ github-cli
 handlr-regex
 imagemagick
 inotify-tools
-jemalloc
 jq
 kitty
 libguestfs
