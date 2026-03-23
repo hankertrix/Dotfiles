@@ -1,6 +1,5 @@
 davmail
 efm-langserver
-gallery-dl-bin
 kora-icon-theme
 ltex-ls-plus-bin
 maple-mono-custom-git
