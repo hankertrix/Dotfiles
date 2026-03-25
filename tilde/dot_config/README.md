@@ -224,7 +224,7 @@ after the screen is locked.
 ## [`systemd`](https://systemd.io/)
 
 The [`systemd`](./systemd/user/) directory just contains the service files
-I need to run as daemons like `swayidle`, `swww`, `cliphist`.
+I need to run as daemons like `swayidle`, `awww`, `cliphist`.
 and my polkit agent. The `swayidle` service file is taken from
 [Niri's example `systemd` setup](https://github.com/YaLTeR/niri/wiki/Example-systemd-Setup)
 with a description and an install section added.

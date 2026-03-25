@@ -1,12 +1,12 @@
 [Unit]
-Description=Swww wallpaper daemon
+Description=Awww wallpaper daemon
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
 Environment=RUST_BACKTRACE=1
-ExecStart=/usr/bin/swww-daemon
+ExecStart=/usr/bin/awww-daemon
 Restart=on-failure
 
 [Install]

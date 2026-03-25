@@ -1,6 +1,7 @@
 7zip
 amd-ucode
 archlinuxcn-keyring
+awww
 base
 base-devel
 bash-completion
@@ -95,7 +96,6 @@ steam
 swayidle
 swaylock
 swtpm
-swww
 tealdeer
 texlive-basic
 texlive-bin
