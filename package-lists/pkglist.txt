@@ -42,7 +42,6 @@ libnotify
 libreoffice-fresh
 linux
 linux-firmware
-lua54
 lvm2
 ly
 man-db
