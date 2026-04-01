@@ -34,7 +34,7 @@ vim.opt.breakindentopt = { shift = 2, min = 40, sbr = true }
 vim.opt.showbreak = "↪"
 
 -- Search
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Enable smart case
@@ -60,13 +60,6 @@ vim.opt.termguicolors = true
 
 -- Always show the line that has symbols (for LSP and stuff)
 vim.opt.signcolumn = "yes"
-
--- Faster update time
-vim.opt.updatetime = 50
-
--- Timeout
-vim.opt.timeout = true
-vim.opt.timeoutlen = 500
 
 -- Show newlines and space characters that are leading and trailing
 vim.opt.list = true

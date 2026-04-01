@@ -16,7 +16,7 @@ end
 vim.opt.rtp:prepend(lazy_path)
 
 -- Plugin manager setup
-return require("lazy").setup({
+require("lazy").setup({
 	spec = {
 
 		-- Import the plugins directory
@@ -27,5 +27,8 @@ return require("lazy").setup({
 	-- to be in the dotfiles directory
 	lockfile = '{{ joinPath $dotConfigDir "nvim/lazy-lock.json" }}',
 })
+
+-- Enable the nohlsearch plugin
+vim.cmd.packadd("nohlsearch")
 
 -- vi: ft=lua
