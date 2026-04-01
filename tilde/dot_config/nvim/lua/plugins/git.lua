@@ -13,18 +13,6 @@ return {
 	cmd = "Neogit",
 	opts = {
 
-		-- Disable the process spinner
-		-- to stop the cursor from flickering
-		-- in pretty much all terminals.
-		--
-		-- Only Kitty manages to not flicker
-		-- the cursor when the process spinner
-		-- is active.
-		--
-		-- Not sure how it manages to do so,
-		-- but it's pretty impressive.
-		process_spinner = false,
-
 		-- Fold the untracked files
 		-- by default, following Magit's
 		-- default behaviour
