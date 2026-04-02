@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "02/03/2026, 9:25:19 pm",
-	"time": 1772457919403,
+	"@time": "02/04/2026, 10:55:21 pm",
+	"time": 1775141721662,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
-		"firefox": 148
+		"firefox": 149
 	},
 	"exclusionRules": [
 		{
