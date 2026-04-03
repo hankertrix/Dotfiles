@@ -5,16 +5,10 @@ local utils = require("utils")
 
 -- The table of descriptions
 local descriptions = {
-	hover = "Show hover information",
 	definition = "Go to definition",
 	declaration = "Go to declaration",
-	implementation = "List all implementations in a quickfix window",
-	type_definition = "Go to type definition",
-	references = "List all references in a quickfix window",
 	signature_help = "Show signature information",
-	rename = "Renames all references to the symbol under the cursor",
 	format = "Formats the buffer using the LSP",
-	code_action = "Select a code action",
 	diagnostic_window = "Show diagnostics in a floating window",
 }
 
@@ -38,19 +32,11 @@ local function setup()
 			-- The options for the key mappings
 			local opts = { buffer = event.buf }
 
-			-- Key bind to show hover information
-			vim.keymap.set(
-				"n",
-				"K",
-				function() vim.lsp.buf.hover() end,
-				vim.tbl_extend("error", opts, { desc = descriptions.hover })
-			)
-
 			-- Key bind to go to definition
 			vim.keymap.set(
 				"n",
-				"gd",
-				function() vim.lsp.buf.definition() end,
+				"grd",
+				vim.lsp.buf.definition,
 				vim.tbl_extend(
 					"error",
 					opts,
@@ -61,8 +47,8 @@ local function setup()
 			-- Key bind to go to declaration
 			vim.keymap.set(
 				"n",
-				"gD",
-				function() vim.lsp.buf.declaration() end,
+				"grD",
+				vim.lsp.buf.declaration,
 				vim.tbl_extend(
 					"error",
 					opts,
@@ -70,47 +56,11 @@ local function setup()
 				)
 			)
 
-			-- Key bind to go to implementation
-			vim.keymap.set(
-				"n",
-				"gi",
-				function() vim.lsp.buf.implementation() end,
-				vim.tbl_extend(
-					"error",
-					opts,
-					{ desc = descriptions.implementation }
-				)
-			)
-
-			-- Key bind to go to type definition
-			vim.keymap.set(
-				"n",
-				"go",
-				function() vim.lsp.buf.type_definition() end,
-				vim.tbl_extend(
-					"error",
-					opts,
-					{ desc = descriptions.type_definition }
-				)
-			)
-
-			-- Key bind to go to references
-			vim.keymap.set(
-				"n",
-				"gr",
-				function() vim.lsp.buf.references() end,
-				vim.tbl_extend(
-					"error",
-					opts,
-					{ desc = descriptions.references }
-				)
-			)
-
 			-- Key bind to show signature help
 			vim.keymap.set(
 				"n",
-				"gs",
-				function() vim.lsp.buf.signature_help() end,
+				"grs",
+				vim.lsp.buf.signature_help,
 				vim.tbl_extend(
 					"error",
 					opts,
@@ -118,23 +68,7 @@ local function setup()
 				)
 			)
 
-			-- Key bind to rename the variable
-			vim.keymap.set(
-				"n",
-				"<F2>",
-				function() vim.lsp.buf.rename() end,
-				vim.tbl_extend("error", opts, { desc = descriptions.rename })
-			)
-
 			-- Key bind to format the buffer
-			vim.keymap.set(
-				{ "n", "x" },
-				"<F3>",
-				function() vim.lsp.buf.format({ async = true }) end,
-				vim.tbl_extend("error", opts, { desc = descriptions.format })
-			)
-
-			-- Key bind to format the buffer as well
 			vim.keymap.set(
 				{ "n", "x" },
 				"<Leader>f",
@@ -142,49 +76,11 @@ local function setup()
 				vim.tbl_extend("error", opts, { desc = descriptions.format })
 			)
 
-			-- Key bind to show code actions
-			vim.keymap.set(
-				"n",
-				"<F4>",
-				function() vim.lsp.buf.code_action() end,
-				vim.tbl_extend(
-					"error",
-					opts,
-					{ desc = descriptions.code_action }
-				)
-			)
-
-			-- If a range is selected and a range code action is available,
-			-- use the range code action
-			if vim.lsp.buf.range_code_action then
-				vim.keymap.set(
-					"x",
-					"<F4>",
-					function() vim.lsp.buf.range_code_action() end,
-					vim.tbl_extend(
-						"error",
-						opts,
-						{ desc = descriptions.code_action }
-					)
-				)
-			else
-				vim.keymap.set(
-					"x",
-					"<F4>",
-					function() vim.lsp.buf.code_action() end,
-					vim.tbl_extend(
-						"error",
-						opts,
-						{ desc = descriptions.code_action }
-					)
-				)
-			end
-
 			-- Key bind to show diagnostics
 			vim.keymap.set(
 				"n",
-				"gl",
-				function() vim.diagnostic.open_float() end,
+				"grl",
+				vim.diagnostic.open_float,
 				vim.tbl_extend(
 					"error",
 					opts,
@@ -239,41 +135,10 @@ return {
 	},
 
 	keys = {
-		{ "K", mode = "n", desc = descriptions.hover },
-		{ "gd", mode = "n", desc = descriptions.definition },
-		{
-			"gD",
-			mode = "n",
-			desc = descriptions.declaration,
-		},
-		{
-			"gi",
-			mode = "n",
-			desc = descriptions.implementation,
-		},
-		{
-			"go",
-			mode = "n",
-			desc = descriptions.type_definition,
-		},
-		{ "gr", mode = "n", desc = descriptions.references },
-		{
-			"gs",
-			mode = "n",
-			desc = descriptions.signature_help,
-		},
-		{ "<F2>", mode = "n", desc = descriptions.rename },
-		{ "<F3>", mode = { "n", "x" }, desc = descriptions.format },
+		{ "grd", desc = descriptions.definition },
+		{ "grD", desc = descriptions.declaration },
+		{ "grs", desc = descriptions.signature_help },
 		{ "<Leader>f", mode = { "n", "x" }, desc = descriptions.format },
-		{
-			"<F4>",
-			mode = { "n", "x" },
-			desc = descriptions.code_action,
-		},
-		{
-			"gl",
-			mode = "n",
-			desc = descriptions.diagnostic_window,
-		},
+		{ "gl", desc = descriptions.diagnostic_window },
 	},
 }
