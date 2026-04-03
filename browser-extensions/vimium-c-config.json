@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "02/04/2026, 10:55:21 pm",
-	"time": 1775141721662,
+	"@time": "03/04/2026, 1:33:52 pm",
+	"time": 1775194432140,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
@@ -131,6 +131,6 @@
 		"js\\:|Js: javascript:\\ $S; JavaScript",
 		""
 	],
-	"searchUrl": "https://duckduckgo.com/?q=$s DuckDuckGo",
+	"searchUrl": "https://search.brave.com/search?q=$s Brave",
 	"vimSync": true
 }
