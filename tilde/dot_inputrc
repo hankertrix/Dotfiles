@@ -1,3 +1,6 @@
+# Set the editing mode to Vi
+set editing-mode vi
+
 # Use history search for the arrow keys
 # Reference:
 # https://askubuntu.com/questions/541304/how-to-make-the-terminal-autocomplete-based-on-previously-entered-commands
