@@ -204,8 +204,8 @@ General has to be loaded first so that the ~use-package~ definitions below it ca
   ;; Key binds for searching
   (hanker/leader-keys
     :states '(normal visual)
-    "pw" '("Open Dired" . dired)
-    "pf" '("Search for a file" . find-file)
+    "jw" '("Open Dired" . dired)
+    "jf" '("Search for a file" . find-file)
     )
 
   ;; Key binds for opening specific files
@@ -1342,13 +1342,13 @@ Consult is a plugin that consults Emacs' completing-read functions for you to pi
     :states 'normal
     "/i" '("Search the info pages" . consult-info)
     "/h" '("Search the info pages" . consult-info)
-    "ps" '("Search within files for a string" . consult-ripgrep)
-    "pb" '("Search through the open buffers" . consult-buffer)
-    "pr" '("Search through Emacs registers" . consult-register-load)
-    "pl" '("Search through the lines in the current buffer" . consult-line)
+    "js" '("Search within files for a string" . consult-ripgrep)
+    "jb" '("Search through the open buffers" . consult-buffer)
+    "jr" '("Search through Emacs registers" . consult-register-load)
+    "jl" '("Search through the lines in the current buffer" . consult-line)
 
     ;; https://emacs.stackexchange.com/questions/82850/call-execute-extended-command-with-prefilled-prefix-string
-    "pi" '("Search through the list of pickers" .
+    "ji" '("Search through the list of pickers" .
            (lambda ()
              (interactive)
              (command-execute (intern (completing-read "Picker: " obarray #'commandp t '("consult-" . 8))))))

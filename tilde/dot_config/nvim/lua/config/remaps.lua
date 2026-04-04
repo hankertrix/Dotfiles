@@ -57,7 +57,7 @@ vim.keymap.set("n", "<Leader>Y", [["+y$]], { desc = "Yank till the end of the li
 vim.keymap.set({ "n", "v" }, "<Leader>d", [["_d]], { desc = "Delete" })
 
 -- Use the leader key to paste from system clipboard
-vim.keymap.set({ "n", "v" }, "<Leader>pp", [["+p]], { desc = "Paste from system clipboard after the cursor" })
+vim.keymap.set({ "n", "v" }, "<Leader>p", [["+p]], { desc = "Paste from system clipboard after the cursor" })
 vim.keymap.set({ "n", "v" }, "<Leader>P", [["+P]], { desc = "Paste from system clipboard before the cursor" })
 
 -- Replaces the word that the cursor is currently on throughout the entire file

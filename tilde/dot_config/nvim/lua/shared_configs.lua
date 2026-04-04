@@ -156,6 +156,7 @@ M.disabled_file_types = {
 	"typr",
 	"typrstats",
 	"snacks_terminal",
+	"snacks_picker_input",
 	"Trouble",
 	"NvimTree",
 	"WhichKey",
