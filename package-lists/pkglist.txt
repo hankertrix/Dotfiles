@@ -77,7 +77,6 @@ python
 python-pywalfox
 qbittorrent
 qemu-desktop
-qt5-tools
 qt5-wayland
 refind
 reflector
