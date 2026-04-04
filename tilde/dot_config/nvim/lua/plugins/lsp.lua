@@ -125,13 +125,9 @@ return {
 	cond = utils.firenvim_not_active,
 	event = { "BufReadPre", "BufNewFile" },
 
+	-- Mason lspconfig for automatic server setup
 	dependencies = {
-
-		-- Mason lspconfig for automatic server setup
 		{ "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
-
-		-- Snippets
-		{ "rafamadriz/friendly-snippets" },
 	},
 
 	keys = {
@@ -139,6 +135,6 @@ return {
 		{ "grD", desc = descriptions.declaration },
 		{ "grs", desc = descriptions.signature_help },
 		{ "<Leader>f", mode = { "n", "x" }, desc = descriptions.format },
-		{ "gl", desc = descriptions.diagnostic_window },
+		{ "grl", desc = descriptions.diagnostic_window },
 	},
 }

@@ -11,6 +11,9 @@ return {
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
 
+		-- Snippets
+		{ "rafamadriz/friendly-snippets" },
+
 		-- Compatibility module for nvim-cmp sources
 		{
 			"Saghen/blink.compat",
