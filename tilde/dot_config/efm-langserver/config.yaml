@@ -1,131 +1,129 @@
 version: 2
 root-markers:
-    - ".git/"
+  - ".git/"
 lint-debounce: 1s
 
 tools:
-    ruff: &ruff
-        prefix: "ruff"
-        lint-source: "efm/ruff"
-        lint-command: >
-            ruff check --quiet --output-format github --stdin-filename
-            "${INPUT}"
-        lint-stdin: true
-        lint-formats:
-            - "::%trror title=%.%#,file=%.%#,line=%.%#,\
-              col=%.%#,endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m"
-            - "::%tarning title=%.%#,file=%.%#,line=%.%#,col=%.%#,\
-              endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m"
-        format-command: >
-            ruff format --no-cache --stdin-filename "${INPUT}"
-        format-stdin: true
-        root-markers:
-            - "pyproject.toml"
-            - "setup.py"
-            - "requirements.txt"
-            - "ruff.toml"
-            - "setup.cfg"
+  ruff: &ruff
+    prefix: "ruff"
+    lint-source: "efm/ruff"
+    lint-command: >
+      ruff check --quiet --output-format github --stdin-filename "${INPUT}"
+    lint-stdin: true
+    lint-formats:
+      - "::%trror title=%.%#,file=%.%#,line=%.%#,\
+        col=%.%#,endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m"
+      - "::%tarning title=%.%#,file=%.%#,line=%.%#,col=%.%#,\
+        endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m"
+    format-command: >
+      ruff format --no-cache --stdin-filename "${INPUT}"
+    format-stdin: true
+    root-markers:
+      - "pyproject.toml"
+      - "setup.py"
+      - "requirements.txt"
+      - "ruff.toml"
+      - "setup.cfg"
 
-    ruff-sort: &ruff-sort
-        format-command: >
-            ruff check --select I --fix --stdin-filename "${INPUT}"
-        format-stdin: true
-        root-markers:
-            - "pyproject.toml"
-            - "setup.py"
-            - "requirements.txt"
-            - "ruff.toml"
+  ruff-sort: &ruff-sort
+    format-command: >
+      ruff check --select I --fix --stdin-filename "${INPUT}"
+    format-stdin: true
+    root-markers:
+      - "pyproject.toml"
+      - "setup.py"
+      - "requirements.txt"
+      - "ruff.toml"
 
-    prettier: &prettier
-        format-command: >
-            prettier --stdin --stdin-filepath '${INPUT}'
-            ${--range-start=charStart} ${--range-end=charEnd}
-            --config-precedence prefer-file
-        format-stdin: true
-        format-can-range: true
-        root-markers:
-            - ".prettierrc"
-            - ".prettierrc.json"
-            - ".prettierrc.js"
-            - ".prettierrc.yml"
-            - ".prettierrc.yaml"
-            - ".prettierrc.json5"
-            - ".prettierrc.mjs"
-            - ".prettierrc.cjs"
-            - ".prettierrc.toml"
-            - "prettier.config.js"
-            - "prettier.config.cjs"
-            - "prettier.config.mjs"
+  prettier: &prettier
+    format-command: >
+      prettier --stdin --stdin-filepath '${INPUT}' ${--range-start=charStart}
+      ${--range-end=charEnd} --config-precedence prefer-file
+    format-stdin: true
+    format-can-range: true
+    root-markers:
+      - ".prettierrc"
+      - ".prettierrc.json"
+      - ".prettierrc.js"
+      - ".prettierrc.yml"
+      - ".prettierrc.yaml"
+      - ".prettierrc.json5"
+      - ".prettierrc.mjs"
+      - ".prettierrc.cjs"
+      - ".prettierrc.toml"
+      - "prettier.config.js"
+      - "prettier.config.cjs"
+      - "prettier.config.mjs"
 
-    shellcheck: &shellcheck
-        prefix: "shellcheck"
-        lint-source: "efm/shellcheck"
-        lint-command: "shellcheck --color=never --format=gcc -"
-        lint-ignore-exit-code: true
-        lint-stdin: true
-        lint-formats:
-            - "-:%l:%c: %trror: %m"
-            - "-:%l:%c: %tarning: %m"
-            - "-:%l:%c: %tote: %m"
-        root-markers: []
+  shellcheck: &shellcheck
+    prefix: "shellcheck"
+    lint-source: "efm/shellcheck"
+    lint-command: "shellcheck --color=never --format=gcc -"
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    lint-formats:
+      - "-:%l:%c: %trror: %m"
+      - "-:%l:%c: %tarning: %m"
+      - "-:%l:%c: %tote: %m"
+    root-markers: []
 
-    shfmt: &shfmt
-        format-command: "shfmt -filename '${INPUT}' -"
-        format-stdin: true
+  shfmt: &shfmt
+    format-command: "shfmt -filename '${INPUT}' -"
+    format-stdin: true
 
-    markdownlint: &markdownlint
-        prefix: "markdownlint"
-        lint-source: "efm/markdownlint"
-        lint-command: "markdownlint --stdin"
-        lint-ignore-exit-code: true
-        lint-stdin: true
-        lint-formats:
-            - "%f:%l:%c %m"
-            - "%f:%l %m"
-            - "%f: %l: %m"
+  markdownlint: &markdownlint
+    prefix: "markdownlint"
+    lint-source: "efm/markdownlint"
+    lint-command: "markdownlint --stdin"
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    lint-formats:
+      - "%f:%l:%c %m"
+      - "%f:%l %m"
+      - "%f: %l: %m"
 
-    gitlint: &gitlint
-        prefix: "gitlint"
-        lint-source: "efm/gitlint"
-        lint-command: "gitlint"
-        lint-stdin: true
-        lint-formats:
-            - '%l: %m: "%r"'
-            - "%l: %m"
+  gitlint: &gitlint
+    prefix: "gitlint"
+    lint-source: "efm/gitlint"
+    lint-command: "gitlint"
+    lint-stdin: true
+    lint-formats:
+      - '%l: %m: "%r"'
+      - "%l: %m"
 
-    cspell: &cspell
-        prefix: "cspell"
-        lint-source: "efm/cspell"
-        lint-command: >
-            cspell --no-color --no-progress --no-summary "${INPUT}"
-        lint-ignore-exit-code: true
-        lint-stdin: false
-        lint-severity: 4 # Severity: hint
-        lint-formats:
-            - "%f:%l:%c - %m"
-            - "%f:%l:%c %m"
+  cspell: &cspell
+    prefix: "cspell"
+    lint-source: "efm/cspell"
+    lint-command: >
+      cspell --no-color --no-progress --no-summary "${INPUT}"
+    lint-ignore-exit-code: true
+    lint-stdin: false
+    lint-severity: 4 # Severity: hint
+    lint-formats:
+      - "%f:%l:%c - %m"
+      - "%f:%l:%c %m"
 
 languages:
-    python:
-        - <<: *ruff
-        - <<: *ruff-sort
+  python:
+    - <<: *ruff
+    - <<: *ruff-sort
 
-    sh:
-        - <<: *shellcheck
-        - <<: *shfmt
+  sh:
+    - <<: *shellcheck
+    - <<: *shfmt
 
-    svelte:
-        - <<: *prettier
+  svelte:
+    - <<: *prettier
 
-    astro:
-        - <<: *prettier
+  astro:
+    - <<: *prettier
 
-    markdown:
-        - <<: *markdownlint
+  markdown:
+    - <<: *markdownlint
 
-    gitcommit:
-        - <<: *gitlint
+  gitcommit:
+    - <<: *gitlint
 
-    # Wildcard, matches all languages
-    =:
-        - <<: *cspell
+  # Wildcard, matches all languages
+  =:
+    - <<: *cspell

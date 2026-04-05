@@ -8,7 +8,7 @@
 	"useTabs": true,
 	"overrides": [
 		{
-			"files": ["*.md"],
+			"files": ["*.md", "*.yaml", "*.yml"],
 			"options": {
 				"useTabs": false,
 				"tabWidth": 2,
