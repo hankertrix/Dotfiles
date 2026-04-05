@@ -1,6 +1,5 @@
 # Ignore READMEs, LICENSES, formatting files and backup files
 **/README.md
-**/stylua.toml
 **/LICENSE
 **/LICENCE
 **/LICENSE.*

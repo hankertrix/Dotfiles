@@ -31,7 +31,7 @@ local function setup()
 			"jsonls",			-- JSON
 			"tombi",			-- TOML
 			"yamlls",			-- YAML
-			"dprint",			-- Formatting LSP
+			"oxfmt",			-- Formatting LSP
 			-- "harper_ls",		-- English checker
 
 			-- Formatters
