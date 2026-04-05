@@ -6,7 +6,6 @@ local utils = require("utils")
 
 -- Function to set up the mode line
 local function setup()
-	--
 
 	-- Get the lualine module
 	local lualine = require("lualine")
@@ -19,7 +18,6 @@ local function setup()
 		hide_location,
 		appear_at_the_right
 	)
-		--
 
 		-- Get the function to get the buffer name
 		local buffer_name_func = buffer_name
@@ -58,7 +56,6 @@ local function setup()
 		buffer_name,
 		git_branch_wanted
 	)
-		--
 
 		-- The b section of lualine
 		local lualine_b_section = {
@@ -126,7 +123,6 @@ local function setup()
 	local quickfix_ext = {
 
 		init = function()
-			--
 
 			-- Make sure the quick fix window
 			-- doesn't create a custom status line
@@ -154,7 +150,6 @@ local function setup()
 
 	-- Function to check if a file is UTF-8
 	local function not_utf8()
-		--
 
 		-- Gets the file encoding
 		local file_encoding = vim.opt.fenc:get()
@@ -166,7 +161,6 @@ local function setup()
 
 	-- Function to disable the winbar based on the file type
 	local function should_disable_winbar()
-		--
 
 		-- Gets the file type of the current buffer
 		local file_type = vim.bo.filetype
@@ -200,7 +194,6 @@ local function setup()
 
 	-- If Firenvim isn't active
 	if utils.firenvim_not_active() then
-		--
 
 		-- Create the side extensions
 		local undotree_ext = create_side_ext({ "undotree" }, " Undo Tree")
@@ -284,7 +277,6 @@ local function setup()
 
 	-- Otherwise
 	else
-		--
 
 		-- Sets up lualine to show no icons, no special characters
 		-- and have no filename

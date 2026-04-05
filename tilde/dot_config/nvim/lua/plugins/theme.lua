@@ -14,7 +14,6 @@ return {
 		dependencies = { "rktjmp/lush.nvim" },
 		opts = { rainbow_headings = true },
 		config = function(_, opts)
-			--
 
 			-- Get the shared configuration
 			local shared_configs = require("shared_configs")
@@ -37,7 +36,6 @@ return {
 		"f-person/auto-dark-mode.nvim",
 		dependencies = { "bluloco.nvim" },
 		config = function(_, _)
-			--
 
 			-- The function to check if the bluloco
 			-- theme is set to change automatically

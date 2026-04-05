@@ -5,7 +5,6 @@ local utils = require("utils")
 
 -- Function to set up Mason
 local function setup()
-	--
 
 	-- Set up Mason
 	require("mason").setup()

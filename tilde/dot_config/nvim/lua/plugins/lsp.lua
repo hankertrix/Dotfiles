@@ -21,13 +21,11 @@ local externally_installed_lsps = {
 
 -- Function to set up the lsp
 local function setup()
-	--
 
 	-- Create the LSP keybinds
 	vim.api.nvim_create_autocmd("LspAttach", {
 		desc = "LSP actions",
 		callback = function(event)
-			--
 
 			-- The options for the key mappings
 			local opts = { buffer = event.buf }

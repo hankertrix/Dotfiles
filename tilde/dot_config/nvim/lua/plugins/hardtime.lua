@@ -4,7 +4,6 @@
 --
 -- Currently the plugins are:
 --	- hardtime.nvim: Force me to use more efficient key binds
---	- precognition.nvim: Help with discovering possible Vim motions
 
 -- Get the shared configurations
 local shared_configs = require("shared_configs")

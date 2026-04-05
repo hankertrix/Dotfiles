@@ -34,7 +34,6 @@ return {
 	module = false,
 	build = ":call firenvim#install(0)",
 	config = function(_, _)
-		--
 
 		-- Set the file type to mark down on GitHub
 		vim.api.nvim_create_autocmd("BufEnter", {

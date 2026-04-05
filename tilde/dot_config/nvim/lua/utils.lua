@@ -21,11 +21,9 @@ end
 -- This function edits the table of icons
 -- and does not return anything.
 M.trim_icons = function(icons)
-	--
 
 	-- Iterate over the table of icons
 	for key, value in pairs(icons) do
-		--
 
 		-- If the value is a string,
 		-- trim the spaces off of the icon
@@ -41,7 +39,6 @@ end
 -- Create the function to patch a plugin's runtime path
 -- so it is loaded before anything else.
 M.patch_plugin_runtime_path = function(plugin_path_pattern)
-	--
 
 	-- Initialise the plugin path
 	local plugin_path = nil
@@ -51,11 +48,9 @@ M.patch_plugin_runtime_path = function(plugin_path_pattern)
 
 	-- Iterate over the paths in the runtime paths
 	for index, path in ipairs(runtime_paths) do
-		--
 
 		-- If the path is the plugin path
 		if path:match(plugin_path_pattern) then
-			--
 
 			-- Remove the path and save it to the variable
 			plugin_path = table.remove(runtime_paths, index)

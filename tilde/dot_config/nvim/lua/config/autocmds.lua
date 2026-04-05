@@ -18,7 +18,6 @@ vim.api.nvim_create_autocmd("VimResized", {
 	group = vim.api.nvim_create_augroup("EqualiseSplits", { clear = true }),
 	desc = "Resize splits with terminal window",
 	callback = function()
-		--
 
 		-- Get the current tab
 		local current_tab = vim.api.nvim_get_current_tabpage()
@@ -37,7 +36,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	group = vim.api.nvim_create_augroup("RestoreCursor", { clear = true }),
 	desc = "Restore cursor to file position in previous editing session",
 	callback = function(args)
-		--
 
 		-- Get the row position of the cursor
 		-- in the current buffer

@@ -40,18 +40,15 @@ return {
 
 			-- Add configuration to show the colour in the completion menu
 			opts = function(_, opts)
-				--
 
 				-- Function to swap the kind icon for the coloured square
 				local function swap_kind_icon(ctx)
-					--
 
 					-- The default kind icon
 					local icon = ctx.kind_icon
 
 					-- If using the LSP source
 					if ctx.item.source_name == "LSP" then
-						--
 
 						-- Get the colour item from the plugin
 						local color_item =
@@ -73,14 +70,12 @@ return {
 
 				-- Function to highlight the kind icon
 				local function highlight_kind_icon(ctx)
-					--
 
 					-- Get the default highlight group
 					local highlight = "BlinkCmpKind" .. ctx.kind
 
 					-- If using the LSP source
 					if ctx.item.source_name == "LSP" then
-						--
 
 						-- Get the colour item from the plugin
 						local color_item =

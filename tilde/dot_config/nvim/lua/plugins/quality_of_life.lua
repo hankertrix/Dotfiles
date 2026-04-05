@@ -19,7 +19,6 @@ return {
 
 		-- The function to configure the plugin
 		config = function()
-			--
 
 			-- Get the plugin module
 			local mini_trailspace = require("mini.trailspace")
@@ -86,13 +85,11 @@ return {
 				-- Modify the big file configuration
 				-- after it has been resolved
 				config = function(opts, defaults)
-					--
 
 					-- Override the setup function,
 					-- which is called when entering
 					-- a big file
 					opts.setup = function(ctx)
-						--
 
 						-- Call the default setup function
 						defaults.setup(ctx)

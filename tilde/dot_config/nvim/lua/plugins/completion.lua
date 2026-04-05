@@ -97,7 +97,6 @@ return {
 						-- Enable the source only in `@spell` captures,
 						-- and disable it in `@nospell` captures
 						enable_in_context = function()
-							--
 
 							-- Get the captures at the current
 							-- cursor position
@@ -106,7 +105,6 @@ return {
 
 							-- Iterate over the captures
 							for _, capture in ipairs(captures) do
-								--
 
 								-- If the cursor is in a spell capture,
 								-- return true to enable the source
@@ -188,7 +186,6 @@ return {
 
 				-- Use tab to complete
 				function(cmp)
-					--
 
 					-- If the snippet is active, accept it
 					if cmp.snippet_active() then
@@ -306,7 +303,6 @@ return {
 
 	-- The config function
 	config = function(_, opts)
-		--
 
 		-- Apply the configured keymap to the command line keymap as well
 		opts.cmdline.keymap = opts.keymap
@@ -317,11 +313,9 @@ return {
 
 		-- Iterate over all the providers
 		for _, provider in pairs(opts.sources.providers or {}) do
-			--
 
 			-- If the kind is given
 			if provider.kind then
-				--
 
 				-- Get the index of the new kind
 				local kind_index = #completion_item_kinds + 1
@@ -339,7 +333,6 @@ return {
 
 				-- Override the transform items function
 				provider.transform_items = function(ctx, items)
-					--
 
 					-- Get the items after using the original transform
 					-- items if it exists
@@ -349,7 +342,6 @@ return {
 
 					-- Iterate over the items
 					for _, item in ipairs(items) do
-						--
 
 						-- Set the item kind
 						item.kind = kind_index or item.kind

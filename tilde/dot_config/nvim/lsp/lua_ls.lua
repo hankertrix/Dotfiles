@@ -3,11 +3,9 @@ return {
 
 	-- Function to call on initialisation of Lua LS
 	on_init = function(client)
-		--
 
 		-- If there are workspace folders
 		if client.workspace_folders then
-			--
 
 			-- Get the path
 			local path = client.workspace_folders[1].name
@@ -24,7 +22,6 @@ return {
 		-- Configure Lua LS for Neovim
 		client.config.settings.Lua =
 			vim.tbl_deep_extend("force", client.config.settings.Lua, {
-				--
 
 				-- Configure the Lua runtime used
 				runtime = {
@@ -57,12 +54,6 @@ return {
 				},
 			})
 	end,
-
-	-- Disable formatting as stylua covers that
-	init_options = {
-		documentFormatting = false,
-		documentRangeFormatting = false,
-	},
 
 	settings = {
 		Lua = {
