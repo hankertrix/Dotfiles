@@ -30,15 +30,15 @@ local function setup()
 			"jsonls",			-- JSON
 			"tombi",			-- TOML
 			"yamlls",			-- YAML
-			"oxfmt",			-- Formatting LSP
 			-- "harper_ls",		-- English checker
 
 			-- Formatters
-			"stylua",			-- Lua
-			"prettierd",		-- TypeScript and JavaScript ecosystem
+			"stylua",			-- Lua, has LSP
+			"oxfmt",			-- JavaScript ecosystem, has LSP
 			"shfmt",			-- Shell
 
 			-- Linters
+			"oxlint",			-- TypeScript and JavaScript, has LSP
 			"shellcheck",		-- Shell
 			"markdownlint",		-- Markdown
 			"gitlint",			-- Git commit message
