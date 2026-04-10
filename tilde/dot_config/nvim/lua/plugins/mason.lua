@@ -43,6 +43,7 @@ local function setup()
 			"markdownlint",		-- Markdown
 			"gitlint",			-- Git commit message
 			"cspell",			-- English checker within code
+			"typos",			-- English checker within code
 		},
 	})
 end
