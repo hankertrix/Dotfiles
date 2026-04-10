@@ -91,6 +91,16 @@ tools:
       - '%l: %m: "%r"'
       - "%l: %m"
 
+  typos: &typos
+    prefix: "typos"
+    lint-source: "efm/typos"
+    lint-command: >
+      typos --format brief --color never -
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    lint-formats:
+      - "%f:%l:%c: %trror: %m"
+
   cspell: &cspell
     prefix: "cspell"
     lint-source: "efm/cspell"
@@ -127,3 +137,4 @@ languages:
   # Wildcard, matches all languages
   =:
     - <<: *cspell
+    - <<: *typos
