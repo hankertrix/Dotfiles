@@ -1348,7 +1348,7 @@ Consult is a plugin that consults Emacs' completing-read functions for you to pi
     "jl" '("Search through the lines in the current buffer" . consult-line)
 
     ;; https://emacs.stackexchange.com/questions/82850/call-execute-extended-command-with-prefilled-prefix-string
-    "ji" '("Search through the list of pickers" .
+    "jp" '("Search through the list of pickers" .
            (lambda ()
              (interactive)
              (command-execute (intern (completing-read "Picker: " obarray #'commandp t '("consult-" . 8))))))
