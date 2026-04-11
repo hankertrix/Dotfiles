@@ -7,5 +7,5 @@ mpdris-bin
 polycat
 spek
 ttf-symbola
-wallust-git
+wallust
 zoom
