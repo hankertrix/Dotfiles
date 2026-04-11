@@ -112,6 +112,7 @@ texlive-plaingeneric
 thunar
 thunderbird
 tlp
+tree-sitter-cli
 ttf-dejavu
 ttf-liberation
 ttf-nerd-fonts-symbols-mono
