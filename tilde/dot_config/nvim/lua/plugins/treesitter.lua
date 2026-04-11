@@ -18,21 +18,10 @@ return {
 		cmd = {
 			"TSInstall",
 			"TSInstallFromGrammar",
-			"TSInstallInfo",
-			"TSInstallSync",
 			"TSUninstall",
 			"TSUpdate",
-			"TSUpdateSync",
-			"TSBufDisable",
-			"TSBufEnable",
-			"TSBufToggle",
-			"TSConfigInfo",
-			"TSDisable",
-			"TSEditQuery",
-			"TSEditQueryUserAfter",
-			"TSEnable",
-			"TSModuleInfo",
-			"TSToggle",
+			"TSContext",
+			"TSLog",
 		},
 
 		-- Set up the plugin
