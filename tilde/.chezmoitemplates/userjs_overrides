@@ -122,6 +122,12 @@
 {{$pref}}("network.trr.mode", 3);
 {{$pref}}("network.dns.skipTRR-when-parental-control-enabled", false);
 
+// Exclude NTU learn videos from the DNS resolver
+{{$pref}}(
+  "network.trr.excluded-domains",
+  "ntulearnvideo-cdn.ntu.edu.sg, ntulearnvideo-cdn1.ntu.edu.sg"
+);
+
 // Don't clear history on shutdown
 {{$pref}}("privacy.clearOnShutdown.history", false);
 {{$pref}}("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", false);
@@ -137,6 +143,22 @@
 {{$pref}}(
   "privacy.resistFingerprinting.exemptedDomains",
   "web.telegram.org"
+);
+
+// Block third-party trackers from accessing local network resources
+{{$pref}}("network.lna.block_trackers", true);
+
+// Skip checking for local network access on NTU learn
+{{$pref}}(
+  "network.lna.skip-domains",
+  "ntulearnv1.ntu.edu.sg"
+);
+
+// Allow extensions on all Mozilla sites,
+// as it is especially frustrating to not have Vimium running on them
+{{$pref}}(
+  "extensions.webextensions.restrictedDomains",
+  ""
 );
 
 // Spoof the language so that my Firefox locale doesn't match my OS locale
