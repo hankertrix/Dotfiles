@@ -27,7 +27,6 @@
 /pdf
 /nonceSigner
 towardsdatascience.com
-web.archive.org
 developer.blackboard.com/api/v1/gateway/oidcauth
 ntulearn.ntu.edu.sg/webapps/blackboard/execute/blti/launchPlacement
 outlook.office.com/mail/safelink.html
@@ -48,8 +47,9 @@ secure2.segpay.com
 remotexs.ntu.edu.sg
 google.com
 duckduckgo.com
-archive.ph
-archive.today
 statics.teams.cdn.office.net
 firebaseapp.com
 account.amazon.com
+archive.(?:is|li|vn|fo|md|ph|today)
+web.archive.org
+webcitation.org
