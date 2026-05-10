@@ -8,7 +8,7 @@ local shared_configs = require("shared_configs")
 return {
 	"hankertrix/nerd_column.nvim",
 	dev = true,
-	dir = "~/projects/nerd_column.nvim",
+	dir = "~/Projects/nerd_column.nvim",
 	event = "BufEnter",
 	opts = {
 
