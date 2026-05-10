@@ -352,7 +352,7 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
     :states '(normal visual)
     "P" '("Paste from the system clipboard before the cursor" .
           (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-paste-before)))
-    "pp" '("Paste from the system clipboard after the cursor" .
+    "p" '("Paste from the system clipboard after the cursor" .
            (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-paste-after)))
     "y" '("Copy to the system clipboard" .
           (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-yank)))
