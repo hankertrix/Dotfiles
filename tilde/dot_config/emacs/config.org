@@ -352,7 +352,7 @@ Evil stands for extensible Vi layer for Emacs, which essentially just brings Vi 
     :states '(normal visual)
     "P" '("Paste from the system clipboard before the cursor" .
           (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-paste-before)))
-    "p" '("Paste from the system clipboard after the cursor" .
+    "pp" '("Paste from the system clipboard after the cursor" .
            (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-paste-after)))
     "y" '("Copy to the system clipboard" .
           (lambda () (interactive) (hanker/use-register-with-evil-function ?+ 'evil-yank)))
@@ -1166,7 +1166,7 @@ Vertico is a minimal completion UI for the Emacs mini buffer, like Ivy. However,
 (use-package vertico
 
   ;; Include vertico extensions
-  :ensure (vertico :host github :repo "minad/vertico" :files (:defaults "extensions/*") :ref "e4338c5bae2c725be2940726be170bc034af3b6c")
+  :ensure (vertico :host github :repo "minad/vertico" :files (:defaults "extensions/*"))
 
   ;; Load the package immediately
   :demand t
@@ -1251,9 +1251,6 @@ Vertico is a minimal completion UI for the Emacs mini buffer, like Ivy. However,
 Marginalia is a plugin that adds annotations to the mini-buffer, like file permissions for example. It is the Vertico alternative to Ivy Rich, but can be used with other plugins as well, not just Vertico.
 #+begin_src emacs-lisp
 (use-package marginalia
-
-  ;; Pin to the last commit before compat 31
-  :ensure (:ref "4a0628dfdf944a5d307d31d2a514825cc5386986")
 
   ;; Load the package immediately
   :demand t
@@ -1387,7 +1384,7 @@ Corfu is a plugin for in-buffer completions.
 (use-package corfu
 
   ;; Include corfu extensions
-  :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*") :ref "856171ac98c3aaa629caa011be7cd3a9405e6e0f")
+  :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*"))
 
   ;; Load the package immediately
   :demand t
@@ -1534,9 +1531,6 @@ Corfu is a plugin for in-buffer completions.
 Cape is a plugin that provides extensions to completion at point plugins like Corfu or Company.
 #+begin_src emacs-lisp
 (use-package cape
-
-  ;; Pin to the last commit before compat 31
-  :ensure (:ref "2e15e1909754752f66096dde1b8d639d6eb25f35")
 
   ;; Configure cape
   :config
@@ -1796,9 +1790,6 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
 Org-modern is a plugin that prettifies org mode to look more modern.
 #+begin_src emacs-lisp
 (use-package org-modern
-
-  ;; Pin to the last commit before compat 31
-  :ensure (:ref "713beb72aed4db43f8a10feed72136e931eb674a")
 
   ;; Only load the package after org mode
   :after org
