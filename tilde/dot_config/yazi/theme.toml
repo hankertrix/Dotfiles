@@ -29,3 +29,14 @@ icon_error = ""
 icon_file = "󰈙"
 icon_folder = "󰉋"
 icon_command = ""
+
+# Set the icons for the git plugin
+[git]
+modified_sign = ""
+added_sign = ""
+untracked_sign = "󱋽"
+ignored_sign = ""
+deleted_sign = ""
+
+# Unmerged
+updated_sign = ""
