@@ -31,6 +31,8 @@ firefox
 freerdp
 fzf
 gammastep
+gdb
+gdb-common
 git
 github-cli
 handlr-regex
@@ -38,6 +40,7 @@ imagemagick
 inotify-tools
 jq
 kitty
+libfido2
 libguestfs
 libnotify
 libreoffice-fresh
@@ -92,6 +95,7 @@ rustup
 satty
 slurp
 smartmontools
+source-highlight
 steam
 swayidle
 swaylock
