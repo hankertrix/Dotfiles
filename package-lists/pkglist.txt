@@ -113,6 +113,7 @@ thunar
 thunderbird
 tlp
 tree-sitter-cli
+ttf-carlito
 ttf-dejavu
 ttf-liberation
 ttf-nerd-fonts-symbols-mono
