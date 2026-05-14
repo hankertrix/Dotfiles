@@ -1,0 +1,57 @@
+#### Global
+Server = https://repository.arch4edu.org/$arch
+
+
+#### China
+
+# Tsinghua University (source)
+Server = https://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
+
+# Aliyun
+Server = https://mirrors.aliyun.com/arch4edu/$arch
+
+# Beijing Foreign Studies University
+Server = https://mirrors.bfsu.edu.cn/arch4edu/$arch
+
+# CERNET (ipv4, ipv6, http, https)
+Server = https://mirrors.cernet.edu.cn/arch4edu/$arch
+
+# Institute of Software, Chinese Academy of Sciences
+Server = https://mirror.iscas.ac.cn/arch4edu/$arch
+
+# Nanjing University
+Server = https://mirrors.nju.edu.cn/arch4edu/$arch
+
+# Nanyang Institute of Technology
+Server = https://mirror.nyist.edu.cn/arch4edu/$arch
+
+# Shenyang Aerospace University
+Server = https://mirrors.sau.edu.cn/arch4edu/$arch
+
+# Tencent
+Server = https://mirrors.tencent.com/arch4edu/$arch
+
+
+#### Austria
+# By Jeremy Kescher
+Server = https://at.arch4edu.mirror.kescher.at/$arch
+
+
+#### France
+# By Antoine Viallon
+Server = https://mirror.lesviallon.fr/arch4edu/$arch
+
+
+#### Germany
+
+# By Fef
+Server = https://pkg.fef.moe/arch4edu/$arch
+
+# By Jeremy Kescher
+Server = https://de.arch4edu.mirror.kescher.at/$arch
+
+# By Manuel Hüsers
+Server = https://mirror.sunred.org/arch4edu/$arch
+
+# By shtrophic
+Server = https://arch4edu.shtrophic.net/$arch
