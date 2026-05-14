@@ -5,7 +5,5 @@ ltex-ls-plus-bin
 maple-mono-custom-git
 mpdris-bin
 polycat
-spek
 ttf-symbola
 wallust
-zoom

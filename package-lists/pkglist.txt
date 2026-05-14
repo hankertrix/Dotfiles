@@ -17,6 +17,9 @@ cliphist
 darkman
 dmidecode
 dnsmasq
+docker
+docker-buildx
+docker-compose
 downgrade
 dua-cli
 dunst
@@ -31,8 +34,6 @@ firefox
 freerdp
 fzf
 gammastep
-gdb
-gdb-common
 git
 github-cli
 handlr-regex
@@ -40,7 +41,6 @@ imagemagick
 inotify-tools
 jq
 kitty
-libfido2
 libguestfs
 libnotify
 libreoffice-fresh
@@ -95,7 +95,7 @@ rustup
 satty
 slurp
 smartmontools
-source-highlight
+spek
 steam
 swayidle
 swaylock
@@ -135,6 +135,8 @@ wl-clipboard
 wl-screenrec-git
 xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
+xorg-xhost
 xwayland-satellite
 yazi-git
 yt-dlp
+zoom
