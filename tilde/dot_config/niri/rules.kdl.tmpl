@@ -1,6 +1,6 @@
 // Window and layer rules
 
-// Put the wallpaper inside the overview backdrop
+// Put the wallpaper inside the overview backdrop.
 layer-rule {
     match namespace="^awww-daemon$"
     place-within-backdrop true
@@ -12,9 +12,29 @@ window-rule {
     // Never draw the border with background.
     draw-border-with-background false
 
-    // Rounded corners on windows
+    // Semi-transparent windows.
+    opacity 0.9
+
+    // Blur the background behind windows.
+    background-effect {
+        blur true
+    }
+
+    // Rounded corners on windows.
     geometry-corner-radius {{ .windowCornerRadius }}
     clip-to-geometry true
+}
+
+// Make mpv fully opaque.
+window-rule {
+    match app-id=r#"^mpv$"#
+    opacity 1.0
+}
+
+// Make Firefox's picture-in-picture mode fully opaque.
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    opacity 1.0
 }
 
 // Open Steam as floating and in its own workspace by default.
