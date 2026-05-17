@@ -115,7 +115,7 @@
 {{$pref}}("browser.ml.smartAssist.enabled", false);
 {{$pref}}("browser.ai.control.default", "blocked");
 {{$pref}}("browser.ai.control.linkPreviewKeyPoints", "blocked");
-{{$pref}}("browser.ai.control.pdfjsAltText", "blocked");
+{{$pref}}("browser.ai.control.pdfjsAltText", "available");
 {{$pref}}("browser.ai.control.sidebarChatbot", "blocked");
 {{$pref}}("browser.ai.control.smartTabGroups", "blocked");
 {{$pref}}("browser.ai.control.translations", "available");
@@ -124,7 +124,7 @@
 {{$pref}}("browser.search.visualSearch.featureGate", false);
 {{$pref}}("browser.urlbar.quicksuggest.mlEnabled", false);
 {{$pref}}("places.semanticHistory.featureGate", false);
-{{$pref}}("pdfjs.enableAltText", false);
+{{$pref}}("pdfjs.enableAltText", true);
 {{$pref}}("extensions.ml.enabled", false);
 {{$pref}}("sidebar.revamp", false);
 
