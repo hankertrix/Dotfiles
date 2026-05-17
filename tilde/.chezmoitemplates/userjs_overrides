@@ -85,6 +85,7 @@
 
 // Disable firefox sync
 {{$pref}}("identity.fxaccounts.enabled", false);
+{{$pref}}("identity.fxaccounts.telemetry.clientAssociationPing.enabled", false);
 
 // Don't allow websites to prompt for the notification permission
 {{$pref}}("permissions.default.desktop-notification", 2);
@@ -105,6 +106,27 @@
 {{$pref}}("dom.vr.openvr.enabled", false);
 {{$pref}}("dom.vr.osvr.enabled", false);
 {{$pref}}("dom.vr.puppet.enabled", false);
+
+// Disable AI
+{{$pref}}("browser.ml.enable", false);
+{{$pref}}("browser.ml.chat.enabled", false);
+{{$pref}}("browser.ml.linkPreview.enabled", false);
+{{$pref}}("browser.ml.pageAssist.enabled", false);
+{{$pref}}("browser.ml.smartAssist.enabled", false);
+{{$pref}}("browser.ai.control.default", "blocked");
+{{$pref}}("browser.ai.control.linkPreviewKeyPoints", "blocked");
+{{$pref}}("browser.ai.control.pdfjsAltText", "blocked");
+{{$pref}}("browser.ai.control.sidebarChatbot", "blocked");
+{{$pref}}("browser.ai.control.smartTabGroups", "blocked");
+{{$pref}}("browser.ai.control.translations", "available");
+{{$pref}}("browser.tabs.groups.smart.enabled", false);
+{{$pref}}("browser.tabs.groups.smart.userEnabled", false);
+{{$pref}}("browser.search.visualSearch.featureGate", false);
+{{$pref}}("browser.urlbar.quicksuggest.mlEnabled", false);
+{{$pref}}("places.semanticHistory.featureGate", false);
+{{$pref}}("pdfjs.enableAltText", false);
+{{$pref}}("extensions.ml.enabled", false);
+{{$pref}}("sidebar.revamp", false);
 
 // Disable privacy preserving ad measurement
 {{$pref}}("dom.private-attribution.submission.enabled", false);
