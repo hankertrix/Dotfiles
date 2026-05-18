@@ -6,6 +6,12 @@ layer-rule {
     place-within-backdrop true
 }
 
+// Make waybar slightly transparent.
+layer-rule {
+    match namespace="^waybar$"
+    opacity 0.8
+}
+
 // Window rules that apply to all windows.
 window-rule {
 
