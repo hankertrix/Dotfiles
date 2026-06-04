@@ -35,10 +35,16 @@ return {
 	build = ":call firenvim#install(0)",
 	config = function(_, _)
 
-		-- Set the file type to mark down on GitHub
+		-- Set the file type to markdown on GitHub
 		vim.api.nvim_create_autocmd("BufEnter", {
 			pattern = "github.com_*.txt",
 			command = "set filetype=markdown",
+		})
+
+		-- Set the file type to javascript on Google App Script
+		vim.api.nvim_create_autocmd("BufEnter", {
+			pattern = "script.google.com_*.txt",
+			command = "set filetype=javascript",
 		})
 	end,
 }
