@@ -55,6 +55,7 @@ mpd
 mpv
 namcap
 neovim
+netbird
 network-manager-applet
 networkmanager
 niri
@@ -135,7 +136,6 @@ wl-clipboard
 wl-screenrec-git
 xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
-xorg-xhost
 xwayland-satellite
 yazi-git
 yt-dlp
