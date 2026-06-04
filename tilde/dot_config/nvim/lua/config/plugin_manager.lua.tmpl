@@ -23,6 +23,9 @@ require("lazy").setup({
 		{ import = "plugins" },
 	},
 
+	-- Increase the time out to 5 minutes for Rust compilation of plugins
+	git = { timeout = 300 },
+
 	-- Set the lockfile location
 	-- to be in the dotfiles directory
 	lockfile = '{{ joinPath $dotConfigDir "nvim/lazy-lock.json" }}',
