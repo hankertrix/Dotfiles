@@ -40,7 +40,7 @@ return {
 				.. "in a Trouble window",
 		},
 		{
-			"gR",
+			"grR",
 			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
 			mode = "n",
 			desc = "Display all references in a Trouble window",
