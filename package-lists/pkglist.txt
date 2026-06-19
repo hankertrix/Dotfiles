@@ -37,10 +37,12 @@ gammastep
 git
 github-cli
 handlr-regex
+hwloc
 imagemagick
 inotify-tools
 jq
 kitty
+libblake3
 libguestfs
 libnotify
 libreoffice-fresh
@@ -65,6 +67,7 @@ noto-fonts-emoji
 noto-fonts-extra
 npm
 oculante
+onetbb
 openbsd-netcat
 paru
 pastel
