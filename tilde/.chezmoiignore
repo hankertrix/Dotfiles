@@ -12,6 +12,9 @@
 **/*.yazi/*
 !**/*.yazi/*.lua
 
+# Ignore the lazy lock file
+**/lazy-lock.json
+
 # Ignore preview images
 **/preview.png
 
