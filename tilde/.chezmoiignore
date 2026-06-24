@@ -12,6 +12,10 @@
 **/*.yazi/*
 !**/*.yazi/*.lua
 
+# Don't ignore the flavour files either
+!**/*.yazi/flavor.toml
+!**/*.yazi/tmtheme.xml
+
 # Ignore the lazy lock file
 **/lazy-lock.json
 
