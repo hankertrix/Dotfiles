@@ -27,7 +27,14 @@ return {
 		{ "moyiz/blink-emoji.nvim" },
 
 		-- AI autocompletion
-		{ "supermaven-inc/supermaven-nvim" },
+		{
+			"supermaven-inc/supermaven-nvim",
+			opts = {
+				log_level = "info",
+				disable_inline_completion = true,
+				disable_keymaps = true,
+			},
+		},
 	},
 
 	-- Configuration options
@@ -355,13 +362,6 @@ return {
 			-- Unset the kind and the source name to pass blink.cmp validation
 			provider.kind = nil
 		end
-
-		-- Set up Supermaven for AI autocompletion
-		require("supermaven-nvim").setup({
-			log_level = "info",
-			disable_inline_completion = true,
-			disable_keymaps = true,
-		})
 
 		-- Set up blink.cmp
 		require("blink.cmp").setup(opts)
