@@ -17,6 +17,9 @@ alias l='ls -lav --ignore=.?*'    # show long listing but no hidden dotfiles exc
 # Add ~/.local/bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
 
+# Add ~/.cargo/bin to PATH
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Make a new command that changes
 # the directory when yazi exits
 YY="/home/hanker/.config/yazi/yy.sh"
