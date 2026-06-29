@@ -252,9 +252,15 @@ on = ["c", "m"]
 run = "plugin augment-command.rename -- --empty=stem --cursor=start"
 desc = "Rename file and remove the file name"
 
-# Use cr to bulk create files
+# Use cr to use the default create command
 [[mgr.prepend_keymap]]
 on = ["c", "r"]
+run = "create"
+desc = "Create a file (ends with / for directories)"
+
+# Use cb to bulk create files
+[[mgr.prepend_keymap]]
+on = ["c", "b"]
 run = "bulk_create"
 desc = "Bulk create files"
 
