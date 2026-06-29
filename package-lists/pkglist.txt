@@ -43,6 +43,7 @@ inotify-tools
 jq
 kitty
 libguestfs
+libhwasan
 libnotify
 libreoffice-fresh
 linux
