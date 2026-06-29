@@ -146,6 +146,7 @@ return {
 				supermaven = {
 					name = "supermaven",
 					module = "blink.compat.source",
+					async = true,
 					score_offset = 5,
 					enabled = utils.firenvim_not_active,
 					kind = "Supermaven",
