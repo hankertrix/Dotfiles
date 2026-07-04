@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "03/04/2026, 1:33:52 pm",
-	"time": 1775194432140,
+	"@time": "04/07/2026, 12:52:02 pm",
+	"time": 1783140722320,
 	"environment": {
 		"extension": "2.12.3",
 		"platform": "linux",
-		"firefox": 149
+		"firefox": 152
 	},
 	"exclusionRules": [
 		{
@@ -32,10 +32,10 @@
 		"# Automatically open the Vomnibar when creating a new tab",
 		"run t createTab+Vomnibar.activate",
 		"",
-		"# Go to the tab below in the Zen browser",
+		"# Go to the tab below in the browser (vertical tabs)",
 		"map J nextTab",
 		"",
-		"# Go to the tab above in the Zen browser",
+		"# Go to the tab above in the browser (vertical tabs)",
 		"map K previousTab",
 		""
 	],
@@ -103,8 +103,8 @@
 		"  https://api.map.baidu.com/geocoder?output=html&address=%s&src=vimium-c",
 		"y|yt: https://www.youtube.com/results?search_query=%s \\",
 		"  blank=https://www.youtube.com/ YouTube",
-		"w|wiki: https://www.wikipedia.org/w/index.php?search=%s Wikipedia",
-		"g.s|gs|gscholar: https://scholar.google.com/scholar?q=$s \\",
+		"w|wiki|wikipedia: https://www.wikipedia.org/w/index.php?search=%s Wikipedia",
+		"g.s|gs|g.sch|gsch|g.scholar|gscholar: https://scholar.google.com/scholar?q=$s \\",
 		"  scholar.google.com re=/^(?:\\.[a-z]{2,4})?\\/scholar\\b.*?[#&?]q=([^#&]*)/i\\",
 		"  blank=https://scholar.google.com/ Google Scholar",
 		"",
