@@ -3,8 +3,8 @@
 The laptop that I currently use is an
 [ASUS TUF Gaming A16 AMD Advantage Edition](https://www.asus.com/laptops/for-gaming/tuf-gaming/asus-tuf-gaming-a16-advantage-edition-2023/),
 with a Ryzen 9-7940HS processor, an AMD Radeon RX7600S GPU and a screen
-resolution of 2560x1600, model number FA617X-S. It has 16GB of RAM and a 1TB
-SSD. I am currently using [Arch Linux](https://archlinux.org/) and running
+resolution of 2560x1600, model number FA617XS. It has 16GB of RAM and a 1TB SSD.
+I am currently using [Arch Linux](https://archlinux.org/) and running
 [Niri](https://github.com/YaLTeR/niri/) as my window manager and Wayland
 compositor.
 
