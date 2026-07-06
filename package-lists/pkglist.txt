@@ -42,10 +42,11 @@ imagemagick
 inotify-tools
 jq
 kitty
+libexsid
 libguestfs
-libhwasan
 libnotify
 libreoffice-fresh
+libresidfp
 linux
 linux-firmware
 lvm2
