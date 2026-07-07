@@ -13,7 +13,6 @@ btrfs-progs
 caligula
 cava
 chezmoi
-claude-code
 cliphist
 darkman
 dmidecode
@@ -42,11 +41,9 @@ imagemagick
 inotify-tools
 jq
 kitty
-libexsid
 libguestfs
 libnotify
 libreoffice-fresh
-libresidfp
 linux
 linux-firmware
 lvm2
