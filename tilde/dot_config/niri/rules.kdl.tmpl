@@ -31,21 +31,21 @@ window-rule {
     clip-to-geometry true
 }
 
-// Make mpv fully opaque.
+// Make media windows fully opaque
 window-rule {
-    match app-id=r#"^mpv$"#
+    match app-id=r#"^(?:mpv|oculante|com\.gabm\.satty)$"#
     opacity 1.0
 }
 
 // Make Firefox's picture-in-picture mode fully opaque.
 window-rule {
-    match app-id="firefox$" title="^Picture-in-Picture$"
+    match app-id=r#"^firefox$"# title="^Picture-in-Picture$"
     opacity 1.0
 }
 
 // Open Steam as floating.
 window-rule {
-    match app-id=r#"steam$"#
+    match app-id=r#"^steam$"#
     open-floating true
 }
 
