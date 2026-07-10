@@ -55,7 +55,6 @@ mpd
 mpv
 namcap
 neovim
-netbird
 network-manager-applet
 networkmanager
 niri
