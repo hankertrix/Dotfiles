@@ -8,24 +8,24 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(function () {
+  "use strict";
 
-    // Create an observer to watch for changes to the page
-    const observer = new MutationObserver(() => {
+  // Create an observer to watch for changes to the page
+  const observer = new MutationObserver(() => {
 
-        // Tries to get the seek bar element
-        const seekBar = document.getElementById("seek");
+    // Tries to get the seek bar element
+    const seekBar = document.getElementById("seek");
 
-        // If the seek bar element is found, remove the "read-only" class from it
-        if (seekBar) {
-          seekBar.classList.remove("read-only");
-        }
-    });
+    // If the seek bar element is found, remove the "read-only" class from it
+    if (seekBar) {
+      seekBar.classList.remove("read-only");
+    }
+  });
 
-    // Gets the observer to observe the document body for changes
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
+  // Gets the observer to observe the document body for changes
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
 })();
