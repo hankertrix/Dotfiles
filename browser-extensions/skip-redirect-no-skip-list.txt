@@ -53,3 +53,6 @@ account.amazon.com
 archive.(?:is|li|vn|fo|md|ph|today)
 web.archive.org
 webcitation.org
+forms.cloud.microsoft
+forms.office.com
+teams.public.onecdn.static.microsoft
