@@ -134,15 +134,8 @@
 // Show the user suggestions page when there is a error in HTTPS-only mode
 {{$pref}}("dom.security.https_only_mode_error_page_user_suggestions", true);
 
-// Stop the pop-up to add applications for mailto: links
-{{$pref}}("network.protocol-handler.external.mailto", false);
-
-// Set Quad9 as the DNS provider
-{{$pref}}("network.trr.uri", "https://dns.quad9.net/dns-query");
-
-// Force DNS over HTTPS (DoH)
-{{$pref}}("network.trr.mode", 3);
-{{$pref}}("network.dns.skipTRR-when-parental-control-enabled", false);
+// Disable DNS over HTTPS (DoH), use dnscrypt-proxy on the system instead
+{{$pref}}("network.trr.mode", 0);
 
 // Exclude NTU learn videos from the DNS resolver
 {{$pref}}(
