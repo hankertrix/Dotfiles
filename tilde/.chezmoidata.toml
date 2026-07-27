@@ -23,3 +23,7 @@ defaultTerminal = "kitty"
 
 # The window corner radius for Niri
 windowCornerRadius = 8
+
+# The latitude and longitude of my location
+latitude = 55.39594
+longitude = 10.38831
