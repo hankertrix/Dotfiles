@@ -16,6 +16,7 @@ chezmoi
 cliphist
 darkman
 dmidecode
+dnscrypt-proxy
 dnsmasq
 docker
 docker-buildx
