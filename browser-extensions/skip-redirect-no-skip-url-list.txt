@@ -56,3 +56,4 @@ webcitation.org
 forms.cloud.microsoft
 forms.office.com
 teams.public.onecdn.static.microsoft
+syddanskuni-my.sharepoint.com.mcas.ms
