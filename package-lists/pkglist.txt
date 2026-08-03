@@ -18,9 +18,6 @@ darkman
 dmidecode
 dnscrypt-proxy
 dnsmasq
-docker
-docker-buildx
-docker-compose
 downgrade
 dua-cli
 dunst
