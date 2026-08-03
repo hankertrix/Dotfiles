@@ -43,6 +43,14 @@ window-rule {
     opacity 1.0
 }
 
+// Make the main thunderbird window take up the full screen when open
+window-rule {
+    match app-id=r#"^org\.mozilla\.Thunderbird$"# title="Mozilla Thunderbird$"
+    default-column-width {
+        proportion 1.0
+    }
+}
+
 // Open Steam as floating.
 window-rule {
     match app-id=r#"^steam$"#
@@ -67,7 +75,7 @@ window-rule {
 
     block-out-from "screen-capture"
 
-    // Use this instead if you want them visible on third-party screenshot tools.
+    // Use this instead if you want them visible on 3rd-party screenshot tools.
     // block-out-from "screencast"
 }
 
