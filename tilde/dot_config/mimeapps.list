@@ -53,4 +53,3 @@ x-scheme-handler/snews=userapp-Thunderbird-I4M5H3.desktop;
 x-scheme-handler/webcal=userapp-Thunderbird-ETPNH3.desktop;
 x-scheme-handler/webcals=userapp-Thunderbird-ETPNH3.desktop;
 x-scheme-handler/net.thunderbird=userapp-Thunderbird-1E12Q3.desktop
-x-scheme-handler/claude-cli=claude-code-url-handler.desktop
