@@ -4,9 +4,12 @@
 # Reference:
 # https://github.com/marcinjahn/dotfiles/blob/main/dot_config/waybar/scripts/executable_check_screen_recording.sh
 
-# Check if the wl-screenrec process is running using pgrep
+# Set the screen recording executable
+RECORDER="wf-recorder"
+
+# Check if the screen recorder process is running using pgrep
 # -x ensures matching the exact process name
-if pgrep -x wl-screenrec >/dev/null; then
+if pgrep -x $RECORDER >/dev/null; then
 
 	# If the screen is recording, output JSON for waybar
 	# "text": Use a recording icon (like  from Nerd Fonts) or a simple dot ●

@@ -4,6 +4,9 @@
 # Reference:
 # https://github.com/marcinjahn/dotfiles/blob/main/dot_config/niri/scripts/executable_record-screen.sh
 
+# Set the command of the screen recorder tool to use
+RECORDER="wf-recorder"
+
 # Set the video directory
 VIDEO_DIR="$HOME/Videos/Screencasts"
 
@@ -14,10 +17,10 @@ mkdir -p "$VIDEO_DIR"
 # that is currently being recorded.
 # This makes it easy to build proper notifications
 # once the screen recording is stopped.
-TMP_FILE="/tmp/wl-screenrec-last-file.txt"
+TMP_FILE="/tmp/screen-recording-last-file.txt"
 
 # If the recording can be stopped
-if pkill wl-screenrec; then
+if pkill -INT $RECORDER; then
 
 	# Send a signal to hide the recording indicator
 	pkill -SIGRTMIN+8 waybar
@@ -56,7 +59,7 @@ else
 	if screen_area=$(slurp); then
 
 		# Record the screen
-		wl-screenrec -g "$screen_area" -f "$filename" &
+		$RECORDER -g "$screen_area" -f "$filename" &
 
 		# Display the recording indicator in waybar
 		pkill -SIGRTMIN+8 waybar
