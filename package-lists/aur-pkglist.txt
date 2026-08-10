@@ -1,3 +1,4 @@
+cisco-secure-client
 davmail
 efm-langserver
 kora-icon-theme
@@ -5,5 +6,6 @@ ltex-ls-plus-bin
 maple-mono-custom-git
 mpdris-bin
 polycat
+spek-rs-bin
 ttf-symbola
 wallust
