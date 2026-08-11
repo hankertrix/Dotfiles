@@ -17,20 +17,20 @@ local function setup()
 		ensure_installed = {
 
 			-- LSP servers
-			"lua_ls",			-- Lua
-			"vtsls",			-- TypeScript and JavaScript
-			"astro",			-- Astro
-			"rust_analyzer",	-- Rust
-			"bashls",			-- Bash (shell)
-			"mdx_analyzer",		-- MDX
-			"marksman",			-- Markdown
-			"tinymist",			-- Typst
-			"texlab",			-- LaTeX and BibTeX
-			"marksman",			-- Markdown
-			"jsonls",			-- JSON
-			"tombi",			-- TOML
-			"yamlls",			-- YAML
-			-- "harper_ls",		-- English checker
+			"lua_ls",					-- Lua
+			"vtsls",					-- TypeScript and JavaScript
+			"astro",					-- Astro
+			"rust_analyzer",			-- Rust
+			"bashls",					-- Bash (shell)
+			"mdx_analyzer",				-- MDX
+			"marksman",					-- Markdown
+			"tinymist",					-- Typst
+			"texlab",					-- LaTeX and BibTeX
+			"marksman",					-- Markdown
+			"jsonls",					-- JSON
+			"tombi",					-- TOML
+			"yamlls",					-- YAML
+			-- "harper_ls",				-- English checker
 
 			-- Formatters
 			"stylua",			-- Lua, has LSP
