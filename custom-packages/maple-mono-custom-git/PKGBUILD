@@ -1,6 +1,6 @@
 # Maintainer: Hanker
 pkgname='maple-mono-custom-git'
-pkgver=r726.dc9e1992
+pkgver=r888.b39df7b3
 pkgrel=1
 pkgdesc='A custom build of the Maple Mono font.'
 arch=('any')
@@ -39,28 +39,28 @@ build() {
 		jq '.feature_freeze.cv10 = "enable"' |
 		jq '.feature_freeze.cv43 = "enable"' |
 		jq '.feature_freeze.cv66 = "enable"' |
-		jq '.cn.enable = true')
+		jq '.cjk.locales.cn = true')
 
 	# Write the edited config
 	echo "$edited_config" >config.json
 
 	# Build the TTF format with the configuration
-	uv run build.py --ttf-only
+	uv run build.py --format ttf
 
-	# Move the NF-CN folder out of the fonts directory
+	# Move the NF folder out of the fonts directory
 	mv fonts/NF-CN/ MapleMono-NF-CN
 
 	# Build the TTF format with monospaced nerd fonts
-	uv run build.py --ttf-only --nf-mono
+	uv run build.py --nf-mono --format ttf
 
-	# Move the NF-CN folder out of the fonts directory
-	mv fonts/NF-CN/ MapleMono-NFMono-CN
+	# Move the NFMono folder out of the fonts directory
+	mv fonts/NFMono-CN/ MapleMono-NFMono-CN
 
 	# Build the TTF format with variable width glyphs
-	uv run build.py --ttf-only --nf-propo
+	uv run build.py --nf-propo --format ttf
 
-	# Move the NF-CN folder out of the fonts directory
-	mv fonts/NF-CN/ MapleMono-NFPropo-CN
+	# Move the NFPropo folder out of the fonts directory
+	mv fonts/NFPropo-CN/ MapleMono-NFPropo-CN
 }
 
 package() {

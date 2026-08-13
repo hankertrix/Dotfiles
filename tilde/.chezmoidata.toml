@@ -5,11 +5,11 @@ rootConfigFolder = "slash"
 terminalFont = "Maple Mono NF CN"
 terminalFontSize = 12
 
-# Maple Mono NFMono is Maple Mono with single width icons (Nerd Fonts Mono)
-monoFont = "Maple Mono NFMono CN"
+# Maple Mono NFM is Maple Mono with single width icons (Nerd Fonts Mono)
+monoFont = "Maple Mono NFM CN"
 
-# Maple Mono NFPropo is Maple Mono with variable width icons (Nerd Fonts Propo)
-guiFont = "Maple Mono NFPropo CN"
+# Maple Mono NFP is Maple Mono with variable width icons (Nerd Fonts Propo)
+guiFont = "Maple Mono NFP CN"
 
 # The icon theme used
 iconTheme = "kora"
