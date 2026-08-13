@@ -5,6 +5,7 @@ awww
 base
 base-devel
 bash-completion
+bind
 blueman
 brave-bin
 brightnessctl
@@ -38,6 +39,7 @@ handlr-regex
 imagemagick
 inotify-tools
 jq
+kid3
 kitty
 libguestfs
 libnotify
