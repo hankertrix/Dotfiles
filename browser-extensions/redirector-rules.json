@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2026-08-10T17:19:11.226Z",
+    "createdAt": "2026-08-15T12:30:36.938Z",
     "redirects": [
         {
             "description": "Redirect YouTube Shorts to YouTube Video",
@@ -22,63 +22,12 @@
         {
             "description": "Redirect Reddit to Redlib",
             "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "exampleResult": "https://farside.link/redlib/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
+            "exampleResult": "https://redlib.privadency.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
             "error": null,
             "includePattern": "^https?://(?:(?:old|www)\\.)?reddit(?:media)?\\.com/((?!(media|video))[@\\w/-]*)",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://farside.link/redlib/$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": false,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Reddit to Teddit",
-            "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "exampleResult": "https://farside.link/teddit/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "error": null,
-            "includePattern": "^https?://(?:(?:old|www)\\.)?reddit(?:media)?\\.com/((?!(media|video))[@\\w/-]*)",
-            "excludePattern": "",
-            "patternDesc": "",
-            "redirectUrl": "https://farside.link/teddit/$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Reddit to Alternative Reddit Frontend",
-            "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "exampleResult": "https://lr.ptr.moe/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "error": null,
-            "includePattern": "^https?://(?:(?:old|www)\\.)?reddit(?:media)?\\.com/((?!(media|video))[@\\w/-]*)",
-            "excludePattern": "",
-            "patternDesc": "",
-            "redirectUrl": "https://lr.ptr.moe/$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Reddit to Eddrit",
-            "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "exampleResult": "https://eddrit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "error": null,
-            "includePattern": "^https?://(?:(?:old|www)\\.)?reddit\\.com/((?!(media|video))[@\\w/-]*)",
-            "excludePattern": "",
-            "patternDesc": "",
-            "redirectUrl": "https://eddrit.com/$1",
+            "redirectUrl": "https://redlib.privadency.com/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": true,
@@ -90,15 +39,15 @@
         {
             "description": "Redirect Twitter (X) to Nitter",
             "exampleUrl": "https://x.com/elonmusk?failedScript=vendor",
-            "exampleResult": "https://farside.link/nitter/elonmusk",
+            "exampleResult": "https://xcancel.com/elonmusk",
             "error": null,
             "includePattern": "^https?://(?:www\\.)?(?:twitter|x)\\.com/([@\\w/-]*)",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://farside.link/nitter/$1",
+            "redirectUrl": "https://xcancel.com/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -107,32 +56,15 @@
         {
             "description": "Redirect Stack Overflow to Anonymous Overflow",
             "exampleUrl": "https://stackoverflow.com/questions/6500721/find-where-a-t-co-link-goes-to",
-            "exampleResult": "https://farside.link/anonymousoverflow/questions/6500721/find-where-a-t-co-link-goes-to",
+            "exampleResult": "https://anonymousoverflow.catsarch.com/questions/6500721/find-where-a-t-co-link-goes-to",
             "error": null,
             "includePattern": "^https?://(?:www\\.)?stackoverflow\\.com/([@\\w/-]*)",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://farside.link/anonymousoverflow/$1",
+            "redirectUrl": "https://anonymousoverflow.catsarch.com/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Quora to Quetre",
-            "exampleUrl": "https://www.quora.com/Why-does-the-Earth-rotate-Why-doesnt-it-stop",
-            "exampleResult": "https://farside.link/quetre/Why-does-the-Earth-rotate-Why-doesnt-it-stop",
-            "error": null,
-            "includePattern": "^https?://(?:www\\.)?quora\\.com/([@\\w/-]*)",
-            "excludePattern": "",
-            "patternDesc": "",
-            "redirectUrl": "https://farside.link/quetre/$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -141,15 +73,15 @@
         {
             "description": "Redirect Imgur to Rimgo",
             "exampleUrl": "https://i.imgur.com/fR3XvNm.png",
-            "exampleResult": "https://farside.link/rimgo/fR3XvNm",
+            "exampleResult": "https://rimgo.catsarch.com/fR3XvNm",
             "error": null,
             "includePattern": "^https?://(?:(?:www|i)\\.)?imgur\\.com/([@\\w/-]*)",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://farside.link/rimgo/$1",
+            "redirectUrl": "https://rimgo.catsarch.com/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -158,15 +90,15 @@
         {
             "description": "Redirect IMDb to Libremdb",
             "exampleUrl": "https://www.imdb.com/title/tt0451279/",
-            "exampleResult": "https://farside.link/libremdb/title/tt0451279/",
+            "exampleResult": "https://libremdb.pussthecat.org/title/tt0451279/",
             "error": null,
             "includePattern": "^https?://(?:www\\.)?imdb\\.com/([@\\w/-]*)\\??.*$",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://farside.link/libremdb/$1",
+            "redirectUrl": "https://libremdb.pussthecat.org/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
-            "disabled": false,
+            "disabled": true,
             "grouped": false,
             "appliesTo": [
                 "main_frame"
@@ -175,12 +107,12 @@
         {
             "description": "Redirect TikTok to ProxiTok",
             "exampleUrl": "https://www.tiktok.com/@diariesofacodegirl/video/7307747910765038854",
-            "exampleResult": "https://farside.link/proxitok/@diariesofacodegirl/video/7307747910765038854",
+            "exampleResult": "https://proxitok.pussthecat.org/@diariesofacodegirl/video/7307747910765038854",
             "error": null,
             "includePattern": "^https?://(?:www\\.)?tiktok\\.com/([@\\w/-]*)\\??.*$",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://farside.link/proxitok/$1",
+            "redirectUrl": "https://proxitok.pussthecat.org/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": true,
@@ -192,148 +124,12 @@
         {
             "description": "Redirect Genius to Dumb",
             "exampleUrl": "https://genius.com/Charlie-puth-attention-acoustic-lyrics",
-            "exampleResult": "https://farside.link/dumb/Charlie-puth-attention-acoustic-lyrics",
+            "exampleResult": "https://dumb.bloat.cat/Charlie-puth-attention-acoustic-lyrics",
             "error": null,
             "includePattern": "^https?://(?:www\\.)?genius\\.com/([@\\w/-]*)\\??.*$",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "https://farside.link/dumb/$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": false,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Bandcamp to Tent",
-            "exampleUrl": "https://charlieputhcharlie.bandcamp.com/",
-            "exampleResult": "https://farside.link/tent/artist.php?name=charlieputhcharlie",
-            "error": null,
-            "includePattern": "^https?://([@\\w-]+)\\.bandcamp\\.com/?$",
-            "excludePattern": "",
-            "patternDesc": "For the artist page",
-            "redirectUrl": "https://farside.link/tent/artist.php?name=$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Bandcamp to Tent",
-            "exampleUrl": "https://charlieputhcharlie.bandcamp.com/album/charlie-explicit",
-            "exampleResult": "https://farside.link/tent/release.php?artist=charlieputhcharlie&type=album&name=charlie-explicit",
-            "error": null,
-            "includePattern": "^https?://([@\\w-]+)\\.bandcamp\\.com/([@\\w-]+)/([@\\w-]+)$",
-            "excludePattern": "",
-            "patternDesc": "For the album or song page",
-            "redirectUrl": "https://farside.link/tent/release.php?artist=$1&type=$2&name=$3",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Bandcamp to Tent",
-            "exampleUrl": "https://bandcamp.com/search?q=light+switch&item_type=",
-            "exampleResult": "https://farside.link/tent/search.php?query=light+switch",
-            "error": null,
-            "includePattern": "^https?://bandcamp\\.com/search\\?q=([^\\s&]+)",
-            "excludePattern": "",
-            "patternDesc": "For the search page",
-            "redirectUrl": "https://farside.link/tent/search.php?query=$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Bandcamp to Tent",
-            "exampleUrl": "https://f4.bcbits.com/img/a1886901587_10.jpg",
-            "exampleResult": "https://farside.link/tent/image.php?file=a1886901587_10.jpg",
-            "error": null,
-            "includePattern": "^https?://f4.bcbits\\.com/img/(.+)",
-            "excludePattern": "",
-            "patternDesc": "For image files",
-            "redirectUrl": "https://farside.link/tent/image.php?file=$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect Bandcamp to Tent",
-            "exampleUrl": "https://t4.bcbits.com/stream/f991cdddd896e82b4a9926a928282b/mp3-128/4140834650?p=0&ts=1717683061&t=b3e515bb5d1b8b6fe783a6a90d10d3bb59f67806ec&token=1717683061_31cb6c2d1ce5aef4572996c6613f763a18f01b5a",
-            "exampleResult": "https://farside.link/tent/audio.php?directory=f991cdddd896e82b4a9926a928282b&format=mp3-128&file=4140834650&token=1717683061_31cb6c2d1ce5aef4572996c6613f763a18f01b5a",
-            "error": null,
-            "includePattern": "^https?://t4.bcbits\\.com/stream/(.+)/(.+)/([^\\s?]+).*?(?:\\?|&)token=(.+)",
-            "excludePattern": "",
-            "patternDesc": "For audio files",
-            "redirectUrl": "https://farside.link/tent/audio.php?directory=$1&format=$2&file=$3&token=$4",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "Redirect YouTube to Invidious or Piped",
-            "exampleUrl": "https://www.youtube.com/watch?v=ZdtPTUsrAA4",
-            "exampleResult": "https://farside.link/https://www.youtube.com/watch?v=ZdtPTUsrAA4",
-            "error": null,
-            "includePattern": "^(https?://(?:www\\.)?(?:youtube.com|youtu.be).*)",
-            "excludePattern": "",
-            "patternDesc": "",
-            "redirectUrl": "https://farside.link/$1",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "No YouTube",
-            "exampleUrl": "https://www.youtube.com/watch?v=ZdtPTUsrAA4",
-            "exampleResult": "https://example.com/",
-            "error": null,
-            "includePattern": "^https?://(?:www\\.)?(?:youtube.com|youtu.be).*",
-            "excludePattern": "",
-            "patternDesc": "",
-            "redirectUrl": "https://example.com/",
-            "patternType": "R",
-            "processMatches": "noProcessing",
-            "disabled": true,
-            "grouped": false,
-            "appliesTo": [
-                "main_frame"
-            ]
-        },
-        {
-            "description": "No Reddit",
-            "exampleUrl": "https://www.reddit.com/r/Bluetooth_Speakers/comments/1cv3bw9/calling_out_the_bluetooth_speakers_conspiracy/",
-            "exampleResult": "https://example.com/",
-            "error": null,
-            "includePattern": "^https?://(?:(?:old|www)\\.)?reddit\\.com/",
-            "excludePattern": "",
-            "patternDesc": "",
-            "redirectUrl": "https://example.com/",
+            "redirectUrl": "https://dumb.bloat.cat/$1",
             "patternType": "R",
             "processMatches": "noProcessing",
             "disabled": true,
