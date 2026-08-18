@@ -30,6 +30,7 @@ fastfetch
 fd
 file-roller
 firefox
+freecad
 freerdp
 fzf
 gammastep
