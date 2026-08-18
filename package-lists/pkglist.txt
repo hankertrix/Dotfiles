@@ -5,7 +5,6 @@ awww
 base
 base-devel
 bash-completion
-bind
 blueman
 brave-bin
 brightnessctl
@@ -131,8 +130,8 @@ vhs
 virt-manager
 virt-viewer
 waybar
-wf-recorder
 wl-clipboard
+wl-screenrec-git
 xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
 xwayland-satellite

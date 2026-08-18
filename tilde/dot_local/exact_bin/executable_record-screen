@@ -5,7 +5,7 @@
 # https://github.com/marcinjahn/dotfiles/blob/main/dot_config/niri/scripts/executable_record-screen.sh
 
 # Set the command of the screen recorder tool to use
-RECORDER="wf-recorder"
+RECORDER="wl-screenrec"
 
 # Set the video directory
 VIDEO_DIR="$HOME/Videos/Screencasts"

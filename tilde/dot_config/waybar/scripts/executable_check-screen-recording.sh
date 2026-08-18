@@ -5,7 +5,7 @@
 # https://github.com/marcinjahn/dotfiles/blob/main/dot_config/waybar/scripts/executable_check_screen_recording.sh
 
 # Set the screen recording executable
-RECORDER="wf-recorder"
+RECORDER="wl-screenrec"
 
 # Check if the screen recorder process is running using pgrep
 # -x ensures matching the exact process name
