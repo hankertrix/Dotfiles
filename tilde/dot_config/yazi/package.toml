@@ -1,17 +1,17 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "3f2b882"
+rev = "6f26ae0"
 hash = "46cbdc05596a3ecd730b288e28c7079d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "3f2b882"
-hash = "336548d9f67926e12d5584f60b790f1"
+rev = "6f26ae0"
+hash = "ce345e7e8baed03a2561b314fa85e59a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "3f2b882"
-hash = "9105494e98299f392aee95340066da9f"
+rev = "6f26ae0"
+hash = "ff056b5acd05d915dc3a3936cb0cfd3e"
 
 [[plugin.deps]]
 use = "boydaihungst/relative-motions"
