@@ -50,7 +50,8 @@ window-rule {
     match app-id=r#"^org\.mozilla\.Thunderbird$"# title="Mozilla Thunderbird$"
 
     // Main FreeCAD window
-    match app-id=r#"org.freecad.FreeCAD"# title="- FreeCAD"
+    match app-id=r#"org\.freecad\.FreeCAD"# \
+          title=r#"(?:^|-\s+)FreeCAD(?:$|\s+[\d\.]+)"#
 
     default-column-width {
         proportion 1.0
