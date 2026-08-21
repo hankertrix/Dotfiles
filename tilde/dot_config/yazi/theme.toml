@@ -32,7 +32,8 @@ icon_command = ""
 
 # Set the icons for the git plugin
 [git]
-modified_sign = ""
+unstaged_sign = ""
+staged_sign = ""
 added_sign = ""
 untracked_sign = "󱋽"
 ignored_sign = ""
