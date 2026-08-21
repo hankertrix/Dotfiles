@@ -33,19 +33,25 @@ window-rule {
 
 // Make media windows fully opaque
 window-rule {
+
+    // Media viewers or players
     match app-id=r#"^(?:mpv|oculante|com\.gabm\.satty)$"#
-    opacity 1.0
-}
 
-// Make Firefox's picture-in-picture mode fully opaque.
-window-rule {
+    // Firefox's picture in picture
     match app-id=r#"^firefox$"# title="^Picture-in-Picture$"
+
     opacity 1.0
 }
 
-// Make the main thunderbird window take up the full screen when open
+// Make some applications open full screen by default
 window-rule {
+
+    // Main thunderbird window
     match app-id=r#"^org\.mozilla\.Thunderbird$"# title="Mozilla Thunderbird$"
+
+    // FreeCAD
+    match app-id=r#"org.freecad.FreeCAD"#
+
     default-column-width {
         proportion 1.0
     }
