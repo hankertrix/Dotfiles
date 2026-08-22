@@ -12,7 +12,6 @@ return {
 		lazy = false,
 		priority = 1000,
 		dependencies = { "rktjmp/lush.nvim" },
-		opts = { rainbow_headings = true },
 		config = function(_, opts)
 
 			-- Get the shared configuration

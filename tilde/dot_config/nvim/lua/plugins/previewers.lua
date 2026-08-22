@@ -6,16 +6,22 @@ return {
 	-- Better looking help files
 	{ "OXY2DEV/helpview.nvim" },
 
-	-- Markdown previewer in HTML form
+	-- Markdown previewer
 	{
-		"brianhuster/live-preview.nvim",
-		ft = { "markdown", "svg" },
-		cmd = "LivePreview",
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		ft = { "markdown" },
+		cmd = "RenderMarkdown",
+		opts = {
+			completions = { lsp = { enabled = true } },
+		},
 	},
 
 	-- Typst PDF previewer
 	{
-
 		"chomosuke/typst-preview.nvim",
 		ft = "typst",
 		version = "1.*",
