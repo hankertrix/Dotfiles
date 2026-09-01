@@ -42,7 +42,9 @@ jq
 kid3
 kitty
 libguestfs
+libmatio
 libnotify
+libraw
 libreoffice-fresh
 linux
 linux-firmware
@@ -64,6 +66,7 @@ noto-fonts-emoji
 noto-fonts-extra
 npm
 oculante
+openai-codex
 openbsd-netcat
 paru
 pastel
@@ -76,6 +79,7 @@ pnpm
 poppler
 poppler-glib
 prismlauncher
+prusa-slicer
 python
 python-pywalfox
 qbittorrent
