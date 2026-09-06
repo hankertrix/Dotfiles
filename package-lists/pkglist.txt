@@ -42,9 +42,7 @@ jq
 kid3
 kitty
 libguestfs
-libmatio
 libnotify
-libraw
 libreoffice-fresh
 linux
 linux-firmware
