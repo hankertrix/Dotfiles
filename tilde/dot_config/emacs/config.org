@@ -73,6 +73,7 @@
 ** Elpaca package manager
 Initialise Elpaca. This code is copied directly off of [[https://github.com/progfolio/elpaca][Elpaca's GitHub]].
 #+begin_src emacs-lisp
+;; -*- lexical-binding: t; -*-
 (defvar elpaca-installer-version 0.12)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
@@ -112,6 +113,11 @@ Initialise Elpaca. This code is copied directly off of [[https://github.com/prog
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
 #+end_src
+
+Explicitly manage compat.
+#+BEGIN_SRC emacs-lisp
+(elpaca compat)
+#+END_SRC
 
 Enable use-package support for Elpaca.
 #+begin_src emacs-lisp
@@ -1749,9 +1755,6 @@ Magit is an awesome plugin that provides excellent Git integration in Emacs.
     "gs" '("Open Git" . magit-status)
     )
   )
-
-;; Ensure magit dependencies are updated as well.
-(use-package transient :ensure t)
 #+end_src
 
 * Org mode
