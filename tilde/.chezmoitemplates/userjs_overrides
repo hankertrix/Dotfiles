@@ -137,6 +137,10 @@
 // Disable DNS over HTTPS (DoH), use dnscrypt-proxy on the system instead
 {{$pref}}("network.trr.mode", 0);
 
+// Disable local network access restrictions for websockets
+// so that Firenvim works
+{{$pref}}("network.lna.websocket.enabled", false);
+
 // Exclude NTU learn videos from the DNS resolver
 {{$pref}}(
   "network.trr.excluded-domains",
