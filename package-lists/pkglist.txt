@@ -41,6 +41,7 @@ inotify-tools
 jq
 kid3
 kitty
+lib32-opus
 libguestfs
 libnotify
 libreoffice-fresh
