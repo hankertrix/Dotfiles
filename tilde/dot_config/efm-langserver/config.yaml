@@ -12,9 +12,9 @@ tools:
     lint-stdin: true
     lint-formats:
       - "::%trror title=%.%#,file=%.%#,line=%.%#,\
-        col=%.%#,endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m"
+        col=%.%#,endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m%%0A%*[^\n]"
       - "::%tarning title=%.%#,file=%.%#,line=%.%#,col=%.%#,\
-        endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m"
+        endLine=%.%#,endColumn=%.%#::%f:%l:%c: %m%%0A%*[^\n]"
     format-command: >
       ruff format --no-cache --stdin-filename "${INPUT}"
     format-stdin: true
