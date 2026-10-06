@@ -21,6 +21,7 @@ local function setup()
 			"vtsls",					-- TypeScript and JavaScript
 			"astro",					-- Astro
 			"rust_analyzer",			-- Rust
+			"clangd",					-- C/C++
 			"bashls",					-- Bash (shell)
 			"mdx_analyzer",				-- MDX
 			"marksman",					-- Markdown
@@ -35,6 +36,7 @@ local function setup()
 			-- Formatters
 			"stylua",			-- Lua, has LSP
 			"oxfmt",			-- JavaScript ecosystem, has LSP
+			"clang-format",		-- C/C++
 			"shfmt",			-- Shell
 
 			-- Linters
