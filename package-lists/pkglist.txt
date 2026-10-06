@@ -41,7 +41,6 @@ inotify-tools
 jq
 kid3
 kitty
-lib32-opus
 libguestfs
 libnotify
 libreoffice-fresh
@@ -74,6 +73,7 @@ picard
 pipewire
 pipewire-alsa
 pipewire-pulse
+platformio-core
 pnpm
 poppler
 poppler-glib
