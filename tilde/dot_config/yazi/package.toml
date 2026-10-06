@@ -1,16 +1,16 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "8e7549f"
+rev = "6229767"
 hash = "b95f898e6dc60b52edbc415952e14395"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "8e7549f"
+rev = "6229767"
 hash = "347cc6b190eb0c2fd60513cc7ae37412"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "8e7549f"
+rev = "6229767"
 hash = "d368d5a6a72657e1c0e7ee7340dcea8c"
 
 [[plugin.deps]]
