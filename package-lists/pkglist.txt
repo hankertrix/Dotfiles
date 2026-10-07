@@ -115,7 +115,6 @@ texlive-latexrecommended
 texlive-mathscience
 texlive-pictures
 texlive-plaingeneric
-thunar
 thunderbird
 tlp
 tree-sitter-cli
