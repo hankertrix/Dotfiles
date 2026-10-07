@@ -26,6 +26,7 @@ emacs-wayland
 ex-vi-compat
 exfatprogs
 fastfetch
+fcitx5-rime
 fd
 file-roller
 firefox

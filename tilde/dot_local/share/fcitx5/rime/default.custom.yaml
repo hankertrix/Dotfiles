@@ -1,0 +1,4 @@
+patch:
+  schema_list:
+    # Use luna pinyin for simplified Chinese
+    - schema: luna_pinyin_simp

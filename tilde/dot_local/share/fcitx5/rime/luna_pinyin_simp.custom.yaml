@@ -1,0 +1,123 @@
+patch:
+  #
+
+  # Enable ASCII mode by default
+  "switches/@0/reset": 1
+
+  # Quick access to some unicode symbols
+  "punctuator/symbols/+":
+    #
+
+    # Danish
+    /ae: [æ, Æ]
+    /oe: [ø, Ø]
+    /ao: [å, Å]
+
+    # Greek symbols
+    /alpha: [α, Α]
+    /beta: [β, Β]
+    /gamma: [γ, Γ]
+    /delta: [δ, Δ]
+    /epsilon: [ε, Ε]
+    /zeta: [ζ, Ζ]
+    /eta: [η, Η]
+    /theta: [θ, Θ]
+    /iota: [ι, Ι]
+    /kappa: [κ, Κ]
+    /lambda: [λ, Λ]
+    /mu: [μ, Μ]
+    /nu: [ν, Ν]
+    /xi: [ξ, Ξ]
+    /omicron: [ο, Ο]
+    /pi: [π, Π]
+    /rho: [ρ, Ρ]
+    /sigma: [σ, Σ, ς]
+    /tau: [τ, Τ]
+    /upsilon: [υ, Υ]
+    /phi: [ϕ, φ, Φ]
+    /chi: [χ, Χ]
+    /psi: [ψ, Ψ]
+    /omega: [ω, Ω]
+
+    # Relations
+    /neq: [≠]
+    /approx: [≈]
+    /equiv: [≡]
+    /leq: [≤]
+    /geq: [≥]
+    /ll: [≪]
+    /gg: [≫]
+    /sim: [∼]
+    /simeq: [≃]
+    /cong: [≅]
+    /propto: [∝]
+
+    # Operators
+    /pm: [±]
+    /mp: [∓]
+    /times: [×]
+    /div: [÷]
+    /cdot: [⋅]
+    /circ: [∘]
+    /sqrt: [√]
+    /infty: [∞]
+    /partial: [∂]
+    /nabla: [∇]
+
+    # Calculus
+    /sum: [∑]
+    /prod: [∏]
+    /int: [∫]
+    /iint: [∬]
+    /iiint: [∭]
+    /oint: [∮]
+
+    # Sets
+    /in: [∈]
+    /notin: [∉]
+    /ni: [∋]
+    /subset: [⊂]
+    /supset: [⊃]
+    /subseteq: [⊆]
+    /supseteq: [⊇]
+    /cup: [∪]
+    /cap: [∩]
+    /emptyset: [∅]
+
+    # Logic
+    /forall: [∀]
+    /exists: [∃]
+    /nexists: [∄]
+    /neg: [¬]
+    /land: [∧]
+    /lor: [∨]
+    /therefore: [∴]
+    /because: [∵]
+    /vdash: [⊢]
+    /models: [⊨]
+
+    # Arrows
+    /leftarrow: [←]
+    /rightarrow: [→]
+    /leftrightarrow: [↔]
+    /uparrow: [↑]
+    /downarrow: [↓]
+    /Leftarrow: [⇐]
+    /Rightarrow: [⇒]
+    /Leftrightarrow: [⇔]
+    /mapsto: [↦]
+
+    # Geometry
+    /angle: [∠]
+    /perp: [⊥]
+    /parallel: [∥]
+    /triangle: [△]
+
+    # Misc
+    /degree: [°]
+    /prime: [′]
+    /dprime: [″]
+    /ell: [ℓ]
+    /hbar: [ℏ]
+    /Re: [ℜ]
+    /Im: [ℑ]

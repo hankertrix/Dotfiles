@@ -1,0 +1,12 @@
+[Unit]
+Description=Fcitx5 input method framework daemon
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/fcitx5
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

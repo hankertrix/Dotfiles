@@ -10,6 +10,11 @@ environment {
     QT_QPA_PLATFORM "wayland"
     MOZ_ENABLE_WAYLAND "1"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
+    // Fcitx5 environment variables
+    QT_IM_MODULE "fcitx"
+    QT_IM_MODULES "wayland;fcitx"
+    XMODIFIERS "@im=fcitx"
 }
 
 // Disable the hot corners
