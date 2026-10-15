@@ -15,6 +15,7 @@ cava
 chezmoi
 cliphist
 darkman
+discord
 dmidecode
 dnscrypt-proxy
 dnsmasq
@@ -76,6 +77,8 @@ pipewire-alsa
 pipewire-pulse
 platformio-core
 pnpm
+podman
+podman-compose
 poppler
 poppler-glib
 prismlauncher
