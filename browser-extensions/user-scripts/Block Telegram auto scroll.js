@@ -26,7 +26,7 @@
   // The input elements
   const INPUT_ELEMENTS = {
     webK: ".input-message-input.forwards",
-    webA: "#editable-message-text",
+    webA: "#message-input-text",
   };
 
   // The chat window
@@ -46,6 +46,7 @@
 
   // The event listener for the button
   function updatePreviousState() {
+    //
 
     // Set the message sent time
     messageSentTime = performance.now();
@@ -53,6 +54,7 @@
 
   // Create an observer to watch for changes to the page
   const observer = new MutationObserver(() => {
+    //
 
     // Try to get the button to send the message
     const sendButton = document.querySelector(
@@ -67,6 +69,7 @@
     // If the button exists and
     // the event listener attribute doesn't exist
     if (sendButton && !sendButton.dataset.blockerAdded) {
+      //
 
       // Add the click event listener to it
       sendButton.addEventListener("click", updatePreviousState);
@@ -78,14 +81,28 @@
     // If the input element exists and
     // the event listener attribute doesn't exist
     if (input && !input.dataset.blockerAdded) {
+      //
 
       // Add the event listener to update the message sent time
       // when the keys used to send a message are pressed
-      input.addEventListener("keydown", event => {
-        if (KEYS_TO_SEND_MESSAGE.includes(event.code)) {
-          updatePreviousState();
-        }
-      });
+      //
+      // Capture is so that the event gets caught at the capturing phase,
+      // rather than at the bubbling phase
+      input.addEventListener(
+        "keydown",
+        event => {
+          //
+
+          // console.log("Key pressed:", event.key);
+
+          // When the key to send a message is pressed,
+          // update the message sent time
+          if (KEYS_TO_SEND_MESSAGE.includes(event.key)) {
+            updatePreviousState();
+          }
+        },
+        { capture: true },
+      );
 
       // Set that the event listener has been added
       input.dataset.blockerAdded = true;
@@ -102,6 +119,7 @@
 
   // Define the getter and setter of the scrollTop property
   Object.defineProperty(prototype, SCROLL_TOP, {
+    //
 
     // Define the getter
     get() {
@@ -110,12 +128,14 @@
 
     // Define the setter
     set(value) {
+      //
 
       // Initialise whether the element is the chat window
       let isChatWindow = false;
 
       // Iterate over all the selectors for the chat window
       for (const selector of Object.values(CHAT_WINDOWS)) {
+        //
 
         // Get the class name
         const className = selector.replace(REMOVE_SELECTOR_REGEX, "");
@@ -129,6 +149,7 @@
 
       // If the element is not the chat window
       if (!isChatWindow) {
+        //
 
         // Call the original set method
         descriptor.set.call(this, value);
@@ -147,6 +168,8 @@
       // If all the above conditions are met,
       // block the scroll by exiting the function
       if (sendButtonPressedRecently) {
+        //
+
         // console.warn("Blocked programmatic scroll");
         return;
       }
