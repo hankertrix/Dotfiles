@@ -9,7 +9,8 @@
 **/*.bak
 
 # Ignore everything except Lua files in the Yazi plugins
-**/*.yazi/*
+**/*.yazi/**
+**/screenshots/**
 !**/*.yazi/*.lua
 
 # Don't ignore the flavour files either

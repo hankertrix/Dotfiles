@@ -54,7 +54,7 @@ desc = "Analyse spectrum"
 
 # The satty opener
 [[opener.satty]]
-run = 'file="%s1"; satty -f "$file" -o "${file%.*}.png"'
+run = 'file=%s1; satty -f "$file" -o "${file%.*}.png"'
 block = false
 desc = "Open in Satty"
 
