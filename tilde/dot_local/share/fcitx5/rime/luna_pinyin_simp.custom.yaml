@@ -1,9 +1,6 @@
 patch:
   #
 
-  # Enable ASCII mode by default
-  "switches/@0/reset": 1
-
   # Quick access to some unicode symbols
   "punctuator/symbols/+":
     #
