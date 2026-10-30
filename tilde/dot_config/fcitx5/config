@@ -14,7 +14,7 @@ EnumerateWithTriggerKeys=False
 
 # Empty out the trigger keys to keep Fcitx5 on Rime
 [Hotkey/TriggerKeys]
-# 0=Control+space
+0=Control+Return
 # 1=Zenkaku_Hankaku
 # 2=Hangul
 
@@ -50,7 +50,7 @@ EnumerateWithTriggerKeys=False
 
 [Behavior]
 # Activate input method by default
-ActiveByDefault=True
+# ActiveByDefault=True
 # Reset state on Focus In
 # resetStateWhenFocusIn=No
 # Share Input State
