@@ -19,13 +19,4 @@ return {
 		cmd = "Training",
 		opts = {},
 	},
-
-	-- Typr plugin to practice typing
-	{
-		"nvzone/typr",
-		lazy = true,
-		dependencies = "nvzone/volt",
-		cmd = { "Typr", "TyprStats" },
-		opts = {},
-	},
 }
