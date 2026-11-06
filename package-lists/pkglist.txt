@@ -143,4 +143,3 @@ xdg-desktop-portal-gtk
 xwayland-satellite
 yazi-git
 yt-dlp
-zoom
