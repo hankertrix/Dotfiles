@@ -102,6 +102,7 @@ rustup
 satty
 slurp
 smartmontools
+spek
 steam
 swayidle
 swaylock

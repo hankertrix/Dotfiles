@@ -47,7 +47,7 @@ desc = "Open in Emacs"
 
 # The opener to analyse audio spectrums
 [[opener.analyse]]
-run = "spek-rs %s"
+run = "spek %s"
 block = false
 orphan = true
 desc = "Analyse spectrum"
