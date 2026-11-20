@@ -14,36 +14,13 @@ return {
 		-- Snippets
 		{ "rafamadriz/friendly-snippets" },
 
-		-- Compatibility module for nvim-cmp sources
-		{
-			"Saghen/blink.compat",
-			version = "*",
-			lazy = true,
-			opts = {},
-		},
-
 		-- Regular completion within a buffer
 		{ "ribru17/blink-cmp-spell" },
 		{ "moyiz/blink-emoji.nvim" },
-
-		-- AI autocompletion
-		{
-			"supermaven-inc/supermaven-nvim",
-			opts = {
-				log_level = "info",
-				disable_inline_completion = true,
-				disable_keymaps = true,
-			},
-		},
 	},
 
 	-- Configuration options
 	opts = {
-
-		-- Function to decide when to enable the completion engine
-		enabled = function()
-			return not vim.tbl_contains({ "typr" }, vim.bo.filetype)
-		end,
 
 		-- Configuration for the command line
 		cmdline = {
@@ -70,7 +47,6 @@ return {
 				"path",
 				"snippets",
 				"buffer",
-				"supermaven",
 				"spell",
 				"emoji",
 			},
@@ -137,19 +113,6 @@ return {
 					score_offset = -3,
 					opts = { insert = true },
 					kind = "Emoji",
-				},
-
-				-- Nvim cmp providers using blink.compat.
-				--
-				-- Note that the names must be the same
-				-- as the names used for nvim-cmp.
-				supermaven = {
-					name = "supermaven",
-					module = "blink.compat.source",
-					async = true,
-					score_offset = 5,
-					enabled = utils.firenvim_not_active,
-					kind = "Supermaven",
 				},
 			},
 		},
