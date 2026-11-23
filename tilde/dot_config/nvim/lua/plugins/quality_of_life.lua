@@ -79,27 +79,7 @@ return {
 		priority = 1000,
 		lazy = false,
 		opts = {
-			bigfile = {
-				enabled = true,
-
-				-- Modify the big file configuration
-				-- after it has been resolved
-				config = function(opts, defaults)
-
-					-- Override the setup function,
-					-- which is called when entering
-					-- a big file
-					opts.setup = function(ctx)
-
-						-- Call the default setup function
-						defaults.setup(ctx)
-
-						-- Disable Supermaven
-						require("supermaven-nvim.api").stop()
-					end
-				end,
-			},
-
+			bigfile = { enabled = true },
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			input = { enabled = true },
